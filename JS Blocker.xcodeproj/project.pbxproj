@@ -26,7 +26,6 @@
 		50B0252B2C47E404002F1AD7 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252A2C47E404002F1AD7 /* ToolbarItemIcon.pdf */; };
 		50B0252E2C47E404002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252D2C47E404002F1AD7 /* Base */; };
 		50B025562C47ECCC002F1AD7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B025552C47ECCC002F1AD7 /* Cocoa.framework */; };
-		50B025592C47ECCC002F1AD7 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 50B025582C47ECCC002F1AD7 /* blockerList.json */; };
 		50B0255B2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */; };
 		50B025602C47ECCC002F1AD7 /* JS Blocker Rules.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -84,7 +83,6 @@
 		50B025302C47E404002F1AD7 /* JS_Blocker_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Extension.entitlements; sourceTree = "<group>"; };
 		50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "JS Blocker Rules.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025552C47ECCC002F1AD7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		50B025582C47ECCC002F1AD7 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
 		50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		50B0255C2C47ECCC002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Rules.entitlements; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		50B025572C47ECCC002F1AD7 /* JS Blocker Rules */ = {
 			isa = PBXGroup;
 			children = (
-				50B025582C47ECCC002F1AD7 /* blockerList.json */,
 				50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */,
 				50B0255C2C47ECCC002F1AD7 /* Info.plist */,
 				50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */,
@@ -326,7 +323,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B025592C47ECCC002F1AD7 /* blockerList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
