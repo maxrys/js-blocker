@@ -1,0 +1,33 @@
+
+/* Class = "NSTextFieldCell"; title = "title"; ObjectID = "0gw-a2-ewb"; */
+"0gw-a2-ewb.title" = "title";
+
+/* Class = "NSButtonCell"; title = "allow"; ObjectID = "Gw1-Ua-QLl"; */
+"Gw1-Ua-QLl.title" = "allow";
+
+/* Class = "NSTextFieldCell"; title = "...loading..."; ObjectID = "Lj7-xR-Xcq"; */
+"Lj7-xR-Xcq.title" = "...loading...";
+
+/* Class = "NSButtonCell"; title = "cancel permission"; ObjectID = "T3X-1m-GAB"; */
+"T3X-1m-GAB.title" = "cancel permission";
+
+/* Class = "NSButtonCell"; title = "allow"; ObjectID = "XlH-rL-c4q"; */
+"XlH-rL-c4q.title" = "allow";
+
+/* Class = "NSTextFieldCell"; title = "...loading..."; ObjectID = "ZCy-ka-13Q"; */
+"ZCy-ka-13Q.title" = "...loading...";
+
+/* Class = "NSTextFieldCell"; title = "description"; ObjectID = "aLW-pa-zFH"; */
+"aLW-pa-zFH.title" = "description";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "cJR-0P-aJH"; */
+"cJR-0P-aJH.title" = "Box";
+
+/* Class = "NSTextFieldCell"; title = "JavaScript on the Domain + Subdomains"; ObjectID = "dKO-GB-1km"; */
+"dKO-GB-1km.title" = "JavaScript on the Domain + Subdomains";
+
+/* Class = "NSTextFieldCell"; title = "JavaScript on the Domain"; ObjectID = "dn0-Wy-toA"; */
+"dn0-Wy-toA.title" = "JavaScript on the Domain";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "zus-48-5Sv"; */
+"zus-48-5Sv.title" = "Box";

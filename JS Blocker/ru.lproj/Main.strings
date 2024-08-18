@@ -1,0 +1,51 @@
+
+/* Class = "NSMenuItem"; title = "JS Blocker"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "JS Blocker";
+
+/* Class = "NSTextFieldCell"; title = "note: New Domains are added in Safari via the \"JS Blocker\" pop-up."; ObjectID = "1ma-8v-0fN"; */
+"1ma-8v-0fN.title" = "note: New Domains are added in Safari via the \"JS Blocker\" pop-up.";
+
+/* Class = "NSMenuItem"; title = "Quit JS Blocker"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit JS Blocker";
+
+/* Class = "NSButtonCell"; title = "Open Safari Extensions Preferences…"; ObjectID = "5jO-ys-Zm7"; */
+"5jO-ys-Zm7.title" = "Open Safari Extensions Preferences…";
+
+/* Class = "NSMenuItem"; title = "About JS Blocker"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About JS Blocker";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSWindow"; title = "JS Blocker"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "JS Blocker";
+
+/* Class = "NSTableColumn"; headerCell.title = "with subdomains?"; ObjectID = "RNE-sn-OYb"; */
+"RNE-sn-OYb.headerCell.title" = "with subdomains?";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "SYe-dW-cVh"; */
+"SYe-dW-cVh.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Domains where JavaScript is allowed"; ObjectID = "XEy-Pk-wCR"; */
+"XEy-Pk-wCR.title" = "Domains where JavaScript is allowed";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Xrj-fb-wDM"; */
+"Xrj-fb-wDM.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "domain name"; ObjectID = "Zcf-5E-PdZ"; */
+"Zcf-5E-PdZ.headerCell.title" = "domain name";
+
+/* Class = "NSTextFieldCell"; title = "JS Blocker Extension in unknown state"; ObjectID = "Zwb-Om-U96"; */
+"Zwb-Om-U96.title" = "JS Blocker Extension in unknown state";
+
+/* Class = "NSTextFieldCell"; title = "Installation example"; ObjectID = "auG-E5-4hc"; */
+"auG-E5-4hc.title" = "Installation example";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "hib-6N-ujJ"; */
+"hib-6N-ujJ.title" = "Box";
+
+/* Class = "NSButtonCell"; title = "delete"; ObjectID = "jzp-ta-qfU"; */
+"jzp-ta-qfU.title" = "delete";
+
+/* Class = "NSMenu"; title = "JS Blocker"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "JS Blocker";

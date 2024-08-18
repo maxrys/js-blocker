@@ -30,6 +30,8 @@
 		50875E232C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E242C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E262C71F25A00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E252C71F25A00756D64 /* Assets.xcassets */; };
+		50875E292C71F5A400756D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B025132C47E401002F1AD7 /* Main.storyboard */; };
+		50875E2A2C71F5A800756D64 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */; };
 		50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* AppDelegate.swift */; };
 		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
 		50B025152C47E401002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B025142C47E401002F1AD7 /* Base */; };
@@ -89,6 +91,8 @@
 		50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController_tableWhiteDomains.swift; sourceTree = "<group>"; };
 		50875E212C71F21C00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50875E252C71F25A00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50875E272C71F59700756D64 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		50875E282C71F59700756D64 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SafariExtensionViewController.strings; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabRules.swift; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 50B024F92C47E401002F1AD7;
 			productRefGroup = 50B025032C47E401002F1AD7 /* Products */;
@@ -335,6 +340,7 @@
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
 				50875E222C71F21C00756D64 /* Assets.xcassets in Resources */,
 				50B025152C47E401002F1AD7 /* Base in Resources */,
+				50875E292C71F5A400756D64 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B0252B2C47E404002F1AD7 /* ToolbarItemIcon.pdf in Resources */,
+				50875E2A2C71F5A800756D64 /* SafariExtensionViewController.xib in Resources */,
 				50B0252E2C47E404002F1AD7 /* Base in Resources */,
 				503CE1442C6E32C400835509 /* ToolbarItemIcon-active.pdf in Resources */,
 				50B025292C47E404002F1AD7 /* script.js in Resources */,
@@ -426,6 +433,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				50B025142C47E401002F1AD7 /* Base */,
+				50875E272C71F59700756D64 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -434,6 +442,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				50B0252D2C47E404002F1AD7 /* Base */,
+				50875E282C71F59700756D64 /* ru */,
 			);
 			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
@@ -446,6 +455,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -509,6 +519,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
