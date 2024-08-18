@@ -1,0 +1,204 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "0gw-a2-ewb.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"title\"; ObjectID = \"0gw-a2-ewb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "title"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "title"
+          }
+        }
+      }
+    },
+    "aLW-pa-zFH.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"description\"; ObjectID = \"aLW-pa-zFH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "description"
+          }
+        }
+      }
+    },
+    "cJR-0P-aJH.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Box\"; ObjectID = \"cJR-0P-aJH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Box"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Box"
+          }
+        }
+      }
+    },
+    "dKO-GB-1km.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"JavaScript on the Domain + Subdomains\"; ObjectID = \"dKO-GB-1km\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "JavaScript on the Domain + Subdomains"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JavaScript on the Domain + Subdomains"
+          }
+        }
+      }
+    },
+    "dn0-Wy-toA.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"JavaScript on the Domain\"; ObjectID = \"dn0-Wy-toA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "JavaScript on the Domain"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JavaScript on the Domain"
+          }
+        }
+      }
+    },
+    "Gw1-Ua-QLl.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"allow\"; ObjectID = \"Gw1-Ua-QLl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "allow"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "allow"
+          }
+        }
+      }
+    },
+    "Lj7-xR-Xcq.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"...loading...\"; ObjectID = \"Lj7-xR-Xcq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "...loading..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...loading..."
+          }
+        }
+      }
+    },
+    "T3X-1m-GAB.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"cancel permission\"; ObjectID = \"T3X-1m-GAB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "cancel permission"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cancel permission"
+          }
+        }
+      }
+    },
+    "XlH-rL-c4q.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"allow\"; ObjectID = \"XlH-rL-c4q\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "allow"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "allow"
+          }
+        }
+      }
+    },
+    "ZCy-ka-13Q.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"...loading...\"; ObjectID = \"ZCy-ka-13Q\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "...loading..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...loading..."
+          }
+        }
+      }
+    },
+    "zus-48-5Sv.title" : {
+      "comment" : "Class = \"NSBox\"; title = \"Box\"; ObjectID = \"zus-48-5Sv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Box"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Box"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
