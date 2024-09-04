@@ -32,6 +32,11 @@
 		50875E262C71F25A00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E252C71F25A00756D64 /* Assets.xcassets */; };
 		50875E292C71F5A400756D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B025132C47E401002F1AD7 /* Main.storyboard */; };
 		50875E2A2C71F5A800756D64 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */; };
+		50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */; };
+		50875E362C71F71400756D64 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E352C71F71400756D64 /* Localizable.xcstrings */; };
+		50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E372C71F72A00756D64 /* InfoPlist.xcstrings */; };
+		50875E3A2C71F73100756D64 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E392C71F73100756D64 /* Localizable.xcstrings */; };
+		50875E3C2C71F74100756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */; };
 		50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* AppDelegate.swift */; };
 		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
 		50B025152C47E401002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B025142C47E401002F1AD7 /* Base */; };
@@ -93,6 +98,11 @@
 		50875E252C71F25A00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50875E2B2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		50875E2C2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SafariExtensionViewController.xcstrings; sourceTree = "<group>"; };
+		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		50875E352C71F71400756D64 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		50875E392C71F73100756D64 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabRules.swift; sourceTree = "<group>"; };
@@ -174,6 +184,8 @@
 				50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */,
 				5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */,
 				50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */,
+				50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */,
+				50875E352C71F71400756D64 /* Localizable.xcstrings */,
 				50B025132C47E401002F1AD7 /* Main.storyboard */,
 				50B025162C47E403002F1AD7 /* Assets.xcassets */,
 				50B025192C47E403002F1AD7 /* JS Blocker.entitlements */,
@@ -195,6 +207,8 @@
 				50875E1D2C71EFE300756D64 /* extension_Form.swift */,
 				50B025232C47E404002F1AD7 /* SafariExtensionHandler.swift */,
 				50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */,
+				50875E372C71F72A00756D64 /* InfoPlist.xcstrings */,
+				50875E392C71F73100756D64 /* Localizable.xcstrings */,
 				50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */,
 				50875E252C71F25A00756D64 /* Assets.xcassets */,
 				50B0252F2C47E404002F1AD7 /* Info.plist */,
@@ -226,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */,
+				50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */,
 				50B0255C2C47ECCC002F1AD7 /* Info.plist */,
 				50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */,
 			);
@@ -338,6 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
+				50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */,
+				50875E362C71F71400756D64 /* Localizable.xcstrings in Resources */,
 				50875E222C71F21C00756D64 /* Assets.xcassets in Resources */,
 				50B025152C47E401002F1AD7 /* Base in Resources */,
 				50875E292C71F5A400756D64 /* Main.storyboard in Resources */,
@@ -354,7 +371,9 @@
 				503CE1442C6E32C400835509 /* ToolbarItemIcon-active.pdf in Resources */,
 				50B025292C47E404002F1AD7 /* script.js in Resources */,
 				50875E262C71F25A00756D64 /* Assets.xcassets in Resources */,
+				50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */,
 				50875E232C71F21C00756D64 /* Assets.xcassets in Resources */,
+				50875E3A2C71F73100756D64 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50875E3C2C71F74100756D64 /* InfoPlist.xcstrings in Resources */,
 				50875E242C71F21C00756D64 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,55 +2,37 @@
   "sourceLanguage" : "en",
   "strings" : {
     "0gw-a2-ewb.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"title\"; ObjectID = \"0gw-a2-ewb\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"...title...\"; ObjectID = \"0gw-a2-ewb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "title"
+            "value" : "...title..."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "title"
+            "value" : "...заголовок..."
           }
         }
       }
     },
     "aLW-pa-zFH.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"description\"; ObjectID = \"aLW-pa-zFH\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"description description description description description description description description description description description description description description description \"; ObjectID = \"aLW-pa-zFH\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "description"
+            "value" : "description description description description description description description description description description description description description description description "
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "description"
-          }
-        }
-      }
-    },
-    "cJR-0P-aJH.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Box\"; ObjectID = \"cJR-0P-aJH\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Box"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Box"
+            "value" : "описание описание описание описание описание описание описание описание описание описание описание описание описание описание описание"
           }
         }
       }
@@ -68,7 +50,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JavaScript on the Domain + Subdomains"
+            "value" : "JavaScript на Домене + Поддомены"
           }
         }
       }
@@ -86,7 +68,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JavaScript on the Domain"
+            "value" : "JavaScript на Домене"
           }
         }
       }
@@ -104,7 +86,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "allow"
+            "value" : "разрешить"
           }
         }
       }
@@ -122,7 +104,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...loading..."
+            "value" : "...загрузка..."
           }
         }
       }
@@ -140,7 +122,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "cancel permission"
+            "value" : "отменить разрешение"
           }
         }
       }
@@ -158,7 +140,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "allow"
+            "value" : "разрешить"
           }
         }
       }
@@ -176,25 +158,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...loading..."
-          }
-        }
-      }
-    },
-    "zus-48-5Sv.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Box\"; ObjectID = \"zus-48-5Sv\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Box"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Box"
+            "value" : "...загрузка..."
           }
         }
       }

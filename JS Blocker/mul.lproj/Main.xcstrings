@@ -14,7 +14,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "note: New Domains are added in Safari via the \"JS Blocker\" pop-up."
+            "value" : "примечание: Новые домены добавляются в Safari через всплывающее окно \"JS Blocker'а\"."
           }
         }
       }
@@ -32,7 +32,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Blocker"
+            "value" : "JS Блокировщик"
           }
         }
       }
@@ -50,7 +50,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quit JS Blocker"
+            "value" : "Выйти из JS Блокировщика"
           }
         }
       }
@@ -68,7 +68,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open Safari Extensions Preferences…"
+            "value" : "Открыть настройки расширений Safari…"
           }
         }
       }
@@ -86,7 +86,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "About JS Blocker"
+            "value" : "О Блокировщике JS"
           }
         }
       }
@@ -104,7 +104,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Installation example"
+            "value" : "Пример установки"
           }
         }
       }
@@ -122,25 +122,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Main Menu"
-          }
-        }
-      }
-    },
-    "hib-6N-ujJ.title" : {
-      "comment" : "Class = \"NSBox\"; title = \"Box\"; ObjectID = \"hib-6N-ujJ\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Box"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Box"
+            "value" : "Главное меню"
           }
         }
       }
@@ -158,7 +140,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Blocker"
+            "value" : "JS Блокировщик"
           }
         }
       }
@@ -176,7 +158,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "delete"
+            "value" : "удалить"
           }
         }
       }
@@ -194,25 +176,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "with subdomains?"
-          }
-        }
-      }
-    },
-    "SYe-dW-cVh.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"SYe-dW-cVh\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Text Cell"
+            "value" : "с поддоменами?"
           }
         }
       }
@@ -230,7 +194,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Blocker"
+            "value" : "JS Блокировщик"
           }
         }
       }
@@ -248,25 +212,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Domains where JavaScript is allowed"
-          }
-        }
-      }
-    },
-    "Xrj-fb-wDM.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"Xrj-fb-wDM\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Text Cell"
+            "value" : "Домены, на которых разрешён JavaScript"
           }
         }
       }
@@ -284,7 +230,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "domain name"
+            "value" : "доменное имя"
           }
         }
       }
@@ -302,7 +248,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Blocker Extension in unknown state"
+            "value" : "Расширение JS Блокировщик в неизвестном состоянии"
           }
         }
       }
