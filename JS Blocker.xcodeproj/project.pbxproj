@@ -12,12 +12,9 @@
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		503CE1442C6E32C400835509 /* ToolbarItemIcon-active.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarItemIcon-active.pdf */; };
-		50875E0B2C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift */; };
-		50875E0C2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E0A2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift */; };
-		50875E0D2C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift */; };
-		50875E0E2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E0A2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift */; };
-		50875E0F2C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift */; };
-		50875E102C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E0A2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift */; };
+		50875E0B2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* model_WhiteDomains.swift */; };
+		50875E0D2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* model_WhiteDomains.swift */; };
+		50875E0F2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* model_WhiteDomains.swift */; };
 		50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* AppDelegate.swift */; };
 		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
 		50B025152C47E401002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B025142C47E401002F1AD7 /* Base */; };
@@ -70,8 +67,7 @@
 		5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabInstallation.swift; sourceTree = "<group>"; };
 		5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* ToolbarItemIcon-active.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarItemIcon-active.pdf"; sourceTree = "<group>"; };
-		50875E092C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WhiteDomains+CoreDataClass.swift"; sourceTree = "<group>"; };
-		50875E0A2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WhiteDomains+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50875E092C71E93A00756D64 /* model_WhiteDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model_WhiteDomains.swift; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabRules.swift; sourceTree = "<group>"; };
@@ -123,8 +119,7 @@
 		50B024F92C47E401002F1AD7 = {
 			isa = PBXGroup;
 			children = (
-				50875E092C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift */,
-				50875E0A2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift */,
+				50875E092C71E93A00756D64 /* model_WhiteDomains.swift */,
 				5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */,
 				50B025042C47E401002F1AD7 /* JS Blocker */,
 				50B025222C47E404002F1AD7 /* JS Blocker Extension */,
@@ -344,8 +339,7 @@
 			files = (
 				50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */,
-				50875E0B2C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift in Sources */,
-				50875E0C2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift in Sources */,
+				50875E0B2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */,
 				50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */,
 				5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 			);
@@ -356,8 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */,
-				50875E0D2C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift in Sources */,
-				50875E0E2C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift in Sources */,
+				50875E0D2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */,
 				50B025242C47E404002F1AD7 /* SafariExtensionHandler.swift in Sources */,
 				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 			);
@@ -368,8 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B0255B2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift in Sources */,
-				50875E0F2C71E93A00756D64 /* WhiteDomains+CoreDataClass.swift in Sources */,
-				50875E102C71E93A00756D64 /* WhiteDomains+CoreDataProperties.swift in Sources */,
+				50875E0F2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */,
 				5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
