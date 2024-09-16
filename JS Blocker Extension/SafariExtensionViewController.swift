@@ -62,6 +62,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+            print("Database path: \(WhiteDomains.storeURL)")
+            WhiteDomains.dump()
+        #endif
     }
 
     override func viewWillAppear() {
