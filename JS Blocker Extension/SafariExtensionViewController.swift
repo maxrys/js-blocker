@@ -1,31 +1,6 @@
 
 import SafariServices
 
-enum MessageState: Int {
-    case info    =  1
-    case ok      =  2
-    case warning = -1
-    case error   = -2
-
-    var titleBackgroundColor: NSColor {
-        switch self {
-            case .info   : return NSColor(named: "Message Title Background Color Info"   ) ?? .systemPurple
-            case .ok     : return NSColor(named: "Message Title Background Color Ok"     ) ?? .systemGreen
-            case .warning: return NSColor(named: "Message Title Background Color Warning") ?? .systemYellow
-            case .error  : return NSColor(named: "Message Title Background Color Error"  ) ?? .systemRed
-        }
-    }
-
-    var backgroundColor: NSColor {
-        switch self {
-            case .info   : return NSColor(named: "Message Background Color Info"   ) ?? .systemGray
-            case .ok     : return NSColor(named: "Message Background Color Ok"     ) ?? .systemGray
-            case .warning: return NSColor(named: "Message Background Color Warning") ?? .systemGray
-            case .error  : return NSColor(named: "Message Background Color Error"  ) ?? .systemGray
-        }
-    }
-}
-
 class SafariExtensionViewController: SFSafariExtensionViewController {
 
     @IBOutlet var boxMessage: NSBox!
