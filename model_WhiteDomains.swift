@@ -13,8 +13,8 @@ public class WhiteDomains: NSManagedObject {
     @NSManaged var updatedAt: Int64
 
     static let storeURL: URL = {
-        let storeDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "maxrys.js-blocker.group")!
-        let storeURL = storeDirectory.appendingPathComponent("JSBlocker.sqlite")
+        let storeDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: ENV.APP_GROUP_NAME)!
+        let storeURL = storeDirectory.appendingPathComponent(ENV.APP_DB_LOCAL_NAME)
         return storeURL
     }()
 
