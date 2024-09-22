@@ -3,7 +3,7 @@ import Cocoa
 import SafariServices
 import WebKit
 
-let extensionBundleIdentifier = "maxrys.JS-Blocker.Extension"
+let extensionBundleIdentifier = "maxrys.js-blocker.extension"
 
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
