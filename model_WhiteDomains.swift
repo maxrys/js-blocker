@@ -151,6 +151,18 @@ public class WhiteDomains: NSManagedObject {
         return 0
     }
 
+    static func blockingStateInfoGet(domainName: String) -> (BlockingState, WhiteDomains?) {
+        if let domainInfo = WhiteDomains.selectByName(name: domainName) {
+            if domainInfo.withSubdomains != true {return (state: .domain              , info: domainInfo)}
+            if domainInfo.withSubdomains == true {return (state: .domainWithSubdomains, info: domainInfo)}
+        } else if let domainInfo = WhiteDomains.selectByName(name: domainName.deleteWwwPrefixIfExists()) {
+            if domainInfo.withSubdomains == true {
+                return (state: .domainWithSubdomains, info: domainInfo)
+            }
+        }
+        return (state: .nothing, info: nil)
+    }
+
 
 
     /* ###################

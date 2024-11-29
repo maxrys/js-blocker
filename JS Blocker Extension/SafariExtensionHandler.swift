@@ -25,7 +25,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     if domain != nil {
 
                         let domainHasParents = WhiteDomains.selectParents(name: domain!).isEmpty == false
-                        let (state, _)       = SafariExtensionViewController.blockStateInfoGet(
+                        let (state, _)       = WhiteDomains.blockingStateInfoGet(
                             domainName: domain!
                         )
 
@@ -94,7 +94,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             let iconActivePath = Bundle.main.path(forResource: "ToolbarItemIcon-active", ofType: "pdf")!
                             let icon           = NSImage(contentsOfFile: iconPath)
                             let iconActive     = NSImage(contentsOfFile: iconActivePath)
-                            let (state, _)     = SafariExtensionViewController.blockStateInfoGet(
+                            let (state, _)     = WhiteDomains.blockingStateInfoGet(
                                 domainName: domain!
                             )
 

@@ -1,6 +1,17 @@
 
 import SafariServices
 
+enum BlockingState: String {
+    case domain
+    case domainWithSubdomains
+    case nothing
+
+    var isJSAllowed: Bool {
+        return self == .domain ||
+               self == .domainWithSubdomains
+    }
+}
+
 enum MessageState: Int {
     case info    =  1
     case ok      =  2

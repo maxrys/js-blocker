@@ -1,17 +1,6 @@
 
 import SafariServices
 
-enum BlockState: String {
-    case domain
-    case domainWithSubdomains
-    case nothing
-
-    var isJSAllowed: Bool {
-        return self == .domain ||
-               self == .domainWithSubdomains
-    }
-}
-
 class SafariExtensionViewController: SFSafariExtensionViewController {
 
     @IBOutlet var boxMessage: NSBox!
@@ -44,18 +33,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             height: ViewHeightValue.def.rawValue)
         return shared
     }()
-
-    static func blockStateInfoGet(domainName: String) -> (BlockState, WhiteDomains?) {
-        if let domainInfo = WhiteDomains.selectByName(name: domainName) {
-            if domainInfo.withSubdomains != true {return (state: .domain              , info: domainInfo)}
-            if domainInfo.withSubdomains == true {return (state: .domainWithSubdomains, info: domainInfo)}
-        } else if let domainInfo = WhiteDomains.selectByName(name: domainName.deleteWwwPrefixIfExists()) {
-            if domainInfo.withSubdomains == true {
-                return (state: .domainWithSubdomains, info: domainInfo)
-            }
-        }
-        return (state: .nothing, info: nil)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +99,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
             let rule               =      domainName
             let ruleWithSubdomains = "*.\(domainName.deleteWwwPrefixIfExists())"
-            let (state, _) = SafariExtensionViewController.blockStateInfoGet(domainName: domainName)
+            let (state, _) = WhiteDomains.blockingStateInfoGet(domainName: domainName)
 
             // special case for "www.domain" (rule: "*.domain") when exists rule for "domain" (rule: "domain")
             var hasMirror: Bool? = nil
@@ -190,7 +167,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                     //     page.reload()
                     // }
                        let domainHasParents = WhiteDomains.selectParents(name: domainName).isEmpty == false
-                       let (state, _) = SafariExtensionViewController.blockStateInfoGet(domainName: domainName)
+                       let (state, _) = WhiteDomains.blockingStateInfoGet(domainName: domainName)
                        page.dispatchMessageToScript(
                            withName: "reloadPageMsg",
                            userInfo: [
