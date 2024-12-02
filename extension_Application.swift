@@ -1,35 +1,27 @@
 
 import SafariServices
 
-class ENV {
-    static let APP_GROUP_NAME           = "97CZR6J379.maxrys.js-blocker"
-    static let APP_NAME                 = "maxrys.js-blocker"
-    static let APP_POPUP_EXTENSION_NAME = "maxrys.js-blocker.extension"
-    static let APP_RULES_EXTENSION_NAME = "maxrys.js-blocker.rules"
-    static let APP_DB_LOCAL_NAME        = "JSBlocker.sqlite"
-}
-
 enum MessageState: Int {
     case info    =  1
     case ok      =  2
     case warning = -1
     case error   = -2
 
-    var titleBackgroundColor: NSColor {
+    var colorTitleBackground: NSColor {
         switch self {
-            case .info   : return NSColor(named: "Message Title Background Color Info"   ) ?? .systemPurple
-            case .ok     : return NSColor(named: "Message Title Background Color Ok"     ) ?? .systemGreen
-            case .warning: return NSColor(named: "Message Title Background Color Warning") ?? .systemYellow
-            case .error  : return NSColor(named: "Message Title Background Color Error"  ) ?? .systemRed
+            case .info   : return NSColor(named: ENV.COLORNAME_MESSAGE_INFO_TITLE_BACKGROUND   ) ?? .systemPurple
+            case .ok     : return NSColor(named: ENV.COLORNAME_MESSAGE_OK_TITLE_BACKGROUND     ) ?? .systemGreen
+            case .warning: return NSColor(named: ENV.COLORNAME_MESSAGE_WARNING_TITLE_BACKGROUND) ?? .systemYellow
+            case .error  : return NSColor(named: ENV.COLORNAME_MESSAGE_ERROR_TITLE_BACKGROUND  ) ?? .systemRed
         }
     }
 
-    var backgroundColor: NSColor {
+    var colorDescriptionBackground: NSColor {
         switch self {
-            case .info   : return NSColor(named: "Message Background Color Info"   ) ?? .systemGray
-            case .ok     : return NSColor(named: "Message Background Color Ok"     ) ?? .systemGray
-            case .warning: return NSColor(named: "Message Background Color Warning") ?? .systemGray
-            case .error  : return NSColor(named: "Message Background Color Error"  ) ?? .systemGray
+            case .info   : return NSColor(named: ENV.COLORNAME_MESSAGE_INFO_DESCRIPTION_BACKGROUND   ) ?? .systemGray
+            case .ok     : return NSColor(named: ENV.COLORNAME_MESSAGE_OK_DESCRIPTION_BACKGROUND     ) ?? .systemGray
+            case .warning: return NSColor(named: ENV.COLORNAME_MESSAGE_WARNING_DESCRIPTION_BACKGROUND) ?? .systemGray
+            case .error  : return NSColor(named: ENV.COLORNAME_MESSAGE_ERROR_DESCRIPTION_BACKGROUND  ) ?? .systemGray
         }
     }
 }

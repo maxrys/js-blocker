@@ -78,8 +78,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     func messageShow(title: String, description: String, state: MessageState = .info, height: ViewHeightValue = ViewHeightValue.withMessage) {
-        self.boxMessage.fillColor                = state.backgroundColor
-        self.boxMessageTitle.fillColor           = state.titleBackgroundColor
+        self.boxMessage.fillColor                = state.colorDescriptionBackground
+        self.boxMessageTitle.fillColor           = state.colorTitleBackground
         self.labelMessageTitle.stringValue       = title
         self.labelMessageDescription.stringValue = description
         SafariExtensionViewController.shared.preferredContentSize = NSSize(
@@ -89,8 +89,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     func messageHide() {
-        self.boxMessage.fillColor                = MessageState.info.backgroundColor
-        self.boxMessageTitle.fillColor           = MessageState.info.titleBackgroundColor
+        self.boxMessage.fillColor                = MessageState.info.colorDescriptionBackground
+        self.boxMessageTitle.fillColor           = MessageState.info.colorTitleBackground
         self.labelMessageTitle.stringValue       = NSLocalizedString("...title..."      , comment: "")
         self.labelMessageDescription.stringValue = NSLocalizedString("...description...", comment: "")
         SafariExtensionViewController.shared.preferredContentSize = NSSize(
@@ -102,8 +102,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     func ruleShow(group: NSBox, label: NSTextField, rule: String?, isActive: Bool = false) {
         if rule == nil {label.stringValue = NSLocalizedString("...loading...", comment: "")}
         if rule != nil {label.stringValue = rule!.decodePunycode()}
-        if isActive == true {label.textColor   = NSColor(named: "Domain Active Text Color"  ) ?? .textColor}
-        if isActive == true {group.borderColor = NSColor(named: "Domain Active Border Color") ?? .textColor}
+        if isActive == true {label.textColor   = NSColor(named: ENV.COLORNAME_DOMAIN_NAME_ACTIVE  ) ?? .textColor}
+        if isActive == true {group.borderColor = NSColor(named: ENV.COLORNAME_DOMAIN_BORDER_ACTIVE) ?? .textColor}
         if isActive != true {label.textColor   = .textColor}
         if isActive != true {group.borderColor = .textBackgroundColor}
     }

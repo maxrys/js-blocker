@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -183,7 +183,7 @@
                             </box>
                         </subviews>
                     </view>
-                    <color key="fillColor" name="Body Background Color"/>
+                    <color key="fillColor" name="color Page Body Background"/>
                 </box>
                 <box fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-aE-VuL" userLabel="Foot">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
@@ -206,7 +206,7 @@
                             </button>
                         </subviews>
                     </view>
-                    <color key="fillColor" name="Foot Background Color"/>
+                    <color key="fillColor" name="color Page Foot Background"/>
                 </box>
             </subviews>
             <point key="canvasLocation" x="484" y="-440"/>
@@ -215,10 +215,10 @@
     <resources>
         <image name="Button 200x50 Violet" width="150" height="38"/>
         <image name="Button 300x50 Blue" width="225" height="38"/>
-        <namedColor name="Body Background Color">
+        <namedColor name="color Page Body Background">
             <color red="0.8901960784313725" green="0.90980392156862744" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Foot Background Color">
+        <namedColor name="color Page Foot Background">
             <color red="0.82352941176470584" green="0.86274509803921573" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Message Background Color Info">

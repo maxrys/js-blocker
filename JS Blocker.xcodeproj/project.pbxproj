@@ -37,6 +37,9 @@
 		50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E372C71F72A00756D64 /* InfoPlist.xcstrings */; };
 		50875E3A2C71F73100756D64 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E392C71F73100756D64 /* Localizable.xcstrings */; };
 		50875E3C2C71F74100756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */; };
+		508EC4B32CF7281900106185 /* ENV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC4B22CF7281700106185 /* ENV.swift */; };
+		508EC4B42CF7281900106185 /* ENV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC4B22CF7281700106185 /* ENV.swift */; };
+		508EC4B52CF7281900106185 /* ENV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC4B22CF7281700106185 /* ENV.swift */; };
 		50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* AppDelegate.swift */; };
 		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
 		50B025152C47E401002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B025142C47E401002F1AD7 /* Base */; };
@@ -104,6 +107,7 @@
 		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50875E392C71F73100756D64 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		508EC4B22CF7281700106185 /* ENV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENV.swift; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabRules.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		50B024F92C47E401002F1AD7 = {
 			isa = PBXGroup;
 			children = (
+				508EC4B22CF7281700106185 /* ENV.swift */,
 				50875E192C71EE1700756D64 /* extension_Application.swift */,
 				50875E112C71EE0D00756D64 /* extension_types.swift */,
 				50875E152C71EE1200756D64 /* extension_Table.swift */,
@@ -192,16 +197,8 @@
 				50B025162C47E403002F1AD7 /* Assets.xcassets */,
 				50EEBE782C9EBAF100A25032 /* Info.plist */,
 				50B025192C47E403002F1AD7 /* JS Blocker.entitlements */,
-				50B025072C47E401002F1AD7 /* Resources */,
 			);
 			path = "JS Blocker";
-			sourceTree = "<group>";
-		};
-		50B025072C47E401002F1AD7 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		50B025222C47E404002F1AD7 /* JS Blocker Extension */ = {
@@ -398,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */,
+				508EC4B32CF7281900106185 /* ENV.swift in Sources */,
 				50875E162C71EE1200756D64 /* extension_Table.swift in Sources */,
 				50875E202C71F0C700756D64 /* ViewController_tableWhiteDomains.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */,
@@ -414,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */,
+				508EC4B52CF7281900106185 /* ENV.swift in Sources */,
 				50875E0D2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */,
 				50875E1B2C71EE1700756D64 /* extension_Application.swift in Sources */,
 				50B025242C47E404002F1AD7 /* SafariExtensionHandler.swift in Sources */,
@@ -428,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508EC4B42CF7281900106185 /* ENV.swift in Sources */,
 				50B0255B2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift in Sources */,
 				50875E142C71EE0D00756D64 /* extension_types.swift in Sources */,
 				50875E1C2C71EE1700756D64 /* extension_Application.swift in Sources */,

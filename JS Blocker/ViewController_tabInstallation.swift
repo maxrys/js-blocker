@@ -20,14 +20,14 @@ class ViewController_tabInstallation: NSViewController {
             Task {
                 if state.isEnabled == true {
                     self.labelExtensionState.stringValue = NSLocalizedString("JS Blocker Extension is enabled" , comment: "")
-                    self.boxExtensionState.fillColor = MessageState.ok.backgroundColor
-                    self.boxExtensionStateTitle.fillColor = MessageState.ok.titleBackgroundColor
-                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageState.ok.titleBackgroundColor
+                    self.boxExtensionState.fillColor = MessageState.ok.colorDescriptionBackground
+                    self.boxExtensionStateTitle.fillColor = MessageState.ok.colorTitleBackground
+                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageState.ok.colorTitleBackground
                 } else {
                     self.labelExtensionState.stringValue = NSLocalizedString("JS Blocker Extension is disabled", comment: "")
-                    self.boxExtensionState.fillColor = MessageState.error.backgroundColor
-                    self.boxExtensionStateTitle.fillColor = MessageState.error.titleBackgroundColor
-                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageState.error.titleBackgroundColor
+                    self.boxExtensionState.fillColor = MessageState.error.colorDescriptionBackground
+                    self.boxExtensionStateTitle.fillColor = MessageState.error.colorTitleBackground
+                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageState.error.colorTitleBackground
                 }
             }
         })
