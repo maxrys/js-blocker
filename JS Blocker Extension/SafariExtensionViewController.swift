@@ -1,41 +1,45 @@
 
 import SafariServices
+import SwiftUI
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
 
-    @IBOutlet var boxMessage: NSBox!
-    @IBOutlet var boxMessageTitle: NSBox!
-    @IBOutlet var labelMessageTitle: NSTextField!
-    @IBOutlet var labelMessageDescription: NSTextField!
-
-    @IBOutlet var groupRule: NSBox!
-    @IBOutlet var labelRule: NSTextField!
-    @IBOutlet var buttonInsertRule: NSButton!
-
-    @IBOutlet var groupRuleWithSubdomain: NSBox!
-    @IBOutlet var labelRuleWithSubdomains: NSTextField!
-    @IBOutlet var buttonInsertRuleWithSubdomains: NSButton!
-
-    @IBOutlet var buttonDeleteRule: NSButton!
-
-    enum ViewHeightValue: Int {
-        case def         = 450
-        case withMessage = 550
-    }
-
-    static let ViewWidthValue = 450
-    static var domainNameCurrent: String?
     static var pageCurrent: SFSafariPage?
+    static var domainNameCurrent: String?
+    static var popupStateModel = PopupStateModel(
+        ruleForDomain: nil,
+        ruleForParent: nil,
+        ruleForDomain_isActive: false,
+        ruleForParent_isActive: false,
+        ruleForDomain_isEnabled: false,
+        ruleForParent_isEnabled: false,
+        ruleCancel_isEnabled: false,
+        messages: []
+    )
+
     static let shared: SafariExtensionViewController = {
         let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(
-            width : SafariExtensionViewController.ViewWidthValue,
-            height: ViewHeightValue.def.rawValue)
+        shared.preferredContentSize = CGSize(width: popupWidth, height: popupHeight)
         return shared
+    }()
+
+    var popupHost: NSHostingController<Popup>? = nil
+    var popupView: NSView? = nil
+    static let popupHeight = 450
+    static let popupWidth  = 450
+    static var popupShared: Popup = {
+        return Popup(
+            stateModel: popupStateModel
+        )
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.popupHost = NSHostingController(rootView: SafariExtensionViewController.popupShared)
+        self.popupView = self.popupHost!.view
+        self.view.addSubview(self.popupView!)
+
         #if DEBUG
             print("viewDidLoad(): DB path = \(WhiteDomains.storeURL)")
             WhiteDomains.dump()
@@ -44,64 +48,61 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.formInit()
+
+        SafariExtensionViewController.formUpdate()
+
+        #if DEBUG
+            print("viewWillAppear()")
+        #endif
     }
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        if SafariExtensionViewController.domainNameCurrent != nil {
-            self.formUpdate()
-        }
+
+        self.popupView!.frame     = CGRect(x: 0, y: 0, width: SafariExtensionViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
+        self.preferredContentSize = CGSize(            width: SafariExtensionViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
+
+        #if DEBUG
+            print("viewDidAppear()")
+        #endif
     }
 
-    func messageShow(title: String, description: String, state: MessageState = .info, height: ViewHeightValue = ViewHeightValue.withMessage) {
-        self.boxMessage.fillColor                = state.colorDescriptionBackground
-        self.boxMessageTitle.fillColor           = state.colorTitleBackground
-        self.labelMessageTitle.stringValue       = title
-        self.labelMessageDescription.stringValue = description
-        SafariExtensionViewController.shared.preferredContentSize = NSSize(
-            width : SafariExtensionViewController.ViewWidthValue,
-            height: height.rawValue
+    static func messageShow(title: String, description: String, type: Message.MessageType = .info) {
+        popupStateModel.messages.removeAll()
+        popupStateModel.messages.append(
+            MessageInfo(
+                title: title,
+                description: description,
+                type: type
+            )
         )
     }
 
-    func messageHide() {
-        self.boxMessage.fillColor                = MessageState.info.colorDescriptionBackground
-        self.boxMessageTitle.fillColor           = MessageState.info.colorTitleBackground
-        self.labelMessageTitle.stringValue       = NSLocalizedString("...title..."      , comment: "")
-        self.labelMessageDescription.stringValue = NSLocalizedString("...description...", comment: "")
-        SafariExtensionViewController.shared.preferredContentSize = NSSize(
-            width : SafariExtensionViewController.ViewWidthValue,
-            height: ViewHeightValue.def.rawValue
-        )
+    static func messageHide() {
+        popupStateModel.messages.removeAll()
     }
 
-    func ruleShow(group: NSBox, label: NSTextField, rule: String?, isActive: Bool = false) {
-        if rule == nil {label.stringValue = NSLocalizedString("...loading...", comment: "")}
-        if rule != nil {label.stringValue = rule!.decodePunycode()}
-        if isActive == true {label.textColor   = NSColor(named: ENV.COLORNAME_DOMAIN_NAME_ACTIVE  ) ?? .textColor}
-        if isActive == true {group.borderColor = NSColor(named: ENV.COLORNAME_DOMAIN_BORDER_ACTIVE) ?? .textColor}
-        if isActive != true {label.textColor   = .textColor}
-        if isActive != true {group.borderColor = .textBackgroundColor}
-    }
+    // ######################################################################
 
-    func formInit() {
-        self.ruleShow(group: self.groupRule             , label: self.labelRule              , rule: nil)
-        self.ruleShow(group: self.groupRuleWithSubdomain, label: self.labelRuleWithSubdomains, rule: nil)
-        self.buttonInsertRule.accessSet(false)
-        self.buttonInsertRuleWithSubdomains.accessSet(false)
-        self.buttonDeleteRule.accessSet(false)
-        self.messageHide()
-    }
+    static func formUpdate() {
+        popupStateModel.ruleForDomain = nil
+        popupStateModel.ruleForParent = nil
+        popupStateModel.ruleForDomain_isActive = false
+        popupStateModel.ruleForParent_isActive = false
+        popupStateModel.ruleForDomain_isEnabled = false
+        popupStateModel.ruleForParent_isEnabled = false
+        popupStateModel.ruleCancel_isEnabled = false
+        messageHide()
 
-    func formUpdate() {
-        if let domainName = SafariExtensionViewController.domainNameCurrent {
+        if let domainName = domainNameCurrent {
+            let rule                =        domainName.decodePunycode()
+            let ruleForParentDomain = "*." + domainName.decodePunycode().deleteWwwPrefixIfExists()
+            let (state, _)          = WhiteDomains.blockingStateInfoGet(domainName: domainName)
 
-            let rule               =      domainName
-            let ruleWithSubdomains = "*.\(domainName.deleteWwwPrefixIfExists())"
-            let (state, _) = WhiteDomains.blockingStateInfoGet(domainName: domainName)
+            popupStateModel.ruleForDomain = rule
+            popupStateModel.ruleForParent = ruleForParentDomain
 
-            // special case for "www.domain" (rule: "*.domain") when exists rule for "domain" (rule: "domain")
+            // special case for "www.domain" (rule: "*.domain") if exists rule for "domain" (rule: "domain")
             var hasMirror: Bool? = nil
             if domainName.hasWwwPrefix() {
                 if let noWwwDomainInfo = WhiteDomains.selectByName(name: domainName.deleteWwwPrefixIfExists()), noWwwDomainInfo.withSubdomains == false {
@@ -111,23 +112,23 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
             switch state {
                 case .domain:
-                    self.ruleShow(group: self.groupRule             , label: self.labelRule              , rule: rule              , isActive: true)
-                    self.ruleShow(group: self.groupRuleWithSubdomain, label: self.labelRuleWithSubdomains, rule: ruleWithSubdomains, isActive: false)
-                    self.buttonInsertRule.accessSet(false)
-                    self.buttonInsertRuleWithSubdomains.accessSet(false)
-                    self.buttonDeleteRule.accessSet(true)
+                    popupStateModel.ruleForDomain_isActive = true
+                    popupStateModel.ruleForParent_isActive = false
+                    popupStateModel.ruleForDomain_isEnabled = false
+                    popupStateModel.ruleForParent_isEnabled = false
+                    popupStateModel.ruleCancel_isEnabled = true
                 case .domainWithSubdomains:
-                    self.ruleShow(group: self.groupRule             , label: self.labelRule              , rule: rule              , isActive: false)
-                    self.ruleShow(group: self.groupRuleWithSubdomain, label: self.labelRuleWithSubdomains, rule: ruleWithSubdomains, isActive: true)
-                    self.buttonInsertRule.accessSet(false)
-                    self.buttonInsertRuleWithSubdomains.accessSet(false)
-                    self.buttonDeleteRule.accessSet(true)
+                    popupStateModel.ruleForDomain_isActive = false
+                    popupStateModel.ruleForParent_isActive = true
+                    popupStateModel.ruleForDomain_isEnabled = false
+                    popupStateModel.ruleForParent_isEnabled = false
+                    popupStateModel.ruleCancel_isEnabled = true
                 case .nothing:
-                    self.ruleShow(group: self.groupRule             , label: self.labelRule              , rule: rule              , isActive: false)
-                    self.ruleShow(group: self.groupRuleWithSubdomain, label: self.labelRuleWithSubdomains, rule: ruleWithSubdomains, isActive: false)
-                    self.buttonInsertRule.accessSet(true)
-                    self.buttonInsertRuleWithSubdomains.accessSet(hasMirror == true ? false : true)
-                    self.buttonDeleteRule.accessSet(false)
+                    popupStateModel.ruleForDomain_isActive = false
+                    popupStateModel.ruleForParent_isActive = false
+                    popupStateModel.ruleForDomain_isEnabled = true
+                    popupStateModel.ruleForParent_isEnabled = hasMirror == true ? false : true
+                    popupStateModel.ruleCancel_isEnabled = false
             }
 
             let domainParents = WhiteDomains.selectParents(
@@ -141,16 +142,15 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                         "*.\(parent.name)"
                     )
                 }
-                self.messageShow(
+                messageShow(
                     title: NSLocalizedString("Inherited permissions detected from:", comment: ""),
                     description: parents.joined(separator: " | ")
                 )
             }
-
         }
     }
 
-    func pageUpdate() {
+    static func pageUpdate() {
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: ENV.APP_RULES_EXTENSION_NAME, completionHandler: { error in
             if let error = error {
                 #if DEBUG
@@ -160,12 +160,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                 #if DEBUG
                     print("pageUpdate(): Extension has been reloaded.")
                 #endif
-                if let page       = SafariExtensionViewController.pageCurrent,
-                   let domainName = SafariExtensionViewController.domainNameCurrent {
-                    // Task {
-                    //     try await Task.sleep(nanoseconds: 1_000_000_000)
-                    //     page.reload()
-                    // }
+                if let page       = pageCurrent,
+                   let domainName = domainNameCurrent {
                        let domainHasParents = WhiteDomains.selectParents(name: domainName).isEmpty == false
                        let (state, _) = WhiteDomains.blockingStateInfoGet(domainName: domainName)
                        page.dispatchMessageToScript(
@@ -173,7 +169,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                            userInfo: [
                                "timestamp": Date().timeIntervalSince1970,
                                "domain"   : domainName,
-                               "result"   : state.isJSAllowed || domainHasParents
+                               "result"   : state.isAllowed || domainHasParents
                            ]
                        )
                 } else {
@@ -185,49 +181,55 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         })
     }
 
-    @IBAction func onClick_buttonRuleInsert(_ sender: NSButton) {
-        if let domainName = SafariExtensionViewController.domainNameCurrent {
+    // ######################################################################
+
+    static func onClick_buttonRuleInsert() {
+        if let domainName = domainNameCurrent {
             WhiteDomains.insert(
                 name: domainName,
                 withSubdomains: false
             )
-            self.formUpdate()
-            self.pageUpdate()
+            formUpdate()
+            pageUpdate()
             #if DEBUG
+                print("onClick_buttonRuleInsert()")
                 WhiteDomains.dump()
             #endif
         }
     }
 
-    @IBAction func onClick_buttonRuleInsertWithSubdomains(_ sender: NSButton) {
-        if let domainName = SafariExtensionViewController.domainNameCurrent {
+    static func onClick_buttonRuleInsertWithSubdomains() {
+        if let domainName = domainNameCurrent {
             WhiteDomains.insert(
                 name: domainName.deleteWwwPrefixIfExists(),
                 withSubdomains: true,
                 skippedWww: domainName.hasWwwPrefix()
             )
-            self.formUpdate()
-            self.pageUpdate()
+            formUpdate()
+            pageUpdate()
             #if DEBUG
+                print("onClick_buttonRuleInsertWithSubdomains()")
                 WhiteDomains.dump()
             #endif
         }
     }
 
-    @IBAction func onClick_buttonRuleDelete(_ sender: NSButton) {
-        if let domainName = SafariExtensionViewController.domainNameCurrent {
+    static func onClick_buttonRuleDelete() {
+        if let domainName = domainNameCurrent {
             if let domainInfo = WhiteDomains.selectByName(name: domainName) {
                 domainInfo.delete()
-                self.formUpdate()
-                self.pageUpdate()
+                formUpdate()
+                pageUpdate()
                 #if DEBUG
+                    print("onClick_buttonRuleDelete()")
                     WhiteDomains.dump()
                 #endif
             } else if let domainInfo = WhiteDomains.selectByName(name: domainName.deleteWwwPrefixIfExists()) {
                 domainInfo.delete()
-                self.formUpdate()
-                self.pageUpdate()
+                formUpdate()
+                pageUpdate()
                 #if DEBUG
+                    print("onClick_buttonRuleDelete()")
                     WhiteDomains.dump()
                 #endif
             }

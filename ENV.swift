@@ -26,4 +26,10 @@ class ENV {
     static let COLORNAME_DOMAIN_NAME          = "color Domain Name"
     static let COLORNAME_DOMAIN_NAME_ACTIVE   = "color Domain Name Active"
 
+    static let COLORNAME_BUTTON_TEXT          = "color Button Text"
+    static let COLORNAME_BUTTON_BLUE_TOP      = "color Button Blue Top"
+    static let COLORNAME_BUTTON_BLUE_BOTTOM   = "color Button Blue Bottom"
+    static let COLORNAME_BUTTON_VIOLET_TOP    = "color Button Violet Top"
+    static let COLORNAME_BUTTON_VIOLET_BOTTOM = "color Button Violet Bottom"
+
 }

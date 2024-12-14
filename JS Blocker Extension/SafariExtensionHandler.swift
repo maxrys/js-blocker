@@ -8,8 +8,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     override func page(_ page: SFSafariPage, willNavigateTo url: URL?) {
         #if DEBUG
-            let domain = url?.host ?? "n/a"
-            print("page(): Reload on domain = \(domain)")
+            let domainName = url?.host ?? "n/a"
+            print("page(): Reload on domain = \(domainName)")
         #endif
     }
 
@@ -19,14 +19,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 case "isJSAllowedMsg",
                      "reloadPageIfUpdatedMsg":
 
-                    let domain = properties?.url?.host
+                    let domainName = properties?.url?.host
                     let fromDomain = userInfo?["fromDomain"] ?? ""
 
-                    if domain != nil {
+                    if domainName != nil {
 
-                        let domainHasParents = WhiteDomains.selectParents(name: domain!).isEmpty == false
+                        let domainHasParents = WhiteDomains.selectParents(name: domainName!).isEmpty == false
                         let (state, _)       = WhiteDomains.blockingStateInfoGet(
-                            domainName: domain!
+                            domainName: domainName!
                         )
 
                         page.dispatchMessageToScript(
@@ -34,8 +34,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             userInfo: [
                                 "timestamp" : Date().timeIntervalSince1970,
                                 "fromDomain": fromDomain,
-                                "domain"    : domain!,
-                                "result"    : state.isJSAllowed || domainHasParents
+                                "domain"    : domainName!,
+                                "result"    : state.isAllowed || domainHasParents
                             ]
                         )
 
@@ -67,38 +67,30 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         })
     }
 
-    override func popoverWillShow(in window: SFSafariWindow) {
-        // when: info.plist → SFSafariToolbarItem → Action = Popover
-    }
-
-    override func toolbarItemClicked(in window: SFSafariWindow) {
-        // when: info.plist → SFSafariToolbarItem → Action = Command
-    }
-
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         window.getToolbarItem(completionHandler: { toolbarItem in
             window.getActiveTab(completionHandler: { tab in
                 tab?.getActivePage(completionHandler: { page in
                     page?.getPropertiesWithCompletionHandler({ properties in
-                        let domain = properties?.url?.host
+                        let domainName = properties?.url?.host
 
                         validationHandler(
-                            domain != nil, ""
+                            domainName != nil, ""
                         )
 
-                        SafariExtensionViewController.pageCurrent = page
-                        SafariExtensionViewController.domainNameCurrent = domain
+                        SafariExtensionViewController.pageCurrent       = page
+                        SafariExtensionViewController.domainNameCurrent = domainName
 
-                        if (domain != nil) {
+                        if (domainName != nil) {
                             let iconPath       = Bundle.main.path(forResource: "ToolbarItemIcon"       , ofType: "pdf")!
                             let iconActivePath = Bundle.main.path(forResource: "ToolbarItemIcon-active", ofType: "pdf")!
                             let icon           = NSImage(contentsOfFile: iconPath)
                             let iconActive     = NSImage(contentsOfFile: iconActivePath)
                             let (state, _)     = WhiteDomains.blockingStateInfoGet(
-                                domainName: domain!
+                                domainName: domainName!
                             )
 
-                            if state.isJSAllowed
+                            if state.isAllowed
                                  {toolbarItem?.setImage(iconActive)}
                             else {toolbarItem?.setImage(icon)}
                         }
@@ -109,9 +101,17 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         })
     }
 
+    override func popoverWillShow(in window: SFSafariWindow) {
+        // when: info.plist → SFSafariToolbarItem → Action = Popover
+    }
+
     override func popoverViewController() -> SFSafariExtensionViewController {
         // when: info.plist → SFSafariToolbarItem → Action = Popover
         return SafariExtensionViewController.shared
+    }
+
+    override func toolbarItemClicked(in window: SFSafariWindow) {
+        // when: info.plist → SFSafariToolbarItem → Action = Command
     }
 
 }

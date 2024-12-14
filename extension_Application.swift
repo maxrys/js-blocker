@@ -6,17 +6,17 @@ enum BlockingState: String {
     case domainWithSubdomains
     case nothing
 
-    var isJSAllowed: Bool {
+    var isAllowed: Bool {
         return self == .domain ||
                self == .domainWithSubdomains
     }
 }
 
 enum MessageState: Int {
-    case info    =  1
-    case ok      =  2
-    case warning = -1
-    case error   = -2
+    case info
+    case ok
+    case warning
+    case error
 
     var colorTitleBackground: NSColor {
         switch self {

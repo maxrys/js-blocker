@@ -12,6 +12,7 @@
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		503CE1442C6E32C400835509 /* ToolbarItemIcon-active.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarItemIcon-active.pdf */; };
+		5064F9102D0D976F00F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E352C71F71400756D64 /* Localizable.xcstrings */; };
 		50875E0B2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* model_WhiteDomains.swift */; };
 		50875E0D2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* model_WhiteDomains.swift */; };
 		50875E0F2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* model_WhiteDomains.swift */; };
@@ -24,18 +25,15 @@
 		50875E1A2C71EE1700756D64 /* extension_Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* extension_Application.swift */; };
 		50875E1B2C71EE1700756D64 /* extension_Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* extension_Application.swift */; };
 		50875E1C2C71EE1700756D64 /* extension_Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* extension_Application.swift */; };
-		50875E1E2C71EFE300756D64 /* extension_Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E1D2C71EFE300756D64 /* extension_Form.swift */; };
 		50875E202C71F0C700756D64 /* ViewController_tableWhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */; };
 		50875E222C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E232C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E242C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
-		50875E262C71F25A00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E252C71F25A00756D64 /* Assets.xcassets */; };
 		50875E292C71F5A400756D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B025132C47E401002F1AD7 /* Main.storyboard */; };
 		50875E2A2C71F5A800756D64 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */; };
 		50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */; };
 		50875E362C71F71400756D64 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E352C71F71400756D64 /* Localizable.xcstrings */; };
 		50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E372C71F72A00756D64 /* InfoPlist.xcstrings */; };
-		50875E3A2C71F73100756D64 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E392C71F73100756D64 /* Localizable.xcstrings */; };
 		50875E3C2C71F74100756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */; };
 		508EC4B32CF7281900106185 /* ENV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC4B22CF7281700106185 /* ENV.swift */; };
 		508EC4B42CF7281900106185 /* ENV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC4B22CF7281700106185 /* ENV.swift */; };
@@ -53,6 +51,17 @@
 		50B025562C47ECCC002F1AD7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B025552C47ECCC002F1AD7 /* Cocoa.framework */; };
 		50B0255B2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */; };
 		50B025602C47ECCC002F1AD7 /* JS Blocker Rules.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50EB55162CF9AAB400FC060C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EB55132CF9AAB400FC060C /* Assets.xcassets */; };
+		50EB55172CF9AAB400FC060C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55142CF9AAB400FC060C /* Popup.swift */; };
+		50EB55182CF9AAB400FC060C /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55112CF9AAB400FC060C /* RoundButton.swift */; };
+		50EB55192CF9AAB400FC060C /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB550F2CF9AAB400FC060C /* DomainRule.swift */; };
+		50EB551A2CF9AAB400FC060C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55102CF9AAB400FC060C /* Message.swift */; };
+		50EB551B2CF9AAB400FC060C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EB55132CF9AAB400FC060C /* Assets.xcassets */; };
+		50EB551C2CF9AAB400FC060C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55142CF9AAB400FC060C /* Popup.swift */; };
+		50EB551D2CF9AAB400FC060C /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55112CF9AAB400FC060C /* RoundButton.swift */; };
+		50EB551E2CF9AAB400FC060C /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB550F2CF9AAB400FC060C /* DomainRule.swift */; };
+		50EB551F2CF9AAB400FC060C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55102CF9AAB400FC060C /* Message.swift */; };
+		50EB55352CF9F4BA00FC060C /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */; };
 		50EEBE792C9EBAF100A25032 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50EEBE782C9EBAF100A25032 /* Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -96,16 +105,12 @@
 		50875E112C71EE0D00756D64 /* extension_types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension_types.swift; sourceTree = "<group>"; };
 		50875E152C71EE1200756D64 /* extension_Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension_Table.swift; sourceTree = "<group>"; };
 		50875E192C71EE1700756D64 /* extension_Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension_Application.swift; sourceTree = "<group>"; };
-		50875E1D2C71EFE300756D64 /* extension_Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension_Form.swift; sourceTree = "<group>"; };
 		50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController_tableWhiteDomains.swift; sourceTree = "<group>"; };
 		50875E212C71F21C00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		50875E252C71F25A00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50875E2B2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
-		50875E2C2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/SafariExtensionViewController.xcstrings; sourceTree = "<group>"; };
 		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50875E352C71F71400756D64 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		50875E392C71F73100756D64 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		508EC4B22CF7281700106185 /* ENV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENV.swift; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +132,11 @@
 		50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		50B0255C2C47ECCC002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Rules.entitlements; sourceTree = "<group>"; };
+		50EB550F2CF9AAB400FC060C /* DomainRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRule.swift; sourceTree = "<group>"; };
+		50EB55102CF9AAB400FC060C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		50EB55112CF9AAB400FC060C /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		50EB55132CF9AAB400FC060C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50EB55142CF9AAB400FC060C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		50EEBE782C9EBAF100A25032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +176,8 @@
 				50875E092C71E93A00756D64 /* model_WhiteDomains.swift */,
 				5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */,
 				50875E212C71F21C00756D64 /* Assets.xcassets */,
+				50875E352C71F71400756D64 /* Localizable.xcstrings */,
+				50EB55152CF9AAB400FC060C /* Popup */,
 				50B025042C47E401002F1AD7 /* JS Blocker */,
 				50B025222C47E404002F1AD7 /* JS Blocker Extension */,
 				50B025572C47ECCC002F1AD7 /* JS Blocker Rules */,
@@ -192,7 +204,6 @@
 				5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */,
 				50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */,
 				50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */,
-				50875E352C71F71400756D64 /* Localizable.xcstrings */,
 				50B025132C47E401002F1AD7 /* Main.storyboard */,
 				50B025162C47E403002F1AD7 /* Assets.xcassets */,
 				50EEBE782C9EBAF100A25032 /* Info.plist */,
@@ -204,13 +215,10 @@
 		50B025222C47E404002F1AD7 /* JS Blocker Extension */ = {
 			isa = PBXGroup;
 			children = (
-				50875E1D2C71EFE300756D64 /* extension_Form.swift */,
 				50B025232C47E404002F1AD7 /* SafariExtensionHandler.swift */,
 				50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */,
 				50875E372C71F72A00756D64 /* InfoPlist.xcstrings */,
-				50875E392C71F73100756D64 /* Localizable.xcstrings */,
 				50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */,
-				50875E252C71F25A00756D64 /* Assets.xcassets */,
 				50B0252F2C47E404002F1AD7 /* Info.plist */,
 				50B025302C47E404002F1AD7 /* JS_Blocker_Extension.entitlements */,
 				50B025272C47E404002F1AD7 /* Resources */,
@@ -245,6 +253,26 @@
 				50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */,
 			);
 			path = "JS Blocker Rules";
+			sourceTree = "<group>";
+		};
+		50EB55122CF9AAB400FC060C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				50EB550F2CF9AAB400FC060C /* DomainRule.swift */,
+				50EB55102CF9AAB400FC060C /* Message.swift */,
+				50EB55112CF9AAB400FC060C /* RoundButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		50EB55152CF9AAB400FC060C /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				50EB55122CF9AAB400FC060C /* Components */,
+				50EB55142CF9AAB400FC060C /* Popup.swift */,
+				50EB55132CF9AAB400FC060C /* Assets.xcassets */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +386,7 @@
 				50875E222C71F21C00756D64 /* Assets.xcassets in Resources */,
 				50B025152C47E401002F1AD7 /* Base in Resources */,
 				50875E292C71F5A400756D64 /* Main.storyboard in Resources */,
+				50EB55162CF9AAB400FC060C /* Assets.xcassets in Resources */,
 				50EEBE792C9EBAF100A25032 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,10 +400,10 @@
 				50B0252E2C47E404002F1AD7 /* Base in Resources */,
 				503CE1442C6E32C400835509 /* ToolbarItemIcon-active.pdf in Resources */,
 				50B025292C47E404002F1AD7 /* script.js in Resources */,
-				50875E262C71F25A00756D64 /* Assets.xcassets in Resources */,
 				50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */,
 				50875E232C71F21C00756D64 /* Assets.xcassets in Resources */,
-				50875E3A2C71F73100756D64 /* Localizable.xcstrings in Resources */,
+				50EB551B2CF9AAB400FC060C /* Assets.xcassets in Resources */,
+				5064F9102D0D976F00F26724 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,11 +425,16 @@
 			files = (
 				50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */,
 				508EC4B32CF7281900106185 /* ENV.swift in Sources */,
+				50EB55352CF9F4BA00FC060C /* SafariExtensionViewController.swift in Sources */,
 				50875E162C71EE1200756D64 /* extension_Table.swift in Sources */,
 				50875E202C71F0C700756D64 /* ViewController_tableWhiteDomains.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */,
 				50875E0B2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */,
 				50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */,
+				50EB55172CF9AAB400FC060C /* Popup.swift in Sources */,
+				50EB55182CF9AAB400FC060C /* RoundButton.swift in Sources */,
+				50EB55192CF9AAB400FC060C /* DomainRule.swift in Sources */,
+				50EB551A2CF9AAB400FC060C /* Message.swift in Sources */,
 				5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 				50875E1A2C71EE1700756D64 /* extension_Application.swift in Sources */,
 				50875E122C71EE0D00756D64 /* extension_types.swift in Sources */,
@@ -411,6 +445,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50EB551C2CF9AAB400FC060C /* Popup.swift in Sources */,
+				50EB551D2CF9AAB400FC060C /* RoundButton.swift in Sources */,
+				50EB551E2CF9AAB400FC060C /* DomainRule.swift in Sources */,
+				50EB551F2CF9AAB400FC060C /* Message.swift in Sources */,
 				50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */,
 				508EC4B52CF7281900106185 /* ENV.swift in Sources */,
 				50875E0D2C71E93A00756D64 /* model_WhiteDomains.swift in Sources */,
@@ -419,7 +457,6 @@
 				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 				50875E172C71EE1200756D64 /* extension_Table.swift in Sources */,
 				50875E132C71EE0D00756D64 /* extension_types.swift in Sources */,
-				50875E1E2C71EFE300756D64 /* extension_Form.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +503,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				50B0252D2C47E404002F1AD7 /* Base */,
-				50875E2C2C71F5C300756D64 /* mul */,
 			);
 			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
