@@ -30,6 +30,8 @@ struct Popup: View {
 
     @ObservedObject var stateModel: PopupStateModel
 
+    var frameSizeWidth: CGFloat = 450
+
     var body: some View {
         VStack(spacing: 0) {
 
@@ -54,7 +56,7 @@ struct Popup: View {
                 // JavaScript on the Domain
                 DomainRule(
                     title: "JavaScript on the Domain",
-                    rule:            self.stateModel.ruleForDomain,
+                    rules:           self.stateModel.ruleForDomain != nil ? [self.stateModel.ruleForDomain!] : [],
                     ruleIsActive:    self.stateModel.ruleForDomain_isActive,
                     buttonIsEnabled: self.stateModel.ruleForDomain_isEnabled,
                     buttonOnClick: {
@@ -65,7 +67,7 @@ struct Popup: View {
                 // JavaScript on the Domain + Subdomains
                 DomainRule(
                     title: "JavaScript on the Domain + Subdomains",
-                    rule:            self.stateModel.ruleForParent,
+                    rules:           self.stateModel.ruleForParent != nil ? [self.stateModel.ruleForParent!] : [],
                     ruleIsActive:    self.stateModel.ruleForParent_isActive,
                     buttonIsEnabled: self.stateModel.ruleForParent_isEnabled,
                     buttonOnClick: {
@@ -96,7 +98,7 @@ struct Popup: View {
              .frame(maxWidth: .infinity)
              .background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
 
-        }
+        }.frame(width: self.frameSizeWidth)
     }
 }
 
@@ -119,7 +121,8 @@ struct Popup: View {
                         type: .ok
                     )
                 ]
-            )
+            ),
+            frameSizeWidth: 300
         )
 
         Popup(
@@ -138,10 +141,11 @@ struct Popup: View {
                         type: .error
                     )
                 ]
-            )
+            ),
+            frameSizeWidth: 300
         )
 
-    }.frame(minWidth: 100, maxWidth: 450)
+    }
 }
 
 #Preview {
@@ -156,7 +160,8 @@ struct Popup: View {
                 ruleForDomain_isEnabled: false,
                 ruleForParent_isEnabled: false,
                 ruleCancel_isEnabled: false
-            )
+            ),
+            frameSizeWidth: 300
         )
 
         Popup(
@@ -168,7 +173,8 @@ struct Popup: View {
                 ruleForDomain_isEnabled: false,
                 ruleForParent_isEnabled: false,
                 ruleCancel_isEnabled: false
-            )
+            ),
+            frameSizeWidth: 300
         )
 
         Popup(
@@ -180,7 +186,8 @@ struct Popup: View {
                 ruleForDomain_isEnabled: true,
                 ruleForParent_isEnabled: false,
                 ruleCancel_isEnabled: false
-            )
+            ),
+            frameSizeWidth: 300
         )
 
         Popup(
@@ -192,7 +199,8 @@ struct Popup: View {
                 ruleForDomain_isEnabled: false,
                 ruleForParent_isEnabled: true,
                 ruleCancel_isEnabled: false
-            )
+            ),
+            frameSizeWidth: 300
         )
 
         Popup(
@@ -204,8 +212,9 @@ struct Popup: View {
                 ruleForDomain_isEnabled: false,
                 ruleForParent_isEnabled: false,
                 ruleCancel_isEnabled: true
-            )
+            ),
+            frameSizeWidth: 300
         )
 
-    }.frame(minWidth: 100, maxWidth: 450)
+    }
 }

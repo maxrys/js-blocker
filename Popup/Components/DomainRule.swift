@@ -19,7 +19,7 @@ struct DomainRule: View {
     }
 
     var title: String
-    var rule: String?
+    var rules: [String] = []
     var ruleIsActive: Bool
     var buttonIsEnabled: Bool
     var buttonTitle: String = "allow"
@@ -34,10 +34,18 @@ struct DomainRule: View {
                 .font(.system(size: 14, weight: .bold))
 
             // Domain name
-            VStack {
-                Text(self.rule ?? NSLocalizedString("...loading...", comment: ""))
-                    .font(.system(size: 12, weight: .bold))
-                    .color(self.colorDomainName)
+            VStack (spacing: 6) {
+                if self.rules.count > 0 {
+                    ForEach(self.rules, id: \.self) { rule in
+                        Text(rule)
+                            .font(.system(size: 12, weight: .bold))
+                            .color(self.colorDomainName)
+                    }
+                } else {
+                    Text(NSLocalizedString("...loading...", comment: ""))
+                        .font(.system(size: 12, weight: .bold))
+                        .color(self.colorDomainName)
+                }
             }.padding(13)
              .frame(maxWidth: .infinity)
              .background(self.colorBackground)
@@ -66,7 +74,7 @@ struct DomainRule: View {
 
         DomainRule(
             title: "JavaScript on the Domain",
-            rule: "example.com",
+            rules: ["example.com"],
             ruleIsActive: true,
             buttonIsEnabled: true,
             buttonOnClick: {
@@ -76,7 +84,7 @@ struct DomainRule: View {
 
         DomainRule(
             title: "JavaScript on the Domain",
-            rule: "example.com",
+            rules: ["example.com"],
             ruleIsActive: false,
             buttonIsEnabled: true,
             buttonOnClick: {
@@ -101,6 +109,42 @@ struct DomainRule: View {
                 print("onClick: DomainRule #4")
             }
         ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+
+    }.frame(width: 450, height: 670)
+}
+
+#Preview {
+    VStack() {
+
+        DomainRule(
+            title: "JavaScript on the Domain",
+            rules: [],
+            ruleIsActive: false,
+            buttonIsEnabled: false,
+            buttonOnClick: {
+                print("onClick: DomainRule #1")
+            }
+        )
+
+        DomainRule(
+            title: "JavaScript on the Domain",
+            rules: ["example.com"],
+            ruleIsActive: true,
+            buttonIsEnabled: true,
+            buttonOnClick: {
+                print("onClick: DomainRule #2")
+            }
+        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+
+        DomainRule(
+            title: "JavaScript on the Domain",
+            rules: ["subdomain.example.com", "example.com"],
+            ruleIsActive: true,
+            buttonIsEnabled: true,
+            buttonOnClick: {
+                print("onClick: DomainRule #3")
+            }
+        )
 
     }.frame(width: 450, height: 670)
 }

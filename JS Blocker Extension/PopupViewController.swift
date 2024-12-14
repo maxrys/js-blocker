@@ -18,20 +18,15 @@ class PopupViewController: SFSafariExtensionViewController {
     )
 
     static let shared: PopupViewController = {
-        let shared = PopupViewController()
-        shared.preferredContentSize = CGSize(width: popupWidth, height: popupHeight)
-        return shared
+        return PopupViewController()
+    }()
+
+    static var popupShared: Popup = {
+        return Popup(stateModel: popupStateModel)
     }()
 
     var popupHost: NSHostingController<Popup>? = nil
     var popupView: NSView? = nil
-    static let popupHeight = 450
-    static let popupWidth  = 450
-    static var popupShared: Popup = {
-        return Popup(
-            stateModel: popupStateModel
-        )
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +54,8 @@ class PopupViewController: SFSafariExtensionViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
-        self.popupView!.frame     = CGRect(x: 0, y: 0, width: PopupViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
-        self.preferredContentSize = CGSize(            width: PopupViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
+        self.popupView!.frame     = CGRect(x: 0, y: 0, width: Int(self.popupView!.intrinsicContentSize.width), height: Int(self.popupView!.intrinsicContentSize.height))
+        self.preferredContentSize = CGSize(            width: Int(self.popupView!.intrinsicContentSize.width), height: Int(self.popupView!.intrinsicContentSize.height))
 
         #if DEBUG
             print("viewDidAppear()")
