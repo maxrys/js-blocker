@@ -58,7 +58,7 @@ struct Popup: View {
                     ruleIsActive:    self.stateModel.ruleForDomain_isActive,
                     buttonIsEnabled: self.stateModel.ruleForDomain_isEnabled,
                     buttonOnClick: {
-                        SafariExtensionViewController.onClick_buttonRuleInsert()
+                        PopupViewController.onClick_buttonRuleInsert()
                     }
                 )
 
@@ -69,7 +69,7 @@ struct Popup: View {
                     ruleIsActive:    self.stateModel.ruleForParent_isActive,
                     buttonIsEnabled: self.stateModel.ruleForParent_isEnabled,
                     buttonOnClick: {
-                        SafariExtensionViewController.onClick_buttonRuleInsertWithSubdomains()
+                        PopupViewController.onClick_buttonRuleInsertWithSubdomains()
                     }
                 )
 
@@ -88,7 +88,7 @@ struct Popup: View {
                     isEnabled: self.stateModel.ruleCancel_isEnabled,
                     minWidth: 250,
                     onClick: {
-                        SafariExtensionViewController.onClick_buttonRuleDelete()
+                        PopupViewController.onClick_buttonRuleDelete()
                     }
                 )
 

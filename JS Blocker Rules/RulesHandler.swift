@@ -1,7 +1,7 @@
 
 import Foundation
 
-class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
+class RulesHandler: NSObject, NSExtensionRequestHandling {
 
     func beginRequest(with context: NSExtensionContext) {
         var rules: [String] = []

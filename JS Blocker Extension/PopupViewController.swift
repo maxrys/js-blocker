@@ -2,7 +2,7 @@
 import SafariServices
 import SwiftUI
 
-class SafariExtensionViewController: SFSafariExtensionViewController {
+class PopupViewController: SFSafariExtensionViewController {
 
     static var pageCurrent: SFSafariPage?
     static var domainNameCurrent: String?
@@ -17,8 +17,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         messages: []
     )
 
-    static let shared: SafariExtensionViewController = {
-        let shared = SafariExtensionViewController()
+    static let shared: PopupViewController = {
+        let shared = PopupViewController()
         shared.preferredContentSize = CGSize(width: popupWidth, height: popupHeight)
         return shared
     }()
@@ -36,7 +36,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.popupHost = NSHostingController(rootView: SafariExtensionViewController.popupShared)
+        self.popupHost = NSHostingController(rootView: PopupViewController.popupShared)
         self.popupView = self.popupHost!.view
         self.view.addSubview(self.popupView!)
 
@@ -49,7 +49,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        SafariExtensionViewController.formUpdate()
+        PopupViewController.formUpdate()
 
         #if DEBUG
             print("viewWillAppear()")
@@ -59,8 +59,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
-        self.popupView!.frame     = CGRect(x: 0, y: 0, width: SafariExtensionViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
-        self.preferredContentSize = CGSize(            width: SafariExtensionViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
+        self.popupView!.frame     = CGRect(x: 0, y: 0, width: PopupViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
+        self.preferredContentSize = CGSize(            width: PopupViewController.popupWidth, height: Int(self.popupView!.intrinsicContentSize.height))
 
         #if DEBUG
             print("viewDidAppear()")

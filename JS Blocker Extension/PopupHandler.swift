@@ -1,7 +1,7 @@
 
 import SafariServices
 
-class SafariExtensionHandler: SFSafariExtensionHandler {
+class PopupHandler: SFSafariExtensionHandler {
 
     override func beginRequest(with context: NSExtensionContext) {
     }
@@ -78,8 +78,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             domainName != nil, ""
                         )
 
-                        SafariExtensionViewController.pageCurrent       = page
-                        SafariExtensionViewController.domainNameCurrent = domainName
+                        PopupViewController.pageCurrent       = page
+                        PopupViewController.domainNameCurrent = domainName
 
                         if (domainName != nil) {
                             let iconPath       = Bundle.main.path(forResource: "ToolbarItemIcon"       , ofType: "pdf")!
@@ -107,7 +107,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     override func popoverViewController() -> SFSafariExtensionViewController {
         // when: info.plist → SFSafariToolbarItem → Action = Popover
-        return SafariExtensionViewController.shared
+        return PopupViewController.shared
     }
 
     override func toolbarItemClicked(in window: SFSafariWindow) {
