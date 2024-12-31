@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "button-250x50-aquamarine.pdf",
       "idiom" : "universal"
     }
   ],

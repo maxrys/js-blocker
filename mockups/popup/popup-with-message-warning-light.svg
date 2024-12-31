@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1000 1200" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-8" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 486.694244)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-12" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1012.020813)">
+      <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-2" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 813.694214)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1000" height="1200" style="fill: rgb(227, 228, 229);"/>
+  <g style="filter: url('#drop-shadow-filter-1');">
+    <path d="M 69.5 49 L 472 49 C 486 49 493.375 25 500 25 C 506.625 25 514 49 528 49 L 930.5 49 C 941.822 49 951 58.178 951 69.5 L 951 1130.5 C 951 1141.822 941.822 1151 930.5 1151 L 69.5 1151 C 58.178 1151 49 1141.822 49 1130.5 L 49 69.5 C 49 58.178 58.178 49 69.5 49 Z" style="filter: none; stroke: rgb(198, 198, 198); stroke-width: 2px; fill: rgb(233, 233, 233);"/>
+    <rect style="fill: rgb(227, 232, 238); stroke-width: 2px; filter: none;" x="50" width="900" height="1100" rx="19.5" ry="19.5" y="50"/>
+    <g>
+      <path style="fill: rgb(188, 130, 10);" d="M 69.5 50 H 930.5 A 19.5 19.5 0 0 1 950 69.5 V 250 H 50 V 69.5 A 19.5 19.5 0 0 1 69.5 50 Z" bx:shape="rect 50 50 900 200 19.5 19.5 0 0 1@19aba10c"/>
+      <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, 128.39946, -53.611454)"><tspan x="273.291" y="152.724">Message title:</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+      <rect style="fill: rgb(255, 255, 255); fill-opacity: 0.15;" x="50" y="125.612" width="900" height="124.388"/>
+      <g>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, -140.058319, 26.732292)"><tspan x="273.291" y="152.724">Lorem Ipsum has been the industry's standard dummy text ever</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, -103.253723, 65.024269)"><tspan x="273.291" y="152.724">since the 1500s, when an unknown printer took a galley...</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+      </g>
+    </g>
+    <g>
+      <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="321.94" y="343.067">JavaScript on the Domain</text>
+      <g>
+        <rect style="fill: rgb(255, 255, 255);" x="110" y="373" width="780" height="86" rx="22" ry="22"/>
+        <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="417.631" y="425.085">example.com</text>
+      </g>
+      <g>
+        <rect width="300" height="75" x="350" y="486" style="fill: url('#gradient-8');" rx="37.5" ry="37.5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="532.824">allow</text>
+      </g>
+    </g>
+    <g>
+      <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="218.413" y="670.067">JavaScript on the Domain + Subdomains</text>
+      <g>
+        <rect style="fill: rgb(255, 255, 255);" x="110" y="700" width="780" height="86" rx="22" ry="22"/>
+        <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="408.96" y="752.085">*.example.com</text>
+      </g>
+      <g>
+        <rect width="300" height="75" x="350" y="813" style="fill: url('#gradient-2');" rx="37.5" ry="37.5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="859.824">allow</text>
+      </g>
+    </g>
+    <g>
+      <path style="fill: rgb(210, 220, 228);" d="M 50 950 H 950 V 1130.5 A 19.5 19.5 0 0 1 930.5 1150 H 69.5 A 19.5 19.5 0 0 1 50 1130.5 V 950 Z" bx:shape="rect 50 950 900 200 0 0 19.5 19.5 1@b311f3e0"/>
+      <g>
+        <rect width="449" height="74.945" x="275.5" y="1012.023" rx="37.472" ry="37.472" style="fill: url('#gradient-12'); fill-opacity: 0.35;"/>
+        <text style="fill: rgb(255, 255, 255); fill-opacity: 0.5; font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.98" y="1058.55">cancel permission</text>
+      </g>
+    </g>
+  </g>
+</svg>

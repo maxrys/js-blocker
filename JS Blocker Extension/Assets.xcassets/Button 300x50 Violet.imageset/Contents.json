@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "button-300x50-violet.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

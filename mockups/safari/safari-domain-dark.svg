@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1200 450" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <filter id="window-shadow" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
+      <feOffset dx="0" dy="10"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="450" style="fill: rgb(84, 85, 84);"/>
+  <g style="filter: url('#window-shadow');" transform="matrix(1, 0, 0, 1, 0.000003, 0)">
+    <path style="fill: rgb(56, 56, 56); stroke: rgb(101, 106, 109);" d="M 145 102 H 1055 A 20 20 0 0 1 1075 122 V 206 H 125 V 122 A 20 20 0 0 1 145 102 Z" bx:shape="rect 125 102 950 104 20 20 0 0 1@3110c5bc"/>
+    <path style="stroke: rgb(101, 106, 109); fill: rgb(255, 255, 255);" d="M 125 206 H 1075 V 315 A 20 20 0 0 1 1055 335 H 145 A 20 20 0 0 1 125 315 V 206 Z" bx:shape="rect 125 206 950 129 0 0 20 20 1@731078df"/>
+    <g>
+      <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
+      <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
+      <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
+    </g>
+    <g>
+      <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
+      <rect style="fill: none; stroke-width: 2px; stroke: rgb(130, 130, 134);" x="322" y="140" width="36" height="26" rx="2" ry="2"/>
+      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="146" x2="331" y2="146"/>
+      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="150" x2="331" y2="150"/>
+      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="154" x2="331" y2="154"/>
+      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke: rgb(130, 130, 134);" x1="335" y1="140" x2="335" y2="166"/>
+    </g>
+    <g>
+      <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
+      <polyline style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(130, 130, 134);" points="389.5 151.5 394.5 156.5 399.5 151.5"/>
+    </g>
+    <g>
+      <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
+      <g transform="matrix(1.241379, 0, 0, 1.241379, 440.137939, 134.137939)">
+        <path style="fill: none; stroke: url('#gradient-toolbaritem-border'); stroke-width: 3px;" d="M 16.01 1.5 C 23.932 1.5 30.5 8.068 30.5 16.01 C 30.5 23.932 23.919 30.5 15.99 30.5 C 8.068 30.5 1.5 23.932 1.5 16.01 C 1.5 8.068 8.081 1.5 16.01 1.5 Z"/>
+        <g>
+          <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)" x="4" y="10.924">J</text>
+          <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 7.1px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, 7.258258, -1.857092)" x="4" y="10.924">s</text>
+        </g>
+      </g>
+    </g>
+    <g>
+      <rect style="stroke-width: 2px; fill: rgb(44, 43, 44); stroke: rgb(70, 70, 70);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
+      <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" transform="matrix(1.000876, 0, 0, 1, 16.680065, -2.424332)" x="675.728" y="164.416">example.com</text>
+    </g>
+  </g>
+</svg>

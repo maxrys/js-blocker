@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 2560 1600" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-8" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 486.694244)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-12" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1012.020813)">
+      <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-2" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 813.694214)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-1" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 486.694244)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-3" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1012.020813)">
+      <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-4" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 813.694214)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <filter id="filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
+      <feOffset dx="0" dy="10"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="feFuncA-1" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-5" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-6" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <filter id="filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
+      <feOffset dx="0" dy="10"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="feFuncA-3" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <bx:export>
+      <bx:file format="png" path="screen-2.png"/>
+    </bx:export>
+  </defs>
+  <g>
+    <rect width="1280" height="1600" style="fill: rgb(227, 228, 229);"/>
+    <g style="filter: url('#filter-1');" transform="matrix(1, 0, 0, 1, 179, 55)">
+      <path style="fill: rgb(243, 243, 243); stroke: rgb(198, 198, 198);" d="M 145 102 H 1055 A 20 20 0 0 1 1075 122 V 206 H 125 V 122 A 20 20 0 0 1 145 102 Z" bx:shape="rect 125 102 950 104 20 20 0 0 1@3110c5bc"/>
+      <path style="fill: rgb(255, 255, 255); stroke: rgb(198, 198, 198);" d="M 125 206 H 1075 V 315 A 20 20 0 0 1 1055 335 H 145 A 20 20 0 0 1 125 315 V 206 Z" bx:shape="rect 125 206 950 129 0 0 20 20 1@731078df"/>
+      <g>
+        <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
+        <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
+        <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
+        <rect style="fill: none; stroke-width: 2px; stroke: rgb(130, 130, 134);" x="322" y="140" width="36" height="26" rx="2" ry="2"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="146" x2="331" y2="146"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="150" x2="331" y2="150"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="154" x2="331" y2="154"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke: rgb(130, 130, 134);" x1="335" y1="140" x2="335" y2="166"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
+        <polyline style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(130, 130, 134);" points="389.5 151.5 394.5 156.5 399.5 151.5"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; fill: rgb(243, 243, 243); stroke: rgb(213, 213, 213);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
+        <g transform="matrix(1.241379, 0, 0, 1.241379, 440.137939, 134.137939)">
+          <path style="fill: none; stroke: url('#gradient-toolbaritem-border'); stroke-width: 3px;" d="M 16.01 1.5 C 23.932 1.5 30.5 8.068 30.5 16.01 C 30.5 23.932 23.919 30.5 15.99 30.5 C 8.068 30.5 1.5 23.932 1.5 16.01 C 1.5 8.068 8.081 1.5 16.01 1.5 Z"/>
+          <g>
+            <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)" x="4" y="10.924">J</text>
+            <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 7.1px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, 7.258258, -1.857092)" x="4" y="10.924">s</text>
+          </g>
+        </g>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; stroke: rgb(213, 213, 213); fill: rgb(255, 255, 255);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
+        <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" x="639.29" y="161.852">subdomain.example.com</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 140, 212.136002)" style="filter: url('#drop-shadow-filter-1');">
+      <path d="M 69.5 49 L 472 49 C 486 49 493.375 25 500 25 C 506.625 25 514 49 528 49 L 930.5 49 C 941.822 49 951 58.178 951 69.5 L 951 1130.5 C 951 1141.822 941.822 1151 930.5 1151 L 69.5 1151 C 58.178 1151 49 1141.822 49 1130.5 L 49 69.5 C 49 58.178 58.178 49 69.5 49 Z" style="filter: none; stroke: rgb(198, 198, 198); stroke-width: 2px; fill: rgb(233, 233, 233);"/>
+      <rect style="fill: rgb(227, 232, 238); stroke-width: 2px; filter: none;" x="50" width="900" height="1100" rx="19.5" ry="19.5" y="50"/>
+      <g>
+        <path style="fill: rgb(136, 89, 202);" d="M 69.5 50 H 930.5 A 19.5 19.5 0 0 1 950 69.5 V 250 H 50 V 69.5 A 19.5 19.5 0 0 1 69.5 50 Z" bx:shape="rect 50 50 900 200 19.5 19.5 0 0 1@19aba10c"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -36.09811, -53.611454)"><tspan x="273.291" y="152.724">Inherited permissions detected from:</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        <rect style="fill: rgb(255, 255, 255); fill-opacity: 0.15;" x="50" y="125.612" width="900" height="124.388"/>
+        <g>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 140.733963, 41.732292)"><tspan x="273.291" y="152.724">*.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        </g>
+      </g>
+      <g>
+        <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="321.94" y="343.067">JavaScript on the Domain</text>
+        <g>
+          <rect style="fill: rgb(255, 255, 255);" x="110" y="373" width="780" height="86" rx="22" ry="22"/>
+          <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="344.693" y="425.085">subdomain.example.com</text>
+        </g>
+        <g>
+          <rect width="300" height="75" x="350" y="486" style="fill: url('#gradient-8');" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="532.824">allow</text>
+        </g>
+      </g>
+      <g>
+        <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="218.413" y="670.067">JavaScript on the Domain + Subdomains</text>
+        <g>
+          <rect style="fill: rgb(255, 255, 255);" x="110" y="700" width="780" height="86" rx="22" ry="22"/>
+          <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="336.022" y="752.085">*.subdomain.example.com</text>
+        </g>
+        <g>
+          <rect width="300" height="75" x="350" y="813" style="fill: url('#gradient-2');" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="859.824">allow</text>
+        </g>
+      </g>
+      <g>
+        <path style="fill: rgb(210, 220, 228);" d="M 50 950 H 950 V 1130.5 A 19.5 19.5 0 0 1 930.5 1150 H 69.5 A 19.5 19.5 0 0 1 50 1130.5 V 950 Z" bx:shape="rect 50 950 900 200 0 0 19.5 19.5 1@b311f3e0"/>
+        <g>
+          <rect width="449" height="74.945" x="275.5" y="1012.023" rx="37.472" ry="37.472" style="fill: url('#gradient-12'); fill-opacity: 0.35;"/>
+          <text style="fill: rgb(255, 255, 255); fill-opacity: 0.5; font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.98" y="1058.55">cancel permission</text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g>
+    <rect width="1280" height="1600" style="fill: rgb(84, 85, 84);" x="1280"/>
+    <g style="filter: url('#filter-2');" transform="matrix(1, 0, 0, 1, 1459, 55)">
+      <path style="fill: rgb(56, 56, 56); stroke: rgb(101, 106, 109);" d="M 145 102 H 1055 A 20 20 0 0 1 1075 122 V 206 H 125 V 122 A 20 20 0 0 1 145 102 Z" bx:shape="rect 125 102 950 104 20 20 0 0 1@3110c5bc"/>
+      <path style="stroke: rgb(101, 106, 109); fill: rgb(255, 255, 255);" d="M 125 206 H 1075 V 315 A 20 20 0 0 1 1055 335 H 145 A 20 20 0 0 1 125 315 V 206 Z" bx:shape="rect 125 206 950 129 0 0 20 20 1@731078df"/>
+      <g>
+        <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
+        <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
+        <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
+        <rect style="fill: none; stroke-width: 2px; stroke: rgb(130, 130, 134);" x="322" y="140" width="36" height="26" rx="2" ry="2"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="146" x2="331" y2="146"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="150" x2="331" y2="150"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="154" x2="331" y2="154"/>
+        <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke: rgb(130, 130, 134);" x1="335" y1="140" x2="335" y2="166"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
+        <polyline style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(130, 130, 134);" points="389.5 151.5 394.5 156.5 399.5 151.5"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
+        <g transform="matrix(1.241379, 0, 0, 1.241379, 440.137939, 134.137939)">
+          <path style="fill: none; stroke-width: 3px; stroke: url('#gradient-5');" d="M 16.01 1.5 C 23.932 1.5 30.5 8.068 30.5 16.01 C 30.5 23.932 23.919 30.5 15.99 30.5 C 8.068 30.5 1.5 23.932 1.5 16.01 C 1.5 8.068 8.081 1.5 16.01 1.5 Z"/>
+          <g>
+            <text style="font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre; fill: url('#gradient-6');" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)" x="4" y="10.924">J</text>
+            <text style="font-family: Tahoma; font-size: 7.1px; font-weight: 700; white-space: pre; fill: url('#gradient-6');" transform="matrix(2.247955, 0, 0, 2.209523, 7.258258, -1.857092)" x="4" y="10.924">s</text>
+          </g>
+        </g>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; fill: rgb(44, 43, 44); stroke: rgb(70, 70, 70);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
+        <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" transform="matrix(1.000876, 0, 0, 1, -37.116631, -2.424332)" x="675.728" y="164.416">subdomain.example.com</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1420, 212.136002)" style="filter: url('#drop-shadow-filter-0');">
+      <path d="M 69.5 49 L 472 49 C 486 49 493.375 25 500 25 C 506.625 25 514 49 528 49 L 930.5 49 C 941.822 49 951 58.178 951 69.5 L 951 1130.5 C 951 1141.822 941.822 1151 930.5 1151 L 69.5 1151 C 58.178 1151 49 1141.822 49 1130.5 L 49 69.5 C 49 58.178 58.178 49 69.5 49 Z" style="stroke-width: 2px; fill: rgb(60, 60, 60); stroke: rgb(101, 106, 109); filter: none;"/>
+      <rect style="stroke-width: 2px; filter: none; fill: rgb(63, 69, 73);" x="50" width="900" height="1100" rx="19.5" ry="19.5" y="50"/>
+      <g>
+        <path style="fill: lch(38 64.5 306);" d="M 69.5 50 H 930.5 A 19.5 19.5 0 0 1 950 69.5 V 250 H 50 V 69.5 A 19.5 19.5 0 0 1 69.5 50 Z" bx:shape="rect 50 50 900 200 19.5 19.5 0 0 1@19aba10c"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -36.09811, -53.611454)"><tspan x="273.291" y="152.724">Inherited permissions detected from:</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        <rect style="fill: rgb(255, 255, 255); fill-opacity: 0.15;" x="50" y="125.612" width="900" height="124.388"/>
+        <g>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 140.734879, 40.732292)"><tspan x="273.291" y="152.724">*.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        </g>
+      </g>
+      <g>
+        <text style="fill: rgb(236, 236, 236); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="321.94" y="343.067">JavaScript on the Domain</text>
+        <g>
+          <rect style="fill: rgb(37, 37, 36); stroke-width: 4px; stroke: rgb(30, 30, 30);" x="110" y="373" width="780" height="86" rx="22" ry="22"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="344.691" y="425.085">subdomain.example.com</text>
+        </g>
+        <g>
+          <rect width="300" height="75" x="350" y="486" style="fill: url('#gradient-1');" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="532.824">allow</text>
+        </g>
+      </g>
+      <g>
+        <text style="fill: rgb(236, 236, 236); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="218.413" y="670.067">JavaScript on the Domain + Subdomains</text>
+        <g>
+          <rect style="fill: rgb(37, 37, 36); stroke-width: 4px; stroke: rgb(30, 30, 30);" x="110" y="700" width="780" height="86" rx="22" ry="22"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="336.02" y="752.085">*.subdomain.example.com</text>
+        </g>
+        <g>
+          <rect width="300" height="75" x="350" y="813" style="fill: url('#gradient-4');" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="859.824">allow</text>
+        </g>
+      </g>
+      <g>
+        <path style="fill: rgb(47, 53, 57);" d="M 50 950 H 950 V 1130.5 A 19.5 19.5 0 0 1 930.5 1150 H 69.5 A 19.5 19.5 0 0 1 50 1130.5 V 950 Z" bx:shape="rect 50 950 900 200 0 0 19.5 19.5 1@b311f3e0"/>
+        <g>
+          <rect width="449" height="74.945" x="275.5" y="1012.023" rx="37.472" ry="37.472" style="fill-opacity: 0.35; fill: url('#gradient-3');"/>
+          <text style="fill: rgb(255, 255, 255); fill-opacity: 0.5; font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.98" y="1058.55">cancel permission</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

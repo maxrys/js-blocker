@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -47,13 +48,13 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="...title..." id="0gw-a2-ewb">
                                                 <font key="font" metaFont="systemBlack" size="14"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="Message Text Color"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
                                 </view>
-                                <color key="fillColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" name="Message Title Background Color Info"/>
                             </box>
                             <textField clipsToBounds="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v01-nH-eMU" userLabel="Description">
                                 <rect key="frame" x="28" y="19" width="394" height="18"/>
@@ -61,13 +62,13 @@
                                 <textFieldCell key="cell" truncatesLastVisibleLine="YES" alignment="center" id="aLW-pa-zFH">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">description description description description description description description description description description description description description description description </string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="Message Text Color"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                     </view>
-                    <color key="fillColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                    <color key="fillColor" name="Message Background Color Info"/>
                 </box>
                 <box fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ljG-um-lLe" userLabel="Body">
                     <rect key="frame" x="0.0" y="100" width="450" height="350"/>
@@ -84,7 +85,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3U-nc-hVM" userLabel="Title">
-                                            <rect key="frame" x="28" y="133" width="394" height="17"/>
+                                            <rect key="frame" x="28" y="125" width="394" height="17"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="JavaScript on the Domain" id="dn0-Wy-toA">
                                                 <font key="font" metaFont="systemBold" size="14"/>
@@ -93,7 +94,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" boxType="custom" borderWidth="2" cornerRadius="12" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="bSI-PB-W61" userLabel="Domain name">
-                                            <rect key="frame" x="30" y="78" width="390" height="43"/>
+                                            <rect key="frame" x="30" y="70" width="390" height="43"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="Pnn-Ad-5jA">
                                                 <rect key="frame" x="2" y="2" width="386" height="39"/>
@@ -113,10 +114,10 @@
                                             <color key="borderColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="fillColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </box>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8Z-QA-VCe" userLabel="Button &quot;allow&quot;">
-                                            <rect key="frame" x="150" y="27" width="150" height="32"/>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8Z-QA-VCe" userLabel="Button &quot;allow&quot;">
+                                            <rect key="frame" x="150" y="19" width="150" height="38"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="allow" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Gw1-Ua-QLl">
+                                            <buttonCell key="cell" type="smallSquare" title="allow" bezelStyle="smallSquare" image="Button 200x50 Violet" imagePosition="overlaps" alignment="center" inset="2" id="Gw1-Ua-QLl">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -136,7 +137,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijD-kQ-Iic" userLabel="Title">
-                                            <rect key="frame" x="28" y="132" width="394" height="17"/>
+                                            <rect key="frame" x="28" y="137" width="394" height="17"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="JavaScript on the Domain + Subdomains" id="dKO-GB-1km">
                                                 <font key="font" metaFont="systemBold" size="14"/>
@@ -145,7 +146,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <box fixedFrame="YES" boxType="custom" borderWidth="2" cornerRadius="12" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Nzr-Wc-jmO" userLabel="Domain name">
-                                            <rect key="frame" x="30" y="77" width="390" height="43"/>
+                                            <rect key="frame" x="30" y="82" width="390" height="43"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="ROw-ob-0q3">
                                                 <rect key="frame" x="2" y="2" width="386" height="39"/>
@@ -165,10 +166,10 @@
                                             <color key="borderColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="fillColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </box>
-                                        <button springLoaded="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fa0-nW-fsI" userLabel="Button &quot;allow&quot;">
-                                            <rect key="frame" x="150" y="31" width="150" height="32"/>
+                                        <button springLoaded="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fa0-nW-fsI" userLabel="Button &quot;allow&quot;">
+                                            <rect key="frame" x="150" y="31" width="150" height="38"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="allow" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="XlH-rL-c4q">
+                                            <buttonCell key="cell" type="smallSquare" title="allow" bezelStyle="smallSquare" image="Button 200x50 Violet" imagePosition="overlaps" alignment="center" inset="2" id="XlH-rL-c4q">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -182,6 +183,7 @@
                             </box>
                         </subviews>
                     </view>
+                    <color key="fillColor" name="Body Background Color"/>
                 </box>
                 <box fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-aE-VuL" userLabel="Foot">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
@@ -190,10 +192,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMZ-aZ-fxQ" userLabel="Button &quot;cancel&quot;">
-                                <rect key="frame" x="113" y="31" width="225" height="32"/>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMZ-aZ-fxQ" userLabel="Button &quot;cancel&quot;">
+                                <rect key="frame" x="113" y="31" width="225" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="cancel permission" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="T3X-1m-GAB">
+                                <buttonCell key="cell" type="smallSquare" title="cancel permission" bezelStyle="smallSquare" image="Button 300x50 Blue" imagePosition="overlaps" alignment="center" inset="2" id="T3X-1m-GAB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -204,10 +206,29 @@
                             </button>
                         </subviews>
                     </view>
-                    <color key="fillColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                    <color key="fillColor" name="Foot Background Color"/>
                 </box>
             </subviews>
             <point key="canvasLocation" x="484" y="-440"/>
         </customView>
     </objects>
+    <resources>
+        <image name="Button 200x50 Violet" width="150" height="38"/>
+        <image name="Button 300x50 Blue" width="225" height="38"/>
+        <namedColor name="Body Background Color">
+            <color red="0.8901960784313725" green="0.90980392156862744" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Foot Background Color">
+            <color red="0.82352941176470584" green="0.86274509803921573" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Message Background Color Info">
+            <color red="0.60784313725490191" green="0.44705882352941179" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Message Text Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Message Title Background Color Info">
+            <color red="0.53725490196078429" green="0.34509803921568627" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
