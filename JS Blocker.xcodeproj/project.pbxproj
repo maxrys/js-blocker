@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */; };
+		5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
+		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
+		5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		503CE1442C6E32C400835509 /* ToolbarItemIcon-active.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarItemIcon-active.pdf */; };
 		50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* AppDelegate.swift */; };
 		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
@@ -59,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabInstallation.swift; sourceTree = "<group>"; };
+		5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* ToolbarItemIcon-active.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarItemIcon-active.pdf"; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		50B024F92C47E401002F1AD7 = {
 			isa = PBXGroup;
 			children = (
+				5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */,
 				50B025042C47E401002F1AD7 /* JS Blocker */,
 				50B025222C47E404002F1AD7 /* JS Blocker Extension */,
 				50B025572C47ECCC002F1AD7 /* JS Blocker Rules */,
@@ -330,6 +335,7 @@
 				50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */,
 				50B025062C47E401002F1AD7 /* AppDelegate.swift in Sources */,
+				5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +345,7 @@
 			files = (
 				50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */,
 				50B025242C47E404002F1AD7 /* SafariExtensionHandler.swift in Sources */,
+				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B0255B2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift in Sources */,
+				5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +741,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */,
+			);
+			currentVersion = 5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 50B024FA2C47E401002F1AD7 /* Project object */;
 }
