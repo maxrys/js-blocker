@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(0, 162, 208);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(0, 162, 208);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path style="fill: none; stroke: url('#gradient-toolbaritem-border'); stroke-width: 3px;" d="M 16.01 1.5 C 23.932 1.5 30.5 8.068 30.5 16.01 C 30.5 23.932 23.919 30.5 15.99 30.5 C 8.068 30.5 1.5 23.932 1.5 16.01 C 1.5 8.068 8.081 1.5 16.01 1.5 Z"/>
+    <g>
+      <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)" x="4" y="10.924">J</text>
+      <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 7.1px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, 7.258258, -1.857092)" x="4" y="10.924">s</text>
+    </g>
+  </g>
+</svg>

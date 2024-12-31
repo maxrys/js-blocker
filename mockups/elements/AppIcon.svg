@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="16px" height="16px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 8 0.53 #00000067">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="10"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1.06"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#00000067"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="1242.055" y1="924" x2="1242.055" y2="1140.394" id="gradient-0" gradientTransform="matrix(0.92424, 0, 0, 0.92424, -435.957275, -691.997253)">
+      <stop offset="0" style="stop-color: rgb(95, 209, 140);"/>
+      <stop offset="1" style="stop-color: rgb(34, 75, 50);"/>
+    </linearGradient>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 5 10 0.54 #0000007e">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="5"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1.08"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#0000007e"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g>
+    <rect style="filter: url('#drop-shadow-filter-0'); fill: rgb(108, 228, 153);" x="100" y="100" width="824" height="824" rx="184" ry="184"/>
+    <g>
+      <g>
+        <path d="M 423.05 262 L 672 262 C 694.091 262 712 279.909 712 302 L 712 722 C 712 744.091 694.091 762 672 762 L 352 762 C 329.909 762 312 744.091 312 722 L 312 380 L 423.05 262 Z" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 16px;"/>
+        <path style="stroke: rgb(0, 0, 0); fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 16px;" d="M 423 262 L 423 340 C 423 362 405 380 382 380 L 312 380"/>
+      </g>
+      <g>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="303" x2="672" y2="303"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="333" x2="672" y2="333"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="363" x2="672" y2="363"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="393" x2="672" y2="393"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="423" x2="672" y2="423"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="453" x2="672" y2="453"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="483" x2="672" y2="483"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="543" x2="672" y2="543"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="513" x2="672" y2="513"/>
+        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="573" x2="672" y2="573"/>
+      </g>
+      <g>
+        <rect x="430" y="433" width="164" height="100" style="fill: rgb(255, 255, 255);"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 100px; font-weight: 700; white-space: pre;" x="439.713" y="518.349">&lt;/&gt;</text>
+      </g>
+      <g>
+        <path style="stroke: rgb(0, 0, 0); stroke-width: 16px; fill: rgb(46, 99, 66);" d="M 312 612 H 712 V 722 A 40 40 0 0 1 672 762 H 352 A 40 40 0 0 1 312 722 V 612 Z" bx:shape="rect 312 612 400 150 0 0 40 40 1@26a8d84f"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 100px; font-weight: 700; white-space: pre;" x="450.838" y="723.879">JS</text>
+      </g>
+      <g>
+        <ellipse style="fill: url('#gradient-0'); stroke: rgb(0, 0, 0); stroke-width: 6px; filter: url('#drop-shadow-filter-1');" cx="712" cy="262" rx="100" ry="100"/>
+        <rect x="677" y="219" width="24" height="86" style="fill: white;"/>
+        <rect x="723" y="219" width="24" height="86" style="fill: white"/>
+      </g>
+    </g>
+  </g>
+</svg>
