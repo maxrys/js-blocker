@@ -16,6 +16,12 @@
 		500D2C5A2D058D2E00551390 /* states.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* states.swift */; };
 		500D2C5B2D058D2E00551390 /* states.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* states.swift */; };
 		500D2C5C2D058D2E00551390 /* states.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* states.swift */; };
+		500D2D242D05951400551390 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
+		500D2D252D05951900551390 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
+		500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
+		500D2D272D05952200551390 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C512D058C5100551390 /* Text.swift */; };
+		500D2D282D05952700551390 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
+		500D2D2A2D05969F00551390 /* JS_Blocker_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2D292D05969F00551390 /* JS_Blocker_Tests.swift */; };
 		5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */; };
 		5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
@@ -74,6 +80,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		500D2D1F2D05929D00551390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50B024FA2C47E401002F1AD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50B025012C47E401002F1AD7;
+			remoteInfo = "JS Blocker";
+		};
 		50B025202C47E404002F1AD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50B024FA2C47E401002F1AD7 /* Project object */;
@@ -109,6 +122,8 @@
 		500D2C512D058C5100551390 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		500D2C552D058C8000551390 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		500D2C592D058D2B00551390 /* states.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = states.swift; sourceTree = "<group>"; };
+		500D2D1B2D05929D00551390 /* JS Blocker Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JS Blocker Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		500D2D292D05969F00551390 /* JS_Blocker_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JS_Blocker_Tests.swift; sourceTree = "<group>"; };
 		5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabInstallation.swift; sourceTree = "<group>"; };
 		5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* ToolbarItemIcon-active.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarItemIcon-active.pdf"; sourceTree = "<group>"; };
@@ -152,6 +167,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		500D2D182D05929D00551390 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B024FF2C47E401002F1AD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,6 +211,14 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		500D2D2B2D05972500551390 /* JS Blocker Tests */ = {
+			isa = PBXGroup;
+			children = (
+				500D2D292D05969F00551390 /* JS_Blocker_Tests.swift */,
+			);
+			path = "JS Blocker Tests";
+			sourceTree = "<group>";
+		};
 		50B024F92C47E401002F1AD7 = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +232,7 @@
 				50B025042C47E401002F1AD7 /* JS Blocker */,
 				50B025222C47E404002F1AD7 /* JS Blocker Extension */,
 				50B025572C47ECCC002F1AD7 /* JS Blocker Rules */,
+				500D2D2B2D05972500551390 /* JS Blocker Tests */,
 				50B025542C47ECCC002F1AD7 /* Frameworks */,
 				50B025032C47E401002F1AD7 /* Products */,
 			);
@@ -213,6 +244,7 @@
 				50B025022C47E401002F1AD7 /* JS Blocker.app */,
 				50B0251E2C47E404002F1AD7 /* JS Blocker Extension.appex */,
 				50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */,
+				500D2D1B2D05929D00551390 /* JS Blocker Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,6 +340,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		500D2D1A2D05929D00551390 /* JS Blocker Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 500D2D232D05929D00551390 /* Build configuration list for PBXNativeTarget "JS Blocker Tests" */;
+			buildPhases = (
+				500D2D172D05929D00551390 /* Sources */,
+				500D2D182D05929D00551390 /* Frameworks */,
+				500D2D192D05929D00551390 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				500D2D202D05929D00551390 /* PBXTargetDependency */,
+			);
+			name = "JS Blocker Tests";
+			packageProductDependencies = (
+			);
+			productName = "JS Blocker Tests";
+			productReference = 500D2D1B2D05929D00551390 /* JS Blocker Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		50B025012C47E401002F1AD7 /* JS Blocker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50B025372C47E404002F1AD7 /* Build configuration list for PBXNativeTarget "JS Blocker" */;
@@ -369,10 +421,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "Maxim Rysevets";
 				TargetAttributes = {
+					500D2D1A2D05929D00551390 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					50B025012C47E401002F1AD7 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -401,11 +456,19 @@
 				50B025012C47E401002F1AD7 /* JS Blocker */,
 				50B0251D2C47E404002F1AD7 /* JS Blocker Extension */,
 				50B025522C47ECCC002F1AD7 /* JS Blocker Rules */,
+				500D2D1A2D05929D00551390 /* JS Blocker Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		500D2D192D05929D00551390 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B025002C47E401002F1AD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +511,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		500D2D172D05929D00551390 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				500D2D282D05952700551390 /* String.swift in Sources */,
+				500D2D252D05951900551390 /* NSTableView.swift in Sources */,
+				500D2D272D05952200551390 /* Text.swift in Sources */,
+				500D2D242D05951400551390 /* SFSafariApplication.swift in Sources */,
+				500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */,
+				500D2D2A2D05969F00551390 /* JS_Blocker_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B024FE2C47E401002F1AD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -515,6 +591,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		500D2D202D05929D00551390 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50B025012C47E401002F1AD7 /* JS Blocker */;
+			targetProxy = 500D2D1F2D05929D00551390 /* PBXContainerItemProxy */;
+		};
 		50B025212C47E404002F1AD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50B0251D2C47E404002F1AD7 /* JS Blocker Extension */;
@@ -548,6 +629,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		500D2D212D05929D00551390 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97CZR6J379;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "maxrys.js-blocker.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		500D2D222D05929D00551390 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 97CZR6J379;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "maxrys.js-blocker.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		50B025312C47E404002F1AD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -861,6 +974,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		500D2D232D05929D00551390 /* Build configuration list for PBXNativeTarget "JS Blocker Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				500D2D212D05929D00551390 /* Debug */,
+				500D2D222D05929D00551390 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		50B024FD2C47E401002F1AD7 /* Build configuration list for PBXProject "JS Blocker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
