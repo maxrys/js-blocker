@@ -1,4 +1,8 @@
 
+/* ################################################################## */
+/* ### Copyright © 2024—2025 Maxim Rysevets. All rights reserved. ### */
+/* ################################################################## */
+
 class ENV {
 
     static let APP_GROUP_NAME           = "97CZR6J379.maxrys.js-blocker"

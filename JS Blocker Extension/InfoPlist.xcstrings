@@ -44,13 +44,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Copyright © 2024 Maxim Rysevets. All rights reserved."
+            "value" : "Copyright © 2024—2025 Maxim Rysevets. All rights reserved."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copyright © 2024 Рысевец Максим Владимирович. Все права защищены."
+            "value" : "Copyright © 2024—2025 Рысевец Максим Владимирович. Все права защищены."
           }
         }
       }
