@@ -50,6 +50,7 @@
 		50B025562C47ECCC002F1AD7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B025552C47ECCC002F1AD7 /* Cocoa.framework */; };
 		50B0255B2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */; };
 		50B025602C47ECCC002F1AD7 /* JS Blocker Rules.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		50EEBE792C9EBAF100A25032 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50EEBE782C9EBAF100A25032 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		50B0255A2C47ECCC002F1AD7 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		50B0255C2C47ECCC002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Rules.entitlements; sourceTree = "<group>"; };
+		50EEBE782C9EBAF100A25032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				50875E352C71F71400756D64 /* Localizable.xcstrings */,
 				50B025132C47E401002F1AD7 /* Main.storyboard */,
 				50B025162C47E403002F1AD7 /* Assets.xcassets */,
+				50EEBE782C9EBAF100A25032 /* Info.plist */,
 				50B025192C47E403002F1AD7 /* JS Blocker.entitlements */,
 				50B025072C47E401002F1AD7 /* Resources */,
 			);
@@ -358,6 +361,7 @@
 				50875E222C71F21C00756D64 /* Assets.xcassets in Resources */,
 				50B025152C47E401002F1AD7 /* Base in Resources */,
 				50875E292C71F5A400756D64 /* Main.storyboard in Resources */,
+				50EEBE792C9EBAF100A25032 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
