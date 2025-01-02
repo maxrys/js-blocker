@@ -8,18 +8,18 @@ import SwiftUI
 struct DomainRule: View {
 
     var colorDomainName: Color {
-        if self.ruleIsActive {return Color(ENV.COLORNAME_DOMAIN_NAME_ACTIVE)}
-        else                 {return Color(ENV.COLORNAME_DOMAIN_NAME)}
+        if self.ruleIsActive {return Color(COLORNAME_DOMAIN_NAME_ACTIVE)}
+        else                 {return Color(COLORNAME_DOMAIN_NAME)}
     }
 
     var colorBackground: Color {
-        if self.ruleIsActive {return Color(ENV.COLORNAME_DOMAIN_BACKGROUND)}
-        else                 {return Color(ENV.COLORNAME_DOMAIN_BACKGROUND)}
+        if self.ruleIsActive {return Color(COLORNAME_DOMAIN_BACKGROUND)}
+        else                 {return Color(COLORNAME_DOMAIN_BACKGROUND)}
     }
 
     var colorBorder: Color {
-        if self.ruleIsActive {return Color(ENV.COLORNAME_DOMAIN_BORDER_ACTIVE)}
-        else                 {return Color(ENV.COLORNAME_DOMAIN_BORDER)}
+        if self.ruleIsActive {return Color(COLORNAME_DOMAIN_BORDER_ACTIVE)}
+        else                 {return Color(COLORNAME_DOMAIN_BORDER)}
     }
 
     var title: String
@@ -94,7 +94,7 @@ struct DomainRule: View {
             buttonOnClick: {
                 print("onClick: DomainRule #2")
             }
-        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+        ).background(Color(COLORNAME_PAGE_FOOT_BACKGROUND))
 
         DomainRule(
             title: "JavaScript on the Domain",
@@ -112,7 +112,7 @@ struct DomainRule: View {
             buttonOnClick: {
                 print("onClick: DomainRule #4")
             }
-        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+        ).background(Color(COLORNAME_PAGE_FOOT_BACKGROUND))
 
     }.frame(width: 450, height: 670)
 }
@@ -138,7 +138,7 @@ struct DomainRule: View {
             buttonOnClick: {
                 print("onClick: DomainRule #2")
             }
-        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+        ).background(Color(COLORNAME_PAGE_FOOT_BACKGROUND))
 
         DomainRule(
             title: "JavaScript on the Domain",

@@ -14,15 +14,15 @@ struct RoundButton: View {
 
         var colorTop: Color {
             switch self {
-                case .violet: return Color(ENV.COLORNAME_BUTTON_VIOLET_TOP)
-                case .blue  : return Color(ENV.COLORNAME_BUTTON_BLUE_TOP)
+                case .violet: return Color(COLORNAME_BUTTON_VIOLET_TOP)
+                case .blue  : return Color(COLORNAME_BUTTON_BLUE_TOP)
             }
         }
 
         var colorBottom: Color {
             switch self {
-                case .violet: return Color(ENV.COLORNAME_BUTTON_VIOLET_BOTTOM)
-                case .blue  : return Color(ENV.COLORNAME_BUTTON_BLUE_BOTTOM)
+                case .violet: return Color(COLORNAME_BUTTON_VIOLET_BOTTOM)
+                case .blue  : return Color(COLORNAME_BUTTON_BLUE_BOTTOM)
             }
         }
     }
@@ -39,7 +39,7 @@ struct RoundButton: View {
             self.onClick()
         } label: {
             Text(NSLocalizedString(self.title, comment: ""))
-                .color(Color(ENV.COLORNAME_BUTTON_TEXT))
+                .color(Color(COLORNAME_BUTTON_TEXT))
                 .padding(11)
                 .frame(minWidth: self.minWidth)
                 .background(

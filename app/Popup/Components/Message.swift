@@ -22,19 +22,19 @@ struct Message: View {
 
         var colorTitleBackground: Color {
             switch self {
-                case .info   : return Color(ENV.COLORNAME_MESSAGE_INFO_TITLE_BACKGROUND)
-                case .ok     : return Color(ENV.COLORNAME_MESSAGE_OK_TITLE_BACKGROUND)
-                case .warning: return Color(ENV.COLORNAME_MESSAGE_WARNING_TITLE_BACKGROUND)
-                case .error  : return Color(ENV.COLORNAME_MESSAGE_ERROR_TITLE_BACKGROUND)
+                case .info   : return Color(COLORNAME_MESSAGE_INFO_TITLE_BACKGROUND)
+                case .ok     : return Color(COLORNAME_MESSAGE_OK_TITLE_BACKGROUND)
+                case .warning: return Color(COLORNAME_MESSAGE_WARNING_TITLE_BACKGROUND)
+                case .error  : return Color(COLORNAME_MESSAGE_ERROR_TITLE_BACKGROUND)
             }
         }
 
         var colorDescriptionBackground: Color {
             switch self {
-                case .info   : return Color(ENV.COLORNAME_MESSAGE_INFO_DESCRIPTION_BACKGROUND)
-                case .ok     : return Color(ENV.COLORNAME_MESSAGE_OK_DESCRIPTION_BACKGROUND)
-                case .warning: return Color(ENV.COLORNAME_MESSAGE_WARNING_DESCRIPTION_BACKGROUND)
-                case .error  : return Color(ENV.COLORNAME_MESSAGE_ERROR_DESCRIPTION_BACKGROUND)
+                case .info   : return Color(COLORNAME_MESSAGE_INFO_DESCRIPTION_BACKGROUND)
+                case .ok     : return Color(COLORNAME_MESSAGE_OK_DESCRIPTION_BACKGROUND)
+                case .warning: return Color(COLORNAME_MESSAGE_WARNING_DESCRIPTION_BACKGROUND)
+                case .error  : return Color(COLORNAME_MESSAGE_ERROR_DESCRIPTION_BACKGROUND)
             }
         }
     }
@@ -48,14 +48,14 @@ struct Message: View {
 
             Text(NSLocalizedString(self.title, comment: ""))
                 .font(.system(size: 14, weight: .bold))
-                .color(Color(ENV.COLORNAME_MESSAGE_TEXT))
+                .color(Color(COLORNAME_MESSAGE_TEXT))
                 .padding(13)
                 .frame(maxWidth: .infinity)
                 .background(self.type.colorTitleBackground)
 
             Text(NSLocalizedString(self.description, comment: ""))
                 .font(.system(size: 13))
-                .color(Color(ENV.COLORNAME_MESSAGE_TEXT))
+                .color(Color(COLORNAME_MESSAGE_TEXT))
                 .padding(20)
                 .frame(maxWidth: .infinity)
                 .background(self.type.colorDescriptionBackground)

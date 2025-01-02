@@ -80,7 +80,7 @@ struct Popup: View {
                 )
 
             }.frame(maxWidth: .infinity)
-             .background(Color(ENV.COLORNAME_PAGE_BODY_BACKGROUND))
+             .background(Color(COLORNAME_PAGE_BODY_BACKGROUND))
 
             // ############
             // ### Foot ###
@@ -100,7 +100,7 @@ struct Popup: View {
 
             }.padding(30)
              .frame(maxWidth: .infinity)
-             .background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+             .background(Color(COLORNAME_PAGE_FOOT_BACKGROUND))
 
         }.frame(width: self.frameSizeWidth)
     }

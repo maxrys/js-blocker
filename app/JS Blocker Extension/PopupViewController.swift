@@ -150,7 +150,7 @@ class PopupViewController: SFSafariExtensionViewController {
     }
 
     static func pageUpdate() {
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: ENV.APP_RULES_EXTENSION_NAME, completionHandler: { error in
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: APP_RULES_EXTENSION_NAME, completionHandler: { error in
             if let error = error {
                 #if DEBUG
                     print("pageUpdate(): Extension reload error = \(error.localizedDescription)")
