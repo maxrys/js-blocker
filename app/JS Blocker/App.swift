@@ -5,8 +5,7 @@
 
 import Cocoa
 
-@main
-class App: NSObject, NSApplicationDelegate {
+@main class App: NSObject, NSApplicationDelegate {
 
     func applicationDidBecomeActive(_ notification: Notification) {
     }

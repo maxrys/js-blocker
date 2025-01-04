@@ -101,9 +101,9 @@ struct JS_Blocker_Tests {
             "j", "t",      "9",
         ]
 
-        for _ in 0...100 {
+        for _ in 0 ... 100 {
             var word = ""
-            for _ in 0...Int.random(in: 3..<65) {
+            for _ in 0 ... Int.random(in: 3 ..< 65) {
                 word += symbols.randomElement()!
             }
             print(

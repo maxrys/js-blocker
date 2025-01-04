@@ -93,7 +93,7 @@ public class WhiteDomains: NSManagedObject {
         let nameParts = name.split(separator: ".")
         if (nameParts.count > 1) {
             var inItems: [String] = []
-            for index in 1..<nameParts.endIndex {
+            for index in 1 ..< nameParts.endIndex {
                 let cParent = nameParts[index...].joined(separator: ".");
                 inItems.append(cParent)
             }
@@ -215,9 +215,9 @@ public class WhiteDomains: NSManagedObject {
             "js-blocker.net",
         ]
 
-        for i in 1...count-names.count {
+        for i in 1 ... count-names.count {
             var domainParts: [String] = []
-            for j in 1...Int.random(in: 1..<10) {
+            for j in 1 ... Int.random(in: 1 ..< 10) {
                 domainParts.append("sub\(j)")
             }
             domainParts.reverse()
