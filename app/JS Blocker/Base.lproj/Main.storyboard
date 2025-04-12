@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,22 +69,19 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController_tabRules" customModule="JS_Blocker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e9Y-7S-DPz" userLabel="Label &quot;Domains where JavaScript is allowed&quot;">
-                                <rect key="frame" x="65" y="559" width="571" height="19"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e9Y-7S-DPz" userLabel="Label &quot;Domains where JavaScript is allowed&quot;">
+                                <rect key="frame" x="203" y="559" width="295" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Domains where JavaScript is allowed" id="XEy-Pk-wCR">
                                     <font key="font" metaFont="systemBold" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sCr-FR-trs" userLabel="Buttom &quot;Settings&quot;">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sCr-FR-trs" userLabel="Buttom &quot;Settings&quot;">
                                 <rect key="frame" x="641" y="551" width="46" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" bezelStyle="rounded" image="gearshape.fill" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OC8-rl-zMJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -93,9 +90,8 @@
                                     <segue destination="4l9-C1-IuP" kind="popover" popoverAnchorView="sCr-FR-trs" popoverBehavior="t" preferredEdge="maxY" id="XA8-fW-04C"/>
                                 </connections>
                             </button>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9y-83-PIG" userLabel="Scroll View">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9y-83-PIG" userLabel="Scroll View">
                                 <rect key="frame" x="20" y="85" width="660" height="454"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="Nm1-9h-aNd">
                                     <rect key="frame" x="1" y="1" width="658" height="452"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,18 +186,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Df4-1n-Qgs" userLabel="Label &quot;note: New Domains are added in Safari via the &quot;JS Blocker&quot; pop-up.&quot;">
-                                <rect key="frame" x="18" y="61" width="664" height="16"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Df4-1n-Qgs" userLabel="Label &quot;note: New Domains are added in Safari via the &quot;JS Blocker&quot; pop-up.&quot;">
+                                <rect key="frame" x="18" y="61" width="664" height="14"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="note: New Domains are added in Safari via the &quot;JS Blocker&quot; pop-up." id="1ma-8v-0fN">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ONa-Gi-u7M" userLabel="Button &quot;delete&quot;">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ONa-Gi-u7M" userLabel="Button &quot;delete&quot;">
                                 <rect key="frame" x="276" y="17" width="148" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="delete" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="jzp-ta-qfU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -209,8 +203,26 @@
                                         <action selector="onClick_buttonTableDomainsDelete:" target="XfG-lQ-9wD" id="tnp-bS-c8I"/>
                                     </connections>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="134" id="4bL-03-YC0"/>
+                                </constraints>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="e9Y-7S-DPz" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="22" id="6h3-OW-9KW"/>
+                            <constraint firstAttribute="trailing" secondItem="sCr-FR-trs" secondAttribute="trailing" constant="20" id="7fQ-hQ-oI3"/>
+                            <constraint firstItem="Df4-1n-Qgs" firstAttribute="top" secondItem="J9y-83-PIG" secondAttribute="bottom" constant="10" id="9eQ-VJ-r5O"/>
+                            <constraint firstItem="sCr-FR-trs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="22" id="CBA-hJ-Lb8"/>
+                            <constraint firstAttribute="bottom" secondItem="ONa-Gi-u7M" secondAttribute="bottom" constant="24" id="FzU-VD-nka"/>
+                            <constraint firstAttribute="trailing" secondItem="J9y-83-PIG" secondAttribute="trailing" constant="20" id="M3M-xU-FdK"/>
+                            <constraint firstItem="ONa-Gi-u7M" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Oot-mZ-3bF"/>
+                            <constraint firstItem="J9y-83-PIG" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="YIa-lm-MLN"/>
+                            <constraint firstItem="ONa-Gi-u7M" firstAttribute="top" secondItem="Df4-1n-Qgs" secondAttribute="bottom" constant="17" id="Z8v-Tb-rCo"/>
+                            <constraint firstAttribute="trailing" secondItem="Df4-1n-Qgs" secondAttribute="trailing" constant="20" id="a3X-to-xQd"/>
+                            <constraint firstItem="e9Y-7S-DPz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="pQR-AH-aWs"/>
+                            <constraint firstItem="J9y-83-PIG" firstAttribute="top" secondItem="e9Y-7S-DPz" secondAttribute="bottom" constant="20" id="vce-Mg-So5"/>
+                            <constraint firstItem="Df4-1n-Qgs" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="w7A-rf-WYG"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonTableDomainsDelete" destination="jzp-ta-qfU" id="PZ0-De-zqG"/>
@@ -226,45 +238,29 @@
         <scene sceneID="bUY-Gi-V19">
             <objects>
                 <viewController id="4l9-C1-IuP" customClass="ViewController_tabInstallation" customModule="JS_Blocker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="HAt-Qj-LH0">
-                        <rect key="frame" x="0.0" y="0.0" width="700" height="602"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="HAt-Qj-LH0">
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
                         <subviews>
-                            <box fixedFrame="YES" boxType="custom" borderWidth="0.0" cornerRadius="4" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hib-6N-ujJ" userLabel="Cover">
-                                <rect key="frame" x="0.0" y="0.0" width="700" height="602"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <view key="contentView" id="xFZ-s1-jGz">
-                                    <rect key="frame" x="0.0" y="0.0" width="700" height="602"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <box boxType="custom" borderWidth="0.0" cornerRadius="4" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hib-6N-ujJ" userLabel="Cover">
+                                <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
+                                <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFZ-s1-jGz">
+                                    <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
                                     <subviews>
-                                        <box clipsToBounds="YES" fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-Ad-DNy" userLabel="Extension state">
-                                            <rect key="frame" x="20" y="481" width="660" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" clipsToBounds="YES" id="5iF-5y-pac">
+                                        <box clipsToBounds="YES" ambiguous="YES" verifyAmbiguity="off" boxType="custom" borderType="none" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-Ad-DNy" userLabel="Extension state">
+                                            <rect key="frame" x="20" y="479" width="660" height="100"/>
+                                            <view key="contentView" clipsToBounds="YES" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5iF-5y-pac">
                                                 <rect key="frame" x="0.0" y="0.0" width="660" height="100"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTP-TW-9aa" userLabel="Button &quot;Open Safari...&quot;">
-                                                        <rect key="frame" x="182" y="12" width="297" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="Open Safari Extensions Preferences…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5jO-ys-Zm7">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                            <connections>
-                                                                <action selector="onClick_buttonOpenSafariExtensionsPreferences:" target="4l9-C1-IuP" id="Hxc-KE-O4s"/>
-                                                            </connections>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <box fixedFrame="YES" boxType="custom" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-Wt-BWN" userLabel="Title">
+                                                    <box ambiguous="YES" verifyAmbiguity="off" boxType="custom" borderWidth="0.0" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-Wt-BWN" userLabel="Title">
                                                         <rect key="frame" x="0.0" y="56" width="660" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView" id="6wu-uu-fbh">
+                                                        <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6wu-uu-fbh">
                                                             <rect key="frame" x="0.0" y="0.0" width="660" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-cC-lBA" userLabel="Label &quot;State: enabled/disabled&quot;">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-cC-lBA" userLabel="Label &quot;State: enabled/disabled&quot;">
                                                                     <rect key="frame" x="18" y="13" width="624" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="620" id="65Y-4c-kDx"/>
+                                                                    </constraints>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="JS Blocker Extension in unknown state" id="Zwb-Om-U96">
                                                                         <font key="font" metaFont="systemBold" size="14"/>
                                                                         <color key="textColor" name="Message Text Color"/>
@@ -272,32 +268,79 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="iZn-cC-lBA" firstAttribute="top" secondItem="6wu-uu-fbh" secondAttribute="top" constant="14" id="BDh-me-z67"/>
+                                                                <constraint firstAttribute="trailing" secondItem="iZn-cC-lBA" secondAttribute="trailing" constant="20" id="HtN-av-pbf"/>
+                                                                <constraint firstItem="iZn-cC-lBA" firstAttribute="leading" secondItem="6wu-uu-fbh" secondAttribute="leading" constant="20" id="f6h-Jg-jhJ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="iZn-cC-lBA" secondAttribute="bottom" constant="13" id="mOI-68-EaJ"/>
+                                                            </constraints>
                                                         </view>
                                                         <color key="fillColor" name="Message Title Background Color Info"/>
                                                     </box>
+                                                    <button verifyAmbiguity="off" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTP-TW-9aa" userLabel="Button &quot;Open Safari...&quot;">
+                                                        <rect key="frame" x="182" y="13" width="297" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Open Safari Extensions Preferences…" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5jO-ys-Zm7">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <connections>
+                                                                <action selector="onClick_buttonOpenSafariExtensionsPreferences:" target="4l9-C1-IuP" id="Hxc-KE-O4s"/>
+                                                            </connections>
+                                                        </buttonCell>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="322" id="zet-wa-cXQ"/>
+                                                        </constraints>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="eTP-TW-9aa" secondAttribute="bottom" constant="20" id="2JC-aT-7q2"/>
+                                                    <constraint firstItem="f1A-Wt-BWN" firstAttribute="leading" secondItem="5iF-5y-pac" secondAttribute="leading" id="PXF-Ef-z46"/>
+                                                    <constraint firstItem="eTP-TW-9aa" firstAttribute="top" secondItem="f1A-Wt-BWN" secondAttribute="bottom" constant="16" id="SJf-Oh-E3n"/>
+                                                    <constraint firstItem="eTP-TW-9aa" firstAttribute="centerX" secondItem="5iF-5y-pac" secondAttribute="centerX" id="TvK-0H-QWf"/>
+                                                    <constraint firstItem="f1A-Wt-BWN" firstAttribute="top" secondItem="5iF-5y-pac" secondAttribute="top" id="ipy-Sr-MUM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="f1A-Wt-BWN" secondAttribute="trailing" id="zmG-7a-J9Z"/>
+                                                </constraints>
                                             </view>
                                             <color key="fillColor" name="Message Background Color Info"/>
                                         </box>
-                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb7-Of-u4o" userLabel="Label &quot;Installation example&quot;">
+                                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gb7-Of-u4o" userLabel="Label &quot;Installation example&quot;">
                                             <rect key="frame" x="18" y="434" width="664" height="19"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Installation example" id="auG-E5-4hc">
                                                 <font key="font" metaFont="systemBold" size="16"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRk-6L-aL6" userLabel="Image &quot;Installation example&quot;">
-                                            <rect key="frame" x="20" y="20" width="660" height="395"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Installation Guide" id="XlE-he-k5X"/>
+                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" id="fRk-6L-aL6" userLabel="Image &quot;Installation example&quot;">
+                                            <rect key="frame" x="20" y="20" width="660" height="394"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="660" id="HNG-oP-nHd"/>
+                                                <constraint firstAttribute="height" constant="394" id="aK4-7m-x8i"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Installation Guide" id="XlE-he-k5X"/>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rCh-Ad-DNy" firstAttribute="leading" secondItem="xFZ-s1-jGz" secondAttribute="leading" constant="20" id="A8p-Rw-BXt"/>
+                                        <constraint firstAttribute="bottom" secondItem="fRk-6L-aL6" secondAttribute="bottom" constant="20" id="C8m-pp-aKt"/>
+                                        <constraint firstAttribute="trailing" secondItem="fRk-6L-aL6" secondAttribute="trailing" constant="20" id="In7-CV-H8j"/>
+                                        <constraint firstItem="rCh-Ad-DNy" firstAttribute="top" secondItem="xFZ-s1-jGz" secondAttribute="top" constant="20" id="LQK-Nx-r2N"/>
+                                        <constraint firstItem="fRk-6L-aL6" firstAttribute="top" secondItem="gb7-Of-u4o" secondAttribute="bottom" constant="20" id="QCA-gq-c0I"/>
+                                        <constraint firstAttribute="trailing" secondItem="rCh-Ad-DNy" secondAttribute="trailing" constant="20" id="bYO-78-r4a"/>
+                                        <constraint firstAttribute="trailing" secondItem="gb7-Of-u4o" secondAttribute="trailing" constant="20" id="btv-oM-OMq"/>
+                                        <constraint firstItem="gb7-Of-u4o" firstAttribute="top" secondItem="rCh-Ad-DNy" secondAttribute="bottom" constant="28" id="dGX-lZ-AF6"/>
+                                        <constraint firstItem="gb7-Of-u4o" firstAttribute="leading" secondItem="xFZ-s1-jGz" secondAttribute="leading" constant="20" id="tQm-xT-Jzg"/>
+                                        <constraint firstItem="fRk-6L-aL6" firstAttribute="leading" secondItem="xFZ-s1-jGz" secondAttribute="leading" constant="20" id="u3z-4C-9RZ"/>
+                                    </constraints>
                                 </view>
                                 <color key="fillColor" name="color Pop-up Background"/>
                             </box>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hib-6N-ujJ" secondAttribute="trailing" id="EQy-da-QNo"/>
+                            <constraint firstAttribute="bottom" secondItem="hib-6N-ujJ" secondAttribute="bottom" id="IOb-pE-575"/>
+                            <constraint firstItem="hib-6N-ujJ" firstAttribute="leading" secondItem="HAt-Qj-LH0" secondAttribute="leading" id="Las-5Y-szk"/>
+                            <constraint firstItem="hib-6N-ujJ" firstAttribute="top" secondItem="HAt-Qj-LH0" secondAttribute="top" id="uEp-nd-a81"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="boxExtensionState" destination="rCh-Ad-DNy" id="IUt-FM-EUJ"/>
@@ -308,7 +351,7 @@
                 </viewController>
                 <customObject id="Omp-04-YMa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="1009"/>
+            <point key="canvasLocation" x="900" y="1010"/>
         </scene>
     </scenes>
     <resources>
