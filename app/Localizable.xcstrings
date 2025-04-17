@@ -200,34 +200,18 @@
         }
       }
     },
-    "Rules were applied successfully." : {
+    "Settings have been saved." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rules were applied successfully."
+            "value" : "Settings have been saved."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Правила были применены успешно."
-          }
-        }
-      }
-    },
-    "Rules were not applied due to error!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rules were not applied due to error!"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Правила не были применены из-за ошибки!"
+            "value" : "Настройки были сохранены."
           }
         }
       }

@@ -34,20 +34,18 @@
         console.log(`Content blocker "${extensionName}" on "${thisDomain}" LocalStorage is available: "${isLocalStorageAvailable}"`);
         console.log(`Content blocker "${extensionName}" on "${thisDomain}" get LocalStorage value: "isJSAllowed" = "${isJSAllowed}"`);
 
-        /* ======================== */
-        /* main object of sanitizer */
-        /* ======================== */
+        /* ============================== */
+        /* MARK: main object of sanitizer */
+        /* ============================== */
 
         let jsBlockerSanitizer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         switch (node.tagName) {
-                            case 'SCRIPT': /* removing embedded javascript */
-                                if (!node.getAttribute('src')) {
-                                    console.log(`Content blocker "${extensionName}" on "${thisDomain}" prevented display of embedded script`);
-                                    node.remove();
-                                }
+                            case 'SCRIPT': /* removing embedded and external javascript */
+                                console.log(`Content blocker "${extensionName}" on "${thisDomain}" prevented display of embedded and external script`);
+                                node.remove();
                                 break;
                             default: /* removing inline javascript (event handlers) */
                                 [...node.attributes].forEach(attribute => {
@@ -64,9 +62,9 @@
             });
         });
 
-        /* ================================================ */
-        /* Safari normal mode: block / not block JavaScript */
-        /* ================================================ */
+        /* ====================================================== */
+        /* MARK: Safari normal mode: block / not block JavaScript */
+        /* ====================================================== */
 
         if (isLocalStorageAvailable === true) {
 
@@ -98,9 +96,9 @@
                 });
             }
 
-            /* ==================================== */
-            /* request and update the changed state */
-            /* ==================================== */
+            /* ========================================== */
+            /* MARK: request and update the changed state */
+            /* ========================================== */
 
             let isFocused = false;
             window.addEventListener('blur' , () => { isFocused = false; });
@@ -133,9 +131,9 @@
                 }
             });
 
-            /* =================================== */
-            /* incoming request to reload the page */
-            /* =================================== */
+            /* ========================================= */
+            /* MARK: incoming request to reload the page */
+            /* ========================================= */
 
             safari.self.addEventListener('message', event => {
                 if (event.name === 'reloadPageMsg') {
@@ -152,9 +150,9 @@
 
         }
 
-        /* ================================================== */
-        /* Safari high security mode: always block JavaScript */
-        /* ================================================== */
+        /* ======================================================== */
+        /* MARK: Safari high security mode: always block JavaScript */
+        /* ======================================================== */
 
         if (isLocalStorageAvailable === false) {
 
@@ -164,9 +162,9 @@
                 childList: true
             });
 
-            /* =================================== */
-            /* incoming request to reload the page */
-            /* =================================== */
+            /* ========================================= */
+            /* MARK: incoming request to reload the page */
+            /* ========================================= */
 
             if (isMainFrame) {
                 safari.self.addEventListener('message', event => {

@@ -145,7 +145,7 @@ struct Popup: View {
                 indecesForGLobal: [0],
                 messages: [
                     MessageInfo(
-                        title: "Rules were applied successfully.",
+                        title: "Settings have been saved.",
                         description: "",
                         type: .ok
                     )

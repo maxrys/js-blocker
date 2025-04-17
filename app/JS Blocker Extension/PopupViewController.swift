@@ -152,35 +152,21 @@ class PopupViewController: SFSafariExtensionViewController {
     }
 
     static func pageUpdate() {
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: App.RULES_EXTENSION_NAME, completionHandler: { error in
-            if let error = error {
-                Self.messageShow(
-                    title: NSLocalizedString("Rules were not applied due to error!", comment: ""),
-                    description: error.localizedDescription,
-                    type: .error
-                )
-            } else {
-                Self.messageShow(
-                    title: NSLocalizedString("Rules were applied successfully.", comment: ""),
-                    type: .ok
-                )
-                if let page       = Self.page,
-                   let domainName = Self.domainName {
-                       page.dispatchMessageToScript(
-                           withName: "reloadPageMsg",
-                           userInfo: [
-                               "timestamp": Date().timeIntervalSince1970,
-                               "domain"   : domainName,
-                               "result"   : Self.blockingState.isAllowed
-                           ]
-                       )
-                } else {
-                    #if DEBUG
-                        print("pageUpdate(): Page not found")
-                    #endif
-                }
-            }
-        })
+        if let page       = Self.page,
+           let domainName = Self.domainName {
+               page.dispatchMessageToScript(
+                   withName: "reloadPageMsg",
+                   userInfo: [
+                       "timestamp": Date().timeIntervalSince1970,
+                       "domain"   : domainName,
+                       "result"   : Self.blockingState.isAllowed
+                   ]
+               )
+        } else {
+            #if DEBUG
+                print("pageUpdate(): Page not found")
+            #endif
+        }
     }
 
     /* ###################################################################### */
@@ -193,6 +179,10 @@ class PopupViewController: SFSafariExtensionViewController {
             )
             Self.formUpdate()
             Self.pageUpdate()
+            Self.messageShow(
+                title: NSLocalizedString("Settings have been saved.", comment: ""),
+                type: .ok
+            )
             #if DEBUG
                 print("onClick_buttonRuleLocalInsert()")
                 WhiteDomains.dump()
@@ -219,6 +209,10 @@ class PopupViewController: SFSafariExtensionViewController {
                 }
                 Self.formUpdate()
                 Self.pageUpdate()
+                Self.messageShow(
+                    title: NSLocalizedString("Settings have been saved.", comment: ""),
+                    type: .ok
+                )
             }
             #if DEBUG
                 print("onClick_buttonRuleGlobalInsert()")
@@ -241,6 +235,10 @@ class PopupViewController: SFSafariExtensionViewController {
             }
             Self.formUpdate()
             Self.pageUpdate()
+            Self.messageShow(
+                title: NSLocalizedString("Settings have been saved.", comment: ""),
+                type: .ok
+            )
             #if DEBUG
                 print("onClick_buttonRuleDelete()")
                 WhiteDomains.dump()

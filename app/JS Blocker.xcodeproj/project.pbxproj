@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
 		500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
-		500D2C582D058C8200551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
 		500D2C5A2D058D2E00551390 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* MessageType.swift */; };
 		500D2C5B2D058D2E00551390 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* MessageType.swift */; };
-		500D2C5C2D058D2E00551390 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* MessageType.swift */; };
 		500D2D242D05951400551390 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
 		500D2D252D05951900551390 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
 		500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
@@ -21,23 +19,18 @@
 		5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */; };
 		5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
-		5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		50288FDD2DB11B8500A32865 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50288FDC2DB11B8500A32865 /* Credits.html */; };
 		503CE1442C6E32C400835509 /* ToolbarIcon-local.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */; };
 		5064F9152D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
 		5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
 		50875E0B2C71E93A00756D64 /* WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains.swift */; };
 		50875E0D2C71E93A00756D64 /* WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains.swift */; };
-		50875E0F2C71E93A00756D64 /* WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains.swift */; };
 		50875E122C71EE0D00756D64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
 		50875E132C71EE0D00756D64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
-		50875E142C71EE0D00756D64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
 		50875E162C71EE1200756D64 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
 		50875E172C71EE1200756D64 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
-		50875E182C71EE1200756D64 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
 		50875E1A2C71EE1700756D64 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
 		50875E1B2C71EE1700756D64 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
-		50875E1C2C71EE1700756D64 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
 		50875E202C71F0C700756D64 /* ViewController_tableWhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */; };
 		50875E222C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E232C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
@@ -45,15 +38,12 @@
 		50875E2A2C71F5A800756D64 /* PopupTarget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252C2C47E404002F1AD7 /* PopupTarget.xib */; };
 		50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */; };
 		50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E372C71F72A00756D64 /* InfoPlist.xcstrings */; };
-		50875E3C2C71F74100756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */; };
 		50AD45152DACF6E500425467 /* RealTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45142DACF6E500425467 /* RealTimer.swift */; };
-		50AD45162DACF6E500425467 /* RealTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45142DACF6E500425467 /* RealTimer.swift */; };
 		50AD45172DACF6E500425467 /* RealTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45142DACF6E500425467 /* RealTimer.swift */; };
 		50AD45182DACF6E500425467 /* RealTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45142DACF6E500425467 /* RealTimer.swift */; };
 		50AD451A2DAD17C600425467 /* ToolbarIcon-global.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50AD45192DAD17C600425467 /* ToolbarIcon-global.pdf */; };
 		50AD45212DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD45222DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
-		50AD45232DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD45242DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50B025062C47E401002F1AD7 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* App.swift */; };
 		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
@@ -65,14 +55,8 @@
 		50B025292C47E404002F1AD7 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 50B025282C47E404002F1AD7 /* script.js */; };
 		50B0252B2C47E404002F1AD7 /* ToolbarIcon-none.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252A2C47E404002F1AD7 /* ToolbarIcon-none.pdf */; };
 		50B0252E2C47E404002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252D2C47E404002F1AD7 /* Base */; };
-		50B025562C47ECCC002F1AD7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B025552C47ECCC002F1AD7 /* Cocoa.framework */; };
-		50B0255B2C47ECCC002F1AD7 /* RulesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0255A2C47ECCC002F1AD7 /* RulesHandler.swift */; };
-		50B025602C47ECCC002F1AD7 /* JS Blocker Rules.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50E150B22DA93E59005768C1 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* App.swift */; };
-		50E150B32DA93E59005768C1 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* App.swift */; };
-		50E150B42DA94002005768C1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55102CF9AAB400FC060C /* Message.swift */; };
 		50E150B62DA96616005768C1 /* BlockingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150B52DA96615005768C1 /* BlockingType.swift */; };
-		50E150B72DA96616005768C1 /* BlockingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150B52DA96615005768C1 /* BlockingType.swift */; };
 		50E150B82DA96616005768C1 /* BlockingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150B52DA96615005768C1 /* BlockingType.swift */; };
 		50E150B92DA96616005768C1 /* BlockingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150B52DA96615005768C1 /* BlockingType.swift */; };
 		50E150C02DAA789D005768C1 /* PopupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150BF2DAA789B005768C1 /* PopupState.swift */; };
@@ -105,13 +89,6 @@
 			remoteGlobalIDString = 50B0251D2C47E404002F1AD7;
 			remoteInfo = "JS Blocker Extension";
 		};
-		50B0255E2C47ECCC002F1AD7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50B024FA2C47E401002F1AD7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 50B025522C47ECCC002F1AD7;
-			remoteInfo = "JS Blocker Rules";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,7 +98,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				50B025602C47ECCC002F1AD7 /* JS Blocker Rules.appex in Embed Foundation Extensions */,
 				50B0251F2C47E404002F1AD7 /* JS Blocker Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -148,7 +124,6 @@
 		50875E2B2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50AD45142DACF6E500425467 /* RealTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimer.swift; sourceTree = "<group>"; };
 		50AD45192DAD17C600425467 /* ToolbarIcon-global.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarIcon-global.pdf"; sourceTree = "<group>"; };
 		50AD45202DAE59C300425467 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -167,11 +142,7 @@
 		50B0252D2C47E404002F1AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PopupTarget.xib; sourceTree = "<group>"; };
 		50B0252F2C47E404002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B025302C47E404002F1AD7 /* JS_Blocker_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Extension.entitlements; sourceTree = "<group>"; };
-		50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "JS Blocker Rules.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025552C47ECCC002F1AD7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		50B0255A2C47ECCC002F1AD7 /* RulesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesHandler.swift; sourceTree = "<group>"; };
-		50B0255C2C47ECCC002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Rules.entitlements; sourceTree = "<group>"; };
 		50E150B52DA96615005768C1 /* BlockingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingType.swift; sourceTree = "<group>"; };
 		50E150BF2DAA789B005768C1 /* PopupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupState.swift; sourceTree = "<group>"; };
 		50EB550F2CF9AAB400FC060C /* DomainRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRule.swift; sourceTree = "<group>"; };
@@ -200,14 +171,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50B025502C47ECCC002F1AD7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50B025562C47ECCC002F1AD7 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +209,6 @@
 				50EB55362CFDA50700FC060C /* Model */,
 				50B025042C47E401002F1AD7 /* JS Blocker */,
 				50B025222C47E404002F1AD7 /* JS Blocker Extension */,
-				50B025572C47ECCC002F1AD7 /* JS Blocker Rules */,
 				500D2D2B2D05972500551390 /* JS Blocker Tests */,
 				50B025542C47ECCC002F1AD7 /* Frameworks */,
 				50B025032C47E401002F1AD7 /* Products */,
@@ -258,7 +220,6 @@
 			children = (
 				50B025022C47E401002F1AD7 /* JS Blocker.app */,
 				50B0251E2C47E404002F1AD7 /* JS Blocker Extension.appex */,
-				50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */,
 				500D2D1B2D05929D00551390 /* JS Blocker Tests.xctest */,
 			);
 			name = Products;
@@ -313,17 +274,6 @@
 				50B025552C47ECCC002F1AD7 /* Cocoa.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		50B025572C47ECCC002F1AD7 /* JS Blocker Rules */ = {
-			isa = PBXGroup;
-			children = (
-				50B0255A2C47ECCC002F1AD7 /* RulesHandler.swift */,
-				50875E3B2C71F74100756D64 /* InfoPlist.xcstrings */,
-				50B0255C2C47ECCC002F1AD7 /* Info.plist */,
-				50B0255D2C47ECCC002F1AD7 /* JS_Blocker_Rules.entitlements */,
-			);
-			path = "JS Blocker Rules";
 			sourceTree = "<group>";
 		};
 		50EB55122CF9AAB400FC060C /* Components */ = {
@@ -392,7 +342,6 @@
 			);
 			dependencies = (
 				50B025212C47E404002F1AD7 /* PBXTargetDependency */,
-				50B0255F2C47ECCC002F1AD7 /* PBXTargetDependency */,
 			);
 			name = "JS Blocker";
 			productName = "JS Blocker";
@@ -416,23 +365,6 @@
 			productReference = 50B0251E2C47E404002F1AD7 /* JS Blocker Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		50B025522C47ECCC002F1AD7 /* JS Blocker Rules */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50B025632C47ECCC002F1AD7 /* Build configuration list for PBXNativeTarget "JS Blocker Rules" */;
-			buildPhases = (
-				50B0254F2C47ECCC002F1AD7 /* Sources */,
-				50B025502C47ECCC002F1AD7 /* Frameworks */,
-				50B025512C47ECCC002F1AD7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "JS Blocker Rules";
-			productName = "JS Blocker Rules";
-			productReference = 50B025532C47ECCC002F1AD7 /* JS Blocker Rules.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -453,9 +385,6 @@
 					50B0251D2C47E404002F1AD7 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					50B025522C47ECCC002F1AD7 = {
-						CreatedOnToolsVersion = 15.4;
-					};
 				};
 			};
 			buildConfigurationList = 50B024FD2C47E401002F1AD7 /* Build configuration list for PBXProject "JS Blocker" */;
@@ -474,7 +403,6 @@
 			targets = (
 				50B025012C47E401002F1AD7 /* JS Blocker */,
 				50B0251D2C47E404002F1AD7 /* JS Blocker Extension */,
-				50B025522C47ECCC002F1AD7 /* JS Blocker Rules */,
 				500D2D1A2D05929D00551390 /* JS Blocker Tests */,
 			);
 		};
@@ -517,14 +445,6 @@
 				50875E232C71F21C00756D64 /* Assets.xcassets in Resources */,
 				50EB551B2CF9AAB400FC060C /* Assets.xcassets in Resources */,
 				5064F9152D0D9AF500F26724 /* Localizable.xcstrings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50B025512C47ECCC002F1AD7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50875E3C2C71F74100756D64 /* InfoPlist.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,26 +518,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50B0254F2C47ECCC002F1AD7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50B0255B2C47ECCC002F1AD7 /* RulesHandler.swift in Sources */,
-				50E150B32DA93E59005768C1 /* App.swift in Sources */,
-				50AD45162DACF6E500425467 /* RealTimer.swift in Sources */,
-				500D2C582D058C8200551390 /* NSRegularExpression.swift in Sources */,
-				500D2C5C2D058D2E00551390 /* MessageType.swift in Sources */,
-				50875E142C71EE0D00756D64 /* String.swift in Sources */,
-				50E150B72DA96616005768C1 /* BlockingType.swift in Sources */,
-				50875E1C2C71EE1700756D64 /* SFSafariApplication.swift in Sources */,
-				50875E0F2C71E93A00756D64 /* WhiteDomains.swift in Sources */,
-				50E150B42DA94002005768C1 /* Message.swift in Sources */,
-				5019AA172C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
-				50AD45232DAE59C300425467 /* View.swift in Sources */,
-				50875E182C71EE1200756D64 /* NSTableView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -630,11 +530,6 @@
 			isa = PBXTargetDependency;
 			target = 50B0251D2C47E404002F1AD7 /* JS Blocker Extension */;
 			targetProxy = 50B025202C47E404002F1AD7 /* PBXContainerItemProxy */;
-		};
-		50B0255F2C47ECCC002F1AD7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 50B025522C47ECCC002F1AD7 /* JS Blocker Rules */;
-			targetProxy = 50B0255E2C47ECCC002F1AD7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -951,60 +846,6 @@
 			};
 			name = Release;
 		};
-		50B025612C47ECCC002F1AD7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "JS Blocker Rules/JS_Blocker_Rules.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
-				DEAD_CODE_STRIPPING = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JS Blocker Rules/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker: Rules";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024—2025 Maxim Rysevets. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "maxrys.js-blocker.rules";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		50B025622C47ECCC002F1AD7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "JS Blocker Rules/JS_Blocker_Rules.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
-				DEAD_CODE_STRIPPING = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JS Blocker Rules/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker: Rules";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024—2025 Maxim Rysevets. All rights reserved.";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "maxrys.js-blocker.rules";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1040,15 +881,6 @@
 			buildConfigurations = (
 				50B025382C47E404002F1AD7 /* Debug */,
 				50B025392C47E404002F1AD7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		50B025632C47ECCC002F1AD7 /* Build configuration list for PBXNativeTarget "JS Blocker Rules" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50B025612C47ECCC002F1AD7 /* Debug */,
-				50B025622C47ECCC002F1AD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

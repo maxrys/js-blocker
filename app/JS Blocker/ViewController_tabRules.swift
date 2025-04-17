@@ -58,17 +58,6 @@ class ViewController_tabRules: NSViewController {
         self.tableDomainsController.deleteItems(rowNums: self.tableDomains.selectedRowIndexes)
         self.tableDomainsController.updateData()
         self.tableDomainsController.updateView()
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: App.RULES_EXTENSION_NAME, completionHandler: { error in
-            if let error = error {
-                #if DEBUG
-                    print("onClick_buttonTableDomainsDelete(): Extension reload error = \(error.localizedDescription)")
-                #endif
-            } else {
-                #if DEBUG
-                    print("onClick_buttonTableDomainsDelete(): Extension has been reloaded.")
-                #endif
-            }
-        })
     }
 
 }
