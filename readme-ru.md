@@ -5,6 +5,7 @@
 ## Внешний вид
 
 ![основное всплывающее окно](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-1.png "основное всплывающее окно")
+![основное всплывающее окно](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-2.png "основное всплывающее окно")
 
 
 ## Описание
