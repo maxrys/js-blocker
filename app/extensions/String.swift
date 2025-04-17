@@ -12,7 +12,7 @@ extension String {
     }
 
     func deleteWwwPrefixIfExists() -> String {
-        if self.hasWwwPrefix() {
+        if (self.hasWwwPrefix()) {
             let from = self.index(self.startIndex, offsetBy: 4)
             return String(
                 self[from...]
@@ -22,8 +22,19 @@ extension String {
         }
     }
 
+    func domainNameParents() -> [String] {
+        var result: [String] = []
+        let nameParts = self.split(separator: ".")
+        for index in 1 ..< nameParts.count {
+            result.append(
+                nameParts[index...].joined(separator: ".")
+            )
+        }
+        return result
+    }
+
     func domainNameValidate() -> Bool {
-        if self.count < 1 || self.count > 63 || self.contains("..") || self.contains("---") {
+        if (self.count < 1 || self.count > 63 || self.contains("..") || self.contains("---")) {
             return false
         }
 
@@ -41,7 +52,7 @@ extension String {
 
         for part in parts {
             let regexMatches = regex.matches(in: String(part), range: NSRange(location: 0, length: part.count))
-            if regexMatches.count != 1 {
+            if (regexMatches.count != 1) {
                 return false
             }
         }
@@ -55,14 +66,14 @@ extension String {
             let regexMatches = regex.findRanges(string: string, rangeNames: ["ascii", "codes"])
             let ascii = regexMatches["ascii"] ?? ""
             let codes = regexMatches["codes"] ?? ""
-            if !codes.isEmpty {
-                let base        = 36  // base value for Punycode encoding, representing the number of valid characters
-                let tMin        = 1   // minimum threshold for the number of characters to be encoded
-                let tMax        = 26  // maximum threshold for the number of characters to be encoded
-                let damp        = 700 // damping factor used in the adaptation of the bias
-                let skew        = 38  // skew value used in the adaptation of the bias
-                var bias        = 72  // initial bias value for the encoding process
-                var newCharCode = 128 // initial value for the encoded characters
+            if (codes.isEmpty == false) {
+                let base        = 36  /* base value for Punycode encoding, representing the number of valid characters */
+                let tMin        = 1   /* minimum threshold for the number of characters to be encoded */
+                let tMax        = 26  /* maximum threshold for the number of characters to be encoded */
+                let damp        = 700 /* damping factor used in the adaptation of the bias */
+                let skew        = 38  /* skew value used in the adaptation of the bias */
+                var bias        = 72  /* initial bias value for the encoding process */
+                var newCharCode = 128 /* initial value for the encoded characters */
 
                 enum DivisionError: Error {
                     case divisionByZero
@@ -86,8 +97,8 @@ extension String {
                 let adaptBias = { (delta: Int, numberOfPoints: Int, firstTime: Bool) throws -> Int in
                     var delta = delta
                     var k = 0
-                    if firstTime {delta /= damp}
-                    else         {delta /= 2}
+                    if (firstTime) { delta /= damp }
+                    else           { delta /= 2 }
                     delta += delta / numberOfPoints
                     while delta > ((base - tMin) * tMax) / 2 {
                         delta /= base - tMin
@@ -115,7 +126,7 @@ extension String {
                             position += digit * weight
                             let t = k <= bias        ? tMin :
                                    (k >= bias + tMax ? tMax : k - bias)
-                            if digit < t {
+                            if (digit < t) {
                                 break
                             }
                             weight *= base - t
@@ -142,23 +153,23 @@ extension String {
                 }
 
                 let result = decodeCore(ascii, codes)
-                if result != nil && ascii == result! { // if no effects
+                if (result != nil && ascii == result!) { /* if no effects */
                     return string
                 }
                 return result ?? string
             }
-            // if no codes
+            /* if no codes */
             return string
         }
 
-        // main functionality
-        if self.contains("xn--") {
-            if self.contains(".") {
+        /* main functionality */
+        if (self.contains("xn--")) {
+            if (self.contains(".")) {
                 let parts = self.split(separator: ".")
                 var decodedResults: [String] = []
                 for part in parts {
-                    if part.contains("xn--") {decodedResults.append(decodePart(String(part)))}
-                    else                     {decodedResults.append(           String(part)) }
+                    if (part.contains("xn--")) { decodedResults.append(decodePart(String(part))) }
+                    else                       { decodedResults.append(           String(part))  }
                 }
                 return decodedResults.joined(
                     separator: "."
@@ -168,7 +179,7 @@ extension String {
             }
         }
 
-        // if no effects
+        /* if no effects */
         return self
     }
 

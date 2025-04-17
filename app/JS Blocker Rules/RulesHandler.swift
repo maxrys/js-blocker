@@ -8,17 +8,17 @@ import Foundation
 class RulesHandler: NSObject, NSExtensionRequestHandling {
 
     func beginRequest(with context: NSExtensionContext) {
-        var rules: [String] = []
+        var unlessDomains: [String] = []
 
         for domain in WhiteDomains.selectAll() {
-            if domain.withSubdomains == true {rules.append("*\(domain.name)")}
-            else                             {rules.append( "\(domain.name)")}
+            if (domain.withSubdomains == true) { unlessDomains.append("*\(domain.name)") }
+            else                               { unlessDomains.append( "\(domain.name)") }
         }
 
-        var result: Any = []
+        var JSONObject: Any = []
 
-        if !rules.isEmpty {
-            result = [[
+        if !unlessDomains.isEmpty {
+            JSONObject = [[
                 "action": [
                     "type": "block"
                 ],
@@ -26,11 +26,11 @@ class RulesHandler: NSObject, NSExtensionRequestHandling {
                     "url-filter": ".*",
                     "url-filter-is-case-sensitivity": true,
                     "resource-type": ["script"],
-                    "unless-domain": rules
+                    "unless-domain": unlessDomains
                 ]
             ]]
         } else {
-            result = [[
+            JSONObject = [[
                 "action": [
                     "type": "block"
                 ],
@@ -42,8 +42,8 @@ class RulesHandler: NSObject, NSExtensionRequestHandling {
             ]]
         }
 
-        let JSON = try! JSONSerialization.data(withJSONObject: result)
-        let attachment = NSItemProvider(item: JSON as NSSecureCoding?, typeIdentifier: "public.json")
+        let JSONData = try! JSONSerialization.data(withJSONObject: JSONObject)
+        let attachment = NSItemProvider(item: JSONData as NSSecureCoding?, typeIdentifier: "public.json")
         let item = NSExtensionItem()
         item.attachments = [attachment]
         context.completeRequest(returningItems: [item], completionHandler: nil)

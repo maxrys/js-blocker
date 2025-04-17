@@ -16,25 +16,25 @@ extension NSTableView {
 
         if (outlet.numberOfRows > rowCount) {
             outlet.removeRows(
-                at: IndexSet(rowCount..<outlet.numberOfRows)
+                at: IndexSet(rowCount ..< outlet.numberOfRows)
             )
         }
 
         if (outlet.numberOfRows < rowCount) {
             outlet.insertRows(
-                at: IndexSet(outlet.numberOfRows..<rowCount)
+                at: IndexSet(outlet.numberOfRows ..< rowCount)
             )
         }
 
         if isDeselectRows == true {
-            for rowNum in 0..<rowCount {
+            for rowNum in 0 ..< rowCount {
                 outlet.deselectRow(rowNum)
             }
         }
 
         outlet.reloadData(
-            forRowIndexes: IndexSet(0..<rowCount),
-            columnIndexes: IndexSet(0..<colCount)
+            forRowIndexes: IndexSet(0 ..< rowCount),
+            columnIndexes: IndexSet(0 ..< colCount)
         )
     }
 

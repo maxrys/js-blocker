@@ -20,7 +20,7 @@ class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTa
         WhiteDomains.context.reset()
         self.data = WhiteDomains.selectAll()
 
-        // first data fetch
+        /* first data fetch */
         if (self.dataHash == nil) {
             self.dataHash = WhiteDomains.hashSimpleCalculate(
                 domains: self.data
@@ -52,7 +52,7 @@ class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTa
     }
 
     func deleteItems(rowNums: IndexSet) {
-        if !rowNums.isEmpty {
+        if (rowNums.isEmpty == false) {
             var pKeys: [String] = []
             for rowNum in rowNums {
                 pKeys.append(

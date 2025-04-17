@@ -14,7 +14,7 @@ class ViewController_tabInstallation: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: ENV.APP_POPUP_EXTENSION_NAME, completionHandler: { (state, error) in
+        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: App.POPUP_EXTENSION_NAME, completionHandler: { (state, error) in
             guard let state = state, error == nil else {
                 #if DEBUG
                     print("viewWillAppear(): Extension state error = \(error!)")
@@ -22,24 +22,24 @@ class ViewController_tabInstallation: NSViewController {
                 return
             }
             Task {
-                if state.isEnabled == true {
+                if (state.isEnabled == true) {
                     self.labelExtensionState.stringValue = NSLocalizedString("JS Blocker Extension is enabled" , comment: "")
-                    self.boxExtensionState.fillColor = MessageState.ok.colorDescriptionBackground
-                    self.boxExtensionStateTitle.fillColor = MessageState.ok.colorTitleBackground
-                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageState.ok.colorTitleBackground
+                    self.boxExtensionState.fillColor = MessageType.ok.colorNSDescriptionBackground
+                    self.boxExtensionStateTitle.fillColor = MessageType.ok.colorNSTitleBackground
+                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageType.ok.colorNSTitleBackground
                 } else {
                     self.labelExtensionState.stringValue = NSLocalizedString("JS Blocker Extension is disabled", comment: "")
-                    self.boxExtensionState.fillColor = MessageState.error.colorDescriptionBackground
-                    self.boxExtensionStateTitle.fillColor = MessageState.error.colorTitleBackground
-                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageState.error.colorTitleBackground
+                    self.boxExtensionState.fillColor = MessageType.error.colorNSDescriptionBackground
+                    self.boxExtensionStateTitle.fillColor = MessageType.error.colorNSTitleBackground
+                    self.buttonOpenSafariExtensionsPreferences.bezelColor = MessageType.error.colorNSTitleBackground
                 }
             }
         })
     }
 
-    @IBAction func onClick_buttonOpenSafariExtensionsPreferences(_ sender: NSButtonCell) {
+    @IBAction func onClick_buttonOpenSafariExtensionsPreferences(_ sender: NSButton) {
         SFSafariApplication.showPreferencesForExtension(
-            withIdentifier: ENV.APP_POPUP_EXTENSION_NAME
+            withIdentifier: App.POPUP_EXTENSION_NAME
         )
     }
 

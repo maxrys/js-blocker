@@ -9,17 +9,17 @@ struct JS_Blocker_Tests {
 
     @Test func domainNameValidate() async throws {
         let domainNames = [
-            "0"                                 : true, // local DNS
-            "x"                                 : true, // local DNS
-            "domain"                            : true, // local DNS
-            "sub3.sub2.sub1.d--o--m--a--i--n"   : true, // local DNS
+            "0"                                 : true, /* local DNS */
+            "x"                                 : true, /* local DNS */
+            "domain"                            : true, /* local DNS */
+            "sub3.sub2.sub1.d--o--m--a--i--n"   : true, /* local DNS */
             "sub3.sub2.sub1.d--o--m--a--i--n.by": true,
             "x.com"                             : true,
             "0.x.com"                           : true,
             "127.0.0.1"                         : true,
-            "x.127.0.0.1"                       : true, // local DNS
-            "0.127.0.0.1"                       : true, // local DNS
-         // ============================================
+            "x.127.0.0.1"                       : true, /* local DNS */
+            "0.127.0.0.1"                       : true, /* local DNS */
+         /* ============================================ */
             ""                                  : false,
             "-"                                 : false,
             "."                                 : false,
@@ -50,13 +50,13 @@ struct JS_Blocker_Tests {
             "xn--80acde"                 : "абвг"         ,
             "abcd"                       : "abcd"         ,
             "xn--abcd-u8d"               : "ёabcd"        ,
-            "xn--"                       : "xn--"         , // wrong by syntax (ascii part = n/a, codes part = n/a)
-            "xn---"                      : "xn---"        , // wrong by syntax (ascii part = n/a, codes part = n/a)
-            "xn--y"                      : "xn--y"        , // wrong by value
-            "xn----"                     : "xn----"       , // wrong by syntax (ascii part = "-", codes part = n/a)
-            "xn--y-"                     : "xn--y-"       , // wrong by syntax (ascii part = "y", codes part = n/a)
-            "xn---y"                     : "xn---y"       , // wrong by syntax (ascii part = n/a, codes part = "y")
-            "xn--y-z"                    : "xn--y-z"      , // wrong by value
+            "xn--"                       : "xn--"         , /* wrong by syntax (ascii part = n/a, codes part = n/a) */
+            "xn---"                      : "xn---"        , /* wrong by syntax (ascii part = n/a, codes part = n/a) */
+            "xn--y"                      : "xn--y"        , /* wrong by value */
+            "xn----"                     : "xn----"       , /* wrong by syntax (ascii part = "-", codes part = n/a) */
+            "xn--y-"                     : "xn--y-"       , /* wrong by syntax (ascii part = "y", codes part = n/a) */
+            "xn---y"                     : "xn---y"       , /* wrong by syntax (ascii part = n/a, codes part = "y") */
+            "xn--y-z"                    : "xn--y-z"      , /* wrong by value */
             "xn--abcd-v8d"               : "aёbcd"        ,
             "xn--abcd-w8d"               : "abёcd"        ,
             "xn--abcd-x8d"               : "abcёd"        ,
@@ -101,9 +101,9 @@ struct JS_Blocker_Tests {
             "j", "t",      "9",
         ]
 
-        for _ in 0...100 {
+        for _ in 0 ... 100 {
             var word = ""
-            for _ in 0...Int.random(in: 3..<65) {
+            for _ in 0 ... Int.random(in: 3 ..< 65) {
                 word += symbols.randomElement()!
             }
             print(

@@ -7,6 +7,12 @@ import SwiftUI
 
 struct RoundButton: View {
 
+    static let COLORNAME_TEXT          = "color Button Text"
+    static let COLORNAME_BLUE_TOP      = "color Button Blue Top"
+    static let COLORNAME_BLUE_BOTTOM   = "color Button Blue Bottom"
+    static let COLORNAME_VIOLET_TOP    = "color Button Violet Top"
+    static let COLORNAME_VIOLET_BOTTOM = "color Button Violet Bottom"
+
     enum Colors {
 
         case violet
@@ -14,15 +20,15 @@ struct RoundButton: View {
 
         var colorTop: Color {
             switch self {
-                case .violet: return Color(ENV.COLORNAME_BUTTON_VIOLET_TOP)
-                case .blue  : return Color(ENV.COLORNAME_BUTTON_BLUE_TOP)
+                case .violet: return Color(COLORNAME_VIOLET_TOP)
+                case .blue  : return Color(COLORNAME_BLUE_TOP)
             }
         }
 
         var colorBottom: Color {
             switch self {
-                case .violet: return Color(ENV.COLORNAME_BUTTON_VIOLET_BOTTOM)
-                case .blue  : return Color(ENV.COLORNAME_BUTTON_BLUE_BOTTOM)
+                case .violet: return Color(COLORNAME_VIOLET_BOTTOM)
+                case .blue  : return Color(COLORNAME_BLUE_BOTTOM)
             }
         }
     }
@@ -39,7 +45,7 @@ struct RoundButton: View {
             self.onClick()
         } label: {
             Text(NSLocalizedString(self.title, comment: ""))
-                .color(Color(ENV.COLORNAME_BUTTON_TEXT))
+                .color(Color(Self.COLORNAME_TEXT))
                 .padding(11)
                 .frame(minWidth: self.minWidth)
                 .background(
@@ -52,14 +58,15 @@ struct RoundButton: View {
                             )
                         )
                 )
-        }.buttonStyle(.plain)
-         .disabled(!self.isEnabled)
-         .onHover { isInView in
-             if self.isEnabled {
-                 if isInView {NSCursor.pointingHand.push()}
-                 else        {NSCursor.pop()}
-             }   else        {NSCursor.pop()}
-         }
+        }
+        .buttonStyle(.plain)
+        .disabled(!self.isEnabled)
+        .onHover { isInView in
+            if (self.isEnabled) {
+                if (isInView) { NSCursor.pointingHand.push() }
+                else          { NSCursor.pop() }
+            }   else          { NSCursor.pop() }
+        }
 
     }
 }

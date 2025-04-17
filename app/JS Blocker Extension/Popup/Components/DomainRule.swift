@@ -7,19 +7,25 @@ import SwiftUI
 
 struct DomainRule: View {
 
+    static let COLORNAME_BACKGROUND    = "color Domain Background"
+    static let COLORNAME_BORDER        = "color Domain Border"
+    static let COLORNAME_BORDER_ACTIVE = "color Domain Border Active"
+    static let COLORNAME_NAME          = "color Domain Name"
+    static let COLORNAME_NAME_ACTIVE   = "color Domain Name Active"
+
     var colorDomainName: Color {
-        if self.ruleIsActive {return Color(ENV.COLORNAME_DOMAIN_NAME_ACTIVE)}
-        else                 {return Color(ENV.COLORNAME_DOMAIN_NAME)}
+        if (self.ruleIsActive) { return Color(Self.COLORNAME_NAME_ACTIVE) }
+        else                   { return Color(Self.COLORNAME_NAME) }
     }
 
     var colorBackground: Color {
-        if self.ruleIsActive {return Color(ENV.COLORNAME_DOMAIN_BACKGROUND)}
-        else                 {return Color(ENV.COLORNAME_DOMAIN_BACKGROUND)}
+        if (self.ruleIsActive) { return Color(Self.COLORNAME_BACKGROUND) }
+        else                   { return Color(Self.COLORNAME_BACKGROUND) }
     }
 
     var colorBorder: Color {
-        if self.ruleIsActive {return Color(ENV.COLORNAME_DOMAIN_BORDER_ACTIVE)}
-        else                 {return Color(ENV.COLORNAME_DOMAIN_BORDER)}
+        if (self.ruleIsActive) { return Color(Self.COLORNAME_BORDER_ACTIVE) }
+        else                   { return Color(Self.COLORNAME_BORDER) }
     }
 
     var title: String
@@ -33,11 +39,11 @@ struct DomainRule: View {
 
         VStack(spacing: 13) {
 
-            // Title
+            /* MARK: Title */
             Text(NSLocalizedString(self.title, comment: ""))
                 .font(.system(size: 14, weight: .bold))
 
-            // Domain name
+            /* MARK: Domain name */
             VStack (spacing: 6) {
                 if self.rules.count > 0 {
                     ForEach(self.rules, id: \.self) { rule in
@@ -50,24 +56,26 @@ struct DomainRule: View {
                         .font(.system(size: 12, weight: .bold))
                         .color(self.colorDomainName)
                 }
-            }.padding(13)
-             .frame(maxWidth: .infinity)
-             .background(self.colorBackground)
-             .cornerRadius(12) // make the background rounded
-             .overlay( // apply a rounded border
-                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(self.colorBorder, lineWidth: 2)
-             )
+            }
+            .padding(13)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                   .stroke(self.colorBorder, lineWidth: 4)
+                   .background(self.colorBackground)
+                   .clipShape(.rect(cornerRadius: 12))
+            )
 
-            // Button "allow"
+            /* MARK: Button "allow" */
             RoundButton(
                 title    : self.buttonTitle,
                 isEnabled: self.buttonIsEnabled,
                 onClick  : self.buttonOnClick
             )
 
-        }.padding(20)
-         .frame(maxWidth: .infinity)
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity)
 
     }
 
@@ -94,7 +102,7 @@ struct DomainRule: View {
             buttonOnClick: {
                 print("onClick: DomainRule #2")
             }
-        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+        ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
 
         DomainRule(
             title: "JavaScript on the Domain",
@@ -112,9 +120,9 @@ struct DomainRule: View {
             buttonOnClick: {
                 print("onClick: DomainRule #4")
             }
-        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+        ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
 
-    }.frame(width: 450, height: 670)
+    }.frame(width: 300, height: 670)
 }
 
 #Preview {
@@ -138,7 +146,7 @@ struct DomainRule: View {
             buttonOnClick: {
                 print("onClick: DomainRule #2")
             }
-        ).background(Color(ENV.COLORNAME_PAGE_FOOT_BACKGROUND))
+        ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
 
         DomainRule(
             title: "JavaScript on the Domain",
@@ -150,5 +158,5 @@ struct DomainRule: View {
             }
         )
 
-    }.frame(width: 450, height: 670)
+    }.frame(width: 300, height: 550)
 }

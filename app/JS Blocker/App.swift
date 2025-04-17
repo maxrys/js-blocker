@@ -5,14 +5,12 @@
 
 import Cocoa
 
-@main
-class App: NSObject, NSApplicationDelegate {
+@main class App: NSObject, NSApplicationDelegate {
 
-    func applicationDidBecomeActive(_ notification: Notification) {
-    }
-
-    func applicationDidFinishLaunching(_ notification: Notification) {
-    }
+    static let GROUP_NAME           = "97CZR6J379.maxrys.js-blocker"
+    static let NAME                 = "maxrys.js-blocker"
+    static let POPUP_EXTENSION_NAME = "maxrys.js-blocker.extension"
+    static let RULES_EXTENSION_NAME = "maxrys.js-blocker.rules"
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true

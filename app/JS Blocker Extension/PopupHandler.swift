@@ -26,7 +26,7 @@ class PopupHandler: SFSafariExtensionHandler {
                     let domainName = properties?.url?.host
                     let fromDomain = userInfo?["fromDomain"] ?? ""
 
-                    if domainName != nil {
+                    if (domainName != nil) {
 
                         let domainHasParents = WhiteDomains.selectParents(name: domainName!).isEmpty == false
                         let (state, _)       = WhiteDomains.blockingStateInfoGet(
@@ -94,9 +94,9 @@ class PopupHandler: SFSafariExtensionHandler {
                                 domainName: domainName!
                             )
 
-                            if state.isAllowed
-                                 {toolbarItem?.setImage(iconActive)}
-                            else {toolbarItem?.setImage(icon)}
+                            if (state.isAllowed)
+                                 { toolbarItem?.setImage(iconActive) }
+                            else { toolbarItem?.setImage(icon) }
                         }
 
                     })
@@ -106,16 +106,16 @@ class PopupHandler: SFSafariExtensionHandler {
     }
 
     override func popoverWillShow(in window: SFSafariWindow) {
-        // when: info.plist → SFSafariToolbarItem → Action = Popover
+        /* when: info.plist → SFSafariToolbarItem → Action = Popover */
     }
 
     override func popoverViewController() -> SFSafariExtensionViewController {
-        // when: info.plist → SFSafariToolbarItem → Action = Popover
+        /* when: info.plist → SFSafariToolbarItem → Action = Popover */
         return PopupViewController.shared
     }
 
     override func toolbarItemClicked(in window: SFSafariWindow) {
-        // when: info.plist → SFSafariToolbarItem → Action = Command
+        /* when: info.plist → SFSafariToolbarItem → Action = Command */
     }
 
 }

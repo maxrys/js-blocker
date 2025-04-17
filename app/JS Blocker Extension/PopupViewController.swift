@@ -10,34 +10,27 @@ class PopupViewController: SFSafariExtensionViewController {
 
     static var pageCurrent: SFSafariPage?
     static var domainNameCurrent: String?
-    static var popupStateModel = PopupStateModel(
-        ruleForDomain: nil,
-        ruleForParent: nil,
-        ruleForDomain_isActive: false,
-        ruleForParent_isActive: false,
-        ruleForDomain_isEnabled: false,
-        ruleForParent_isEnabled: false,
-        ruleCancel_isEnabled: false,
-        messages: []
-    )
+    static var popupState = PopupState()
 
     static let shared: PopupViewController = {
         return PopupViewController()
     }()
 
     static var popupShared: Popup = {
-        return Popup(stateModel: popupStateModel)
+        return Popup(
+            state: PopupViewController.popupState
+        )
     }()
 
-    var popupHost: NSHostingController<Popup>? = nil
-    var popupView: NSView? = nil
+    var popupView: NSView!
+
+    /* ###################################################################### */
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.popupHost = NSHostingController(rootView: PopupViewController.popupShared)
-        self.popupView = self.popupHost!.view
-        self.view.addSubview(self.popupView!)
+        self.popupView = NSHostingController(rootView: Self.popupShared).view
+        self.view.addSubview(self.popupView)
 
         #if DEBUG
             print("viewDidLoad(): DB path = \(WhiteDomains.storeURL)")
@@ -48,7 +41,7 @@ class PopupViewController: SFSafariExtensionViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        PopupViewController.formUpdate()
+        Self.formUpdate()
 
         #if DEBUG
             print("viewWillAppear()")
@@ -58,17 +51,19 @@ class PopupViewController: SFSafariExtensionViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
-        self.popupView!.frame     = CGRect(x: 0, y: 0, width: Int(self.popupView!.intrinsicContentSize.width), height: Int(self.popupView!.intrinsicContentSize.height))
-        self.preferredContentSize = CGSize(            width: Int(self.popupView!.intrinsicContentSize.width), height: Int(self.popupView!.intrinsicContentSize.height))
+        self.popupView.frame      = CGRect(x: 0, y: 0, width: Int(self.popupView.intrinsicContentSize.width), height: Int(self.popupView.intrinsicContentSize.height))
+        self.preferredContentSize = CGSize(            width: Int(self.popupView.intrinsicContentSize.width), height: Int(self.popupView.intrinsicContentSize.height))
 
         #if DEBUG
             print("viewDidAppear()")
         #endif
     }
 
-    static func messageShow(title: String, description: String, type: Message.MessageType = .info) {
-        popupStateModel.messages.removeAll()
-        popupStateModel.messages.append(
+    /* ###################################################################### */
+
+    static func messageShow(title: String, description: String, type: MessageType = .info) {
+        Self.popupState.messages.removeAll()
+        Self.popupState.messages.append(
             MessageInfo(
                 title: title,
                 description: description,
@@ -78,70 +73,62 @@ class PopupViewController: SFSafariExtensionViewController {
     }
 
     static func messageHide() {
-        popupStateModel.messages.removeAll()
+        Self.popupState.messages.removeAll()
     }
 
-    // ######################################################################
+    /* ###################################################################### */
 
     static func formUpdate() {
-        popupStateModel.ruleForDomain = nil
-        popupStateModel.ruleForParent = nil
-        popupStateModel.ruleForDomain_isActive = false
-        popupStateModel.ruleForParent_isActive = false
-        popupStateModel.ruleForDomain_isEnabled = false
-        popupStateModel.ruleForParent_isEnabled = false
-        popupStateModel.ruleCancel_isEnabled = false
-        messageHide()
+        Self.popupState.reset()
 
-        if let domainName = domainNameCurrent {
-            let rule                =        domainName.decodePunycode()
-            let ruleForParentDomain = "*." + domainName.decodePunycode().deleteWwwPrefixIfExists()
-            let (state, _)          = WhiteDomains.blockingStateInfoGet(domainName: domainName)
+        if let domainName = Self.domainNameCurrent {
+            let rule          =        domainName.decodePunycode()
+            let ruleForGlobal = "*." + domainName.decodePunycode().deleteWwwPrefixIfExists()
+            let (state, _)    = WhiteDomains.blockingStateInfoGet(domainName: domainName)
+            let domainParents = WhiteDomains.selectParents(
+                name: domainName.deleteWwwPrefixIfExists()
+            )
 
-            popupStateModel.ruleForDomain = rule
-            popupStateModel.ruleForParent = ruleForParentDomain
+            Self.popupState.rulesForLocal  = [rule]
+            Self.popupState.rulesForGlobal = [ruleForGlobal]
 
-            // special case for "www.domain" (rule: "*.domain") if exists rule for "domain" (rule: "domain")
+            /* special case for "www.domain" (rule: "*.domain") if exists rule for "domain" (rule: "domain") */
             var hasMirror: Bool? = nil
-            if domainName.hasWwwPrefix() {
-                if let noWwwDomainInfo = WhiteDomains.selectByName(name: domainName.deleteWwwPrefixIfExists()), noWwwDomainInfo.withSubdomains == false {
+            if (domainName.hasWwwPrefix()) {
+                if let noWwwDomainInfo = WhiteDomains.selectByName(domainName.deleteWwwPrefixIfExists()), noWwwDomainInfo.withSubdomains == false {
                     hasMirror = true
                 }
             }
 
             switch state {
-                case .domain:
-                    popupStateModel.ruleForDomain_isActive = true
-                    popupStateModel.ruleForParent_isActive = false
-                    popupStateModel.ruleForDomain_isEnabled = false
-                    popupStateModel.ruleForParent_isEnabled = false
-                    popupStateModel.ruleCancel_isEnabled = true
-                case .domainWithSubdomains:
-                    popupStateModel.ruleForDomain_isActive = false
-                    popupStateModel.ruleForParent_isActive = true
-                    popupStateModel.ruleForDomain_isEnabled = false
-                    popupStateModel.ruleForParent_isEnabled = false
-                    popupStateModel.ruleCancel_isEnabled = true
-                case .nothing:
-                    popupStateModel.ruleForDomain_isActive = false
-                    popupStateModel.ruleForParent_isActive = false
-                    popupStateModel.ruleForDomain_isEnabled = true
-                    popupStateModel.ruleForParent_isEnabled = hasMirror == true ? false : true
-                    popupStateModel.ruleCancel_isEnabled = false
+                case .local:
+                    Self.popupState.isActiveLocalRule = true
+                    Self.popupState.isActiveGlobalRule = false
+                    Self.popupState.isEnabledLocalRule = false
+                    Self.popupState.isEnabledGlobalRule = false
+                    Self.popupState.isEnabledRuleCancel = true
+                case .global:
+                    Self.popupState.isActiveLocalRule = false
+                    Self.popupState.isActiveGlobalRule = true
+                    Self.popupState.isEnabledLocalRule = false
+                    Self.popupState.isEnabledGlobalRule = false
+                    Self.popupState.isEnabledRuleCancel = true
+                case .none:
+                    Self.popupState.isActiveLocalRule = false
+                    Self.popupState.isActiveGlobalRule = false
+                    Self.popupState.isEnabledLocalRule = true
+                    Self.popupState.isEnabledGlobalRule = hasMirror == true ? false : true
+                    Self.popupState.isEnabledRuleCancel = false
             }
 
-            let domainParents = WhiteDomains.selectParents(
-                name: domainName.deleteWwwPrefixIfExists()
-            )
-
-            if !domainParents.isEmpty {
+            if (!domainParents.isEmpty) {
                 var parents: [String] = []
                 for parent in domainParents {
                     parents.append(
                         "*.\(parent.name)"
                     )
                 }
-                messageShow(
+                Self.messageShow(
                     title: NSLocalizedString("Inherited permissions detected from:", comment: ""),
                     description: parents.joined(separator: " | ")
                 )
@@ -150,7 +137,7 @@ class PopupViewController: SFSafariExtensionViewController {
     }
 
     static func pageUpdate() {
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: ENV.APP_RULES_EXTENSION_NAME, completionHandler: { error in
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: App.RULES_EXTENSION_NAME, completionHandler: { error in
             if let error = error {
                 #if DEBUG
                     print("pageUpdate(): Extension reload error = \(error.localizedDescription)")
@@ -159,11 +146,11 @@ class PopupViewController: SFSafariExtensionViewController {
                 #if DEBUG
                     print("pageUpdate(): Extension has been reloaded.")
                 #endif
-                if let page       = pageCurrent,
-                   let domainName = domainNameCurrent {
-                       let domainHasParents = WhiteDomains.selectParents(name: domainName).isEmpty == false
-                       let (state, _) = WhiteDomains.blockingStateInfoGet(domainName: domainName)
-                       page.dispatchMessageToScript(
+                if let page       = Self.pageCurrent,
+                   let domainName = Self.domainNameCurrent {
+                        let domainHasParents = WhiteDomains.selectParents(name: domainName).isEmpty == false
+                        let (state, _) = WhiteDomains.blockingStateInfoGet(domainName: domainName)
+                        page.dispatchMessageToScript(
                            withName: "reloadPageMsg",
                            userInfo: [
                                "timestamp": Date().timeIntervalSince1970,
@@ -180,16 +167,16 @@ class PopupViewController: SFSafariExtensionViewController {
         })
     }
 
-    // ######################################################################
+    /* ###################################################################### */
 
     static func onClick_buttonRuleInsert() {
-        if let domainName = domainNameCurrent {
+        if let domainName = Self.domainNameCurrent {
             WhiteDomains.insert(
                 name: domainName,
                 withSubdomains: false
             )
-            formUpdate()
-            pageUpdate()
+            Self.formUpdate()
+            Self.pageUpdate()
             #if DEBUG
                 print("onClick_buttonRuleInsert()")
                 WhiteDomains.dump()
@@ -198,14 +185,14 @@ class PopupViewController: SFSafariExtensionViewController {
     }
 
     static func onClick_buttonRuleInsertWithSubdomains() {
-        if let domainName = domainNameCurrent {
+        if let domainName = Self.domainNameCurrent {
             WhiteDomains.insert(
                 name: domainName.deleteWwwPrefixIfExists(),
                 withSubdomains: true,
                 skippedWww: domainName.hasWwwPrefix()
             )
-            formUpdate()
-            pageUpdate()
+            Self.formUpdate()
+            Self.pageUpdate()
             #if DEBUG
                 print("onClick_buttonRuleInsertWithSubdomains()")
                 WhiteDomains.dump()
@@ -214,19 +201,19 @@ class PopupViewController: SFSafariExtensionViewController {
     }
 
     static func onClick_buttonRuleDelete() {
-        if let domainName = domainNameCurrent {
-            if let domainInfo = WhiteDomains.selectByName(name: domainName) {
+        if let domainName = Self.domainNameCurrent {
+            if let domainInfo = WhiteDomains.selectByName(domainName) {
                 domainInfo.delete()
-                formUpdate()
-                pageUpdate()
+                Self.formUpdate()
+                Self.pageUpdate()
                 #if DEBUG
                     print("onClick_buttonRuleDelete()")
                     WhiteDomains.dump()
                 #endif
-            } else if let domainInfo = WhiteDomains.selectByName(name: domainName.deleteWwwPrefixIfExists()) {
+            } else if let domainInfo = WhiteDomains.selectByName(domainName.deleteWwwPrefixIfExists()) {
                 domainInfo.delete()
-                formUpdate()
-                pageUpdate()
+                Self.formUpdate()
+                Self.pageUpdate()
                 #if DEBUG
                     print("onClick_buttonRuleDelete()")
                     WhiteDomains.dump()
