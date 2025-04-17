@@ -82,11 +82,11 @@ class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTa
         }
 
         switch columnIDText {
-            case "name"                                              : cell.textField!.stringValue = domain.name
-            case "nameDecoded"                                       : cell.textField!.stringValue = domain.nameDecoded
-            case "withSubdomains" where domain.withSubdomains == true: cell.textField!.stringValue = NSLocalizedString("yes", comment: "")
-            case "withSubdomains" where domain.withSubdomains != true: cell.textField!.stringValue = NSLocalizedString("no" , comment: "")
-            default                                                  : return nil
+            case "name"                                        : cell.textField!.stringValue = domain.name
+            case "nameDecoded"                                 : cell.textField!.stringValue = domain.nameDecoded
+            case "withSubdomains" where domain.isGlobal == true: cell.textField!.stringValue = NSLocalizedString("yes", comment: "")
+            case "withSubdomains" where domain.isGlobal != true: cell.textField!.stringValue = NSLocalizedString("no" , comment: "")
+            default                                            : return nil
         }
 
         return cell

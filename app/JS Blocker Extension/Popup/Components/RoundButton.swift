@@ -72,7 +72,7 @@ struct RoundButton: View {
 }
 
 #Preview {
-    VStack {
+    VStack(spacing: 10) {
 
         RoundButton(
             title: "allow",

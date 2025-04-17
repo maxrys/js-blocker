@@ -10,10 +10,15 @@ struct Popup: View {
 
     static let COLORNAME_BODY_BACKGROUND = "color Popup Body Background"
     static let COLORNAME_FOOT_BACKGROUND = "color Popup Foot Background"
+    static let COLORNAME_BUTTON_SETTINGS = "color Button Settings"
 
+    static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
+    static let FRAME_WIDTH: CGFloat = 450
+
+    @Environment(\.openURL) private var openURL
     @ObservedObject var state: PopupState
 
-    var frameSizeWidth: CGFloat = 450
+    var frameWidth: CGFloat = Self.FRAME_WIDTH
 
     var body: some View {
         VStack(spacing: 0) {
@@ -36,16 +41,36 @@ struct Popup: View {
 
             VStack(spacing: 0) {
 
-                /* MARK: JavaScript on the Domain */
-                DomainRule(
-                    title: "JavaScript on the Domain",
-                    rules:           self.state.rulesForLocal,
-                    ruleIsActive:    self.state.isActiveLocalRule,
-                    buttonIsEnabled: self.state.isEnabledLocalRule,
-                    buttonOnClick: {
-                        PopupViewController.onClick_buttonRuleInsert()
+                ZStack(alignment: .topTrailing) {
+                    /* MARK: JavaScript on the Domain */
+                    DomainRule(
+                        title: "JavaScript on the Domain",
+                        rules:           self.state.rulesForLocal,
+                        ruleIsActive:    self.state.isActiveLocalRule,
+                        buttonIsEnabled: self.state.isEnabledLocalRule,
+                        selectedDefault: self.state.indecesForLocal,
+                        buttonOnClick: { _ in
+                            PopupViewController.onClick_buttonRuleLocalInsert()
+                        }
+                    )
+                    /* MARK: Button "Settings" */
+                    Button {
+                        openURL(
+                            URL(string: "jsBlocker://")!
+                        )
+                    } label: {
+                        Self.ICON_SETTINGS
+                            .font(.system(size: 20))
+                            .color(Color(Self.COLORNAME_BUTTON_SETTINGS))
                     }
-                )
+                    .buttonStyle(.plain)
+                    .padding(.trailing, 10)
+                    .onHover { isInView in
+                        if (isInView) { NSCursor.pointingHand.push() }
+                        else          { NSCursor.pop() }
+                    }
+                    .focusable(false)
+                }
 
                 /* MARK: JavaScript on the Domain + Subdomains */
                 DomainRule(
@@ -53,12 +78,16 @@ struct Popup: View {
                     rules:           self.state.rulesForGlobal,
                     ruleIsActive:    self.state.isActiveGlobalRule,
                     buttonIsEnabled: self.state.isEnabledGlobalRule,
-                    buttonOnClick: {
-                        PopupViewController.onClick_buttonRuleInsertWithSubdomains()
+                    selectedDefault: self.state.indecesForGLobal,
+                    buttonOnClick: { indeces in
+                        PopupViewController.onClick_buttonRuleGlobalInsert(
+                            indeces: indeces
+                        )
                     }
                 )
 
             }
+            .padding(.vertical, 11)
             .frame(maxWidth: .infinity)
             .background(Color(Self.COLORNAME_BODY_BACKGROUND))
 
@@ -79,126 +108,49 @@ struct Popup: View {
                 )
 
             }
-            .padding(30)
+            .padding(31)
             .frame(maxWidth: .infinity)
             .background(Color(Self.COLORNAME_FOOT_BACKGROUND))
 
-        }.frame(width: self.frameSizeWidth)
+        }
+        .frame(width: self.frameWidth)
+        .environment(\.layoutDirection, .leftToRight)
     }
 }
 
 #Preview {
-    VStack() {
+    VStack(spacing: 30) {
 
         Popup(
             state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
+                rulesForLocal: ["example.com"],
                 rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: true,
-                isActiveGlobalRule: true,
+                isActiveLocalRule: false,
+                isActiveGlobalRule: false,
                 isEnabledLocalRule: true,
                 isEnabledGlobalRule: true,
+                isEnabledRuleCancel: false
+            )
+        )
+
+        Popup(
+            state: PopupState(
+                rulesForLocal: ["sub3.sub2.sub1.example.com"],
+                rulesForGlobal: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
+                isActiveLocalRule: false,
+                isActiveGlobalRule: true,
+                isEnabledLocalRule: false,
+                isEnabledGlobalRule: false,
                 isEnabledRuleCancel: true,
+                indecesForGLobal: [0],
                 messages: [
                     MessageInfo(
-                        title: "Title",
-                        description: "Description",
+                        title: "Rules were applied successfully.",
+                        description: "",
                         type: .ok
                     )
                 ]
-            ),
-            frameSizeWidth: 300
-        )
-
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: false,
-                isEnabledLocalRule: false,
-                isEnabledGlobalRule: false,
-                isEnabledRuleCancel: false,
-                messages: [
-                    MessageInfo(
-                        title: "Title",
-                        description: "Description",
-                        type: .error
-                    )
-                ]
-            ),
-            frameSizeWidth: 300
-        )
-
-    }
-}
-
-#Preview {
-    VStack(spacing: 50) {
-
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: true,
-                isActiveGlobalRule: false,
-                isEnabledLocalRule: false,
-                isEnabledGlobalRule: false,
-                isEnabledRuleCancel: false
-            ),
-            frameSizeWidth: 300
-        )
-
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: true,
-                isEnabledLocalRule: false,
-                isEnabledGlobalRule: false,
-                isEnabledRuleCancel: false
-            ),
-            frameSizeWidth: 300
-        )
-
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: false,
-                isEnabledLocalRule: true,
-                isEnabledGlobalRule: false,
-                isEnabledRuleCancel: false
-            ),
-            frameSizeWidth: 300
-        )
-
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: false,
-                isEnabledLocalRule: false,
-                isEnabledGlobalRule: true,
-                isEnabledRuleCancel: false
-            ),
-            frameSizeWidth: 300
-        )
-
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["subdomain.example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: false,
-                isEnabledLocalRule: false,
-                isEnabledGlobalRule: false,
-                isEnabledRuleCancel: true
-            ),
-            frameSizeWidth: 300
+            )
         )
 
     }

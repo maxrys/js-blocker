@@ -7,6 +7,10 @@ import SafariServices
 
 class PopupHandler: SFSafariExtensionHandler {
 
+    static let ICON_LOCAL  = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-local" , ofType: "pdf")!)
+    static let ICON_GLOBAL = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-global", ofType: "pdf")!)
+    static let ICON_NONE   = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-none"  , ofType: "pdf")!)
+
     override func beginRequest(with context: NSExtensionContext) {
     }
 
@@ -20,29 +24,22 @@ class PopupHandler: SFSafariExtensionHandler {
     override func messageReceived(withName message: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         page.getPropertiesWithCompletionHandler({ properties in
             switch message {
-                case "isJSAllowedMsg",
-                     "reloadPageIfUpdatedMsg":
+                case "isJSAllowedMsg", "reloadPageIfUpdatedMsg":
 
                     let domainName = properties?.url?.host
                     let fromDomain = userInfo?["fromDomain"] ?? ""
 
                     if (domainName != nil) {
-
-                        let domainHasParents = WhiteDomains.selectParents(name: domainName!).isEmpty == false
-                        let (state, _)       = WhiteDomains.blockingStateInfoGet(
-                            domainName: domainName!
-                        )
-
+                        let state = WhiteDomains.blockingState(name: domainName!)
                         page.dispatchMessageToScript(
                             withName: message,
                             userInfo: [
                                 "timestamp" : Date().timeIntervalSince1970,
                                 "fromDomain": fromDomain,
                                 "domain"    : domainName!,
-                                "result"    : state.isAllowed || domainHasParents
+                                "result"    : state.isAllowed
                             ]
                         )
-
                     } else {
                         page.dispatchMessageToScript(
                             withName: message,
@@ -76,27 +73,27 @@ class PopupHandler: SFSafariExtensionHandler {
             window.getActiveTab(completionHandler: { tab in
                 tab?.getActivePage(completionHandler: { page in
                     page?.getPropertiesWithCompletionHandler({ properties in
+
                         let domainName = properties?.url?.host
 
                         validationHandler(
                             domainName != nil, ""
                         )
 
-                        PopupViewController.pageCurrent       = page
-                        PopupViewController.domainNameCurrent = domainName
-
-                        if (domainName != nil) {
-                            let iconPath       = Bundle.main.path(forResource: "ToolbarItemIcon"       , ofType: "pdf")!
-                            let iconActivePath = Bundle.main.path(forResource: "ToolbarItemIcon-active", ofType: "pdf")!
-                            let icon           = NSImage(contentsOfFile: iconPath)
-                            let iconActive     = NSImage(contentsOfFile: iconActivePath)
-                            let (state, _)     = WhiteDomains.blockingStateInfoGet(
-                                domainName: domainName!
-                            )
-
-                            if (state.isAllowed)
-                                 { toolbarItem?.setImage(iconActive) }
-                            else { toolbarItem?.setImage(icon) }
+                        if let page       = page,
+                           let domainName = domainName {
+                            PopupViewController.page = page
+                            PopupViewController.domainName = domainName
+                            PopupViewController.blockingState = WhiteDomains.blockingState(name: domainName)
+                            switch PopupViewController.blockingState {
+                                case .local : toolbarItem?.setImage(Self.ICON_LOCAL)
+                                case .global: toolbarItem?.setImage(Self.ICON_GLOBAL)
+                                case .none  : toolbarItem?.setImage(Self.ICON_NONE)
+                            }
+                        } else {
+                            PopupViewController.page = nil
+                            PopupViewController.domainName = nil
+                            PopupViewController.blockingState = .none
                         }
 
                     })

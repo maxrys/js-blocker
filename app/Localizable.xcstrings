@@ -68,6 +68,22 @@
         }
       }
     },
+    "At least 1 subdomain must be selected!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least 1 subdomain must be selected!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как минимум 1 поддомен должен быть выбран!"
+          }
+        }
+      }
+    },
     "cancel permission" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -98,22 +114,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Описание"
-          }
-        }
-      }
-    },
-    "Inherited permissions detected from:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inherited permissions detected from:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обнаружены унаследованные разрешения от:"
           }
         }
       }
@@ -196,6 +196,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "нет"
+          }
+        }
+      }
+    },
+    "Rules were applied successfully." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rules were applied successfully."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила были применены успешно."
+          }
+        }
+      }
+    },
+    "Rules were not applied due to error!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rules were not applied due to error!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила не были применены из-за ошибки!"
           }
         }
       }

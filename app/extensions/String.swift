@@ -7,22 +7,7 @@ import Foundation
 
 extension String {
 
-    func hasWwwPrefix() -> Bool {
-        return self.hasPrefix("www.")
-    }
-
-    func deleteWwwPrefixIfExists() -> String {
-        if (self.hasWwwPrefix()) {
-            let from = self.index(self.startIndex, offsetBy: 4)
-            return String(
-                self[from...]
-            )
-        } else {
-            return self;
-        }
-    }
-
-    func domainNameParents() -> [String] {
+    func topDomains() -> [String] {
         var result: [String] = []
         let nameParts = self.split(separator: ".")
         for index in 1 ..< nameParts.count {

@@ -21,6 +21,11 @@ public class WhiteDomains: NSManagedObject {
     @NSManaged var createdAt: Int64
     @NSManaged var updatedAt: Int64
 
+    var isGlobal: Bool {
+        get { self.withSubdomains }
+        set { self.withSubdomains = newValue }
+    }
+
     static let storeURL: URL = {
         let storeDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: App.GROUP_NAME)!
         let storeURL = storeDirectory.appendingPathComponent(SELF.DB_LOCAL_NAME)
@@ -63,9 +68,9 @@ public class WhiteDomains: NSManagedObject {
         return !result.isEmpty ? result[0] : nil
     }
 
-    static func selectChildren(name: String, withYourself: Bool = false) -> [SELF] {
+    static func selectSubDomains(name: String, withSelf: Bool = false) -> [SELF] {
         /*
-        ### withYourself == false | WHERE (`ZNAME` like '%_.domain')
+        ### withSelf == false | WHERE (`ZNAME` like '%_.domain')
         ┌──────────────┬────────┐ ┌──────────────┬────────┐ ┌────────┬────────┐
         │ row          │ found  │ │ row          │ found  │ │ row    │ found  │
         ├──────────────┼────────┤ ├──────────────┼────────┤ ├────────┼────────┤
@@ -75,7 +80,7 @@ public class WhiteDomains: NSManagedObject {
         │    ".domain" │ IGNORE │ │    ".doMain" │ IGNORE │
         │     "domain" │ IGNORE │ │     "doMain" │ IGNORE │
         └──────────────┴────────┘ └──────────────┴────────┘
-        ### withYourself != false | WHERE (`ZNAME` like '%_.domain') OR (`ZNAME` = 'domain' COLLATE NOCASE)
+        ### withSelf != false | WHERE (`ZNAME` like '%_.domain') OR (`ZNAME` = 'domain' COLLATE NOCASE)
         ┌──────────────┬────────┐ ┌──────────────┬────────┐ ┌────────┬────────┐
         │ row          │ found  │ │ row          │ found  │ │ row    │ found  │
         ├──────────────┼────────┤ ├──────────────┼────────┤ ├────────┼────────┤
@@ -87,46 +92,33 @@ public class WhiteDomains: NSManagedObject {
         └──────────────┴────────┘ └──────────────┴────────┘
         */
         let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.DB_LOCAL_TABLE_NAME)
-        if (withYourself == false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@)"                   , "*?.\(name)", name) }
-        if (withYourself != false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@) OR (name ==[c] %@)", "*?.\(name)", name) }
+        if (withSelf == false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@)"                   , "*?.\(name)", name) }
+        if (withSelf != false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@) OR (name ==[c] %@)", "*?.\(name)", name) }
         return try! self.context.fetch(
             fetchRequest
         )
     }
 
-    static func selectParents(name: String, ignoreGlobal: Bool = false) -> [SELF] {
-        let parents = name.domainNameParents()
-        if (parents.isEmpty == false) {
-            let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.DB_LOCAL_TABLE_NAME)
-            if (ignoreGlobal == true) { fetchRequest.predicate = NSPredicate(format: "(name IN %@)"                             , parents) }
-            if (ignoreGlobal != true) { fetchRequest.predicate = NSPredicate(format: "(name IN %@) AND (withSubdomains == true)", parents) }
-            return try! self.context.fetch(
-                fetchRequest
-            )
-        } else {
-            return []
-        }
+    static func selectGlobalDomains(_ name: String) -> [SELF] {
+        let names = [name] + name.topDomains()
+        let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.DB_LOCAL_TABLE_NAME)
+        fetchRequest.predicate = NSPredicate(
+            format: "(name IN %@) AND (withSubdomains == true)", names
+        )
+        return try! self.context.fetch(
+            fetchRequest
+        )
     }
 
-    static func selectParentNames(name: String, ignoreGlobal: Bool = false) -> [String] {
-        var result: [String] = []
-        for parent in SELF.selectParents(name: name, ignoreGlobal: ignoreGlobal) {
-            result.append(
-                "*.\(parent.name)"
-            )
-        }
-        return result
-    }
-
-    static func insert(name: String, withSubdomains: Bool = false, skippedWww: Bool = false, expiredAt: Int64 = 0) {
+    static func insert(name: String, isGlobal: Bool = false, expiredAt: Int64 = 0) {
         let domain = SELF()
-            domain.name           = name
-            domain.nameDecoded    = name.decodePunycode()
-            domain.withSubdomains = withSubdomains
-            domain.skippedWww     = skippedWww
-            domain.expiredAt      = expiredAt
-            domain.createdAt      = Int64(Date().timeIntervalSince1970)
-            domain.updatedAt      = Int64(Date().timeIntervalSince1970)
+            domain.name        = name
+            domain.nameDecoded = name.decodePunycode()
+            domain.isGlobal    = isGlobal
+            domain.skippedWww  = false
+            domain.expiredAt   = expiredAt
+            domain.createdAt   = Int64(Date().timeIntervalSince1970)
+            domain.updatedAt   = Int64(Date().timeIntervalSince1970)
         try! SELF.context.save()
     }
 
@@ -154,8 +146,7 @@ public class WhiteDomains: NSManagedObject {
             for domain in domains {
                 hasher.combine(domain.name)
                 hasher.combine(domain.nameDecoded)
-                hasher.combine(domain.withSubdomains)
-                hasher.combine(domain.skippedWww)
+                hasher.combine(domain.isGlobal)
                 hasher.combine(domain.expiredAt)
                 hasher.combine(domain.createdAt)
                 hasher.combine(domain.updatedAt)
@@ -165,16 +156,15 @@ public class WhiteDomains: NSManagedObject {
         return 0
     }
 
-    static func blockingStateInfoGet(domainName: String) -> (BlockingType, SELF?) {
-        if let domainInfo = SELF.selectByName(domainName) {
-            if (domainInfo.withSubdomains != true) { return (state: .local , info: domainInfo) }
-            if (domainInfo.withSubdomains == true) { return (state: .global, info: domainInfo) }
-        } else if let domainInfo = SELF.selectByName(domainName.deleteWwwPrefixIfExists()) {
-            if (domainInfo.withSubdomains == true) {
-                return (state: .global, info: domainInfo)
-            }
+    static func blockingState(name: String) -> BlockingType {
+        if let domainInfo = SELF.selectByName(name) {
+            if (domainInfo.isGlobal != true) { return .local  }
+            if (domainInfo.isGlobal == true) { return .global }
         }
-        return (state: .none, info: nil)
+        if SELF.selectGlobalDomains(name).count > 0 {
+            return .global
+        }
+        return .none
     }
 
 
@@ -188,22 +178,22 @@ public class WhiteDomains: NSManagedObject {
     static func dump() {
         print("")
         print("DUMP \"White Domains\":")
-        print(">> --------------------------------------------------------------------------------")
-        print(">> name                                                           | with subdomains")
-        print(">> ================================================================================")
+        print(">> --------------------------------------------------------------------------")
+        print(">> name                                                           | is global")
+        print(">> ==========================================================================")
 
         let domains = SELF.selectAll()
         if (domains.isEmpty == false) {
             for domain in domains {
-                let cellDomain         = domain.name.padding(toLength: 60, withPad: " ", startingAt: 0)
-                let cellWithSubdomains = domain.withSubdomains == true ? "1" : "0"
-                print(">> - \(cellDomain) | \(cellWithSubdomains)")
+                let cellDomain   = domain.name.padding(toLength: 60, withPad: " ", startingAt: 0)
+                let cellIsGlobal = domain.isGlobal ? "1" : "0"
+                print(">> - \(cellDomain) | \(cellIsGlobal)")
             }
         } else {
             print(">> no data")
         }
 
-        print(">> --------------------------------------------------------------------------------")
+        print(">> --------------------------------------------------------------------------")
         print("")
     }
 
@@ -240,21 +230,21 @@ public class WhiteDomains: NSManagedObject {
         }
 
         for name in names {
-            var withSubdomains = Bool.random()
-            if (name ==           "js-blocker.com") { withSubdomains = true }
-            if (name ==      "sub1.js-blocker.com") { withSubdomains = true }
-            if (name == "sub2.sub1.js-blocker.com") { withSubdomains = true }
+            var isGlobal = Bool.random()
+            if (name ==           "js-blocker.com") { isGlobal = true }
+            if (name ==      "sub1.js-blocker.com") { isGlobal = true }
+            if (name == "sub2.sub1.js-blocker.com") { isGlobal = true }
             SELF.insert(
-                name          : name,
-                withSubdomains: withSubdomains
+                name    : name,
+                isGlobal: isGlobal
             )
         }
 
         /* select objects */
         var result: [String] = []
         for domain in SELF.selectAll() {
-            if (domain.withSubdomains == true) { result.append("*\(domain.name)") }
-            else                               { result.append( "\(domain.name)") }
+            if (domain.isGlobal) { result.append("*\(domain.name)") }
+            else                 { result.append( "\(domain.name)") }
         }
         return result;
 

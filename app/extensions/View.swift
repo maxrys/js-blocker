@@ -5,11 +5,11 @@
 
 import SwiftUI
 
-extension Text {
+extension View {
 
-    func color(_ color: Color) -> Text {
-        if #available(macOS 14.0, iOS 17.0, *) {return self.foregroundStyle(color)}
-        else                                   {return self.foregroundColor(color)}
+    func color(_ color: Color) -> some View {
+        if #available(macOS 14.0, iOS 17.0, *) { return self.foregroundStyle(color) }
+        else                                   { return self.foregroundColor(color) }
     }
 
 }
