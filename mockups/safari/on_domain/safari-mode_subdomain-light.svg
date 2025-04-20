@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 1200 450" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
   <defs>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
-      <stop offset="0" style="stop-color: rgb(0, 162, 208);"/>
-      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
-    </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
-      <stop offset="0" style="stop-color: rgb(0, 162, 208);"/>
-      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
-    </linearGradient>
     <filter id="window-shadow" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.4 rgba(0,0,0,0.3)">
       <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
       <feOffset dx="0" dy="10"/>
@@ -22,6 +14,14 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
   </defs>
   <rect width="1200" height="450" style="fill: rgb(227, 228, 229);"/>
   <g style="filter: url('#window-shadow');">
@@ -46,17 +46,14 @@
     </g>
     <g>
       <rect style="stroke-width: 2px; fill: rgb(243, 243, 243); stroke: rgb(213, 213, 213);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
-      <g transform="matrix(1.241379, 0, 0, 1.241379, 440.137939, 134.137939)">
-        <path style="fill: none; stroke: url('#gradient-toolbaritem-border'); stroke-width: 3px;" d="M 16.01 1.5 C 23.932 1.5 30.5 8.068 30.5 16.01 C 30.5 23.932 23.919 30.5 15.99 30.5 C 8.068 30.5 1.5 23.932 1.5 16.01 C 1.5 8.068 8.081 1.5 16.01 1.5 Z"/>
-        <g>
-          <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)" x="4" y="10.924">J</text>
-          <text style="fill: url('#gradient-toolbaritem'); font-family: Tahoma; font-size: 7.1px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, 7.258258, -1.857092)" x="4" y="10.924">s</text>
-        </g>
+      <g transform="matrix(1.1875, 0, 0, 1.1875, 441, 135)">
+        <path d="M 16.01 0 C 20.281 0 24.468 1.895 27.287 4.717 C 30.106 7.538 32 11.73 32 16.01 C 32 20.281 30.101 24.468 27.278 27.287 C 24.455 30.106 20.264 32 15.99 32 C 11.719 32 7.533 30.105 4.714 27.286 C 1.895 24.467 0 20.281 0 16.01 C 0 11.729 1.898 7.537 4.721 4.716 C 7.545 1.894 11.736 0 16.01 0 Z M 6.842 6.838 C 4.392 9.286 3 12.349 3 16.01 C 3 19.661 4.389 22.72 6.835 25.165 C 9.28 27.611 12.339 29 15.99 29 C 19.645 29 22.709 27.61 25.159 25.164 C 27.608 22.719 29 19.661 29 16.01 C 29 12.348 27.61 9.285 25.165 6.837 C 22.719 4.389 19.661 3 16.01 3 C 12.355 3 9.291 4.39 6.842 6.838 Z" style="fill: url(&quot;#gradient-toolbaritem-border&quot;);"/>
+        <text style="fill: url(&quot;#gradient-toolbaritem&quot;); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)"><tspan x="4" y="10.924">J</tspan><tspan style="font-size: 7.24138px; line-height: 12.3103px;" dx="-0.304">s</tspan></text>
       </g>
     </g>
     <g>
       <rect style="stroke-width: 2px; stroke: rgb(213, 213, 213); fill: rgb(255, 255, 255);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
-      <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" x="639.29" y="161.852">subdomain.example.com</text>
+      <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" x="693" y="161.852">example.com</text>
     </g>
   </g>
 </svg>

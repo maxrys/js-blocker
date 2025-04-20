@@ -31,32 +31,33 @@
   <g style="filter: url('#drop-shadow-filter-1');">
     <path d="M 69.5 49 L 472 49 C 486 49 493.375 25 500 25 C 506.625 25 514 49 528 49 L 930.5 49 C 941.822 49 951 58.178 951 69.5 L 951 930.5 C 951 941.822 941.822 951 930.5 951 L 69.5 951 C 58.178 951 49 941.822 49 930.5 L 49 69.5 C 49 58.178 58.178 49 69.5 49 Z" style="filter: none; stroke: rgb(198, 198, 198); stroke-width: 2px; fill: rgb(233, 233, 233);"/>
     <rect style="stroke-width: 2px; filter: none; fill: rgb(227, 232, 238);" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
+    <path d="M 900.566 120 L 904.432 120 C 905.553 120 906.338 119.344 906.617 118.278 L 907.738 113.493 C 908.635 113.192 909.475 112.864 910.26 112.482 L 914.463 115.052 C 915.304 115.599 916.368 115.516 917.097 114.777 L 919.842 112.071 C 920.572 111.333 920.683 110.212 920.066 109.311 L 917.546 105.156 C 917.938 104.389 918.274 103.542 918.498 102.749 L 923.377 101.6 C 924.379 101.354 925 100.562 925 99.441 L 925 95.667 C 925 94.601 924.379 93.809 923.377 93.562 L 918.554 92.387 C 918.274 91.458 917.881 90.638 917.601 89.954 L 920.123 85.716 C 920.683 84.788 920.627 83.776 919.899 83.009 L 917.097 80.303 C 916.368 79.62 915.416 79.429 914.519 79.976 L 910.26 82.601 C 909.532 82.217 908.691 81.889 907.738 81.589 L 906.617 76.722 C 906.338 75.656 905.553 75 904.432 75 L 900.566 75 C 899.502 75 898.717 75.656 898.437 76.722 L 897.315 81.533 C 896.419 81.834 895.522 82.163 894.794 82.572 L 890.535 79.976 C 889.639 79.429 888.686 79.566 887.901 80.303 L 885.155 83.009 C 884.371 83.776 884.371 84.788 884.932 85.716 L 887.454 89.954 C 887.173 90.638 886.781 91.458 886.5 92.387 L 881.737 93.562 C 880.673 93.809 880 94.601 880 95.667 L 880 99.441 C 880 100.562 880.673 101.354 881.737 101.6 L 886.556 102.749 C 886.781 103.542 887.117 104.389 887.509 105.156 L 884.988 109.311 C 884.371 110.212 884.483 111.333 885.211 112.071 L 887.901 114.777 C 888.686 115.516 889.75 115.599 890.647 115.052 L 894.794 112.482 C 895.579 112.864 896.419 113.192 897.315 113.493 L 898.437 118.278 C 898.717 119.344 899.502 120 900.566 120 Z M 902.527 105.017 C 898.38 105.017 895.018 101.628 895.018 97.5 C 895.018 93.371 898.38 89.982 902.527 89.982 C 906.675 89.982 910.036 93.371 910.036 97.5 C 910.036 101.628 906.675 105.017 902.527 105.017 Z" style="fill: rgb(210, 220, 228);"/>
     <g>
       <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="321.94" y="143.219">JavaScript on the Domain</text>
       <g>
         <rect style="fill: rgb(255, 255, 255);" x="110" y="173" width="780" height="86" rx="22" ry="22"/>
         <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="417.631" y="225.237">example.com</text>
       </g>
-      <g>
-        <rect width="300" height="75" x="350" y="286" style="fill: url('#gradient-8'); fill-opacity: 0.35;" rx="37.5" ry="37.5"/>
-        <text style="fill: rgb(255, 255, 255); fill-opacity: 0.5; font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="332.976">allow</text>
+      <g style="">
+        <rect width="300" height="75" x="350" y="286" style="fill: url(&quot;#gradient-8&quot;);" rx="37.5" ry="37.5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="332.976">allow</text>
       </g>
     </g>
     <g>
       <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre;" x="218.413" y="470.219">JavaScript on the Domain + Subdomains</text>
       <g>
         <rect style="fill: rgb(255, 255, 255);" x="110" y="500" width="780" height="86" rx="22" ry="22"/>
-        <rect style="stroke: rgb(149, 84, 204); stroke-width: 4px; fill: none;" x="112" y="502" width="776" height="82" rx="20" ry="20"/>
-        <text style="fill: rgb(149, 84, 204); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="408.96" y="552.237">*.example.com</text>
+        <rect style="stroke-width: 4px; fill: none; stroke: rgb(255, 255, 255);" x="112" y="502" width="776" height="82" rx="20" ry="20"/>
+        <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" x="408.96" y="552.237">*.example.com</text>
       </g>
-      <g>
-        <rect width="300" height="75" x="350" y="613" style="fill: url('#gradient-2'); fill-opacity: 0.35;" rx="37.5" ry="37.5"/>
-        <text style="fill: rgb(255, 255, 255); fill-opacity: 0.5; font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="659.976">allow</text>
+      <g style="">
+        <rect width="300" height="75" x="350" y="613" style="fill: url(&quot;#gradient-2&quot;);" rx="37.5" ry="37.5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="659.976">allow</text>
       </g>
     </g>
     <g>
       <path style="fill: rgb(210, 220, 228);" d="M 50 750.152 H 950 V 930.652 A 19.5 19.5 0 0 1 930.5 950.152 H 69.5 A 19.5 19.5 0 0 1 50 930.652 V 750.152 Z" bx:shape="rect 50 750.152 900 200 0 0 19.5 19.5 1@4ee9a8c1"/>
-      <g>
+      <g style="opacity: 0.5;">
         <rect width="450" height="75" x="275" y="812" rx="37.5" ry="37.5" style="fill: url('#gradient-12')"/>
         <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.967" y="858.862">cancel permission</text>
       </g>

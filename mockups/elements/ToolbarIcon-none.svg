@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(208, 84, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 0, 150);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, -0.001026, 0.001008, 1.445493, -2.41968, -2.937487)">
+      <stop offset="0" style="stop-color: rgb(208, 141, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 0, 150);"/>
+    </linearGradient>
+    <bx:export>
+      <bx:file format="pdf" path="ToolbarIcon-nothing.pdf">
+        <bx:page/>
+      </bx:file>
+    </bx:export>
+  </defs>
+  <g>
+    <path d="M 16.01 0 C 20.281 0 24.468 1.895 27.287 4.717 C 30.106 7.538 32 11.73 32 16.01 C 32 20.281 30.101 24.468 27.278 27.287 C 24.455 30.106 20.264 32 15.99 32 C 11.719 32 7.533 30.105 4.714 27.286 C 1.895 24.467 0 20.281 0 16.01 C 0 11.729 1.898 7.537 4.721 4.716 C 7.545 1.894 11.736 0 16.01 0 Z M 6.842 6.838 C 4.392 9.286 3 12.349 3 16.01 C 3 19.661 4.389 22.72 6.835 25.165 C 9.28 27.611 12.339 29 15.99 29 C 19.645 29 22.709 27.61 25.159 25.164 C 27.608 22.719 29 19.661 29 16.01 C 29 12.348 27.61 9.285 25.165 6.837 C 22.719 4.389 19.661 3 16.01 3 C 12.355 3 9.291 4.39 6.842 6.838 Z" style="fill: url(&quot;#gradient-toolbaritem-border&quot;);"/>
+    <text style="fill: url(&quot;#gradient-toolbaritem&quot;); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)"><tspan x="4" y="10.924">J</tspan><tspan style="font-size: 7.24138px; line-height: 12.3103px;" dx="-0.304">s</tspan></text>
+  </g>
+</svg>
