@@ -15,16 +15,10 @@ public class WhiteDomains: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var nameDecoded: String
-    @NSManaged var withSubdomains: Bool
-    @NSManaged var skippedWww: Bool
+    @NSManaged var isGlobal: Bool
     @NSManaged var expiredAt: Int64
     @NSManaged var createdAt: Int64
     @NSManaged var updatedAt: Int64
-
-    var isGlobal: Bool {
-        get { self.withSubdomains }
-        set { self.withSubdomains = newValue }
-    }
 
     static let storeURL: URL = {
         let storeDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: App.GROUP_NAME)!
@@ -33,9 +27,9 @@ public class WhiteDomains: NSManagedObject {
     }()
 
     static let context: NSManagedObjectContext = {
-        let storeDescription = NSPersistentStoreDescription(url: SELF.storeURL)
+        let description = NSPersistentStoreDescription(url: SELF.storeURL)
         let container = NSPersistentContainer(name: "Model")
-        container.persistentStoreDescriptions = [storeDescription]
+        container.persistentStoreDescriptions = [description]
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -103,7 +97,7 @@ public class WhiteDomains: NSManagedObject {
         let names = [name] + name.topDomains()
         let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.DB_LOCAL_TABLE_NAME)
         fetchRequest.predicate = NSPredicate(
-            format: "(name IN %@) AND (withSubdomains == true)", names
+            format: "(name IN %@) AND (isGlobal == true)", names
         )
         return try! self.context.fetch(
             fetchRequest
@@ -115,7 +109,6 @@ public class WhiteDomains: NSManagedObject {
             domain.name        = name
             domain.nameDecoded = name.decodePunycode()
             domain.isGlobal    = isGlobal
-            domain.skippedWww  = false
             domain.expiredAt   = expiredAt
             domain.createdAt   = Int64(Date().timeIntervalSince1970)
             domain.updatedAt   = Int64(Date().timeIntervalSince1970)
@@ -186,7 +179,7 @@ public class WhiteDomains: NSManagedObject {
         if (domains.isEmpty == false) {
             for domain in domains {
                 let cellDomain   = domain.name.padding(toLength: 60, withPad: " ", startingAt: 0)
-                let cellIsGlobal = domain.isGlobal ? "1" : "0"
+                let cellIsGlobal = domain.isGlobal
                 print(">> - \(cellDomain) | \(cellIsGlobal)")
             }
         } else {

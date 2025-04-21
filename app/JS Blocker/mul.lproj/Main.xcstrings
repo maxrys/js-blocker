@@ -164,19 +164,19 @@
       }
     },
     "RNE-sn-OYb.headerCell.title" : {
-      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"with subdomains?\"; ObjectID = \"RNE-sn-OYb\";",
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"is global\"; ObjectID = \"RNE-sn-OYb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "with subdomains?"
+            "value" : "is global"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "с поддоменами?"
+            "value" : "глобальный"
           }
         }
       }

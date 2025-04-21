@@ -82,11 +82,11 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
         }
 
         switch tableColumn!.identifier.rawValue {
-            case "name"                                        : cell.textField!.stringValue = domain.name
-            case "nameDecoded"                                 : cell.textField!.stringValue = domain.nameDecoded
-            case "withSubdomains" where domain.isGlobal == true: cell.textField!.stringValue = NSLocalizedString("yes", comment: "")
-            case "withSubdomains" where domain.isGlobal != true: cell.textField!.stringValue = NSLocalizedString("no" , comment: "")
-            default                                            : return nil
+            case "name"                                  : cell.textField!.stringValue = domain.name
+            case "nameDecoded"                           : cell.textField!.stringValue = domain.nameDecoded
+            case "isGlobal" where domain.isGlobal == true: cell.textField!.stringValue = NSLocalizedString("yes", comment: "")
+            case "isGlobal" where domain.isGlobal != true: cell.textField!.stringValue = NSLocalizedString("no" , comment: "")
+            default                                      : return nil
         }
 
         return cell

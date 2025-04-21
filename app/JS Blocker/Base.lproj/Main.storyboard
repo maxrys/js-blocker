@@ -136,8 +136,8 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="withSubdomains" editable="NO" width="140" minWidth="140" maxWidth="140" id="RNE-sn-OYb" userLabel="Column &quot;with Subdomains&quot;">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="with subdomains?">
+                                                <tableColumn identifier="isGlobal" editable="NO" width="140" minWidth="140" maxWidth="140" id="RNE-sn-OYb" userLabel="Column &quot;is global&quot;">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="is global">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>

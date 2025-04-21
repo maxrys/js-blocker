@@ -115,6 +115,7 @@
 		50288FDC2DB11B8500A32865 /* Credits.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarIcon-local.pdf"; sourceTree = "<group>"; };
 		5064F9142D0D9AF500F26724 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-v2.xcdatamodel"; sourceTree = "<group>"; };
 		50875E092C71E93A00756D64 /* WhiteDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteDomains.swift; sourceTree = "<group>"; };
 		50875E112C71EE0D00756D64 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		50875E152C71EE1200756D64 /* NSTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
@@ -889,9 +890,10 @@
 		5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */,
 				5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */,
 			);
-			currentVersion = 5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */;
+			currentVersion = 5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
