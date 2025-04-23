@@ -5,7 +5,7 @@
 
 import Testing
 
-struct JS_Blocker_Tests {
+struct Tests {
 
     @Test func domainNameValidate() async throws {
         let domainNames = [

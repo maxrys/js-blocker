@@ -50,7 +50,7 @@ struct Popup: View {
                         buttonIsEnabled: self.state.isEnabledLocalRule,
                         selectedDefault: self.state.indecesForLocal,
                         buttonOnClick: { _ in
-                            PopupViewController.onClick_buttonRuleLocalInsert()
+                            PopupViewController.shared.onClick_buttonRuleLocalInsert()
                         }
                     )
                     /* MARK: Button "Settings" */
@@ -80,7 +80,7 @@ struct Popup: View {
                     buttonIsEnabled: self.state.isEnabledGlobalRule,
                     selectedDefault: self.state.indecesForGLobal,
                     buttonOnClick: { indeces in
-                        PopupViewController.onClick_buttonRuleGlobalInsert(
+                        PopupViewController.shared.onClick_buttonRuleGlobalInsert(
                             indeces: indeces
                         )
                     }
@@ -103,7 +103,7 @@ struct Popup: View {
                     isEnabled: self.state.isEnabledRuleCancel,
                     minWidth: 250,
                     onClick: {
-                        PopupViewController.onClick_buttonRuleDelete()
+                        PopupViewController.shared.onClick_buttonRuleDelete()
                     }
                 )
 

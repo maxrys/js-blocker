@@ -25,7 +25,7 @@ final class RealTimer {
             on: RunLoop.main,
             in: RunLoop.Mode.common,
             options: nil
-        ).autoconnect().sink(receiveCompletion: { _ in }, receiveValue: { _ in
+        ).autoconnect().sink(receiveValue: { _ in
             self.onTick(
                 CACurrentMediaTime() - self.startedAt
             )

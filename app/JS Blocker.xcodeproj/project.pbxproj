@@ -15,8 +15,8 @@
 		500D2D252D05951900551390 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
 		500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
 		500D2D282D05952700551390 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
-		500D2D2A2D05969F00551390 /* JS_Blocker_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2D292D05969F00551390 /* JS_Blocker_Tests.swift */; };
-		5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */; };
+		500D2D2A2D05969F00551390 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2D292D05969F00551390 /* Tests.swift */; };
+		5019AA0D2C6E43E2003F9AF5 /* ViewInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA0C2C6E43E2003F9AF5 /* ViewInstallation.swift */; };
 		5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		50288FDD2DB11B8500A32865 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50288FDC2DB11B8500A32865 /* Credits.html */; };
@@ -31,7 +31,7 @@
 		50875E172C71EE1200756D64 /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E152C71EE1200756D64 /* NSTableView.swift */; };
 		50875E1A2C71EE1700756D64 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
 		50875E1B2C71EE1700756D64 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
-		50875E202C71F0C700756D64 /* ViewController_tableWhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */; };
+		50875E202C71F0C700756D64 /* ViewTableDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E1F2C71F0C700756D64 /* ViewTableDomains.swift */; };
 		50875E222C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E232C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E292C71F5A400756D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B025132C47E401002F1AD7 /* Main.storyboard */; };
@@ -46,7 +46,7 @@
 		50AD45222DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD45242DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50B025062C47E401002F1AD7 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* App.swift */; };
-		50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */; };
+		50B025122C47E401002F1AD7 /* ViewRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025112C47E401002F1AD7 /* ViewRules.swift */; };
 		50B025152C47E401002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B025142C47E401002F1AD7 /* Base */; };
 		50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B025162C47E403002F1AD7 /* Assets.xcassets */; };
 		50B0251F2C47E404002F1AD7 /* JS Blocker Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B0251E2C47E404002F1AD7 /* JS Blocker Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -109,8 +109,8 @@
 		500D2C552D058C8000551390 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		500D2C592D058D2B00551390 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
 		500D2D1B2D05929D00551390 /* JS Blocker Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JS Blocker Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		500D2D292D05969F00551390 /* JS_Blocker_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JS_Blocker_Tests.swift; sourceTree = "<group>"; };
-		5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabInstallation.swift; sourceTree = "<group>"; };
+		500D2D292D05969F00551390 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		5019AA0C2C6E43E2003F9AF5 /* ViewInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInstallation.swift; sourceTree = "<group>"; };
 		5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		50288FDC2DB11B8500A32865 /* Credits.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarIcon-local.pdf"; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		50875E112C71EE0D00756D64 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		50875E152C71EE1200756D64 /* NSTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
 		50875E192C71EE1700756D64 /* SFSafariApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSafariApplication.swift; sourceTree = "<group>"; };
-		50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController_tableWhiteDomains.swift; sourceTree = "<group>"; };
+		50875E1F2C71F0C700756D64 /* ViewTableDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTableDomains.swift; sourceTree = "<group>"; };
 		50875E212C71F21C00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50875E2B2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
 		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		50AD45262DAE62CC00425467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_tabRules.swift; sourceTree = "<group>"; };
+		50B025112C47E401002F1AD7 /* ViewRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRules.swift; sourceTree = "<group>"; };
 		50B025142C47E401002F1AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50B025162C47E403002F1AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50B025192C47E403002F1AD7 /* JS Blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JS Blocker.entitlements"; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		500D2D2B2D05972500551390 /* JS Blocker Tests */ = {
 			isa = PBXGroup;
 			children = (
-				500D2D292D05969F00551390 /* JS_Blocker_Tests.swift */,
+				500D2D292D05969F00551390 /* Tests.swift */,
 			);
 			path = "JS Blocker Tests";
 			sourceTree = "<group>";
@@ -229,9 +229,9 @@
 			isa = PBXGroup;
 			children = (
 				50B025052C47E401002F1AD7 /* App.swift */,
-				50B025112C47E401002F1AD7 /* ViewController_tabRules.swift */,
-				5019AA0C2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift */,
-				50875E1F2C71F0C700756D64 /* ViewController_tableWhiteDomains.swift */,
+				50B025112C47E401002F1AD7 /* ViewRules.swift */,
+				50875E1F2C71F0C700756D64 /* ViewTableDomains.swift */,
+				5019AA0C2C6E43E2003F9AF5 /* ViewInstallation.swift */,
 				50B025132C47E401002F1AD7 /* Main.storyboard */,
 				50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */,
 				50B025162C47E403002F1AD7 /* Assets.xcassets */,
@@ -247,8 +247,8 @@
 			children = (
 				50B025232C47E404002F1AD7 /* PopupHandler.swift */,
 				50B025252C47E404002F1AD7 /* PopupViewController.swift */,
-				50B0252C2C47E404002F1AD7 /* PopupTarget.xib */,
 				50EB55152CF9AAB400FC060C /* Popup */,
+				50B0252C2C47E404002F1AD7 /* PopupTarget.xib */,
 				50875E372C71F72A00756D64 /* InfoPlist.xcstrings */,
 				50B0252F2C47E404002F1AD7 /* Info.plist */,
 				50B025302C47E404002F1AD7 /* JS_Blocker_Extension.entitlements */,
@@ -460,7 +460,7 @@
 				50E150B82DA96616005768C1 /* BlockingType.swift in Sources */,
 				500D2D242D05951400551390 /* SFSafariApplication.swift in Sources */,
 				500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */,
-				500D2D2A2D05969F00551390 /* JS_Blocker_Tests.swift in Sources */,
+				500D2D2A2D05969F00551390 /* Tests.swift in Sources */,
 				50AD45242DAE59C300425467 /* View.swift in Sources */,
 				50AD45182DACF6E500425467 /* RealTimer.swift in Sources */,
 			);
@@ -470,13 +470,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B025122C47E401002F1AD7 /* ViewController_tabRules.swift in Sources */,
+				50B025122C47E401002F1AD7 /* ViewRules.swift in Sources */,
 				50EB55352CF9F4BA00FC060C /* PopupViewController.swift in Sources */,
 				50875E162C71EE1200756D64 /* NSTableView.swift in Sources */,
 				50AD45172DACF6E500425467 /* RealTimer.swift in Sources */,
 				500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */,
-				50875E202C71F0C700756D64 /* ViewController_tableWhiteDomains.swift in Sources */,
-				5019AA0D2C6E43E2003F9AF5 /* ViewController_tabInstallation.swift in Sources */,
+				50875E202C71F0C700756D64 /* ViewTableDomains.swift in Sources */,
+				5019AA0D2C6E43E2003F9AF5 /* ViewInstallation.swift in Sources */,
 				50875E0B2C71E93A00756D64 /* WhiteDomains.swift in Sources */,
 				50E150C12DAA789D005768C1 /* PopupState.swift in Sources */,
 				50B025062C47E401002F1AD7 /* App.swift in Sources */,

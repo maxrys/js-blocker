@@ -5,12 +5,12 @@
 
 import SafariServices
 
-class ViewController_tabRules: NSViewController {
+class ViewRules: NSViewController {
 
     @IBOutlet var tableDomains: NSTableView!
     @IBOutlet var buttonTableDomainsDelete: NSButtonCell!
 
-    var tableDomainsController : ViewController_tableWhiteDomains!
+    var tableDomainsController: ViewTableDomains!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +20,11 @@ class ViewController_tabRules: NSViewController {
             WhiteDomains.dump()
         #endif
 
-        self.tableDomainsController = ViewController_tableWhiteDomains()
+        self.tableDomainsController = ViewTableDomains()
         self.tableDomainsController.relateWithOutlet(outlet: self.tableDomains)
         self.tableDomainsController.updateData()
         self.tableDomains.relateWithController(
-            delegate:   tableDomainsController,
+            delegate  : tableDomainsController,
             dataSource: tableDomainsController
         )
 
@@ -40,7 +40,7 @@ class ViewController_tabRules: NSViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.tableDomainsSelectionDidChange),
-            name: ViewController_tableWhiteDomains.selectionDidChangeNotification,
+            name: ViewTableDomains.selectionDidChangeNotification,
             object: nil
         )
     }
@@ -54,7 +54,7 @@ class ViewController_tabRules: NSViewController {
         self.buttonTableDomainsDelete.isEnabled = !self.tableDomains.selectedRowIndexes.isEmpty
     }
 
-    @IBAction func onClick_buttonTableDomainsDelete(_ sender: NSButton) {
+    @IBAction func onClick_buttonTableDomainsDelete(_ button: NSButton) {
         self.tableDomainsController.deleteItems(rowNums: self.tableDomains.selectedRowIndexes)
         self.tableDomainsController.updateData()
         self.tableDomainsController.updateView()

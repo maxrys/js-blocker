@@ -65,7 +65,7 @@ public class WhiteDomains: NSManagedObject {
         let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.DB_LOCAL_TABLE_NAME)
         fetchRequest.predicate = NSPredicate(format: "name ==[c] %@", name)
         let result = try! self.context.fetch(fetchRequest)
-        return !result.isEmpty ? result[0] : nil
+        return result.isEmpty ? nil : result.first
     }
 
     static func selectSubDomains(name: String, withSelf: Bool = false) -> [SELF] {
@@ -169,9 +169,9 @@ public class WhiteDomains: NSManagedObject {
 
 
 
-    /* ###################
-       ### DEVELOPMENT ###
-       ################### */
+ /* ###################
+    ### DEVELOPMENT ###
+    ################### */
 
     #if DEBUG
 
@@ -246,7 +246,7 @@ public class WhiteDomains: NSManagedObject {
             if (domain.isGlobal) { result.append("*\(domain.name)") }
             else                 { result.append( "\(domain.name)") }
         }
-        return result;
+        return result
 
     }
 

@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="260.5"/>
         </scene>
-        <!--View Controller tab Rules-->
+        <!--View Rules-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController_tabRules" customModule="JS_Blocker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewRules" customModule="JS_Blocker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
                         <subviews>
@@ -234,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="1010"/>
         </scene>
-        <!--View Controller tab Installation-->
+        <!--View Installation-->
         <scene sceneID="bUY-Gi-V19">
             <objects>
-                <viewController id="4l9-C1-IuP" customClass="ViewController_tabInstallation" customModule="JS_Blocker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4l9-C1-IuP" customClass="ViewInstallation" customModule="JS_Blocker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="HAt-Qj-LH0">
                         <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
                         <subviews>
@@ -355,7 +355,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Installation Guide" width="1254" height="746"/>
+        <image name="Installation Guide" width="1254" height="747"/>
         <image name="gearshape.fill" catalog="system" width="16" height="16"/>
         <namedColor name="Message Background Color Info">
             <color red="0.60784313725490191" green="0.44705882352941179" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -5,11 +5,11 @@
 
 import SafariServices
 
-class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
+class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
     let colCount: Int = 2
     var data: [WhiteDomains] = []
-    var dataHash: Int? = nil
+    var dataHash: Int?
     var outlet: NSTableView!
 
     func relateWithOutlet(outlet: NSTableView) {
@@ -35,7 +35,7 @@ class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTa
 
         if (self.dataHash != newDataHash) {
             self.updateViewAfterDataChanges(
-                outlet:   self.outlet,
+                outlet  : self.outlet,
                 rowCount: self.data.count,
                 colCount: self.colCount
             )
@@ -52,15 +52,15 @@ class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTa
     }
 
     func deleteItems(rowNums: IndexSet) {
-        if (rowNums.isEmpty == false) {
-            var pKeys: [String] = []
+        if (rowNums.count > 0) {
+            var primaryKeys: [String] = []
             for rowNum in rowNums {
-                pKeys.append(
+                primaryKeys.append(
                     self.data[rowNum].name
                 )
             }
             WhiteDomains.deleteByNames(
-                names: pKeys
+                names: primaryKeys
             )
         }
     }
@@ -70,18 +70,18 @@ class ViewController_tableWhiteDomains: NSTableView, NSTableViewDataSource, NSTa
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row rowNum: Int) -> NSView? {
-        let columnID     = tableColumn!.identifier
-        let columnIDText = tableColumn!.identifier.rawValue
-        let domain       = self.data[rowNum]
+        let domain = self.data[
+            rowNum
+        ]
 
         guard let cell = tableView.makeView(
-            withIdentifier: columnID,
+            withIdentifier: tableColumn!.identifier,
             owner: self
         ) as? NSTableCellView else {
             return nil
         }
 
-        switch columnIDText {
+        switch tableColumn!.identifier.rawValue {
             case "name"                                        : cell.textField!.stringValue = domain.name
             case "nameDecoded"                                 : cell.textField!.stringValue = domain.nameDecoded
             case "withSubdomains" where domain.isGlobal == true: cell.textField!.stringValue = NSLocalizedString("yes", comment: "")

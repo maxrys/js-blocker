@@ -5,7 +5,7 @@
 
 import SafariServices
 
-class ViewController_tabInstallation: NSViewController {
+class ViewInstallation: NSViewController {
 
     @IBOutlet var boxExtensionState: NSBox!
     @IBOutlet var boxExtensionStateTitle: NSBox!
