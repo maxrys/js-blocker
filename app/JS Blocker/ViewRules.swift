@@ -7,6 +7,7 @@ import SafariServices
 
 class ViewRules: NSViewController {
 
+    @IBOutlet var fieldSearch: NSSearchField!
     @IBOutlet var tableDomains: NSTableView!
     @IBOutlet var buttonTableDomainsDelete: NSButtonCell!
 
@@ -22,7 +23,7 @@ class ViewRules: NSViewController {
 
         self.tableDomainsController = ViewTableDomains()
         self.tableDomainsController.relateWithOutlet(outlet: self.tableDomains)
-        self.tableDomainsController.updateData()
+        self.tableDomainsController.reload()
         self.tableDomains.relateWithController(
             delegate  : tableDomainsController,
             dataSource: tableDomainsController
@@ -45,19 +46,23 @@ class ViewRules: NSViewController {
         )
     }
 
-    @objc func viewDidBecomeActive(){
-        self.tableDomainsController.updateData()
-        self.tableDomainsController.updateView()
+    @objc func viewDidBecomeActive() {
+        self.tableDomainsController.reload()
     }
 
     @objc func tableDomainsSelectionDidChange() {
         self.buttonTableDomainsDelete.isEnabled = !self.tableDomains.selectedRowIndexes.isEmpty
     }
 
+    @IBAction func onUpdateValue_searchField(_ field: NSSearchField) {
+        if (field.stringValue == "") { self.tableDomainsController.filterByName = nil }
+        if (field.stringValue != "") { self.tableDomainsController.filterByName = field.stringValue }
+        self.tableDomainsController.reload()
+    }
+
     @IBAction func onClick_buttonTableDomainsDelete(_ button: NSButton) {
         self.tableDomainsController.deleteItems(rowNums: self.tableDomains.selectedRowIndexes)
-        self.tableDomainsController.updateData()
-        self.tableDomainsController.updateView()
+        self.tableDomainsController.reload()
     }
 
 }

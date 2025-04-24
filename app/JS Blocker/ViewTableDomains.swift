@@ -10,45 +10,32 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
     let colCount: Int = 3
     var data: [WhiteDomains] = []
     var dataHash: Int?
+    var filterByName: String?
     var outlet: NSTableView!
 
     func relateWithOutlet(outlet: NSTableView) {
         self.outlet = outlet
     }
 
-    func updateData() {
+    func reload() {
         WhiteDomains.context.reset()
-        self.data = WhiteDomains.selectAll()
-
-        /* first data fetch */
-        if (self.dataHash == nil) {
-            self.dataHash = WhiteDomains.hashSimpleCalculate(
-                domains: self.data
-            )
-        }
-    }
-
-    func updateView() {
-        let newDataHash = WhiteDomains.hashSimpleCalculate(
-            domains: self.data
+        self.data = WhiteDomains.selectAll(
+            filter: self.filterByName
         )
 
-        if (self.dataHash != newDataHash) {
+        let newDataHash = WhiteDomains.hashOfSet(self.data)
+        if (self.dataHash == nil || self.dataHash != newDataHash) {
             self.updateViewAfterDataChanges(
                 outlet  : self.outlet,
                 rowCount: self.data.count,
                 colCount: self.colCount
             )
+            #if DEBUG
+                if (self.dataHash == nil) { print("ViewTableDomains.reload(): Data Hash is NIL") }
+                if (self.dataHash != nil) { print("ViewTableDomains.reload(): Data Hash is changed from \"\(self.dataHash ?? 0)\" to \"\(newDataHash)\"") }
+            #endif
+            self.dataHash = newDataHash
         }
-
-        #if DEBUG
-            print("updateView(): Old data hash = \(String(describing: self.dataHash))")
-            print("updateView(): New data hash = \(newDataHash)")
-            print("updateView(): Old data hash != New data hash = \(self.dataHash != newDataHash)")
-            print("")
-        #endif
-
-        self.dataHash = newDataHash
     }
 
     func deleteItems(rowNums: IndexSet) {

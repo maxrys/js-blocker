@@ -42,14 +42,29 @@ public class WhiteDomains: NSManagedObject {
         self.init(context: SELF.context)
     }
 
+    static func hashOfSet(_ domains: [SELF]) -> Int {
+        if (domains.isEmpty == false) {
+            var hasher = Hasher()
+            for domain in domains {
+                hasher.combine(domain.name)
+                hasher.combine(domain.nameDecoded)
+                hasher.combine(domain.isGlobal)
+                hasher.combine(domain.expiredAt)
+                hasher.combine(domain.createdAt)
+                hasher.combine(domain.updatedAt) }
+            return hasher.finalize()
+        }
+        return 0
+    }
+
     static func hasDomain(name: String) -> Bool {
         return self.selectByName(name) != nil
     }
 
-    static func selectAll(orderBy: String = #keyPath(SELF.nameDecoded), ascending: Bool = true) -> [SELF] {
+    static func selectAll(filter filterByName: String? = nil, orderBy: String = #keyPath(SELF.nameDecoded), ascending: Bool = true) -> [SELF] {
         let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.DB_LOCAL_TABLE_NAME)
-        let sortDescriptorKey = NSSortDescriptor(key: orderBy, ascending: ascending)
-        fetchRequest.sortDescriptors = [sortDescriptorKey]
+        if let filterByName = filterByName { fetchRequest.predicate = NSPredicate(format: "(name like[cd] %@) OR (nameDecoded like[cd] %@)", "*\(filterByName)*", filterByName) }
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: orderBy, ascending: ascending)]
         return try! self.context.fetch(
             fetchRequest
         )
@@ -131,22 +146,6 @@ public class WhiteDomains: NSManagedObject {
     func delete() {
         SELF.context.delete(self)
         try! SELF.context.save()
-    }
-
-    static func hashSimpleCalculate(domains: [SELF]) -> Int {
-        if (domains.isEmpty == false) {
-            var hasher = Hasher()
-            for domain in domains {
-                hasher.combine(domain.name)
-                hasher.combine(domain.nameDecoded)
-                hasher.combine(domain.isGlobal)
-                hasher.combine(domain.expiredAt)
-                hasher.combine(domain.createdAt)
-                hasher.combine(domain.updatedAt)
-            }
-            return hasher.finalize();
-        }
-        return 0
     }
 
     static func blockingState(name: String) -> BlockingType {

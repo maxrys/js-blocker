@@ -81,7 +81,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sCr-FR-trs" userLabel="Buttom &quot;Settings&quot;">
-                                <rect key="frame" x="641" y="551" width="46" height="32"/>
+                                <rect key="frame" x="641" y="512" width="46" height="32"/>
                                 <buttonCell key="cell" type="push" bezelStyle="rounded" image="gearshape.fill" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OC8-rl-zMJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -91,13 +91,13 @@
                                 </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9y-83-PIG" userLabel="Scroll View">
-                                <rect key="frame" x="20" y="85" width="660" height="454"/>
+                                <rect key="frame" x="20" y="85" width="660" height="418"/>
                                 <clipView key="contentView" drawsBackground="NO" id="Nm1-9h-aNd">
-                                    <rect key="frame" x="1" y="1" width="658" height="452"/>
+                                    <rect key="frame" x="1" y="1" width="658" height="416"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" headerView="lhv-Ft-Iab" viewBased="YES" id="jpb-3u-X3i" userLabel="Table Domains">
-                                            <rect key="frame" x="0.0" y="0.0" width="658" height="424"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="658" height="388"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -206,7 +206,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="oMf-Hs-cqz">
-                                    <rect key="frame" x="1" y="437" width="658" height="16"/>
+                                    <rect key="frame" x="1" y="401" width="658" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="hKm-vO-pn7">
@@ -239,25 +239,40 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="134" id="4bL-03-YC0"/>
                                 </constraints>
                             </button>
+                            <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm2-P3-kNP">
+                                <rect key="frame" x="133" y="518" width="435" height="22"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" alignment="center" usesSingleLineMode="YES" bezelStyle="round" id="iDX-VN-4sa">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                                <connections>
+                                    <action selector="onUpdateValue_searchField:" target="XfG-lQ-9wD" id="MJ8-c6-4Sg"/>
+                                </connections>
+                            </searchField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Gm2-P3-kNP" firstAttribute="top" secondItem="e9Y-7S-DPz" secondAttribute="bottom" constant="19" id="1AN-DK-OSK"/>
                             <constraint firstItem="e9Y-7S-DPz" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="22" id="6h3-OW-9KW"/>
                             <constraint firstAttribute="trailing" secondItem="sCr-FR-trs" secondAttribute="trailing" constant="20" id="7fQ-hQ-oI3"/>
                             <constraint firstItem="Df4-1n-Qgs" firstAttribute="top" secondItem="J9y-83-PIG" secondAttribute="bottom" constant="10" id="9eQ-VJ-r5O"/>
-                            <constraint firstItem="sCr-FR-trs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="22" id="CBA-hJ-Lb8"/>
+                            <constraint firstItem="sCr-FR-trs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="61" id="CBA-hJ-Lb8"/>
                             <constraint firstAttribute="bottom" secondItem="ONa-Gi-u7M" secondAttribute="bottom" constant="24" id="FzU-VD-nka"/>
                             <constraint firstAttribute="trailing" secondItem="J9y-83-PIG" secondAttribute="trailing" constant="20" id="M3M-xU-FdK"/>
                             <constraint firstItem="ONa-Gi-u7M" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Oot-mZ-3bF"/>
                             <constraint firstItem="J9y-83-PIG" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="YIa-lm-MLN"/>
                             <constraint firstItem="ONa-Gi-u7M" firstAttribute="top" secondItem="Df4-1n-Qgs" secondAttribute="bottom" constant="17" id="Z8v-Tb-rCo"/>
                             <constraint firstAttribute="trailing" secondItem="Df4-1n-Qgs" secondAttribute="trailing" constant="20" id="a3X-to-xQd"/>
+                            <constraint firstItem="J9y-83-PIG" firstAttribute="top" secondItem="Gm2-P3-kNP" secondAttribute="bottom" constant="15" id="aTC-Hs-l2m"/>
+                            <constraint firstAttribute="trailing" secondItem="Gm2-P3-kNP" secondAttribute="trailing" constant="132" id="nys-o7-hNg"/>
                             <constraint firstItem="e9Y-7S-DPz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="pQR-AH-aWs"/>
-                            <constraint firstItem="J9y-83-PIG" firstAttribute="top" secondItem="e9Y-7S-DPz" secondAttribute="bottom" constant="20" id="vce-Mg-So5"/>
                             <constraint firstItem="Df4-1n-Qgs" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="w7A-rf-WYG"/>
+                            <constraint firstItem="Gm2-P3-kNP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="133" id="wX6-wy-ba5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonTableDomainsDelete" destination="jzp-ta-qfU" id="PZ0-De-zqG"/>
+                        <outlet property="fieldSearch" destination="Gm2-P3-kNP" id="HfN-Nf-ho8"/>
                         <outlet property="tableDomains" destination="jpb-3u-X3i" id="cpC-so-eOs"/>
                     </connections>
                 </viewController>
