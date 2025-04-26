@@ -127,6 +127,24 @@
         }
       }
     },
+    "iDX-VN-4sa.placeholderString" : {
+      "comment" : "Class = \"NSSearchFieldCell\"; placeholderString = \" \"; ObjectID = \"iDX-VN-4sa\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
+    },
     "IQv-IB-iLA.title" : {
       "comment" : "Class = \"NSWindow\"; title = \"JS Blocker\"; ObjectID = \"IQv-IB-iLA\";",
       "extractionState" : "extracted_with_value",
@@ -217,6 +235,24 @@
         }
       }
     },
+    "XL5-14-LlY.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"export\"; ObjectID = \"XL5-14-LlY\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "export"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "экспорт"
+          }
+        }
+      }
+    },
     "Zcf-5E-PdZ.headerCell.title" : {
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"domain name\"; ObjectID = \"Zcf-5E-PdZ\";",
       "extractionState" : "extracted_with_value",
@@ -231,6 +267,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "доменное имя"
+          }
+        }
+      }
+    },
+    "Ze0-yG-vaa.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"import\"; ObjectID = \"Ze0-yG-vaa\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "import"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "импорт"
           }
         }
       }

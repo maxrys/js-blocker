@@ -23,6 +23,9 @@
 		503CE1442C6E32C400835509 /* ToolbarIcon-local.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */; };
 		5064F9152D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
 		5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
+		50684B692DB9679000FC6175 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
+		50684B6A2DB9679000FC6175 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
+		50684B6B2DB9679000FC6175 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
 		50875E0B2C71E93A00756D64 /* WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains.swift */; };
 		50875E0D2C71E93A00756D64 /* WhiteDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E092C71E93A00756D64 /* WhiteDomains.swift */; };
 		50875E122C71EE0D00756D64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
@@ -115,6 +118,8 @@
 		50288FDC2DB11B8500A32865 /* Credits.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarIcon-local.pdf"; sourceTree = "<group>"; };
 		5064F9142D0D9AF500F26724 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		50684B682DB9678E00FC6175 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		50684B702DB96C1100FC6175 /* JS Blocker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "JS Blocker.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-v2.xcdatamodel"; sourceTree = "<group>"; };
 		50875E092C71E93A00756D64 /* WhiteDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteDomains.swift; sourceTree = "<group>"; };
 		50875E112C71EE0D00756D64 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				50875E112C71EE0D00756D64 /* String.swift */,
+				50684B682DB9678E00FC6175 /* Data.swift */,
 				50AD45202DAE59C300425467 /* View.swift */,
 				50E150B52DA96615005768C1 /* BlockingType.swift */,
 				500D2C592D058D2B00551390 /* MessageType.swift */,
@@ -201,9 +207,15 @@
 			path = "JS Blocker Tests";
 			sourceTree = "<group>";
 		};
+		50684B732DB9724E00FC6175 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		50B024F92C47E401002F1AD7 = {
 			isa = PBXGroup;
 			children = (
+				50684B702DB96C1100FC6175 /* JS Blocker.xcodeproj */,
 				50875E212C71F21C00756D64 /* Assets.xcassets */,
 				5064F9142D0D9AF500F26724 /* Localizable.xcstrings */,
 				500D2C502D058B7800551390 /* extensions */,
@@ -400,6 +412,12 @@
 			mainGroup = 50B024F92C47E401002F1AD7;
 			productRefGroup = 50B025032C47E401002F1AD7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 50684B732DB9724E00FC6175 /* Products */;
+					ProjectRef = 50684B702DB96C1100FC6175 /* JS Blocker.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				50B025012C47E401002F1AD7 /* JS Blocker */,
@@ -463,6 +481,7 @@
 				500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */,
 				500D2D2A2D05969F00551390 /* Tests.swift in Sources */,
 				50AD45242DAE59C300425467 /* View.swift in Sources */,
+				50684B6B2DB9679000FC6175 /* Data.swift in Sources */,
 				50AD45182DACF6E500425467 /* RealTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,6 +497,7 @@
 				500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */,
 				50875E202C71F0C700756D64 /* ViewTableDomains.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewInstallation.swift in Sources */,
+				50684B692DB9679000FC6175 /* Data.swift in Sources */,
 				50875E0B2C71E93A00756D64 /* WhiteDomains.swift in Sources */,
 				50E150C12DAA789D005768C1 /* PopupState.swift in Sources */,
 				50B025062C47E401002F1AD7 /* App.swift in Sources */,
@@ -514,6 +534,7 @@
 				50AD45222DAE59C300425467 /* View.swift in Sources */,
 				50B025242C47E404002F1AD7 /* PopupHandler.swift in Sources */,
 				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
+				50684B6A2DB9679000FC6175 /* Data.swift in Sources */,
 				50875E172C71EE1200756D64 /* NSTableView.swift in Sources */,
 				50875E132C71EE0D00756D64 /* String.swift in Sources */,
 			);

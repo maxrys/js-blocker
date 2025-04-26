@@ -12,6 +12,7 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
     var dataHash: Int?
     var filterByName: String?
     var outlet: NSTableView!
+    var onChange: () -> Void = {}
 
     func relateWithOutlet(outlet: NSTableView) {
         self.outlet = outlet
@@ -35,6 +36,7 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
                 if (self.dataHash != nil) { print("ViewTableDomains.reload(): Data Hash is changed from \"\(self.dataHash ?? 0)\" to \"\(newDataHash)\"") }
             #endif
             self.dataHash = newDataHash
+            self.onChange()
         }
     }
 

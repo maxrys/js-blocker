@@ -18,7 +18,7 @@ extension String {
         return result
     }
 
-    func domainNameValidate() -> Bool {
+    func domainNameIsValid() -> Bool {
         if (self.count < 1 || self.count > 63 || self.contains("..") || self.contains("---")) {
             return false
         }
@@ -36,7 +36,13 @@ extension String {
         )
 
         for part in parts {
-            let regexMatches = regex.matches(in: String(part), range: NSRange(location: 0, length: part.count))
+            let regexMatches = regex.matches(
+                in: String(part),
+                range: NSRange(
+                    location: 0,
+                    length: part.count
+                )
+            )
             if (regexMatches.count != 1) {
                 return false
             }

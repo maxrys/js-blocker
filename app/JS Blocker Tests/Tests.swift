@@ -7,7 +7,7 @@ import Testing
 
 struct Tests {
 
-    @Test func domainNameValidate() async throws {
+    @Test func domainNameIsValid() async throws {
         let domainNames = [
             "0"                                 : true, /* local DNS */
             "x"                                 : true, /* local DNS */
@@ -35,7 +35,7 @@ struct Tests {
         ]
 
         for name in domainNames {
-            let received = name.key.domainNameValidate()
+            let received = name.key.domainNameIsValid()
             let expected = name.value
             print("item '\(name.key)'")
             #expect(expected == received)
