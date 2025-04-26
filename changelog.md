@@ -1,4 +1,11 @@
 
+## Version 1.3
+
+Main Application has been improved:
+- links to domains have been added;
+- search field has been added;
+- export/import has been implemented.
+
 ## Version 1.2
 
 Main Popup has been improved:
