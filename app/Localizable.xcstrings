@@ -185,6 +185,7 @@
       }
     },
     "no" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -234,6 +235,7 @@
       }
     },
     "yes" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -7,7 +7,7 @@ import SafariServices
 
 class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
-    let colCount: Int = 2
+    let colCount: Int = 3
     var data: [WhiteDomains] = []
     var dataHash: Int?
     var outlet: NSTableView!
@@ -70,10 +70,6 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row rowNum: Int) -> NSView? {
-        let domain = self.data[
-            rowNum
-        ]
-
         guard let cell = tableView.makeView(
             withIdentifier: tableColumn!.identifier,
             owner: self
@@ -81,15 +77,37 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
             return nil
         }
 
+        let domain = self.data[rowNum]
+
         switch tableColumn!.identifier.rawValue {
-            case "name"                                  : cell.textField!.stringValue = domain.name
-            case "nameDecoded"                           : cell.textField!.stringValue = domain.nameDecoded
-            case "isGlobal" where domain.isGlobal == true: cell.textField!.stringValue = NSLocalizedString("yes", comment: "")
-            case "isGlobal" where domain.isGlobal != true: cell.textField!.stringValue = NSLocalizedString("no" , comment: "")
-            default                                      : return nil
+            case "name"       : cell.textField!.stringValue = domain.name
+            case "nameDecoded": cell.textField!.stringValue = domain.nameDecoded
+            case "isGlobal"   : cell.textField!.stringValue = NSLocalizedString(domain.isGlobal ? "yes" : "no", comment: "")
+            case "link":
+                if let button = cell.subviews.first as? NSButton {
+                    button.tag = rowNum
+                } else {
+                    cell.subviews.removeAll()
+                    let button = NSButton(frame: NSRect(x: 0, y: 2, width: 20, height: 20))
+                        button.target = self
+                        button.action = #selector(onClickToLink)
+                        button.bezelStyle = .badge
+                        button.image = NSImage(systemSymbolName: "safari", accessibilityDescription: nil)
+                        button.tag = rowNum
+                    cell.addSubview(button)
+                }
+            default:
+                return nil
         }
 
         return cell
+    }
+
+    @objc func onClickToLink(_ sender: NSButton) {
+        let domain = self.data[sender.tag]
+        if let url = URL(string: "https://\(domain.name)") {
+            NSWorkspace.shared.open(url)
+        }
     }
 
 }

@@ -164,13 +164,13 @@
       }
     },
     "RNE-sn-OYb.headerCell.title" : {
-      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"is global\"; ObjectID = \"RNE-sn-OYb\";",
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"global\"; ObjectID = \"RNE-sn-OYb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "is global"
+            "value" : "global"
           }
         },
         "ru" : {
