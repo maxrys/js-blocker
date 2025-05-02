@@ -1,4 +1,10 @@
 
+## Version 1.4
+
+Added crash protection when working with the database.
+Application code cleaned and improved.
+Preparation for future CloudKit implementation.
+
 ## Version 1.3
 
 Main Application has been improved:
