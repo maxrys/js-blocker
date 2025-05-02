@@ -14,7 +14,7 @@ class ViewInstallation: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: App.POPUP_EXTENSION_NAME, completionHandler: { (state, error) in
+        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: App.EXTENSION_NAME, completionHandler: { (state, error) in
             guard let state = state, error == nil else {
                 #if DEBUG
                     print("viewWillAppear(): Extension state error = \(error!)")
@@ -39,7 +39,7 @@ class ViewInstallation: NSViewController {
 
     @IBAction func onClick_buttonOpenSafariExtensionsPreferences(_ sender: NSButton) {
         SFSafariApplication.showPreferencesForExtension(
-            withIdentifier: App.POPUP_EXTENSION_NAME
+            withIdentifier: App.EXTENSION_NAME
         )
     }
 

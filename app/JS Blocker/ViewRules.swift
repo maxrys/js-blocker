@@ -15,28 +15,20 @@ class ViewRules: NSViewController {
     @IBOutlet var buttonExport: NSButton!
     @IBOutlet var buttonImport: NSButton!
     @IBOutlet var fieldSearch: NSSearchField!
-    @IBOutlet var tableDomains: NSTableView!
+    @IBOutlet var tableDomains: TableDomainsController!
     @IBOutlet var buttonTableDomainsDelete: NSButtonCell!
-
-    var tableDomainsController: ViewTableDomains!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let storePath = WhiteDomains.storeURL.absoluteString.removingPercentEncoding!
 
         #if DEBUG
-            print("viewDidLoad(): DB path = \(WhiteDomains.storeURL)")
+            print("viewDidLoad(): DB path = \"\(storePath)\"")
             WhiteDomains.dump()
         #endif
 
-        self.tableDomainsController = ViewTableDomains()
-        self.tableDomainsController.onChange = self.onChangeData_tableDomains
-        self.tableDomainsController.relateWithOutlet(outlet: self.tableDomains)
-        self.tableDomainsController.reload()
-        self.tableDomains.relateWithController(
-            delegate  : tableDomainsController,
-            dataSource: tableDomainsController
-        )
-
+        self.tableDomains.onChange      = self.onChangeData_tableDomains
+        self.tableDomains.onClickToLink = self.onClickToLink
         self.onChangeSelection_tableDomains()
 
         NotificationCenter.default.addObserver(
@@ -49,21 +41,38 @@ class ViewRules: NSViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.onChangeSelection_tableDomains),
-            name: ViewTableDomains.selectionDidChangeNotification,
+            name: TableDomainsController.selectionDidChangeNotification,
             object: nil
         )
     }
 
     @objc func viewDidBecomeActive() {
-        self.tableDomainsController.reload()
+        self.tableDomains.reload()
+    }
+
+    func onClickToLink(name: String) {
+        if let url = URL(string: "https://\(name)") {
+            NSWorkspace.shared.open(url)
+        }
     }
 
     func onChangeData_tableDomains() {
-        self.buttonExport.isEnabled = !self.tableDomainsController.data.isEmpty
+        self.buttonExport.isEnabled = !self.tableDomains.data.isEmpty
     }
 
     @objc func onChangeSelection_tableDomains() {
         self.buttonTableDomainsDelete.isEnabled = !self.tableDomains.selectedRowIndexes.isEmpty
+    }
+
+    @IBAction func onUpdateValue_searchField(_ field: NSSearchField) {
+        if (field.stringValue == "") { self.tableDomains.filterByName = nil }
+        if (field.stringValue != "") { self.tableDomains.filterByName = field.stringValue }
+        self.tableDomains.reload()
+    }
+
+    @IBAction func onClick_buttonTableDomainsDelete(_ button: NSButton) {
+        self.tableDomains.deleteItems(rowNums: self.tableDomains.selectedRowIndexes)
+        self.tableDomains.reload()
     }
 
     @IBAction func onClick_buttonExport(_ button: NSButton) {
@@ -79,7 +88,7 @@ class ViewRules: NSViewController {
 
             /* generate export JSON */
             var jsonObject: [ExportImportItem] = []
-            for domain in WhiteDomains.selectAll(filter: self.tableDomainsController.filterByName) {
+            for domain in WhiteDomains.selectAll(filter: self.tableDomains.filterByName) {
                 jsonObject.append(
                     ExportImportItem(
                         name    : domain.name,
@@ -183,31 +192,20 @@ class ViewRules: NSViewController {
             }
 
             /* table reload */
-            self.tableDomainsController.reload()
+            self.tableDomains.reload()
 
             /* message */
             let alert: NSAlert = NSAlert()
                 alert.messageText = NSLocalizedString("Import", comment: "")
                 if (invalidDomains.isEmpty)
                      { alert.informativeText = String(format: NSLocalizedString("%d records have been processed", comment: ""), processed) }
-                else { alert.informativeText = String(format: NSLocalizedString("%d records have been processed", comment: ""), processed) + "\n\n" + String(format: NSLocalizedString("Invalid domains were detected:\n%s", comment: ""), invalidDomains.joined(separator: "\n")) }
+                else { alert.informativeText = String(format: NSLocalizedString("%d records have been processed", comment: ""), processed) + "\n\n" + String(format: NSLocalizedString("Invalid domains were detected:\n%@", comment: ""), invalidDomains.joined(separator: "\n")) }
                 alert.alertStyle = .informational
                 alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
                 alert.runModal()
 
         }} catch {} }
 
-    }
-
-    @IBAction func onUpdateValue_searchField(_ field: NSSearchField) {
-        if (field.stringValue == "") { self.tableDomainsController.filterByName = nil }
-        if (field.stringValue != "") { self.tableDomainsController.filterByName = field.stringValue }
-        self.tableDomainsController.reload()
-    }
-
-    @IBAction func onClick_buttonTableDomainsDelete(_ button: NSButton) {
-        self.tableDomainsController.deleteItems(rowNums: self.tableDomains.selectedRowIndexes)
-        self.tableDomainsController.reload()
     }
 
 }

@@ -220,18 +220,18 @@
         }
       }
     },
-    "Invalid domains were detected:\n%s" : {
+    "Invalid domains were detected:\n%@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Invalid domains were detected:\n%s"
+            "value" : "Invalid domains were detected:\n%@"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Были обнаружены неправильные домены:\n%s"
+            "value" : "Были обнаружены неправильные домены:\n%@"
           }
         }
       }

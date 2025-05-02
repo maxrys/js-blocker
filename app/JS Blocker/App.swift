@@ -7,12 +7,14 @@ import Cocoa
 
 @main class App: NSObject, NSApplicationDelegate {
 
-    static let GROUP_NAME           = "97CZR6J379.maxrys.js-blocker"
-    static let NAME                 = "maxrys.js-blocker"
-    static let POPUP_EXTENSION_NAME = "maxrys.js-blocker.extension"
-    static let RULES_EXTENSION_NAME = "maxrys.js-blocker.rules"
+    static let GROUP_NAME     = "97CZR6J379.maxrys.js-blocker"
+    static let EXTENSION_NAME = "maxrys.js-blocker.extension"
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
 

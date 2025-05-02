@@ -5,17 +5,19 @@
 
 import SafariServices
 
-class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
+class TableDomainsController: NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
     let colCount: Int = 3
     var data: [WhiteDomains] = []
     var dataHash: Int?
     var filterByName: String?
-    var outlet: NSTableView!
     var onChange: () -> Void = {}
+    var onClickToLink: (String) -> Void = { _ in }
 
-    func relateWithOutlet(outlet: NSTableView) {
-        self.outlet = outlet
+    override func awakeFromNib() {
+        self.delegate   = self
+        self.dataSource = self
+        super.awakeFromNib()
     }
 
     func reload() {
@@ -23,17 +25,15 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
         self.data = WhiteDomains.selectAll(
             filter: self.filterByName
         )
-
         let newDataHash = WhiteDomains.hashOfSet(self.data)
         if (self.dataHash == nil || self.dataHash != newDataHash) {
             self.updateViewAfterDataChanges(
-                outlet  : self.outlet,
                 rowCount: self.data.count,
                 colCount: self.colCount
             )
             #if DEBUG
-                if (self.dataHash == nil) { print("ViewTableDomains.reload(): Data Hash is NIL") }
-                if (self.dataHash != nil) { print("ViewTableDomains.reload(): Data Hash is changed from \"\(self.dataHash ?? 0)\" to \"\(newDataHash)\"") }
+                if (self.dataHash == nil) { print("TableDomainsController.reload(): Data Hash is NIL") }
+                if (self.dataHash != nil) { print("TableDomainsController.reload(): Data Hash is changed from \"\(self.dataHash ?? 0)\" to \"\(newDataHash)\"") }
             #endif
             self.dataHash = newDataHash
             self.onChange()
@@ -74,16 +74,11 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
             case "isGlobal"   : cell.textField!.stringValue = NSLocalizedString(domain.isGlobal ? "yes" : "no", comment: "")
             case "link":
                 if let button = cell.subviews.first as? NSButton {
-                    button.tag = rowNum
-                } else {
-                    cell.subviews.removeAll()
-                    let button = NSButton(frame: NSRect(x: 0, y: 2, width: 20, height: 20))
-                        button.target = self
-                        button.action = #selector(onClickToLink)
-                        button.bezelStyle = .badge
-                        button.image = NSImage(systemSymbolName: "safari", accessibilityDescription: nil)
-                        button.tag = rowNum
-                    cell.addSubview(button)
+                    button.tag    = rowNum
+                    button.target = self
+                    button.action = #selector(
+                        self.onClickToLinkInternal
+                    )
                 }
             default:
                 return nil
@@ -92,11 +87,10 @@ class ViewTableDomains: NSTableView, NSTableViewDataSource, NSTableViewDelegate 
         return cell
     }
 
-    @objc func onClickToLink(_ sender: NSButton) {
-        let domain = self.data[sender.tag]
-        if let url = URL(string: "https://\(domain.name)") {
-            NSWorkspace.shared.open(url)
-        }
+    @objc func onClickToLinkInternal(_ sender: NSButton) {
+        self.onClickToLink(
+            self.data[sender.tag].name
+        )
     }
 
 }

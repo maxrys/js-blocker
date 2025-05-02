@@ -22,6 +22,8 @@ struct Message: View {
 
             Text(NSLocalizedString(self.title, comment: ""))
                 .font(.system(size: 14, weight: .bold))
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
                 .color(Color(MessageType.COLORNAME_TEXT))
                 .padding(13)
                 .frame(maxWidth: .infinity)
@@ -30,8 +32,10 @@ struct Message: View {
             if (self.description.isEmpty == false) {
                 Text(NSLocalizedString(self.description, comment: ""))
                     .font(.system(size: 13))
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                     .color(Color(MessageType.COLORNAME_TEXT))
-                    .padding(20)
+                    .padding(13)
                     .frame(maxWidth: .infinity)
                     .background(self.type.colorDescriptionBackground)
             }
@@ -45,8 +49,8 @@ struct Message: View {
     VStack(spacing: 0) {
 
         Message(
-            title: "Title",
-            description: "Description",
+            title: "Long title. Long title. Long title. Long title. Long title. Long title.",
+            description: "Long Description. Long Description. Long Description. Long Description. Long Description. Long Description.",
             type: .info
         )
 
