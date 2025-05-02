@@ -48,7 +48,7 @@ class TableDomainsController: NSTableView, NSTableViewDataSource, NSTableViewDel
                     self.data[rowNum].name
                 )
             }
-            WhiteDomains.deleteByNames(
+            let _ = WhiteDomains.deleteByNames(
                 names: primaryKeys
             )
         }

@@ -173,16 +173,35 @@ class PopupViewController: SFSafariExtensionViewController {
 
     func onClick_buttonRuleLocalInsert() {
         if let domainName = Self.domainName {
-            WhiteDomains.insert(
-                name: domainName,
-                isGlobal: false
-            )
-            self.formUpdate()
-            self.pageUpdate()
-            Self.messageShow(
-                title: NSLocalizedString("Settings have been saved.", comment: ""),
-                type: .ok
-            )
+            var success: [String] = []
+            var failure: [String] = []
+
+            if (WhiteDomains.insert(name: domainName, isGlobal: false))
+                 { success.append(domainName) }
+            else { failure.append(domainName) }
+
+            /* message */
+            if (success.count > 0) {
+                Self.messageShow(
+                    title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
+                    description: success.joined(separator: "\n"),
+                    type: .ok
+                )
+            }
+            if (failure.count > 0) {
+                Self.messageShow(
+                    title: NSLocalizedString("Permission for the following domain was not added:", comment: ""),
+                    description: failure.joined(separator: "\n"),
+                    type: .error
+                )
+            }
+
+            /* ui update */
+            if (success.count > 0) {
+                self.formUpdate()
+                self.pageUpdate()
+            }
+
             #if DEBUG
                 print("onClick_buttonRuleLocalInsert()")
                 WhiteDomains.dump()
@@ -193,27 +212,47 @@ class PopupViewController: SFSafariExtensionViewController {
     func onClick_buttonRuleGlobalInsert(indeces: [Int]) {
         if let domainName = Self.domainName {
             if (indeces.isEmpty) {
+
                 Self.messageShow(
                     title: NSLocalizedString("At least 1 subdomain must be selected!", comment: ""),
                     type: .error
                 )
+
             } else {
+
                 let domains = [domainName] + domainName.topDomains()
-                for index in indeces {
-                    if (index < domains.count) {
-                        WhiteDomains.insert(
-                            name: domains[index],
-                            isGlobal: true
-                        )
-                    }
+                var success: [String] = []
+                var failure: [String] = []
+
+                for index in indeces where index < domains.count {
+                    if (WhiteDomains.insert(name: domains[index], isGlobal: true))
+                         { success.append(domains[index]) }
+                    else { failure.append(domains[index]) }
                 }
-                self.formUpdate()
-                self.pageUpdate()
-                Self.messageShow(
-                    title: NSLocalizedString("Settings have been saved.", comment: ""),
-                    type: .ok
-                )
+
+                /* message */
+                if (success.count > 0) {
+                    Self.messageShow(
+                        title: NSLocalizedString("Global permissions for the following domains were added:", comment: ""),
+                        description: success.joined(separator: "\n"),
+                        type: .ok
+                    )
+                }
+                if (failure.count > 0) {
+                    Self.messageShow(
+                        title: NSLocalizedString("Global permissions for the following domains were not added:", comment: ""),
+                        description: failure.joined(separator: "\n"),
+                        type: .error
+                    )
+                }
+
+                /* ui update */
+                if (success.count > 0) {
+                    self.formUpdate()
+                    self.pageUpdate()
+                }
             }
+
             #if DEBUG
                 print("onClick_buttonRuleGlobalInsert()")
                 WhiteDomains.dump()
@@ -223,22 +262,65 @@ class PopupViewController: SFSafariExtensionViewController {
 
     func onClick_buttonRuleDelete() {
         if let domainName = Self.domainName {
-            switch Self.blockingState {
-                case .local:
-                    WhiteDomains.selectByName(domainName)?.delete()
-                case .global:
-                    WhiteDomains.selectGlobalDomains(domainName).forEach { topDomain in
-                        topDomain.delete()
-                    }
-                case .none:
-                    break /* impossible case */
+            var success: [String] = []
+            var failure: [String] = []
+
+            if (Self.blockingState == .local) {
+
+                if let topDomain = WhiteDomains.selectByName(domainName) {
+                    let name = topDomain.name
+                    if (topDomain.delete()) { success.append(name) }
+                    else                    { failure.append(name) }
+                }
+
+                /* message */
+                if (success.count > 0) {
+                    Self.messageShow(
+                        title: NSLocalizedString("Permission for the following domain was removed:", comment: ""),
+                        description: success.joined(separator: "\n"),
+                        type: .ok
+                    )
+                }
+                if (failure.count > 0) {
+                    Self.messageShow(
+                        title: NSLocalizedString("Permission for the following domain was not removed:", comment: ""),
+                        description: failure.joined(separator: "\n"),
+                        type: .error
+                    )
+                }
             }
-            self.formUpdate()
-            self.pageUpdate()
-            Self.messageShow(
-                title: NSLocalizedString("Settings have been saved.", comment: ""),
-                type: .ok
-            )
+
+            if (Self.blockingState == .global) {
+
+                WhiteDomains.selectGlobalDomains(domainName).forEach { topDomain in
+                    let name = topDomain.name
+                    if (topDomain.delete()) { success.append(name) }
+                    else                    { failure.append(name) }
+                }
+
+                /* message */
+                if (success.count > 0) {
+                    Self.messageShow(
+                        title: NSLocalizedString("Global permissions for the following domains were removed:", comment: ""),
+                        description: success.joined(separator: "\n"),
+                        type: .ok
+                    )
+                }
+                if (failure.count > 0) {
+                    Self.messageShow(
+                        title: NSLocalizedString("Global permissions for the following domains were not removed:", comment: ""),
+                        description: failure.joined(separator: "\n"),
+                        type: .error
+                    )
+                }
+            }
+
+            /* ui update */
+            if (success.count > 0) {
+                self.formUpdate()
+                self.pageUpdate()
+            }
+
             #if DEBUG
                 print("onClick_buttonRuleDelete()")
                 WhiteDomains.dump()

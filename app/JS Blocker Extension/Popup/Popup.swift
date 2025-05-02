@@ -145,8 +145,8 @@ struct Popup: View {
                 indecesForGLobal: [0],
                 messages: [
                     MessageInfo(
-                        title: "Settings have been saved.",
-                        description: "",
+                        title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
+                        description: ["example.com", "subdomain.example.com"].joined(separator: "\n"),
                         type: .ok
                     )
                 ]

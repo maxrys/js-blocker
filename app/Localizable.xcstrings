@@ -203,6 +203,70 @@
         }
       }
     },
+    "Global permissions for the following domains were added:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global permissions for the following domains were added:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Глобальные разрешения для следующих доменов были добавлены:"
+          }
+        }
+      }
+    },
+    "Global permissions for the following domains were not added:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global permissions for the following domains were not added:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Глобальные разрешения для следующих доменов не были добавлены:"
+          }
+        }
+      }
+    },
+    "Global permissions for the following domains were not removed:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global permissions for the following domains were not removed:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Глобальные разрешения для следующих доменов не были удалены:"
+          }
+        }
+      }
+    },
+    "Global permissions for the following domains were removed:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global permissions for the following domains were removed:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Глобальные разрешения для следующих доменов были удалены:"
+          }
+        }
+      }
+    },
     "Import" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -352,18 +416,66 @@
         }
       }
     },
-    "Settings have been saved." : {
+    "Permission for the following domain was added:" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Settings have been saved."
+            "value" : "Permission for the following domain was added:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Настройки были сохранены."
+            "value" : "Разрешение для следующего домена было добавлено:"
+          }
+        }
+      }
+    },
+    "Permission for the following domain was not added:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission for the following domain was not added:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешение для следующего домена не было добавлено:"
+          }
+        }
+      }
+    },
+    "Permission for the following domain was not removed:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission for the following domain was not removed:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешение для следующего домена не было удалено:"
+          }
+        }
+      }
+    },
+    "Permission for the following domain was removed:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission for the following domain was removed:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешение для следующего домена было удалено:"
           }
         }
       }

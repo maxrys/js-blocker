@@ -174,20 +174,14 @@ class ViewRules: NSViewController {
             if let items = JSONObject {
                 for item in items {
                     if (item.name.domainNameIsValid()) {
-                        WhiteDomains.selectByName(item.name)?.delete()
-                        WhiteDomains.insert(
-                            name    : item.name,
-                            isGlobal: item.isGlobal
-                        )
-                        processed += 1
-                        #if DEBUG
-                            print("IMPORT ITEM: isGlobal = \(item.isGlobal) | name = \(item.name)")
-                        #endif
-                    } else {
-                        invalidDomains.append(
-                            item.name
-                        )
-                    }
+                        let _ = WhiteDomains.selectByName(item.name)?.delete()
+                        if (WhiteDomains.insert(name: item.name, isGlobal: item.isGlobal)) {
+                            processed += 1
+                            #if DEBUG
+                                print("IMPORT ITEM: isGlobal = \(item.isGlobal) | name = \(item.name)")
+                            #endif
+                        } else { invalidDomains.append(item.name) }
+                    }     else { invalidDomains.append(item.name) }
                 }
             }
 
