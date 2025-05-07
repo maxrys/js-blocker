@@ -20,6 +20,7 @@
 		5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		50288FDD2DB11B8500A32865 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50288FDC2DB11B8500A32865 /* Credits.html */; };
+		503B16682DCB91B900C90BDA /* PopupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* PopupHandler.swift */; };
 		503CE1442C6E32C400835509 /* ToolbarIcon-local.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */; };
 		5064F9152D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
 		5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
@@ -495,6 +496,7 @@
 				50875E162C71EE1200756D64 /* NSTableView.swift in Sources */,
 				50AD45172DACF6E500425467 /* RealTimer.swift in Sources */,
 				500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */,
+				503B16682DCB91B900C90BDA /* PopupHandler.swift in Sources */,
 				50875E202C71F0C700756D64 /* TableDomainsController.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewInstallation.swift in Sources */,
 				50684B692DB9679000FC6175 /* Data.swift in Sources */,

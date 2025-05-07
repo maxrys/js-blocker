@@ -31,15 +31,33 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Experimental" id="b6G-ql-bYJ" userLabel="Experimental">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Experimental" id="wwg-wK-RKw">
+                                    <items>
+                                        <menuItem title="Enable CloudKit" id="LqY-jA-tei" userLabel="Enable CloudKit">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="onClick_menuItem_enableCloudKit:" target="Voe-Tx-rLC" id="FE1-9y-ui1"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="App" customModule="JS_Blocker" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="App" customModule="JS_Blocker" customModuleProvider="target">
+                    <connections>
+                        <outlet property="menuItem_isCloudEnabled" destination="LqY-jA-tei" id="iu7-dN-79F"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="Du3-cM-mB8"/>
             </objects>
             <point key="canvasLocation" x="76" y="-134"/>
         </scene>

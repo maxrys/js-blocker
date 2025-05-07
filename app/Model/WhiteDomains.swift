@@ -6,8 +6,6 @@
 import Foundation
 import CoreData
 
-let STORAGE_FILE_NAME = "JSBlocker.sqlite"
-
 public class WhiteDomains: NSManagedObject {
 
     typealias SELF = WhiteDomains
@@ -23,46 +21,41 @@ public class WhiteDomains: NSManagedObject {
 
     static let storeURL: URL = {
         let storeDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: App.GROUP_NAME)!
-        let storeURL = storeDirectory.appendingPathComponent(STORAGE_FILE_NAME)
+        let storeURL = storeDirectory.appendingPathComponent(App.STORAGE_NAME)
         return storeURL
     }()
 
-    static var isCloudEnabled = false
+    static var container: NSPersistentCloudKitContainer?
 
-    static let containerCloud: NSPersistentCloudKitContainer = {
-        let description = NSPersistentStoreDescription(url: SELF.storeURL)
+    static var context: NSManagedObjectContext {
+        if (SELF.container == nil) { SELF.containerInit() }
+        return SELF.container!.viewContext
+    }
+
+    static func containerInit() {
+        let description = NSPersistentStoreDescription()
+            description.url = SELF.storeURL
+            description.configuration = "CloudKit"
+            description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+            description.cloudKitContainerOptions = App.isCloudEnabled ? NSPersistentCloudKitContainerOptions(containerIdentifier: App.STORAGE_CLOUD_NAME) : nil
+            description.shouldInferMappingModelAutomatically = true
+            description.shouldMigrateStoreAutomatically = true
         let container = NSPersistentCloudKitContainer(name: "Model")
-        description.configuration = "CloudKit"
-        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
-            containerIdentifier: "iCloud.jsblocker"
-        )
         container.persistentStoreDescriptions = [description]
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("LoadPersistentStores() error \(error), \(error.userInfo)")
+            } else {
+                #if DEBUG
+                    print("DB containerInit() | cloud = \(App.isCloudEnabled)")
+                #endif
             }
         })
-        return container
-    }()
-
-    static let containerLocal: NSPersistentContainer = {
-        let description = NSPersistentStoreDescription(url: SELF.storeURL)
-        let container = NSPersistentContainer(name: "Model")
-        description.configuration = "Default"
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("LoadPersistentStores() error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    static let context: NSManagedObjectContext = {
-        if (SELF.isCloudEnabled)
-             { return SELF.containerCloud.viewContext }
-        else { return SELF.containerLocal.viewContext }
-    }()
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        SELF.container = container
+    }
 
     convenience init() {
         self.init(context: SELF.context)
@@ -93,7 +86,10 @@ public class WhiteDomains: NSManagedObject {
             if let filterByName = filterByName { fetchRequest.predicate = NSPredicate(format: "(name like[cd] %@) OR (nameDecoded like[cd] %@)", "*\(filterByName)*", filterByName) }
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: orderBy, ascending: ascending)]
             return try SELF.context.fetch(fetchRequest)
-        } catch {}; return []
+        } catch {
+            print("DB selectAll() error: \(error).")
+        }
+        return []
     }
 
     static func selectByName(_ name: String) -> SELF? {
@@ -102,7 +98,10 @@ public class WhiteDomains: NSManagedObject {
             fetchRequest.predicate = NSPredicate(format: "name ==[c] %@", name)
             let result = try SELF.context.fetch(fetchRequest)
             return result.isEmpty ? nil : result.first
-        } catch {}; return nil
+        } catch {
+            print("DB selectByName() error: \(error).")
+        }
+        return nil
     }
 
     static func selectSubDomains(name: String, withSelf: Bool = false) -> [SELF] {
@@ -133,7 +132,10 @@ public class WhiteDomains: NSManagedObject {
             if (withSelf == false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@)"                   , "*?.\(name)", name) }
             if (withSelf != false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@) OR (name ==[c] %@)", "*?.\(name)", name) }
             return try SELF.context.fetch(fetchRequest)
-        } catch {}; return []
+        } catch {
+            print("DB selectSubDomains() error: \(error).")
+        }
+        return []
     }
 
     static func selectGlobalDomains(_ name: String) -> [SELF] {
@@ -144,7 +146,10 @@ public class WhiteDomains: NSManagedObject {
                 format: "(name IN %@) AND (isGlobal == true)", names
             )
             return try SELF.context.fetch(fetchRequest)
-        } catch {}; return []
+        } catch {
+            print("DB selectGlobalDomains() error: \(error).")
+        }
+        return []
     }
 
     static func insert(name: String, isGlobal: Bool = false, expiredAt: Int64 = 0) -> Bool {
@@ -158,7 +163,10 @@ public class WhiteDomains: NSManagedObject {
                 domain.updatedAt   = Int64(Date().timeIntervalSince1970)
             try SELF.context.save()
             return true
-        } catch {}; return false
+        } catch {
+            print("DB insert() error: \(error).")
+        }
+        return false
     }
 
     static func deleteByNames(names: [String]) -> Bool {
@@ -172,7 +180,10 @@ public class WhiteDomains: NSManagedObject {
             }
             try SELF.context.save()
             return true
-        } catch {}; return false
+        } catch {
+            print("DB deleteByNames() error: \(error).")
+        }
+        return false
     }
 
     func delete() -> Bool {
@@ -180,7 +191,10 @@ public class WhiteDomains: NSManagedObject {
             SELF.context.delete(self)
             try SELF.context.save()
             return true
-        } catch {}; return false
+        } catch {
+            print("DB delete() error: \(error).")
+        }
+        return false
     }
 
     static func blockingState(name: String) -> BlockingType {
@@ -197,25 +211,26 @@ public class WhiteDomains: NSManagedObject {
     #if DEBUG
 
     static func dump() {
-        print("")
-        print("DUMP \"White Domains\":")
-        print(">> --------------------------------------------------------------------------")
-        print(">> name                                                           | is global")
-        print(">> ==========================================================================")
-
-        let domains = SELF.selectAll()
-        if (domains.isEmpty == false) {
-            for domain in domains {
-                let cellDomain   = domain.name.padding(toLength: 60, withPad: " ", startingAt: 0)
-                let cellIsGlobal = domain.isGlobal
-                print(">> - \(cellDomain) | \(cellIsGlobal)")
-            }
-        } else {
-            print(">> no data")
+        var renderedRows: [String] = []
+        SELF.selectAll().forEach { domain in
+            let name = domain.name.padding(toLength: 60, withPad: " ", startingAt: 0)
+            renderedRows.append(">> - \(name) | \(domain.isGlobal)")
         }
-
-        print(">> --------------------------------------------------------------------------")
-        print("")
+        if (renderedRows.isEmpty) {
+            renderedRows.append(
+                ">>" + String(repeating: " ", count: 30) + "... no data ..."
+            )
+        }
+        print("""
+        
+        DB Dump for \"\(SELF.ENTITY_NAME)\":
+        >> --------------------------------------------------------------------------
+        >> name                                                           | is global
+        >> ==========================================================================
+        \(renderedRows.joined(separator: "\n"))
+        >> --------------------------------------------------------------------------
+        
+        """)
     }
 
     #endif
