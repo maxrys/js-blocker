@@ -42,7 +42,7 @@ class PopupViewController: SFSafariExtensionViewController {
         self.popupView = NSHostingController(rootView: Self.popupShared).view
         self.view.addSubview(self.popupView)
         #if DEBUG
-            print("viewDidLoad(): DB path = \(WhiteDomains.storeURL)")
+            print("DB path = \(WhiteDomains.storeURL)")
             WhiteDomains.dump()
         #endif
     }
@@ -51,9 +51,6 @@ class PopupViewController: SFSafariExtensionViewController {
         super.viewWillAppear()
         self.formUpdate()
         self.popupSizeUpdate()
-        #if DEBUG
-            print("viewWillAppear()")
-        #endif
     }
 
     /* ###################################################################### */

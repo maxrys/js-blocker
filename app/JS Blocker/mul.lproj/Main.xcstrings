@@ -127,6 +127,24 @@
         }
       }
     },
+    "b6G-ql-bYJ.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Experimental\"; ObjectID = \"b6G-ql-bYJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Experimental"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспериментальный"
+          }
+        }
+      }
+    },
     "iDX-VN-4sa.placeholderString" : {
       "comment" : "Class = \"NSSearchFieldCell\"; placeholderString = \" \"; ObjectID = \"iDX-VN-4sa\";",
       "extractionState" : "extracted_with_value",
@@ -181,6 +199,24 @@
         }
       }
     },
+    "LqY-jA-tei.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Enable CloudKit\"; ObjectID = \"LqY-jA-tei\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enable CloudKit"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить CloudKit"
+          }
+        }
+      }
+    },
     "RNE-sn-OYb.headerCell.title" : {
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"global\"; ObjectID = \"RNE-sn-OYb\";",
       "extractionState" : "extracted_with_value",
@@ -213,6 +249,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JS Блокировщик"
+          }
+        }
+      }
+    },
+    "wwg-wK-RKw.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Experimental\"; ObjectID = \"wwg-wK-RKw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Experimental"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспериментальный"
           }
         }
       }

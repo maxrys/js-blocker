@@ -10,9 +10,12 @@ struct Popup: View {
 
     static let COLORNAME_BODY_BACKGROUND = "color Popup Body Background"
     static let COLORNAME_FOOT_BACKGROUND = "color Popup Foot Background"
+    static let COLORNAME_BUTTON_CLOUD    = "color Button Cloud"
     static let COLORNAME_BUTTON_SETTINGS = "color Button Settings"
 
+    static let ICON_CLOUD    = Image(systemName: "cloud")
     static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
+
     static let FRAME_WIDTH: CGFloat = 450
 
     @Environment(\.openURL) private var openURL
@@ -42,6 +45,38 @@ struct Popup: View {
             VStack(spacing: 0) {
 
                 ZStack(alignment: .topTrailing) {
+
+                    HStack(spacing: 10) {
+
+                        /* MARK: Indicator "Cloud" */
+                        if (App.isCloudEnabled) {
+                            Self.ICON_CLOUD
+                                .font(.system(size: 20))
+                                .color(Color(Self.COLORNAME_BUTTON_CLOUD))
+                                .padding(.leading, 3)
+                        }
+
+                        Spacer()
+
+                        /* MARK: Button "Settings" */
+                        Button {
+                            openURL(
+                                URL(string: "jsBlocker://")!
+                            )
+                        } label: {
+                            Self.ICON_SETTINGS
+                                .font(.system(size: 20))
+                                .color(Color(Self.COLORNAME_BUTTON_SETTINGS))
+                        }
+                        .buttonStyle(.plain)
+                        .onHover { isInView in
+                            if (isInView) { NSCursor.pointingHand.push() }
+                            else          { NSCursor.pop() }
+                        }
+                        .focusable(false)
+
+                    }.padding(.horizontal, 10)
+
                     /* MARK: JavaScript on the Domain */
                     DomainRule(
                         title: "JavaScript on the Domain",
@@ -53,23 +88,7 @@ struct Popup: View {
                             PopupViewController.shared.onClick_buttonRuleLocalInsert()
                         }
                     )
-                    /* MARK: Button "Settings" */
-                    Button {
-                        openURL(
-                            URL(string: "jsBlocker://")!
-                        )
-                    } label: {
-                        Self.ICON_SETTINGS
-                            .font(.system(size: 20))
-                            .color(Color(Self.COLORNAME_BUTTON_SETTINGS))
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.trailing, 10)
-                    .onHover { isInView in
-                        if (isInView) { NSCursor.pointingHand.push() }
-                        else          { NSCursor.pop() }
-                    }
-                    .focusable(false)
+
                 }
 
                 /* MARK: JavaScript on the Domain + Subdomains */
