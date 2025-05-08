@@ -139,9 +139,9 @@ struct DomainRule: View {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                   .stroke(self.colorBorder, lineWidth: 4)
-                   .background(self.colorBackground)
-                   .clipShape(.rect(cornerRadius: 12))
+                    .stroke(self.colorBorder, lineWidth: 4)
+                    .background(self.colorBackground)
+                    .cornerRadius(12)
             )
 
             /* MARK: Button "allow" */
@@ -165,66 +165,69 @@ struct DomainRule: View {
 
 }
 
-#Preview {
-    VStack(spacing: 0) {
+struct DomainRule_Previews1: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 0) {
 
-        DomainRule(
-            title: "JavaScript on the Domain",
-            rules: ["example.com"],
-            ruleIsActive: false,
-            buttonIsEnabled: true,
-            buttonOnClick: { index in }
-        ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            DomainRule(
+                title: "JavaScript on the Domain",
+                rules: ["example.com"],
+                ruleIsActive: false,
+                buttonIsEnabled: true,
+                buttonOnClick: { index in }
+            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
 
-        DomainRule(
-            title: "JavaScript on the Domain",
-            rules: ["example.com"],
-            ruleIsActive: true,
-            buttonIsEnabled: false,
-            buttonOnClick: { index in }
-        ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
+            DomainRule(
+                title: "JavaScript on the Domain",
+                rules: ["example.com"],
+                ruleIsActive: true,
+                buttonIsEnabled: false,
+                buttonOnClick: { index in }
+            ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
 
-        DomainRule(
-            title: "JavaScript on the Domain",
-            rules: ["example.com"],
-            ruleIsActive: false,
-            buttonIsEnabled: false,
-            buttonOnClick: { index in }
-        ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            DomainRule(
+                title: "JavaScript on the Domain",
+                rules: ["example.com"],
+                ruleIsActive: false,
+                buttonIsEnabled: false,
+                buttonOnClick: { index in }
+            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
 
-    }.frame(width: Popup.FRAME_WIDTH)
+        }.frame(width: Popup.FRAME_WIDTH)
+    }
 }
 
+struct DomainRule_Previews2: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 0) {
 
-#Preview {
-    VStack(spacing: 0) {
+            DomainRule(
+                title: "JavaScript on the Domain + Subdomains",
+                rules: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
+                ruleIsActive: false,
+                buttonIsEnabled: true,
+                selectedDefault: [0],
+                buttonOnClick: { index in }
+            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
 
-        DomainRule(
-            title: "JavaScript on the Domain + Subdomains",
-            rules: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
-            ruleIsActive: false,
-            buttonIsEnabled: true,
-            selectedDefault: [0],
-            buttonOnClick: { index in }
-        ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            DomainRule(
+                title: "JavaScript on the Domain + Subdomains",
+                rules: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
+                ruleIsActive: true,
+                buttonIsEnabled: false,
+                selectedDefault: [0],
+                buttonOnClick: { index in }
+            ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
 
-        DomainRule(
-            title: "JavaScript on the Domain + Subdomains",
-            rules: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
-            ruleIsActive: true,
-            buttonIsEnabled: false,
-            selectedDefault: [0],
-            buttonOnClick: { index in }
-        ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
+            DomainRule(
+                title: "JavaScript on the Domain + Subdomains",
+                rules: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
+                ruleIsActive: false,
+                buttonIsEnabled: false,
+                selectedDefault: [ ],
+                buttonOnClick: { index in }
+            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
 
-        DomainRule(
-            title: "JavaScript on the Domain + Subdomains",
-            rules: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
-            ruleIsActive: false,
-            buttonIsEnabled: false,
-            selectedDefault: [ ],
-            buttonOnClick: { index in }
-        ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
-
-    }.frame(width: Popup.FRAME_WIDTH)
+        }.frame(width: Popup.FRAME_WIDTH)
+    }
 }

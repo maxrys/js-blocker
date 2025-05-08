@@ -45,58 +45,62 @@ struct Message: View {
 
 }
 
-#Preview {
-    VStack(spacing: 0) {
+struct Message_Previews1: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 0) {
 
-        Message(
-            title: "Long title. Long title. Long title. Long title. Long title. Long title.",
-            description: "Long Description. Long Description. Long Description. Long Description. Long Description. Long Description.",
-            type: .info
-        )
+            Message(
+                title: "Long title. Long title. Long title. Long title. Long title. Long title.",
+                description: "Long Description. Long Description. Long Description. Long Description. Long Description. Long Description.",
+                type: .info
+            )
 
-        Message(
-            title: "Title",
-            description: "Description",
-            type: .ok
-        )
+            Message(
+                title: "Title",
+                description: "Description",
+                type: .ok
+            )
 
-        Message(
-            title: "Title",
-            description: "Description",
-            type: .warning
-        )
+            Message(
+                title: "Title",
+                description: "Description",
+                type: .warning
+            )
 
-        Message(
-            title: "Title",
-            description: "Description",
-            type: .error
-        )
+            Message(
+                title: "Title",
+                description: "Description",
+                type: .error
+            )
 
-    }.frame(width: 300)
+        }.frame(width: 300)
+    }
 }
 
-#Preview {
-    VStack(spacing: 0) {
+struct Message_Previews2: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 0) {
 
-        Message(
-            title: "Message",
-            type: .info
-        )
+            Message(
+                title: "Message",
+                type: .info
+            )
 
-        Message(
-            title: "Message",
-            type: .ok
-        )
+            Message(
+                title: "Message",
+                type: .ok
+            )
 
-        Message(
-            title: "Message",
-            type: .warning
-        )
+            Message(
+                title: "Message",
+                type: .warning
+            )
 
-        Message(
-            title: "Message",
-            type: .error
-        )
+            Message(
+                title: "Message",
+                type: .error
+            )
 
-    }.frame(width: 300)
+        }.frame(width: 300)
+    }
 }

@@ -71,48 +71,50 @@ struct RoundButton: View {
     }
 }
 
-#Preview {
-    VStack(spacing: 10) {
+struct RoundButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 10) {
 
-        RoundButton(
-            title: "allow",
-            color: .violet,
-            isEnabled: true,
-            minWidth: 150,
-            onClick: {
-                print("onClick: RoundButton #1")
-            }
-        )
+            RoundButton(
+                title: "allow",
+                color: .violet,
+                isEnabled: true,
+                minWidth: 150,
+                onClick: {
+                    print("onClick: RoundButton #1")
+                }
+            )
 
-        RoundButton(
-            title: "allow",
-            color: .violet,
-            isEnabled: false,
-            minWidth: 150,
-            onClick: {
-                print("onClick: RoundButton #2")
-            }
-        )
+            RoundButton(
+                title: "allow",
+                color: .violet,
+                isEnabled: false,
+                minWidth: 150,
+                onClick: {
+                    print("onClick: RoundButton #2")
+                }
+            )
 
-        RoundButton(
-            title: "cancel permission",
-            color: .blue,
-            isEnabled: true,
-            minWidth: 250,
-            onClick: {
-                print("onClick: RoundButton #3")
-            }
-        )
+            RoundButton(
+                title: "cancel permission",
+                color: .blue,
+                isEnabled: true,
+                minWidth: 250,
+                onClick: {
+                    print("onClick: RoundButton #3")
+                }
+            )
 
-        RoundButton(
-            title: "cancel permission",
-            color: .blue,
-            isEnabled: false,
-            minWidth: 250,
-            onClick: {
-                print("onClick: RoundButton #4")
-            }
-        )
+            RoundButton(
+                title: "cancel permission",
+                color: .blue,
+                isEnabled: false,
+                minWidth: 250,
+                onClick: {
+                    print("onClick: RoundButton #4")
+                }
+            )
 
-    }.padding(10)
+        }.padding(10)
+    }
 }
