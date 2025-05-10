@@ -62,7 +62,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     static func messageShow(title: String, description: String = "", type: MessageType = .info) {
-        Task {
+        DispatchQueue.main.async {
             let newValue = MessageInfo(
                 title: title,
                 description: description,
