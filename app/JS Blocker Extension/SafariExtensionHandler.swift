@@ -5,7 +5,7 @@
 
 import SafariServices
 
-class PopupHandler: SFSafariExtensionHandler {
+class SafariExtensionHandler: SFSafariExtensionHandler {
 
     static let ICON_LOCAL  = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-local" , ofType: "pdf")!)
     static let ICON_GLOBAL = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-global", ofType: "pdf")!)
@@ -82,18 +82,18 @@ class PopupHandler: SFSafariExtensionHandler {
 
                         if let page       = page,
                            let domainName = domainName {
-                            PopupViewController.page = page
-                            PopupViewController.domainName = domainName
-                            PopupViewController.blockingState = WhiteDomains.blockingState(name: domainName)
-                            switch PopupViewController.blockingState {
+                            SafariExtensionViewController.page = page
+                            SafariExtensionViewController.domainName = domainName
+                            SafariExtensionViewController.blockingState = WhiteDomains.blockingState(name: domainName)
+                            switch SafariExtensionViewController.blockingState {
                                 case .local : toolbarItem?.setImage(Self.ICON_LOCAL)
                                 case .global: toolbarItem?.setImage(Self.ICON_GLOBAL)
                                 case .none  : toolbarItem?.setImage(Self.ICON_NONE)
                             }
                         } else {
-                            PopupViewController.page = nil
-                            PopupViewController.domainName = nil
-                            PopupViewController.blockingState = .none
+                            SafariExtensionViewController.page = nil
+                            SafariExtensionViewController.domainName = nil
+                            SafariExtensionViewController.blockingState = .none
                         }
 
                     })
@@ -108,7 +108,7 @@ class PopupHandler: SFSafariExtensionHandler {
 
     override func popoverViewController() -> SFSafariExtensionViewController {
         /* when: info.plist → SFSafariToolbarItem → Action = Popover */
-        return PopupViewController.shared
+        return SafariExtensionViewController.shared
     }
 
     override func toolbarItemClicked(in window: SFSafariWindow) {

@@ -6,7 +6,7 @@
 import SafariServices
 import SwiftUI
 
-class PopupViewController: SFSafariExtensionViewController {
+class SafariExtensionViewController: SFSafariExtensionViewController {
 
     static var MESSAGE_LIFE_TIME: Double = 1.0
 
@@ -14,16 +14,16 @@ class PopupViewController: SFSafariExtensionViewController {
     static var domainName: String?
     static var blockingState: BlockingType = .none
     static var state = PopupState(
-        onTick: PopupViewController.onTimerTick
+        onTick: SafariExtensionViewController.onTimerTick
     )
 
-    static let shared: PopupViewController = {
-        return PopupViewController()
+    static let shared: SafariExtensionViewController = {
+        return SafariExtensionViewController()
     }()
 
     static var popupShared: Popup = {
         return Popup(
-            state: PopupViewController.state
+            state: SafariExtensionViewController.state
         )
     }()
 

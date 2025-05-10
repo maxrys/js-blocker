@@ -85,7 +85,7 @@ struct Popup: View {
                         buttonIsEnabled: self.state.isEnabledLocalRule,
                         selectedDefault: self.state.indecesForLocal,
                         buttonOnClick: { _ in
-                            PopupViewController.shared.onClick_buttonRuleLocalInsert()
+                            SafariExtensionViewController.shared.onClick_buttonRuleLocalInsert()
                         }
                     )
 
@@ -99,7 +99,7 @@ struct Popup: View {
                     buttonIsEnabled: self.state.isEnabledGlobalRule,
                     selectedDefault: self.state.indecesForGLobal,
                     buttonOnClick: { indeces in
-                        PopupViewController.shared.onClick_buttonRuleGlobalInsert(
+                        SafariExtensionViewController.shared.onClick_buttonRuleGlobalInsert(
                             indeces: indeces
                         )
                     }
@@ -122,7 +122,7 @@ struct Popup: View {
                     isEnabled: self.state.isEnabledRuleCancel,
                     minWidth: 250,
                     onClick: {
-                        PopupViewController.shared.onClick_buttonRuleDelete()
+                        SafariExtensionViewController.shared.onClick_buttonRuleDelete()
                     }
                 )
 
