@@ -85,7 +85,7 @@ struct Popup: View {
                         buttonIsEnabled: self.state.isEnabledLocalRule,
                         selectedDefault: self.state.indecesForLocal,
                         buttonOnClick: { _ in
-                            PopupViewController.shared.onClick_buttonRuleLocalInsert()
+                            SafariExtensionViewController.shared.onClick_buttonRuleLocalInsert()
                         }
                     )
 
@@ -99,7 +99,7 @@ struct Popup: View {
                     buttonIsEnabled: self.state.isEnabledGlobalRule,
                     selectedDefault: self.state.indecesForGLobal,
                     buttonOnClick: { indeces in
-                        PopupViewController.shared.onClick_buttonRuleGlobalInsert(
+                        SafariExtensionViewController.shared.onClick_buttonRuleGlobalInsert(
                             indeces: indeces
                         )
                     }
@@ -122,7 +122,7 @@ struct Popup: View {
                     isEnabled: self.state.isEnabledRuleCancel,
                     minWidth: 250,
                     onClick: {
-                        PopupViewController.shared.onClick_buttonRuleDelete()
+                        SafariExtensionViewController.shared.onClick_buttonRuleDelete()
                     }
                 )
 
@@ -137,40 +137,42 @@ struct Popup: View {
     }
 }
 
-#Preview {
-    VStack(spacing: 30) {
+struct PopupState_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 30) {
 
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["example.com"],
-                rulesForGlobal: ["*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: false,
-                isEnabledLocalRule: true,
-                isEnabledGlobalRule: true,
-                isEnabledRuleCancel: false
+            Popup(
+                state: PopupState(
+                    rulesForLocal: ["example.com"],
+                    rulesForGlobal: ["*.example.com"],
+                    isActiveLocalRule: false,
+                    isActiveGlobalRule: false,
+                    isEnabledLocalRule: true,
+                    isEnabledGlobalRule: true,
+                    isEnabledRuleCancel: false
+                )
             )
-        )
 
-        Popup(
-            state: PopupState(
-                rulesForLocal: ["sub3.sub2.sub1.example.com"],
-                rulesForGlobal: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
-                isActiveLocalRule: false,
-                isActiveGlobalRule: true,
-                isEnabledLocalRule: false,
-                isEnabledGlobalRule: false,
-                isEnabledRuleCancel: true,
-                indecesForGLobal: [0],
-                messages: [
-                    MessageInfo(
-                        title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
-                        description: ["example.com", "subdomain.example.com"].joined(separator: "\n"),
-                        type: .ok
-                    )
-                ]
+            Popup(
+                state: PopupState(
+                    rulesForLocal: ["sub3.sub2.sub1.example.com"],
+                    rulesForGlobal: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
+                    isActiveLocalRule: false,
+                    isActiveGlobalRule: true,
+                    isEnabledLocalRule: false,
+                    isEnabledGlobalRule: false,
+                    isEnabledRuleCancel: true,
+                    indecesForGLobal: [0],
+                    messages: [
+                        MessageInfo(
+                            title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
+                            description: ["example.com", "subdomain.example.com"].joined(separator: "\n"),
+                            type: .ok
+                        )
+                    ]
+                )
             )
-        )
 
+        }
     }
 }

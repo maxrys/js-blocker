@@ -21,7 +21,7 @@ class ViewInstallation: NSViewController {
                 #endif
                 return
             }
-            Task {
+            DispatchQueue.main.async {
                 if (state.isEnabled == true) {
                     self.labelExtensionState.stringValue = NSLocalizedString("JS Blocker Extension is enabled" , comment: "")
                     self.boxExtensionState.fillColor = MessageType.ok.colorNSDescriptionBackground

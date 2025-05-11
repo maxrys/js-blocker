@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,7 @@
 		5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */; };
 		50288FDD2DB11B8500A32865 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 50288FDC2DB11B8500A32865 /* Credits.html */; };
-		503B16682DCB91B900C90BDA /* PopupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* PopupHandler.swift */; };
+		503B16682DCB91B900C90BDA /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* SafariExtensionHandler.swift */; };
 		503CE1442C6E32C400835509 /* ToolbarIcon-local.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* ToolbarIcon-local.pdf */; };
 		5064F9152D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
 		5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
@@ -39,7 +39,7 @@
 		50875E222C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E232C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E292C71F5A400756D64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B025132C47E401002F1AD7 /* Main.storyboard */; };
-		50875E2A2C71F5A800756D64 /* PopupTarget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252C2C47E404002F1AD7 /* PopupTarget.xib */; };
+		50875E2A2C71F5A800756D64 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */; };
 		50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */; };
 		50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E372C71F72A00756D64 /* InfoPlist.xcstrings */; };
 		50AD45152DACF6E500425467 /* RealTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45142DACF6E500425467 /* RealTimer.swift */; };
@@ -54,8 +54,8 @@
 		50B025152C47E401002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B025142C47E401002F1AD7 /* Base */; };
 		50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B025162C47E403002F1AD7 /* Assets.xcassets */; };
 		50B0251F2C47E404002F1AD7 /* JS Blocker Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B0251E2C47E404002F1AD7 /* JS Blocker Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		50B025242C47E404002F1AD7 /* PopupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* PopupHandler.swift */; };
-		50B025262C47E404002F1AD7 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* PopupViewController.swift */; };
+		50B025242C47E404002F1AD7 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* SafariExtensionHandler.swift */; };
+		50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */; };
 		50B025292C47E404002F1AD7 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 50B025282C47E404002F1AD7 /* script.js */; };
 		50B0252B2C47E404002F1AD7 /* ToolbarIcon-none.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252A2C47E404002F1AD7 /* ToolbarIcon-none.pdf */; };
 		50B0252E2C47E404002F1AD7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252D2C47E404002F1AD7 /* Base */; };
@@ -75,7 +75,7 @@
 		50EB551D2CF9AAB400FC060C /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55112CF9AAB400FC060C /* RoundButton.swift */; };
 		50EB551E2CF9AAB400FC060C /* DomainRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB550F2CF9AAB400FC060C /* DomainRule.swift */; };
 		50EB551F2CF9AAB400FC060C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55102CF9AAB400FC060C /* Message.swift */; };
-		50EB55352CF9F4BA00FC060C /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* PopupViewController.swift */; };
+		50EB55352CF9F4BA00FC060C /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,14 +123,14 @@
 		50684B702DB96C1100FC6175 /* JS Blocker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "JS Blocker.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-v2.xcdatamodel"; sourceTree = "<group>"; };
 		50875E092C71E93A00756D64 /* WhiteDomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteDomains.swift; sourceTree = "<group>"; };
-		50875E112C71EE0D00756D64 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		50875E152C71EE1200756D64 /* NSTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
-		50875E192C71EE1700756D64 /* SFSafariApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFSafariApplication.swift; sourceTree = "<group>"; };
-		50875E1F2C71F0C700756D64 /* TableDomainsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDomainsController.swift; sourceTree = "<group>"; };
+		50875E112C71EE0D00756D64 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		50875E152C71EE1200756D64 /* NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
+		50875E192C71EE1700756D64 /* SFSafariApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariApplication.swift; sourceTree = "<group>"; };
+		50875E1F2C71F0C700756D64 /* TableDomainsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDomainsController.swift; sourceTree = "<group>"; };
 		50875E212C71F21C00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50875E2B2C71F5C300756D64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Main.xcstrings; sourceTree = "<group>"; };
-		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50AD45142DACF6E500425467 /* RealTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimer.swift; sourceTree = "<group>"; };
 		50AD45192DAD17C600425467 /* ToolbarIcon-global.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarIcon-global.pdf"; sourceTree = "<group>"; };
 		50AD45202DAE59C300425467 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -142,11 +142,11 @@
 		50B025162C47E403002F1AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50B025192C47E403002F1AD7 /* JS Blocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JS Blocker.entitlements"; sourceTree = "<group>"; };
 		50B0251E2C47E404002F1AD7 /* JS Blocker Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "JS Blocker Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		50B025232C47E404002F1AD7 /* PopupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupHandler.swift; sourceTree = "<group>"; };
-		50B025252C47E404002F1AD7 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		50B025232C47E404002F1AD7 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		50B025282C47E404002F1AD7 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		50B0252A2C47E404002F1AD7 /* ToolbarIcon-none.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ToolbarIcon-none.pdf"; sourceTree = "<group>"; };
-		50B0252D2C47E404002F1AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PopupTarget.xib; sourceTree = "<group>"; };
+		50B0252D2C47E404002F1AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		50B0252F2C47E404002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B025302C47E404002F1AD7 /* JS_Blocker_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JS_Blocker_Extension.entitlements; sourceTree = "<group>"; };
 		50B025552C47ECCC002F1AD7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -259,10 +259,10 @@
 		50B025222C47E404002F1AD7 /* JS Blocker Extension */ = {
 			isa = PBXGroup;
 			children = (
-				50B025232C47E404002F1AD7 /* PopupHandler.swift */,
-				50B025252C47E404002F1AD7 /* PopupViewController.swift */,
 				50EB55152CF9AAB400FC060C /* Popup */,
-				50B0252C2C47E404002F1AD7 /* PopupTarget.xib */,
+				50B025232C47E404002F1AD7 /* SafariExtensionHandler.swift */,
+				50B025252C47E404002F1AD7 /* SafariExtensionViewController.swift */,
+				50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */,
 				50875E372C71F72A00756D64 /* InfoPlist.xcstrings */,
 				50B0252F2C47E404002F1AD7 /* Info.plist */,
 				50B025302C47E404002F1AD7 /* JS_Blocker_Extension.entitlements */,
@@ -386,29 +386,30 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1630;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Maxim Rysevets";
 				TargetAttributes = {
 					500D2D1A2D05929D00551390 = {
-						CreatedOnToolsVersion = 16.1;
+						CreatedOnToolsVersion = 13.2.1;
 					};
 					50B025012C47E401002F1AD7 = {
-						CreatedOnToolsVersion = 15.4;
+						CreatedOnToolsVersion = 13.2.1;
 					};
 					50B0251D2C47E404002F1AD7 = {
-						CreatedOnToolsVersion = 15.4;
+						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
 			buildConfigurationList = 50B024FD2C47E401002F1AD7 /* Build configuration list for PBXProject "JS Blocker" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 				ru,
+				mul,
 			);
 			mainGroup = 50B024F92C47E401002F1AD7;
 			productRefGroup = 50B025032C47E401002F1AD7 /* Products */;
@@ -456,7 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B0252B2C47E404002F1AD7 /* ToolbarIcon-none.pdf in Resources */,
-				50875E2A2C71F5A800756D64 /* PopupTarget.xib in Resources */,
+				50875E2A2C71F5A800756D64 /* SafariExtensionViewController.xib in Resources */,
 				50B0252E2C47E404002F1AD7 /* Base in Resources */,
 				503CE1442C6E32C400835509 /* ToolbarIcon-local.pdf in Resources */,
 				50AD451A2DAD17C600425467 /* ToolbarIcon-global.pdf in Resources */,
@@ -492,11 +493,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B025122C47E401002F1AD7 /* ViewRules.swift in Sources */,
-				50EB55352CF9F4BA00FC060C /* PopupViewController.swift in Sources */,
+				50EB55352CF9F4BA00FC060C /* SafariExtensionViewController.swift in Sources */,
 				50875E162C71EE1200756D64 /* NSTableView.swift in Sources */,
 				50AD45172DACF6E500425467 /* RealTimer.swift in Sources */,
 				500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */,
-				503B16682DCB91B900C90BDA /* PopupHandler.swift in Sources */,
+				503B16682DCB91B900C90BDA /* SafariExtensionHandler.swift in Sources */,
 				50875E202C71F0C700756D64 /* TableDomainsController.swift in Sources */,
 				5019AA0D2C6E43E2003F9AF5 /* ViewInstallation.swift in Sources */,
 				50684B692DB9679000FC6175 /* Data.swift in Sources */,
@@ -528,13 +529,13 @@
 				50AD45152DACF6E500425467 /* RealTimer.swift in Sources */,
 				50EB551F2CF9AAB400FC060C /* Message.swift in Sources */,
 				50E150B22DA93E59005768C1 /* App.swift in Sources */,
-				50B025262C47E404002F1AD7 /* PopupViewController.swift in Sources */,
+				50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */,
 				50875E0D2C71E93A00756D64 /* WhiteDomains.swift in Sources */,
 				50875E1B2C71EE1700756D64 /* SFSafariApplication.swift in Sources */,
 				500D2C5B2D058D2E00551390 /* MessageType.swift in Sources */,
 				50E150C02DAA789D005768C1 /* PopupState.swift in Sources */,
 				50AD45222DAE59C300425467 /* View.swift in Sources */,
-				50B025242C47E404002F1AD7 /* PopupHandler.swift in Sources */,
+				50B025242C47E404002F1AD7 /* SafariExtensionHandler.swift in Sources */,
 				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 				50684B6A2DB9679000FC6175 /* Data.swift in Sources */,
 				50875E172C71EE1200756D64 /* NSTableView.swift in Sources */,
@@ -567,12 +568,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		50B0252C2C47E404002F1AD7 /* PopupTarget.xib */ = {
+		50B0252C2C47E404002F1AD7 /* SafariExtensionViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				50B0252D2C47E404002F1AD7 /* Base */,
 			);
-			name = PopupTarget.xib;
+			name = SafariExtensionViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -585,7 +586,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "maxrys.js-blocker.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -600,7 +601,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "maxrys.js-blocker.tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -616,7 +617,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -649,7 +650,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -664,7 +665,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -682,7 +683,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -715,7 +716,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -724,7 +725,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -749,7 +750,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -780,7 +781,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -816,7 +817,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -853,7 +854,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.7;
 				MARKETING_VERSION = 1.5;
 				OTHER_LDFLAGS = (
 					"-framework",

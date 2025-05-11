@@ -13,7 +13,7 @@ extension SFSafariApplication {
     =====================================================================
         SFSafariApplication.domainNameCurrentGetWithCompletionHandler(
             completionHandler: { host in
-                Task {
+                Task { // or "DispatchQueue.main.async"
                     print(host)
                 }
             }
@@ -23,7 +23,7 @@ extension SFSafariApplication {
 
     "domainNameCurrentGet" usage:
     =====================================================================
-        Task {
+        Task { // or "DispatchQueue.main.async"
             if let host = await SFSafariApplication.domainNameCurrentGet() {
                 print(host)
             }
