@@ -1,4 +1,9 @@
 
+## Version 1.5
+
+Fixed backward compatibility to work with OS version starting from Big Sur.
+Added experimental iCloud sync mode.
+
 ## Version 1.4
 
 Added crash protection when working with the database.
