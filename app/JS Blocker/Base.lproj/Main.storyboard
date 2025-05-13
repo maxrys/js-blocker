@@ -91,7 +91,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
                         <subviews>
                             <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e9Y-7S-DPz" userLabel="Label &quot;Domains where JavaScript is allowed&quot;">
-                                <rect key="frame" x="203" y="554" width="295" height="19"/>
+                                <rect key="frame" x="18" y="554" width="664" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Domains where JavaScript is allowed" id="XEy-Pk-wCR">
                                     <font key="font" metaFont="systemBold" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -109,7 +109,7 @@
                                     <action selector="onUpdateValue_searchField:" target="XfG-lQ-9wD" id="MJ8-c6-4Sg"/>
                                 </connections>
                             </searchField>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h0V-Pz-NGY" userLabel="Label &quot;export&quot;">
+                            <textField focusRingType="none" verticalHuggingPriority="750" alphaValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h0V-Pz-NGY" userLabel="Label &quot;export&quot;">
                                 <rect key="frame" x="538" y="535" width="44" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="V4F-Nv-0oj"/>
@@ -133,7 +133,7 @@
                                     <action selector="onClick_buttonExport:" target="XfG-lQ-9wD" id="75a-Kz-dD9"/>
                                 </connections>
                             </button>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zQK-tM-SgK" userLabel="Label &quot;import&quot;">
+                            <textField focusRingType="none" verticalHuggingPriority="750" alphaValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zQK-tM-SgK" userLabel="Label &quot;import&quot;">
                                 <rect key="frame" x="588" y="535" width="44" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="52n-dj-ehs"/>
@@ -321,6 +321,7 @@
                             <constraint firstItem="e9Y-7S-DPz" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="27" id="6h3-OW-9KW"/>
                             <constraint firstItem="h0V-Pz-NGY" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="54" id="7C6-E6-iqE"/>
                             <constraint firstAttribute="trailing" secondItem="sCr-FR-trs" secondAttribute="trailing" constant="20" id="7fQ-hQ-oI3"/>
+                            <constraint firstAttribute="trailing" secondItem="e9Y-7S-DPz" secondAttribute="trailing" constant="20" id="85a-bq-kEc"/>
                             <constraint firstItem="Df4-1n-Qgs" firstAttribute="top" secondItem="J9y-83-PIG" secondAttribute="bottom" constant="7" id="9eQ-VJ-r5O"/>
                             <constraint firstItem="sCr-FR-trs" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="70" id="CBA-hJ-Lb8"/>
                             <constraint firstAttribute="bottom" secondItem="ONa-Gi-u7M" secondAttribute="bottom" constant="24" id="FzU-VD-nka"/>
@@ -337,8 +338,8 @@
                             <constraint firstAttribute="trailing" secondItem="Df4-1n-Qgs" secondAttribute="trailing" constant="20" id="a3X-to-xQd"/>
                             <constraint firstItem="J9y-83-PIG" firstAttribute="top" secondItem="Gm2-P3-kNP" secondAttribute="bottom" constant="11" id="aTC-Hs-l2m"/>
                             <constraint firstItem="BaG-Ml-X1W" firstAttribute="top" secondItem="zQK-tM-SgK" secondAttribute="bottom" constant="5" id="bu6-TI-6Sp"/>
+                            <constraint firstItem="e9Y-7S-DPz" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ejJ-IB-4LG"/>
                             <constraint firstItem="47F-8J-Nou" firstAttribute="top" secondItem="h0V-Pz-NGY" secondAttribute="bottom" constant="5" id="nVN-YI-vVZ"/>
-                            <constraint firstItem="e9Y-7S-DPz" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="pQR-AH-aWs"/>
                             <constraint firstItem="Df4-1n-Qgs" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="w7A-rf-WYG"/>
                             <constraint firstItem="Gm2-P3-kNP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="wX6-wy-ba5"/>
                         </constraints>
@@ -378,11 +379,8 @@
                                                         <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6wu-uu-fbh">
                                                             <rect key="frame" x="0.0" y="0.0" width="660" height="44"/>
                                                             <subviews>
-                                                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-cC-lBA" userLabel="Label &quot;State: enabled/disabled&quot;">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" verifyAmbiguity="off" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-cC-lBA" userLabel="Label &quot;State: enabled/disabled&quot;">
                                                                     <rect key="frame" x="18" y="13" width="624" height="17"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="620" id="65Y-4c-kDx"/>
-                                                                    </constraints>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="JS Blocker Extension in unknown state" id="Zwb-Om-U96">
                                                                         <font key="font" metaFont="systemBold" size="14"/>
                                                                         <color key="textColor" name="Message Text Color"/>
