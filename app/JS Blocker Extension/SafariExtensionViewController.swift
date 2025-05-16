@@ -42,7 +42,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         self.popupView = NSHostingController(rootView: Self.popupShared).view
         self.view.addSubview(self.popupView)
         #if DEBUG
-            print("DB path = \(WhiteDomains.storeURL)")
             WhiteDomains.dump()
         #endif
     }

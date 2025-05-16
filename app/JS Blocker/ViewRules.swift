@@ -20,10 +20,8 @@ class ViewRules: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storePath = WhiteDomains.storeURL.absoluteString.removingPercentEncoding!
 
         #if DEBUG
-            print("viewDidLoad(): DB path = \"\(storePath)\"")
             WhiteDomains.dump()
         #endif
 
