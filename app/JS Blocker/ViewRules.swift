@@ -101,17 +101,8 @@ class ViewRules: NSViewController {
                 jsonObject
             )
 
-            /* generate export date */
-            let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyyMMdd-HHmmss"
-                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-
-            let formattedDate = dateFormatter.string(
-                from: Date()
-            )
-
             /* generate export URL */
+            let formattedDate = Date().formatCustom("yyyyMMdd-HHmmss")
             let exportFileURL = directoryURL.appendingPathComponent(
                 "JSBlocker-\(formattedDate).json"
             )
