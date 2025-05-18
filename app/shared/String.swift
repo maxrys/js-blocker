@@ -54,7 +54,7 @@ extension String {
     func decodePunycode() -> String {
         let decodePart = { (string: String) -> String in
             let regex = try! NSRegularExpression(pattern: "^xn--" + "((?<ascii>[a-z0-9\\-]+)\\-|)" + "(?<codes>[a-z0-9]+)" + "$")
-            let regexMatches = regex.findRanges(string: string, rangeNames: ["ascii", "codes"])
+            let regexMatches = regex.findInGroups(in: string, groups: ["ascii", "codes"])
             let ascii = regexMatches["ascii"] ?? ""
             let codes = regexMatches["codes"] ?? ""
             if (codes.isEmpty == false) {
