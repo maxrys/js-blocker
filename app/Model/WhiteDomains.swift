@@ -95,7 +95,7 @@ public class WhiteDomains: NSManagedObject {
     static func selectAll(filter filterByName: String? = nil, orderBy: String = #keyPath(SELF.nameDecoded), ascending: Bool = true) -> [SELF] {
         do {
             let fetchRequest = SELF.fetchRequest()
-            if let filterByName = filterByName { fetchRequest.predicate = NSPredicate(format: "(name like[cd] %@) OR (nameDecoded like[cd] %@)", "*\(filterByName)*", filterByName) }
+            if let filterByName { fetchRequest.predicate = NSPredicate(format: "(name like[cd] %@) OR (nameDecoded like[cd] %@)", "*\(filterByName)*", filterByName) }
             fetchRequest.sortDescriptors = [ NSSortDescriptor(key: orderBy, ascending: ascending) ]
             return try SELF.context.fetch(fetchRequest)
         } catch {
