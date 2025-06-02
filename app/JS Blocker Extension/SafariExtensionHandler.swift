@@ -80,8 +80,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             domainName != nil, ""
                         )
 
-                        if let page       = page,
-                           let domainName = domainName {
+                        if let page,
+                           let domainName {
                             SafariExtensionViewController.page = page
                             SafariExtensionViewController.domainName = domainName
                             SafariExtensionViewController.blockingState = WhiteDomains.blockingState(name: domainName)

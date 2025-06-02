@@ -6,6 +6,12 @@
 import Foundation
 import CoreData
 
+/*
+    CloudKit debug:
+        log stream --info --debug --predicate 'process = "cloudd" and message contains[cd] "containerID=iCloud.jsblocker"'
+        log stream --info --debug --predicate 'process = "JS Blocker" and (subsystem = "com.apple.coredata" or subsystem = "com.apple.cloudkit")'
+*/
+
 public class WhiteDomains: NSManagedObject {
 
     typealias SELF = WhiteDomains
@@ -43,12 +49,14 @@ public class WhiteDomains: NSManagedObject {
             description.shouldMigrateStoreAutomatically = true
         let container = NSPersistentCloudKitContainer(name: "Model")
         container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (description, error) in
             if let error = error as NSError? {
                 fatalError("LoadPersistentStores() error \(error), \(error.userInfo)")
             } else {
                 #if DEBUG
-                    print("DB containerInit() | cloud = \(App.isCloudEnabled)")
+                    let storePath = SELF.storeURL.absoluteString.removingPercentEncoding!
+                    print("Model path = \"\(storePath)\"")
+                    print("Model containerInit() | cloud = \(App.isCloudEnabled)")
                 #endif
             }
         })
@@ -80,26 +88,30 @@ public class WhiteDomains: NSManagedObject {
         return SELF.selectByName(name) != nil
     }
 
+    static func fetchRequest() -> NSFetchRequest<SELF> {
+        return NSFetchRequest<SELF>(entityName: SELF.ENTITY_NAME)
+    }
+
     static func selectAll(filter filterByName: String? = nil, orderBy: String = #keyPath(SELF.nameDecoded), ascending: Bool = true) -> [SELF] {
         do {
-            let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.ENTITY_NAME)
-            if let filterByName = filterByName { fetchRequest.predicate = NSPredicate(format: "(name like[cd] %@) OR (nameDecoded like[cd] %@)", "*\(filterByName)*", filterByName) }
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: orderBy, ascending: ascending)]
+            let fetchRequest = SELF.fetchRequest()
+            if let filterByName { fetchRequest.predicate = NSPredicate(format: "(name like[cd] %@) OR (nameDecoded like[cd] %@)", "*\(filterByName)*", filterByName) }
+            fetchRequest.sortDescriptors = [ NSSortDescriptor(key: orderBy, ascending: ascending) ]
             return try SELF.context.fetch(fetchRequest)
         } catch {
-            print("DB selectAll() error: \(error).")
+            print("Model selectAll() error: \(error).")
         }
         return []
     }
 
     static func selectByName(_ name: String) -> SELF? {
         do {
-            let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.ENTITY_NAME)
+            let fetchRequest = SELF.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "name ==[c] %@", name)
             let result = try SELF.context.fetch(fetchRequest)
             return result.isEmpty ? nil : result.first
         } catch {
-            print("DB selectByName() error: \(error).")
+            print("Model selectByName() error: \(error).")
         }
         return nil
     }
@@ -128,12 +140,12 @@ public class WhiteDomains: NSManagedObject {
         └──────────────┴────────┘ └──────────────┴────────┘
         */
         do {
-            let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.ENTITY_NAME)
+            let fetchRequest = SELF.fetchRequest()
             if (withSelf == false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@)"                   , "*?.\(name)", name) }
             if (withSelf != false) { fetchRequest.predicate = NSPredicate(format: "(name like[c] %@) OR (name ==[c] %@)", "*?.\(name)", name) }
             return try SELF.context.fetch(fetchRequest)
         } catch {
-            print("DB selectSubDomains() error: \(error).")
+            print("Model selectSubDomains() error: \(error).")
         }
         return []
     }
@@ -141,37 +153,37 @@ public class WhiteDomains: NSManagedObject {
     static func selectGlobalDomains(_ name: String) -> [SELF] {
         do {
             let names = [name] + name.topDomains()
-            let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.ENTITY_NAME)
+            let fetchRequest = SELF.fetchRequest()
             fetchRequest.predicate = NSPredicate(
                 format: "(name IN %@) AND (isGlobal == true)", names
             )
             return try SELF.context.fetch(fetchRequest)
         } catch {
-            print("DB selectGlobalDomains() error: \(error).")
+            print("Model selectGlobalDomains() error: \(error).")
         }
         return []
     }
 
     static func insert(name: String, isGlobal: Bool = false, expiredAt: Int64 = 0) -> Bool {
         do {
-            let domain = SELF()
-                domain.name        = name
-                domain.nameDecoded = name.decodePunycode()
-                domain.isGlobal    = isGlobal
-                domain.expiredAt   = expiredAt
-                domain.createdAt   = Int64(Date().timeIntervalSince1970)
-                domain.updatedAt   = Int64(Date().timeIntervalSince1970)
+            let newObject = SELF()
+                newObject.name        = name
+                newObject.nameDecoded = name.decodePunycode()
+                newObject.isGlobal    = isGlobal
+                newObject.expiredAt   = expiredAt
+                newObject.createdAt   = Int64(Date().timeIntervalSince1970)
+                newObject.updatedAt   = Int64(Date().timeIntervalSince1970)
             try SELF.context.save()
             return true
         } catch {
-            print("DB insert() error: \(error).")
+            print("Model insert() error: \(error).")
         }
         return false
     }
 
     static func deleteByNames(names: [String]) -> Bool {
         do {
-            let fetchRequest = NSFetchRequest<SELF>(entityName: SELF.ENTITY_NAME)
+            let fetchRequest = SELF.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "(name IN %@)", names)
             fetchRequest.includesPropertyValues = false
             let items = try SELF.context.fetch(fetchRequest)
@@ -181,7 +193,7 @@ public class WhiteDomains: NSManagedObject {
             try SELF.context.save()
             return true
         } catch {
-            print("DB deleteByNames() error: \(error).")
+            print("Model deleteByNames() error: \(error).")
         }
         return false
     }
@@ -192,7 +204,7 @@ public class WhiteDomains: NSManagedObject {
             try SELF.context.save()
             return true
         } catch {
-            print("DB delete() error: \(error).")
+            print("Model delete() error: \(error).")
         }
         return false
     }
@@ -212,9 +224,10 @@ public class WhiteDomains: NSManagedObject {
 
     static func dump() {
         var renderedRows: [String] = []
-        SELF.selectAll().forEach { domain in
-            let name = domain.name.padding(toLength: 60, withPad: " ", startingAt: 0)
-            renderedRows.append(">> - \(name) | \(domain.isGlobal)")
+        SELF.selectAll().forEach { object in
+            let name = object.name.padding(toLength: 60, withPad: " ", startingAt: 0)
+            let isGlobal = object.isGlobal ? "yes" : "no"
+            renderedRows.append(">> - \(name) | \(isGlobal)")
         }
         if (renderedRows.isEmpty) {
             renderedRows.append(
@@ -223,7 +236,7 @@ public class WhiteDomains: NSManagedObject {
         }
         print("""
         
-        DB Dump for \"\(SELF.ENTITY_NAME)\":
+        Model Dump for \"\(SELF.ENTITY_NAME)\":
         >> --------------------------------------------------------------------------
         >> name                                                           | is global
         >> ==========================================================================

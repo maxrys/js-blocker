@@ -7,11 +7,13 @@ import SwiftUI
 
 struct RoundButton: View {
 
-    static let COLORNAME_TEXT          = "color Button Text"
-    static let COLORNAME_BLUE_TOP      = "color Button Blue Top"
-    static let COLORNAME_BLUE_BOTTOM   = "color Button Blue Bottom"
-    static let COLORNAME_VIOLET_TOP    = "color Button Violet Top"
-    static let COLORNAME_VIOLET_BOTTOM = "color Button Violet Bottom"
+    enum ColorNames: String {
+        case text         = "color Button Text"
+        case blueTop      = "color Button Blue Top"
+        case blueBottom   = "color Button Blue Bottom"
+        case violetTop    = "color Button Violet Top"
+        case violetBottom = "color Button Violet Bottom"
+    }
 
     enum Colors {
 
@@ -20,22 +22,22 @@ struct RoundButton: View {
 
         var colorTop: Color {
             switch self {
-                case .violet: return Color(COLORNAME_VIOLET_TOP)
-                case .blue  : return Color(COLORNAME_BLUE_TOP)
+                case .violet: return Color(ColorNames.violetTop.rawValue)
+                case .blue  : return Color(ColorNames.blueTop.rawValue)
             }
         }
 
         var colorBottom: Color {
             switch self {
-                case .violet: return Color(COLORNAME_VIOLET_BOTTOM)
-                case .blue  : return Color(COLORNAME_BLUE_BOTTOM)
+                case .violet: return Color(ColorNames.violetBottom.rawValue)
+                case .blue  : return Color(ColorNames.blueBottom.rawValue)
             }
         }
+
     }
 
     var title: String
     var color: Colors = .violet
-    var isEnabled: Bool = true
     var minWidth: CGFloat = 150
     var onClick: () -> Void
 
@@ -45,7 +47,7 @@ struct RoundButton: View {
             self.onClick()
         } label: {
             Text(NSLocalizedString(self.title, comment: ""))
-                .color(Color(Self.COLORNAME_TEXT))
+                .color(Color(Self.ColorNames.text.rawValue))
                 .padding(11)
                 .frame(minWidth: self.minWidth)
                 .background(
@@ -60,13 +62,7 @@ struct RoundButton: View {
                 )
         }
         .buttonStyle(.plain)
-        .disabled(!self.isEnabled)
-        .onHover { isInView in
-            if (self.isEnabled) {
-                if (isInView) { NSCursor.pointingHand.push() }
-                else          { NSCursor.pop() }
-            }   else          { NSCursor.pop() }
-        }
+        .onHoverCursor()
 
     }
 }
@@ -78,7 +74,6 @@ struct RoundButton_Previews: PreviewProvider {
             RoundButton(
                 title: "allow",
                 color: .violet,
-                isEnabled: true,
                 minWidth: 150,
                 onClick: {
                     print("onClick: RoundButton #1")
@@ -88,17 +83,15 @@ struct RoundButton_Previews: PreviewProvider {
             RoundButton(
                 title: "allow",
                 color: .violet,
-                isEnabled: false,
                 minWidth: 150,
                 onClick: {
                     print("onClick: RoundButton #2")
                 }
-            )
+            ).disabled(true)
 
             RoundButton(
                 title: "cancel permission",
                 color: .blue,
-                isEnabled: true,
                 minWidth: 250,
                 onClick: {
                     print("onClick: RoundButton #3")
@@ -108,12 +101,11 @@ struct RoundButton_Previews: PreviewProvider {
             RoundButton(
                 title: "cancel permission",
                 color: .blue,
-                isEnabled: false,
                 minWidth: 250,
                 onClick: {
                     print("onClick: RoundButton #4")
                 }
-            )
+            ).disabled(true)
 
         }.padding(10)
     }

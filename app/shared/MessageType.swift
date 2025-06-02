@@ -8,15 +8,17 @@ import SwiftUI
 
 enum MessageType: Int {
 
-    static let COLORNAME_TEXT                           = "color Message Text"
-    static let COLORNAME_INFO_TITLE_BACKGROUND          = "color Message Info Title Background"
-    static let COLORNAME_INFO_DESCRIPTION_BACKGROUND    = "color Message Info Description Background"
-    static let COLORNAME_OK_TITLE_BACKGROUND            = "color Message Ok Title Background"
-    static let COLORNAME_OK_DESCRIPTION_BACKGROUND      = "color Message Ok Description Background"
-    static let COLORNAME_WARNING_TITLE_BACKGROUND       = "color Message Warning Title Background"
-    static let COLORNAME_WARNING_DESCRIPTION_BACKGROUND = "color Message Warning Description Background"
-    static let COLORNAME_ERROR_TITLE_BACKGROUND         = "color Message Error Title Background"
-    static let COLORNAME_ERROR_DESCRIPTION_BACKGROUND   = "color Message Error Description Background"
+    enum ColorNames: String {
+        case text                         = "color Message Text"
+        case infoTitleBackground          = "color Message Info Title Background"
+        case infoDescriptionBackground    = "color Message Info Description Background"
+        case okTitleBackground            = "color Message Ok Title Background"
+        case okDescriptionBackground      = "color Message Ok Description Background"
+        case warningTitleBackground       = "color Message Warning Title Background"
+        case warningDescriptionBackground = "color Message Warning Description Background"
+        case errorTitleBackground         = "color Message Error Title Background"
+        case errorDescriptionBackground   = "color Message Error Description Background"
+    }
 
     case info
     case ok
@@ -25,37 +27,37 @@ enum MessageType: Int {
 
     var colorNSTitleBackground: NSColor {
         switch self {
-            case .info   : return NSColor(named: Self.COLORNAME_INFO_TITLE_BACKGROUND   ) ?? .systemPurple
-            case .ok     : return NSColor(named: Self.COLORNAME_OK_TITLE_BACKGROUND     ) ?? .systemGreen
-            case .warning: return NSColor(named: Self.COLORNAME_WARNING_TITLE_BACKGROUND) ?? .systemYellow
-            case .error  : return NSColor(named: Self.COLORNAME_ERROR_TITLE_BACKGROUND  ) ?? .systemRed
+            case .info   : return NSColor(named: Self.ColorNames.infoTitleBackground.rawValue   ) ?? .systemPurple
+            case .ok     : return NSColor(named: Self.ColorNames.okTitleBackground.rawValue     ) ?? .systemGreen
+            case .warning: return NSColor(named: Self.ColorNames.warningTitleBackground.rawValue) ?? .systemYellow
+            case .error  : return NSColor(named: Self.ColorNames.errorTitleBackground.rawValue  ) ?? .systemRed
         }
     }
 
     var colorNSDescriptionBackground: NSColor {
         switch self {
-            case .info   : return NSColor(named: Self.COLORNAME_INFO_DESCRIPTION_BACKGROUND   ) ?? .systemGray
-            case .ok     : return NSColor(named: Self.COLORNAME_OK_DESCRIPTION_BACKGROUND     ) ?? .systemGray
-            case .warning: return NSColor(named: Self.COLORNAME_WARNING_DESCRIPTION_BACKGROUND) ?? .systemGray
-            case .error  : return NSColor(named: Self.COLORNAME_ERROR_DESCRIPTION_BACKGROUND  ) ?? .systemGray
+            case .info   : return NSColor(named: Self.ColorNames.infoDescriptionBackground.rawValue   ) ?? .systemGray
+            case .ok     : return NSColor(named: Self.ColorNames.okDescriptionBackground.rawValue     ) ?? .systemGray
+            case .warning: return NSColor(named: Self.ColorNames.warningDescriptionBackground.rawValue) ?? .systemGray
+            case .error  : return NSColor(named: Self.ColorNames.errorDescriptionBackground.rawValue  ) ?? .systemGray
         }
     }
 
     var colorTitleBackground: Color {
         switch self {
-            case .info   : return Color(Self.COLORNAME_INFO_TITLE_BACKGROUND)
-            case .ok     : return Color(Self.COLORNAME_OK_TITLE_BACKGROUND)
-            case .warning: return Color(Self.COLORNAME_WARNING_TITLE_BACKGROUND)
-            case .error  : return Color(Self.COLORNAME_ERROR_TITLE_BACKGROUND)
+            case .info   : return Color(Self.ColorNames.infoTitleBackground.rawValue)
+            case .ok     : return Color(Self.ColorNames.okTitleBackground.rawValue)
+            case .warning: return Color(Self.ColorNames.warningTitleBackground.rawValue)
+            case .error  : return Color(Self.ColorNames.errorTitleBackground.rawValue)
         }
     }
 
     var colorDescriptionBackground: Color {
         switch self {
-            case .info   : return Color(Self.COLORNAME_INFO_DESCRIPTION_BACKGROUND)
-            case .ok     : return Color(Self.COLORNAME_OK_DESCRIPTION_BACKGROUND)
-            case .warning: return Color(Self.COLORNAME_WARNING_DESCRIPTION_BACKGROUND)
-            case .error  : return Color(Self.COLORNAME_ERROR_DESCRIPTION_BACKGROUND)
+            case .info   : return Color(Self.ColorNames.infoDescriptionBackground.rawValue)
+            case .ok     : return Color(Self.ColorNames.okDescriptionBackground.rawValue)
+            case .warning: return Color(Self.ColorNames.warningDescriptionBackground.rawValue)
+            case .error  : return Color(Self.ColorNames.errorDescriptionBackground.rawValue)
         }
     }
 

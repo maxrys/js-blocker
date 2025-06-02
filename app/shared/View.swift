@@ -12,4 +12,13 @@ extension View {
         else                                   { return self.foregroundColor(color) }
     }
 
+    @inlinable nonisolated public func onHoverCursor(isEnabled: Bool = true) -> some View {
+        self.onHover { isInView in
+            if (isEnabled) {
+                if (isInView) { NSCursor.pointingHand.push() }
+                else          { NSCursor.pop() }
+            }   else          { NSCursor.pop() }
+        }
+    }
+
 }

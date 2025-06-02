@@ -11,28 +11,30 @@ struct DomainRule: View {
         @Published var selectedCurrent: [Int: Bool] = [:]
     }
 
-    static let COLORNAME_BACKGROUND    = "color Domain Background"
-    static let COLORNAME_BORDER        = "color Domain Border"
-    static let COLORNAME_BORDER_ACTIVE = "color Domain Border Active"
-    static let COLORNAME_NAME          = "color Domain Name"
-    static let COLORNAME_NAME_ACTIVE   = "color Domain Name Active"
+    enum ColorNames: String {
+        case background   = "color Domain Background"
+        case border       = "color Domain Border"
+        case borderActive = "color Domain Border Active"
+        case name         = "color Domain Name"
+        case nameActive   = "color Domain Name Active"
+    }
 
     static let ICON_CHECK         = Image("checkbox")
     static let ICON_CHECK_CHECKED = Image("checkbox-checked")
 
     var colorDomainName: Color {
-        if (self.ruleIsActive) { return Color(Self.COLORNAME_NAME_ACTIVE) }
-        else                   { return Color(Self.COLORNAME_NAME) }
+        if (self.ruleIsActive) { return Color(Self.ColorNames.nameActive.rawValue) }
+        else                   { return Color(Self.ColorNames.name.rawValue) }
     }
 
     var colorBackground: Color {
-        if (self.ruleIsActive) { return Color(Self.COLORNAME_BACKGROUND) }
-        else                   { return Color(Self.COLORNAME_BACKGROUND) }
+        if (self.ruleIsActive) { return Color(Self.ColorNames.background.rawValue) }
+        else                   { return Color(Self.ColorNames.background.rawValue) }
     }
 
     var colorBorder: Color {
-        if (self.ruleIsActive) { return Color(Self.COLORNAME_BORDER_ACTIVE) }
-        else                   { return Color(Self.COLORNAME_BORDER) }
+        if (self.ruleIsActive) { return Color(Self.ColorNames.borderActive.rawValue) }
+        else                   { return Color(Self.ColorNames.border.rawValue) }
     }
 
     @ObservedObject var state = State()
@@ -123,12 +125,9 @@ struct DomainRule: View {
                             }
                             .buttonStyle(.plain)
                             .disabled(!self.buttonIsEnabled)
-                            .onHover { isInView in
-                                if (self.buttonIsEnabled) {
-                                    if (isInView) { NSCursor.pointingHand.push() }
-                                    else          { NSCursor.pop() }
-                                }   else          { NSCursor.pop() }
-                            }
+                            .onHoverCursor(
+                                isEnabled: self.buttonIsEnabled
+                            )
 
                         }
 
@@ -147,7 +146,6 @@ struct DomainRule: View {
             /* MARK: Button "allow" */
             RoundButton(
                 title    : self.buttonTitle,
-                isEnabled: self.buttonIsEnabled,
                 onClick  : {
                     self.buttonOnClick(
                         self.state.selectedCurrent.compactMap({ (key, value) in
@@ -155,6 +153,8 @@ struct DomainRule: View {
                         })
                     )
                 }
+            ).disabled(
+                !self.buttonIsEnabled
             )
 
         }
@@ -175,7 +175,7 @@ struct DomainRule_Previews1: PreviewProvider {
                 ruleIsActive: false,
                 buttonIsEnabled: true,
                 buttonOnClick: { index in }
-            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            ).background(Color(Popup.ColorNames.bodyBackground.rawValue))
 
             DomainRule(
                 title: "JavaScript on the Domain",
@@ -183,7 +183,7 @@ struct DomainRule_Previews1: PreviewProvider {
                 ruleIsActive: true,
                 buttonIsEnabled: false,
                 buttonOnClick: { index in }
-            ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
+            ).background(Color(Popup.ColorNames.footBackground.rawValue))
 
             DomainRule(
                 title: "JavaScript on the Domain",
@@ -191,7 +191,7 @@ struct DomainRule_Previews1: PreviewProvider {
                 ruleIsActive: false,
                 buttonIsEnabled: false,
                 buttonOnClick: { index in }
-            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            ).background(Color(Popup.ColorNames.bodyBackground.rawValue))
 
         }.frame(width: Popup.FRAME_WIDTH)
     }
@@ -208,7 +208,7 @@ struct DomainRule_Previews2: PreviewProvider {
                 buttonIsEnabled: true,
                 selectedDefault: [0],
                 buttonOnClick: { index in }
-            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            ).background(Color(Popup.ColorNames.bodyBackground.rawValue))
 
             DomainRule(
                 title: "JavaScript on the Domain + Subdomains",
@@ -217,7 +217,7 @@ struct DomainRule_Previews2: PreviewProvider {
                 buttonIsEnabled: false,
                 selectedDefault: [0],
                 buttonOnClick: { index in }
-            ).background(Color(Popup.COLORNAME_FOOT_BACKGROUND))
+            ).background(Color(Popup.ColorNames.footBackground.rawValue))
 
             DomainRule(
                 title: "JavaScript on the Domain + Subdomains",
@@ -226,7 +226,7 @@ struct DomainRule_Previews2: PreviewProvider {
                 buttonIsEnabled: false,
                 selectedDefault: [ ],
                 buttonOnClick: { index in }
-            ).background(Color(Popup.COLORNAME_BODY_BACKGROUND))
+            ).background(Color(Popup.ColorNames.bodyBackground.rawValue))
 
         }.frame(width: Popup.FRAME_WIDTH)
     }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500895342DD73EDF00414588 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500895332DD73EDF00414588 /* Date.swift */; };
+		500895352DD73EDF00414588 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500895332DD73EDF00414588 /* Date.swift */; };
+		500895362DD73EDF00414588 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500895332DD73EDF00414588 /* Date.swift */; };
 		500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
 		500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C552D058C8000551390 /* NSRegularExpression.swift */; };
 		500D2C5A2D058D2E00551390 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500D2C592D058D2B00551390 /* MessageType.swift */; };
@@ -110,6 +113,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		500895332DD73EDF00414588 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		500D2C552D058C8000551390 /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
 		500D2C592D058D2B00551390 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
 		500D2D1B2D05929D00551390 /* JS Blocker Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JS Blocker Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +193,7 @@
 			children = (
 				50875E112C71EE0D00756D64 /* String.swift */,
 				50684B682DB9678E00FC6175 /* Data.swift */,
+				500895332DD73EDF00414588 /* Date.swift */,
 				50AD45202DAE59C300425467 /* View.swift */,
 				50E150B52DA96615005768C1 /* BlockingType.swift */,
 				500D2C592D058D2B00551390 /* MessageType.swift */,
@@ -477,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				500D2D282D05952700551390 /* String.swift in Sources */,
+				500895362DD73EDF00414588 /* Date.swift in Sources */,
 				500D2D252D05951900551390 /* NSTableView.swift in Sources */,
 				50E150B82DA96616005768C1 /* BlockingType.swift in Sources */,
 				500D2D242D05951400551390 /* SFSafariApplication.swift in Sources */,
@@ -492,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				500895342DD73EDF00414588 /* Date.swift in Sources */,
 				50B025122C47E401002F1AD7 /* ViewRules.swift in Sources */,
 				50EB55352CF9F4BA00FC060C /* SafariExtensionViewController.swift in Sources */,
 				50875E162C71EE1200756D64 /* NSTableView.swift in Sources */,
@@ -532,6 +539,7 @@
 				50B025262C47E404002F1AD7 /* SafariExtensionViewController.swift in Sources */,
 				50875E0D2C71E93A00756D64 /* WhiteDomains.swift in Sources */,
 				50875E1B2C71EE1700756D64 /* SFSafariApplication.swift in Sources */,
+				500895352DD73EDF00414588 /* Date.swift in Sources */,
 				500D2C5B2D058D2E00551390 /* MessageType.swift in Sources */,
 				50E150C02DAA789D005768C1 /* PopupState.swift in Sources */,
 				50AD45222DAE59C300425467 /* View.swift in Sources */,

@@ -8,10 +8,12 @@ import SwiftUI
 
 struct Popup: View {
 
-    static let COLORNAME_BODY_BACKGROUND = "color Popup Body Background"
-    static let COLORNAME_FOOT_BACKGROUND = "color Popup Foot Background"
-    static let COLORNAME_BUTTON_CLOUD    = "color Button Cloud"
-    static let COLORNAME_BUTTON_SETTINGS = "color Button Settings"
+    enum ColorNames: String {
+        case bodyBackground = "color Popup Body Background"
+        case footBackground = "color Popup Foot Background"
+        case buttonCloud    = "color Button Cloud"
+        case buttonSettings = "color Button Settings"
+    }
 
     static let ICON_CLOUD    = Image(systemName: "cloud")
     static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
@@ -52,7 +54,7 @@ struct Popup: View {
                         if (App.isCloudEnabled) {
                             Self.ICON_CLOUD
                                 .font(.system(size: 20))
-                                .color(Color(Self.COLORNAME_BUTTON_CLOUD))
+                                .color(Color(Self.ColorNames.buttonCloud.rawValue))
                                 .padding(.leading, 3)
                         }
 
@@ -66,13 +68,10 @@ struct Popup: View {
                         } label: {
                             Self.ICON_SETTINGS
                                 .font(.system(size: 20))
-                                .color(Color(Self.COLORNAME_BUTTON_SETTINGS))
+                                .color(Color(Self.ColorNames.buttonSettings.rawValue))
                         }
                         .buttonStyle(.plain)
-                        .onHover { isInView in
-                            if (isInView) { NSCursor.pointingHand.push() }
-                            else          { NSCursor.pop() }
-                        }
+                        .onHoverCursor()
                         .focusable(false)
 
                     }.padding(.horizontal, 10)
@@ -108,7 +107,7 @@ struct Popup: View {
             }
             .padding(.vertical, 11)
             .frame(maxWidth: .infinity)
-            .background(Color(Self.COLORNAME_BODY_BACKGROUND))
+            .background(Color(Self.ColorNames.bodyBackground.rawValue))
 
             /* ############## */
             /* ### MARK: Foot */
@@ -119,17 +118,18 @@ struct Popup: View {
                 RoundButton(
                     title: "cancel permission",
                     color: .blue,
-                    isEnabled: self.state.isEnabledRuleCancel,
                     minWidth: 250,
                     onClick: {
                         SafariExtensionViewController.shared.onClick_buttonRuleDelete()
                     }
+                ).disabled(
+                    !self.state.isEnabledRuleCancel
                 )
 
             }
             .padding(31)
             .frame(maxWidth: .infinity)
-            .background(Color(Self.COLORNAME_FOOT_BACKGROUND))
+            .background(Color(Self.ColorNames.footBackground.rawValue))
 
         }
         .frame(width: self.frameWidth)
