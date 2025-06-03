@@ -1,4 +1,9 @@
 
+## Version 1.6
+
+Minor changes in the main application interface.
+Codebase improvements.
+
 ## Version 1.5
 
 Fixed backward compatibility to work with OS version starting from Big Sur.
