@@ -4,6 +4,7 @@
 /* ################################################################## */
 
 import SafariServices
+import Combine
 
 struct ExportImportItem: Codable {
     let name    : String
@@ -18,6 +19,8 @@ class ViewRules: NSViewController {
     @IBOutlet var tableDomains: TableDomainsController!
     @IBOutlet var buttonTableDomainsDelete: NSButtonCell!
 
+    private var cancellableBag = Set<AnyCancellable>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,23 +32,18 @@ class ViewRules: NSViewController {
         self.tableDomains.onClickToLink = self.onClickToLink
         self.onChangeSelection_tableDomains()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.viewDidBecomeActive),
-            name: NSApplication.didBecomeActiveNotification,
-            object: nil
-        )
+        NotificationCenter.default
+            .publisher(for: NSApplication.didBecomeActiveNotification)
+            .sink(receiveValue: { _ in
+                self.tableDomains.reload()
+            }).store(in: &self.cancellableBag)
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onChangeSelection_tableDomains),
-            name: TableDomainsController.selectionDidChangeNotification,
-            object: nil
-        )
-    }
+        NotificationCenter.default
+            .publisher(for: TableDomainsController.selectionDidChangeNotification)
+            .sink(receiveValue: { _ in
+                self.onChangeSelection_tableDomains()
+            }).store(in: &self.cancellableBag)
 
-    @objc func viewDidBecomeActive() {
-        self.tableDomains.reload()
     }
 
     func onClickToLink(name: String) {
@@ -58,7 +56,7 @@ class ViewRules: NSViewController {
         self.buttonExport.isEnabled = !self.tableDomains.data.isEmpty
     }
 
-    @objc func onChangeSelection_tableDomains() {
+    func onChangeSelection_tableDomains() {
         self.buttonTableDomainsDelete.isEnabled = !self.tableDomains.selectedRowIndexes.isEmpty
     }
 
