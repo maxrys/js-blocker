@@ -7,12 +7,12 @@ import SwiftUI
 
 extension View {
 
-    func color(_ color: Color) -> some View {
-        if #available(macOS 14.0, iOS 17.0, *) { return self.foregroundStyle(color) }
-        else                                   { return self.foregroundColor(color) }
+    @ViewBuilder func color(_ color: Color) -> some View {
+        if #available(macOS 14.0, iOS 17.0, *) { self.foregroundStyle(color) }
+        else                                   { self.foregroundColor(color) }
     }
 
-    @inlinable nonisolated public func onHoverCursor(isEnabled: Bool = true) -> some View {
+    @ViewBuilder func onHoverCursor(isEnabled: Bool = true) -> some View {
         self.onHover { isInView in
             if (isEnabled) {
                 if (isInView) { NSCursor.pointingHand.push() }
