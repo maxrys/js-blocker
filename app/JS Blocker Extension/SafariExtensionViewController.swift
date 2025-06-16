@@ -8,14 +8,10 @@ import SwiftUI
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
 
-    static var MESSAGE_LIFE_TIME: Double = 1.0
-
     static var page: SFSafariPage?
     static var domainName: String?
     static var blockingState: BlockingType = .none
-    static var state = PopupState(
-        onTick: SafariExtensionViewController.onTimerTick
-    )
+    static var state = PopupState()
 
     static let shared: SafariExtensionViewController = {
         return SafariExtensionViewController()
@@ -31,16 +27,16 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     /* ###################################################################### */
 
-    func popupSizeUpdate() {
-        let host = NSHostingController(rootView: Popup(state: Self.state)).view
-        self.popupView.frame      = CGRect(x: 0, y: 0, width: Int(host.intrinsicContentSize.width), height: Int(host.intrinsicContentSize.height))
-        self.preferredContentSize = CGSize(            width: Int(host.intrinsicContentSize.width), height: Int(host.intrinsicContentSize.height))
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popupView = NSHostingController(rootView: Self.popupShared).view
         self.view.addSubview(self.popupView)
+        EventsDispatcher.shared.on(Popup.EVENT_NAME_FOR_POPUP_SIZE_CHANGE) { size in
+            if let size = size as? CGSize {
+                self.popupView.frame      = CGRect(x: 0, y: 0, width: Int(size.width), height: Int(size.height))
+                self.preferredContentSize = CGSize(            width: Int(size.width), height: Int(size.height))
+            }
+        }
         #if DEBUG
             WhiteDomains.dump()
         #endif
@@ -49,35 +45,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         self.formUpdate()
-        self.popupSizeUpdate()
-    }
-
-    /* ###################################################################### */
-
-    static func onTimerTick(offset: Double) {
-        Self.state.timer?.stopAndReset()
-        Self.state.messages.removeAll()
-        Self.shared.popupSizeUpdate()
-    }
-
-    static func messageShow(title: String, description: String = "", type: MessageType = .info) {
-        DispatchQueue.main.async {
-            let newValue = MessageInfo(
-                title: title,
-                description: description,
-                type: type
-            )
-            for message in Self.state.messages {
-                if (message.hashValue == newValue.hashValue) {
-                    return
-                }
-            }
-            Self.state.messages.append(newValue)
-            Self.shared.popupSizeUpdate()
-            Self.state.timer?.start(
-                tickInterval: Self.MESSAGE_LIFE_TIME
-            )
-        }
     }
 
     /* ###################################################################### */
@@ -178,17 +145,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
             /* message */
             if (success.count > 0) {
-                Self.messageShow(
+                MessageBox.insert(
+                    type: .ok,
                     title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
-                    description: success.joined(separator: "\n"),
-                    type: .ok
+                    description: success.joined(separator: "\n")
                 )
             }
             if (failure.count > 0) {
-                Self.messageShow(
+                MessageBox.insert(
+                    type: .error,
                     title: NSLocalizedString("Permission for the following domain was not added:", comment: ""),
-                    description: failure.joined(separator: "\n"),
-                    type: .error
+                    description: failure.joined(separator: "\n")
                 )
             }
 
@@ -209,9 +176,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         if let domainName = Self.domainName {
             if (indeces.isEmpty) {
 
-                Self.messageShow(
-                    title: NSLocalizedString("At least 1 subdomain must be selected!", comment: ""),
-                    type: .error
+                MessageBox.insert(
+                    type: .error,
+                    title: NSLocalizedString("At least 1 subdomain must be selected!", comment: "")
                 )
 
             } else {
@@ -228,17 +195,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
                 /* message */
                 if (success.count > 0) {
-                    Self.messageShow(
+                    MessageBox.insert(
+                        type: .ok,
                         title: NSLocalizedString("Global permissions for the following domains were added:", comment: ""),
-                        description: success.joined(separator: "\n"),
-                        type: .ok
+                        description: success.joined(separator: "\n")
                     )
                 }
                 if (failure.count > 0) {
-                    Self.messageShow(
+                    MessageBox.insert(
+                        type: .error,
                         title: NSLocalizedString("Global permissions for the following domains were not added:", comment: ""),
-                        description: failure.joined(separator: "\n"),
-                        type: .error
+                        description: failure.joined(separator: "\n")
                     )
                 }
 
@@ -271,17 +238,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
                 /* message */
                 if (success.count > 0) {
-                    Self.messageShow(
+                    MessageBox.insert(
+                        type: .ok,
                         title: NSLocalizedString("Permission for the following domain was removed:", comment: ""),
-                        description: success.joined(separator: "\n"),
-                        type: .ok
+                        description: success.joined(separator: "\n")
                     )
                 }
                 if (failure.count > 0) {
-                    Self.messageShow(
+                    MessageBox.insert(
+                        type: .error,
                         title: NSLocalizedString("Permission for the following domain was not removed:", comment: ""),
-                        description: failure.joined(separator: "\n"),
-                        type: .error
+                        description: failure.joined(separator: "\n")
                     )
                 }
             }
@@ -296,17 +263,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
                 /* message */
                 if (success.count > 0) {
-                    Self.messageShow(
+                    MessageBox.insert(
+                        type: .ok,
                         title: NSLocalizedString("Global permissions for the following domains were removed:", comment: ""),
-                        description: success.joined(separator: "\n"),
-                        type: .ok
+                        description: success.joined(separator: "\n")
                     )
                 }
                 if (failure.count > 0) {
-                    Self.messageShow(
+                    MessageBox.insert(
+                        type: .error,
                         title: NSLocalizedString("Global permissions for the following domains were not removed:", comment: ""),
-                        description: failure.joined(separator: "\n"),
-                        type: .error
+                        description: failure.joined(separator: "\n")
                     )
                 }
             }

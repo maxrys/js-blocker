@@ -25,24 +25,6 @@ enum MessageType: Int {
     case warning
     case error
 
-    var colorNSTitleBackground: NSColor {
-        switch self {
-            case .info   : NSColor(named: Self.ColorNames.infoTitleBackground.rawValue   ) ?? .systemPurple
-            case .ok     : NSColor(named: Self.ColorNames.okTitleBackground.rawValue     ) ?? .systemGreen
-            case .warning: NSColor(named: Self.ColorNames.warningTitleBackground.rawValue) ?? .systemYellow
-            case .error  : NSColor(named: Self.ColorNames.errorTitleBackground.rawValue  ) ?? .systemRed
-        }
-    }
-
-    var colorNSDescriptionBackground: NSColor {
-        switch self {
-            case .info   : NSColor(named: Self.ColorNames.infoDescriptionBackground.rawValue   ) ?? .systemGray
-            case .ok     : NSColor(named: Self.ColorNames.okDescriptionBackground.rawValue     ) ?? .systemGray
-            case .warning: NSColor(named: Self.ColorNames.warningDescriptionBackground.rawValue) ?? .systemGray
-            case .error  : NSColor(named: Self.ColorNames.errorDescriptionBackground.rawValue  ) ?? .systemGray
-        }
-    }
-
     var colorTitleBackground: Color {
         switch self {
             case .info   : Color(Self.ColorNames.infoTitleBackground.rawValue)
@@ -58,6 +40,24 @@ enum MessageType: Int {
             case .ok     : Color(Self.ColorNames.okDescriptionBackground.rawValue)
             case .warning: Color(Self.ColorNames.warningDescriptionBackground.rawValue)
             case .error  : Color(Self.ColorNames.errorDescriptionBackground.rawValue)
+        }
+    }
+
+    var colorNSTitleBackground: NSColor {
+        switch self {
+            case .info   : NSColor(named: Self.ColorNames.infoTitleBackground.rawValue   ) ?? .systemPurple
+            case .ok     : NSColor(named: Self.ColorNames.okTitleBackground.rawValue     ) ?? .systemGreen
+            case .warning: NSColor(named: Self.ColorNames.warningTitleBackground.rawValue) ?? .systemYellow
+            case .error  : NSColor(named: Self.ColorNames.errorTitleBackground.rawValue  ) ?? .systemRed
+        }
+    }
+
+    var colorNSDescriptionBackground: NSColor {
+        switch self {
+            case .info   : NSColor(named: Self.ColorNames.infoDescriptionBackground.rawValue   ) ?? .systemGray
+            case .ok     : NSColor(named: Self.ColorNames.okDescriptionBackground.rawValue     ) ?? .systemGray
+            case .warning: NSColor(named: Self.ColorNames.warningDescriptionBackground.rawValue) ?? .systemGray
+            case .error  : NSColor(named: Self.ColorNames.errorDescriptionBackground.rawValue  ) ?? .systemGray
         }
     }
 

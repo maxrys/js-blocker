@@ -25,6 +25,11 @@ struct Popup: View {
 
     var frameWidth: CGFloat = Self.FRAME_WIDTH
 
+    static let EVENT_NAME_FOR_POPUP_SIZE_CHANGE = "PopupSizeChange"
+    private let publisherForSizeChange = EventsDispatcher.shared.publisher(
+        Self.EVENT_NAME_FOR_POPUP_SIZE_CHANGE
+    )!
+
     var body: some View {
         VStack(spacing: 0) {
 
@@ -32,13 +37,7 @@ struct Popup: View {
             /* ### MARK: Message */
             /* ################# */
 
-            ForEach(self.state.messages, id: \.self) { message in
-                Message(
-                    title      : message.title,
-                    description: message.description,
-                    type       : message.type
-                )
-            }
+            MessageBox()
 
             /* ############## */
             /* ### MARK: Body */
@@ -134,6 +133,12 @@ struct Popup: View {
         }
         .frame(width: self.frameWidth)
         .environment(\.layoutDirection, .leftToRight)
+        .onGeometryChange(for: CGSize.self) { geometryProxy in geometryProxy.size } action: { size in
+            EventsDispatcher.shared.send(
+                Self.EVENT_NAME_FOR_POPUP_SIZE_CHANGE,
+                object: size
+            )
+        }
     }
 }
 
@@ -162,14 +167,7 @@ struct PopupState_Previews: PreviewProvider {
                     isEnabledLocalRule: false,
                     isEnabledGlobalRule: false,
                     isEnabledRuleCancel: true,
-                    indecesForGLobal: [0],
-                    messages: [
-                        MessageInfo(
-                            title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
-                            description: ["example.com", "subdomain.example.com"].joined(separator: "\n"),
-                            type: .ok
-                        )
-                    ]
+                    indecesForGLobal: [0]
                 )
             )
 
