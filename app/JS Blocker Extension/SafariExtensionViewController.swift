@@ -126,21 +126,21 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             /* MARK: states of popup elements */
             switch Self.blockingState {
                 case .local:
-                    Self.state.isActiveLocalRule = true
-                    Self.state.isActiveGlobalRule = false
-                    Self.state.isEnabledLocalRule = false
+                    Self.state.isActiveLocalRule   = true
+                    Self.state.isActiveGlobalRule  = false
+                    Self.state.isEnabledLocalRule  = false
                     Self.state.isEnabledGlobalRule = false
                     Self.state.isEnabledRuleCancel = true
                 case .global:
-                    Self.state.isActiveLocalRule = false
-                    Self.state.isActiveGlobalRule = true
-                    Self.state.isEnabledLocalRule = false
+                    Self.state.isActiveLocalRule   = false
+                    Self.state.isActiveGlobalRule  = true
+                    Self.state.isEnabledLocalRule  = false
                     Self.state.isEnabledGlobalRule = false
                     Self.state.isEnabledRuleCancel = true
                 case .none:
-                    Self.state.isActiveLocalRule = false
-                    Self.state.isActiveGlobalRule = false
-                    Self.state.isEnabledLocalRule = true
+                    Self.state.isActiveLocalRule   = false
+                    Self.state.isActiveGlobalRule  = false
+                    Self.state.isEnabledLocalRule  = true
                     Self.state.isEnabledGlobalRule = true
                     Self.state.isEnabledRuleCancel = false
             }

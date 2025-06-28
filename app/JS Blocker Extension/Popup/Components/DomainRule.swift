@@ -145,8 +145,8 @@ struct DomainRule: View {
 
             /* MARK: Button "allow" */
             RoundButton(
-                title    : self.buttonTitle,
-                onClick  : {
+                title: self.buttonTitle,
+                onClick: {
                     self.buttonOnClick(
                         self.state.selectedCurrent.compactMap({ (key, value) in
                             value ? key : nil
