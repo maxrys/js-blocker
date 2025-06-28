@@ -1,4 +1,8 @@
 
+## Version 1.7
+
+Codebase improvements.
+
 ## Version 1.6
 
 Minor changes in the main application interface.
