@@ -32,13 +32,7 @@ struct Popup: View {
             /* ### MARK: Message */
             /* ################# */
 
-            ForEach(self.state.messages, id: \.self) { message in
-                Message(
-                    title      : message.title,
-                    description: message.description,
-                    type       : message.type
-                )
-            }
+            MessageBox()
 
             /* ############## */
             /* ### MARK: Body */
@@ -162,14 +156,7 @@ struct PopupState_Previews: PreviewProvider {
                     isEnabledLocalRule: false,
                     isEnabledGlobalRule: false,
                     isEnabledRuleCancel: true,
-                    indecesForGLobal: [0],
-                    messages: [
-                        MessageInfo(
-                            title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
-                            description: ["example.com", "subdomain.example.com"].joined(separator: "\n"),
-                            type: .ok
-                        )
-                    ]
+                    indecesForGLobal: [0]
                 )
             )
 

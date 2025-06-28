@@ -8,11 +8,14 @@ import Combine
 
 final class RealTimer {
 
+    var tag: UInt
+
     private var timer: Cancellable?
     private var startedAt: Double = 0
-    private var onTick: (Double) -> Void
+    private var onTick: (Double, RealTimer) -> Void
 
-    init(onTick: @escaping (Double) -> Void = { _ in }) {
+    init(tag: UInt = 0, onTick: @escaping (Double, RealTimer) -> Void = { _,_  in }) {
+        self.tag    = tag
         self.onTick = onTick
     }
 
@@ -27,7 +30,8 @@ final class RealTimer {
             options: nil
         ).autoconnect().sink(receiveValue: { _ in
             self.onTick(
-                CACurrentMediaTime() - self.startedAt
+                CACurrentMediaTime() - self.startedAt,
+                self
             )
         })
     }
