@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="16px" height="16px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
   <defs>
     <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 8 0.53 #00000067">
       <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
@@ -22,7 +22,7 @@
       <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
       <feOffset dx="0" dy="5"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="spread-ctrl" type="linear" slope="1.08"/>
+        <feFuncA id="spread-ctrl-2" type="linear" slope="1.08"/>
       </feComponentTransfer>
       <feFlood flood-color="#0000007e"/>
       <feComposite in2="offsetblur" operator="in"/>

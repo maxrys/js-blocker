@@ -1,4 +1,10 @@
 
+
+## Version 1.8
+
+Codebase improvements.
+Updating documentation.
+
 ## Version 1.7
 
 Codebase improvements.

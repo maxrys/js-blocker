@@ -21,14 +21,15 @@ should be used in conjunction with it.
 
 Distribution
 ---------------------------------------------------------------------
-The Software is distributed exclusively through the Apple App Store
-by its author and owner.
+This software is distributed through the Apple App Store by its
+author and owner. It is also possible to place the distribution
+in this Git repository.
 
 
 Modification
 ---------------------------------------------------------------------
-Modification is possible only for the purpose of compilation for
-personal use.
+Modification may only be made if the application is compiled
+for personal use.
 
 
 Borrowing
@@ -48,5 +49,5 @@ of this license agreement. Violation of the terms of the license agreement
 entails civil, administrative and criminal prosecution.
 
 
-Document version: 1000
+Document version: 1001
 
