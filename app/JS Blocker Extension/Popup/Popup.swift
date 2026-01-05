@@ -65,7 +65,7 @@ struct Popup: View {
                                 .color(Color(Self.ColorNames.buttonSettings.rawValue))
                         }
                         .buttonStyle(.plain)
-                        .onHoverCursor()
+                        .pointerStyleLinkPolyfill()
                         .focusable(false)
 
                     }.padding(.horizontal, 10)

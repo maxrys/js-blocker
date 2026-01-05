@@ -62,7 +62,7 @@ struct RoundButton: View {
                 )
         }
         .buttonStyle(.plain)
-        .onHoverCursor()
+        .pointerStyleLinkPolyfill()
 
     }
 }

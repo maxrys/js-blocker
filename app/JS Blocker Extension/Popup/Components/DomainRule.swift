@@ -125,7 +125,7 @@ struct DomainRule: View {
                             }
                             .buttonStyle(.plain)
                             .disabled(!self.buttonIsEnabled)
-                            .onHoverCursor(
+                            .pointerStyleLinkPolyfill(
                                 isEnabled: self.buttonIsEnabled
                             )
 

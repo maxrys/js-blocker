@@ -7,7 +7,7 @@ import SwiftUI
 
 struct Message: Hashable {
 
-    enum LifeTime {
+    enum LifeTime: Hashable {
         case infinity
         case time(Double)
     }
@@ -17,13 +17,19 @@ struct Message: Hashable {
     let type: MessageType
     let title: String
     let description: String
-    let expireAfter: Double?
+    let lifeTime: LifeTime
 
-    init(type: MessageType, title: String, description: String = "", expireAfter: Double? = Self.LIFE_TIME) {
+    init(type: MessageType, title: String, description: String = "", lifeTime: LifeTime = .time(Self.LIFE_TIME)) {
         self.type = type
         self.title = title
         self.description = description
-        self.expireAfter = expireAfter
+        self.lifeTime = lifeTime
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.type)
+        hasher.combine(self.title)
+        hasher.combine(self.description)
     }
 
 }
@@ -70,6 +76,11 @@ struct MessageBox: View {
             }
         }.onReceive(self.publisherForInsert) { publisher in
             if let message = publisher.object as? Message {
+                for current in self.messages {
+                    if (message == current.value.message) {
+                        return
+                    }
+                }
                 Self.counter += 1
                 let id = Self.counter
                 let expirationTimer = RealTimer(
@@ -80,28 +91,22 @@ struct MessageBox: View {
                     message: message,
                     expirationTimer: expirationTimer
                 )
-                if let time = message.expireAfter {
-                    expirationTimer.start(
-                        tickInterval: time
-                    )
+                switch message.lifeTime {
+                    case .time(let time): expirationTimer.start(tickInterval: time)
+                    case .infinity      : return
                 }
             }
         }
     }
 
     static func insert(type: MessageType, title: String, description: String = "", lifeTime: Message.LifeTime = .time(Message.LIFE_TIME)) {
-        var expireAfter: Double?
-        switch lifeTime {
-            case .time(let time): expireAfter = time
-            case .infinity      : break
-        }
         EventsDispatcher.shared.send(
             MessageBox.EVENT_NAME_FOR_MESSAGE_INSERT,
             object: Message(
                 type: type,
                 title: title,
                 description: description,
-                expireAfter: expireAfter
+                lifeTime: lifeTime
             )
         )
     }

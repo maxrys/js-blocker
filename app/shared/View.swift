@@ -12,12 +12,18 @@ extension View {
         else                                   { self.foregroundColor(color) }
     }
 
-    @ViewBuilder func onHoverCursor(isEnabled: Bool = true) -> some View {
-        self.onHover { isInView in
-            if (isEnabled) {
-                if (isInView) { NSCursor.pointingHand.push() }
-                else          { NSCursor.pop() }
-            }   else          { NSCursor.pop() }
+    @ViewBuilder func pointerStyleLinkPolyfill(isEnabled: Bool = true) -> some View {
+        if (isEnabled) {
+            if #available(macOS 15.0, *) {
+                self.pointerStyle(.link)
+            } else {
+                self.onHover { isInView in
+                    if (isInView) { NSCursor.pointingHand.push() }
+                    else          { NSCursor.pop() }
+                }
+            }
+        } else {
+            self
         }
     }
 
