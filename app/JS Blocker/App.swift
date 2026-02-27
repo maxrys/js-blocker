@@ -3,42 +3,45 @@
 /* ### Copyright © 2024—2026 Maxim Rysevets. All rights reserved. ### */
 /* ################################################################## */
 
-import Cocoa
+import SwiftUI
 
-@main class App: NSObject, NSApplicationDelegate {
+final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
-    static let GROUP_NAME         = "97CZR6J379.maxrys.js-blocker"
-    static let EXTENSION_NAME     = "maxrys.js-blocker.extension"
-    static let STORAGE_NAME       = "JSBlocker.sqlite"
-    static let STORAGE_CLOUD_NAME = "iCloud.jsblocker"
+    func applicationSupportsSecureRestorableState       (_    app: NSApplication) -> Bool { true }
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
 
-    @IBOutlet var menuItem_isCloudEnabled: NSMenuItem!
+}
 
-    static var userDefaults: UserDefaults? {
-        UserDefaults(suiteName: App.GROUP_NAME)
-    }
+@main struct ThisApp: App {
 
-    static var isCloudEnabled: Bool {
-        get { Self.userDefaults?.bool(forKey: "isCloudEnabled") ?? false }
-        set { Self.userDefaults?.set(newValue, forKey: "isCloudEnabled") }
-    }
+    @NSApplicationDelegateAdaptor(ThisAppDelegate.self) var appDelegate
 
-    func applicationDidBecomeActive(_ notification: Notification) {
-        self.menuItem_isCloudEnabled.state = Self.isCloudEnabled ? .on : .off
-    }
+    @StateObject private var wdState           = WhiteDomainsState.shared
+    @StateObject private var userDefaultsState = UserDefaultsState.shared
 
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
-    }
-
-    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-        return true
-    }
-
-    @IBAction func onClick_menuItem_enableCloudKit(_ menuItem: NSMenuItem) {
-        Self.isCloudEnabled.toggle()
-        menuItem.state = Self.isCloudEnabled ? .on : .off
-        WhiteDomains.containerInit()
+    public var body: some Scene {
+        WindowGroup {
+            MainScene()
+                .frame(minWidth: 400, minHeight: 400)
+                .environmentObject(self.wdState)
+                .environmentObject(self.userDefaultsState)
+                .onAppBecomeForeground {
+                    self.wdState.dataReload()
+                }
+        }
+        .environment(\.layoutDirection, .leftToRight)
+        .commands {
+            CommandMenu("Experimental", content: {
+                Button {
+                    self.userDefaultsState.icloudStatus.toggle()
+                } label: {
+                    Text("Enable CloudKit")
+                    if (self.userDefaultsState.icloudStatus) {
+                        Image(systemName: "checkmark")
+                    }
+                }
+            })
+        }
     }
 
 }

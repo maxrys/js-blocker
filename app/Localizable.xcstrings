@@ -51,7 +51,10 @@
         }
       }
     },
-    "%d records have been processed" : {
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "%d records have been exported" : {
       "localizations" : {
         "en" : {
           "variations" : {
@@ -59,13 +62,13 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d record have been processed"
+                  "value" : "%d record have been exported"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d records have been processed"
+                  "value" : "%d records have been exported"
                 }
               }
             }
@@ -77,25 +80,77 @@
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Было обработано %d записи"
+                  "value" : "Было экспортировано %d записи"
                 }
               },
               "many" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Было обработано %d записей"
+                  "value" : "Было экспортировано %d записей"
                 }
               },
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Была обработана %d запись"
+                  "value" : "Была экспортирована %d запись"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Было обработано %d записей"
+                  "value" : "Было экспортировано %d записей"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%d records have been imported" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d record have been imported"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d records have been imported"
+                }
+              }
+            }
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было импортировано %d записи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было импортировано %d записей"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Была импортирована %d запись"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было импортировано %d записей"
                 }
               }
             }
@@ -136,22 +191,6 @@
         }
       }
     },
-    "Cancel" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отмена"
-          }
-        }
-      }
-    },
     "cancel permission" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -165,6 +204,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "отменить разрешение"
+          }
+        }
+      }
+    },
+    "delete" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "удалить"
           }
         }
       }
@@ -186,6 +235,62 @@
         }
       }
     },
+    "domain name" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "доменное имя"
+          }
+        }
+      }
+    },
+    "Domains where JavaScript is allowed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домены, на которых разрешён JavaScript"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домены, на которых разрешён JavaScript"
+          }
+        }
+      }
+    },
+    "Enable CloudKit" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить CloudKit"
+          }
+        }
+      }
+    },
+    "Experimental" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспериментальный"
+          }
+        }
+      }
+    },
+    "export" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "экспорт"
+          }
+        }
+      }
+    },
     "Export" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -199,6 +304,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Экспорт"
+          }
+        }
+      }
+    },
+    "global" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "глобальный"
           }
         }
       }
@@ -267,6 +382,16 @@
         }
       }
     },
+    "import" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "импорт"
+          }
+        }
+      }
+    },
     "Import" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -280,6 +405,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Импорт"
+          }
+        }
+      }
+    },
+    "install" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "установка"
+          }
+        }
+      }
+    },
+    "Installation example" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пример установки"
           }
         }
       }
@@ -351,34 +496,22 @@
         }
       }
     },
-    "JS Blocker Extension is disabled" : {
+    "JS \"Blocker Extension\" is disabled" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "JS Blocker Extension is disabled"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расширение JS Блокировщик выключено"
+            "value" : "Расширение \"JS Блокировщик\" выключено"
           }
         }
       }
     },
-    "JS Blocker Extension is enabled" : {
+    "JS \"Blocker Extension\" is enabled" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "JS Blocker Extension is enabled"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расширение JS Блокировщик включено"
+            "value" : "Расширение \"JS Блокировщик\" включено"
           }
         }
       }
@@ -400,18 +533,22 @@
         }
       }
     },
-    "OK" : {
+    "note: New Domains are added in Safari via the \"JS Blocker\" pop-up." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Хорошо"
+            "value" : "примечание: Новые домены добавляются в Safari через всплывающее окно \"JS Blocker'а\"."
+          }
+        }
+      }
+    },
+    "Open Safari Extensions Preferences…" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть настройки расширений Safari…"
           }
         }
       }
@@ -476,6 +613,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Разрешение для следующего домена было удалено:"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск"
           }
         }
       }
