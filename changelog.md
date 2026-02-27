@@ -1,4 +1,8 @@
 
+## Version 1.9
+
+Codebase and file structure have been improved.
+Full migration to SwiftUI.
 
 ## Version 1.8
 
