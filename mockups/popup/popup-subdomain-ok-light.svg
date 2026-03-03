@@ -33,7 +33,7 @@
     <rect style="fill: rgb(227, 232, 238); stroke-width: 2px; filter: none;" x="50" width="900" height="1225" rx="19.5" ry="19.5" y="50"/>
     <g>
       <path style="fill: rgb(74, 155, 36);" d="M 69.5 50 H 930.5 A 19.5 19.5 0 0 1 950 69.5 V 250 H 50 V 69.5 A 19.5 19.5 0 0 1 69.5 50 Z" bx:shape="rect 50 50 900 200 19.5 19.5 0 0 1@19aba10c"/>
-      <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -182.496414, -53.611458)" x="273.2909851074219" y="152.7239990234375">Global permissions for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
+      <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -150.604034, -53.611458)" x="273.2909851074219" y="152.7239990234375">Wildcard rules for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
       <rect style="fill: rgb(255, 255, 255); fill-opacity: 0.15;" x="50" y="125.612" width="900" height="124.388"/>
       <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 54.034245, 26.73229)"><tspan x="273.291" y="152.724">sub3.sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
       <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 85.828323, 65.024269)"><tspan x="273.291" y="152.724">sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
@@ -82,7 +82,7 @@
       <path style="fill: rgb(210, 220, 228);" d="M 50 1075 H 950 V 1255.503 A 19.497 19.497 0 0 1 930.503 1275 H 69.5 A 19.5 19.5 0 0 1 50 1255.5 V 1075 Z" bx:shape="rect 50 1075 900 200 0 0 19.497 19.5 1@9d515b8a"/>
       <g>
         <rect width="449" height="74.945" x="275.5" y="1137.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-12&quot;);"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.98" y="1183.55">cancel permission</text>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="434.734" y="1183.55">cancel rule</text>
       </g>
     </g>
   </g>

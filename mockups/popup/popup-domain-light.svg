@@ -59,7 +59,7 @@
       <path style="fill: rgb(210, 220, 228);" d="M 50 750.152 H 950 V 930.652 A 19.5 19.5 0 0 1 930.5 950.152 H 69.5 A 19.5 19.5 0 0 1 50 930.652 V 750.152 Z" bx:shape="rect 50 750.152 900 200 0 0 19.5 19.5 1@4ee9a8c1"/>
       <g style="opacity: 0.5;">
         <rect width="450" height="75" x="275" y="812" rx="37.5" ry="37.5" style="fill: url('#gradient-12')"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.967" y="858.862">cancel permission</text>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="434.73" y="858.862">cancel rule</text>
       </g>
     </g>
   </g>

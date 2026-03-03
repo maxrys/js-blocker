@@ -46,11 +46,11 @@
       <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
       <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
     </linearGradient>
-    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
+    <filter id="filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
       <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
       <feOffset dx="0" dy="0"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-4" type="linear" slope="0.8"/>
+        <feFuncA id="feFuncA-3" type="linear" slope="0.8"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -59,15 +59,15 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-8" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 484.910095)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-5" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 484.910095)">
       <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
       <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
     </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-2" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 938.694214)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-6" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 938.694214)">
       <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
       <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
     </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-12" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1137.020813)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-10" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1137.020813)">
       <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
       <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
     </linearGradient>
@@ -131,12 +131,12 @@
         <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" x="639.289" y="161.852">subdomain.example.com</text>
       </g>
     </g>
-    <g style="filter: url('#drop-shadow-filter-1');" transform="matrix(1, 0, 0, 1, 140.000031, 189.567963)">
+    <g style="filter: url(&quot;#filter-1&quot;);" transform="matrix(1, 0, 0, 1, 140.000031, 189.567963)">
       <path d="M 69.5 49 L 472 49 C 486 49 493.375 25 500 25 C 506.625 25 514 49 528 49 L 930.5 49 C 941.822 49 951 58.178 951 69.5 L 951 1254.5 C 951 1265.822 941.822 1276 930.5 1276 L 69.5 1276 C 58.178 1276 49 1265.822 49 1254.5 L 49 69.5 C 49 58.178 58.178 49 69.5 49 Z" style="filter: none; stroke: rgb(198, 198, 198); stroke-width: 2px; fill: rgb(233, 233, 233);"/>
       <rect style="fill: rgb(227, 232, 238); stroke-width: 2px; filter: none;" x="50" width="900" height="1225" rx="19.5" ry="19.5" y="50"/>
       <g>
         <path style="fill: rgb(74, 155, 36);" d="M 69.5 50 H 930.5 A 19.5 19.5 0 0 1 950 69.5 V 250 H 50 V 69.5 A 19.5 19.5 0 0 1 69.5 50 Z" bx:shape="rect 50 50 900 200 19.5 19.5 0 0 1@19aba10c"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -182.496414, -53.611458)" x="273.2909851074219" y="152.7239990234375">Global permissions for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -150.604034, -53.611458)" x="273.2909851074219" y="152.7239990234375">Wildcard rules for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
         <rect style="fill: rgb(255, 255, 255); fill-opacity: 0.15;" x="50" y="125.612" width="900" height="124.388"/>
         <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 54.034245, 26.73229)"><tspan x="273.291" y="152.724">sub3.sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
         <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 85.828323, 65.024269)"><tspan x="273.291" y="152.724">sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
@@ -151,7 +151,7 @@
           <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; opacity: 0.5;" x="315.779" y="423.301">sub3.sub2.sub1.example.com</text>
         </g>
         <g style="opacity: 0.5;">
-          <rect width="300" height="75" x="350" y="484.216" style="fill: url(&quot;#gradient-8&quot;);" rx="37.5" ry="37.5"/>
+          <rect width="300" height="75" x="350" y="484.216" style="fill: url(&quot;#gradient-9&quot;);" rx="37.5" ry="37.5"/>
           <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="531.04">allow</text>
         </g>
       </g>
@@ -177,15 +177,15 @@
           </g>
         </g>
         <g style="opacity: 0.5;">
-          <rect width="300" height="75" x="350" y="938" style="fill: url(&quot;#gradient-2&quot;);" rx="37.5" ry="37.5"/>
+          <rect width="300" height="75" x="350" y="938" style="fill: url(&quot;#gradient-11&quot;);" rx="37.5" ry="37.5"/>
           <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="984.824">allow</text>
         </g>
       </g>
       <g>
         <path style="fill: rgb(210, 220, 228);" d="M 50 1075 H 950 V 1255.503 A 19.497 19.497 0 0 1 930.503 1275 H 69.5 A 19.5 19.5 0 0 1 50 1255.5 V 1075 Z" bx:shape="rect 50 1075 900 200 0 0 19.497 19.5 1@9d515b8a"/>
         <g>
-          <rect width="449" height="74.945" x="275.5" y="1137.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-12&quot;);"/>
-          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.98" y="1183.55">cancel permission</text>
+          <rect width="449" height="74.945" x="275.5" y="1137.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-13&quot;);"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="434.734" y="1183.55">cancel rule</text>
         </g>
       </g>
     </g>
@@ -224,12 +224,12 @@
         <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" transform="matrix(1.000876, 0, 0, 1, -37.144077, -2.424332)" x="675.728" y="164.416">subdomain.example.com</text>
       </g>
     </g>
-    <g style="filter: url(&quot;#filter-1&quot;);" transform="matrix(1, 0, 0, 1, 1420, 189.567963)">
+    <g style="filter: url(&quot;#filter-2&quot;);" transform="matrix(1, 0, 0, 1, 1420, 189.567963)">
       <path d="M 69.5 49 L 472 49 C 486 49 493.375 25 500 25 C 506.625 25 514 49 528 49 L 930.5 49 C 941.822 49 951 58.178 951 69.5 L 951 1254.5 C 951 1265.822 941.822 1276 930.5 1276 L 69.5 1276 C 58.178 1276 49 1265.822 49 1254.5 L 49 69.5 C 49 58.178 58.178 49 69.5 49 Z" style="filter: none; stroke-width: 2px; fill: rgb(60, 60, 60); stroke: rgb(101, 106, 109);"/>
       <rect style="stroke-width: 2px; filter: none; fill: rgb(63, 69, 73);" x="50" width="900" height="1225" rx="19.5" ry="19.5" y="50"/>
       <g>
         <path style="fill: lch(49.8 65.1 130);" d="M 69.5 50 H 930.5 A 19.5 19.5 0 0 1 950 69.5 V 250 H 50 V 69.5 A 19.5 19.5 0 0 1 69.5 50 Z" bx:shape="rect 50 50 900 200 19.5 19.5 0 0 1@19aba10c"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -182.496414, -53.611454)" x="273.2909851074219" y="152.7239990234375">Global permissions for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, -150.604034, -53.611454)" x="273.2909851074219" y="152.7239990234375">Wildcard rules for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
         <rect style="fill: rgb(255, 255, 255); fill-opacity: 0.15;" x="50" y="125.612" width="900" height="124.388"/>
         <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 54.034245, 26.732292)"><tspan x="273.291" y="152.724">sub3.sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
         <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre;" transform="matrix(1, 0, 0, 1, 85.828323, 65.024269)"><tspan x="273.291" y="152.724">sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
@@ -244,7 +244,7 @@
           <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; opacity: 0.5;" x="315.779" y="423.301">sub3.sub2.sub1.example.com</text>
         </g>
         <g style="opacity: 0.5;">
-          <rect width="300" height="75" x="350" y="484.216" style="fill: url(&quot;#gradient-9&quot;);" rx="37.5" ry="37.5"/>
+          <rect width="300" height="75" x="350" y="484.216" style="fill: url(&quot;#gradient-5&quot;);" rx="37.5" ry="37.5"/>
           <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="531.04">allow</text>
         </g>
       </g>
@@ -270,15 +270,15 @@
           </g>
         </g>
         <g style="opacity: 0.5;">
-          <rect width="300" height="75" x="350" y="938" style="fill: url(&quot;#gradient-11&quot;);" rx="37.5" ry="37.5"/>
+          <rect width="300" height="75" x="350" y="938" style="fill: url(&quot;#gradient-6&quot;);" rx="37.5" ry="37.5"/>
           <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="469.24" y="984.824">allow</text>
         </g>
       </g>
       <g>
         <path style="fill: rgb(47, 53, 57);" d="M 50 1075 H 950 V 1255.5 A 19.5 19.5 0 0 1 930.5 1275 H 69.5 A 19.5 19.5 0 0 1 50 1255.5 V 1075 Z" bx:shape="rect 50 1075 900 200 0 0 19.5 19.5 1@adae0669"/>
         <g>
-          <rect width="449" height="74.945" x="275.5" y="1137.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-13&quot;);"/>
-          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="391.98" y="1183.55">cancel permission</text>
+          <rect width="449" height="74.945" x="275.5" y="1137.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-10&quot;);"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="434.734" y="1183.55">cancel rule</text>
         </g>
       </g>
     </g>
