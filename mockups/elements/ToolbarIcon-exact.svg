@@ -10,7 +10,7 @@
       <stop offset="1" style="stop-color: rgb(85, 175, 0);"/>
     </linearGradient>
     <bx:export>
-      <bx:file format="pdf" path="ToolbarIcon-domain.pdf">
+      <bx:file format="pdf" path="ToolbarIcon-exact.pdf">
         <bx:page/>
       </bx:file>
     </bx:export>

@@ -8,9 +8,9 @@ import SafariServices
 
 class ExtensionHandler: SFSafariExtensionHandler {
 
-    static let ICON_LOCAL  = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-local" , ofType: "pdf")!)
-    static let ICON_GLOBAL = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-global", ofType: "pdf")!)
-    static let ICON_NONE   = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-none"  , ofType: "pdf")!)
+    static let ICON_EXACT    = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-exact"   , ofType: "pdf")!)
+    static let ICON_WILDCARD = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-wildcard", ofType: "pdf")!)
+    static let ICON_NONE     = NSImage(contentsOfFile: Bundle.main.path(forResource: "ToolbarIcon-none"    , ofType: "pdf")!)
 
     override func beginRequest(with context: NSExtensionContext) {
     }
@@ -28,15 +28,15 @@ class ExtensionHandler: SFSafariExtensionHandler {
                     let domainName = properties?.url?.host
                     let fromDomain = userInfo?["fromDomain"] ?? ""
 
-                    if (domainName != nil) {
-                        let state = WhiteDomains.blockingState(name: domainName!)
+                    if let domainName = domainName {
+                        let state = AllowedDomains.matchType(name: domainName)
                         page.dispatchMessageToScript(
                             withName: message,
                             userInfo: [
                                 "timestamp" : Date().timeIntervalSince1970,
                                 "fromDomain": fromDomain,
-                                "domain"    : domainName!,
-                                "result"    : state.isAllowed
+                                "domain"    : domainName,
+                                "result"    : state.isAllowedJS
                             ]
                         )
                     } else {
@@ -77,20 +77,20 @@ class ExtensionHandler: SFSafariExtensionHandler {
                             domainName != nil, ""
                         )
 
-                        if let page,
-                           let domainName {
-                            ExtensionController.page = page
-                            ExtensionController.domainName = domainName
-                            ExtensionController.blockingState = WhiteDomains.blockingState(name: domainName)
-                            switch ExtensionController.blockingState {
-                                case .local : toolbarItem?.setImage(Self.ICON_LOCAL)
-                                case .global: toolbarItem?.setImage(Self.ICON_GLOBAL)
-                                case .none  : toolbarItem?.setImage(Self.ICON_NONE)
+                        if let page       = page,
+                           let domainName = domainName {
+                            ViewController.page = page
+                            ViewController.domainName = domainName
+                            ViewController.matchType = AllowedDomains.matchType(name: domainName)
+                            switch ViewController.matchType {
+                                case .exact   : toolbarItem?.setImage(Self.ICON_EXACT)
+                                case .wildcard: toolbarItem?.setImage(Self.ICON_WILDCARD)
+                                case .none    : toolbarItem?.setImage(Self.ICON_NONE)
                             }
                         } else {
-                            ExtensionController.page = nil
-                            ExtensionController.domainName = nil
-                            ExtensionController.blockingState = .none
+                            ViewController.page = nil
+                            ViewController.domainName = nil
+                            ViewController.matchType = .none
                         }
 
                     })
@@ -105,7 +105,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
 
     override func popoverViewController() -> SFSafariExtensionViewController {
         /* when: info.plist → SFSafariToolbarItem → Action = Popover */
-        return ExtensionController.shared
+        return ViewController.shared
     }
 
     override func toolbarItemClicked(in window: SFSafariWindow) {

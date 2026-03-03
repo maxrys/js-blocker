@@ -98,7 +98,7 @@ struct ButtonRound_Previews: PreviewProvider {
             ).disabled(true)
 
             ButtonRound(
-                title: NSLocalizedString("cancel permission", comment: ""),
+                title: NSLocalizedString("cancel rule", comment: ""),
                 color: .blue,
                 minWidth: 250,
                 onClick: {
@@ -107,7 +107,7 @@ struct ButtonRound_Previews: PreviewProvider {
             )
 
             ButtonRound(
-                title: NSLocalizedString("cancel permission", comment: ""),
+                title: NSLocalizedString("cancel rule", comment: ""),
                 color: .blue,
                 minWidth: 250,
                 onClick: {

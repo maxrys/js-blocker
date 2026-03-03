@@ -6,18 +6,18 @@
 import os
 import SwiftUI
 
-final class WhiteDomainsState: ObservableObject {
+final class DomainsState: ObservableObject {
 
-    static public private(set) var shared = WhiteDomainsState()
+    static public private(set) var shared = DomainsState()
 
-    public func getBinding<T>(_ propertyName: WritableKeyPath<WhiteDomainsState, T>) -> Binding<T> {
+    public func getBinding<T>(_ propertyName: WritableKeyPath<DomainsState, T>) -> Binding<T> {
         var instance = self; return Binding(
             get: {             instance[keyPath: propertyName]            },
             set: { newValue in instance[keyPath: propertyName] = newValue }
         )
     }
 
-    @Published var data: [WhiteDomains] = []
+    @Published var data: ADFetchCollection = []
     @Published var hash: Int = 0
     @Published var selectedRows: Set<Int> = []
     @Published var filterByName: String = "" {
@@ -25,13 +25,13 @@ final class WhiteDomainsState: ObservableObject {
     }
 
 
-    var selectedRowsToPrimaryKeys: [String] {
+    var selectedRowsToNames: [String] {
         self.selectedRows.compactMap { index in
             self.data[safe: index]?.name
         }
     }
 
-    var selectedRowsToData: [WhiteDomains] {
+    var selectedRowsToData: ADFetchCollection {
         self.selectedRows.compactMap { index in
             self.data[safe: index]
         }
@@ -42,9 +42,9 @@ final class WhiteDomainsState: ObservableObject {
     }
 
     func dataReload() {
-     // WhiteDomains.context.reset()
-        let newData = WhiteDomains.selectAll(self.filterByName.isEmpty ? nil : self.filterByName)
-        let newHash = WhiteDomains.hashOfSet(newData)
+     // AllowedDomains.context.reset()
+        let newData = AllowedDomains.selectAll(self.filterByName.isEmpty ? nil : self.filterByName)
+        let newHash = newData.hash()
         Logger.customLog("Old Data Hash: \(self.hash)")
         Logger.customLog("New Data Hash: \(newHash)")
         if (self.hash == 0 || self.hash != newHash) {

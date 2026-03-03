@@ -3,15 +3,15 @@
 /* ### Copyright © 2024—2026 Maxim Rysevets. All rights reserved. ### */
 /* ################################################################## */
 
-enum BlockingType {
+enum MatchType {
 
-    case local
-    case global
+    case exact
+    case wildcard
     case none
 
-    var isAllowed: Bool {
-        return self == .local ||
-               self == .global
+    var isAllowedJS: Bool {
+        return self == .exact ||
+               self == .wildcard
     }
 
 }

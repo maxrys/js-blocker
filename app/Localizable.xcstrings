@@ -1,31 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "...description..." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...description..."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...описание..."
-          }
-        }
-      }
-    },
     "...loading..." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...loading..."
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34,25 +11,60 @@
         }
       }
     },
-    "...title..." : {
-      "extractionState" : "manual",
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "%d records have been deleted" : {
       "localizations" : {
         "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...title..."
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d record have been deleted"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d records have been deleted"
+                }
+              }
+            }
           }
         },
         "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...заголовок..."
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было удалено %d записи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было удалено %d записей"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Была удалено %d запись"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было удалено %d записей"
+                }
+              }
+            }
           }
         }
       }
-    },
-    "%@" : {
-      "shouldTranslate" : false
     },
     "%d records have been exported" : {
       "localizations" : {
@@ -161,12 +173,6 @@
     "allow" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "allow"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -177,12 +183,6 @@
     },
     "At least 1 subdomain must be selected!" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "At least 1 subdomain must be selected!"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -191,19 +191,12 @@
         }
       }
     },
-    "cancel permission" : {
-      "extractionState" : "manual",
+    "cancel rule" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cancel permission"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "отменить разрешение"
+            "value" : "отменить правило"
           }
         }
       }
@@ -214,23 +207,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "удалить"
-          }
-        }
-      }
-    },
-    "Description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Description"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Описание"
           }
         }
       }
@@ -247,12 +223,6 @@
     },
     "Domains where JavaScript is allowed" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Домены, на которых разрешён JavaScript"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -267,6 +237,46 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включить CloudKit"
+          }
+        }
+      }
+    },
+    "Exact rule for the following domain was added:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точное правило для домена было добавлено:"
+          }
+        }
+      }
+    },
+    "Exact rule for the following domain was not added:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точное правило для домена не было добавлено:"
+          }
+        }
+      }
+    },
+    "Exact rule for the following domain was not removed:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точное правило для домена не было удалено:"
+          }
+        }
+      }
+    },
+    "Exact rule for the following domain was removed:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точное правило для домена было удалено:"
           }
         }
       }
@@ -294,90 +304,10 @@
     "Export" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Экспорт"
-          }
-        }
-      }
-    },
-    "global" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "глобальный"
-          }
-        }
-      }
-    },
-    "Global permissions for the following domains were added:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Global permissions for the following domains were added:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Глобальные разрешения для следующих доменов были добавлены:"
-          }
-        }
-      }
-    },
-    "Global permissions for the following domains were not added:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Global permissions for the following domains were not added:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Глобальные разрешения для следующих доменов не были добавлены:"
-          }
-        }
-      }
-    },
-    "Global permissions for the following domains were not removed:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Global permissions for the following domains were not removed:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Глобальные разрешения для следующих доменов не были удалены:"
-          }
-        }
-      }
-    },
-    "Global permissions for the following domains were removed:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Global permissions for the following domains were removed:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Глобальные разрешения для следующих доменов были удалены:"
           }
         }
       }
@@ -395,12 +325,6 @@
     "Import" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Import"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,12 +355,6 @@
     },
     "Invalid domains were detected:\n%@" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid domains were detected:\n%@"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -448,12 +366,6 @@
     "Invalid JSON format!" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid JSON format!"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -465,12 +377,6 @@
     "JavaScript on the Domain" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "JavaScript on the Domain"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -482,12 +388,6 @@
     "JavaScript on the Domain + Subdomains" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "JavaScript on the Domain + Subdomains"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -519,12 +419,6 @@
     "no" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "no"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -553,70 +447,6 @@
         }
       }
     },
-    "Permission for the following domain was added:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permission for the following domain was added:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Разрешение для следующего домена было добавлено:"
-          }
-        }
-      }
-    },
-    "Permission for the following domain was not added:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permission for the following domain was not added:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Разрешение для следующего домена не было добавлено:"
-          }
-        }
-      }
-    },
-    "Permission for the following domain was not removed:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permission for the following domain was not removed:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Разрешение для следующего домена не было удалено:"
-          }
-        }
-      }
-    },
-    "Permission for the following domain was removed:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permission for the following domain was removed:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Разрешение для следующего домена было удалено:"
-          }
-        }
-      }
-    },
     "Search" : {
       "localizations" : {
         "ru" : {
@@ -627,19 +457,52 @@
         }
       }
     },
-    "Title" : {
-      "extractionState" : "manual",
+    "wildcard" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Title"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заголовок"
+            "value" : "обобщ."
+          }
+        }
+      }
+    },
+    "Wildcard rules for the following domains were added:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обобщённые правила для доменов были добавлены:"
+          }
+        }
+      }
+    },
+    "Wildcard rules for the following domains were not added:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обобщённые правила для доменов не были добавлены:"
+          }
+        }
+      }
+    },
+    "Wildcard rules for the following domains were not removed:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обобщённые правила для доменов не были удалены:"
+          }
+        }
+      }
+    },
+    "Wildcard rules for the following domains were removed:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обобщённые правила для доменов были удалены:"
           }
         }
       }
@@ -647,12 +510,6 @@
     "yes" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "yes"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",

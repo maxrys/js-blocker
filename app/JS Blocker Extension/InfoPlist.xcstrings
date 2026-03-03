@@ -62,13 +62,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Safari extension for block JavaScript. This part of the extension implements a permission settings form that is displayed when the user clicks a button on the toolbar."
+            "value" : "Safari extension for block JavaScript. This part of the extension implements a domain blocking rule form that is displayed when the user clicks a button on the toolbar."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расширение Safari для блокировки JavaScript. В этой части расширения реализована форма настройки разрешений, которая отображается, когда пользователь нажимает кнопку на панели инструментов."
+            "value" : "Расширение Safari для блокировки JavaScript. Эта часть расширения реализует форму правила блокировки домена, которая отображается, когда пользователь нажимает кнопку на панели инструментов."
           }
         }
       }

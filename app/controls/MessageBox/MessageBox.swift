@@ -113,9 +113,11 @@ struct MessageBox: View {
         isClosable: Bool = false,
         lifeTime: Self.LifeTime = .time(Self.LIFE_TIME_DEFAULT)
     ) {
-        switch lifeTime {
-            case .time(let time): NotificationCenter.default.post(name: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_INSERT), object: Message(type: type, title: title, description: description, isClosable: isClosable, expiresAt: CACurrentMediaTime() + time))
-            case .infinity      : NotificationCenter.default.post(name: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_INSERT), object: Message(type: type, title: title, description: description, isClosable: isClosable))
+        Task {
+            switch lifeTime {
+                case .time(let time): NotificationCenter.default.post(name: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_INSERT), object: Message(type: type, title: title, description: description, isClosable: isClosable, expiresAt: CACurrentMediaTime() + time))
+                case .infinity      : NotificationCenter.default.post(name: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_INSERT), object: Message(type: type, title: title, description: description, isClosable: isClosable))
+            }
         }
     }
 

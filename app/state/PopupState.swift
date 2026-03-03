@@ -7,48 +7,34 @@ import SwiftUI
 
 final class PopupState: ObservableObject {
 
-    @Published var rulesForLocal      : [String]
-    @Published var rulesForGlobal     : [String]
-    @Published var isActiveLocalRule  :  Bool
-    @Published var isActiveGlobalRule :  Bool
-    @Published var isEnabledLocalRule :  Bool
-    @Published var isEnabledGlobalRule:  Bool
-    @Published var isEnabledRuleCancel:  Bool
-    @Published var indecesForLocal    : [Int]
-    @Published var indecesForGLobal   : [Int]
+    enum Match: Equatable {
 
-    init(
-        rulesForLocal      : [String] = [],
-        rulesForGlobal     : [String] = [],
-        isActiveLocalRule  :  Bool = false,
-        isActiveGlobalRule :  Bool = false,
-        isEnabledLocalRule :  Bool = false,
-        isEnabledGlobalRule:  Bool = false,
-        isEnabledRuleCancel:  Bool = false,
-        indecesForLocal    : [Int] = [],
-        indecesForGLobal   : [Int] = []
-    ) {
-        self.rulesForLocal       = rulesForLocal
-        self.rulesForGlobal      = rulesForGlobal
-        self.isActiveLocalRule   = isActiveLocalRule
-        self.isActiveGlobalRule  = isActiveGlobalRule
-        self.isEnabledLocalRule  = isEnabledLocalRule
-        self.isEnabledGlobalRule = isEnabledGlobalRule
-        self.isEnabledRuleCancel = isEnabledRuleCancel
-        self.indecesForLocal     = indecesForLocal
-        self.indecesForGLobal    = indecesForGLobal
+        case exact
+        case wildcard(indices: [Int])
+        case none
+        case noDomain
+
+        public var indices: [Int] {
+            switch self {
+                case .wildcard(let indices): return indices
+                default: return []
+            }
+        }
+
+        public var isExact   : Bool { self == .exact }
+        public var isWildcard: Bool { if case .wildcard = self { return true } else { return false } }
+        public var isNone    : Bool { self == .none }
+        public var isNoDomain: Bool { self == .noDomain }
+
     }
 
-    func reset() {
-        self.rulesForLocal       = []
-        self.rulesForGlobal      = []
-        self.isActiveLocalRule   = false
-        self.isActiveGlobalRule  = false
-        self.isEnabledLocalRule  = false
-        self.isEnabledGlobalRule = false
-        self.isEnabledRuleCancel = false
-        self.indecesForLocal     = []
-        self.indecesForGLobal    = []
+    static public private(set) var shared = PopupState()
+
+    @Published var match: Match = .none
+    @Published var exactRule: String = ""
+    @Published var wildcardRules: [String] = []
+
+    private init() { /* singleton */
     }
 
 }

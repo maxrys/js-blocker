@@ -7,6 +7,10 @@ import SwiftUI
 
 final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        UserDefaultsState.isAppLaunchedOnce_direct = true
+    }
+
     func applicationSupportsSecureRestorableState       (_    app: NSApplication) -> Bool { true }
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
 
@@ -16,17 +20,17 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     @NSApplicationDelegateAdaptor(ThisAppDelegate.self) var appDelegate
 
-    @StateObject private var wdState           = WhiteDomainsState.shared
+    @StateObject private var domainsState = DomainsState.shared
     @StateObject private var userDefaultsState = UserDefaultsState.shared
 
     public var body: some Scene {
         WindowGroup {
             MainScene()
                 .frame(minWidth: 400, minHeight: 400)
-                .environmentObject(self.wdState)
+                .environmentObject(self.domainsState)
                 .environmentObject(self.userDefaultsState)
                 .onAppBecomeForeground {
-                    self.wdState.dataReload()
+                    self.domainsState.dataReload()
                 }
         }
         .environment(\.layoutDirection, .leftToRight)

@@ -14,14 +14,14 @@ struct Popup: View {
     static let FRAME_WIDTH: CGFloat = 450
 
     @Environment(\.openURL) private var openURL
-    @ObservedObject private var state: PopupState
+
     @StateObject private var userDefaultsState = UserDefaultsState.shared
+    @StateObject private var popupState        = PopupState.shared
 
     private let frameWidth: CGFloat
     private let messageBox: MessageBox
 
-    init(state: PopupState, frameWidth: CGFloat = Self.FRAME_WIDTH) {
-        self.state = state
+    init(frameWidth: CGFloat = Self.FRAME_WIDTH) {
         self.frameWidth = frameWidth
         self.messageBox = MessageBox()
     }
@@ -41,33 +41,47 @@ struct Popup: View {
 
             VStack(spacing: 0) {
 
-                /* MARK: JavaScript on the Domain */
-
-                DomainRulePanel(
-                    title: NSLocalizedString("JavaScript on the Domain", comment: ""),
-                    rules:           self.state.rulesForLocal,
-                    ruleIsActive:    self.state.isActiveLocalRule,
-                    buttonIsEnabled: self.state.isEnabledLocalRule,
-                    selectedDefault: self.state.indecesForLocal,
-                    buttonOnClick: { _ in
-                        ExtensionController.shared.onClick_buttonRuleLocalInsert()
-                    }
-                )
-
-                /* MARK: JavaScript on the Domain + Subdomains */
-
-                DomainRulePanel(
-                    title: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: ""),
-                    rules:           self.state.rulesForGlobal,
-                    ruleIsActive:    self.state.isActiveGlobalRule,
-                    buttonIsEnabled: self.state.isEnabledGlobalRule,
-                    selectedDefault: self.state.indecesForGLobal,
-                    buttonOnClick: { indeces in
-                        ExtensionController.shared.onClick_buttonRuleGlobalInsert(
-                            indeces: indeces
-                        )
-                    }
-                )
+                if (self.popupState.match.isNoDomain) {
+                    DomainRulePanel(
+                        title: NSLocalizedString("JavaScript on the Domain", comment: ""),
+                        rules:           [],
+                        ruleIsActive:    false,
+                        buttonIsEnabled: false,
+                        selectedDefault: [],
+                        buttonOnClick: { _ in }
+                    )
+                    DomainRulePanel(
+                        title: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: ""),
+                        rules:           [],
+                        ruleIsActive:    false,
+                        buttonIsEnabled: false,
+                        selectedDefault: [],
+                        buttonOnClick: { _ in }
+                    )
+                } else {
+                    DomainRulePanel(
+                        title: NSLocalizedString("JavaScript on the Domain", comment: ""),
+                        rules:          [self.popupState.exactRule],
+                        ruleIsActive:    self.popupState.match.isExact,
+                        buttonIsEnabled: self.popupState.match.isNone,
+                        selectedDefault: self.popupState.match.indices,
+                        buttonOnClick: { _ in
+                            ViewController.shared.onClick_ruleExactInsert()
+                        }
+                    )
+                    DomainRulePanel(
+                        title: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: ""),
+                        rules:           self.popupState.wildcardRules,
+                        ruleIsActive:    self.popupState.match.isWildcard,
+                        buttonIsEnabled: self.popupState.match.isNone,
+                        selectedDefault: self.popupState.match.indices,
+                        buttonOnClick: { indices in
+                            ViewController.shared.onClick_ruleWildcardInsert(
+                                indices: indices
+                            )
+                        }
+                    )
+                }
 
             }
             .padding(.vertical, 11)
@@ -92,7 +106,7 @@ struct Popup: View {
             /* ### MARK: Foot */
             /* ############## */
 
-            self.ButtonCancelPermission()
+            self.ButtonCancelRule()
                 .padding(31)
                 .frame(maxWidth: .infinity)
                 .background(Color.popup.footBackground)
@@ -125,16 +139,17 @@ struct Popup: View {
         .padding(10)
     }
 
-    @ViewBuilder private func ButtonCancelPermission() -> some View {
+    @ViewBuilder private func ButtonCancelRule() -> some View {
         ButtonRound(
-            title: NSLocalizedString("cancel permission", comment: ""),
+            title: NSLocalizedString("cancel rule", comment: ""),
             color: .blue,
             minWidth: 250,
             onClick: {
-                ExtensionController.shared.onClick_buttonRuleDelete()
+                ViewController.shared.onClick_ruleDelete()
             }
         ).disabled(
-            !self.state.isEnabledRuleCancel
+            self.popupState.match.isNone ||
+            self.popupState.match.isNoDomain
         )
     }
 
@@ -146,40 +161,124 @@ struct Popup: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct Popup_Previews: PreviewProvider {
+fileprivate let single_exactRule = "example.com"
+fileprivate let single_wildcardRules = [
+    "*.example.com"
+]
+
+fileprivate let multi_exactRule = "sub3.sub2.sub1.example.com"
+fileprivate let multi_wildcardRules = [
+    "*.sub3.sub2.sub1.example.com",
+         "*.sub2.sub1.example.com",
+              "*.sub1.example.com",
+                   "*.example.com"
+]
+
+struct Popup_noDomain_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: 30) {
-
-            Popup(
-                state: PopupState(
-                    rulesForLocal: ["example.com"],
-                    rulesForGlobal: ["*.example.com"],
-                    isActiveLocalRule: false,
-                    isActiveGlobalRule: false,
-                    isEnabledLocalRule: true,
-                    isEnabledGlobalRule: true,
-                    isEnabledRuleCancel: false
-                )
+        Popup().onAppear {
+            PopupState.shared.match = .noDomain
+            PopupState.shared.exactRule = ""
+            PopupState.shared.wildcardRules = []
+            MessageBox.insert(
+                type: .warning,
+                title: "\".noDomain\" example",
+                lifeTime: .infinity
             )
+        }
+    }
+}
 
-            Popup(
-                state: PopupState(
-                    rulesForLocal: ["sub3.sub2.sub1.example.com"],
-                    rulesForGlobal: ["*.sub3.sub2.sub1.example.com", "*.sub2.sub1.example.com", "*.sub1.example.com", "*.example.com"],
-                    isActiveLocalRule: false,
-                    isActiveGlobalRule: true,
-                    isEnabledLocalRule: false,
-                    isEnabledGlobalRule: false,
-                    isEnabledRuleCancel: true,
-                    indecesForGLobal: [0]
-                )
-            )
-
-        }.onAppear {
+struct Popup_Single_none_Previews: PreviewProvider {
+    static var previews: some View {
+        Popup().onAppear {
+            PopupState.shared.match = .none
+            PopupState.shared.exactRule = single_exactRule
+            PopupState.shared.wildcardRules = single_wildcardRules
             MessageBox.insert(
                 type: .ok,
-                title: NSLocalizedString("Permission for the following domain was added:", comment: ""),
+                title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
                 description: "example.com",
+                lifeTime: .infinity
+            )
+        }
+    }
+}
+
+struct Popup_Single_exact_Previews: PreviewProvider {
+    static var previews: some View {
+        Popup().onAppear {
+            PopupState.shared.match = .exact
+            PopupState.shared.exactRule = single_exactRule
+            PopupState.shared.wildcardRules = single_wildcardRules
+            MessageBox.insert(
+                type: .ok,
+                title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
+                description: "example.com",
+                lifeTime: .infinity
+            )
+        }
+    }
+}
+
+struct Popup_Single_wildcard_Previews: PreviewProvider {
+    static var previews: some View {
+        Popup().onAppear {
+            PopupState.shared.match = .wildcard(indices: [0])
+            PopupState.shared.exactRule = single_exactRule
+            PopupState.shared.wildcardRules = single_wildcardRules
+            MessageBox.insert(
+                type: .ok,
+                title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
+                description: ["*.example.com"].joined(separator: "\n"),
+                lifeTime: .infinity
+            )
+        }
+    }
+}
+
+struct Popup_Multi_none_Previews: PreviewProvider {
+    static var previews: some View {
+        Popup().onAppear {
+            PopupState.shared.match = .none
+            PopupState.shared.exactRule = multi_exactRule
+            PopupState.shared.wildcardRules = multi_wildcardRules
+            MessageBox.insert(
+                type: .ok,
+                title: NSLocalizedString("Wildcard rules for the following domains were removed:", comment: ""),
+                description: "example.com",
+                lifeTime: .infinity
+            )
+        }
+    }
+}
+
+struct Popup_Multi_exact_Previews: PreviewProvider {
+    static var previews: some View {
+        Popup().onAppear {
+            PopupState.shared.match = .exact
+            PopupState.shared.exactRule = multi_exactRule
+            PopupState.shared.wildcardRules = multi_wildcardRules
+            MessageBox.insert(
+                type: .ok,
+                title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
+                description: "sub3.sub2.sub1.example.com",
+                lifeTime: .infinity
+            )
+        }
+    }
+}
+
+struct Popup_Multi_wildcard_Previews: PreviewProvider {
+    static var previews: some View {
+        Popup().onAppear {
+            PopupState.shared.match = .wildcard(indices: [0, 2])
+            PopupState.shared.exactRule = multi_exactRule
+            PopupState.shared.wildcardRules = multi_wildcardRules
+            MessageBox.insert(
+                type: .ok,
+                title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
+                description: ["*.sub3.sub2.sub1.example.com", "*.sub1.example.com"].joined(separator: "\n"),
                 lifeTime: .infinity
             )
         }

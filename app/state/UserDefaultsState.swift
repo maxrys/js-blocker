@@ -9,14 +9,19 @@ final class UserDefaultsState: ObservableObject {
 
     static public private(set) var shared = UserDefaultsState()
 
-    static var icloudStatusDirect: Bool {
+    static var isAppLaunchedOnce_direct: Bool {
+        get { UserDefaults(suiteName: GROUP_NAME)?.bool(forKey: "isAppLaunchedOnce") ?? false }
+        set { UserDefaults(suiteName: GROUP_NAME)?.set(newValue, forKey: "isAppLaunchedOnce") }
+    }
+
+    static var icloudStatus_direct: Bool {
         get { UserDefaults(suiteName: GROUP_NAME)?.bool(forKey: "icloudStatus") ?? false }
         set { UserDefaults(suiteName: GROUP_NAME)?.set(newValue, forKey: "icloudStatus") }
     }
 
     @AppStorage("icloudStatus", store: UserDefaults(suiteName: GROUP_NAME))
         var icloudStatus: Bool = false { didSet {
-            WhiteDomains.containerInit()
+            AllowedDomains.containerInit()
         }}
 
     private init() { /* singleton */

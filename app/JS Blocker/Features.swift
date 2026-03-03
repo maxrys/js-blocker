@@ -10,10 +10,10 @@ final class Features {
 
     struct ExportImportItem: Codable {
         let name    : String
-        let isGlobal: Bool
+        let isGlobal: Bool /* isWildcard */
     }
 
-    static public func export(data: [WhiteDomains]) {
+    static public func export(items: ADFetchCollection) {
         do {
 
             let openPanel = NSOpenPanel()
@@ -28,11 +28,11 @@ final class Features {
                 /* MARK: Generate export JSON */
 
                 var jsonObject: [ExportImportItem] = []
-                for domain in data {
+                for item in items {
                     jsonObject.append(
                         ExportImportItem(
-                            name    : domain.name,
-                            isGlobal: domain.isGlobal
+                            name    : item.name,
+                            isGlobal: item.isWildcard
                         )
                     )
                 }
@@ -61,24 +61,20 @@ final class Features {
 
                 /* MARK: message */
 
-                Task {
-                    await MessageBox.insert(
-                        type: .ok,
-                        title: String(format: NSLocalizedString("%d records have been exported", comment: ""), jsonObject.count),
-                        lifeTime: .time(3)
-                    )
-                }
+                MessageBox.insert(
+                    type: .ok,
+                    title: String(format: NSLocalizedString("%d records have been exported", comment: ""), jsonObject.count),
+                    lifeTime: .time(3)
+                )
 
             }
 
         } catch {
-            Task {
-                await MessageBox.insert(
-                    type: .error,
-                    title: String("\(error)"),
-                    lifeTime: .time(3)
-                )
-            }
+            MessageBox.insert(
+                type: .error,
+                title: String("\(error)"),
+                lifeTime: .time(3)
+            )
         }
     }
 
@@ -106,13 +102,11 @@ final class Features {
                 )
 
                 if (JSONObject == nil) {
-                    Task {
-                        await MessageBox.insert(
-                            type: .error,
-                            title: NSLocalizedString("Invalid JSON format!", comment: ""),
-                            lifeTime: .time(3)
-                        )
-                    }
+                    MessageBox.insert(
+                        type: .error,
+                        title: NSLocalizedString("Invalid JSON format!", comment: ""),
+                        lifeTime: .time(3)
+                    )
                     return
                 }
 
@@ -123,10 +117,10 @@ final class Features {
                 if let items = JSONObject {
                     for item in items {
                         if (item.name.domainNameIsValid()) {
-                            let _ = WhiteDomains.selectByName(item.name)?.delete()
-                            if (WhiteDomains.insert(name: item.name, isGlobal: item.isGlobal)) {
+                            let _ = AllowedDomains.delete([item.name])
+                            if (AllowedDomains.insert(name: item.name, isWildcard: item.isGlobal)) {
                                 processed += 1
-                                Logger.customLog("IMPORT ITEM: isGlobal = \(item.isGlobal) | name = \(item.name)")
+                                Logger.customLog("IMPORT ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)")
                             } else { invalidDomains.append(item.name) }
                         }     else { invalidDomains.append(item.name) }
                     }
@@ -134,32 +128,28 @@ final class Features {
 
                 /* MARK: Message */
 
-                Task {
-                    await MessageBox.insert(
-                        type: .ok,
-                        title: String(format: NSLocalizedString("%d records have been imported", comment: ""), processed),
-                        lifeTime: .time(3)
+                MessageBox.insert(
+                    type: .ok,
+                    title: String(format: NSLocalizedString("%d records have been imported", comment: ""), processed),
+                    lifeTime: .time(3)
+                )
+                if (!invalidDomains.isEmpty) {
+                    MessageBox.insert(
+                        type: .warning,
+                        title: String(format: NSLocalizedString("Invalid domains were detected:\n%@", comment: ""), invalidDomains.joined(separator: " | ")),
+                        isClosable: true,
+                        lifeTime: .time(10)
                     )
-                    if (!invalidDomains.isEmpty) {
-                        await MessageBox.insert(
-                            type: .warning,
-                            title: String(format: NSLocalizedString("Invalid domains were detected:\n%@", comment: ""), invalidDomains.joined(separator: " | ")),
-                            isClosable: true,
-                            lifeTime: .time(10)
-                        )
-                    }
                 }
 
             }
 
         } catch {
-            Task {
-                await MessageBox.insert(
-                    type: .error,
-                    title: String("\(error)"),
-                    lifeTime: .time(3)
-                )
-            }
+            MessageBox.insert(
+                type: .error,
+                title: String("\(error)"),
+                lifeTime: .time(3)
+            )
         }
     }
 

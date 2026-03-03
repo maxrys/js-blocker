@@ -3,13 +3,15 @@
 /* ### Copyright © 2024—2026 Maxim Rysevets. All rights reserved. ### */
 /* ################################################################## */
 
+import os
 import SwiftUI
 
 struct MainScene: View {
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) var openURL
-    @EnvironmentObject var wdState: WhiteDomainsState
+
+    @EnvironmentObject var domainsState: DomainsState
     @State private var isShowPopover = false
 
     private let messageBox: MessageBox
@@ -20,17 +22,21 @@ struct MainScene: View {
 
     private let tableColumns = [
         (title: NSLocalizedString("domain name", comment: ""), settings: GridItem(.flexible(), spacing: 1, alignment: .leading)),
-        (title: NSLocalizedString("global"     , comment: ""), settings: GridItem(.fixed(90) , spacing: 1)),
+        (title: NSLocalizedString("wildcard"   , comment: ""), settings: GridItem(.fixed(90) , spacing: 1)),
         (title: NSLocalizedString(EMPTY_STRING , comment: ""), settings: GridItem(.fixed(40) , spacing: 1)),
     ]
 
     private var tableCells: [[AnyView]] {
         var result: [[AnyView]] = []
-        for domain in self.wdState.data {
+        for domain in self.domainsState.data {
             let url = URL(string: "https://\(domain.name)")
             result.append([
                 AnyView(Text(domain.nameDecoded)),
-                AnyView(Text(domain.isGlobal ? NSLocalizedString("yes", comment: "") : NSLocalizedString("no", comment: ""))),
+                AnyView(Text(
+                    domain.isWildcard ?
+                        NSLocalizedString("yes", comment: "") :
+                        NSLocalizedString("no" , comment: "")
+                )),
                 url != nil ?
                     AnyView(self.ButtonOpenURL(url!)) :
                     AnyView(Color.clear.frame(width: 10, height: 10))
@@ -56,9 +62,9 @@ struct MainScene: View {
                 HStack(spacing: 10) {
                     self.FieldSearch()
                     Color.clear.frame(width: 1, height: 10)
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), disabled: self.wdState.selectedRows.isEmpty) { self.onClickExport() }
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                             ) { self.onClickImport() }
-                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                             ) { self.isShowPopover = true }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), disabled: self.domainsState.selectedRows.isEmpty) { self.onClickExport() }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                                  ) { self.onClickImport() }
+                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                                  ) { self.isShowPopover = true }
                         .popover(
                             isPresented: self.$isShowPopover,
                             arrowEdge: .bottom
@@ -78,7 +84,7 @@ struct MainScene: View {
                 VStack(spacing: 7) {
 
                     Table(
-                        selectedRows: self.wdState.getBinding(\.selectedRows),
+                        selectedRows: self.domainsState.getBinding(\.selectedRows),
                         columns: self.tableColumns,
                         data: self.tableCells
                     )
@@ -100,7 +106,7 @@ struct MainScene: View {
             .padding(20)
             .padding(.bottom, 3)
             .onAppear {
-                WhiteDomains.dump()
+                AllowedDomains.dump()
             }
         }
     }
@@ -108,7 +114,7 @@ struct MainScene: View {
     @ViewBuilder private func FieldSearch() -> some View {
         TextField(
             NSLocalizedString("Search", comment: ""),
-            text: self.wdState.getBinding(\.filterByName)
+            text: self.domainsState.getBinding(\.filterByName)
         )
         .textFieldStyle(.plain)
         .padding(.horizontal, 32)
@@ -130,8 +136,8 @@ struct MainScene: View {
                 .offset(x: 8)
         }
         .overlayPolyfill(alignment: .trailing) {
-            if (!self.wdState.filterByName.isEmpty) {
-                Button { self.wdState.filterByName = "" } label: {
+            if (!self.domainsState.filterByName.isEmpty) {
+                Button { self.domainsState.filterByName = "" } label: {
                     Image(systemName: "xmark.circle")
                         .font(.system(size: 16))
                         .foregroundPolyfill(Color.label.opacity(0.3))
@@ -182,21 +188,28 @@ struct MainScene: View {
             colorStyle: .custom(text: nil, background: nil),
             flexibility: .size(120)
         ) {
-            if (self.wdState.selectedRows.count > 0) {
-                if (WhiteDomains.deleteByNames(names: self.wdState.selectedRowsToPrimaryKeys)) {
+            let count = self.domainsState.selectedRows.count
+            if (count > 0) {
+                if (AllowedDomains.delete(self.domainsState.selectedRowsToNames)) {
                     Task {
-                        self.wdState.dataReload()
+                        self.domainsState.dataReload()
+                        MessageBox.insert(
+                            type: .ok,
+                            title: String(format: NSLocalizedString("%d records have been deleted", comment: ""), count),
+                            lifeTime: .time(3)
+                        )
                     }
                 }
             }
         }.disabled(
-            self.wdState.selectedRows.isEmpty
+            self.domainsState.selectedRows.isEmpty
         )
     }
 
     @ViewBuilder private func ButtonOpenURL(_ url: URL) -> some View {
         Button {
             openURL(url)
+            Logger.customLog("open URL: \(url)")
         } label: {
             Image(systemName: "safari")
                 .contentShape(Circle())
@@ -207,14 +220,16 @@ struct MainScene: View {
     }
 
     func onClickExport() {
-        if (self.wdState.selectedRows.count > 0) {
-            Features.export(data: self.wdState.selectedRowsToData)
+        if (self.domainsState.selectedRows.count > 0) {
+            Features.export(
+                items: self.domainsState.selectedRowsToData
+            )
         }
     }
 
     func onClickImport() {
         Features.import()
-        self.wdState.dataReload()
+        self.domainsState.dataReload()
     }
 
 }
@@ -229,6 +244,6 @@ struct MainScene_Previews: PreviewProvider {
     static var previews: some View {
         MainScene()
             .frame(width: 500, height: 500)
-            .environmentObject(WhiteDomainsState.shared)
+            .environmentObject(DomainsState.shared)
     }
 }
