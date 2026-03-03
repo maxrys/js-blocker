@@ -1,4 +1,16 @@
 
+## Version 1.10
+
+Codebase and file structure have been improved.
+Return of support for macOS versions:
+- 11 (Big Sur)
+- 12 (Monterey)
+- 13 (Ventura)
+- 14 (Sonoma)
+- 15 (Sequoia)
+- 26 (Tahoe)
+and higher.
+
 ## Version 1.9
 
 Codebase and file structure have been improved.
