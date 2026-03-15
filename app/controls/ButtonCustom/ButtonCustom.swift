@@ -7,13 +7,11 @@ import SwiftUI
 
 struct ButtonCustom: View {
 
-    typealias ColorStyle = Color.ButtonCustomColorSet.Style
-
     @Environment(\.colorScheme) private var colorScheme
 
     private let text: String
-    private let disabled: Bool
-    private let colorStyle: ColorStyle
+    private let isDisabled: Bool
+    private let colorStyle: Color.ButtonCustomStyle
     private let isFlat: Bool
     private let font: Font
     private let padding: EdgeInsets
@@ -22,8 +20,8 @@ struct ButtonCustom: View {
 
     init(
         _ text: String = "button",
-        disabled: Bool = false,
-        colorStyle: ColorStyle = .accent,
+        isDisabled: Bool = false,
+        colorStyle: Color.ButtonCustomStyle = .accent,
         isFlat: Bool = true,
         font: Font = .system(size: 12.5, weight: .regular),
         padding: EdgeInsets = .init(top: 2, leading: 9, bottom: 3, trailing: 9),
@@ -31,7 +29,7 @@ struct ButtonCustom: View {
         onClick: @escaping () -> Void = { }
     ) {
         self.text = text
-        self.disabled = disabled
+        self.isDisabled = isDisabled
         self.colorStyle = colorStyle
         self.isFlat = isFlat
         self.font = font
@@ -40,7 +38,7 @@ struct ButtonCustom: View {
         self.onClick = onClick
     }
 
-    var body: some View {
+    public var body: some View {
         Button { self.onClick() } label: {
             Text(self.text)
                 .lineLimit(1)
@@ -62,7 +60,7 @@ struct ButtonCustom: View {
                 )
         }
         .buttonStyle(.plain)
-        .disabled(self.disabled)
+        .disabled(self.isDisabled)
         .pointerStyleLinkPolyfill()
     }
 

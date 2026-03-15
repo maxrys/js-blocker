@@ -7,40 +7,22 @@ import SwiftUI
 
 struct ButtonRound: View {
 
-    enum Colors {
-
-        case violet
-        case blue
-
-        var colorTop: Color {
-            switch self {
-                case .violet: return Color.buttonRound.violetTop
-                case .blue  : return Color.buttonRound.blueTop
-            }
-        }
-
-        var colorBottom: Color {
-            switch self {
-                case .violet: return Color.buttonRound.violetBottom
-                case .blue  : return Color.buttonRound.blueBottom
-            }
-        }
-
-    }
-
     private let title: String
-    private let color: Colors
+    private let isDisabled: Bool
+    private let style: Color.ButtonRoundStyle
     private let minWidth: CGFloat
     private let onClick: () -> Void
 
     init(
         title: String,
-        color: Colors = .violet,
+        isDisabled: Bool = false,
+        style: Color.ButtonRoundStyle = .violet,
         minWidth: CGFloat = 150,
         onClick: @escaping () -> Void
     ) {
         self.title = title
-        self.color = color
+        self.isDisabled = isDisabled
+        self.style = style
         self.minWidth = minWidth
         self.onClick = onClick
     }
@@ -50,14 +32,14 @@ struct ButtonRound: View {
             self.onClick()
         } label: {
             Text(self.title)
-                .foregroundPolyfill(Color.buttonRound.text)
+                .foregroundPolyfill(self.style.colorText)
                 .padding(11)
                 .frame(minWidth: self.minWidth)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
                         .fill(
                             LinearGradient(
-                                colors: [self.color.colorTop, self.color.colorBottom],
+                                colors: [self.style.colorTop, self.style.colorBottom],
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
@@ -65,6 +47,7 @@ struct ButtonRound: View {
                 )
         }
         .buttonStyle(.plain)
+        .disabled(self.isDisabled)
         .pointerStyleLinkPolyfill()
     }
 }
@@ -81,7 +64,7 @@ struct ButtonRound_Previews: PreviewProvider {
 
             ButtonRound(
                 title: NSLocalizedString("allow", comment: ""),
-                color: .violet,
+                style: .violet,
                 minWidth: 150,
                 onClick: {
                     print("onClick: ButtonRound #1")
@@ -90,16 +73,17 @@ struct ButtonRound_Previews: PreviewProvider {
 
             ButtonRound(
                 title: NSLocalizedString("allow", comment: ""),
-                color: .violet,
+                isDisabled: true,
+                style: .violet,
                 minWidth: 150,
                 onClick: {
                     print("onClick: ButtonRound #2")
                 }
-            ).disabled(true)
+            )
 
             ButtonRound(
                 title: NSLocalizedString("cancel rule", comment: ""),
-                color: .blue,
+                style: .blue,
                 minWidth: 250,
                 onClick: {
                     print("onClick: ButtonRound #3")
@@ -108,12 +92,13 @@ struct ButtonRound_Previews: PreviewProvider {
 
             ButtonRound(
                 title: NSLocalizedString("cancel rule", comment: ""),
-                color: .blue,
+                isDisabled: true,
+                style: .blue,
                 minWidth: 250,
                 onClick: {
                     print("onClick: ButtonRound #4")
                 }
-            ).disabled(true)
+            )
 
         }.padding(10)
     }

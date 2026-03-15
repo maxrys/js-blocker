@@ -7,14 +7,29 @@ import SwiftUI
 
 extension Color {
 
-    struct ButtonRoundColorSet {
-        public let text         = Color("color ButtonRound Text")
-        public let blueTop      = Color("color ButtonRound Blue Top")
-        public let blueBottom   = Color("color ButtonRound Blue Bottom")
-        public let violetTop    = Color("color ButtonRound Violet Top")
-        public let violetBottom = Color("color ButtonRound Violet Bottom")
-    }
+    enum ButtonRoundStyle {
 
-    static let buttonRound = ButtonRoundColorSet()
+        case violet
+        case blue
+
+        var colorTop: Color {
+            switch self {
+                case .violet: return Color("color ButtonRound Violet Top")
+                case .blue  : return Color("color ButtonRound Blue Top")
+            }
+        }
+
+        var colorBottom: Color {
+            switch self {
+                case .violet: return Color("color ButtonRound Violet Bottom")
+                case .blue  : return Color("color ButtonRound Blue Bottom")
+            }
+        }
+
+        var colorText: Color {
+            return Color("color ButtonRound Text")
+        }
+
+    }
 
 }

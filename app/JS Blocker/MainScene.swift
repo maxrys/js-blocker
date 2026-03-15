@@ -62,9 +62,9 @@ struct MainScene: View {
                 HStack(spacing: 10) {
                     self.FieldSearch()
                     Color.clear.frame(width: 1, height: 10)
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), disabled: self.domainsState.selectedRows.isEmpty) { self.onClickExport() }
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                                  ) { self.onClickImport() }
-                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                                  ) { self.isShowPopover = true }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), isDisabled: self.domainsState.selectedRows.isEmpty) { self.onClickExport() }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                                    ) { self.onClickImport() }
+                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                                    ) { self.isShowPopover = true }
                         .popover(
                             isPresented: self.$isShowPopover,
                             arrowEdge: .bottom
@@ -152,7 +152,7 @@ struct MainScene: View {
         }
     }
 
-    @ViewBuilder private func PanelButton(icon: Image, text: String? = nil, disabled: Bool = false, onClick: @escaping () -> Void = {}) -> some View {
+    @ViewBuilder private func PanelButton(icon: Image, text: String? = nil, isDisabled: Bool = false, onClick: @escaping () -> Void = {}) -> some View {
         VStack(spacing: 3) {
 
             Button { onClick() } label: {
@@ -171,7 +171,7 @@ struct MainScene: View {
                     )
             }
             .buttonStyle(.plain)
-            .disabled(disabled)
+            .disabled(isDisabled)
             .pointerStyleLinkPolyfill()
 
             Text(text ?? ZERO_WIDTH_SPACE)
@@ -185,6 +185,7 @@ struct MainScene: View {
     @ViewBuilder private func ButtonDelete() -> some View {
         ButtonCustom(
             NSLocalizedString("delete", comment: ""),
+            isDisabled: self.domainsState.selectedRows.isEmpty,
             colorStyle: .custom(text: nil, background: nil),
             flexibility: .size(120)
         ) {
@@ -201,9 +202,7 @@ struct MainScene: View {
                     }
                 }
             }
-        }.disabled(
-            self.domainsState.selectedRows.isEmpty
-        )
+        }
     }
 
     @ViewBuilder private func ButtonOpenURL(_ url: URL) -> some View {

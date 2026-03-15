@@ -122,10 +122,9 @@ struct DomainRulePanel: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             )
 
-            self.ButtonAllow()
-                .disabled(
-                    !self.buttonIsEnabled || self.rules.isEmpty
-                )
+            self.ButtonAllow(
+                isDisabled: !self.buttonIsEnabled || self.rules.isEmpty
+            )
 
         }
         .padding(20)
@@ -156,9 +155,10 @@ struct DomainRulePanel: View {
         )
     }
 
-    @ViewBuilder private func ButtonAllow() -> some View {
+    @ViewBuilder private func ButtonAllow(isDisabled: Bool = false) -> some View {
         ButtonRound(
             title: self.buttonTitle,
+            isDisabled: isDisabled,
             onClick: {
                 self.buttonOnClick(
                     self.rules.count == 1 ? [0] : Array(self.selectedCurrent.value)
