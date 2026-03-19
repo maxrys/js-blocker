@@ -50,3 +50,16 @@ This extension supports the following types of addresses (domain names) in Safar
 
 IPv6 addresses are not supported.
 The port number in the address is ignored.
+
+Support for the following macOS versions:
+- 11 (Big Sur)
+- 12 (Monterey)
+- 13 (Ventura)
+- 14 (Sonoma)
+- 15 (Sequoia)
+- 26 (Tahoe)
+and later.
+
+It is open-source software.  
+Free from subscription model.  
+Free from AI-generated code.
