@@ -8,20 +8,14 @@ import SwiftUI
 
 struct MessageBox: View {
 
-    enum LifeTime {
-        case time(Double)
-        case infinity
-    }
-
     static let EVENT_NAME_FOR_MESSAGE_INSERT = "messageInsert"
-    static let LIFE_TIME_DEFAULT: CFTimeInterval = 1.0
 
-    @ObservedObject private var data = MessageStorage()
+    @ObservedObject private var state = MessageState()
 
     public var body: some View {
         GeometryReaderPolyfill(isIgnoreHeight: true) { size in
             VStack (spacing: 0) {
-                ForEach(self.data.messages, id: \.key) { ID, message in
+                ForEach(self.state.messages, id: \.key) { ID, message in
                     VStack(alignment: .leading, spacing: 0) {
 
                         self.TitleView(message)
@@ -38,7 +32,7 @@ struct MessageBox: View {
                     }.overlayPolyfill(alignment: .bottomLeading) {
                         if let _ = message.expiresAt {
                             self.ProgressView(
-                                width: size.width * data.progress(ID)
+                                width: size.width * self.state.progress(ID)
                             )
                         }
                     }
@@ -52,7 +46,7 @@ struct MessageBox: View {
         ) { publisher in
             if let message = publisher.object as? Message {
                 Logger.customLog("message insert: \(message)")
-                self.data.insert(
+                self.state.insert(
                     type: message.type,
                     title: message.title,
                     description: message.description,
@@ -92,7 +86,7 @@ struct MessageBox: View {
 
     @ViewBuilder private func ButtonCloseView(_ ID: MessageID) -> some View {
         Button {
-            self.data.delete(ID)
+            self.state.delete(ID)
         } label: {
             Color.white.opacity(0.1)
                 .frame(width: 15, height: 15)
@@ -111,7 +105,7 @@ struct MessageBox: View {
         title: String,
         description: String = "",
         isClosable: Bool = false,
-        lifeTime: Self.LifeTime = .time(Self.LIFE_TIME_DEFAULT)
+        lifeTime: MessageLifeTime = .time(MessageLifeTime.LIFE_TIME_DEFAULT)
     ) {
         Task {
             switch lifeTime {
@@ -131,8 +125,8 @@ struct MessageBox: View {
 
 struct MessageBox_Previews: PreviewProvider {
     static var previews: some View {
-        let longTitle       = NSLocalizedString("Long long long long long long long long long long long long long long Title", comment: "")
-        let longDescription = NSLocalizedString("Long long long long long long long long long long long long long long long long long long long long long Description", comment: "")
+        let PREVIEW_LONG_TITLE       = NSLocalizedString("Long long long long long long long long long long long long long long Title", comment: "")
+        let PREVIEW_LONG_DESCRIPTION = NSLocalizedString("Long long long long long long long long long long long long long long long long long long long long long Description", comment: "")
         MessageBox()
             .frame(width: 300, height: 700)
             .onAppear {
@@ -140,10 +134,10 @@ struct MessageBox_Previews: PreviewProvider {
                 MessageBox.insert(type: .ok     , title: NSLocalizedString("Ok"     , comment: ""), lifeTime: .time(20))
                 MessageBox.insert(type: .warning, title: NSLocalizedString("Warning", comment: ""), lifeTime: .time(30))
                 MessageBox.insert(type: .error  , title: NSLocalizedString("Error"  , comment: ""), lifeTime: .time(40))
-                MessageBox.insert(type: .info   , title: longTitle, description: longDescription, isClosable: true, lifeTime: .infinity)
-                MessageBox.insert(type: .ok     , title: longTitle, description: longDescription, isClosable: true, lifeTime: .infinity)
-                MessageBox.insert(type: .warning, title: longTitle, description: longDescription, isClosable: true, lifeTime: .infinity)
-                MessageBox.insert(type: .error  , title: longTitle, description: longDescription, isClosable: true, lifeTime: .infinity)
+                MessageBox.insert(type: .info   , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                MessageBox.insert(type: .ok     , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                MessageBox.insert(type: .warning, title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                MessageBox.insert(type: .error  , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
             }
     }
 }

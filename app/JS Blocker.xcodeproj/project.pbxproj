@@ -37,20 +37,18 @@
 		50439DCE2F44C8CE00270BE5 /* GeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */; };
 		50439DCF2F44C8CE00270BE5 /* GeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */; };
 		50439DD02F44C8CE00270BE5 /* GeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */; };
-		50439E052F44C9AD00270BE5 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Media.xcassets */; };
-		50439E062F44C9AD00270BE5 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* MessageType.swift */; };
-		50439E072F44C9AD00270BE5 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageStorage.swift */; };
+		50439E052F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
+		50439E062F44C9AD00270BE5 /* Message_types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* Message_types.swift */; };
+		50439E072F44C9AD00270BE5 /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageState.swift */; };
 		50439E082F44C9AD00270BE5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFF2F44C9AD00270BE5 /* Message.swift */; };
 		50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
 		50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
-		50439E0B2F44C9AD00270BE5 /* MessageLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFE2F44C9AD00270BE5 /* MessageLifecycle.swift */; };
-		50439E0C2F44C9AD00270BE5 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* MessageType.swift */; };
-		50439E0D2F44C9AD00270BE5 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageStorage.swift */; };
+		50439E0C2F44C9AD00270BE5 /* Message_types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* Message_types.swift */; };
+		50439E0D2F44C9AD00270BE5 /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageState.swift */; };
 		50439E0E2F44C9AD00270BE5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFF2F44C9AD00270BE5 /* Message.swift */; };
 		50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
 		50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
-		50439E112F44C9AD00270BE5 /* MessageLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFE2F44C9AD00270BE5 /* MessageLifecycle.swift */; };
-		50439E122F44C9AD00270BE5 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Media.xcassets */; };
+		50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
 		506421572F5E22760020F6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506421552F5E22760020F6C8 /* Assets.xcassets */; };
 		506421582F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */; };
 		506421592F5E22760020F6C8 /* TableCustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421542F5E22760020F6C8 /* TableCustomColors.swift */; };
@@ -197,13 +195,12 @@
 		50439DC52F44C8BA00270BE5 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		50439DC92F44C8C300270BE5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReader.swift; sourceTree = "<group>"; };
-		50439DFD2F44C9AD00270BE5 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
-		50439DFE2F44C9AD00270BE5 /* MessageLifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLifecycle.swift; sourceTree = "<group>"; };
+		50439DFD2F44C9AD00270BE5 /* Message_types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_types.swift; sourceTree = "<group>"; };
 		50439DFF2F44C9AD00270BE5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		50439E002F44C9AD00270BE5 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
+		50439E002F44C9AD00270BE5 /* MessageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageState.swift; sourceTree = "<group>"; };
 		50439E012F44C9AD00270BE5 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		50439E022F44C9AD00270BE5 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
-		50439E032F44C9AD00270BE5 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		50439E032F44C9AD00270BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		506421522F5E22760020F6C8 /* TableCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom.swift; sourceTree = "<group>"; };
 		506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom_HeadCell.swift; sourceTree = "<group>"; };
 		506421542F5E22760020F6C8 /* TableCustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustomColors.swift; sourceTree = "<group>"; };
@@ -344,13 +341,12 @@
 		50439E042F44C9AD00270BE5 /* MessageBox */ = {
 			isa = PBXGroup;
 			children = (
-				50439DFD2F44C9AD00270BE5 /* MessageType.swift */,
-				50439DFE2F44C9AD00270BE5 /* MessageLifecycle.swift */,
+				50439DFD2F44C9AD00270BE5 /* Message_types.swift */,
+				50439E002F44C9AD00270BE5 /* MessageState.swift */,
 				50439DFF2F44C9AD00270BE5 /* Message.swift */,
-				50439E002F44C9AD00270BE5 /* MessageStorage.swift */,
 				50439E012F44C9AD00270BE5 /* MessageBox.swift */,
 				50439E022F44C9AD00270BE5 /* MessageColors.swift */,
-				50439E032F44C9AD00270BE5 /* Media.xcassets */,
+				50439E032F44C9AD00270BE5 /* Assets.xcassets */,
 			);
 			path = MessageBox;
 			sourceTree = "<group>";
@@ -605,7 +601,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50439E122F44C9AD00270BE5 /* Media.xcassets in Resources */,
+				50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */,
 				50439DC02F44C74800270BE5 /* info.plist in Resources */,
 				50CE9F9A2F45BF06001006CF /* Assets.xcassets in Resources */,
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
@@ -630,7 +626,7 @@
 				50992D372F56E9570090699F /* ViewController.xib in Resources */,
 				50CE9FA32F45DD19001006CF /* Assets.xcassets in Resources */,
 				50AD451A2DAD17C600425467 /* ToolbarIcon-wildcard.pdf in Resources */,
-				50439E052F44C9AD00270BE5 /* Media.xcassets in Resources */,
+				50439E052F44C9AD00270BE5 /* Assets.xcassets in Resources */,
 				50CE9F9B2F45BF06001006CF /* Assets.xcassets in Resources */,
 				50B025292C47E404002F1AD7 /* script.js in Resources */,
 				50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */,
@@ -699,8 +695,8 @@
 				50CEA0942F4B6D46001006CF /* Set.swift in Sources */,
 				501FA4E22F4F99B1004663D2 /* NSEvent.swift in Sources */,
 				50CE9F9E2F45BF89001006CF /* DomainRulePanelColors.swift in Sources */,
-				50439E0C2F44C9AD00270BE5 /* MessageType.swift in Sources */,
-				50439E0D2F44C9AD00270BE5 /* MessageStorage.swift in Sources */,
+				50439E0C2F44C9AD00270BE5 /* Message_types.swift in Sources */,
+				50439E0D2F44C9AD00270BE5 /* MessageState.swift in Sources */,
 				50439E0E2F44C9AD00270BE5 /* Message.swift in Sources */,
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
 				5064215D2F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
@@ -708,7 +704,6 @@
 				5064215E2F5E22760020F6C8 /* TableCustom.swift in Sources */,
 				50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */,
 				50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */,
-				50439E112F44C9AD00270BE5 /* MessageLifecycle.swift in Sources */,
 				50E4E8412F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50EB55172CF9AAB400FC060C /* Popup.swift in Sources */,
 				50EB55182CF9AAB400FC060C /* ButtonRound.swift in Sources */,
@@ -743,14 +738,13 @@
 				506421582F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
 				506421592F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				5064215A2F5E22760020F6C8 /* TableCustom.swift in Sources */,
-				50439E062F44C9AD00270BE5 /* MessageType.swift in Sources */,
-				50439E072F44C9AD00270BE5 /* MessageStorage.swift in Sources */,
+				50439E062F44C9AD00270BE5 /* Message_types.swift in Sources */,
+				50439E072F44C9AD00270BE5 /* MessageState.swift in Sources */,
 				50CEA0A72F4C502A001006CF /* Array.swift in Sources */,
 				50CEA07C2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
 				50439E082F44C9AD00270BE5 /* Message.swift in Sources */,
 				50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */,
 				50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */,
-				50439E0B2F44C9AD00270BE5 /* MessageLifecycle.swift in Sources */,
 				50CEA0952F4B6D46001006CF /* Set.swift in Sources */,
 				50E4E8402F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,

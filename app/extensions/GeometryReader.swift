@@ -32,13 +32,11 @@ struct GeometryReaderPolyfill<Content: View>: View {
 
     public var body: some View {
         ZStack {
-            let colorView: AnyView = {
-                if      (self.isIgnoreWidth == true && self.isIgnoreHeight == true) { return AnyView(Color.clear.frame(width: 0, height: 0)) }
-                else if (self.isIgnoreWidth != true && self.isIgnoreHeight == true) { return AnyView(Color.clear.frame(          height: 0)) }
-                else if (self.isIgnoreWidth == true && self.isIgnoreHeight != true) { return AnyView(Color.clear.frame(width: 0)) }
-                return AnyView(Color.clear)
-            }()
-            colorView.background(
+            Group {
+                if      (self.isIgnoreWidth == true && self.isIgnoreHeight == true) { Color.clear.frame(width: 0, height: 0) }
+                else if (self.isIgnoreWidth != true && self.isIgnoreHeight == true) { Color.clear.frame(          height: 0) }
+                else if (self.isIgnoreWidth == true && self.isIgnoreHeight != true) { Color.clear.frame(width: 0) }
+            }.background(
                 GeometryReader { geometry in
                     Color.clear
                         .preference(key: SizeKey.self, value: geometry.size)
