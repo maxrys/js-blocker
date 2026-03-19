@@ -35,6 +35,6 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableDescription</key>
-	<string>Safari extension for block JavaScript. This part of the extension implements a domain blocking rule form that is displayed when the user clicks a button on the toolbar.</string>
+	<string>Safari extension for blocking JavaScript. Displays a blocking rules dialog box when you click the toolbar button.</string>
 </dict>
 </plist>

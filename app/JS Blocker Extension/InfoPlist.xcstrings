@@ -5,6 +5,12 @@
       "comment" : "Bundle display name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блакавальнік: Пашырэнне"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -23,6 +29,12 @@
       "comment" : "Bundle name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блакавальнік: Пашырэнне"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,6 +53,12 @@
       "comment" : "Copyright (human-readable)",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright © 2024—2026 Рысевец Максім Уладзіміравіч. Усе правы абаронены."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -59,16 +77,22 @@
       "comment" : "Human readable description",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пашырэнне Safari для блакавання JavaScript. Паказвае акно правіл блакіроўкі пры націску кнопкі на панэлі прылад."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Safari extension for block JavaScript. This part of the extension implements a domain blocking rule form that is displayed when the user clicks a button on the toolbar."
+            "value" : "Safari extension for blocking JavaScript. Displays a blocking rules dialog box when you click the toolbar button."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расширение Safari для блокировки JavaScript. Эта часть расширения реализует форму правила блокировки домена, которая отображается, когда пользователь нажимает кнопку на панели инструментов."
+            "value" : "Расширение Safari для блокировки JavaScript. Показывает окно правил блокировки при нажатии кнопки на панели инструментов."
           }
         }
       }

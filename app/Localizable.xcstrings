@@ -3,6 +3,12 @@
   "strings" : {
     "...loading..." : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...загрузка..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,6 +19,36 @@
     },
     "%d records have been deleted" : {
       "localizations" : {
+        "be-BY" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было выдалена %d запісы"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было выдалена %d запісаў"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Быў выдалены %d запіс"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было выдалена %d запісаў"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -65,6 +101,36 @@
     },
     "%d records have been exported" : {
       "localizations" : {
+        "be-BY" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было экспартавана %d запісы"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было экспартавана %d запісаў"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Быў экспартаваны %d запіс"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было экспартавана %d запісаў"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -117,6 +183,36 @@
     },
     "%d records have been imported" : {
       "localizations" : {
+        "be-BY" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было імпартавана %d запісы"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было імпартавана %d запісаў"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Быў імпартаваны %d запіс"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Было імпартавана %d запісаў"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -170,6 +266,12 @@
     "allow" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дазволіць"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -180,6 +282,12 @@
     },
     "At least 1 subdomain must be selected!" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прынамсі 1 паддамен павінен быць абраны!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -190,6 +298,12 @@
     },
     "cancel rule" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "скасаваць правіла"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -200,6 +314,12 @@
     },
     "delete" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "выдаліць"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -210,6 +330,12 @@
     },
     "domain name" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "даменнае імя"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -220,6 +346,12 @@
     },
     "Domains where JavaScript is allowed" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дамены, на якіх дазволены JavaScript"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -230,6 +362,12 @@
     },
     "Enable CloudKit" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уключыць CloudKit"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -240,6 +378,12 @@
     },
     "Exact rule for the following domain was added:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дакладнае правіла для дамена было дададзена:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -250,6 +394,12 @@
     },
     "Exact rule for the following domain was not added:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дакладнае правіла для дамена не было дададзена:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -260,6 +410,12 @@
     },
     "Exact rule for the following domain was not removed:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дакладнае правіла для дамена не было выдалена:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -270,6 +426,12 @@
     },
     "Exact rule for the following domain was removed:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дакладнае правіла для дамена было выдалена:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -280,6 +442,12 @@
     },
     "Experimental" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эксперыментальны"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -290,6 +458,12 @@
     },
     "export" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "экспарт"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -301,6 +475,12 @@
     "Export" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспарт"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -311,6 +491,12 @@
     },
     "import" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "імпарт"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -322,6 +508,12 @@
     "Import" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпарт"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -332,6 +524,12 @@
     },
     "install" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ўсталёўка"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -342,6 +540,12 @@
     },
     "Installation example" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прыклад усталёўкі"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -352,6 +556,12 @@
     },
     "Invalid domains were detected:\n%@" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Былі выяўлены няправільныя дамены:\n%@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -363,6 +573,12 @@
     "Invalid JSON format!" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Няправільны фармат JSON!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -374,6 +590,12 @@
     "JavaScript on the Domain" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JavaScript на Дамене"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -385,6 +607,12 @@
     "JavaScript on the Domain + Subdomains" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JavaScript на Дамене + Паддамены"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -395,6 +623,12 @@
     },
     "JS \"Blocker Extension\" is disabled" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пашырэнне \"JS Блакавальнік\" выключана"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -405,6 +639,12 @@
     },
     "JS \"Blocker Extension\" is enabled" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пашырэнне \"JS Блакавальнік\" уключана"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -416,6 +656,12 @@
     "no" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -426,6 +672,12 @@
     },
     "note: New Domains are added in Safari via the \"JS Blocker\" pop-up." : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "нататка: Новыя дамены дадаюцца ў Safari праз усплывальнае акно \"JS Blocker'а\"."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -436,6 +688,12 @@
     },
     "Open Safari Extensions Preferences…" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Адкрыць наладкі пашырэнняў Safari…"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -446,6 +704,12 @@
     },
     "Search" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -456,6 +720,12 @@
     },
     "wildcard" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "абагуль."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -466,6 +736,12 @@
     },
     "Wildcard rules for the following domains were added:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Абагульненыя правілы для даменаў былі дададзены:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -476,6 +752,12 @@
     },
     "Wildcard rules for the following domains were not added:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Абагульненыя правілы для даменаў не былі дададзены:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -486,6 +768,12 @@
     },
     "Wildcard rules for the following domains were not removed:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Абагульненыя правілы для даменаў не былі выдалены:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -496,6 +784,12 @@
     },
     "Wildcard rules for the following domains were removed:" : {
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Абагульненыя правілы для даменаў былі выдалены:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -507,6 +801,12 @@
     "yes" : {
       "extractionState" : "manual",
       "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "так"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
