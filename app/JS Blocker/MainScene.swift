@@ -11,7 +11,7 @@ struct MainScene: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) var openURL
 
-    @EnvironmentObject var domainsState: DomainsState
+    @EnvironmentObject var adState: ADState
     @State private var isShowPopover = false
 
     private let messageBox: MessageBox
@@ -37,9 +37,9 @@ struct MainScene: View {
                 HStack(spacing: 10) {
                     self.FieldSearch()
                     Color.clear.frame(width: 1, height: 10)
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), isDisabled: self.domainsState.selectedRows.isEmpty) { self.onClickExport() }
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                                    ) { self.onClickImport() }
-                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                                    ) { self.isShowPopover = true }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), isDisabled: self.adState.selectedRows.isEmpty) { self.onClickExport() }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                               ) { self.onClickImport() }
+                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                               ) { self.isShowPopover = true }
                         .popover(
                             isPresented: self.$isShowPopover,
                             arrowEdge: .bottom
@@ -59,7 +59,7 @@ struct MainScene: View {
                 VStack(spacing: 7) {
 
                     TableCustom(
-                        selected: self.domainsState.getBinding(\.selectedRows),
+                        selected: self.adState.getBinding(\.selectedRows),
                         isVisibleHeader: true,
                         isFocusable: true,
                         selectionType: .multiple,
@@ -79,7 +79,7 @@ struct MainScene: View {
                                 spacing: 1
                             ) { EmptyView() }
                         },
-                        bodyAsArray: self.domainsState.data.flatMap { domain in [
+                        bodyAsArray: self.adState.items.flatMap { domain in [
                             AnyView(Text(domain.nameDecoded)),
                             AnyView(Text(domain.isWildcard ? NSLocalizedString("yes", comment: "") : NSLocalizedString("no" , comment: ""))),
                             AnyView(self.ButtonOpenURLOrDummy(domain.name))
@@ -103,7 +103,7 @@ struct MainScene: View {
             .padding(20)
             .padding(.bottom, 3)
             .onAppear {
-                AllowedDomains.dump()
+                ADModel.dump()
             }
         }
     }
@@ -129,7 +129,7 @@ struct MainScene: View {
     @ViewBuilder private func FieldSearch() -> some View {
         TextField(
             NSLocalizedString("Search", comment: ""),
-            text: self.domainsState.getBinding(\.filterByName)
+            text: self.adState.getBinding(\.filterByName)
         )
         .textFieldStyle(.plain)
         .padding(.horizontal, 32)
@@ -151,8 +151,8 @@ struct MainScene: View {
                 .offset(x: 8)
         }
         .overlayPolyfill(alignment: .trailing) {
-            if (!self.domainsState.filterByName.isEmpty) {
-                Button { self.domainsState.filterByName = "" } label: {
+            if (!self.adState.filterByName.isEmpty) {
+                Button { self.adState.filterByName = "" } label: {
                     Image(systemName: "xmark.circle")
                         .font(.system(size: 16))
                         .foregroundPolyfill(Color.label.opacity(0.3))
@@ -200,37 +200,37 @@ struct MainScene: View {
     @ViewBuilder private func ButtonDelete() -> some View {
         ButtonCustom(
             NSLocalizedString("delete", comment: ""),
-            isDisabled: self.domainsState.selectedRows.isEmpty,
+            isDisabled: self.adState.selectedRows.isEmpty,
             colorStyle: .custom(text: nil, background: nil),
             flexibility: .size(120)
-        ) {
-            let count = self.domainsState.selectedRows.count
-            if (count > 0) {
-                if (AllowedDomains.delete(self.domainsState.selectedRowsToNames)) {
-                    Task {
-                        self.domainsState.dataReload()
-                        MessageBox.insert(
-                            type: .ok,
-                            title: String(format: NSLocalizedString("%d records have been deleted", comment: ""), count),
-                            lifeTime: .time(3)
-                        )
-                    }
-                }
-            }
-        }
+        ) { self.onClickDelete() }
     }
 
     func onClickExport() {
-        if (self.domainsState.selectedRows.count > 0) {
+        if (self.adState.selectedRows.count > 0) {
             Features.export(
-                items: self.domainsState.selectedRowsToData
+                items: self.adState.selectedRowsToData
             )
         }
     }
 
     func onClickImport() {
         Features.import()
-        self.domainsState.dataReload()
+        self.adState.reload()
+    }
+
+    func onClickDelete() {
+        if (self.adState.selectedRows.count > 0) {
+            if case .success(let count) = self.adState.delete(self.adState.selectedRowsToNames) {
+                Task {
+                    MessageBox.insert(
+                        type: .ok,
+                        title: String(format: NSLocalizedString("%d records have been deleted", comment: ""), count),
+                        lifeTime: .time(3)
+                    )
+                }
+            }
+        }
     }
 
 }
@@ -245,6 +245,6 @@ struct MainScene_Previews: PreviewProvider {
     static var previews: some View {
         MainScene()
             .frame(width: 500, height: 500)
-            .environmentObject(DomainsState.shared)
+            .environmentObject(ADState.shared)
     }
 }

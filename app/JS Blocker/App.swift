@@ -20,17 +20,17 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     @NSApplicationDelegateAdaptor(ThisAppDelegate.self) var appDelegate
 
-    @StateObject private var domainsState = DomainsState.shared
+    @StateObject private var adState = ADState.shared
     @StateObject private var userDefaultsState = UserDefaultsState.shared
 
     public var body: some Scene {
         WindowGroup {
             MainScene()
                 .frame(minWidth: 400, minHeight: 400)
-                .environmentObject(self.domainsState)
+                .environmentObject(self.adState)
                 .environmentObject(self.userDefaultsState)
                 .onAppBecomeForeground {
-                    self.domainsState.dataReload()
+                    self.adState.reload()
                 }
         }
         .environment(\.layoutDirection, .leftToRight)

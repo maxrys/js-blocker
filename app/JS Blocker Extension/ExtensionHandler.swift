@@ -29,7 +29,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
                     let fromDomain = userInfo?["fromDomain"] ?? ""
 
                     if let domainName = domainName {
-                        let state = AllowedDomains.matchType(name: domainName)
+                        let state = ADModel.matchType(name: domainName)
                         page.dispatchMessageToScript(
                             withName: message,
                             userInfo: [
@@ -81,7 +81,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
                            let domainName = domainName {
                             ViewController.page = page
                             ViewController.domainName = domainName
-                            ViewController.matchType = AllowedDomains.matchType(name: domainName)
+                            ViewController.matchType = ADModel.matchType(name: domainName)
                             switch ViewController.matchType {
                                 case .exact   : toolbarItem?.setImage(Self.ICON_EXACT)
                                 case .wildcard: toolbarItem?.setImage(Self.ICON_WILDCARD)

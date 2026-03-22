@@ -18,24 +18,12 @@ extension ADFetchCollection {
         return 0
     }
 
-    mutating func appendUnique(_ item: AllowedDomains) {
+    mutating func appendUnique(_ item: ADModel) {
         let newItem = ADFetchItem(
             name       : item.name,
             nameDecoded: item.nameDecoded,
             isWildcard : item.isWildcard )
         if (!self.contains(newItem)) { self.append(newItem) }
-    }
-
-}
-
-struct ADFetchItem: Equatable {
-
-    let name: String
-    let nameDecoded: String
-    let isWildcard: Bool
-
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.name == rhs.name
     }
 
 }

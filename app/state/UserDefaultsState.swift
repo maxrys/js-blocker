@@ -21,7 +21,7 @@ final class UserDefaultsState: ObservableObject {
 
     @AppStorage("icloudStatus", store: UserDefaults(suiteName: GROUP_NAME))
         var icloudStatus: Bool = false { didSet {
-            AllowedDomains.containerInit()
+            ADModel.containerInit()
         }}
 
     private init() { /* singleton */

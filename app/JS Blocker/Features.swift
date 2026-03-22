@@ -125,8 +125,8 @@ final class Features {
             if let items = JSONObject {
                 for item in items {
                     if (item.name.domainNameIsValid()) {
-                        let _ = AllowedDomains.delete([item.name])
-                        if (AllowedDomains.insert(name: item.name, isWildcard: item.isGlobal)) {
+                        let _ = ADModel.delete([item.name])
+                        if (ADModel.insert(name: item.name, isWildcard: item.isGlobal)) {
                             processedCount += 1
                             Logger.customLog("IMPORT ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)")
                         } else { invalidDomains.append(item.name) }
