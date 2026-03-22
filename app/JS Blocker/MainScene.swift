@@ -20,31 +20,6 @@ struct MainScene: View {
         self.messageBox = MessageBox()
     }
 
-    private let tableColumns = [
-        (title: NSLocalizedString("domain name", comment: ""), settings: GridItem(.flexible(), spacing: 1, alignment: .leading)),
-        (title: NSLocalizedString("wildcard"   , comment: ""), settings: GridItem(.fixed(90) , spacing: 1)),
-        (title: NSLocalizedString(EMPTY_STRING , comment: ""), settings: GridItem(.fixed(40) , spacing: 1)),
-    ]
-
-    private var tableCells: [[AnyView]] {
-        var result: [[AnyView]] = []
-        for domain in self.domainsState.data {
-            let url = URL(string: "https://\(domain.name)")
-            result.append([
-                AnyView(Text(domain.nameDecoded)),
-                AnyView(Text(
-                    domain.isWildcard ?
-                        NSLocalizedString("yes", comment: "") :
-                        NSLocalizedString("no" , comment: "")
-                )),
-                url != nil ?
-                    AnyView(self.ButtonOpenURL(url!)) :
-                    AnyView(Color.clear.frame(width: 10, height: 10))
-            ])
-        }
-        return result
-    }
-
     public var body: some View {
         VStack(spacing: 0) {
 
@@ -83,10 +58,32 @@ struct MainScene: View {
 
                 VStack(spacing: 7) {
 
-                    Table(
-                        selectedRows: self.domainsState.getBinding(\.selectedRows),
-                        columns: self.tableColumns,
-                        data: self.tableCells
+                    TableCustom(
+                        selected: self.domainsState.getBinding(\.selectedRows),
+                        isVisibleHeader: true,
+                        isFocusable: true,
+                        selectionType: .multiple,
+                        head: {
+                            TableCustom_HeadCell(
+                                size: .flexible(),
+                                spacing: 1,
+                                alignment: .leading
+                            ) { Text(NSLocalizedString("domain name", comment: "")).font(.system(size: 11)) }
+                            TableCustom_HeadCell(
+                                size: .fixed(90),
+                                spacing: 1,
+                                alignment: .center
+                            ) { Text(NSLocalizedString("wildcard", comment: "")).font(.system(size: 11)) }
+                            TableCustom_HeadCell(
+                                size: .fixed(40),
+                                spacing: 1
+                            ) { EmptyView() }
+                        },
+                        bodyAsArray: self.domainsState.data.flatMap { domain in [
+                            AnyView(Text(domain.nameDecoded)),
+                            AnyView(Text(domain.isWildcard ? NSLocalizedString("yes", comment: "") : NSLocalizedString("no" , comment: ""))),
+                            AnyView(self.ButtonOpenURLOrDummy(domain.name))
+                        ]}
                     )
 
                     Text(
@@ -108,6 +105,24 @@ struct MainScene: View {
             .onAppear {
                 AllowedDomains.dump()
             }
+        }
+    }
+
+    @ViewBuilder private func ButtonOpenURLOrDummy(_ domainName: String) -> some View {
+        if let url = URL(string: "https://\(domainName)") {
+            Button {
+                openURL(url)
+                Logger.customLog("open URL: \(url)")
+            } label: {
+                Image(systemName: "safari")
+                    .contentShape(Circle())
+                    .opacity(0.7)
+            }
+            .buttonStyle(.plain)
+            .pointerStyleLinkPolyfill()
+        } else {
+            Color.clear
+                .frame(width: 10, height: 10)
         }
     }
 
@@ -203,19 +218,6 @@ struct MainScene: View {
                 }
             }
         }
-    }
-
-    @ViewBuilder private func ButtonOpenURL(_ url: URL) -> some View {
-        Button {
-            openURL(url)
-            Logger.customLog("open URL: \(url)")
-        } label: {
-            Image(systemName: "safari")
-                .contentShape(Circle())
-                .opacity(0.7)
-        }
-        .buttonStyle(.plain)
-        .pointerStyleLinkPolyfill()
     }
 
     func onClickExport() {

@@ -11,9 +11,6 @@
         }
       }
     },
-    "%@" : {
-      "shouldTranslate" : false
-    },
     "%d records have been deleted" : {
       "localizations" : {
         "en" : {
