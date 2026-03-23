@@ -20,32 +20,31 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     @NSApplicationDelegateAdaptor(ThisAppDelegate.self) var appDelegate
 
-    @StateObject private var adState = ADState.shared
     @StateObject private var userDefaultsState = UserDefaultsState.shared
 
     public var body: some Scene {
-        WindowGroup {
-            MainScene()
-                .frame(minWidth: 400, minHeight: 400)
-                .environmentObject(self.adState)
-                .environmentObject(self.userDefaultsState)
-                .onAppBecomeForeground {
-                    self.adState.reload()
-                }
+        if #available(macOS 13.0, *) {
+            return Window(NSLocalizedString("JS Blocker", comment: ""), id: "main") {
+                MainScene()
+            }.commands { MenuCommands }
+        } else {
+            return WindowGroup {
+                MainScene()
+            }.commands { MenuCommands }
         }
-        .environment(\.layoutDirection, .leftToRight)
-        .commands {
-            CommandMenu("Experimental", content: {
-                Button {
-                    self.userDefaultsState.icloudStatus.toggle()
-                } label: {
-                    Text("Enable CloudKit")
-                    if (self.userDefaultsState.icloudStatus) {
-                        Image(systemName: "checkmark")
-                    }
+    }
+
+    private var MenuCommands: some Commands {
+        CommandMenu("Experimental", content: {
+            Button {
+                self.userDefaultsState.icloudStatus.toggle()
+            } label: {
+                Text("Enable CloudKit")
+                if (self.userDefaultsState.icloudStatus) {
+                    Image(systemName: "checkmark")
                 }
-            })
-        }
+            }
+        })
     }
 
 }

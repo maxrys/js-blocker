@@ -11,7 +11,7 @@ struct MainScene: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) var openURL
 
-    @EnvironmentObject var adState: ADState
+    @StateObject private var adState = ADState.shared
     @State private var isShowPopover = false
 
     private let messageBox: MessageBox
@@ -105,6 +105,11 @@ struct MainScene: View {
             .onAppear {
                 ADModel.dump()
             }
+        }
+        .frame(minWidth: 400, minHeight: 400)
+        .environment(\.layoutDirection, .leftToRight)
+        .onAppBecomeForeground {
+            self.adState.reload()
         }
     }
 
@@ -244,7 +249,5 @@ struct MainScene: View {
 struct MainScene_Previews: PreviewProvider {
     static var previews: some View {
         MainScene()
-            .frame(width: 500, height: 500)
-            .environmentObject(ADState.shared)
     }
 }
