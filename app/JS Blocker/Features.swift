@@ -6,12 +6,48 @@
 import os
 import AppKit
 
-final class Features {
+struct ExportImportItems: Codable {
 
-    struct ExportImportItem: Codable {
+    public struct Item: Codable {
         let name    : String
         let isGlobal: Bool /* isWildcard */
     }
+
+    public private(set) var items: [Item] = []
+
+    init(_ items: [Item]) {
+        self.items = items
+    }
+
+    init?(decode json: String) {
+        do {
+            guard let data = json.data(using: .utf8) else {
+                return nil
+            }
+            self = try JSONDecoder().decode(
+                Self.self,
+                from: data
+            )
+        } catch {
+            return nil
+        }
+    }
+
+    func encode() -> String? {
+        let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .prettyPrinted
+        guard let data = try? jsonEncoder.encode(self) else {
+            return nil
+        }
+        return String(
+            data: data,
+            encoding: .utf8
+        )
+    }
+
+}
+
+final class Features {
 
     static public func export(items: ADFetchCollection) {
         do {
@@ -32,22 +68,20 @@ final class Features {
 
             /* MARK: Generate export JSON */
 
-            var jsonObject: [ExportImportItem] = []
-            for item in items {
-                jsonObject.append(
-                    ExportImportItem(
-                        name    : item.name,
-                        isGlobal: item.isWildcard
+            let exportStruct = ExportImportItems(
+                items.reduce(into: [ExportImportItems.Item]()) { result, item in
+                    result.append(
+                        ExportImportItems.Item(
+                            name    : item.name,
+                            isGlobal: item.isWildcard,
+                        )
                     )
-                )
-            }
-
-            let jsonEncoder = JSONEncoder()
-            jsonEncoder.outputFormatting = .prettyPrinted
-
-            let jsonData = try! jsonEncoder.encode(
-                jsonObject
+                }
             )
+
+            guard let jsonData = exportStruct.encode() else {
+                return
+            }
 
             /* MARK: Generate export URL */
 
@@ -58,17 +92,17 @@ final class Features {
 
             /* MARK: Write to file */
 
-            try jsonData.stringUTF8!.write(
+            try jsonData.write(
                 to: exportFileURL,
                 atomically: false,
                 encoding: .utf8
             )
 
-            /* MARK: message */
+            /* MARK: Message */
 
             MessageBox.insert(
                 type: .ok,
-                title: String(format: NSLocalizedString("%d records have been exported", comment: ""), jsonObject.count),
+                title: String(format: NSLocalizedString("%d records have been exported", comment: ""), exportStruct.items.count),
                 lifeTime: .time(3)
             )
 
@@ -99,17 +133,14 @@ final class Features {
                 return
             }
 
-            let JSONString = try String(
-                contentsOf: fileURL,
-                encoding: .utf8
-            )
+            /* MARK: Read and Parse JSON data */
 
-            let JSONObject = try? JSONDecoder().decode(
-                [ExportImportItem].self,
-                from: JSONString.data(using: .utf8)!
-            )
-
-            guard (JSONObject != nil) else {
+            guard let importStruct = ExportImportItems(
+                decode: try String(
+                    contentsOf: fileURL,
+                    encoding: .utf8
+                )
+            ) else {
                 MessageBox.insert(
                     type: .error,
                     title: NSLocalizedString("Invalid JSON format!", comment: ""),
@@ -122,16 +153,14 @@ final class Features {
 
             var processedCount: Int = 0
             var invalidDomains: [String] = []
-            if let items = JSONObject {
-                for item in items {
-                    if (item.name.domainNameIsValid()) {
-                        let _ = ADModel.delete([item.name])
-                        if (ADModel.insert(name: item.name, isWildcard: item.isGlobal)) {
-                            processedCount += 1
-                            Logger.customLog("IMPORT ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)")
-                        } else { invalidDomains.append(item.name) }
-                    }     else { invalidDomains.append(item.name) }
-                }
+            for item in importStruct.items {
+                if (item.name.domainNameIsValid()) {
+                    let _ = ADModel.delete([item.name])
+                    if (ADModel.insert(name: item.name, isWildcard: item.isGlobal)) {
+                        processedCount += 1
+                        Logger.customLog("IMPORT ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)")
+                    } else { invalidDomains.append(item.name) }
+                }     else { invalidDomains.append(item.name) }
             }
 
             /* MARK: Message */

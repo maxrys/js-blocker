@@ -35,7 +35,7 @@ struct MainScene: View {
                 /* MARK: Panel */
 
                 HStack(spacing: 10) {
-                    self.FieldSearch()
+                    FieldSearchCustom(text: self.adState.getBinding(\.filterByName))
                     Color.clear.frame(width: 1, height: 10)
                     self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), isDisabled: self.adState.selectedRows.isEmpty) { self.onClickExport() }
                     self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                               ) { self.onClickImport() }
@@ -120,7 +120,7 @@ struct MainScene: View {
                 Logger.customLog("open URL: \(url)")
             } label: {
                 Image(systemName: "safari")
-                    .contentShape(Circle())
+                    .focusEffect(Circle())
                     .opacity(0.7)
             }
             .buttonStyle(.plain)
@@ -131,83 +131,35 @@ struct MainScene: View {
         }
     }
 
-    @ViewBuilder private func FieldSearch() -> some View {
-        TextField(
-            NSLocalizedString("Search", comment: ""),
-            text: self.adState.getBinding(\.filterByName)
-        )
-        .textFieldStyle(.plain)
-        .padding(.horizontal, 32)
-        .padding(.vertical, 9)
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .fill(Color.mainScene.panelTextFieldBackground)
-                .shadow(
-                    color: .black.opacity(0.5),
-                    radius: 1,
-                    y: 0
-                )
-        )
-        .contentShape(RoundedRectangle(cornerRadius: 5))
-        .overlayPolyfill(alignment: .leading) {
-            Image(systemName: "magnifyingglass")
-                .font(.system(size: 16))
-                .foregroundPolyfill(Color.label.opacity(0.3))
-                .offset(x: 8)
-        }
-        .overlayPolyfill(alignment: .trailing) {
-            if (!self.adState.filterByName.isEmpty) {
-                Button { self.adState.filterByName = "" } label: {
-                    Image(systemName: "xmark.circle")
-                        .font(.system(size: 16))
-                        .foregroundPolyfill(Color.label.opacity(0.3))
-                        .background(self.colorScheme == .dark ? Color.black : Color.white)
-                        .clipShape(Circle())
-                        .contentShape(Circle())
-                }
-                .buttonStyle(.plain)
-                .pointerStyleLinkPolyfill()
-                .offset(x: -5)
-            }
-        }
-    }
-
     @ViewBuilder private func PanelButton(icon: Image, text: String? = nil, isDisabled: Bool = false, onClick: @escaping () -> Void = {}) -> some View {
         VStack(spacing: 3) {
 
-            Button { onClick() } label: {
-                icon.font(.system(size: 12))
-                    .frame(width: 40, height: 20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(Color.mainScene.panelButtonBackground)
-                            .shadow(
-                                color: .black.opacity(0.5),
-                                radius: 1,
-                                y: 0
-                            )
-                    ).contentShape(
-                        RoundedRectangle(cornerRadius: 5)
-                    )
-            }
-            .buttonStyle(.plain)
-            .disabled(isDisabled)
-            .pointerStyleLinkPolyfill()
+            ButtonCustom(
+                nil, icon,
+                colorStyle: .custom(text: nil, background: nil),
+                padding: .init(top: 2, leading: 2, bottom: 3, trailing: 2),
+                flexibility: .infinity,
+                isFlat: true,
+                isDisabled: isDisabled
+            ) { onClick() }
 
             Text(text ?? ZERO_WIDTH_SPACE)
                 .font(.system(size: 9))
                 .lineLimit(1)
                 .opacity(0.5)
 
-        }.frame(width: 40)
+        }
+        .offset(y: 1.5)
+        .frame(width: 40)
     }
 
     @ViewBuilder private func ButtonDelete() -> some View {
         ButtonCustom(
             NSLocalizedString("delete", comment: ""),
-            isDisabled: self.adState.selectedRows.isEmpty,
             colorStyle: .custom(text: nil, background: nil),
-            flexibility: .size(120)
+            flexibility: .size(120),
+            isFlat: true,
+            isDisabled: self.adState.selectedRows.isEmpty
         ) { self.onClickDelete() }
     }
 

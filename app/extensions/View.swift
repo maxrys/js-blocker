@@ -51,6 +51,14 @@ extension View {
         }
     }
 
+    @ViewBuilder func focusEffect<S>(_ shape: S) -> some View where S: Shape {
+        if #available(macOS 12.0, *) {
+            self.contentShape(.focusEffect, shape)
+        } else {
+            self
+        }
+    }
+
     @ViewBuilder func overlayPolyfill<Content: View>(
         alignment: Alignment = .center,
         @ViewBuilder content: @escaping () -> Content

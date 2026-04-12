@@ -110,8 +110,8 @@ class ViewController: SFSafariExtensionViewController {
             var failure: [String] = []
 
             if (ADModel.insert(name: domainName, isWildcard: false))
-                 { success.append(domainName) }
-            else { failure.append(domainName) }
+                 { success.append(domainName.decodePunycode()) }
+            else { failure.append(domainName.decodePunycode()) }
 
             /* message */
             if (success.count > 0) {
@@ -157,8 +157,8 @@ class ViewController: SFSafariExtensionViewController {
 
                 for index in indices where index < domains.count {
                     if (ADModel.insert(name: domains[index], isWildcard: true))
-                         { success.append(domains[index]) }
-                    else { failure.append(domains[index]) }
+                         { success.append(domains[index].decodePunycode()) }
+                    else { failure.append(domains[index].decodePunycode()) }
                 }
 
                 /* message */
@@ -199,8 +199,8 @@ class ViewController: SFSafariExtensionViewController {
                 if let domain = ADModel.select(domainName) {
                     let name = domain.name
                     switch ADModel.delete([name]) {
-                        case .success: success.append(name)
-                        case .failure: failure.append(name)
+                        case .success: success.append(name.decodePunycode())
+                        case .failure: failure.append(name.decodePunycode())
                     }
                 }
 
@@ -226,8 +226,8 @@ class ViewController: SFSafariExtensionViewController {
                 ADModel.selectWildcardDomains(domainName).forEach { domain in
                     let name = domain.name
                     switch ADModel.delete([name]) {
-                        case .success: success.append(name)
-                        case .failure: failure.append(name)
+                        case .success: success.append(name.decodePunycode())
+                        case .failure: failure.append(name.decodePunycode())
                     }
                 }
 

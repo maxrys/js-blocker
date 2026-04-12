@@ -59,7 +59,7 @@ struct InstallPopup: View {
                     )
                 }
                 .frame(maxWidth: .infinity)
-                .padding(15)
+                .padding(10)
                 .background(self.colorDescriptionBackground)
 
             }

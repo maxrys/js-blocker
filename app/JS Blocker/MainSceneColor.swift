@@ -8,9 +8,7 @@ import SwiftUI
 extension Color {
 
     struct MainSceneColorSet {
-        public let panelBackground          = Color("color Panel Background")
-        public let panelButtonBackground    = Color("color Panel Button Background")
-        public let panelTextFieldBackground = Color("color Panel TextField Background")
+        public let panelBackground = Color("color Panel Background")
     }
 
     static let mainScene = MainSceneColorSet()

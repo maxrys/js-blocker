@@ -7,13 +7,6 @@ import SwiftUI
 
 struct DomainRulePanel: View {
 
-    final class ValueState<T>: ObservableObject {
-        @Published var value: T
-        init(_ value: T) {
-            self.value = value
-        }
-    }
-
     static let ICON_CHECK         = Image("checkbox")
     static let ICON_CHECK_CHECKED = Image("checkbox-checked")
 

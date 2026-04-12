@@ -36,7 +36,7 @@ struct ButtonRound: View {
                 .padding(11)
                 .frame(minWidth: self.minWidth)
                 .background(
-                    RoundedRectangle(cornerRadius: 20)
+                    Capsule()
                         .fill(
                             LinearGradient(
                                 colors: [self.style.colorTop, self.style.colorBottom],
@@ -44,7 +44,7 @@ struct ButtonRound: View {
                                 endPoint: .bottom
                             )
                         )
-                )
+                ).focusEffect(Capsule())
         }
         .buttonStyle(.plain)
         .disabled(self.isDisabled)
