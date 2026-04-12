@@ -7,6 +7,9 @@ This open-source extension blocks JavaScript on all domains. Using an "allowed l
 
 ![main popup image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-1.png "main popup")
 ![main popup image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-2.png "main popup")
+![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-3.png "main application")
+![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-4.png "main application")
+![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-5.png "main application")
 
 
 ## Description

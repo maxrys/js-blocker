@@ -4,30 +4,54 @@
 The source code of the application is open and available in the repository
 for review and analysis at "https://github.com/maxrys/js-blocker".
 
+
+## Application structure
+
 The application is a bundle of two parts:
-- main application;
-- Safari browser extension "JS Blocker Extension".
+- main application `JS Blocker`;
+- Safari extension `JS Blocker Extension`.
 
-The user determines on which domains (sites) the "JS Blocker Extension"
-will work.
+The main application consists of:
+- the main `JS Blocker` window (in which the user manages the list of domains
+  on which JavaScript is allowed to run: deletion, import, and export).
 
-The application does not work with the file system - it does not write or read any data.
-The application uses the standard _Core Data_ mechanism to store a "list of allowed domains"
-on the local file system. This list is generated at the user's request for the application
+The Safari extension consists of:
+- A pop-up window (in which the user can add or remove a rule for the current domain).
+  This window appears when clicking the `JS` button in the Safari toolbar.
+- A local `script.js` file. Its primary purpose is to disable JavaScript on the
+  selected domain (by default) or enable it at the user's request.
+  It is transparent to analysis and is necessary for the application to function.
+
+The `JS Blocker Extension` extension can only be launched on domains
+approved by the user (via Safari settings).
+
+
+## Modifying the file system
+
+The application does not work with the file system - it does not write
+or read any data.
+
+
+## Data storage
+
+The application uses the standard `Core Data` mechanism to store
+the "list of allowed domains" in the local database.
+
+This list is generated at the user's request for the application
 to function.
 
-The application does not include external JavaScript files.
-The "JS Blocker Extension" includes a local "script.js" file, which is transparent to analysis
-and is necessary for the application to function. The main purpose of "script.js" is to
-disable JavaScript on the selected domain (by default) or enable it at the user’s request.
+When you enable the "Experimental / Enable CloudKit" option,
+syncing with iCloud occurs.
 
-Main application, "JS Blocker Extension", "script.js" file:
-- do not register user clicks;
-- do not have access to the clipboard;
-- do not add events to DOM elements;
-- do not send or receive data over the external network;
-- do not collect or store any personal data;
-- do not transfer any data to third parties.
 
-The application runs in an isolated OS environment (sandbox) and is unable to affect
-anything other than JavaScript in the Safari browser.
+## Other activities
+
+Application:
+- runs in an isolated OS environment (sandbox);
+- does not register user clicks;
+- does not have access to the clipboard;
+- does not add events to DOM elements;
+- does not send or receive data over the network;
+- does not collect or store personal data;
+- does not transfer data to third parties;
+- does not include external JavaScript files.

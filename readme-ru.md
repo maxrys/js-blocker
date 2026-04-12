@@ -6,6 +6,9 @@
 
 ![основное всплывающее окно](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-1.png "основное всплывающее окно")
 ![основное всплывающее окно](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-2.png "основное всплывающее окно")
+![основное приложение](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-3.png "основное приложение")
+![основное приложение](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-4.png "основное приложение")
+![основное приложение](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-5.png "основное приложение")
 
 
 ## Описание
