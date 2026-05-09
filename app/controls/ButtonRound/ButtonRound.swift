@@ -43,7 +43,10 @@ struct ButtonRound: View {
                                 endPoint: .bottom
                             )
                         )
-                ).focusEffect(Capsule())
+                )
+                .clipShape   (Capsule())
+                .contentShape(Capsule())
+                .focusEffect (Capsule())
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill(self.isEnabled)

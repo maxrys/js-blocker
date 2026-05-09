@@ -120,7 +120,9 @@ struct MainScene: View {
                 Logger.customLog("open URL: \(url)")
             } label: {
                 Image(systemName: "safari")
-                    .focusEffect(Circle())
+                    .clipShape   (Circle())
+                    .contentShape(Circle())
+                    .focusEffect (Circle())
                     .opacity(0.7)
             }
             .buttonStyle(.plain)

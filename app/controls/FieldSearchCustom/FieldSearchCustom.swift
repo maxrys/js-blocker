@@ -65,8 +65,10 @@ struct FieldSearchCustom: View {
                         Color.fieldSearch.buttonResetBackgroundDark :
                         Color.fieldSearch.buttonResetBackground
                 )
-                .clipShape(Circle())
-                .focusEffect(Circle())
+                .clipShape   (Circle())
+                .contentShape(Circle())
+                .focusEffect (Circle())
+
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill()
