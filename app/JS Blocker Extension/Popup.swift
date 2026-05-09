@@ -140,7 +140,7 @@ struct Popup: View {
     }
 
     @ViewBuilder private func ButtonCancelRule() -> some View {
-        ButtonRound(
+        ButtonCapsule(
             title: NSLocalizedString("cancel rule", comment: ""),
             style: .blue,
             minWidth: 250,

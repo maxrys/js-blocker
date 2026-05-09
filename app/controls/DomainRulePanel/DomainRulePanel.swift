@@ -150,7 +150,7 @@ struct DomainRulePanel: View {
     }
 
     @ViewBuilder private func ButtonAllow() -> some View {
-        ButtonRound(
+        ButtonCapsule(
             title: self.buttonTitle,
             onClick: {
                 self.buttonOnClick(

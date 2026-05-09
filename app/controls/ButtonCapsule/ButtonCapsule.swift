@@ -5,18 +5,18 @@
 
 import SwiftUI
 
-struct ButtonRound: View {
+struct ButtonCapsule: View {
 
     @Environment(\.isEnabled) private var isEnabled
 
     private let title: String
-    private let style: Color.ButtonRoundStyle
+    private let style: Color.ButtonCapsuleStyle
     private let minWidth: CGFloat
     private let onClick: () -> Void
 
     init(
         title: String,
-        style: Color.ButtonRoundStyle = .violet,
+        style: Color.ButtonCapsuleStyle = .violet,
         minWidth: CGFloat = 150,
         onClick: @escaping () -> Void
     ) {
@@ -59,43 +59,43 @@ struct ButtonRound: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct ButtonRound_Previews: PreviewProvider {
+struct ButtonCapsule_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 10) {
 
-            ButtonRound(
+            ButtonCapsule(
                 title: NSLocalizedString("allow", comment: ""),
                 style: .violet,
                 minWidth: 150,
                 onClick: {
-                    print("onClick: ButtonRound #1")
+                    print("onClick: ButtonCapsule #1")
                 }
             )
 
-            ButtonRound(
+            ButtonCapsule(
                 title: NSLocalizedString("allow", comment: ""),
                 style: .violet,
                 minWidth: 150,
                 onClick: {
-                    print("onClick: ButtonRound #2")
+                    print("onClick: ButtonCapsule #2")
                 }
             ).disabled(true)
 
-            ButtonRound(
+            ButtonCapsule(
                 title: NSLocalizedString("cancel rule", comment: ""),
                 style: .blue,
                 minWidth: 250,
                 onClick: {
-                    print("onClick: ButtonRound #3")
+                    print("onClick: ButtonCapsule #3")
                 }
             )
 
-            ButtonRound(
+            ButtonCapsule(
                 title: NSLocalizedString("cancel rule", comment: ""),
                 style: .blue,
                 minWidth: 250,
                 onClick: {
-                    print("onClick: ButtonRound #4")
+                    print("onClick: ButtonCapsule #4")
                 }
             ).disabled(true)
 
