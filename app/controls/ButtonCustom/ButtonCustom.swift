@@ -13,6 +13,7 @@ struct ButtonCustom: View {
     private let icon: Image?
     private let isDisabled: Bool
     private let colorStyle: Color.ButtonCustomStyle
+    private let fixedColorScheme: ColorScheme?
     private let isFlat: Bool
     private let font: Font
     private let padding: EdgeInsets
@@ -23,6 +24,7 @@ struct ButtonCustom: View {
         _ text: String? = "button",
         _ icon: Image? = nil,
         colorStyle: Color.ButtonCustomStyle = .accent,
+        fixedColorScheme: ColorScheme? = nil,
         font: Font = .system(size: 12.5, weight: .regular),
         padding: EdgeInsets = .init(top: 6, leading: 12, bottom: 6, trailing: 12),
         flexibility: Flexibility = .none,
@@ -34,6 +36,7 @@ struct ButtonCustom: View {
         self.icon = icon
         self.isDisabled = isDisabled
         self.colorStyle = colorStyle
+        self.fixedColorScheme = fixedColorScheme
         self.isFlat = isFlat
         self.font = font
         self.padding = padding
@@ -42,6 +45,12 @@ struct ButtonCustom: View {
     }
 
     public var body: some View {
+        if let fixedColorScheme = self.fixedColorScheme
+             { self.MainView().environment(\.colorScheme, fixedColorScheme) }
+        else { self.MainView() }
+    }
+
+    @ViewBuilder private func MainView() -> some View {
         Button { self.onClick() } label: {
             HStack(spacing: 5) {
                 self.IconView()
@@ -62,7 +71,7 @@ struct ButtonCustom: View {
                 color: self.colorScheme == .dark ?
                     .black.opacity(1.0) :
                     .black.opacity(0.4),
-                radius: 0.7,
+                radius: self.isEnabled ? 0.7 : 0.0,
                 y: 0.3
             )
         }
@@ -117,7 +126,8 @@ struct ButtonCustom_Previews: PreviewProvider {
                     Text("light style").font(.headline)
                     ButtonCustom(colorStyle: .accent)
                     ButtonCustom(colorStyle: .danger)
-                    ButtonCustom(colorStyle: .custom(text: nil, background: nil))
+                    ButtonCustom(colorStyle: .common)
+                    ButtonCustom(colorStyle: .common).disabled(true)
                     ButtonCustom(colorStyle: .custom(text: .white, background: .orange))
                 }
                 .padding(20)
@@ -128,7 +138,8 @@ struct ButtonCustom_Previews: PreviewProvider {
                     Text("dark style").font(.headline)
                     ButtonCustom(colorStyle: .accent)
                     ButtonCustom(colorStyle: .danger)
-                    ButtonCustom(colorStyle: .custom(text: nil, background: nil))
+                    ButtonCustom(colorStyle: .common)
+                    ButtonCustom(colorStyle: .common).disabled(true)
                     ButtonCustom(colorStyle: .custom(text: .white, background: .orange))
                 }
                 .padding(20)

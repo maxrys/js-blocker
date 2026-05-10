@@ -136,7 +136,7 @@ struct MainScene: View {
 
             ButtonCustom(
                 nil, icon,
-                colorStyle: .custom(text: nil, background: nil),
+                colorStyle: .common,
                 padding: .init(top: 2, leading: 2, bottom: 3, trailing: 2),
                 flexibility: .infinity,
                 isFlat: true,
@@ -156,7 +156,7 @@ struct MainScene: View {
     @ViewBuilder private func ButtonDelete() -> some View {
         ButtonCustom(
             NSLocalizedString("delete", comment: ""),
-            colorStyle: .custom(text: nil, background: nil),
+            colorStyle: .common,
             flexibility: .size(120),
             isFlat: true,
             isDisabled: self.adState.selectedRows.isEmpty

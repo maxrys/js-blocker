@@ -11,6 +11,7 @@ extension Color {
 
         case accent
         case danger
+        case common
         case custom (
             text      : Color?,
             background: Color?
@@ -20,6 +21,7 @@ extension Color {
             switch self {
                 case .accent: return Color.white
                 case .danger: return Color.white
+                case .common: return Color("color ButtonCustom Text")
                 case .custom(let textValue, _):
                     if let textValue = textValue { return textValue }
                     else { return Color("color ButtonCustom Text") }
@@ -30,6 +32,7 @@ extension Color {
             switch self {
                 case .accent: return Color.accentColor
                 case .danger: return Color("color ButtonCustom Background Danger")
+                case .common: return Color("color ButtonCustom Background")
                 case .custom(_, let backgroundValue):
                     if let backgroundValue = backgroundValue { return backgroundValue }
                     else { return Color("color ButtonCustom Background") }
