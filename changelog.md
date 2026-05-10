@@ -1,4 +1,9 @@
 
+## Version 1.13
+
+UI has been improved.
+Codebase has been improved.
+
 ## Version 1.12
 
 Bugs have been fixed.
