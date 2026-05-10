@@ -36,7 +36,7 @@ extension View {
         } else { self }
     }
 
-    @ViewBuilder func pointerStyleLinkPolyfill(isEnabled: Bool = true) -> some View {
+    @ViewBuilder func pointerStyleLinkPolyfill(_ isEnabled: Bool = true) -> some View {
         if (isEnabled) {
             if #available(macOS 15.0, *) {
                 self.pointerStyle(.link)

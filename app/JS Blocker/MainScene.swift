@@ -37,9 +37,9 @@ struct MainScene: View {
                 HStack(spacing: 10) {
                     FieldSearchCustom(text: self.adState.getBinding(\.filterByName))
                     Color.clear.frame(width: 1, height: 10)
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: ""), isDisabled: self.adState.selectedRows.isEmpty) { self.onClickExport() }
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")                                               ) { self.onClickImport() }
-                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")                                               ) { self.isShowPopover = true }
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: "")) { self.onClickExport() }.disabled(self.adState.selectedRows.isEmpty)
+                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")) { self.onClickImport() }
+                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")) { self.isShowPopover = true }
                         .popover(
                             isPresented: self.$isShowPopover,
                             arrowEdge: .bottom
@@ -131,7 +131,7 @@ struct MainScene: View {
         }
     }
 
-    @ViewBuilder private func PanelButton(icon: Image, text: String? = nil, isDisabled: Bool = false, onClick: @escaping () -> Void = {}) -> some View {
+    @ViewBuilder private func PanelButton(icon: Image, text: String? = nil, onClick: @escaping () -> Void = {}) -> some View {
         VStack(spacing: 3) {
 
             ButtonCustom(
@@ -139,8 +139,7 @@ struct MainScene: View {
                 colorStyle: .common,
                 padding: .init(top: 2, leading: 2, bottom: 3, trailing: 2),
                 flexibility: .infinity,
-                isFlat: true,
-                isDisabled: isDisabled
+                isFlat: true
             ) { onClick() }
 
             Text(text ?? ZERO_WIDTH_SPACE)
@@ -159,8 +158,9 @@ struct MainScene: View {
             colorStyle: .common,
             flexibility: .size(120),
             isFlat: true,
-            isDisabled: self.adState.selectedRows.isEmpty
-        ) { self.onClickDelete() }
+        ) { self.onClickDelete() }.disabled(
+            self.adState.selectedRows.isEmpty
+        )
     }
 
     func onClickExport() {

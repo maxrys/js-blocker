@@ -142,14 +142,14 @@ struct Popup: View {
     @ViewBuilder private func ButtonCancelRule() -> some View {
         ButtonRound(
             title: NSLocalizedString("cancel rule", comment: ""),
-            isDisabled:
-                self.popupState.match.isNone ||
-                self.popupState.match.isNoDomain,
             style: .blue,
             minWidth: 250,
             onClick: {
                 ViewController.shared.onClick_ruleDelete()
             }
+        ).disabled(
+            self.popupState.match.isNone ||
+            self.popupState.match.isNoDomain
         )
     }
 

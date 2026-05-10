@@ -7,21 +7,20 @@ import SwiftUI
 
 struct ButtonRound: View {
 
+    @Environment(\.isEnabled) private var isEnabled
+
     private let title: String
-    private let isDisabled: Bool
     private let style: Color.ButtonRoundStyle
     private let minWidth: CGFloat
     private let onClick: () -> Void
 
     init(
         title: String,
-        isDisabled: Bool = false,
         style: Color.ButtonRoundStyle = .violet,
         minWidth: CGFloat = 150,
         onClick: @escaping () -> Void
     ) {
         self.title = title
-        self.isDisabled = isDisabled
         self.style = style
         self.minWidth = minWidth
         self.onClick = onClick
@@ -47,8 +46,7 @@ struct ButtonRound: View {
                 ).focusEffect(Capsule())
         }
         .buttonStyle(.plain)
-        .disabled(self.isDisabled)
-        .pointerStyleLinkPolyfill()
+        .pointerStyleLinkPolyfill(self.isEnabled)
     }
 }
 
@@ -73,13 +71,12 @@ struct ButtonRound_Previews: PreviewProvider {
 
             ButtonRound(
                 title: NSLocalizedString("allow", comment: ""),
-                isDisabled: true,
                 style: .violet,
                 minWidth: 150,
                 onClick: {
                     print("onClick: ButtonRound #2")
                 }
-            )
+            ).disabled(true)
 
             ButtonRound(
                 title: NSLocalizedString("cancel rule", comment: ""),
@@ -92,13 +89,12 @@ struct ButtonRound_Previews: PreviewProvider {
 
             ButtonRound(
                 title: NSLocalizedString("cancel rule", comment: ""),
-                isDisabled: true,
                 style: .blue,
                 minWidth: 250,
                 onClick: {
                     print("onClick: ButtonRound #4")
                 }
-            )
+            ).disabled(true)
 
         }.padding(10)
     }
