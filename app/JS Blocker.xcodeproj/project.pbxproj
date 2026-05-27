@@ -55,6 +55,8 @@
 		50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
 		50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
 		50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
+		505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507542FC6E59E007DB93D /* ShadowLine.swift */; };
+		505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507542FC6E59E007DB93D /* ShadowLine.swift */; };
 		505507592FC6E6E4007DB93D /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507582FC6E6E4007DB93D /* Previewer.swift */; };
 		5055075A2FC6E6E4007DB93D /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507582FC6E6E4007DB93D /* Previewer.swift */; };
 		5055075B2FC6E6E4007DB93D /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507582FC6E6E4007DB93D /* Previewer.swift */; };
@@ -216,6 +218,7 @@
 		50439E012F44C9AD00270BE5 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		50439E022F44C9AD00270BE5 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		50439E032F44C9AD00270BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		505507542FC6E59E007DB93D /* ShadowLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLine.swift; sourceTree = "<group>"; };
 		505507582FC6E6E4007DB93D /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		506421522F5E22760020F6C8 /* TableCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom.swift; sourceTree = "<group>"; };
 		506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom_HeadCell.swift; sourceTree = "<group>"; };
@@ -363,6 +366,7 @@
 				50CE9F982F45BE8D001006CF /* DomainRulePanel */,
 				5007275D2F8A3AF10058A547 /* FieldSearchCustom */,
 				50439E042F44C9AD00270BE5 /* MessageBox */,
+				505507552FC6E59E007DB93D /* ShadowLine */,
 				506421562F5E22760020F6C8 /* TableCustom */,
 			);
 			path = components;
@@ -379,6 +383,14 @@
 				50439E032F44C9AD00270BE5 /* Assets.xcassets */,
 			);
 			path = MessageBox;
+			sourceTree = "<group>";
+		};
+		505507552FC6E59E007DB93D /* ShadowLine */ = {
+			isa = PBXGroup;
+			children = (
+				505507542FC6E59E007DB93D /* ShadowLine.swift */,
+			);
+			path = ShadowLine;
 			sourceTree = "<group>";
 		};
 		506421562F5E22760020F6C8 /* TableCustom */ = {
@@ -724,6 +736,7 @@
 				50CEA07B2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
 				50CE9FE72F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE82F472E06001006CF /* ButtonCustomColor.swift in Sources */,
+				505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */,
 				50E150C12DAA789D005768C1 /* PopupState.swift in Sources */,
 				50CEA06B2F486265001006CF /* InstallPopup.swift in Sources */,
 				50CE9FEC2F472EC4001006CF /* Shape.swift in Sources */,
@@ -770,6 +783,7 @@
 				50EB551C2CF9AAB400FC060C /* Popup.swift in Sources */,
 				50439DCC2F44C8C300270BE5 /* Logger.swift in Sources */,
 				50EB551D2CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
+				505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */,
 				50CE9FEA2F472EC4001006CF /* Shape.swift in Sources */,
 				50E150B62DA96616005768C1 /* MatchType.swift in Sources */,
 				50CEA08C2F4A4E96001006CF /* Color.swift in Sources */,
