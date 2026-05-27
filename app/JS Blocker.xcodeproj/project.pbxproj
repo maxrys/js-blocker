@@ -55,6 +55,9 @@
 		50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
 		50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
 		50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
+		505507592FC6E6E4007DB93D /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507582FC6E6E4007DB93D /* Previewer.swift */; };
+		5055075A2FC6E6E4007DB93D /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507582FC6E6E4007DB93D /* Previewer.swift */; };
+		5055075B2FC6E6E4007DB93D /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507582FC6E6E4007DB93D /* Previewer.swift */; };
 		506421572F5E22760020F6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506421552F5E22760020F6C8 /* Assets.xcassets */; };
 		506421582F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */; };
 		506421592F5E22760020F6C8 /* TableCustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421542F5E22760020F6C8 /* TableCustomColors.swift */; };
@@ -213,6 +216,7 @@
 		50439E012F44C9AD00270BE5 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		50439E022F44C9AD00270BE5 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		50439E032F44C9AD00270BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		505507582FC6E6E4007DB93D /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		506421522F5E22760020F6C8 /* TableCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom.swift; sourceTree = "<group>"; };
 		506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom_HeadCell.swift; sourceTree = "<group>"; };
 		506421542F5E22760020F6C8 /* TableCustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustomColors.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 			children = (
 				50CEA0532F47A6B3001006CF /* _const.swift */,
 				50E150B52DA96615005768C1 /* MatchType.swift */,
+				505507582FC6E6E4007DB93D /* Previewer.swift */,
 				5064215F2F5E22AB0020F6C8 /* ResultBuilder.swift */,
 				50D28FD42F82EAEC006A7304 /* ValueState.swift */,
 			);
@@ -672,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505507592FC6E6E4007DB93D /* Previewer.swift in Sources */,
 				50CEA0962F4B6D46001006CF /* Set.swift in Sources */,
 				501FA4E12F4F99B1004663D2 /* NSEvent.swift in Sources */,
 				500D2D282D05952700551390 /* String.swift in Sources */,
@@ -712,6 +718,7 @@
 				50CEA06D2F48C9FB001006CF /* ADState.swift in Sources */,
 				5007275F2F8A3B710058A547 /* FieldSearchCustom.swift in Sources */,
 				50684B692DB9679000FC6175 /* Data.swift in Sources */,
+				5055075B2FC6E6E4007DB93D /* Previewer.swift in Sources */,
 				50875E0B2C71E93A00756D64 /* ADModel.swift in Sources */,
 				50CEA08A2F4A4E96001006CF /* Color.swift in Sources */,
 				50CEA07B2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
@@ -777,6 +784,7 @@
 				50439E082F44C9AD00270BE5 /* Message.swift in Sources */,
 				50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */,
 				50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */,
+				5055075A2FC6E6E4007DB93D /* Previewer.swift in Sources */,
 				50CEA0952F4B6D46001006CF /* Set.swift in Sources */,
 				50E4E8402F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,
