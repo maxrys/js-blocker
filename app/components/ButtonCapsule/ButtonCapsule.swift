@@ -61,7 +61,7 @@ struct ButtonCapsule: View {
 
 struct ButtonCapsule_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: 10) {
+        Previewer (spacing: 10, padding: 20) {
 
             ButtonCapsule(
                 title: NSLocalizedString("allow", comment: ""),
@@ -99,6 +99,6 @@ struct ButtonCapsule_Previews: PreviewProvider {
                 }
             ).disabled(true)
 
-        }.padding(10)
+        }
     }
 }

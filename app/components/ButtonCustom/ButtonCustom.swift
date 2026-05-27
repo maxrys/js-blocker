@@ -119,31 +119,17 @@ struct ButtonCustom_Previews: PreviewProvider {
                 ButtonCustom("text", Image(systemName: "globe"))
             }
 
-            HStack(spacing: 0) {
-                VStack {
-                    Text("light style").font(.headline)
-                    ButtonCustom(colorStyle: .accent)
-                    ButtonCustom(colorStyle: .danger)
-                    ButtonCustom(colorStyle: .common)
-                    ButtonCustom(colorStyle: .common).disabled(true)
-                    ButtonCustom(colorStyle: .custom(text: .white, background: .orange))
-                }
-                .padding(20)
-                .environment(\.colorScheme, .light)
-                .background(Color.white)
-
-                VStack {
-                    Text("dark style").font(.headline)
-                    ButtonCustom(colorStyle: .accent)
-                    ButtonCustom(colorStyle: .danger)
-                    ButtonCustom(colorStyle: .common)
-                    ButtonCustom(colorStyle: .common).disabled(true)
-                    ButtonCustom(colorStyle: .custom(text: .white, background: .orange))
-                }
-                .padding(20)
-                .environment(\.colorScheme, .dark)
-                .background(Color.NS[\.darkGray])
-            }
+            Previewer (isHorizontal: true, spacing: 10, padding: 20) {
+                ButtonCustom(colorStyle: .accent)
+                ButtonCustom(colorStyle: .danger)
+                ButtonCustom(colorStyle: .common)
+                ButtonCustom(colorStyle: .common).disabled(true)
+                ButtonCustom(colorStyle: .custom(text: .white, background: .orange))
+            }.background(
+                Rectangle()
+                    .fill(Color.NS[\.windowBackgroundColor])
+                    .shadow(radius: 5)
+            )
 
         }
         .frame(width: 210)

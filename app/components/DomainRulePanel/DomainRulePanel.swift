@@ -172,7 +172,7 @@ struct DomainRulePanel_None_Previews: PreviewProvider {
     static let title = NSLocalizedString("JavaScript on the Domain", comment: "")
     static let rules: [String] = []
     static var previews: some View {
-        VStack(spacing: 0) {
+        Previewer (spacing: 0) {
 
             DomainRulePanel(
                 title: Self.title,
@@ -206,7 +206,7 @@ struct DomainRulePanel_Single_Previews: PreviewProvider {
     static let title = NSLocalizedString("JavaScript on the Domain", comment: "")
     static let rules = ["example.com"]
     static var previews: some View {
-        VStack(spacing: 0) {
+        Previewer (spacing: 0) {
 
             DomainRulePanel(
                 title: Self.title,
@@ -245,7 +245,7 @@ struct DomainRulePanel_Multi_Previews: PreviewProvider {
                        "*.example.com"
     ]
     static var previews: some View {
-        VStack(spacing: 0) {
+        Previewer (spacing: 0) {
 
             DomainRulePanel(
                 title: Self.title,
