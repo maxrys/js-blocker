@@ -4,6 +4,10 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>Page Marketing</key>
+	<string>https://github.com/maxrys/js-blocker</string>
+	<key>Page Support</key>
+	<string>https://github.com/maxrys/js-blocker/issues</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

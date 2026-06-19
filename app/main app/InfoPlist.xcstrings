@@ -56,19 +56,19 @@
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copyright © 2024—2026 Рысевец Максім Уладзіміравіч. Усе правы абаронены."
+            "value" : "© 2024—2026 Рысевец Максім Уладзіміравіч"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Copyright © 2024—2026 Maxim Rysevets. All rights reserved."
+            "value" : "© 2024—2026 Maxim Rysevets"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copyright © 2024—2026 Рысевец Максим Владимирович. Все права защищены."
+            "value" : "© 2024—2026 Рысевец Максим Владимирович"
           }
         }
       }

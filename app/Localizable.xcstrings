@@ -22,12 +22,6 @@
         "be-BY" : {
           "variations" : {
             "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Быў абноўлены %d існуючы запіс"
-                }
-              },
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
@@ -38,6 +32,12 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Было абноўлена %d існуючых запісаў"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Быў абноўлены %d існуючы запіс"
                 }
               },
               "other" : {
@@ -70,12 +70,6 @@
         "ru" : {
           "variations" : {
             "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Была обновлена %d существующая запись"
-                }
-              },
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
@@ -86,6 +80,12 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Было обновлено %d существующих записей"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Была обновлена %d существующая запись"
                 }
               },
               "other" : {
@@ -104,12 +104,6 @@
         "be-BY" : {
           "variations" : {
             "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Быў дададзены %d новы запіс"
-                }
-              },
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
@@ -120,6 +114,12 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Было дададзена %d новых запісаў"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Быў дададзены %d новы запіс"
                 }
               },
               "other" : {
@@ -152,12 +152,6 @@
         "ru" : {
           "variations" : {
             "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Была добавлена %d новая запись"
-                }
-              },
               "few" : {
                 "stringUnit" : {
                   "state" : "translated",
@@ -168,6 +162,12 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Было добавлено %d новых записей"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Была добавлена %d новая запись"
                 }
               },
               "other" : {
@@ -341,6 +341,22 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "About %@" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аб дадатку %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О приложении %@"
           }
         }
       }
@@ -812,6 +828,44 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск"
+          }
+        }
+      }
+    },
+    "support" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "падтрымка"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "поддержка"
+          }
+        }
+      }
+    },
+    "Version %@ (%@)" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версія %1$@ (%2$@)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version %1$@ (%2$@)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия %1$@ (%2$@)"
           }
         }
       }
