@@ -105,7 +105,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
 
     override func popoverViewController() -> SFSafariExtensionViewController {
         /* when: info.plist → SFSafariToolbarItem → Action = Popover */
-        return ViewController.shared
+        ViewController.shared
     }
 
     override func toolbarItemClicked(in window: SFSafariWindow) {

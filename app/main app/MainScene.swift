@@ -111,6 +111,26 @@ struct MainScene: View {
         .onAppBecomeForeground {
             self.adState.reload()
         }
+        .background(
+            self.WindowChamelionBackground()
+                .ignoresSafeArea()
+        )
+        .onAppear {
+            if let window = NSWindow.get(ThisApp.WINDOW_MAIN_ID) {
+                window.backgroundColor = .clear
+                window.alphaValue = 1.0
+            }
+        }
+    }
+
+    @ViewBuilder func WindowChamelionBackground() -> some View {
+        if #available(macOS 12.0, *) {
+            if (self.colorScheme == .dark)
+                 { Rectangle().fill(.ultraThickMaterial) }
+            else { Rectangle().fill(.ultraThickMaterial).overlayPolyfill { Color.NS[\.windowBackgroundColor].opacity(0.7) } }
+        } else {
+            Color.NS[\.windowBackgroundColor]
+        }
     }
 
     @ViewBuilder private func ButtonOpenURLOrDummy(_ domainName: String) -> some View {

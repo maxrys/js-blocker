@@ -23,7 +23,7 @@ extension NSWindow {
         return nil
     }
 
-    static func makeAndShowFromSwiftUIView(
+    static func makeNewOrShowExisting(
         ID: String,
         title: String,
         styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable],
@@ -43,7 +43,7 @@ extension NSWindow {
             rootView: view
         )
 
-        Self.customWindows[ID] = NSWindow(
+        Self.customWindows[ID] = Self(
             contentRect: NSRect(x: 0, y: 0, width: size.width, height: size.height),
             styleMask: styleMask,
             backing: .buffered,

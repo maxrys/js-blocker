@@ -78,7 +78,6 @@ struct InstallPopup: View {
 
         }
         .padding(20)
-        .background(Color.installPopup.background)
         .onAppear(perform: self.onAppearView)
     }
 

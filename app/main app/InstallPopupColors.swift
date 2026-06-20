@@ -8,7 +8,6 @@ import SwiftUI
 extension Color {
 
     struct InstallPopupColorSet {
-        public let background                         = Color("color Install Popup Background")
         public let statusSuccessTitleBackground       = Color("color Install Popup Status Success Title Background")
         public let statusSuccessDescriptionBackground = Color("color Install Popup Status Success Description Background")
         public let statusSuccessButtonBackground      = Color("color Install Popup Status Success Button Background")

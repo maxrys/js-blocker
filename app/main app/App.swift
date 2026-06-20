@@ -56,7 +56,7 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 if let windowAbout = NSWindow.customWindows[Self.WINDOW_ABOUT_ID] {
                     windowAbout.show()
                 } else {
-                    _ = NSWindow.makeAndShowFromSwiftUIView(
+                    _ = NSWindow.makeNewOrShowExisting(
                         ID   : Self.WINDOW_ABOUT_ID,
                         title: Self.WINDOW_ABOUT_TITLE_LOCALIZED,
                         size: CGSize(width: 300, height: 100),
