@@ -308,7 +308,7 @@
 			path = FieldSearchCustom;
 			sourceTree = "<group>";
 		};
-		500D2C502D058B7800551390 /* shared */ = {
+		500D2C502D058B7800551390 /* types */ = {
 			isa = PBXGroup;
 			children = (
 				50CEA0532F47A6B3001006CF /* _const.swift */,
@@ -316,15 +316,15 @@
 				5064215F2F5E22AB0020F6C8 /* ResultBuilder.swift */,
 				50D28FD42F82EAEC006A7304 /* ValueState.swift */,
 			);
-			path = shared;
+			path = types;
 			sourceTree = "<group>";
 		};
-		500D2D2B2D05972500551390 /* JS Blocker Tests */ = {
+		500D2D2B2D05972500551390 /* test */ = {
 			isa = PBXGroup;
 			children = (
 				500D2D292D05969F00551390 /* Tests.swift */,
 			);
-			path = "JS Blocker Tests";
+			path = test;
 			sourceTree = "<group>";
 		};
 		50439DB92F44C39F00270BE5 /* extensions */ = {
@@ -350,7 +350,7 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
-		50439DBA2F44C4A600270BE5 /* controls */ = {
+		50439DBA2F44C4A600270BE5 /* components */ = {
 			isa = PBXGroup;
 			children = (
 				50CE9FE22F472E06001006CF /* ButtonCustom */,
@@ -360,7 +360,7 @@
 				50439E042F44C9AD00270BE5 /* MessageBox */,
 				506421562F5E22760020F6C8 /* TableCustom */,
 			);
-			path = controls;
+			path = components;
 			sourceTree = "<group>";
 		};
 		50439E042F44C9AD00270BE5 /* MessageBox */ = {
@@ -392,14 +392,14 @@
 			children = (
 				50875E212C71F21C00756D64 /* Assets.xcassets */,
 				5064F9142D0D9AF500F26724 /* Localizable.xcstrings */,
-				500D2C502D058B7800551390 /* shared */,
+				500D2C502D058B7800551390 /* types */,
 				50439DB92F44C39F00270BE5 /* extensions */,
-				50439DBA2F44C4A600270BE5 /* controls */,
+				50439DBA2F44C4A600270BE5 /* components */,
 				50EB55362CFDA50700FC060C /* model */,
 				50CEA07D2F49AFE2001006CF /* state */,
-				50B025042C47E401002F1AD7 /* JS Blocker */,
-				50B025222C47E404002F1AD7 /* JS Blocker Extension */,
-				500D2D2B2D05972500551390 /* JS Blocker Tests */,
+				50B025042C47E401002F1AD7 /* main app */,
+				50B025222C47E404002F1AD7 /* safari extension */,
+				500D2D2B2D05972500551390 /* test */,
 				50B025032C47E401002F1AD7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		50B025042C47E401002F1AD7 /* JS Blocker */ = {
+		50B025042C47E401002F1AD7 /* main app */ = {
 			isa = PBXGroup;
 			children = (
 				50B025052C47E401002F1AD7 /* App.swift */,
@@ -429,10 +429,10 @@
 				50439DBF2F44C74800270BE5 /* info.plist */,
 				50288FDC2DB11B8500A32865 /* Credits.html */,
 			);
-			path = "JS Blocker";
+			path = "main app";
 			sourceTree = "<group>";
 		};
-		50B025222C47E404002F1AD7 /* JS Blocker Extension */ = {
+		50B025222C47E404002F1AD7 /* safari extension */ = {
 			isa = PBXGroup;
 			children = (
 				50EB55142CF9AAB400FC060C /* Popup.swift */,
@@ -446,7 +446,7 @@
 				50B0252F2C47E404002F1AD7 /* Info.plist */,
 				50B025272C47E404002F1AD7 /* Resources */,
 			);
-			path = "JS Blocker Extension";
+			path = "safari extension";
 			sourceTree = "<group>";
 		};
 		50B025272C47E404002F1AD7 /* Resources */ = {
@@ -983,14 +983,14 @@
 		50B025342C47E404002F1AD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "JS Blocker Extension/ext.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "safari extension/ext.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 23;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JS Blocker Extension/Info.plist";
+				INFOPLIST_FILE = "safari extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker: Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024—2026 Maxim Rysevets. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1015,14 +1015,14 @@
 		50B025352C47E404002F1AD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "JS Blocker Extension/ext.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "safari extension/ext.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 23;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JS Blocker Extension/Info.plist";
+				INFOPLIST_FILE = "safari extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker: Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024—2026 Maxim Rysevets. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1049,7 +1049,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "JS Blocker/app.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "main app/app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 23;
@@ -1057,7 +1057,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JS Blocker/Info.plist";
+				INFOPLIST_FILE = "main app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024—2026 Maxim Rysevets. All rights reserved.";
@@ -1085,7 +1085,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "JS Blocker/app.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "main app/app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 23;
@@ -1093,7 +1093,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "JS Blocker/Info.plist";
+				INFOPLIST_FILE = "main app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024—2026 Maxim Rysevets. All rights reserved.";
