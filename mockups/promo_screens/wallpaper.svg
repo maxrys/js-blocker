@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 3072 1920" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:export>
+      <bx:file format="png" path="wallpaper.png"/>
+    </bx:export>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="0" x2="640" y2="1600" id="gradient-12" gradientTransform="matrix(1, 0.000935, -0.000933, 1.002701, 0.000278, -4.92004)">
+      <stop offset="0" style="stop-color: rgb(212, 225, 255);"/>
+      <stop offset="1" style="stop-color: rgb(174, 193, 204);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="-4.322" x2="640" y2="1600" id="gradient-13" gradientTransform="matrix(0.905113, 0.425171, -0.428996, 0.913257, 421.522304, -297.958038)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05);"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="68.282" x2="640" y2="1600" id="gradient-14" gradientTransform="matrix(0.721682, 0.692225, -0.745288, 0.777003, 1234.324842, 50.869386)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="411.721" x2="640" y2="1600" id="gradient-15" gradientTransform="matrix(0.386046, -0.922479, 1.200052, 0.499868, -887.152754, 721.42345)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="832.46" x2="640" y2="1600" id="gradient-16" gradientTransform="matrix(0.765344, 0.643622, -0.705663, 0.839119, 893.502101, -225.334959)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="355.435" y1="1415.511" x2="355.435" y2="1600" id="gradient-17">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(2.4, 0, 0, 1.196767, -0.000001, 5.172428)">
+    <rect width="1280" height="1604.32" style="fill: url(&quot;#gradient-12&quot;); filter: none;" y="-4.322"/>
+    <path style="fill: url(&quot;#gradient-13&quot;);" d="M 525.835 -4.322 L 0 -4.322 L 0 1600 L 1280 1600 L 1280 430.773 C 856.945 404.418 809.533 -4.322 525.835 -4.322 Z"/>
+    <path style="fill: url(&quot;#gradient-14&quot;);" d="M 0 60.128 L 0 1600 L 1280 1600 L 1280 743.578 C 1023.564 629.296 940.006 446.74 765.475 335.186 C 671.408 275.062 535.952 281.221 451.677 236.13 C 362.035 188.168 366.594 173.741 266.857 122.742 C 184.13 80.441 87.749 126.129 0 60.128 Z"/>
+    <path style="fill: url(&quot;#gradient-15&quot;);" d="M 0 431.073 L 0 1600 L 1280 1600 L 1280 804.411 C 760.053 523.401 452.746 771.609 0 431.073 Z"/>
+    <path style="fill: url(&quot;#gradient-16&quot;);" d="M 0 744.126 L 0 1600 L 1280 1600 L 1280 1447.736 C 888.534 1143.616 324.082 825.131 0 744.126 Z"/>
+    <path style="fill: url(&quot;#gradient-17&quot;);" d="M 0 1452.854 L 0 1600 L 713.673 1600 C 552.897 1541.214 74.299 1456.893 0 1452.854 Z"/>
+  </g>
+</svg>

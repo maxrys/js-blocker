@@ -67,14 +67,29 @@ struct InstallPopup: View {
             Text(NSLocalizedString("Installation example", comment: ""))
                 .font(.system(size: 18, weight: .bold))
 
-            Image("Installation Guide")
-                .resizable()
-                .frame(width: 600, height: 357)
-                .shadow(
-                    color: .black.opacity(0.5),
-                    radius: 5,
-                    y: 0
-                )
+            VStack(spacing: 20) {
+
+                let width = 700.0
+
+                Image("Installation Guide Page 1")
+                    .resizable()
+                    .frame(width: width, height: width * (417.0 / 1672.0))
+                    .shadow(
+                        color: .black.opacity(0.5),
+                        radius: 5,
+                        y: 0
+                    )
+
+                Image("Installation Guide Page 2")
+                    .resizable()
+                    .frame(width: width, height: width * (579.0 / 1672.0))
+                    .shadow(
+                        color: .black.opacity(0.5),
+                        radius: 5,
+                        y: 0
+                    )
+
+            }
 
         }
         .padding(20)

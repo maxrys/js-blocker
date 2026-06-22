@@ -40,16 +40,16 @@
         <path style="stroke: rgb(0, 0, 0); fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 16px;" d="M 423 262 L 423 340 C 423 362 405 380 382 380 L 312 380"/>
       </g>
       <g>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="303" x2="672" y2="303"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="333" x2="672" y2="333"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="363" x2="672" y2="363"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="468" y1="393" x2="672" y2="393"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="423" x2="672" y2="423"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="453" x2="672" y2="453"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="483" x2="672" y2="483"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="543" x2="672" y2="543"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="513" x2="672" y2="513"/>
-        <line style="fill: rgb(216, 216, 216); stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px;" x1="352" y1="573" x2="672" y2="573"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="468" y1="303" x2="672" y2="303"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="468" y1="333" x2="672" y2="333"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="468" y1="363" x2="672" y2="363"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="468" y1="393" x2="672" y2="393"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="352" y1="423" x2="672" y2="423"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="352" y1="453" x2="672" y2="453"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="352" y1="483" x2="672" y2="483"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="352" y1="543" x2="672" y2="543"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="352" y1="513" x2="672" y2="513"/>
+        <line style="stroke-linecap: round; stroke: rgb(222, 222, 222); stroke-width: 16px; fill: none;" x1="352" y1="573" x2="672" y2="573"/>
       </g>
       <g>
         <rect x="430" y="433" width="164" height="100" style="fill: rgb(255, 255, 255);"/>

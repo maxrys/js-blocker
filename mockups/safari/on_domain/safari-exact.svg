@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 1200 450" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
   <defs>
-    <filter id="window-shadow" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.4 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
-      <feOffset dx="0" dy="10"/>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="0" x2="640" y2="1600" id="gradient-12" gradientTransform="matrix(1, 0.000935, -0.000933, 1.002701, 0.000278, -4.92004)">
+      <stop offset="0" style="stop-color: rgb(212, 225, 255);"/>
+      <stop offset="1" style="stop-color: rgb(174, 193, 204);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="-4.322" x2="640" y2="1600" id="gradient-13" gradientTransform="matrix(0.905113, 0.425171, -0.428996, 0.913257, 421.522304, -297.958038)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05);"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="68.282" x2="640" y2="1600" id="gradient-14" gradientTransform="matrix(0.721682, 0.692225, -0.745288, 0.777003, 1234.324842, 50.869386)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="411.721" x2="640" y2="1600" id="gradient-15" gradientTransform="matrix(0.386046, -0.922479, 1.200052, 0.499868, -887.152754, 721.42345)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="832.46" x2="640" y2="1600" id="gradient-16" gradientTransform="matrix(0.765344, 0.643622, -0.705663, 0.839119, 893.502101, -225.334959)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="355.435" y1="1415.511" x2="355.435" y2="1600" id="gradient-17">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <filter id="drop-shadow-filter-0" bx:preset="drop-shadow 1 0 1 1 0.5 rgba(0,0,0,0.3)" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+      <feOffset dx="0" dy="1"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="spread-ctrl" type="linear" slope="0.8"/>
+        <feFuncA id="spread-ctrl" type="linear" slope="1"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -14,46 +38,71 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-1" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+    <filter id="drop-shadow-filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 -1 15 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15"/>
+      <feOffset dx="0" dy="-1"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl-2" type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <mask id="mask-0">
+      <rect width="1200" height="450" style="fill: white;"/>
+      <rect style="fill: black" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
       <stop offset="0" style="stop-color: rgb(0, 208, 123);"/>
       <stop offset="1" style="stop-color: rgb(85, 175, 0);"/>
     </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-2" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
       <stop offset="0" style="stop-color: rgb(0, 208, 123);"/>
       <stop offset="1" style="stop-color: rgb(85, 175, 0);"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="450" style="fill: rgb(227, 228, 229);"/>
-  <g style="filter: url('#window-shadow');">
-    <path style="fill: rgb(243, 243, 243); stroke: rgb(198, 198, 198);" d="M 145 102 H 1055 A 20 20 0 0 1 1075 122 V 206 H 125 V 122 A 20 20 0 0 1 145 102 Z" bx:shape="rect 125 102 950 104 20 20 0 0 1@3110c5bc"/>
-    <path style="fill: rgb(255, 255, 255); stroke: rgb(198, 198, 198);" d="M 125 206 H 1075 V 315 A 20 20 0 0 1 1055 335 H 145 A 20 20 0 0 1 125 315 V 206 Z" bx:shape="rect 125 206 950 129 0 0 20 20 1@731078df"/>
+  <g transform="matrix(0.9375, 0, 0, 0.280492, 0.000008, 1.212287)">
+    <rect width="1280" height="1604.32" style="fill: url(&quot;#gradient-12&quot;); filter: none;" y="-4.322"/>
+    <path style="fill: url(&quot;#gradient-13&quot;);" d="M 525.835 -4.322 L 0 -4.322 L 0 1600 L 1280 1600 L 1280 430.773 C 856.945 404.418 809.533 -4.322 525.835 -4.322 Z"/>
+    <path style="fill: url(&quot;#gradient-14&quot;);" d="M 0 60.128 L 0 1600 L 1280 1600 L 1280 743.578 C 1023.564 629.296 940.006 446.74 765.475 335.186 C 671.408 275.062 535.952 281.221 451.677 236.13 C 362.035 188.168 366.594 173.741 266.857 122.742 C 184.13 80.441 87.749 126.129 0 60.128 Z"/>
+    <path style="fill: url(&quot;#gradient-15&quot;);" d="M 0 431.073 L 0 1600 L 1280 1600 L 1280 804.411 C 760.053 523.401 452.746 771.609 0 431.073 Z"/>
+    <path style="fill: url(&quot;#gradient-16&quot;);" d="M 0 744.126 L 0 1600 L 1280 1600 L 1280 1447.736 C 888.534 1143.616 324.082 825.131 0 744.126 Z"/>
+    <path style="fill: url(&quot;#gradient-17&quot;);" d="M 0 1452.854 L 0 1600 L 713.673 1600 C 552.897 1541.214 74.299 1456.893 0 1452.854 Z"/>
+  </g>
+  <g>
     <g>
-      <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
-      <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
-      <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
+      <rect style="mask: url(&quot;#mask-0&quot;); filter: url(&quot;#drop-shadow-filter-2&quot;); fill: rgb(255, 0, 0);" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
+      <rect style="fill: rgb(255, 255, 255); stroke: rgb(94, 98, 100); fill-opacity: 0.3;" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
     </g>
     <g>
-      <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
-      <rect style="fill: none; stroke-width: 2px; stroke: rgb(130, 130, 134);" x="322" y="140" width="36" height="26" rx="2" ry="2"/>
-      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="146" x2="331" y2="146"/>
-      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="150" x2="331" y2="150"/>
-      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke-linecap: round; stroke: rgb(130, 130, 134);" x1="326" y1="154" x2="331" y2="154"/>
-      <line style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke: rgb(130, 130, 134);" x1="335" y1="140" x2="335" y2="166"/>
-    </g>
-    <g>
-      <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
-      <polyline style="fill: none; stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round; stroke: rgb(130, 130, 134);" points="389.5 151.5 394.5 156.5 399.5 151.5"/>
-    </g>
-    <g>
-      <rect style="stroke-width: 2px; fill: rgb(243, 243, 243); stroke: rgb(213, 213, 213);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
-      <g transform="matrix(1.1875, 0, 0, 1.1875, 441, 135)">
-        <path d="M 16.01 0 C 20.281 0 24.468 1.895 27.287 4.717 C 30.106 7.538 32 11.73 32 16.01 C 32 20.281 30.101 24.468 27.278 27.287 C 24.455 30.106 20.264 32 15.99 32 C 11.719 32 7.533 30.105 4.714 27.286 C 1.895 24.467 0 20.281 0 16.01 C 0 11.729 1.898 7.537 4.721 4.716 C 7.545 1.894 11.736 0 16.01 0 Z M 6.842 6.838 C 4.392 9.286 3 12.349 3 16.01 C 3 19.661 4.389 22.72 6.835 25.165 C 9.28 27.611 12.339 29 15.99 29 C 19.645 29 22.709 27.61 25.159 25.164 C 27.608 22.719 29 19.661 29 16.01 C 29 12.348 27.61 9.285 25.165 6.837 C 22.719 4.389 19.661 3 16.01 3 C 12.355 3 9.291 4.39 6.842 6.838 Z" style="fill: url(&quot;#gradient-1&quot;);"/>
-        <text style="font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre; fill: url(&quot;#gradient-2&quot;);" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)"><tspan x="4" y="10.924">J</tspan><tspan style="font-size: 7.24138px; line-height: 12.3103px;" dx="-0.304">s</tspan></text>
+      <path style="fill: rgb(243, 243, 243); filter: url(&quot;#drop-shadow-filter-0&quot;);" d="M 145 102.5 H 1055 A 19.5 19.5 0 0 1 1074.5 122 V 206.5 A 0 0 0 0 1 1074.5 206.5 H 125.5 A 0 0 0 0 1 125.5 206.5 V 122 A 19.5 19.5 0 0 1 145 102.5 Z" bx:shape="rect 125.5 102.5 949 104 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@94365771"/>
+      <g>
+        <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
+        <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
+        <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
       </g>
-    </g>
-    <g>
-      <rect style="stroke-width: 2px; stroke: rgb(213, 213, 213); fill: rgb(255, 255, 255);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
-      <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre;" x="693" y="161.852">example.com</text>
+      <g>
+        <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
+        <path d="M 324 139 L 356 139 C 356.757 139.044 357.633 139.391 358.121 139.879 C 358.609 140.367 358.956 141.244 359 142 L 359 164 C 358.956 164.757 358.609 165.633 358.121 166.121 C 357.633 166.609 356.756 166.956 356 167 L 324 167 C 323.243 166.956 322.367 166.609 321.879 166.121 C 321.391 165.633 321.044 164.756 321 164 L 321 142 C 321.044 141.243 321.391 140.367 321.879 139.879 C 322.367 139.391 323.244 139.044 324 139 Z M 323.293 141.293 C 323.057 141.529 322.956 141.652 323 142 L 323 164 C 322.956 164.348 323.057 164.471 323.293 164.707 C 323.529 164.943 323.652 165.044 324 165 L 334 165 L 334 141 L 324 141 C 323.652 140.956 323.529 141.057 323.293 141.293 Z M 356 165 C 356.348 165.044 356.471 164.943 356.707 164.707 C 356.943 164.471 357.044 164.348 357 164 L 357 142 C 357.044 141.652 356.943 141.529 356.707 141.293 C 356.471 141.057 356.348 140.956 356 141 L 336 141 L 336 165 Z M 325 146 C 325 145.448 325.448 145 326 145 L 331 145 C 331.552 145 332 145.448 332 146 C 332 146.552 331.552 147 331 147 L 326 147 C 325.448 147 325 146.552 325 146 Z M 325 150 C 325 149.448 325.448 149 326 149 L 331 149 C 331.552 149 332 149.448 332 150 C 332 150.552 331.552 151 331 151 L 326 151 C 325.448 151 325 150.552 325 150 Z M 325 154 C 325 153.448 325.448 153 326 153 L 331 153 C 331.552 153 332 153.448 332 154 C 332 154.552 331.552 155 331 155 L 326 155 C 325.448 155 325 154.552 325 154 Z" style="fill: rgb(130, 130, 134);"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
+        <path d="M 388.439 150.439 C 387.853 151.025 387.853 151.975 388.439 152.56 L 393.439 157.56 C 394.025 158.146 394.975 158.146 395.56 157.56 L 400.56 152.56 C 401.146 151.974 401.146 151.024 400.56 150.439 C 399.974 149.853 399.024 149.853 398.439 150.439 L 394.5 154.378 L 390.561 150.439 C 389.975 149.853 389.025 149.853 388.44 150.439 Z" style="fill: rgb(130, 130, 134);"/>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; fill: rgb(243, 243, 243); stroke: rgb(213, 213, 213);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
+        <g transform="matrix(1.1875, 0, 0, 1.1875, 441, 135)">
+          <path d="M 16.01 0 C 20.281 0 24.468 1.895 27.287 4.717 C 30.106 7.538 32 11.73 32 16.01 C 32 20.281 30.101 24.468 27.278 27.287 C 24.455 30.106 20.264 32 15.99 32 C 11.719 32 7.533 30.105 4.714 27.286 C 1.895 24.467 0 20.281 0 16.01 C 0 11.729 1.898 7.537 4.721 4.716 C 7.545 1.894 11.736 0 16.01 0 Z M 6.842 6.838 C 4.392 9.286 3 12.349 3 16.01 C 3 19.661 4.389 22.72 6.835 25.165 C 9.28 27.611 12.339 29 15.99 29 C 19.645 29 22.709 27.61 25.159 25.164 C 27.608 22.719 29 19.661 29 16.01 C 29 12.348 27.61 9.285 25.165 6.837 C 22.719 4.389 19.661 3 16.01 3 C 12.355 3 9.291 4.39 6.842 6.838 Z" style="fill: url(&quot;#gradient-toolbaritem-border&quot;);"/>
+          <text style="fill: url(&quot;#gradient-toolbaritem&quot;); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)"><tspan x="4" y="10.924">J</tspan><tspan style="font-size: 7.24138px; line-height: 12.3103px;" dx="-0.304">s</tspan></text>
+        </g>
+      </g>
+      <g>
+        <rect style="stroke-width: 2px; stroke: rgb(213, 213, 213); fill: rgb(255, 255, 255);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
+        <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre; text-anchor: middle;" x="756" y="161.852">example.com</text>
+      </g>
     </g>
   </g>
 </svg>
