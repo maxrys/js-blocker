@@ -14,15 +14,8 @@ final class UserDefaultsState: ObservableObject {
         set { UserDefaults(suiteName: GROUP_NAME)?.set(newValue, forKey: "isAppLaunchedOnce") }
     }
 
-    static var icloudStatus_direct: Bool {
-        get { UserDefaults(suiteName: GROUP_NAME)?.bool(forKey: "icloudStatus") ?? false }
-        set { UserDefaults(suiteName: GROUP_NAME)?.set(newValue, forKey: "icloudStatus") }
-    }
-
-    @AppStorage("icloudStatus", store: UserDefaults(suiteName: GROUP_NAME))
-        var icloudStatus: Bool = false { didSet {
-            ADModel.containerInit()
-        }}
+    @AppStorage("isAppLaunchedOnce", store: UserDefaults(suiteName: GROUP_NAME))
+        var isAppLaunchedOnce: Bool = false { didSet { } }
 
     private init() { /* singleton */
     }

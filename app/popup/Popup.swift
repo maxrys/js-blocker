@@ -8,7 +8,6 @@ import SwiftUI
 
 struct Popup: View {
 
-    static let ICON_CLOUD    = Image(systemName: "cloud")
     static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
 
     static let FRAME_WIDTH: CGFloat = 450
@@ -57,14 +56,6 @@ struct Popup: View {
 
             }.frame(maxWidth: .infinity)
 
-            /* MARK: Indicator "Cloud" */
-
-            .overlayPolyfill(alignment: .topLeading) {
-                if (self.userDefaultsState.icloudStatus) {
-                    self.CloudIndicatorView()
-                }
-            }
-
             /* MARK: Button "Settings" */
 
             .overlayPolyfill(alignment: .topTrailing) {
@@ -83,13 +74,6 @@ struct Popup: View {
         }
         .frame(width: self.frameWidth)
         .environment(\.layoutDirection, .leftToRight)
-    }
-
-    @ViewBuilder private func CloudIndicatorView() -> some View {
-        Self.ICON_CLOUD
-            .font(.system(size: 20))
-            .foregroundPolyfill(Color.popup.buttonCloud)
-            .padding(10)
     }
 
     @ViewBuilder private func ButtonSettingsView() -> some View {

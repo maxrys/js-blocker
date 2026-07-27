@@ -39,13 +39,11 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             return Group {
                 Window(Self.WINDOW_MAIN_TITLE_LOCALIZED, id: Self.WINDOW_MAIN_ID) { MainScene() }
                     .commands { self.menuCommand_showAbout }
-                    .commands { self.menuCommand_enableCloudKit }
             }
         } else {
             return Group {
                 WindowGroup { MainScene() }
                     .commands { self.menuCommand_showAbout }
-                    .commands { self.menuCommand_enableCloudKit }
             }
         }
     }
@@ -66,17 +64,6 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 }
             }
         }
-    }
-
-    private var menuCommand_enableCloudKit: some Commands {
-        CommandMenu("Experimental", content: {
-            Button { self.userDefaultsState.icloudStatus.toggle() } label: {
-                Text("Enable CloudKit")
-                if (self.userDefaultsState.icloudStatus) {
-                    Image(systemName: "checkmark")
-                }
-            }
-        })
     }
 
 }

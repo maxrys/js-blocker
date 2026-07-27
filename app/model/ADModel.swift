@@ -3,12 +3,6 @@
 /* ### Copyright © 2024—2026 Maxim Rysevets. All rights reserved. ### */
 /* ################################################################## */
 
-/*
-    CloudKit debug:
-        log stream --info --debug --predicate 'process = "cloudd" and message contains[cd] "containerID=iCloud.jsblocker"'
-        log stream --info --debug --predicate 'process = "JS Blocker" and (subsystem = "com.apple.coredata" or subsystem = "com.apple.cloudkit")'
-*/
-
 import os
 import AppKit
 import CoreData
@@ -43,36 +37,19 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
         storageDirectoryURL.appendingPathComponent(STORAGE_NAME)
     }()
 
-    static var container: NSPersistentCloudKitContainer!
-
-    static var context: NSManagedObjectContext {
-        if (Self.container == nil) { Self.containerInit() }
-        return Self.container.viewContext
-    }
-
-    static func fetchRequest() -> NSFetchRequest<SELF> {
-        return NSFetchRequest<SELF>(entityName: "WhiteDomains")
-    }
-
-    convenience init() {
-        self.init(context: Self.context)
-    }
-
-    static func containerInit() {
+    static let container: NSPersistentContainer = {
         let description = NSPersistentStoreDescription()
-        description.url = Self.storageURL
-        description.configuration = "CloudKit"
+        description.url = storageURL
+        description.configuration = "Default"
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-        description.cloudKitContainerOptions = UserDefaultsState.icloudStatus_direct ? NSPersistentCloudKitContainerOptions(containerIdentifier: STORAGE_CLOUD_NAME) : nil
         description.shouldInferMappingModelAutomatically = true
         description.shouldMigrateStoreAutomatically = true
 
-        Self.container = NSPersistentCloudKitContainer(name: "Model")
-        Self.container.persistentStoreDescriptions = [description]
-        Self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        Self.container.viewContext.automaticallyMergesChangesFromParent = true
-        Self.container.loadPersistentStores(completionHandler: { (description, error) in
+        var result = NSPersistentContainer(name: "Model")
+        result.persistentStoreDescriptions = [description]
+        result.viewContext.automaticallyMergesChangesFromParent = true
+        result.loadPersistentStores(completionHandler: { (description, error) in
             if let error = error as NSError? {
                 let alert = NSAlert()
                 alert.messageText = "The application will be force closed."
@@ -81,17 +58,29 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
                     "You can:\n\n" +
                     "Revert to the previous version of the app\n\n" +
                     "or Try to transfer the data manually\n\n" +
-                    "or Delete the conflicting storage at\n\(Self.storageURL.path)\n" +
+                    "or Delete the conflicting storage at\n\(storageURL.path)\n" +
                     "!!! All app data will be lost !!!"
                 alert.alertStyle = .critical
                 alert.addButton(withTitle: "ОК")
                 alert.runModal()
                 NSApp.terminate(nil)
             } else {
-                Logger.customLog("Storage path = \"\(Self.storageURL.path)\"")
-                Logger.customLog("Model ADModel.containerInit() | cloud = \(UserDefaultsState.icloudStatus_direct)")
+                Logger.customLog("Storage path: \(storageURL.path)")
             }
         })
+        return result
+    }()
+
+    static public var context: NSManagedObjectContext {
+        Self.container.viewContext
+    }
+
+    static func fetchRequest() -> NSFetchRequest<SELF> {
+        return NSFetchRequest<SELF>(entityName: "WhiteDomains")
+    }
+
+    convenience init() {
+        self.init(context: Self.context)
     }
 
     static func hasDomain(name: DomainName) -> Bool {

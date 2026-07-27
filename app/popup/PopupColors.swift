@@ -8,7 +8,6 @@ import SwiftUI
 extension Color {
 
     struct PopupColorSet {
-        public let buttonCloud             = Color("color Popup Button Cloud")
         public let buttonSettings          = Color("color Popup Button Settings")
         public let ruleExactBackground     = Color("color Popup Rule Exact Background")
         public let rulesWildcardBackground = Color("color Popup Rules Wildcard Background")

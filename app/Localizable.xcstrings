@@ -480,22 +480,6 @@
         }
       }
     },
-    "Enable CloudKit" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Уключыць CloudKit"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Включить CloudKit"
-          }
-        }
-      }
-    },
     "Exact rule for the following domain was added:" : {
       "localizations" : {
         "be-BY" : {
@@ -556,22 +540,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Точное правило для домена было удалено:"
-          }
-        }
-      }
-    },
-    "Experimental" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Эксперыментальны"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Экспериментальный"
           }
         }
       }

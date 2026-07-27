@@ -40,9 +40,6 @@ the "list of allowed domains" in the local database.
 This list is generated at the user's request for the application
 to function.
 
-When you enable the "Experimental / Enable CloudKit" option,
-syncing with iCloud occurs.
-
 
 ## Other activities
 
