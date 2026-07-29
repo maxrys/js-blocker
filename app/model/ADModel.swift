@@ -7,163 +7,33 @@ import os
 import AppKit
 import CoreData
 
-enum ExecuteResult {
-    case success(affected: Int)
-    case failure
-}
+typealias ADModel = WhiteDomains
 
-typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
+public class WhiteDomains: NSManagedObject {
 
     typealias SELF = WhiteDomains
+
+    static let stringName = "WhiteDomains"
+    static let fetchRequest: NSFetchRequest<SELF> = {
+        NSFetchRequest<SELF>(entityName: SELF.stringName)
+    }()
 
     @NSManaged var name: DomainName
     @NSManaged var nameDecoded: DomainName
     @NSManaged var isGlobal: Bool
-    @NSManaged var expiredAt: Int64
+    @NSManaged var expiresAt: Int64
     @NSManaged var createdAt: Int64
-    @NSManaged var updatedAt: Int64
     var isWildcard: Bool {
         get { self.isGlobal }
         set { self.isGlobal = newValue }
     }
 
-    static let storageDirectoryURL: URL = {
-        FileManager.default.containerURL(
-            forSecurityApplicationGroupIdentifier: GROUP_NAME
-        )!
-    }()
-
-    static let storageURL: URL = {
-        storageDirectoryURL.appendingPathComponent(STORAGE_NAME)
-    }()
-
-    static let container: NSPersistentContainer = {
-        let description = NSPersistentStoreDescription()
-        description.url = storageURL
-        description.configuration = "Default"
-        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-        description.shouldInferMappingModelAutomatically = true
-        description.shouldMigrateStoreAutomatically = true
-
-        var result = NSPersistentContainer(name: "Model")
-        result.persistentStoreDescriptions = [description]
-        result.viewContext.automaticallyMergesChangesFromParent = true
-        result.loadPersistentStores(completionHandler: { (description, error) in
-            if let error = error as NSError? {
-                let alert = NSAlert()
-                alert.messageText = "The application will be force closed."
-                alert.informativeText =
-                    "Error: \(error.localizedDescription)\n\n" +
-                    "You can:\n\n" +
-                    "Revert to the previous version of the app\n\n" +
-                    "or Try to transfer the data manually\n\n" +
-                    "or Delete the conflicting storage at\n\(storageURL.path)\n" +
-                    "!!! All app data will be lost !!!"
-                alert.alertStyle = .critical
-                alert.addButton(withTitle: "ОК")
-                alert.runModal()
-                NSApp.terminate(nil)
-            } else {
-                Logger.customLog("Storage path: \(storageURL.path)")
-            }
-        })
-        return result
-    }()
-
-    static public var context: NSManagedObjectContext {
-        Self.container.viewContext
-    }
-
-    static func fetchRequest() -> NSFetchRequest<SELF> {
-        return NSFetchRequest<SELF>(entityName: "WhiteDomains")
-    }
-
     convenience init() {
-        self.init(context: Self.context)
+        self.init(context: Storage.context)
     }
 
     static func hasDomain(name: DomainName) -> Bool {
-        return Self.select(name) != nil
-    }
-
-    static func select(_ name: DomainName) -> SELF? {
-        do {
-            let orderByUpdated = NSSortDescriptor(key: #keyPath(SELF.updatedAt), ascending: false)
-            let fetchRequest = Self.fetchRequest()
-            fetchRequest.sortDescriptors = [orderByUpdated]
-            fetchRequest.predicate = NSPredicate(format: "name ==[c] %@", name)
-            let result = try Self.context.fetch(fetchRequest)
-            return result.isEmpty ? nil : result.first
-        } catch {
-            Logger.customLog("Model ADModel.select() error: \(error).")
-            return nil
-        }
-    }
-
-    static func selectAll(_ filterByName: String? = nil, orderBy: String = #keyPath(SELF.nameDecoded), ascending: Bool = true) -> ADFetchCollection {
-        do {
-            let fetchRequest = Self.fetchRequest()
-            if let filterByName = filterByName { fetchRequest.predicate = NSPredicate(format: "nameDecoded CONTAINS[cd] %@", filterByName, filterByName) }
-            let orderByDefault = NSSortDescriptor(key: orderBy, ascending: ascending)
-            let orderByUpdated = NSSortDescriptor(key: #keyPath(SELF.updatedAt), ascending: false)
-            fetchRequest.sortDescriptors = [orderByDefault, orderByUpdated]
-            return try Self.context.fetch(fetchRequest).reduce(into: ADFetchCollection()) { result, modelItem in
-                result.appendUnique(modelItem)
-            }
-        } catch {
-            Logger.customLog("Model ADModel.selectAll() error: \(error).")
-            return []
-        }
-    }
-
-    static func selectWildcardDomains(_ name: DomainName) -> ADFetchCollection {
-        do {
-            let orderByUpdated = NSSortDescriptor(key: #keyPath(SELF.name), ascending: false)
-            let names = [name] + name.topDomains()
-            let fetchRequest = Self.fetchRequest()
-            fetchRequest.sortDescriptors = [orderByUpdated]
-            fetchRequest.predicate = NSPredicate(format: "(name IN %@) AND (isGlobal == true)", names)
-            return try Self.context.fetch(fetchRequest).reduce(into: ADFetchCollection()) { result, modelItem in
-                result.appendUnique(modelItem)
-            }
-        } catch {
-            Logger.customLog("Model ADModel.selectWildcardDomains() error: \(error).")
-            return []
-        }
-    }
-
-    static func insert(name: DomainName, isWildcard: Bool = false, expiredAt: Int64 = 0) -> Bool {
-        do {
-            let newObject = SELF()
-                newObject.name        = name
-                newObject.nameDecoded = name.decodePunycode()
-                newObject.isWildcard  = isWildcard
-                newObject.expiredAt   = expiredAt
-                newObject.createdAt   = Int64(Date.now)
-                newObject.updatedAt   = Int64(Date.now)
-            try Self.context.save()
-            return true
-        } catch {
-            Logger.customLog("Model ADModel.insert() error: \(error).")
-            return false
-        }
-    }
-
-    static func delete(_ names: [DomainName]) -> ExecuteResult {
-        do {
-            let fetchRequest = Self.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "name IN %@", names)
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
-            deleteRequest.resultType = .resultTypeCount
-            let result = try Self.context.execute(deleteRequest) as? NSBatchDeleteResult
-            let affected = result?.result as? Int ?? 0
-            try Self.context.save()
-            return .success(affected: affected)
-        } catch {
-            Logger.customLog("Model ADModel.delete() error: \(error).")
-            return .failure
-        }
+        Self.select(name) != nil
     }
 
     static func matchType(name: DomainName) -> MatchType {
@@ -176,6 +46,100 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
             return .wildcard(item: wildcardDomains[0])
         }
         return .noOne
+    }
+
+    static func select(_ name: DomainName) -> SELF? {
+        do {
+            let orderBy = NSSortDescriptor(key: #keyPath(SELF.createdAt), ascending: false)
+            let request = Self.fetchRequest
+            request.fetchLimit = 1
+            request.sortDescriptors = [orderBy]
+            request.predicate = NSPredicate(format: "name ==[c] %@", name)
+            let result = try Storage.context.fetch(request)
+            return result.isEmpty ? nil : result.first
+        } catch {
+            Logger.customLog("Model ADModel.select() error: \(error).")
+            return nil
+        }
+    }
+
+    static func selectAll(
+        _ filterByName: String? = nil,
+        orderBy: String = #keyPath(SELF.nameDecoded),
+        ascending: Bool = true
+    ) -> ADFetchCollection {
+        do {
+            let request = Self.fetchRequest
+            request.fetchLimit = Int.max
+            if let filterByName = filterByName { fetchRequest.predicate = NSPredicate(format: "nameDecoded CONTAINS[cd] %@", filterByName, filterByName) }
+            let orderByDefault = NSSortDescriptor(key: orderBy, ascending: ascending)
+            let orderByCreated = NSSortDescriptor(key: #keyPath(SELF.createdAt), ascending: false)
+            request.sortDescriptors = [orderByDefault, orderByCreated]
+            return try Storage.context.fetch(request).reduce(into: ADFetchCollection()) { result, modelItem in
+                result.appendUnique(modelItem)
+            }
+        } catch {
+            Logger.customLog("Model ADModel.selectAll() error: \(error).")
+            return []
+        }
+    }
+
+    static func selectWildcardDomains(_ name: DomainName) -> ADFetchCollection {
+        do {
+            let orderBy = NSSortDescriptor(key: #keyPath(SELF.name), ascending: false)
+            let names = [name] + name.topDomains(isDeleteTLD: true)
+            let request = Self.fetchRequest
+            request.fetchLimit = Int.max
+            request.sortDescriptors = [orderBy]
+            request.predicate = NSPredicate(format: "(name IN %@) AND (isGlobal == true)", names)
+            return try Storage.context.fetch(request).reduce(into: ADFetchCollection()) { result, modelItem in
+                result.appendUnique(modelItem)
+            }
+        } catch {
+            Logger.customLog("Model ADModel.selectWildcardDomains() error: \(error).")
+            return []
+        }
+    }
+
+    static func insert(name: DomainName, isWildcard: Bool = false, expiresAt: Int64 = 0) -> Bool {
+        do {
+            let newObject = SELF()
+                newObject.name        = name
+                newObject.nameDecoded = name.decodePunycode()
+                newObject.isWildcard  = isWildcard
+                newObject.expiresAt   = expiresAt
+                newObject.createdAt   = Int64(Date.now)
+            try Storage.context.save()
+            _ = EntityVersions.versionIncrement(SELF.stringName)
+                EntityVersions.dump()
+            return true
+        } catch {
+            Logger.customLog("Model ADModel.insert() error: \(error).")
+            return false
+        }
+    }
+
+    static func delete(_ names: [DomainName]) -> ExecuteResult {
+        do {
+            let request = Self.fetchRequest
+            request.fetchLimit = Int.max
+            request.predicate = NSPredicate(format: "name IN %@", names)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request as! NSFetchRequest<NSFetchRequestResult>)
+            deleteRequest.resultType = .resultTypeCount
+            let result = try Storage.context.execute(deleteRequest) as? NSBatchDeleteResult
+            let affected = result?.result as? Int ?? 0
+            try Storage.context.save()
+            if (affected > 0) {
+            _ = EntityVersions.versionIncrement(SELF.stringName)
+                EntityVersions.dump()
+            }
+            return .success(
+                affected: affected
+            )
+        } catch {
+            Logger.customLog("Model ADModel.delete() error: \(error).")
+            return .failure
+        }
     }
 
     static func dump() {

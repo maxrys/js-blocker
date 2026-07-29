@@ -18,9 +18,10 @@ final class MainAppState: ObservableObject {
     }
 
     @Published var items: ADFetchCollection = []
+    @Published var itemsVersion: Int64? = nil
     @Published var selectedRows: Set<Int> = []
     @Published var filterByName: String = "" {
-        didSet { self.reloadIfRequired() }
+        didSet { self.itemsReload() }
     }
 
     private var timer: Timer.Custom!
@@ -38,7 +39,7 @@ final class MainAppState: ObservableObject {
     }
 
     private /* singleton */ init() {
-        self.reloadIfRequired()
+        self.itemsInit()
         self.timer = Timer.Custom(
             repeats: .infinity,
             delay: 2,
@@ -46,35 +47,36 @@ final class MainAppState: ObservableObject {
         )
     }
 
-    private func onTimerTick(timer: Timer.Custom) {
-        self.reloadIfRequired()
+    private func itemsInit() {
+        self.items = ADModel.selectAll()
+        self.itemsVersion = EntityVersions.versionGet(ADModel.stringName)
     }
 
-    func reloadIfRequired() {
-        let newItems = ADModel.selectAll(self.filterByName.isEmpty ? nil : self.filterByName)
-        let newItemsHash = newItems.hash()
-        let oldItemsHash = self.items.hash()
-        Logger.customLog("Old Data Hash: \(oldItemsHash)")
-        Logger.customLog("New Data Hash: \(newItemsHash)")
-        if (oldItemsHash != newItemsHash) {
-            let oldSelectedNames = self.selectedNames
-            var newSelectedRows: Set<Int> = []
-            newItems.enumerated().forEach { index, newItem in
-                if (oldSelectedNames.contains(newItem.name)) {
-                    newSelectedRows.insert(index)
+    public func itemsReload(_ newItemsVersion: Int64? = nil) {
+        let oldSelectedNames = self.selectedNames
+        self.items = ADModel.selectAll(self.filterByName.isEmpty ? nil : self.filterByName)
+        self.itemsVersion = newItemsVersion ?? EntityVersions.versionGet(ADModel.stringName)
+        if (!oldSelectedNames.isEmpty) {
+            self.selectedRows = self.items.enumerated().reduce(into: Set<Int>(), { result, newPair in
+                if (oldSelectedNames.contains(newPair.element.name)) {
+                    result.insert(newPair.offset)
                 }
-            }
-            self.items = newItems
-            self.selectedRows.removeAll()
-            self.selectedRows = newSelectedRows
-            Logger.customLog("MainAppState().reloadIfRequired()")
+            })
+        }
+    }
+
+    private func onTimerTick(timer: Timer.Custom) {
+        let newItemsVersion = EntityVersions.versionGet(ADModel.stringName)
+        if (self.itemsVersion != newItemsVersion) {
+            self.itemsReload(newItemsVersion)
         }
     }
 
     func delete(_ names: [DomainName]) -> ExecuteResult {
         let result = ADModel.delete(names)
         if case .success = result {
-            self.reloadIfRequired()
+            self.selectedRows = []
+            self.itemsReload()
         }
         return result
     }

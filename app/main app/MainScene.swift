@@ -104,6 +104,7 @@ struct MainScene: View {
             .padding(.bottom, 3)
             .onAppear {
                 ADModel.dump()
+                EntityVersions.dump()
             }
         }
         .frame(minWidth: 400, minHeight: 400)
@@ -177,7 +178,7 @@ struct MainScene: View {
 
     func onClickImport() {
         Features.import()
-        self.mainAppState.reloadIfRequired()
+        self.mainAppState.itemsReload()
     }
 
     func onClickDelete() {

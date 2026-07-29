@@ -6,18 +6,6 @@
 typealias ADFetchCollection = Array<ADFetchItem>
 extension ADFetchCollection {
 
-    func hash() -> Int {
-        if (!self.isEmpty) {
-            var hasher = Hasher()
-            for item in self {
-                hasher.combine(item.name)
-                hasher.combine(item.nameDecoded)
-                hasher.combine(item.isWildcard) }
-            return hasher.finalize()
-        }
-        return 0
-    }
-
     mutating func appendUnique(_ item: ADModel) {
         let newItem = ADFetchItem(item: item)
         if !self.contains(newItem) {

@@ -122,6 +122,12 @@
 		50C43A093019E19400A8FD39 /* DomainName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C43A083019E19400A8FD39 /* DomainName.swift */; };
 		50C43A0A3019E19400A8FD39 /* DomainName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C43A083019E19400A8FD39 /* DomainName.swift */; };
 		50C43A0B3019E19400A8FD39 /* DomainName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C43A083019E19400A8FD39 /* DomainName.swift */; };
+		50C786FE3014CE6900F078EC /* EntityVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C786FD3014CE6900F078EC /* EntityVersions.swift */; };
+		50C786FF3014CE6900F078EC /* EntityVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C786FD3014CE6900F078EC /* EntityVersions.swift */; };
+		50C787003014CE6900F078EC /* EntityVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C786FD3014CE6900F078EC /* EntityVersions.swift */; };
+		50C787023014CFE600F078EC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C787013014CFE600F078EC /* Storage.swift */; };
+		50C787033014CFE600F078EC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C787013014CFE600F078EC /* Storage.swift */; };
+		50C787043014CFE600F078EC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C787013014CFE600F078EC /* Storage.swift */; };
 		50CE9F9A2F45BF06001006CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CE9F992F45BF06001006CF /* Assets.xcassets */; };
 		50CE9F9B2F45BF06001006CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CE9F992F45BF06001006CF /* Assets.xcassets */; };
 		50CE9F9D2F45BF89001006CF /* DomainRulePanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */; };
@@ -276,6 +282,9 @@
 		50B0252F2C47E404002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B025302C47E404002F1AD7 /* ext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ext.entitlements; sourceTree = "<group>"; };
 		50C43A083019E19400A8FD39 /* DomainName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainName.swift; sourceTree = "<group>"; };
+		50BB98942FFC5BD600C39670 /* Model-v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-v3.xcdatamodel"; sourceTree = "<group>"; };
+		50C786FD3014CE6900F078EC /* EntityVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityVersions.swift; sourceTree = "<group>"; };
+		50C787013014CFE600F078EC /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		50CE9F992F45BF06001006CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRulePanelColors.swift; sourceTree = "<group>"; };
 		50CE9F9F2F45C39D001006CF /* InstallPopupColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPopupColors.swift; sourceTree = "<group>"; };
@@ -556,6 +565,8 @@
 			isa = PBXGroup;
 			children = (
 				5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */,
+				50C787013014CFE600F078EC /* Storage.swift */,
+				50C786FD3014CE6900F078EC /* EntityVersions.swift */,
 				50875E092C71E93A00756D64 /* ADModel.swift */,
 				50E4E83F2F55C76B0054E5DE /* ADFetchItem.swift */,
 				506421CA2F62DC420020F6C8 /* ADFetchCollection.swift */,
@@ -749,10 +760,14 @@
 				50C439FE301751D200A8FD39 /* MainAppState.swift in Sources */,
 				50C439FF301751D200A8FD39 /* UserDefaultsState.swift in Sources */,
 				500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */,
+				50C787003014CE6900F078EC /* EntityVersions.swift in Sources */,
+				50ECC02C30078EAE00A99E64 /* ADFetchItem.swift in Sources */,
 				500D2D2A2D05969F00551390 /* Tests.swift in Sources */,
 				50AD45242DAE59C300425467 /* View.swift in Sources */,
 				50CEA0542F47A6B7001006CF /* _const.swift in Sources */,
 				50439DCF2F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
+				50C787043014CFE600F078EC /* Storage.swift in Sources */,
+				50ECC02D30078EC300A99E64 /* ADModel.swift in Sources */,
 				50CEA08B2F4A4E96001006CF /* Color.swift in Sources */,
 				505507502FC6E548007DB93D /* NSApplication.swift in Sources */,
 				50684B6B2DB9679000FC6175 /* Data.swift in Sources */,
@@ -796,6 +811,7 @@
 				50439E0D2F44C9AD00270BE5 /* MessageState.swift in Sources */,
 				50439E0E2F44C9AD00270BE5 /* Message.swift in Sources */,
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
+				50C787023014CFE600F078EC /* Storage.swift in Sources */,
 				5064215D2F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				506421602F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
 				500727632F8A3E3D0058A547 /* FieldSearchCustomColors.swift in Sources */,
@@ -817,6 +833,7 @@
 				50CEA0A62F4C502A001006CF /* Array.swift in Sources */,
 				50439DC72F44C8BA00270BE5 /* Numeric.swift in Sources */,
 				50CE9FAA2F45DEE4001006CF /* PopupColors.swift in Sources */,
+				50C786FE3014CE6900F078EC /* EntityVersions.swift in Sources */,
 				50439DCA2F44C8C300270BE5 /* Logger.swift in Sources */,
 				50CE9FA72F45DD55001006CF /* ButtonRoundColors.swift in Sources */,
 				50AD45212DAE59C300425467 /* View.swift in Sources */,
@@ -863,6 +880,7 @@
 				50BB986A2FFA5C1F00C39670 /* MainSceneColor.swift in Sources */,
 				50BB986B2FFA5C1F00C39670 /* App.swift in Sources */,
 				50BB986C2FFA5C1F00C39670 /* MainScene.swift in Sources */,
+				50C787033014CFE600F078EC /* Storage.swift in Sources */,
 				50BB986D2FFA5C1F00C39670 /* InstallPopup.swift in Sources */,
 				50BB986E2FFA5C1F00C39670 /* Features.swift in Sources */,
 				50BB986F2FFA5C1F00C39670 /* InstallPopupColors.swift in Sources */,
@@ -883,6 +901,7 @@
 				50B025242C47E404002F1AD7 /* ExtensionHandler.swift in Sources */,
 				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 				501FA4E32F4F99B1004663D2 /* NSEvent.swift in Sources */,
+				50C786FF3014CE6900F078EC /* EntityVersions.swift in Sources */,
 				50684B6A2DB9679000FC6175 /* Data.swift in Sources */,
 				50CEA0552F47A6B7001006CF /* _const.swift in Sources */,
 				50439DCE2F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
@@ -1259,10 +1278,11 @@
 		5019AA132C6E4FBE003F9AF5 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				50BB98942FFC5BD600C39670 /* Model-v3.xcdatamodel */,
 				5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */,
 				5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */,
 			);
-			currentVersion = 5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */;
+			currentVersion = 50BB98942FFC5BD600C39670 /* Model-v3.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
