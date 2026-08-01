@@ -36,13 +36,13 @@ class ViewController: SFSafariExtensionViewController {
 
     /* ###################################################################### */
 
-    func onClick_ruleExactInsert() {
+    func onClick_ruleExactInsert(lifetime: TimeInterval) {
         if let domainName = PopupState.shared.domainName {
 
             var success: [String] = []
             var failure: [String] = []
 
-            if (ADModel.insert(name: domainName, isWildcard: false))
+            if (ADModel.insert(name: domainName, isWildcard: false, expiresAt: lifetime == LifetimePicker.PERIOD_UNLIMIT ? 0 : Int64(Date.now + lifetime)))
                  { success.append(domainName.decodePunycode()) }
             else { failure.append(domainName.decodePunycode()) }
 
@@ -75,7 +75,7 @@ class ViewController: SFSafariExtensionViewController {
         }
     }
 
-    func onClick_ruleWildcardInsert(selected: Set<Int>) {
+    func onClick_ruleWildcardInsert(selected: Set<Int>, lifetime: TimeInterval) {
         if let domainName = PopupState.shared.domainName {
             if (selected.isEmpty) {
 
@@ -92,7 +92,7 @@ class ViewController: SFSafariExtensionViewController {
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if (ADModel.insert(name: name, isWildcard: true))
+                        if (ADModel.insert(name: name, isWildcard: true, expiresAt: lifetime == LifetimePicker.PERIOD_UNLIMIT ? 0 : Int64(Date.now + lifetime)))
                              { success.append(name.decodePunycode()) }
                         else { failure.append(name.decodePunycode()) }
                     }

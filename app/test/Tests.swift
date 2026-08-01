@@ -8,6 +8,27 @@ import Foundation
 
 struct Tests {
 
+    @Test func TimeInterval_wholeParts() async throws {
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_SECOND  - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  0, seconds:  0) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_SECOND      ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  0, seconds:  1) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_SECOND  + 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  0, seconds:  2) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_MINUTE  - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  0, seconds: 59) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_MINUTE      ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  1, seconds:  0) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_MINUTE  + 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  1, seconds:  1) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_5_MINUTES - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  4, seconds: 59) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_5_MINUTES     ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  5, seconds:  0) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_5_MINUTES + 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  5, seconds:  1) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_HOUR    - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes: 59, seconds: 59) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_HOUR        ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  1, minutes:  0, seconds:  0) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_HOUR    + 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  1, minutes:  0, seconds:  1) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_DAY     - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours: 23, minutes: 59, seconds: 59) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_DAY         ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 1, hours:  0, minutes:  0, seconds:  0) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_DAY     + 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 1, hours:  0, minutes:  0, seconds:  1) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_WEEK    - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 6, hours: 23, minutes: 59, seconds: 59) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_WEEK        ) == TimeInterval.PeriodsCountResult(weeks: 1, days: 0, hours:  0, minutes:  0, seconds:  0) )
+        #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_WEEK    + 1 ) == TimeInterval.PeriodsCountResult(weeks: 1, days: 0, hours:  0, minutes:  0, seconds:  1) )
+    }
+
     @Test func DomainName_topDomains() async throws {
         #expect( "a.b.c.com".topDomains(                 ) == ["b.c.com", "c.com", "com"] )
         #expect(   "b.c.com".topDomains(                 ) == [           "c.com", "com"] )

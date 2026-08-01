@@ -7,6 +7,11 @@ const JSBlocker = {
 
     LOCAL_STORAGE_KEY: 'JSBlockerData',
     DELAY_FOR_PAGE_RELOAD: 500,
+    DELAY_BEFORE_RECHECK_STATE: 2000,
+
+    get dateNow() {
+        return Math.floor(Date.now() / 1000);
+    },
 
     isMainFrame: (() => {
         try {

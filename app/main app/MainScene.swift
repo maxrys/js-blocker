@@ -70,6 +70,11 @@ struct MainScene: View {
                                 alignment: .leading
                             ) { Text(NSLocalizedString("domain name", comment: "")).font(.system(size: 11)) }
                             TableCustom_HeadCell(
+                                size: .fixed(180),
+                                spacing: 1,
+                                alignment: .center
+                            ) { Text(NSLocalizedString("expires at", comment: "")).font(.system(size: 11)) }
+                            TableCustom_HeadCell(
                                 size: .fixed(90),
                                 spacing: 1,
                                 alignment: .center
@@ -81,6 +86,7 @@ struct MainScene: View {
                         },
                         bodyAsArray: self.mainAppState.items.flatMap { domain in [
                             AnyView(Text(domain.nameDecoded)),
+                            AnyView(Text(domain.expiresAt != 0 ? Date(timeIntervalSince1970: TimeInterval(domain.expiresAt)).formatConvenient : NOT_APPLICABLE)),
                             AnyView(Text(domain.isWildcard ? NSLocalizedString("yes", comment: "") : NSLocalizedString("no" , comment: ""))),
                             AnyView(self.ButtonOpenURLOrDummyView(domain.name))
                         ]}
@@ -107,7 +113,7 @@ struct MainScene: View {
                 EntityVersions.dump()
             }
         }
-        .frame(minWidth: 400, minHeight: 400)
+        .frame(minWidth: 500, minHeight: 400)
         .environment(\.layoutDirection, .leftToRight)
         .windowChamelionBackground(
             windowID: ThisApp.WINDOW_MAIN_ID,

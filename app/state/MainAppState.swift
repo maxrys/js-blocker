@@ -66,6 +66,7 @@ final class MainAppState: ObservableObject {
     }
 
     private func onTimerTick(timer: Timer.Custom) {
+        _ = ADModel.sanitize()
         let newItemsVersion = EntityVersions.versionGet(ADModel.stringName)
         if (self.itemsVersion != newItemsVersion) {
             self.itemsReload(newItemsVersion)

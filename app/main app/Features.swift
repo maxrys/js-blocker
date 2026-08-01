@@ -13,6 +13,7 @@ struct ExportImportItems: Codable {
     public struct Item: Codable {
         let name: DomainName
         let isWildcard: Bool
+        let expiresAt: Int64
     }
 
     public private(set) var items: [Item] = []
@@ -76,6 +77,7 @@ final class Features {
                         ExportImportItems.Item(
                             name      : item.name,
                             isWildcard: item.isWildcard,
+                            expiresAt : item.expiresAt
                         )
                     )
                 }
@@ -154,6 +156,7 @@ final class Features {
             /* MARK: Import to database */
 
             var invalidDomains: [DomainName] = []
+            var expiredDomains: [DomainName] = []
             var updateCount: Int = 0
             var insertCount: Int = 0
 
@@ -163,9 +166,14 @@ final class Features {
                     Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
                     continue
                 }
+                if (item.expiresAt != 0 && item.expiresAt < Date.now.int64) {
+                    expiredDomains.append(item.name)
+                    Logger.customLog("EXPIRED ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
+                    continue
+                }
                 if case .success(let affected) = ADModel.delete([item.name]), affected > 0
-                     { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard)) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
-                else { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard)) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
+                     { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt)) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
+                else { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt)) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
             }
 
             /* MARK: Message */
@@ -188,6 +196,14 @@ final class Features {
                 MessageBox.insert(
                     type: .warning,
                     title: String(format: NSLocalizedString("Invalid domains were detected:\n%@", comment: ""), invalidDomains.joined(separator: " | ")),
+                    isClosable: true,
+                    lifeTime: .time(10)
+                )
+            }
+            if (!expiredDomains.isEmpty) {
+                MessageBox.insert(
+                    type: .warning,
+                    title: String(format: NSLocalizedString("Expired domains were detected:\n%@", comment: ""), expiredDomains.joined(separator: " | ")),
                     isClosable: true,
                     lifeTime: .time(10)
                 )

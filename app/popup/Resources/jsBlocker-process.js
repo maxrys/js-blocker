@@ -85,6 +85,13 @@
     }
 
     if (value.match === "exact" || value.match === "wildcard") {
+        /* spare mechanism for checking state after expiration */
+        if (value.item.expiresAt !== 0 && value.item.expiresAt > JSBlocker.dateNow) {
+            const lifeTime = (value.item.expiresAt - JSBlocker.dateNow) * 1000
+            setTimeout(() => { JSBlocker.pageRequestMatch(domainName); },
+                lifeTime + JSBlocker.DELAY_BEFORE_RECHECK_STATE
+            );
+        }
         return;
     }
 

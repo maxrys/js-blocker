@@ -67,6 +67,10 @@ struct DomainRulePanel: View {
         }
     }
 
+    private var lifetime: Binding<TimeInterval> {
+        self.$popupState.lifetime
+    }
+
     private let panelType: PanelType
     private let onClickAllow: (Set<Int>) -> Void
 
@@ -134,6 +138,11 @@ struct DomainRulePanel: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             )
 
+            /* MARK: LifetimeInfo */
+
+            if (self.isActiveRule && self.popupState.expireStatus.isSome) {
+                LifetimeInfo()
+            }
 
             /* MARK: Button "Allow" */
 
@@ -175,12 +184,21 @@ struct DomainRulePanel: View {
     @ViewBuilder private func ButtonAllowView() -> some View {
         ButtonCapsule(
             title: NSLocalizedString("allow", comment: ""),
+            minWidth: 180,
             onClick: {
                 self.onClickAllow(
                     self.rules.count == 1 ? [0] : self.selected.wrappedValue
                 )
             }
-        )
+        ).overlayPolyfill(alignment: .trailing) {
+            if (self.isEnabledButton) {
+                LifetimePicker(lifetime: self.lifetime)
+                    .disabled(!self.isEnabledButton)
+            }
+        }
+        .clipShape   (Capsule())
+        .contentShape(Capsule())
+        .focusEffect (Capsule())
     }
 
 }
@@ -229,7 +247,7 @@ struct DomainRulePanel_MatchExact_Previews: PreviewProvider {
         }
         .frame(width: Popup.FRAME_WIDTH)
         .onAppear {
-            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT)
+            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
         }
@@ -244,7 +262,7 @@ struct DomainRulePanel_MatchWildcard_Previews: PreviewProvider {
         }
         .frame(width: Popup.FRAME_WIDTH)
         .onAppear {
-            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD)
+            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
         }

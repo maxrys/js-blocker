@@ -11,6 +11,7 @@ struct ADFetchItem: Equatable {
     let nameDecoded: DomainName
     let isWildcard: Bool
     let createdAt: Int64
+    let expiresAt: Int64
 
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.name == rhs.name
@@ -21,11 +22,13 @@ struct ADFetchItem: Equatable {
         nameDecoded: DomainName,
         isWildcard: Bool,
         createdAt: Int64,
+        expiresAt: Int64,
     ) {
         self.name        = name
         self.nameDecoded = nameDecoded
         self.isWildcard  = isWildcard
         self.createdAt   = createdAt
+        self.expiresAt   = expiresAt
     }
 
     init(item: ADModel) {
@@ -33,13 +36,15 @@ struct ADFetchItem: Equatable {
         self.nameDecoded = item.nameDecoded
         self.isWildcard  = item.isWildcard
         self.createdAt   = item.createdAt
+        self.expiresAt   = item.expiresAt
     }
 
     func toStrictJS() -> String {
         return "{" +
            "\"name\":\"\(name.JSONEscaped())\"," +
            "\"isWildcard\":\(isWildcard)," +
-           "\"createdAt\":\(createdAt)" +
+           "\"createdAt\":\(createdAt)," +
+           "\"expiresAt\":\(expiresAt)" +
         "}"
     }
 

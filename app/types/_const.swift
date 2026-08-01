@@ -23,16 +23,34 @@ let DEMO_RULES__WILDCARD_SUBDOMAIN = [
                    "*.example.com"
 ]
 
-let DEMO_ITEM__EXACT = ADFetchItem(
+let DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT = ADFetchItem(
     name: "example.com",
     nameDecoded: "example.com",
     isWildcard: false,
-    createdAt: Int64(Date.now)
+    createdAt: Date.now.int64,
+    expiresAt: 0
 )
 
-let DEMO_ITEM__WILDCARD = ADFetchItem(
+let DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT = ADFetchItem(
     name: "example.com",
     nameDecoded: "example.com",
     isWildcard: true,
-    createdAt: Int64(Date.now)
+    createdAt: Date.now.int64,
+    expiresAt: 0
+)
+
+let DEMO_ITEM__EXACT__EXPIRE_VALID = ADFetchItem(
+    name: "example.com",
+    nameDecoded: "example.com",
+    isWildcard: false,
+    createdAt: Date.now.int64,
+    expiresAt: Date.now.int64 + 1_000_000_000
+)
+
+let DEMO_ITEM__EXACT__EXPIRE_EXPIRED = ADFetchItem(
+    name: "example.com",
+    nameDecoded: "example.com",
+    isWildcard: false,
+    createdAt: Date.now.int64,
+    expiresAt: Date.now.int64
 )

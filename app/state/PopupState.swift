@@ -17,6 +17,10 @@ final class PopupState: ObservableObject {
     @Published var ruleExact: String = ""
     @Published var rulesWildcard: [String] = []
     @Published var rulesWildcardSelected: Set<Int> = []
+    @Published var lifetime: TimeInterval = LifetimePicker.PERIOD_UNLIMIT
+    @Published var expireStatus: ExpireStatus = .notSetted
+
+    private var timer: Timer.Custom!
 
     public func reset() {
         self.page = nil
@@ -25,6 +29,8 @@ final class PopupState: ObservableObject {
         self.ruleExact = ""
         self.rulesWildcard = []
         self.rulesWildcardSelected = []
+        self.lifetime = LifetimePicker.PERIOD_UNLIMIT
+        self.expireStatus = .notSetted
     }
 
     public func setPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
@@ -34,6 +40,8 @@ final class PopupState: ObservableObject {
         self.ruleExact = domainName.decodePunycode()
         self.rulesWildcard = ([domainName] + domainName.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in result.append("*." + domain.decodePunycode()) }
         self.rulesWildcardSelected = []
+        self.lifetime = LifetimePicker.PERIOD_UNLIMIT
+        self.expireStatus = self.match?.expireStatus ?? .notSetted
         self.refresh()
     }
 
@@ -58,6 +66,8 @@ final class PopupState: ObservableObject {
 
             self.match = ADModel.matchType(name: domainName)
             self.rulesWildcardSelected = wildcardRulesSelected
+            self.lifetime = LifetimePicker.PERIOD_UNLIMIT
+            self.expireStatus = self.match?.expireStatus ?? .notSetted
 
         } else {
             self.reset()
@@ -81,6 +91,24 @@ final class PopupState: ObservableObject {
     }
 
     private /* singleton */ init() {
+        self.timer = Timer.Custom(
+            repeats: .infinity,
+            delay: 1,
+            onTick: self.onTimerTick
+        )
+    }
+
+    private func onTimerTick(timer: Timer.Custom) {
+        let newExpireStatus = self.match?.expireStatus ?? .notSetted
+        if (self.expireStatus != newExpireStatus) {
+            self.expireStatus  = newExpireStatus
+        }
+        if case .expired = self.expireStatus {
+            if case .success(let affected) = ADModel.sanitize(), affected > 0 {
+                self.refresh()
+                self.pageReload()
+            }
+        }
     }
 
 }

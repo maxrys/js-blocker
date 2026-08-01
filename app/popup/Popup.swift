@@ -43,14 +43,14 @@ struct Popup: View {
                 DomainRulePanel(
                     panelType: .exact,
                     onClickAllow: { _ in
-                        ViewController.shared.onClick_ruleExactInsert()
+                        ViewController.shared.onClick_ruleExactInsert(lifetime: self.popupState.lifetime)
                     }
                 ).background(Color.popup.ruleExactBackground)
 
                 DomainRulePanel(
                     panelType: .wildcard,
                     onClickAllow: { selected in
-                        ViewController.shared.onClick_ruleWildcardInsert(selected: selected)
+                        ViewController.shared.onClick_ruleWildcardInsert(selected: selected, lifetime: self.popupState.lifetime)
                     }
                 ).background(Color.popup.rulesWildcardBackground)
 
@@ -151,7 +151,7 @@ struct Popup_TopDomain_MatchNoOne_Previews: PreviewProvider {
 struct Popup_TopDomain_MatchExact_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT)
+            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             MessageBox.insert(
@@ -167,7 +167,7 @@ struct Popup_TopDomain_MatchExact_Previews: PreviewProvider {
 struct Popup_TopDomain_MatchWildcard_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD)
+            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             MessageBox.insert(
@@ -202,7 +202,7 @@ struct Popup_Subdomain_MatchNoOne_Previews: PreviewProvider {
 struct Popup_Subdomain_MatchExact_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT)
+            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
             PopupState.shared.rulesWildcardSelected = []
@@ -219,7 +219,7 @@ struct Popup_Subdomain_MatchExact_Previews: PreviewProvider {
 struct Popup_Subdomain_MatchWildcard_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD)
+            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
             PopupState.shared.rulesWildcardSelected = [0, 2]
