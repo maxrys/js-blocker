@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="12" cy="12" rx="7.5" ry="7.5"/>
+  <g>
+    <polyline style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round;" points="10.5 2.5 13.5 2.5"/>
+    <rect x="11.518" y="3.256" width="0.973" height="0.5" style="stroke-width: 1;"/>
+  </g>
+  <g>
+    <path d="M 11.178 12.807 C 10.733 12.351 10.742 11.631 11.199 11.186 C 11.47 10.92 11.844 10.808 12.203 10.879 L 16.255 11.634 C 16.693 11.713 16.687 12.249 16.254 12.335 L 12.309 13.113 C 11.893 13.193 11.474 13.11 11.178 12.807 Z" style=""/>
+    <path d="M 11.634 7.748 C 11.713 7.31 12.249 7.316 12.335 7.749 L 12.935 10.609 L 12.277 10.486 C 11.868 10.426 11.384 10.554 11.033 10.809 L 11.634 7.748 Z" style=""/>
+  </g>
+  <g>
+    <rect x="5.5" y="11.506" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5"/>
+    <rect x="5.5" y="11.506" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 12.0185, -4.978231)"/>
+    <rect x="4.463" y="11.5" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5" transform="matrix(0, 1, -1, 0, 24.003889, 1.037)"/>
+    <rect x="4.463" y="11.5" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5" transform="matrix(-0.707107, 0.707107, -0.707107, -0.707107, 28.258549, 12.728356)"/>
+    <rect x="17" y="11.506" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5"/>
+    <rect x="17" y="11.506" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 12.0185, -4.978231)"/>
+    <rect x="18" y="11.5" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5" transform="matrix(0, 1, -1, 0, 24.003889, -1)"/>
+    <rect x="18" y="11.5" width="1.537" height="1" style="stroke-width: 1;" rx="0.5" ry="0.5" transform="matrix(-0.707107, 0.707107, -0.707107, -0.707107, 29.698925, 11.28798)"/>
+  </g>
+</svg>

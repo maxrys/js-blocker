@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.3 #0006">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="0.6"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#0006"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="0" x2="640" y2="1600" id="gradient-1" gradientTransform="matrix(1, 0.000935, -0.000933, 1.002701, 0.000278, -4.92004)">
+      <stop offset="0" style="stop-color: rgb(212, 225, 255);"/>
+      <stop offset="1" style="stop-color: rgb(174, 193, 204);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="-4.322" x2="640" y2="1600" id="gradient-13" gradientTransform="matrix(0.905113, 0.425171, -0.428996, 0.913257, 421.522304, -297.958038)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05);"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="68.282" x2="640" y2="1600" id="gradient-14" gradientTransform="matrix(0.721682, 0.692225, -0.745288, 0.777003, 1234.324842, 50.869386)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="411.721" x2="640" y2="1600" id="gradient-15" gradientTransform="matrix(0.386046, -0.922479, 1.200052, 0.499868, -887.152754, 721.42345)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="640" y1="832.46" x2="640" y2="1600" id="gradient-16" gradientTransform="matrix(0.765344, 0.643622, -0.705663, 0.839119, 893.502101, -225.334959)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="355.435" y1="1415.511" x2="355.435" y2="1600" id="gradient-17">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-2" gradientTransform="matrix(0, -0.341332, 0.319997, 0, 19.127798, 204.185593)">
+      <stop offset="0" style="stop-color: rgb(230, 234, 243);"/>
+      <stop offset="1" style="stop-color: rgb(210, 215, 223);"/>
+    </linearGradient>
+    <mask id="mask-0">
+      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="53.312" y="110" width="27.188" height="77"/>
+    </mask>
+    <mask id="mask-1">
+      <rect width="400" height="800" style="fill: white; stroke-width: 1;"/>
+      <rect x="80" width="240" height="600" rx="19.5" ry="19.5" y="99" style="fill: black; stroke-width: 1;"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="464" y1="194" x2="464" y2="204" id="gradient-0" gradientTransform="matrix(5.217392, 0, 0, 1, -2220.866211, -2)">
+      <stop offset="0" style="stop-opacity: 0.2;"/>
+      <stop offset="1" style="stop-opacity: 0;"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(0.3125, 0, 0, 0.498653, 0, 2.155182)">
+    <rect width="1280" height="1604.32" style="filter: none; fill: url(&quot;#gradient-1&quot;);" y="-4.322"/>
+    <path style="fill: url(&quot;#gradient-13&quot;);" d="M 525.835 -4.322 L 0 -4.322 L 0 1600 L 1280 1600 L 1280 430.773 C 856.945 404.418 809.533 -4.322 525.835 -4.322 Z"/>
+    <path style="fill: url(&quot;#gradient-14&quot;);" d="M 0 60.128 L 0 1600 L 1280 1600 L 1280 743.578 C 1023.564 629.296 940.006 446.74 765.475 335.186 C 671.408 275.062 535.952 281.221 451.677 236.13 C 362.035 188.168 366.594 173.741 266.857 122.742 C 184.13 80.441 87.749 126.129 0 60.128 Z"/>
+    <path style="fill: url(&quot;#gradient-15&quot;);" d="M 0 431.073 L 0 1600 L 1280 1600 L 1280 804.411 C 760.053 523.401 452.746 771.609 0 431.073 Z"/>
+    <path style="fill: url(&quot;#gradient-16&quot;);" d="M 0 744.126 L 0 1600 L 1280 1600 L 1280 1447.736 C 888.534 1143.616 324.082 825.131 0 744.126 Z"/>
+    <path style="fill: url(&quot;#gradient-17&quot;);" d="M 0 1452.854 L 0 1600 L 713.673 1600 C 552.897 1541.214 74.299 1456.893 0 1452.854 Z"/>
+  </g>
+  <g>
+    <g>
+      <rect style="filter: url(&quot;#drop-shadow-filter-1&quot;); fill: red; mask: url(&quot;#mask-1&quot;); stroke-width: 1;" x="80" width="240" height="600" y="99" rx="19.5" ry="19.5"/>
+      <path d="M 79.563 115 L 88 115 L 88 182 L 79.563 182 C 79.563 165.25 58 156.408 58 148.5 C 58 140.555 79.563 131.75 79.563 115 Z" style="filter: none; stroke: rgb(189, 189, 190); mask: url(&quot;#mask-0&quot;); fill: url(&quot;#gradient-2&quot;); opacity: 0.6; stroke-width: 0.5px; transform-origin: 73px 148.5px;"/>
+      <rect style="stroke: rgb(189, 189, 190); stroke-width: 1; fill: rgba(228, 232, 238, 0.95);" x="80" width="240" height="600" y="99" rx="19.5" ry="19.5"/>
+    </g>
+    <g>
+      <path style="stroke-width: 1; fill: rgba(49, 68, 82, 0.82);" d="M 99.5 99 H 300.5 A 19.5 19.5 0 0 1 320 118.5 V 190 A 0 0 0 0 1 320 190 H 80 A 0 0 0 0 1 80 190 V 118.5 A 19.5 19.5 0 0 1 99.5 99 Z" bx:shape="rect 80 99 240 91 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@209d4f63"/>
+      <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="200" y="156.093">lifetime</text>
+    </g>
+    <g>
+      <rect x="80" y="192" width="240" height="122" style="fill: rgba(176, 179, 183, 0.35);"/>
+      <line style="fill: none; stroke-width: 2; stroke: rgb(216, 224, 236);" x1="80" y1="191" x2="320" y2="191"/>
+      <rect x="80" y="192" width="240" height="10" style="fill: url(&quot;#gradient-0&quot;);"/>
+      <rect x="139.5" y="232" width="121" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
+      <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; text-anchor: middle; white-space: pre;" x="200" y="267.925">unlimit</text>
+    </g>
+    <g>
+      <rect x="129.5" y="344" width="141" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
+      <rect x="120.5" y="410" width="159" height="52" style="fill: rgb(126, 70, 172);" rx="26" ry="26"/>
+      <rect x="143" y="476" width="114" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
+      <rect x="148" y="542" width="104" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
+      <rect x="139" y="608" width="122" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
+      <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; text-anchor: middle; white-space: pre;" transform="matrix(1, 0, 0, 1, -361.770996, -0.128127)"><tspan x="561.771" y="379.897">1 minute</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>5 minutes</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 hour</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 day</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 week</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -52,11 +52,11 @@
       <stop offset="0" style="stop-color: rgba(0, 0, 0, 0.05)"/>
       <stop offset="1" style="stop-color: rgba(0, 0, 0, 0);"/>
     </linearGradient>
-    <filter id="filter-5" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.4 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
-      <feOffset dx="0" dy="10"/>
+    <filter id="drop-shadow-filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 -1 15 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15"/>
+      <feOffset dx="0" dy="-1"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-12" type="linear" slope="0.8"/>
+        <feFuncA id="spread-ctrl-2" type="linear" slope="0.8"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -65,15 +65,15 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <mask id="mask-2">
-      <rect style="fill: white;" width="1400" height="1100"/>
-      <rect x="99" y="92.5" width="1202" height="915" rx="20" ry="20" style="fill: black;"/>
+    <mask id="mask-0">
+      <rect width="1200" height="450" style="fill: white;"/>
+      <rect style="fill: black" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
     </mask>
-    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 1 1 0.5 rgba(0,0,0,0.3)">
+    <filter id="drop-shadow-filter-0" bx:preset="drop-shadow 1 0 1 1 0.5 rgba(0,0,0,0.3)" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
       <feOffset dx="0" dy="1"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="spread-ctrl-2" type="linear" slope="1"/>
+        <feFuncA id="feFuncA-4" type="linear" slope="1"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -82,77 +82,17 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <clipPath id="clip-1">
-      <path style="filter: none; stroke-width: 1;" d="M 118.5 93 H 1281.5 A 19 19 0 0 1 1300.5 112 V 163 A 0 0 0 0 1 1300.5 163 H 99.5 A 0 0 0 0 1 99.5 163 V 112 A 19 19 0 0 1 118.5 93 Z" bx:shape="rect 99.5 93 1201 70 0 19 19 0 19 19 0 0 0 0 0 0 2@79d0f68a"/>
-    </clipPath>
-    <filter id="filter-15" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-13" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="filter-16" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-3" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="filter-17" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-14" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="spread-ctrl" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="filter-18" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.9 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-17" type="linear" slope="1.8"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="drop-shadow-filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 10 20 0.8 #00000080">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
-      <feOffset dx="0" dy="10"/>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem-border" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-toolbaritem" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
+    <filter id="filter-3" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 -1 15 0.8 #00000080">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15"/>
+      <feOffset dx="0" dy="-1"/>
       <feComponentTransfer result="offsetblur">
         <feFuncA id="feFuncA-5" type="linear" slope="1.6"/>
       </feComponentTransfer>
@@ -163,31 +103,23 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <mask id="mask-0">
-      <rect style="fill: white; stroke-width: 1;" width="1400" height="1100" x="-2" y="-7.5"/>
-      <rect style="fill: black; stroke-width: 1;" x="99" y="92.5" width="1202" height="915" rx="20" ry="20"/>
+    <mask id="mask-1">
+      <rect width="1200" height="450" style="fill: white;"/>
+      <rect style="fill: black" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
     </mask>
-    <filter id="filter-6" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 2 0 1 #000">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0"/>
-      <feOffset dx="0" dy="2"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-6" type="linear" slope="2"/>
-      </feComponentTransfer>
-      <feFlood flood-color="#000"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <clipPath id="clip-0">
-      <path style="filter: none; stroke-width: 1;" d="M 119 93.5 H 1281 A 19 19 0 0 1 1300 112.5 V 163.5 A 0 0 0 0 1 1300 163.5 H 100 A 0 0 0 0 1 100 163.5 V 112.5 A 19 19 0 0 1 119 93.5 Z" bx:shape="rect 100 93.5 1200 70 0 19 19 0 19 19 0 0 0 0 0 0 2@be9624a6"/>
-    </clipPath>
-    <filter id="filter-4" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-1" gradientTransform="matrix(3.192264, 0, 0, 3.192264, -12.553222, -8.338209)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="5.729" y1="2.612" x2="5.729" y2="12.637" id="gradient-2" gradientTransform="matrix(1.420133, 0, 0, 1.444835, -2.406938, -2.935051)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
+    <filter id="filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
       <feOffset dx="0" dy="0"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-4" type="linear" slope="1.6"/>
+        <feFuncA id="feFuncA-1" type="linear" slope="0.8"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -196,11 +128,30 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="filter-3" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-7" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 442.535828, 98.686217)">
+      <stop offset="0" style="stop-color: rgb(230, 234, 243);"/>
+      <stop offset="1" style="stop-color: rgb(210, 215, 223);"/>
+    </linearGradient>
+    <mask id="mask-3">
+      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="478.5" y="4.5" width="29" height="77"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-9" gradientTransform="matrix(1.799979, -0.006948, 0.008349, 1.499999, 320.003357, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-11" gradientTransform="matrix(1.799979, -0.006948, 0.008349, 1.499999, 320.003357, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-13" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1257.020874)">
+      <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
+    <filter id="filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
       <feOffset dx="0" dy="0"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-7" type="linear" slope="1.6"/>
+        <feFuncA id="feFuncA-2" type="linear" slope="0.8"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -209,48 +160,28 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-2" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="filter-7" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.8 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-18" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 2 0.9 rgba(0,0,0,0.3)">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-1" type="linear" slope="1.8"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="146.926" y1="124.054" x2="146.926" y2="191.054" id="gradient-5" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 442.535524, 98.687096)">
+      <stop offset="0" style="stop-color: rgb(56, 51, 63);"/>
+      <stop offset="1" style="stop-color: rgb(36, 33, 42);"/>
+    </linearGradient>
+    <mask id="mask-4">
+      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="479" y="4.5" width="29" height="77"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-6" gradientTransform="matrix(1.799979, -0.006948, 0.008349, 1.499999, 320.003357, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-10" gradientTransform="matrix(1.799979, -0.006948, 0.008349, 1.499999, 320.003357, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-14" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1257.020874)">
+      <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
+      <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
+    </linearGradient>
   </defs>
   <g>
-    <g transform="matrix(1, 0, 0, 0.997306, 0.000003, 4.310408)">
+    <g transform="matrix(1, 0, 0, 0.997306, 0.000001, 4.310371)">
       <rect width="1280" height="1604.32" style="filter: none; fill: url(&quot;#gradient-22&quot;);" y="-4.322"/>
       <path style="fill: url(&quot;#gradient-23&quot;);" d="M 525.835 -4.322 L 0 -4.322 L 0 1600 L 1280 1600 L 1280 430.773 C 856.945 404.418 809.533 -4.322 525.835 -4.322 Z"/>
       <path style="fill: url(&quot;#gradient-24&quot;);" d="M 0 60.128 L 0 1600 L 1280 1600 L 1280 743.578 C 1023.564 629.296 940.006 446.74 765.475 335.186 C 671.408 275.062 535.952 281.221 451.677 236.13 C 362.035 188.168 366.594 173.741 266.857 122.742 C 184.13 80.441 87.749 126.129 0 60.128 Z"/>
@@ -258,7 +189,7 @@
       <path style="fill: url(&quot;#gradient-26&quot;);" d="M 0 744.126 L 0 1600 L 1280 1600 L 1280 1447.736 C 888.534 1143.616 324.082 825.131 0 744.126 Z"/>
       <path style="fill: url(&quot;#gradient-27&quot;);" d="M 0 1452.854 L 0 1600 L 713.673 1600 C 552.897 1541.214 74.299 1456.893 0 1452.854 Z"/>
     </g>
-    <g transform="matrix(1, 0, 0, 0.997306, 1280, 4.310278)">
+    <g transform="matrix(1, 0, 0, 0.997306, 1280, 4.310241)">
       <rect width="1280" height="1604.32" style="filter: none; fill: url(&quot;#gradient-28&quot;);" y="-4.322"/>
       <path style="fill: url(&quot;#gradient-29&quot;);" d="M 525.835 -4.322 L 0 -4.322 L 0 1600 L 1280 1600 L 1280 430.773 C 856.945 404.418 809.533 -4.322 525.835 -4.322 Z"/>
       <path style="fill: url(&quot;#gradient-30&quot;);" d="M 0 60.128 L 0 1600 L 1280 1600 L 1280 743.578 C 1023.564 629.296 940.006 446.74 765.475 335.186 C 671.408 275.062 535.952 281.221 451.677 236.13 C 362.035 188.168 366.594 173.741 266.857 122.742 C 184.13 80.441 87.749 126.129 0 60.128 Z"/>
@@ -267,158 +198,222 @@
       <path style="fill: url(&quot;#gradient-33&quot;);" d="M 0 1452.854 L 0 1600 L 713.673 1600 C 552.897 1541.214 74.299 1456.893 0 1452.854 Z"/>
     </g>
   </g>
-  <g transform="matrix(0.948419, 0, 0, 0.948419, -25.790201, 271.256439)">
-    <g>
-      <rect style="fill: rgb(234, 112, 112); stroke-width: 1; filter: url(&quot;#filter-5&quot;); mask: url(&quot;#mask-2&quot;);" x="99" y="92.5" width="1202" height="915" rx="20" ry="20"/>
-      <rect style="filter: none; stroke: rgb(94, 98, 100); stroke-width: 1; fill: rgb(242, 243, 244);" x="99" y="92.5" width="1202" height="915" rx="20" ry="20"/>
-    </g>
-    <g>
-      <path style="fill: rgb(250, 250, 250); filter: url(&quot;#drop-shadow-filter-1&quot;); stroke-width: 1; clip-path: url(&quot;#clip-1&quot;);" d="M 119 93 H 1281 A 19.5 19.5 0 0 1 1300.5 112.5 V 150 A 0 0 0 0 1 1300.5 150 H 99.5 A 0 0 0 0 1 99.5 150 V 112.5 A 19.5 19.5 0 0 1 119 93 Z" bx:shape="rect 99.5 93 1201 57 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@111c30b0"/>
+  <g>
+    <g transform="matrix(1, 0, 0, 1, 178.999969, -27.067997)">
       <g>
-        <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56); filter: none; stroke-width: 1;" cx="128" cy="122.146" rx="12" ry="12"/>
-        <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28); filter: none; stroke-width: 1;" cx="168" cy="122.146" rx="12" ry="12"/>
-        <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45); filter: none; stroke-width: 1;" cx="208" cy="122.146" rx="12" ry="12"/>
-      </g>
-      <text style="fill: rgb(74, 74, 74); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, 86.321892, -4.417633)"><tspan x="544.678" y="134.145">JS Blocker</tspan><tspan x="544.678" dy="1em">​</tspan></text>
-    </g>
-    <text style="fill: rgb(37, 37, 37); font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; white-space: pre; stroke-width: 1;" x="416.18" y="233.362">Domains where JavaScript is allowed</text>
-    <g>
-      <rect x="141" y="279.5" width="1118" height="119.726" style="stroke-width: 1; fill: rgb(230, 231, 232);" rx="19.283" ry="19.283"/>
-      <g>
-        <rect style="fill: rgb(255, 255, 255); stroke-width: 1; filter: url(&quot;#filter-15&quot;);" x="173" y="311.5" width="735" height="56" rx="10" ry="10"/>
-        <path d="M 186 337.302 C 186 335.951 186.254 334.683 186.762 333.499 C 187.269 332.316 187.974 331.275 188.874 330.374 C 189.775 329.473 190.817 328.768 192 328.261 C 193.184 327.753 194.451 327.5 195.802 327.5 C 197.152 327.5 198.42 327.753 199.603 328.261 C 200.787 328.768 201.828 329.473 202.728 330.374 C 203.629 331.275 204.334 332.316 204.841 333.499 C 205.349 334.683 205.603 335.951 205.603 337.302 C 205.603 338.423 205.425 339.488 205.068 340.495 C 204.712 341.502 204.219 342.415 203.588 343.233 L 209.595 349.277 C 209.725 349.408 209.826 349.559 209.895 349.731 C 209.964 349.903 210 350.088 210 350.284 C 210 350.553 209.94 350.799 209.821 351.021 C 209.703 351.241 209.537 351.416 209.324 351.543 C 209.112 351.669 208.866 351.732 208.588 351.732 C 208.391 351.732 208.204 351.698 208.028 351.629 C 207.852 351.559 207.691 351.455 207.543 351.316 L 201.5 345.26 C 200.699 345.833 199.813 346.283 198.848 346.611 C 197.881 346.938 196.866 347.102 195.802 347.102 C 194.451 347.102 193.184 346.848 192 346.341 C 190.817 345.833 189.775 345.128 188.874 344.228 C 187.974 343.328 187.269 342.285 186.762 341.102 C 186.254 339.92 186 338.651 186 337.302 Z M 188.1 337.302 C 188.1 338.365 188.299 339.362 188.696 340.292 C 189.093 341.221 189.646 342.038 190.354 342.742 C 191.062 343.447 191.881 344 192.811 344.4 C 193.74 344.801 194.737 345.002 195.802 345.002 C 196.866 345.002 197.863 344.801 198.792 344.4 C 199.722 344 200.539 343.447 201.242 342.742 C 201.947 342.038 202.5 341.221 202.9 340.292 C 203.302 339.362 203.503 338.365 203.503 337.302 C 203.503 336.237 203.302 335.24 202.9 334.311 C 202.5 333.381 201.947 332.562 201.242 331.854 C 200.539 331.146 199.722 330.593 198.792 330.196 C 197.863 329.798 196.866 329.6 195.802 329.6 C 194.737 329.6 193.74 329.798 192.811 330.196 C 191.881 330.593 191.062 331.146 190.354 331.854 C 189.646 332.562 189.093 333.381 188.696 334.311 C 188.299 335.24 188.1 336.237 188.1 337.302 Z" style="text-wrap-mode: nowrap; stroke-width: 1; fill-opacity: 0.3;"/>
-        <text style="fill: rgb(51, 51, 51); fill-opacity: 0.3; font-family: Arial; font-size: 21px; white-space: pre; stroke-width: 1;" x="221.023" y="347.552">Search</text>
-      </g>
-      <g style="opacity: 0.5;">
-        <rect style="stroke-width: 1; fill: rgba(0, 0, 0, 0.11); filter: url(&quot;#filter-16&quot;);" x="950" y="311.5" width="80" height="40" rx="10" ry="10"/>
-        <path d="M 982.55 346.058 C 981.2 346.058 980.21 345.725 979.54 345.056 C 978.86 344.386 978.5 343.379 978.5 342.043 L 978.5 329.253 C 978.5 327.913 978.86 326.91 979.54 326.24 C 980.21 325.57 981.2 325.232 982.55 325.232 L 986.53 325.232 L 986.53 327.322 L 982.58 327.322 C 981.95 327.322 981.44 327.49 981.12 327.831 C 980.74 328.176 980.59 328.682 980.59 329.353 L 980.59 341.936 C 980.59 342.612 980.74 343.12 981.12 343.46 C 981.44 343.801 981.95 343.974 982.58 343.974 L 997.4 343.974 C 998.03 343.974 998.54 343.801 998.87 343.46 C 999.25 343.12 999.41 342.612 999.41 341.936 L 999.41 329.353 C 999.41 328.682 999.25 328.176 998.87 327.831 C 998.54 327.49 998.03 327.322 997.4 327.322 L 993.45 327.322 L 993.45 325.232 L 997.45 325.232 C 998.8 325.232 999.79 325.57 1000.46 326.24 C 1001.15 326.91 1001.5 327.913 1001.5 329.253 L 1001.5 342.043 C 1001.5 343.379 1001.15 344.386 1000.46 345.056 C 999.79 345.725 998.8 346.058 997.45 346.058 L 982.55 346.058 Z M 989.99 335.901 C 989.71 335.901 989.46 335.799 989.27 335.603 C 989.07 335.4 988.95 335.168 988.95 334.9 L 988.95 321.712 L 989.04 319.781 L 988.3 320.541 L 986.31 322.679 C 986.14 322.887 985.9 322.993 985.59 322.993 C 985.31 322.993 985.1 322.909 984.93 322.732 C 984.77 322.563 984.66 322.344 984.66 322.083 C 984.66 321.834 984.79 321.606 984.99 321.397 L 989.22 317.275 C 989.4 317.148 989.5 317.061 989.64 317.013 C 989.73 316.966 989.88 316.941 989.99 316.941 C 990.13 316.941 990.27 316.966 990.36 317.013 C 990.5 317.061 990.6 317.148 990.76 317.275 L 995.01 321.397 C 995.2 321.606 995.33 321.834 995.33 322.083 C 995.33 322.344 995.21 322.563 995.05 322.732 C 994.88 322.909 994.66 322.993 994.37 322.993 C 994.08 322.993 993.84 322.887 993.67 322.679 L 991.7 320.541 L 990.96 319.781 L 991.05 321.712 L 991.05 334.9 C 991.05 335.168 990.93 335.4 990.73 335.603 C 990.54 335.799 990.3 335.901 989.99 335.901 Z" style="text-wrap-mode: nowrap; stroke-width: 1;"/>
-        <text style="fill: rgb(143, 143, 143); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; stroke-width: 1;" x="964.987" y="374.869">export</text>
+        <rect style="mask: url(&quot;#mask-0&quot;); filter: url(&quot;#drop-shadow-filter-2&quot;); fill: rgb(255, 0, 0);" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
+        <rect style="fill: rgb(255, 255, 255); stroke: rgb(94, 98, 100); fill-opacity: 0.3;" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
       </g>
       <g>
-        <rect style="fill: rgb(255, 255, 255); stroke-width: 1; filter: url(&quot;#filter-17&quot;);" x="1050" y="311.5" width="80" height="40" rx="10" ry="10"/>
-        <path d="M 1082.24 345.961 C 1080.83 345.961 1079.77 345.611 1079.07 344.914 C 1078.35 344.215 1078 343.166 1078 341.77 L 1078 328.424 C 1078 327.027 1078.35 325.978 1079.07 325.28 C 1079.77 324.581 1080.83 324.232 1082.24 324.232 L 1086.38 324.232 L 1086.38 326.409 L 1082.27 326.409 C 1081.6 326.409 1081.08 326.587 1080.72 326.942 C 1080.35 327.299 1080.18 327.828 1080.18 328.532 L 1080.18 341.661 C 1080.18 342.364 1080.35 342.895 1080.72 343.251 C 1081.08 343.607 1081.6 343.785 1082.27 343.785 L 1097.72 343.785 C 1098.38 343.785 1098.9 343.607 1099.27 343.251 C 1099.64 342.895 1099.82 342.364 1099.82 341.661 L 1099.82 328.532 C 1099.82 327.828 1099.64 327.299 1099.27 326.942 C 1098.9 326.587 1098.38 326.409 1097.72 326.409 L 1093.6 326.409 L 1093.6 324.232 L 1097.76 324.232 C 1099.17 324.232 1100.23 324.581 1100.93 325.28 C 1101.65 325.978 1102 327.027 1102 328.424 L 1102 341.77 C 1102 343.166 1101.65 344.215 1100.93 344.914 C 1100.23 345.611 1099.17 345.961 1097.76 345.961 L 1082.24 345.961 Z M 1089.99 317.038 C 1090.29 317.038 1090.55 317.142 1090.75 317.35 C 1090.97 317.557 1091.08 317.8 1091.08 318.08 L 1091.08 331.831 L 1090.99 333.859 L 1091.76 333.061 L 1093.83 330.83 C 1094.02 330.614 1094.27 330.506 1094.56 330.506 C 1094.85 330.506 1095.08 330.596 1095.27 330.777 C 1095.45 330.956 1095.55 331.182 1095.55 331.452 C 1095.55 331.714 1095.44 331.953 1095.24 332.169 L 1090.78 336.468 C 1090.64 336.604 1090.52 336.697 1090.39 336.746 C 1090.27 336.796 1090.13 336.821 1089.99 336.821 C 1089.87 336.821 1089.73 336.796 1089.61 336.746 C 1089.48 336.697 1089.36 336.604 1089.21 336.468 L 1084.76 332.169 C 1084.55 331.953 1084.44 331.714 1084.44 331.452 C 1084.44 331.182 1084.53 330.956 1084.71 330.777 C 1084.9 330.596 1085.13 330.506 1085.41 330.506 C 1085.72 330.506 1085.96 330.614 1086.15 330.83 L 1088.24 333.061 L 1089.01 333.859 L 1088.93 331.831 L 1088.93 318.08 C 1088.93 317.8 1089.03 317.557 1089.25 317.35 C 1089.45 317.142 1089.71 317.038 1089.99 317.038 Z" style="text-wrap-mode: nowrap; stroke-width: 1;"/>
-        <text style="fill: rgb(143, 143, 143); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; stroke-width: 1;" x="1065" y="374.869">import</text>
-      </g>
-      <g>
-        <rect style="filter: url(&quot;#drop-shadow-filter-0&quot;); fill: rgb(255, 255, 255); stroke-width: 1;" x="1150" y="311.5" width="80" height="40" rx="10" ry="10"/>
-        <path d="M 1176.56 342.352 L 1178.34 344.147 C 1179.33 345.144 1180.47 345.085 1181.51 343.912 L 1195.33 328.384 L 1194.21 327.268 L 1180.49 342.678 C 1180.08 343.124 1179.7 343.24 1179.18 342.703 L 1177.99 341.533 C 1177.47 341.007 1177.59 340.635 1178.04 340.213 L 1193.41 326.054 L 1192.29 324.952 L 1176.79 339.21 C 1175.66 340.26 1175.58 341.368 1176.56 342.352 Z M 1186.78 320.162 C 1186.3 320.62 1186.27 321.269 1186.53 321.716 C 1186.79 322.118 1187.33 322.394 1188.03 322.221 C 1189.36 321.836 1190.91 321.679 1192.33 322.432 L 1191.73 324.049 C 1191.36 324.968 1191.55 325.621 1192.13 326.2 L 1194.45 328.548 C 1194.98 329.087 1195.48 329.105 1196.06 328.994 L 1197.07 328.824 L 1197.66 329.409 L 1197.62 329.92 C 1197.6 330.434 1197.74 330.892 1198.25 331.386 L 1199.02 332.152 C 1199.54 332.676 1200.27 332.721 1200.8 332.195 L 1203.75 329.231 C 1204.27 328.69 1204.24 327.996 1203.72 327.472 L 1202.94 326.694 C 1202.44 326.202 1202.01 326.009 1201.49 326.047 L 1200.95 326.096 L 1200.4 325.544 L 1200.63 324.473 C 1200.77 323.846 1200.57 323.342 1199.98 322.737 L 1197.42 320.2 C 1194.46 317.276 1189.3 317.682 1186.78 320.162 Z M 1188.4 320.634 C 1190.4 319.171 1194.31 319.335 1196.06 321.083 L 1198.86 323.854 C 1199.1 324.088 1199.14 324.273 1199.07 324.611 L 1198.74 326.12 L 1200.27 327.654 L 1201.28 327.6 C 1201.53 327.586 1201.61 327.607 1201.82 327.789 L 1202.39 328.362 L 1199.93 330.828 L 1199.36 330.255 C 1199.16 330.061 1199.12 329.971 1199.14 329.708 L 1199.2 328.722 L 1197.68 327.197 L 1196.13 327.465 C 1195.8 327.531 1195.66 327.5 1195.41 327.256 L 1193.37 325.235 C 1193.13 324.993 1193.12 324.834 1193.26 324.465 L 1194.31 321.858 C 1192.9 320.404 1190.42 320.14 1188.47 320.805 C 1188.33 320.867 1188.27 320.72 1188.4 320.634 Z" style="stroke-width: 1;"/>
-        <text style="fill: rgb(143, 143, 143); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; stroke-width: 1;" x="1166.99" y="374.869">install</text>
+        <path style="fill: rgb(243, 243, 243); filter: url(&quot;#drop-shadow-filter-0&quot;);" d="M 145 102.5 H 1055 A 19.5 19.5 0 0 1 1074.5 122 V 206.5 A 0 0 0 0 1 1074.5 206.5 H 125.5 A 0 0 0 0 1 125.5 206.5 V 122 A 19.5 19.5 0 0 1 145 102.5 Z" bx:shape="rect 125.5 102.5 949 104 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@94365771"/>
+        <g>
+          <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
+          <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
+          <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
+          <path d="M 324 139 L 356 139 C 356.757 139.044 357.633 139.391 358.121 139.879 C 358.609 140.367 358.956 141.244 359 142 L 359 164 C 358.956 164.757 358.609 165.633 358.121 166.121 C 357.633 166.609 356.756 166.956 356 167 L 324 167 C 323.243 166.956 322.367 166.609 321.879 166.121 C 321.391 165.633 321.044 164.756 321 164 L 321 142 C 321.044 141.243 321.391 140.367 321.879 139.879 C 322.367 139.391 323.244 139.044 324 139 Z M 323.293 141.293 C 323.057 141.529 322.956 141.652 323 142 L 323 164 C 322.956 164.348 323.057 164.471 323.293 164.707 C 323.529 164.943 323.652 165.044 324 165 L 334 165 L 334 141 L 324 141 C 323.652 140.956 323.529 141.057 323.293 141.293 Z M 356 165 C 356.348 165.044 356.471 164.943 356.707 164.707 C 356.943 164.471 357.044 164.348 357 164 L 357 142 C 357.044 141.652 356.943 141.529 356.707 141.293 C 356.471 141.057 356.348 140.956 356 141 L 336 141 L 336 165 Z M 325 146 C 325 145.448 325.448 145 326 145 L 331 145 C 331.552 145 332 145.448 332 146 C 332 146.552 331.552 147 331 147 L 326 147 C 325.448 147 325 146.552 325 146 Z M 325 150 C 325 149.448 325.448 149 326 149 L 331 149 C 331.552 149 332 149.448 332 150 C 332 150.552 331.552 151 331 151 L 326 151 C 325.448 151 325 150.552 325 150 Z M 325 154 C 325 153.448 325.448 153 326 153 L 331 153 C 331.552 153 332 153.448 332 154 C 332 154.552 331.552 155 331 155 L 326 155 C 325.448 155 325 154.552 325 154 Z" style="fill: rgb(130, 130, 134);"/>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; stroke: rgb(230, 230, 230); fill: rgb(243, 243, 243);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
+          <path d="M 388.439 150.439 C 387.853 151.025 387.853 151.975 388.439 152.56 L 393.439 157.56 C 394.025 158.146 394.975 158.146 395.56 157.56 L 400.56 152.56 C 401.146 151.974 401.146 151.024 400.56 150.439 C 399.974 149.853 399.024 149.853 398.439 150.439 L 394.5 154.378 L 390.561 150.439 C 389.975 149.853 389.025 149.853 388.44 150.439 Z" style="fill: rgb(130, 130, 134);"/>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; fill: rgb(243, 243, 243); stroke: rgb(213, 213, 213);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
+          <g transform="matrix(1.1875, 0, 0, 1.1875, 441, 135)">
+            <path d="M 16.01 0 C 20.281 0 24.468 1.895 27.287 4.717 C 30.106 7.538 32 11.73 32 16.01 C 32 20.281 30.101 24.468 27.278 27.287 C 24.455 30.106 20.264 32 15.99 32 C 11.719 32 7.533 30.105 4.714 27.286 C 1.895 24.467 0 20.281 0 16.01 C 0 11.729 1.898 7.537 4.721 4.716 C 7.545 1.894 11.736 0 16.01 0 Z M 6.842 6.838 C 4.392 9.286 3 12.349 3 16.01 C 3 19.661 4.389 22.72 6.835 25.165 C 9.28 27.611 12.339 29 15.99 29 C 19.645 29 22.709 27.61 25.159 25.164 C 27.608 22.719 29 19.661 29 16.01 C 29 12.348 27.61 9.285 25.165 6.837 C 22.719 4.389 19.661 3 16.01 3 C 12.355 3 9.291 4.39 6.842 6.838 Z" style="fill: url(&quot;#gradient-toolbaritem-border&quot;);"/>
+            <text style="fill: url(&quot;#gradient-toolbaritem&quot;); font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre;" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)"><tspan x="4" y="10.924">J</tspan><tspan style="font-size: 7.24138px; line-height: 12.3103px;" dx="-0.304">s</tspan></text>
+          </g>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; stroke: rgb(213, 213, 213); fill: rgb(255, 255, 255);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
+          <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; white-space: pre; text-anchor: middle;" x="756" y="161.852">subdomain.example.com</text>
+        </g>
       </g>
     </g>
-    <g>
+    <g style="filter: url(&quot;#filter-1&quot;);" transform="matrix(1, 0, 0, 1, 140.000015, 130.067963)">
       <g>
-        <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 20px; white-space: pre;" x="157.408" y="475.902">domain name</text>
-        <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 0.4px; white-space: pre;" x="1067.47" y="475.902">wildcard</text>
-        <line style="stroke-width: 2; stroke: rgb(187, 187, 187); fill: none;" x1="142" y1="495.501" x2="1258" y2="495.501"/>
+        <rect style="fill: rgb(227, 232, 238); filter: none; stroke: rgb(189, 189, 190); stroke-width: 2px;" x="50" width="900" height="1345" rx="19.5" ry="19.5" y="50"/>
+        <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; stroke: rgb(189, 189, 190); stroke-width: 2px; transform-origin: 500px 43px; fill: url(&quot;#gradient-7&quot;); mask: url(&quot;#mask-3&quot;);" transform="matrix(0, 1, -1, 0, -0.000001, 0)"/>
       </g>
       <g>
-        <rect x="142" y="496.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(244, 244, 245);"/>
-        <rect x="142" y="544.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(255, 255, 254);"/>
-        <rect x="142" y="592.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(244, 244, 245);"/>
-        <rect x="142" y="640.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(255, 255, 254);"/>
-        <rect x="142" y="688.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(244, 244, 245);"/>
-        <rect x="142" y="736.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(255, 255, 254);"/>
-        <rect x="142" y="784.5" width="1116" height="48" style="stroke-width: 1; fill: rgb(244, 244, 245);"/>
+        <g>
+          <path style="fill: rgb(62, 145, 22);" d="M 69.5 50.5 H 930.5 A 18.5 18.5 0 0 1 949 69 V 125.5 A 0 0 0 0 1 949 125.5 H 51 A 0 0 0 0 1 51 125.5 V 69 A 18.5 18.5 0 0 1 69.5 50.5 Z" bx:shape="rect 51 50.5 898 75 0 18.5 18.5 0 18.5 18.5 0 0 0 0 0 0 2@b3585c34"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre; text-anchor: middle;" transform="matrix(1, 0, 0, 1, 226.708984, -53.611458)" x="273.2909851074219" y="152.7239990234375">Wildcard rules for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        </g>
+        <g>
+          <rect style="fill: rgb(93, 163, 62);" x="51" y="125.5" width="898" height="124"/>
+          <g>
+            <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre; text-anchor: middle;" transform="matrix(1, 0, 0, 1, 226.709015, 26.73229)"><tspan x="273.291" y="152.724">sub3.sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+            <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre; text-anchor: middle;" transform="matrix(1, 0, 0, 1, 226.709, 65.024269)"><tspan x="273.291" y="152.724">sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+          </g>
+        </g>
       </g>
       <g>
-        <line style="stroke-width: 2; stroke: rgb(255, 255, 255); fill: none;" x1="1028" y1="496.5" x2="1028" y2="831.5"/>
-        <line style="stroke-width: 2; stroke: rgb(255, 255, 255); fill: none;" x1="1183" y1="496.5" x2="1183" y2="831.501"/>
+        <path d="M 900.566 325 L 904.432 325 C 905.553 325 906.338 324.344 906.618 323.278 L 907.739 318.493 C 908.635 318.192 909.475 317.864 910.261 317.482 L 914.463 320.052 C 915.304 320.599 916.368 320.516 917.098 319.777 L 919.842 317.071 C 920.571 316.333 920.683 315.212 920.067 314.311 L 917.546 310.156 C 917.938 309.389 918.273 308.542 918.498 307.749 L 923.376 306.6 C 924.379 306.354 925 305.562 925 304.441 L 925 300.667 C 925 299.601 924.379 298.809 923.376 298.562 L 918.554 297.387 C 918.273 296.458 917.881 295.638 917.6 294.954 L 920.122 290.716 C 920.683 289.788 920.627 288.776 919.899 288.009 L 917.098 285.303 C 916.368 284.62 915.416 284.429 914.519 284.976 L 910.261 287.601 C 909.533 287.217 908.691 286.889 907.739 286.589 L 906.618 281.722 C 906.338 280.656 905.553 280 904.432 280 L 900.566 280 C 899.502 280 898.716 280.656 898.436 281.722 L 897.314 286.533 C 896.419 286.834 895.522 287.163 894.793 287.572 L 890.535 284.976 C 889.639 284.429 888.686 284.566 887.9 285.303 L 885.155 288.009 C 884.371 288.776 884.371 289.788 884.931 290.716 L 887.453 294.954 C 887.173 295.638 886.78 296.458 886.5 297.387 L 881.736 298.562 C 880.673 298.809 880 299.601 880 300.667 L 880 304.441 C 880 305.562 880.673 306.354 881.736 306.6 L 886.556 307.749 C 886.78 308.542 887.117 309.389 887.509 310.156 L 884.988 314.311 C 884.371 315.212 884.483 316.333 885.211 317.071 L 887.9 319.777 C 888.686 320.516 889.75 320.599 890.647 320.052 L 894.793 317.482 C 895.579 317.864 896.419 318.192 897.314 318.493 L 898.436 323.278 C 898.716 324.344 899.502 325 900.566 325 Z M 902.527 310.017 C 898.38 310.017 895.018 306.628 895.018 302.5 C 895.018 298.371 898.38 294.982 902.527 294.982 C 906.674 294.982 910.036 298.371 910.036 302.5 C 910.036 306.628 906.674 310.017 902.527 310.017 Z" style="fill: rgb(210, 220, 228);"/>
       </g>
       <g>
-        <text style="font-family: Arial, sans-serif; font-size: 27px; white-space: pre; stroke-width: 1;" x="157.408" y="530.256">example.com</text>
-        <text style="font-family: Arial, sans-serif; font-size: 27px; white-space: pre; stroke-width: 1;" x="1084.74" y="530.256">yes</text>
+        <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="341.283">JavaScript on the Domain</text>
+        <g>
+          <rect style="fill: rgb(255, 255, 255);" x="110" y="371.216" width="780" height="86" rx="22" ry="22"/>
+          <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; opacity: 0.5; text-anchor: middle;" x="500" y="423.301">sub3.sub2.sub1.example.com</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 199.216003)" style="opacity: 0.5;">
+          <rect width="360" height="75" x="320" y="285" style="fill: url(&quot;#gradient-9&quot;);" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
+        </g>
       </g>
       <g>
-        <path d="M 1221 530.5 C 1219.48 530.5 1218.06 530.214 1216.73 529.643 C 1215.4 529.07 1214.23 528.282 1213.22 527.274 C 1212.22 526.269 1211.43 525.1 1210.86 523.77 C 1210.29 522.44 1210 521.017 1210 519.5 C 1210 517.983 1210.29 516.56 1210.86 515.23 C 1211.43 513.9 1212.22 512.729 1213.22 511.72 C 1214.23 510.709 1215.4 509.919 1216.73 509.352 C 1218.06 508.784 1219.48 508.5 1221 508.5 C 1222.52 508.5 1223.94 508.784 1225.27 509.352 C 1226.6 509.919 1227.77 510.709 1228.78 511.72 C 1229.78 512.729 1230.57 513.9 1231.14 515.23 C 1231.71 516.56 1232 517.983 1232 519.5 C 1232 521.017 1231.71 522.44 1231.14 523.77 C 1230.57 525.1 1229.78 526.269 1228.78 527.274 C 1227.77 528.282 1226.6 529.07 1225.27 529.643 C 1223.94 530.214 1222.52 530.5 1221 530.5 Z M 1221 528.667 C 1222.27 528.667 1223.45 528.429 1224.56 527.956 C 1225.67 527.48 1226.64 526.823 1227.48 525.982 C 1228.32 525.14 1228.98 524.165 1229.46 523.059 C 1229.93 521.952 1230.17 520.765 1230.17 519.5 C 1230.17 518.235 1229.93 517.047 1229.46 515.935 C 1228.98 514.824 1228.32 513.851 1227.48 513.012 C 1226.64 512.176 1225.67 511.52 1224.56 511.044 C 1223.45 510.571 1222.27 510.333 1221 510.333 C 1219.73 510.333 1218.55 510.571 1217.44 511.044 C 1216.33 511.52 1215.36 512.176 1214.52 513.012 C 1213.68 513.851 1213.02 514.824 1212.55 515.935 C 1212.07 517.047 1211.83 518.235 1211.83 519.5 C 1211.83 520.765 1212.07 521.952 1212.55 523.059 C 1213.02 524.165 1213.68 525.14 1214.52 525.982 C 1215.36 526.823 1216.33 527.48 1217.44 527.956 C 1218.55 528.429 1219.73 528.667 1221 528.667 Z M 1216.48 524.936 C 1216.24 525.049 1216.03 525.074 1215.85 525.01 C 1215.66 524.945 1215.54 524.822 1215.48 524.639 C 1215.41 524.455 1215.44 524.245 1215.55 524.007 L 1218.57 517.817 C 1218.75 517.464 1219 517.213 1219.32 517.063 L 1225.49 514.054 C 1225.87 513.874 1226.16 513.893 1226.38 514.108 C 1226.59 514.323 1226.6 514.615 1226.42 514.981 L 1223.42 521.161 C 1223.24 521.498 1222.99 521.747 1222.67 521.904 L 1216.48 524.936 Z M 1221 520.827 C 1221.36 520.827 1221.67 520.698 1221.93 520.438 C 1222.19 520.179 1222.32 519.867 1222.32 519.5 C 1222.32 519.134 1222.19 518.822 1221.93 518.567 C 1221.67 518.312 1221.36 518.184 1221 518.184 C 1220.63 518.184 1220.32 518.312 1220.06 518.567 C 1219.8 518.822 1219.67 519.134 1219.67 519.5 C 1219.67 519.867 1219.8 520.179 1220.06 520.438 C 1220.32 520.698 1220.63 520.827 1221 520.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
-        <path d="M 1221 578.5 C 1219.48 578.5 1218.06 578.214 1216.73 577.643 C 1215.4 577.07 1214.23 576.282 1213.22 575.274 C 1212.22 574.269 1211.43 573.1 1210.86 571.77 C 1210.29 570.44 1210 569.017 1210 567.5 C 1210 565.983 1210.29 564.56 1210.86 563.23 C 1211.43 561.9 1212.22 560.729 1213.22 559.72 C 1214.23 558.709 1215.4 557.919 1216.73 557.352 C 1218.06 556.784 1219.48 556.5 1221 556.5 C 1222.52 556.5 1223.94 556.784 1225.27 557.352 C 1226.6 557.919 1227.77 558.709 1228.78 559.72 C 1229.78 560.729 1230.57 561.9 1231.14 563.23 C 1231.71 564.56 1232 565.983 1232 567.5 C 1232 569.017 1231.71 570.44 1231.14 571.77 C 1230.57 573.1 1229.78 574.269 1228.78 575.274 C 1227.77 576.282 1226.6 577.07 1225.27 577.643 C 1223.94 578.214 1222.52 578.5 1221 578.5 Z M 1221 576.667 C 1222.27 576.667 1223.45 576.429 1224.56 575.956 C 1225.67 575.48 1226.64 574.823 1227.48 573.982 C 1228.32 573.14 1228.98 572.165 1229.46 571.059 C 1229.93 569.952 1230.17 568.765 1230.17 567.5 C 1230.17 566.235 1229.93 565.047 1229.46 563.935 C 1228.98 562.824 1228.32 561.851 1227.48 561.012 C 1226.64 560.176 1225.67 559.52 1224.56 559.044 C 1223.45 558.571 1222.27 558.333 1221 558.333 C 1219.73 558.333 1218.55 558.571 1217.44 559.044 C 1216.33 559.52 1215.36 560.176 1214.52 561.012 C 1213.68 561.851 1213.02 562.824 1212.55 563.935 C 1212.07 565.047 1211.83 566.235 1211.83 567.5 C 1211.83 568.765 1212.07 569.952 1212.55 571.059 C 1213.02 572.165 1213.68 573.14 1214.52 573.982 C 1215.36 574.823 1216.33 575.48 1217.44 575.956 C 1218.55 576.429 1219.73 576.667 1221 576.667 Z M 1216.48 572.936 C 1216.24 573.049 1216.03 573.074 1215.85 573.01 C 1215.66 572.945 1215.54 572.822 1215.48 572.639 C 1215.41 572.455 1215.44 572.245 1215.55 572.007 L 1218.57 565.817 C 1218.75 565.464 1219 565.213 1219.32 565.063 L 1225.49 562.054 C 1225.87 561.874 1226.16 561.893 1226.38 562.108 C 1226.59 562.323 1226.6 562.615 1226.42 562.981 L 1223.42 569.161 C 1223.24 569.498 1222.99 569.747 1222.67 569.904 L 1216.48 572.936 Z M 1221 568.827 C 1221.36 568.827 1221.67 568.698 1221.93 568.438 C 1222.19 568.179 1222.32 567.867 1222.32 567.5 C 1222.32 567.134 1222.19 566.822 1221.93 566.567 C 1221.67 566.312 1221.36 566.184 1221 566.184 C 1220.63 566.184 1220.32 566.312 1220.06 566.567 C 1219.8 566.822 1219.67 567.134 1219.67 567.5 C 1219.67 567.867 1219.8 568.179 1220.06 568.438 C 1220.32 568.698 1220.63 568.827 1221 568.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
-        <path d="M 1221 626.5 C 1219.48 626.5 1218.06 626.214 1216.73 625.643 C 1215.4 625.07 1214.23 624.282 1213.22 623.274 C 1212.22 622.269 1211.43 621.1 1210.86 619.77 C 1210.29 618.44 1210 617.017 1210 615.5 C 1210 613.983 1210.29 612.56 1210.86 611.23 C 1211.43 609.9 1212.22 608.729 1213.22 607.72 C 1214.23 606.709 1215.4 605.919 1216.73 605.352 C 1218.06 604.784 1219.48 604.5 1221 604.5 C 1222.52 604.5 1223.94 604.784 1225.27 605.352 C 1226.6 605.919 1227.77 606.709 1228.78 607.72 C 1229.78 608.729 1230.57 609.9 1231.14 611.23 C 1231.71 612.56 1232 613.983 1232 615.5 C 1232 617.017 1231.71 618.44 1231.14 619.77 C 1230.57 621.1 1229.78 622.269 1228.78 623.274 C 1227.77 624.282 1226.6 625.07 1225.27 625.643 C 1223.94 626.214 1222.52 626.5 1221 626.5 Z M 1221 624.667 C 1222.27 624.667 1223.45 624.429 1224.56 623.956 C 1225.67 623.48 1226.64 622.823 1227.48 621.982 C 1228.32 621.14 1228.98 620.165 1229.46 619.059 C 1229.93 617.952 1230.17 616.765 1230.17 615.5 C 1230.17 614.235 1229.93 613.047 1229.46 611.935 C 1228.98 610.824 1228.32 609.851 1227.48 609.012 C 1226.64 608.176 1225.67 607.52 1224.56 607.044 C 1223.45 606.571 1222.27 606.333 1221 606.333 C 1219.73 606.333 1218.55 606.571 1217.44 607.044 C 1216.33 607.52 1215.36 608.176 1214.52 609.012 C 1213.68 609.851 1213.02 610.824 1212.55 611.935 C 1212.07 613.047 1211.83 614.235 1211.83 615.5 C 1211.83 616.765 1212.07 617.952 1212.55 619.059 C 1213.02 620.165 1213.68 621.14 1214.52 621.982 C 1215.36 622.823 1216.33 623.48 1217.44 623.956 C 1218.55 624.429 1219.73 624.667 1221 624.667 Z M 1216.48 620.936 C 1216.24 621.049 1216.03 621.074 1215.85 621.01 C 1215.66 620.945 1215.54 620.822 1215.48 620.639 C 1215.41 620.455 1215.44 620.245 1215.55 620.007 L 1218.57 613.817 C 1218.75 613.464 1219 613.213 1219.32 613.063 L 1225.49 610.054 C 1225.87 609.874 1226.16 609.893 1226.38 610.108 C 1226.59 610.323 1226.6 610.615 1226.42 610.981 L 1223.42 617.161 C 1223.24 617.498 1222.99 617.747 1222.67 617.904 L 1216.48 620.936 Z M 1221 616.827 C 1221.36 616.827 1221.67 616.698 1221.93 616.438 C 1222.19 616.179 1222.32 615.867 1222.32 615.5 C 1222.32 615.134 1222.19 614.822 1221.93 614.567 C 1221.67 614.312 1221.36 614.184 1221 614.184 C 1220.63 614.184 1220.32 614.312 1220.06 614.567 C 1219.8 614.822 1219.67 615.134 1219.67 615.5 C 1219.67 615.867 1219.8 616.179 1220.06 616.438 C 1220.32 616.698 1220.63 616.827 1221 616.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
-        <path d="M 1221 674.5 C 1219.48 674.5 1218.06 674.214 1216.73 673.643 C 1215.4 673.07 1214.23 672.282 1213.22 671.274 C 1212.22 670.269 1211.43 669.1 1210.86 667.77 C 1210.29 666.44 1210 665.017 1210 663.5 C 1210 661.983 1210.29 660.56 1210.86 659.23 C 1211.43 657.9 1212.22 656.729 1213.22 655.72 C 1214.23 654.709 1215.4 653.919 1216.73 653.352 C 1218.06 652.784 1219.48 652.5 1221 652.5 C 1222.52 652.5 1223.94 652.784 1225.27 653.352 C 1226.6 653.919 1227.77 654.709 1228.78 655.72 C 1229.78 656.729 1230.57 657.9 1231.14 659.23 C 1231.71 660.56 1232 661.983 1232 663.5 C 1232 665.017 1231.71 666.44 1231.14 667.77 C 1230.57 669.1 1229.78 670.269 1228.78 671.274 C 1227.77 672.282 1226.6 673.07 1225.27 673.643 C 1223.94 674.214 1222.52 674.5 1221 674.5 Z M 1221 672.667 C 1222.27 672.667 1223.45 672.429 1224.56 671.956 C 1225.67 671.48 1226.64 670.823 1227.48 669.982 C 1228.32 669.14 1228.98 668.165 1229.46 667.059 C 1229.93 665.952 1230.17 664.765 1230.17 663.5 C 1230.17 662.235 1229.93 661.047 1229.46 659.935 C 1228.98 658.824 1228.32 657.851 1227.48 657.012 C 1226.64 656.176 1225.67 655.52 1224.56 655.044 C 1223.45 654.571 1222.27 654.333 1221 654.333 C 1219.73 654.333 1218.55 654.571 1217.44 655.044 C 1216.33 655.52 1215.36 656.176 1214.52 657.012 C 1213.68 657.851 1213.02 658.824 1212.55 659.935 C 1212.07 661.047 1211.83 662.235 1211.83 663.5 C 1211.83 664.765 1212.07 665.952 1212.55 667.059 C 1213.02 668.165 1213.68 669.14 1214.52 669.982 C 1215.36 670.823 1216.33 671.48 1217.44 671.956 C 1218.55 672.429 1219.73 672.667 1221 672.667 Z M 1216.48 668.936 C 1216.24 669.049 1216.03 669.074 1215.85 669.01 C 1215.66 668.945 1215.54 668.822 1215.48 668.639 C 1215.41 668.455 1215.44 668.245 1215.55 668.007 L 1218.57 661.817 C 1218.75 661.464 1219 661.213 1219.32 661.063 L 1225.49 658.054 C 1225.87 657.874 1226.16 657.893 1226.38 658.108 C 1226.59 658.323 1226.6 658.615 1226.42 658.981 L 1223.42 665.161 C 1223.24 665.498 1222.99 665.747 1222.67 665.904 L 1216.48 668.936 Z M 1221 664.827 C 1221.36 664.827 1221.67 664.698 1221.93 664.438 C 1222.19 664.179 1222.32 663.867 1222.32 663.5 C 1222.32 663.134 1222.19 662.822 1221.93 662.567 C 1221.67 662.312 1221.36 662.184 1221 662.184 C 1220.63 662.184 1220.32 662.312 1220.06 662.567 C 1219.8 662.822 1219.67 663.134 1219.67 663.5 C 1219.67 663.867 1219.8 664.179 1220.06 664.438 C 1220.32 664.698 1220.63 664.827 1221 664.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
-        <path d="M 1221 722.5 C 1219.48 722.5 1218.06 722.214 1216.73 721.643 C 1215.4 721.07 1214.23 720.282 1213.22 719.274 C 1212.22 718.269 1211.43 717.1 1210.86 715.77 C 1210.29 714.44 1210 713.017 1210 711.5 C 1210 709.983 1210.29 708.56 1210.86 707.23 C 1211.43 705.9 1212.22 704.729 1213.22 703.72 C 1214.23 702.709 1215.4 701.919 1216.73 701.352 C 1218.06 700.784 1219.48 700.5 1221 700.5 C 1222.52 700.5 1223.94 700.784 1225.27 701.352 C 1226.6 701.919 1227.77 702.709 1228.78 703.72 C 1229.78 704.729 1230.57 705.9 1231.14 707.23 C 1231.71 708.56 1232 709.983 1232 711.5 C 1232 713.017 1231.71 714.44 1231.14 715.77 C 1230.57 717.1 1229.78 718.269 1228.78 719.274 C 1227.77 720.282 1226.6 721.07 1225.27 721.643 C 1223.94 722.214 1222.52 722.5 1221 722.5 Z M 1221 720.667 C 1222.27 720.667 1223.45 720.429 1224.56 719.956 C 1225.67 719.48 1226.64 718.823 1227.48 717.982 C 1228.32 717.14 1228.98 716.165 1229.46 715.059 C 1229.93 713.952 1230.17 712.765 1230.17 711.5 C 1230.17 710.235 1229.93 709.047 1229.46 707.935 C 1228.98 706.824 1228.32 705.851 1227.48 705.012 C 1226.64 704.176 1225.67 703.52 1224.56 703.044 C 1223.45 702.571 1222.27 702.333 1221 702.333 C 1219.73 702.333 1218.55 702.571 1217.44 703.044 C 1216.33 703.52 1215.36 704.176 1214.52 705.012 C 1213.68 705.851 1213.02 706.824 1212.55 707.935 C 1212.07 709.047 1211.83 710.235 1211.83 711.5 C 1211.83 712.765 1212.07 713.952 1212.55 715.059 C 1213.02 716.165 1213.68 717.14 1214.52 717.982 C 1215.36 718.823 1216.33 719.48 1217.44 719.956 C 1218.55 720.429 1219.73 720.667 1221 720.667 Z M 1216.48 716.936 C 1216.24 717.049 1216.03 717.074 1215.85 717.01 C 1215.66 716.945 1215.54 716.822 1215.48 716.639 C 1215.41 716.455 1215.44 716.245 1215.55 716.007 L 1218.57 709.817 C 1218.75 709.464 1219 709.213 1219.32 709.063 L 1225.49 706.054 C 1225.87 705.874 1226.16 705.893 1226.38 706.108 C 1226.59 706.323 1226.6 706.615 1226.42 706.981 L 1223.42 713.161 C 1223.24 713.498 1222.99 713.747 1222.67 713.904 L 1216.48 716.936 Z M 1221 712.827 C 1221.36 712.827 1221.67 712.698 1221.93 712.438 C 1222.19 712.179 1222.32 711.867 1222.32 711.5 C 1222.32 711.134 1222.19 710.822 1221.93 710.567 C 1221.67 710.312 1221.36 710.184 1221 710.184 C 1220.63 710.184 1220.32 710.312 1220.06 710.567 C 1219.8 710.822 1219.67 711.134 1219.67 711.5 C 1219.67 711.867 1219.8 712.179 1220.06 712.438 C 1220.32 712.698 1220.63 712.827 1221 712.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
-        <path d="M 1221 770.5 C 1219.48 770.5 1218.06 770.214 1216.73 769.643 C 1215.4 769.07 1214.23 768.282 1213.22 767.274 C 1212.22 766.269 1211.43 765.1 1210.86 763.77 C 1210.29 762.44 1210 761.017 1210 759.5 C 1210 757.983 1210.29 756.56 1210.86 755.23 C 1211.43 753.9 1212.22 752.729 1213.22 751.72 C 1214.23 750.709 1215.4 749.919 1216.73 749.352 C 1218.06 748.784 1219.48 748.5 1221 748.5 C 1222.52 748.5 1223.94 748.784 1225.27 749.352 C 1226.6 749.919 1227.77 750.709 1228.78 751.72 C 1229.78 752.729 1230.57 753.9 1231.14 755.23 C 1231.71 756.56 1232 757.983 1232 759.5 C 1232 761.017 1231.71 762.44 1231.14 763.77 C 1230.57 765.1 1229.78 766.269 1228.78 767.274 C 1227.77 768.282 1226.6 769.07 1225.27 769.643 C 1223.94 770.214 1222.52 770.5 1221 770.5 Z M 1221 768.667 C 1222.27 768.667 1223.45 768.429 1224.56 767.956 C 1225.67 767.48 1226.64 766.823 1227.48 765.982 C 1228.32 765.14 1228.98 764.165 1229.46 763.059 C 1229.93 761.952 1230.17 760.765 1230.17 759.5 C 1230.17 758.235 1229.93 757.047 1229.46 755.935 C 1228.98 754.824 1228.32 753.851 1227.48 753.012 C 1226.64 752.176 1225.67 751.52 1224.56 751.044 C 1223.45 750.571 1222.27 750.333 1221 750.333 C 1219.73 750.333 1218.55 750.571 1217.44 751.044 C 1216.33 751.52 1215.36 752.176 1214.52 753.012 C 1213.68 753.851 1213.02 754.824 1212.55 755.935 C 1212.07 757.047 1211.83 758.235 1211.83 759.5 C 1211.83 760.765 1212.07 761.952 1212.55 763.059 C 1213.02 764.165 1213.68 765.14 1214.52 765.982 C 1215.36 766.823 1216.33 767.48 1217.44 767.956 C 1218.55 768.429 1219.73 768.667 1221 768.667 Z M 1216.48 764.936 C 1216.24 765.049 1216.03 765.074 1215.85 765.01 C 1215.66 764.945 1215.54 764.822 1215.48 764.639 C 1215.41 764.455 1215.44 764.245 1215.55 764.007 L 1218.57 757.817 C 1218.75 757.464 1219 757.213 1219.32 757.063 L 1225.49 754.054 C 1225.87 753.874 1226.16 753.893 1226.38 754.108 C 1226.59 754.323 1226.6 754.615 1226.42 754.981 L 1223.42 761.161 C 1223.24 761.498 1222.99 761.747 1222.67 761.904 L 1216.48 764.936 Z M 1221 760.827 C 1221.36 760.827 1221.67 760.698 1221.93 760.438 C 1222.19 760.179 1222.32 759.867 1222.32 759.5 C 1222.32 759.134 1222.19 758.822 1221.93 758.567 C 1221.67 758.312 1221.36 758.184 1221 758.184 C 1220.63 758.184 1220.32 758.312 1220.06 758.567 C 1219.8 758.822 1219.67 759.134 1219.67 759.5 C 1219.67 759.867 1219.8 760.179 1220.06 760.438 C 1220.32 760.698 1220.63 760.827 1221 760.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
-        <path d="M 1221 818.5 C 1219.48 818.5 1218.06 818.214 1216.73 817.643 C 1215.4 817.07 1214.23 816.282 1213.22 815.274 C 1212.22 814.269 1211.43 813.1 1210.86 811.77 C 1210.29 810.44 1210 809.017 1210 807.5 C 1210 805.983 1210.29 804.56 1210.86 803.23 C 1211.43 801.9 1212.22 800.729 1213.22 799.72 C 1214.23 798.709 1215.4 797.919 1216.73 797.352 C 1218.06 796.784 1219.48 796.5 1221 796.5 C 1222.52 796.5 1223.94 796.784 1225.27 797.352 C 1226.6 797.919 1227.77 798.709 1228.78 799.72 C 1229.78 800.729 1230.57 801.9 1231.14 803.23 C 1231.71 804.56 1232 805.983 1232 807.5 C 1232 809.017 1231.71 810.44 1231.14 811.77 C 1230.57 813.1 1229.78 814.269 1228.78 815.274 C 1227.77 816.282 1226.6 817.07 1225.27 817.643 C 1223.94 818.214 1222.52 818.5 1221 818.5 Z M 1221 816.667 C 1222.27 816.667 1223.45 816.429 1224.56 815.956 C 1225.67 815.48 1226.64 814.823 1227.48 813.982 C 1228.32 813.14 1228.98 812.165 1229.46 811.059 C 1229.93 809.952 1230.17 808.765 1230.17 807.5 C 1230.17 806.235 1229.93 805.047 1229.46 803.935 C 1228.98 802.824 1228.32 801.851 1227.48 801.012 C 1226.64 800.176 1225.67 799.52 1224.56 799.044 C 1223.45 798.571 1222.27 798.333 1221 798.333 C 1219.73 798.333 1218.55 798.571 1217.44 799.044 C 1216.33 799.52 1215.36 800.176 1214.52 801.012 C 1213.68 801.851 1213.02 802.824 1212.55 803.935 C 1212.07 805.047 1211.83 806.235 1211.83 807.5 C 1211.83 808.765 1212.07 809.952 1212.55 811.059 C 1213.02 812.165 1213.68 813.14 1214.52 813.982 C 1215.36 814.823 1216.33 815.48 1217.44 815.956 C 1218.55 816.429 1219.73 816.667 1221 816.667 Z M 1216.48 812.936 C 1216.24 813.049 1216.03 813.074 1215.85 813.01 C 1215.66 812.945 1215.54 812.822 1215.48 812.639 C 1215.41 812.455 1215.44 812.245 1215.55 812.007 L 1218.57 805.817 C 1218.75 805.464 1219 805.213 1219.32 805.063 L 1225.49 802.054 C 1225.87 801.874 1226.16 801.893 1226.38 802.108 C 1226.59 802.323 1226.6 802.615 1226.42 802.981 L 1223.42 809.161 C 1223.24 809.498 1222.99 809.747 1222.67 809.904 L 1216.48 812.936 Z M 1221 808.827 C 1221.36 808.827 1221.67 808.698 1221.93 808.438 C 1222.19 808.179 1222.32 807.867 1222.32 807.5 C 1222.32 807.134 1222.19 806.822 1221.93 806.567 C 1221.67 806.312 1221.36 806.184 1221 806.184 C 1220.63 806.184 1220.32 806.312 1220.06 806.567 C 1219.8 806.822 1219.67 807.134 1219.67 807.5 C 1219.67 807.867 1219.8 808.179 1220.06 808.438 C 1220.32 808.698 1220.63 808.827 1221 808.827 Z" style="text-wrap-mode: nowrap; fill: rgb(128, 127, 128);"/>
+        <text style="fill: rgb(69, 70, 72); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="670.982">JavaScript on the Domain + Subdomains</text>
+        <g>
+          <rect style="fill: rgb(255, 255, 255); stroke-width: 4px; stroke: rgb(149, 84, 202);" x="110" y="700.915" width="780" height="211.085" rx="22" ry="22"/>
+          <g>
+            <text style="fill: rgb(149, 84, 201); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="753">*.sub3.sub2.sub1.example.com</text>
+            <path d="M 693.647 729.591 L 715.243 729.591 C 716.158 729.656 717.273 730.088 717.861 730.675 C 718.448 731.263 718.88 732.378 718.945 733.293 L 718.945 754.889 C 718.88 755.804 718.448 756.919 717.861 757.507 C 717.273 758.094 716.158 758.526 715.243 758.591 L 693.647 758.591 C 692.732 758.526 691.617 758.094 691.029 757.507 C 690.442 756.919 690.01 755.804 689.945 754.889 L 689.945 733.293 C 690.01 732.378 690.442 731.263 691.029 730.675 C 691.617 730.088 692.732 729.656 693.647 729.591 Z M 693.151 732.797 C 692.941 733.006 692.88 732.991 692.945 733.293 L 692.945 754.889 C 692.88 755.191 692.941 755.176 693.151 755.385 C 693.36 755.595 693.345 755.656 693.647 755.591 L 715.243 755.591 C 715.545 755.656 715.53 755.595 715.739 755.385 C 715.949 755.176 716.01 755.191 715.945 754.889 L 715.945 733.293 C 716.01 732.991 715.949 733.006 715.739 732.797 C 715.53 732.587 715.545 732.526 715.243 732.591 L 693.647 732.591 C 693.345 732.526 693.36 732.587 693.151 732.797 Z M 695.445 735.091 L 713.445 735.091 L 713.445 753.091 L 695.445 753.091 L 695.445 735.091 Z" style="fill: rgb(149, 84, 201);"/>
+          </g>
+          <g>
+            <text style="fill: rgb(149, 84, 201); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="795.407">*.sub2.sub1.example.com</text>
+            <path d="M 693.647 771.932 L 715.243 771.932 C 716.158 771.997 717.273 772.429 717.861 773.016 C 718.448 773.604 718.88 774.719 718.945 775.634 L 718.945 797.23 C 718.88 798.145 718.448 799.26 717.861 799.848 C 717.273 800.435 716.158 800.867 715.243 800.932 L 693.647 800.932 C 692.732 800.867 691.617 800.435 691.029 799.848 C 690.442 799.26 690.01 798.145 689.945 797.23 L 689.945 775.634 C 690.01 774.719 690.442 773.604 691.029 773.016 C 691.617 772.429 692.732 771.997 693.647 771.932 Z M 693.151 775.138 C 692.941 775.347 692.88 775.332 692.945 775.634 L 692.945 797.23 C 692.88 797.532 692.941 797.517 693.151 797.726 C 693.36 797.936 693.345 797.997 693.647 797.932 L 715.243 797.932 C 715.545 797.997 715.53 797.936 715.739 797.726 C 715.949 797.517 716.01 797.532 715.945 797.23 L 715.945 775.634 C 716.01 775.332 715.949 775.347 715.739 775.138 C 715.53 774.928 715.545 774.867 715.243 774.932 L 693.647 774.932 C 693.345 774.867 693.36 774.928 693.151 775.138 Z M 695.445 777.432 L 713.445 777.432 L 713.445 795.432 L 695.445 795.432 L 695.445 777.432 Z" style="fill: rgb(149, 84, 201);"/>
+          </g>
+          <g style="opacity: 0.5;">
+            <text style="fill: rgb(149, 84, 201); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="837.814">*.sub1.example.com</text>
+            <path d="M 693.647 814.407 L 715.243 814.407 C 716.158 814.472 717.273 814.904 717.861 815.491 C 718.448 816.079 718.88 817.194 718.945 818.109 L 718.945 839.703 C 718.88 840.623 718.448 841.733 717.861 842.323 C 717.273 842.913 716.158 843.343 715.243 843.403 L 693.647 843.403 C 692.732 843.343 691.617 842.913 691.029 842.323 C 690.442 841.733 690.01 840.623 689.945 839.703 L 689.945 818.109 C 690.01 817.194 690.442 816.079 691.029 815.491 C 691.617 814.904 692.732 814.472 693.647 814.407 Z M 693.151 817.613 C 692.941 817.822 692.88 817.807 692.945 818.109 L 692.945 839.703 C 692.88 840.003 692.941 839.993 693.151 840.203 C 693.36 840.413 693.345 840.473 693.647 840.403 L 715.243 840.403 C 715.545 840.473 715.53 840.413 715.739 840.203 C 715.949 839.993 716.01 840.003 715.945 839.703 L 715.945 818.109 C 716.01 817.807 715.949 817.822 715.739 817.613 C 715.53 817.403 715.545 817.342 715.243 817.407 L 693.647 817.407 C 693.345 817.342 693.36 817.403 693.151 817.613 Z" style="fill: rgb(149, 84, 201);"/>
+          </g>
+          <g style="opacity: 0.5;">
+            <text style="fill: rgb(149, 84, 201); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="880.22">*.example.com</text>
+            <path d="M 693.647 856.814 L 715.243 856.814 C 716.158 856.879 717.273 857.311 717.861 857.898 C 718.448 858.486 718.88 859.601 718.945 860.516 L 718.945 882.108 C 718.88 883.028 718.448 884.138 717.861 884.728 C 717.273 885.318 716.158 885.748 715.243 885.808 L 693.647 885.808 C 692.732 885.748 691.617 885.318 691.029 884.728 C 690.442 884.138 690.01 883.028 689.945 882.108 L 689.945 860.516 C 690.01 859.601 690.442 858.486 691.029 857.898 C 691.617 857.311 692.732 856.879 693.647 856.814 Z M 693.151 860.02 C 692.941 860.229 692.88 860.214 692.945 860.516 L 692.945 882.108 C 692.88 882.408 692.941 882.398 693.151 882.608 C 693.36 882.818 693.345 882.878 693.647 882.808 C 693.833 882.808 715.488 882.808 715.243 882.808 C 715.545 882.878 715.53 882.818 715.739 882.608 C 715.949 882.398 716.01 882.408 715.945 882.108 L 715.945 860.516 C 716.01 860.214 715.949 860.229 715.739 860.02 C 715.53 859.81 715.545 859.749 715.243 859.814 L 693.647 859.814 C 693.345 859.749 693.36 859.81 693.151 860.02 Z" style="fill: rgb(149, 84, 201);"/>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect x="295" y="940.5" width="410" height="20.054" style="stroke-width: 4; stroke: rgb(148, 84, 202); fill: rgb(238, 222, 248);" rx="10.027" ry="10.027"/>
+            <rect x="299" y="944.5" width="79.61" height="12" style="fill: rgb(148, 84, 202); stroke-width: 1;" rx="6" ry="6"/>
+          </g>
+          <text style="fill: rgb(73, 75, 77); font-family: &quot;SF Pro&quot;; font-size: 22px; letter-spacing: 0.2px; text-anchor: middle; white-space: pre; stroke-width: 1;" x="500" y="1001.79">lifetime: 5 minutes</text>
+          <path d="M 624 994.5 C 624 997.74 622.602 1000.87 620.485 1002.98 C 618.368 1005.1 615.242 1006.5 612 1006.5 C 608.758 1006.5 605.631 1005.1 603.515 1002.98 C 601.398 1000.87 600 997.74 600 994.5 C 600 991.26 601.398 988.13 603.515 986.01 C 605.632 983.9 608.758 982.5 612 982.5 C 615.242 982.5 618.369 983.9 620.485 986.01 C 622.602 988.13 624 991.26 624 994.5 Z M 619.071 987.43 C 617.206 985.56 614.833 984.5 612 984.5 C 609.167 984.5 606.794 985.56 604.929 987.43 C 603.064 989.29 602 991.67 602 994.5 C 602 997.33 603.064 999.71 604.929 1001.57 C 606.794 1003.44 609.167 1004.5 612 1004.5 C 614.833 1004.5 617.206 1003.44 619.071 1001.57 C 620.936 999.71 622 997.33 622 994.5 C 622 991.67 620.936 989.29 619.071 987.43 Z M 611.06 996.72 L 611.06 995.98 C 611.06 995.63 611.12 995.31 611.23 995.02 C 611.35 994.73 611.52 994.47 611.76 994.23 C 612 993.98 612.3 993.75 612.67 993.53 C 612.98 993.34 613.23 993.15 613.42 992.96 C 613.61 992.78 613.75 992.58 613.84 992.36 C 613.92 992.14 613.96 991.88 613.96 991.6 L 613.96 991.59 C 613.96 991.25 613.88 990.95 613.72 990.69 C 613.56 990.43 613.33 990.23 613.03 990.08 C 612.74 989.93 612.39 989.86 611.99 989.86 C 611.59 989.86 611.24 989.93 610.94 990.08 C 610.64 990.24 610.41 990.44 610.23 990.71 C 610.06 990.97 609.96 991.29 609.92 991.65 L 609.91 991.73 L 608.54 991.73 L 608.54 991.62 C 608.59 991.08 608.74 990.57 609.01 990.11 C 609.27 989.65 609.66 989.29 610.16 989.01 C 610.67 988.74 611.3 988.6 612.05 988.6 C 612.72 988.6 613.32 988.73 613.83 988.98 C 614.35 989.24 614.75 989.59 615.03 990.02 C 615.32 990.46 615.46 990.96 615.46 991.52 L 615.46 991.53 C 615.46 991.95 615.4 992.33 615.26 992.67 C 615.12 993.01 614.93 993.31 614.67 993.58 C 614.42 993.85 614.12 994.09 613.78 994.3 C 613.44 994.5 613.18 994.69 612.99 994.87 C 612.8 995.05 612.66 995.25 612.58 995.46 C 612.51 995.67 612.47 995.91 612.47 996.2 L 612.47 996.72 L 611.06 996.72 Z M 611.77 1000.4 C 611.51 1000.4 611.29 1000.31 611.11 1000.13 C 610.94 999.95 610.85 999.74 610.85 999.48 C 610.85 999.22 610.94 999 611.11 998.82 C 611.29 998.65 611.51 998.56 611.77 998.56 C 612.03 998.56 612.25 998.65 612.42 998.82 C 612.6 999 612.68 999.22 612.68 999.48 C 612.68 999.74 612.6 999.95 612.42 1000.13 C 612.25 1000.31 612.03 1000.4 611.77 1000.4 Z" style="fill: rgb(148, 84, 202); stroke-width: 1;"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 772.5)" style="opacity: 0.5;">
+          <rect width="360" height="75" x="320" y="285" style="fill: url(&quot;#gradient-11&quot;);" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
+        </g>
       </g>
-    </g>
-    <text style="fill: rgb(142, 142, 146); font-family: Arial, sans-serif; font-size: 23px; letter-spacing: 0.2px; white-space: pre; stroke-width: 1;" x="346.516" y="872.535">note: New Domains are added in Safari via the "JS Blocker" pop-up.</text>
-    <g style="opacity: 0.5;">
-      <rect style="stroke-width: 1; fill: rgba(0, 0, 0, 0.106); filter: url(&quot;#filter-18&quot;);" x="566" y="914" width="268" height="51" rx="10" ry="10"/>
-      <text style="fill: rgb(38, 38, 38); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; stroke-width: 1;" x="662.633" y="947.893">delete</text>
+      <g>
+        <path style="fill: rgb(210, 220, 228); stroke-width: 1;" d="M 51 1195.5 H 949 A 0 0 0 0 1 949 1195.5 V 1375.5 A 18.5 18.5 0 0 1 930.5 1394 H 69.5 A 18.5 18.5 0 0 1 51 1375.5 V 1195.5 A 0 0 0 0 1 51 1195.5 Z" bx:shape="rect 51 1195.5 898 198.5 0 0 0 0 0 0 0 18.5 18.5 0 18.5 18.5 2@580d7d9e"/>
+        <g>
+          <rect width="449" height="74.945" x="275.5" y="1257.02" rx="37.472" ry="37.472" style="stroke-width: 1; fill: url(&quot;#gradient-13&quot;);"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle; stroke-width: 1;" x="500" y="1303.55">cancel rule</text>
+        </g>
+      </g>
     </g>
   </g>
-  <g transform="matrix(0.948419, 0, 0, 0.948419, 1254.209839, 271.256317)">
-    <g>
-      <rect style="filter: url(&quot;#drop-shadow-filter-2&quot;); fill: rgb(234, 112, 112); mask: url(&quot;#mask-0&quot;); stroke-width: 1;" x="99" y="92.5" width="1202" height="915" rx="20" ry="20"/>
-      <rect style="filter: none; stroke: rgba(240, 250, 255, 0.28); stroke-width: 2px; fill: rgba(31, 42, 47, 0.89);" x="99" y="92.5" width="1202" height="915" rx="20" ry="20"/>
-    </g>
-    <g>
-      <path style="clip-path: url(&quot;#clip-0&quot;); stroke-width: 1; fill: rgba(255, 255, 255, 0.094); filter: url(&quot;#filter-6&quot;);" d="M 119.5 93.5 H 1280.5 A 19.5 19.5 0 0 1 1300 113 V 150.5 A 0 0 0 0 1 1300 150.5 H 100 A 0 0 0 0 1 100 150.5 V 113 A 19.5 19.5 0 0 1 119.5 93.5 Z" bx:shape="rect 100 93.5 1200 57 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@e021b909"/>
+  <g>
+    <g transform="matrix(1, 0, 0, 1, 1459, -27.067997)">
       <g>
-        <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56); filter: none; stroke-width: 1;" cx="128" cy="122.146" rx="12" ry="12"/>
-        <ellipse style="filter: none; stroke-width: 1; fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="168" cy="122.146" rx="12" ry="12"/>
-        <ellipse style="stroke: rgb(37, 172, 45); filter: none; stroke-width: 1; fill: rgb(37, 199, 67);" cx="208" cy="122.146" rx="12" ry="12"/>
-      </g>
-      <text style="fill: rgb(182, 182, 182); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre;" transform="matrix(1, 0, 0, 1, 86.321892, -4.417633)"><tspan x="544.678" y="134.145">JS Blocker</tspan><tspan x="544.678" dy="1em">​</tspan></text>
-    </g>
-    <text style="fill: rgb(223, 223, 223); font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; white-space: pre;" x="416.18" y="233.362">Domains where JavaScript is allowed</text>
-    <g>
-      <rect x="141" y="279.5" width="1118" height="119.726" style="stroke-width: 1; fill: rgba(255, 255, 255, 0.07);" rx="19.283" ry="19.283"/>
-      <g>
-        <rect style="filter: url(&quot;#filter-4&quot;); stroke-width: 1; fill: rgba(0, 0, 0, 0.2);" x="173" y="311.5" width="735" height="56" rx="10" ry="10"/>
-        <path d="M 186 337.302 C 186 335.951 186.254 334.683 186.762 333.499 C 187.269 332.316 187.974 331.275 188.874 330.374 C 189.775 329.473 190.817 328.768 192 328.261 C 193.184 327.753 194.451 327.5 195.802 327.5 C 197.152 327.5 198.42 327.753 199.603 328.261 C 200.787 328.768 201.828 329.473 202.728 330.374 C 203.629 331.275 204.334 332.316 204.841 333.499 C 205.349 334.683 205.603 335.951 205.603 337.302 C 205.603 338.423 205.425 339.488 205.068 340.495 C 204.712 341.502 204.219 342.415 203.588 343.233 L 209.595 349.277 C 209.725 349.408 209.826 349.559 209.895 349.731 C 209.964 349.903 210 350.088 210 350.284 C 210 350.553 209.94 350.799 209.821 351.021 C 209.703 351.241 209.537 351.416 209.324 351.543 C 209.112 351.669 208.866 351.732 208.588 351.732 C 208.391 351.732 208.204 351.698 208.028 351.629 C 207.852 351.559 207.691 351.455 207.543 351.316 L 201.5 345.26 C 200.699 345.833 199.813 346.283 198.848 346.611 C 197.881 346.938 196.866 347.102 195.802 347.102 C 194.451 347.102 193.184 346.848 192 346.341 C 190.817 345.833 189.775 345.128 188.874 344.228 C 187.974 343.328 187.269 342.285 186.762 341.102 C 186.254 339.92 186 338.651 186 337.302 Z M 188.1 337.302 C 188.1 338.365 188.299 339.362 188.696 340.292 C 189.093 341.221 189.646 342.038 190.354 342.742 C 191.062 343.447 191.881 344 192.811 344.4 C 193.74 344.801 194.737 345.002 195.802 345.002 C 196.866 345.002 197.863 344.801 198.792 344.4 C 199.722 344 200.539 343.447 201.242 342.742 C 201.947 342.038 202.5 341.221 202.9 340.292 C 203.302 339.362 203.503 338.365 203.503 337.302 C 203.503 336.237 203.302 335.24 202.9 334.311 C 202.5 333.381 201.947 332.562 201.242 331.854 C 200.539 331.146 199.722 330.593 198.792 330.196 C 197.863 329.798 196.866 329.6 195.802 329.6 C 194.737 329.6 193.74 329.798 192.811 330.196 C 191.881 330.593 191.062 331.146 190.354 331.854 C 189.646 332.562 189.093 333.381 188.696 334.311 C 188.299 335.24 188.1 336.237 188.1 337.302 Z" style="text-wrap-mode: nowrap; stroke-width: 1; fill-opacity: 0.3; fill: rgb(255, 255, 255);"/>
-        <text style="fill: rgb(255, 255, 255); fill-opacity: 0.3; font-family: Arial; font-size: 21px; white-space: pre;" x="221.023" y="347.552">Search</text>
-      </g>
-      <g style="opacity: 0.5;">
-        <rect style="filter: url(&quot;#filter-3&quot;); stroke-width: 1; fill: rgba(255, 255, 255, 0.25);" x="950" y="311.5" width="80" height="40" rx="10" ry="10"/>
-        <path d="M 982.55 346.058 C 981.2 346.058 980.21 345.725 979.54 345.056 C 978.86 344.386 978.5 343.379 978.5 342.043 L 978.5 329.253 C 978.5 327.913 978.86 326.91 979.54 326.24 C 980.21 325.57 981.2 325.232 982.55 325.232 L 986.53 325.232 L 986.53 327.322 L 982.58 327.322 C 981.95 327.322 981.44 327.49 981.12 327.831 C 980.74 328.176 980.59 328.682 980.59 329.353 L 980.59 341.936 C 980.59 342.612 980.74 343.12 981.12 343.46 C 981.44 343.801 981.95 343.974 982.58 343.974 L 997.4 343.974 C 998.03 343.974 998.54 343.801 998.87 343.46 C 999.25 343.12 999.41 342.612 999.41 341.936 L 999.41 329.353 C 999.41 328.682 999.25 328.176 998.87 327.831 C 998.54 327.49 998.03 327.322 997.4 327.322 L 993.45 327.322 L 993.45 325.232 L 997.45 325.232 C 998.8 325.232 999.79 325.57 1000.46 326.24 C 1001.15 326.91 1001.5 327.913 1001.5 329.253 L 1001.5 342.043 C 1001.5 343.379 1001.15 344.386 1000.46 345.056 C 999.79 345.725 998.8 346.058 997.45 346.058 L 982.55 346.058 Z M 989.99 335.901 C 989.71 335.901 989.46 335.799 989.27 335.603 C 989.07 335.4 988.95 335.168 988.95 334.9 L 988.95 321.712 L 989.04 319.781 L 988.3 320.541 L 986.31 322.679 C 986.14 322.887 985.9 322.993 985.59 322.993 C 985.31 322.993 985.1 322.909 984.93 322.732 C 984.77 322.563 984.66 322.344 984.66 322.083 C 984.66 321.834 984.79 321.606 984.99 321.397 L 989.22 317.275 C 989.4 317.148 989.5 317.061 989.64 317.013 C 989.73 316.966 989.88 316.941 989.99 316.941 C 990.13 316.941 990.27 316.966 990.36 317.013 C 990.5 317.061 990.6 317.148 990.76 317.275 L 995.01 321.397 C 995.2 321.606 995.33 321.834 995.33 322.083 C 995.33 322.344 995.21 322.563 995.05 322.732 C 994.88 322.909 994.66 322.993 994.37 322.993 C 994.08 322.993 993.84 322.887 993.67 322.679 L 991.7 320.541 L 990.96 319.781 L 991.05 321.712 L 991.05 334.9 C 991.05 335.168 990.93 335.4 990.73 335.603 C 990.54 335.799 990.3 335.901 989.99 335.901 Z" style="text-wrap-mode: nowrap; stroke-width: 1; fill: rgb(255, 255, 255);"/>
-        <text style="fill: rgb(143, 143, 143); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; stroke-width: 1;" x="964.987" y="374.869">export</text>
+        <rect style="fill: rgb(255, 0, 0); filter: url(&quot;#filter-3&quot;); mask: url(&quot;#mask-1&quot;);" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
+        <rect style="stroke: rgba(240, 250, 255, 0.28); stroke-width: 2px; fill-opacity: 0.85; fill: rgba(44, 43, 44, 0.7);" x="125" y="102" width="950" height="233" rx="20" ry="20"/>
       </g>
       <g>
-        <rect style="filter: url(&quot;#filter-2&quot;); stroke-width: 1; fill: rgba(255, 255, 255, 0.25);" x="1050" y="311.5" width="80" height="40" rx="10" ry="10"/>
-        <path d="M 1082.24 345.961 C 1080.83 345.961 1079.77 345.611 1079.07 344.914 C 1078.35 344.215 1078 343.166 1078 341.77 L 1078 328.424 C 1078 327.027 1078.35 325.978 1079.07 325.28 C 1079.77 324.581 1080.83 324.232 1082.24 324.232 L 1086.38 324.232 L 1086.38 326.409 L 1082.27 326.409 C 1081.6 326.409 1081.08 326.587 1080.72 326.942 C 1080.35 327.299 1080.18 327.828 1080.18 328.532 L 1080.18 341.661 C 1080.18 342.364 1080.35 342.895 1080.72 343.251 C 1081.08 343.607 1081.6 343.785 1082.27 343.785 L 1097.72 343.785 C 1098.38 343.785 1098.9 343.607 1099.27 343.251 C 1099.64 342.895 1099.82 342.364 1099.82 341.661 L 1099.82 328.532 C 1099.82 327.828 1099.64 327.299 1099.27 326.942 C 1098.9 326.587 1098.38 326.409 1097.72 326.409 L 1093.6 326.409 L 1093.6 324.232 L 1097.76 324.232 C 1099.17 324.232 1100.23 324.581 1100.93 325.28 C 1101.65 325.978 1102 327.027 1102 328.424 L 1102 341.77 C 1102 343.166 1101.65 344.215 1100.93 344.914 C 1100.23 345.611 1099.17 345.961 1097.76 345.961 L 1082.24 345.961 Z M 1089.99 317.038 C 1090.29 317.038 1090.55 317.142 1090.75 317.35 C 1090.97 317.557 1091.08 317.8 1091.08 318.08 L 1091.08 331.831 L 1090.99 333.859 L 1091.76 333.061 L 1093.83 330.83 C 1094.02 330.614 1094.27 330.506 1094.56 330.506 C 1094.85 330.506 1095.08 330.596 1095.27 330.777 C 1095.45 330.956 1095.55 331.182 1095.55 331.452 C 1095.55 331.714 1095.44 331.953 1095.24 332.169 L 1090.78 336.468 C 1090.64 336.604 1090.52 336.697 1090.39 336.746 C 1090.27 336.796 1090.13 336.821 1089.99 336.821 C 1089.87 336.821 1089.73 336.796 1089.61 336.746 C 1089.48 336.697 1089.36 336.604 1089.21 336.468 L 1084.76 332.169 C 1084.55 331.953 1084.44 331.714 1084.44 331.452 C 1084.44 331.182 1084.53 330.956 1084.71 330.777 C 1084.9 330.596 1085.13 330.506 1085.41 330.506 C 1085.72 330.506 1085.96 330.614 1086.15 330.83 L 1088.24 333.061 L 1089.01 333.859 L 1088.93 331.831 L 1088.93 318.08 C 1088.93 317.8 1089.03 317.557 1089.25 317.35 C 1089.45 317.142 1089.71 317.038 1089.99 317.038 Z" style="text-wrap-mode: nowrap; stroke-width: 1; fill: rgb(255, 255, 255);"/>
-        <text style="fill: rgb(143, 143, 143); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; stroke-width: 1;" x="1065" y="374.869">import</text>
-      </g>
-      <g>
-        <rect style="stroke-width: 1; fill: rgba(255, 255, 255, 0.25); filter: url(&quot;#filter-7&quot;);" x="1150" y="311.5" width="80" height="40" rx="10" ry="10"/>
-        <path d="M 1176.56 342.352 L 1178.34 344.147 C 1179.33 345.144 1180.47 345.085 1181.51 343.912 L 1195.33 328.384 L 1194.21 327.268 L 1180.49 342.678 C 1180.08 343.124 1179.7 343.24 1179.18 342.703 L 1177.99 341.533 C 1177.47 341.007 1177.59 340.635 1178.04 340.213 L 1193.41 326.054 L 1192.29 324.952 L 1176.79 339.21 C 1175.66 340.26 1175.58 341.368 1176.56 342.352 Z M 1186.78 320.162 C 1186.3 320.62 1186.27 321.269 1186.53 321.716 C 1186.79 322.118 1187.33 322.394 1188.03 322.221 C 1189.36 321.836 1190.91 321.679 1192.33 322.432 L 1191.73 324.049 C 1191.36 324.968 1191.55 325.621 1192.13 326.2 L 1194.45 328.548 C 1194.98 329.087 1195.48 329.105 1196.06 328.994 L 1197.07 328.824 L 1197.66 329.409 L 1197.62 329.92 C 1197.6 330.434 1197.74 330.892 1198.25 331.386 L 1199.02 332.152 C 1199.54 332.676 1200.27 332.721 1200.8 332.195 L 1203.75 329.231 C 1204.27 328.69 1204.24 327.996 1203.72 327.472 L 1202.94 326.694 C 1202.44 326.202 1202.01 326.009 1201.49 326.047 L 1200.95 326.096 L 1200.4 325.544 L 1200.63 324.473 C 1200.77 323.846 1200.57 323.342 1199.98 322.737 L 1197.42 320.2 C 1194.46 317.276 1189.3 317.682 1186.78 320.162 Z M 1188.4 320.634 C 1190.4 319.171 1194.31 319.335 1196.06 321.083 L 1198.86 323.854 C 1199.1 324.088 1199.14 324.273 1199.07 324.611 L 1198.74 326.12 L 1200.27 327.654 L 1201.28 327.6 C 1201.53 327.586 1201.61 327.607 1201.82 327.789 L 1202.39 328.362 L 1199.93 330.828 L 1199.36 330.255 C 1199.16 330.061 1199.12 329.971 1199.14 329.708 L 1199.2 328.722 L 1197.68 327.197 L 1196.13 327.465 C 1195.8 327.531 1195.66 327.5 1195.41 327.256 L 1193.37 325.235 C 1193.13 324.993 1193.12 324.834 1193.26 324.465 L 1194.31 321.858 C 1192.9 320.404 1190.42 320.14 1188.47 320.805 C 1188.33 320.867 1188.27 320.72 1188.4 320.634 Z" style="stroke-width: 1; fill: rgb(255, 255, 255);"/>
-        <text style="fill: rgb(143, 143, 143); font-family: Arial, sans-serif; font-size: 18px; white-space: pre; stroke-width: 1;" x="1166.99" y="374.869">install</text>
+        <path style="filter: none; fill: rgb(56, 56, 56);" d="M 145 103 H 1055.5 A 18.5 18.5 0 0 1 1074 121.5 V 207 A 0 0 0 0 1 1074 207 H 126.5 A 0 0 0 0 1 126.5 207 V 121.5 A 18.5 18.5 0 0 1 145 103 Z" bx:shape="rect 126.5 103 947.5 104 0 18.5 18.5 0 18.5 18.5 0 0 0 0 0 0 2@5e0edcf2"/>
+        <g>
+          <ellipse style="fill: rgb(255, 94, 87); stroke: rgb(226, 65, 56);" cx="177" cy="154" rx="12" ry="12"/>
+          <ellipse style="fill: rgb(253, 188, 46); stroke: rgb(224, 157, 28);" cx="217" cy="154" rx="12" ry="12"/>
+          <ellipse style="fill: rgb(37, 199, 66); stroke: rgb(37, 172, 45);" cx="257" cy="154" rx="12" ry="12"/>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="308" y="127" width="64" height="54" rx="9" ry="9"/>
+          <path d="M 324 139 L 356 139 C 356.757 139.044 357.633 139.391 358.121 139.879 C 358.609 140.367 358.956 141.244 359 142 L 359 164 C 358.956 164.757 358.609 165.633 358.121 166.121 C 357.633 166.609 356.756 166.956 356 167 L 324 167 C 323.243 166.956 322.367 166.609 321.879 166.121 C 321.391 165.633 321.044 164.756 321 164 L 321 142 C 321.044 141.243 321.391 140.367 321.879 139.879 C 322.367 139.391 323.244 139.044 324 139 Z M 323.293 141.293 C 323.057 141.529 322.956 141.652 323 142 L 323 164 C 322.956 164.348 323.057 164.471 323.293 164.707 C 323.529 164.943 323.652 165.044 324 165 L 334 165 L 334 141 L 324 141 C 323.652 140.956 323.529 141.057 323.293 141.293 Z M 356 165 C 356.348 165.044 356.471 164.943 356.707 164.707 C 356.943 164.471 357.044 164.348 357 164 L 357 142 C 357.044 141.652 356.943 141.529 356.707 141.293 C 356.471 141.057 356.348 140.956 356 141 L 336 141 L 336 165 Z M 325 146 C 325 145.448 325.448 145 326 145 L 331 145 C 331.552 145 332 145.448 332 146 C 332 146.552 331.552 147 331 147 L 326 147 C 325.448 147 325 146.552 325 146 Z M 325 150 C 325 149.448 325.448 149 326 149 L 331 149 C 331.552 149 332 149.448 332 150 C 332 150.552 331.552 151 331 151 L 326 151 C 325.448 151 325 150.552 325 150 Z M 325 154 C 325 153.448 325.448 153 326 153 L 331 153 C 331.552 153 332 153.448 332 154 C 332 154.552 331.552 155 331 155 L 326 155 C 325.448 155 325 154.552 325 154 Z" style="fill: rgb(130, 130, 134);"/>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; fill: rgb(56, 56, 56); stroke: rgb(70, 70, 70);" x="375" y="127" width="39" height="54" rx="9" ry="9"/>
+          <path d="M 388.439 150.439 C 387.853 151.025 387.853 151.975 388.439 152.56 L 393.439 157.56 C 394.025 158.146 394.975 158.146 395.56 157.56 L 400.56 152.56 C 401.146 151.974 401.146 151.024 400.56 150.439 C 399.974 149.853 399.024 149.853 398.439 150.439 L 394.5 154.378 L 390.561 150.439 C 389.975 149.853 389.025 149.853 388.44 150.439 Z" style="fill: rgb(130, 130, 134);"/>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; stroke: rgb(70, 70, 70); fill: rgb(56, 56, 56);" x="432" y="127" width="56" height="54" rx="11" ry="11"/>
+          <g transform="matrix(1.1875, 0, 0, 1.1875, 441, 135)">
+            <path d="M 16.01 0 C 20.281 0 24.468 1.895 27.287 4.717 C 30.106 7.538 32 11.73 32 16.01 C 32 20.281 30.101 24.468 27.278 27.287 C 24.455 30.106 20.264 32 15.99 32 C 11.719 32 7.533 30.105 4.714 27.286 C 1.895 24.467 0 20.281 0 16.01 C 0 11.729 1.898 7.537 4.721 4.716 C 7.545 1.894 11.736 0 16.01 0 Z M 6.842 6.838 C 4.392 9.286 3 12.349 3 16.01 C 3 19.661 4.389 22.72 6.835 25.165 C 9.28 27.611 12.339 29 15.99 29 C 19.645 29 22.709 27.61 25.159 25.164 C 27.608 22.719 29 19.661 29 16.01 C 29 12.348 27.61 9.285 25.165 6.837 C 22.719 4.389 19.661 3 16.01 3 C 12.355 3 9.291 4.39 6.842 6.838 Z" style="fill: url(&quot;#gradient-1&quot;);"/>
+            <text style="font-family: Tahoma; font-size: 8.3px; font-weight: 700; white-space: pre; fill: url(&quot;#gradient-2&quot;);" transform="matrix(2.247955, 0, 0, 2.209523, -1.455894, -1.857092)"><tspan x="4" y="10.924">J</tspan><tspan style="font-size: 7.24138px; line-height: 12.3103px;" dx="-0.304">s</tspan></text>
+          </g>
+        </g>
+        <g>
+          <rect style="stroke-width: 2px; fill: rgb(44, 43, 44); stroke: rgb(70, 70, 70);" x="506" y="127" width="500" height="54" rx="15" ry="15"/>
+          <text style="fill: rgb(175, 175, 175); font-family: Arial, sans-serif; font-size: 21px; text-anchor: middle; white-space: pre;" x="756" y="161.852">subdomain.example.com</text>
+        </g>
       </g>
     </g>
-    <g>
+    <g style="filter: url(&quot;#filter-2&quot;);" transform="matrix(1, 0, 0, 1, 1420, 130.067963)">
       <g>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 20px; white-space: pre;" x="157.408" y="475.902">domain name</text>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 0.4px; white-space: pre;" x="1067.47" y="475.902">wildcard</text>
-        <line style="stroke-width: 2; stroke: rgb(82, 82, 82); fill: none;" x1="142" y1="495.501" x2="1258" y2="495.501"/>
+        <rect style="filter: none; fill: rgb(63, 69, 73); stroke: rgb(102, 106, 109); stroke-width: 2px;" x="50" width="900" height="1345" rx="19.5" ry="19.5" y="50"/>
+        <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; stroke-width: 2; stroke: rgb(102, 106, 109); transform-origin: 500px 43px; fill: url(&quot;#gradient-5&quot;); mask: url(&quot;#mask-4&quot;);" transform="matrix(0, 1, -1, 0, 0.000004, -0.000002)"/>
       </g>
       <g>
-        <rect x="142" y="496.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(255, 255, 255, 0.047);"/>
-        <rect x="142" y="544.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(0, 0, 0, 0.153);"/>
-        <rect x="142" y="592.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(255, 255, 255, 0.05);"/>
-        <rect x="142" y="640.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(0, 0, 0, 0.15);"/>
-        <rect x="142" y="688.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(255, 255, 255, 0.05);"/>
-        <rect x="142" y="736.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(0, 0, 0, 0.15);"/>
-        <rect x="142" y="784.5" width="1116" height="48" style="stroke-width: 1; fill: rgba(255, 255, 255, 0.05);"/>
+        <g>
+          <path style="fill: rgb(51, 135, 8);" d="M 69.5 50.5 H 930.5 A 18.5 18.5 0 0 1 949 69 V 125.5 A 0 0 0 0 1 949 125.5 H 51 A 0 0 0 0 1 51 125.5 V 69 A 18.5 18.5 0 0 1 69.5 50.5 Z" bx:shape="rect 51 50.5 898 75 0 18.5 18.5 0 18.5 18.5 0 0 0 0 0 0 2@b3585c34"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 28px; font-weight: 700; white-space: pre; text-anchor: middle;" transform="matrix(1, 0, 0, 1, 226.708984, -53.611458)" x="273.2909851074219" y="152.7239990234375">Wildcard rules for the following domains were added:<tspan x="273.2909851074219" dy="1em">​</tspan></text>
+        </g>
+        <g>
+          <rect style="fill: rgb(81, 153, 45);" x="51" y="125.5" width="898" height="124"/>
+          <g>
+            <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre; text-anchor: middle;" transform="matrix(1, 0, 0, 1, 226.709015, 26.73229)"><tspan x="273.291" y="152.724">sub3.sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+            <text style="fill: rgb(255, 255, 255); font-family: Arial; font-size: 26px; white-space: pre; text-anchor: middle;" transform="matrix(1, 0, 0, 1, 226.709, 65.024269)"><tspan x="273.291" y="152.724">sub2.sub1.example.com</tspan><tspan x="273.2909851074219" dy="1em">​</tspan></text>
+          </g>
+        </g>
       </g>
       <g>
-        <line style="stroke-width: 2; fill: none; stroke: rgb(36, 36, 37);" x1="1028" y1="496.5" x2="1028" y2="831.5"/>
-        <line style="stroke-width: 2; fill: none; stroke: rgb(36, 36, 37);" x1="1183" y1="496.5" x2="1183" y2="831.501"/>
+        <path d="M 900.566 325 L 904.432 325 C 905.553 325 906.338 324.344 906.618 323.278 L 907.739 318.493 C 908.635 318.192 909.475 317.864 910.261 317.482 L 914.463 320.052 C 915.304 320.599 916.368 320.516 917.098 319.777 L 919.842 317.071 C 920.571 316.333 920.683 315.212 920.067 314.311 L 917.546 310.156 C 917.938 309.389 918.273 308.542 918.498 307.749 L 923.376 306.6 C 924.379 306.354 925 305.562 925 304.441 L 925 300.667 C 925 299.601 924.379 298.809 923.376 298.562 L 918.554 297.387 C 918.273 296.458 917.881 295.638 917.6 294.954 L 920.122 290.716 C 920.683 289.788 920.627 288.776 919.899 288.009 L 917.098 285.303 C 916.368 284.62 915.416 284.429 914.519 284.976 L 910.261 287.601 C 909.533 287.217 908.691 286.889 907.739 286.589 L 906.618 281.722 C 906.338 280.656 905.553 280 904.432 280 L 900.566 280 C 899.502 280 898.716 280.656 898.436 281.722 L 897.314 286.533 C 896.419 286.834 895.522 287.163 894.793 287.572 L 890.535 284.976 C 889.639 284.429 888.686 284.566 887.9 285.303 L 885.155 288.009 C 884.371 288.776 884.371 289.788 884.931 290.716 L 887.453 294.954 C 887.173 295.638 886.78 296.458 886.5 297.387 L 881.736 298.562 C 880.673 298.809 880 299.601 880 300.667 L 880 304.441 C 880 305.562 880.673 306.354 881.736 306.6 L 886.556 307.749 C 886.78 308.542 887.117 309.389 887.509 310.156 L 884.988 314.311 C 884.371 315.212 884.483 316.333 885.211 317.071 L 887.9 319.777 C 888.686 320.516 889.75 320.599 890.647 320.052 L 894.793 317.482 C 895.579 317.864 896.419 318.192 897.314 318.493 L 898.436 323.278 C 898.716 324.344 899.502 325 900.566 325 Z M 902.527 310.017 C 898.38 310.017 895.018 306.628 895.018 302.5 C 895.018 298.371 898.38 294.982 902.527 294.982 C 906.674 294.982 910.036 298.371 910.036 302.5 C 910.036 306.628 906.674 310.017 902.527 310.017 Z" style="fill: rgb(47, 53, 57);"/>
       </g>
       <g>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="157.408" y="530.256">example.com</text>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="1084.74" y="530.256">yes</text>
+        <text style="fill: rgb(236, 236, 236); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="341.283">JavaScript on the Domain</text>
+        <g>
+          <rect style="fill: rgb(37, 37, 36); stroke-width: 4px; stroke: rgb(30, 30, 30);" x="110" y="371.216" width="780" height="86" rx="22" ry="22"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; opacity: 0.5; text-anchor: middle;" x="500" y="423.301">sub3.sub2.sub1.example.com</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 199.216003)" style="opacity: 0.5;">
+          <rect width="360" height="75" x="320" y="285" style="fill: url(&quot;#gradient-6&quot;);" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
+        </g>
       </g>
       <g>
-        <path d="M 1221 530.5 C 1219.48 530.5 1218.06 530.214 1216.73 529.643 C 1215.4 529.07 1214.23 528.282 1213.22 527.274 C 1212.22 526.269 1211.43 525.1 1210.86 523.77 C 1210.29 522.44 1210 521.017 1210 519.5 C 1210 517.983 1210.29 516.56 1210.86 515.23 C 1211.43 513.9 1212.22 512.729 1213.22 511.72 C 1214.23 510.709 1215.4 509.919 1216.73 509.352 C 1218.06 508.784 1219.48 508.5 1221 508.5 C 1222.52 508.5 1223.94 508.784 1225.27 509.352 C 1226.6 509.919 1227.77 510.709 1228.78 511.72 C 1229.78 512.729 1230.57 513.9 1231.14 515.23 C 1231.71 516.56 1232 517.983 1232 519.5 C 1232 521.017 1231.71 522.44 1231.14 523.77 C 1230.57 525.1 1229.78 526.269 1228.78 527.274 C 1227.77 528.282 1226.6 529.07 1225.27 529.643 C 1223.94 530.214 1222.52 530.5 1221 530.5 Z M 1221 528.667 C 1222.27 528.667 1223.45 528.429 1224.56 527.956 C 1225.67 527.48 1226.64 526.823 1227.48 525.982 C 1228.32 525.14 1228.98 524.165 1229.46 523.059 C 1229.93 521.952 1230.17 520.765 1230.17 519.5 C 1230.17 518.235 1229.93 517.047 1229.46 515.935 C 1228.98 514.824 1228.32 513.851 1227.48 513.012 C 1226.64 512.176 1225.67 511.52 1224.56 511.044 C 1223.45 510.571 1222.27 510.333 1221 510.333 C 1219.73 510.333 1218.55 510.571 1217.44 511.044 C 1216.33 511.52 1215.36 512.176 1214.52 513.012 C 1213.68 513.851 1213.02 514.824 1212.55 515.935 C 1212.07 517.047 1211.83 518.235 1211.83 519.5 C 1211.83 520.765 1212.07 521.952 1212.55 523.059 C 1213.02 524.165 1213.68 525.14 1214.52 525.982 C 1215.36 526.823 1216.33 527.48 1217.44 527.956 C 1218.55 528.429 1219.73 528.667 1221 528.667 Z M 1216.48 524.936 C 1216.24 525.049 1216.03 525.074 1215.85 525.01 C 1215.66 524.945 1215.54 524.822 1215.48 524.639 C 1215.41 524.455 1215.44 524.245 1215.55 524.007 L 1218.57 517.817 C 1218.75 517.464 1219 517.213 1219.32 517.063 L 1225.49 514.054 C 1225.87 513.874 1226.16 513.893 1226.38 514.108 C 1226.59 514.323 1226.6 514.615 1226.42 514.981 L 1223.42 521.161 C 1223.24 521.498 1222.99 521.747 1222.67 521.904 L 1216.48 524.936 Z M 1221 520.827 C 1221.36 520.827 1221.67 520.698 1221.93 520.438 C 1222.19 520.179 1222.32 519.867 1222.32 519.5 C 1222.32 519.134 1222.19 518.822 1221.93 518.567 C 1221.67 518.312 1221.36 518.184 1221 518.184 C 1220.63 518.184 1220.32 518.312 1220.06 518.567 C 1219.8 518.822 1219.67 519.134 1219.67 519.5 C 1219.67 519.867 1219.8 520.179 1220.06 520.438 C 1220.32 520.698 1220.63 520.827 1221 520.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
-        <path d="M 1221 578.5 C 1219.48 578.5 1218.06 578.214 1216.73 577.643 C 1215.4 577.07 1214.23 576.282 1213.22 575.274 C 1212.22 574.269 1211.43 573.1 1210.86 571.77 C 1210.29 570.44 1210 569.017 1210 567.5 C 1210 565.983 1210.29 564.56 1210.86 563.23 C 1211.43 561.9 1212.22 560.729 1213.22 559.72 C 1214.23 558.709 1215.4 557.919 1216.73 557.352 C 1218.06 556.784 1219.48 556.5 1221 556.5 C 1222.52 556.5 1223.94 556.784 1225.27 557.352 C 1226.6 557.919 1227.77 558.709 1228.78 559.72 C 1229.78 560.729 1230.57 561.9 1231.14 563.23 C 1231.71 564.56 1232 565.983 1232 567.5 C 1232 569.017 1231.71 570.44 1231.14 571.77 C 1230.57 573.1 1229.78 574.269 1228.78 575.274 C 1227.77 576.282 1226.6 577.07 1225.27 577.643 C 1223.94 578.214 1222.52 578.5 1221 578.5 Z M 1221 576.667 C 1222.27 576.667 1223.45 576.429 1224.56 575.956 C 1225.67 575.48 1226.64 574.823 1227.48 573.982 C 1228.32 573.14 1228.98 572.165 1229.46 571.059 C 1229.93 569.952 1230.17 568.765 1230.17 567.5 C 1230.17 566.235 1229.93 565.047 1229.46 563.935 C 1228.98 562.824 1228.32 561.851 1227.48 561.012 C 1226.64 560.176 1225.67 559.52 1224.56 559.044 C 1223.45 558.571 1222.27 558.333 1221 558.333 C 1219.73 558.333 1218.55 558.571 1217.44 559.044 C 1216.33 559.52 1215.36 560.176 1214.52 561.012 C 1213.68 561.851 1213.02 562.824 1212.55 563.935 C 1212.07 565.047 1211.83 566.235 1211.83 567.5 C 1211.83 568.765 1212.07 569.952 1212.55 571.059 C 1213.02 572.165 1213.68 573.14 1214.52 573.982 C 1215.36 574.823 1216.33 575.48 1217.44 575.956 C 1218.55 576.429 1219.73 576.667 1221 576.667 Z M 1216.48 572.936 C 1216.24 573.049 1216.03 573.074 1215.85 573.01 C 1215.66 572.945 1215.54 572.822 1215.48 572.639 C 1215.41 572.455 1215.44 572.245 1215.55 572.007 L 1218.57 565.817 C 1218.75 565.464 1219 565.213 1219.32 565.063 L 1225.49 562.054 C 1225.87 561.874 1226.16 561.893 1226.38 562.108 C 1226.59 562.323 1226.6 562.615 1226.42 562.981 L 1223.42 569.161 C 1223.24 569.498 1222.99 569.747 1222.67 569.904 L 1216.48 572.936 Z M 1221 568.827 C 1221.36 568.827 1221.67 568.698 1221.93 568.438 C 1222.19 568.179 1222.32 567.867 1222.32 567.5 C 1222.32 567.134 1222.19 566.822 1221.93 566.567 C 1221.67 566.312 1221.36 566.184 1221 566.184 C 1220.63 566.184 1220.32 566.312 1220.06 566.567 C 1219.8 566.822 1219.67 567.134 1219.67 567.5 C 1219.67 567.867 1219.8 568.179 1220.06 568.438 C 1220.32 568.698 1220.63 568.827 1221 568.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
-        <path d="M 1221 626.5 C 1219.48 626.5 1218.06 626.214 1216.73 625.643 C 1215.4 625.07 1214.23 624.282 1213.22 623.274 C 1212.22 622.269 1211.43 621.1 1210.86 619.77 C 1210.29 618.44 1210 617.017 1210 615.5 C 1210 613.983 1210.29 612.56 1210.86 611.23 C 1211.43 609.9 1212.22 608.729 1213.22 607.72 C 1214.23 606.709 1215.4 605.919 1216.73 605.352 C 1218.06 604.784 1219.48 604.5 1221 604.5 C 1222.52 604.5 1223.94 604.784 1225.27 605.352 C 1226.6 605.919 1227.77 606.709 1228.78 607.72 C 1229.78 608.729 1230.57 609.9 1231.14 611.23 C 1231.71 612.56 1232 613.983 1232 615.5 C 1232 617.017 1231.71 618.44 1231.14 619.77 C 1230.57 621.1 1229.78 622.269 1228.78 623.274 C 1227.77 624.282 1226.6 625.07 1225.27 625.643 C 1223.94 626.214 1222.52 626.5 1221 626.5 Z M 1221 624.667 C 1222.27 624.667 1223.45 624.429 1224.56 623.956 C 1225.67 623.48 1226.64 622.823 1227.48 621.982 C 1228.32 621.14 1228.98 620.165 1229.46 619.059 C 1229.93 617.952 1230.17 616.765 1230.17 615.5 C 1230.17 614.235 1229.93 613.047 1229.46 611.935 C 1228.98 610.824 1228.32 609.851 1227.48 609.012 C 1226.64 608.176 1225.67 607.52 1224.56 607.044 C 1223.45 606.571 1222.27 606.333 1221 606.333 C 1219.73 606.333 1218.55 606.571 1217.44 607.044 C 1216.33 607.52 1215.36 608.176 1214.52 609.012 C 1213.68 609.851 1213.02 610.824 1212.55 611.935 C 1212.07 613.047 1211.83 614.235 1211.83 615.5 C 1211.83 616.765 1212.07 617.952 1212.55 619.059 C 1213.02 620.165 1213.68 621.14 1214.52 621.982 C 1215.36 622.823 1216.33 623.48 1217.44 623.956 C 1218.55 624.429 1219.73 624.667 1221 624.667 Z M 1216.48 620.936 C 1216.24 621.049 1216.03 621.074 1215.85 621.01 C 1215.66 620.945 1215.54 620.822 1215.48 620.639 C 1215.41 620.455 1215.44 620.245 1215.55 620.007 L 1218.57 613.817 C 1218.75 613.464 1219 613.213 1219.32 613.063 L 1225.49 610.054 C 1225.87 609.874 1226.16 609.893 1226.38 610.108 C 1226.59 610.323 1226.6 610.615 1226.42 610.981 L 1223.42 617.161 C 1223.24 617.498 1222.99 617.747 1222.67 617.904 L 1216.48 620.936 Z M 1221 616.827 C 1221.36 616.827 1221.67 616.698 1221.93 616.438 C 1222.19 616.179 1222.32 615.867 1222.32 615.5 C 1222.32 615.134 1222.19 614.822 1221.93 614.567 C 1221.67 614.312 1221.36 614.184 1221 614.184 C 1220.63 614.184 1220.32 614.312 1220.06 614.567 C 1219.8 614.822 1219.67 615.134 1219.67 615.5 C 1219.67 615.867 1219.8 616.179 1220.06 616.438 C 1220.32 616.698 1220.63 616.827 1221 616.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
-        <path d="M 1221 674.5 C 1219.48 674.5 1218.06 674.214 1216.73 673.643 C 1215.4 673.07 1214.23 672.282 1213.22 671.274 C 1212.22 670.269 1211.43 669.1 1210.86 667.77 C 1210.29 666.44 1210 665.017 1210 663.5 C 1210 661.983 1210.29 660.56 1210.86 659.23 C 1211.43 657.9 1212.22 656.729 1213.22 655.72 C 1214.23 654.709 1215.4 653.919 1216.73 653.352 C 1218.06 652.784 1219.48 652.5 1221 652.5 C 1222.52 652.5 1223.94 652.784 1225.27 653.352 C 1226.6 653.919 1227.77 654.709 1228.78 655.72 C 1229.78 656.729 1230.57 657.9 1231.14 659.23 C 1231.71 660.56 1232 661.983 1232 663.5 C 1232 665.017 1231.71 666.44 1231.14 667.77 C 1230.57 669.1 1229.78 670.269 1228.78 671.274 C 1227.77 672.282 1226.6 673.07 1225.27 673.643 C 1223.94 674.214 1222.52 674.5 1221 674.5 Z M 1221 672.667 C 1222.27 672.667 1223.45 672.429 1224.56 671.956 C 1225.67 671.48 1226.64 670.823 1227.48 669.982 C 1228.32 669.14 1228.98 668.165 1229.46 667.059 C 1229.93 665.952 1230.17 664.765 1230.17 663.5 C 1230.17 662.235 1229.93 661.047 1229.46 659.935 C 1228.98 658.824 1228.32 657.851 1227.48 657.012 C 1226.64 656.176 1225.67 655.52 1224.56 655.044 C 1223.45 654.571 1222.27 654.333 1221 654.333 C 1219.73 654.333 1218.55 654.571 1217.44 655.044 C 1216.33 655.52 1215.36 656.176 1214.52 657.012 C 1213.68 657.851 1213.02 658.824 1212.55 659.935 C 1212.07 661.047 1211.83 662.235 1211.83 663.5 C 1211.83 664.765 1212.07 665.952 1212.55 667.059 C 1213.02 668.165 1213.68 669.14 1214.52 669.982 C 1215.36 670.823 1216.33 671.48 1217.44 671.956 C 1218.55 672.429 1219.73 672.667 1221 672.667 Z M 1216.48 668.936 C 1216.24 669.049 1216.03 669.074 1215.85 669.01 C 1215.66 668.945 1215.54 668.822 1215.48 668.639 C 1215.41 668.455 1215.44 668.245 1215.55 668.007 L 1218.57 661.817 C 1218.75 661.464 1219 661.213 1219.32 661.063 L 1225.49 658.054 C 1225.87 657.874 1226.16 657.893 1226.38 658.108 C 1226.59 658.323 1226.6 658.615 1226.42 658.981 L 1223.42 665.161 C 1223.24 665.498 1222.99 665.747 1222.67 665.904 L 1216.48 668.936 Z M 1221 664.827 C 1221.36 664.827 1221.67 664.698 1221.93 664.438 C 1222.19 664.179 1222.32 663.867 1222.32 663.5 C 1222.32 663.134 1222.19 662.822 1221.93 662.567 C 1221.67 662.312 1221.36 662.184 1221 662.184 C 1220.63 662.184 1220.32 662.312 1220.06 662.567 C 1219.8 662.822 1219.67 663.134 1219.67 663.5 C 1219.67 663.867 1219.8 664.179 1220.06 664.438 C 1220.32 664.698 1220.63 664.827 1221 664.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
-        <path d="M 1221 722.5 C 1219.48 722.5 1218.06 722.214 1216.73 721.643 C 1215.4 721.07 1214.23 720.282 1213.22 719.274 C 1212.22 718.269 1211.43 717.1 1210.86 715.77 C 1210.29 714.44 1210 713.017 1210 711.5 C 1210 709.983 1210.29 708.56 1210.86 707.23 C 1211.43 705.9 1212.22 704.729 1213.22 703.72 C 1214.23 702.709 1215.4 701.919 1216.73 701.352 C 1218.06 700.784 1219.48 700.5 1221 700.5 C 1222.52 700.5 1223.94 700.784 1225.27 701.352 C 1226.6 701.919 1227.77 702.709 1228.78 703.72 C 1229.78 704.729 1230.57 705.9 1231.14 707.23 C 1231.71 708.56 1232 709.983 1232 711.5 C 1232 713.017 1231.71 714.44 1231.14 715.77 C 1230.57 717.1 1229.78 718.269 1228.78 719.274 C 1227.77 720.282 1226.6 721.07 1225.27 721.643 C 1223.94 722.214 1222.52 722.5 1221 722.5 Z M 1221 720.667 C 1222.27 720.667 1223.45 720.429 1224.56 719.956 C 1225.67 719.48 1226.64 718.823 1227.48 717.982 C 1228.32 717.14 1228.98 716.165 1229.46 715.059 C 1229.93 713.952 1230.17 712.765 1230.17 711.5 C 1230.17 710.235 1229.93 709.047 1229.46 707.935 C 1228.98 706.824 1228.32 705.851 1227.48 705.012 C 1226.64 704.176 1225.67 703.52 1224.56 703.044 C 1223.45 702.571 1222.27 702.333 1221 702.333 C 1219.73 702.333 1218.55 702.571 1217.44 703.044 C 1216.33 703.52 1215.36 704.176 1214.52 705.012 C 1213.68 705.851 1213.02 706.824 1212.55 707.935 C 1212.07 709.047 1211.83 710.235 1211.83 711.5 C 1211.83 712.765 1212.07 713.952 1212.55 715.059 C 1213.02 716.165 1213.68 717.14 1214.52 717.982 C 1215.36 718.823 1216.33 719.48 1217.44 719.956 C 1218.55 720.429 1219.73 720.667 1221 720.667 Z M 1216.48 716.936 C 1216.24 717.049 1216.03 717.074 1215.85 717.01 C 1215.66 716.945 1215.54 716.822 1215.48 716.639 C 1215.41 716.455 1215.44 716.245 1215.55 716.007 L 1218.57 709.817 C 1218.75 709.464 1219 709.213 1219.32 709.063 L 1225.49 706.054 C 1225.87 705.874 1226.16 705.893 1226.38 706.108 C 1226.59 706.323 1226.6 706.615 1226.42 706.981 L 1223.42 713.161 C 1223.24 713.498 1222.99 713.747 1222.67 713.904 L 1216.48 716.936 Z M 1221 712.827 C 1221.36 712.827 1221.67 712.698 1221.93 712.438 C 1222.19 712.179 1222.32 711.867 1222.32 711.5 C 1222.32 711.134 1222.19 710.822 1221.93 710.567 C 1221.67 710.312 1221.36 710.184 1221 710.184 C 1220.63 710.184 1220.32 710.312 1220.06 710.567 C 1219.8 710.822 1219.67 711.134 1219.67 711.5 C 1219.67 711.867 1219.8 712.179 1220.06 712.438 C 1220.32 712.698 1220.63 712.827 1221 712.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
-        <path d="M 1221 770.5 C 1219.48 770.5 1218.06 770.214 1216.73 769.643 C 1215.4 769.07 1214.23 768.282 1213.22 767.274 C 1212.22 766.269 1211.43 765.1 1210.86 763.77 C 1210.29 762.44 1210 761.017 1210 759.5 C 1210 757.983 1210.29 756.56 1210.86 755.23 C 1211.43 753.9 1212.22 752.729 1213.22 751.72 C 1214.23 750.709 1215.4 749.919 1216.73 749.352 C 1218.06 748.784 1219.48 748.5 1221 748.5 C 1222.52 748.5 1223.94 748.784 1225.27 749.352 C 1226.6 749.919 1227.77 750.709 1228.78 751.72 C 1229.78 752.729 1230.57 753.9 1231.14 755.23 C 1231.71 756.56 1232 757.983 1232 759.5 C 1232 761.017 1231.71 762.44 1231.14 763.77 C 1230.57 765.1 1229.78 766.269 1228.78 767.274 C 1227.77 768.282 1226.6 769.07 1225.27 769.643 C 1223.94 770.214 1222.52 770.5 1221 770.5 Z M 1221 768.667 C 1222.27 768.667 1223.45 768.429 1224.56 767.956 C 1225.67 767.48 1226.64 766.823 1227.48 765.982 C 1228.32 765.14 1228.98 764.165 1229.46 763.059 C 1229.93 761.952 1230.17 760.765 1230.17 759.5 C 1230.17 758.235 1229.93 757.047 1229.46 755.935 C 1228.98 754.824 1228.32 753.851 1227.48 753.012 C 1226.64 752.176 1225.67 751.52 1224.56 751.044 C 1223.45 750.571 1222.27 750.333 1221 750.333 C 1219.73 750.333 1218.55 750.571 1217.44 751.044 C 1216.33 751.52 1215.36 752.176 1214.52 753.012 C 1213.68 753.851 1213.02 754.824 1212.55 755.935 C 1212.07 757.047 1211.83 758.235 1211.83 759.5 C 1211.83 760.765 1212.07 761.952 1212.55 763.059 C 1213.02 764.165 1213.68 765.14 1214.52 765.982 C 1215.36 766.823 1216.33 767.48 1217.44 767.956 C 1218.55 768.429 1219.73 768.667 1221 768.667 Z M 1216.48 764.936 C 1216.24 765.049 1216.03 765.074 1215.85 765.01 C 1215.66 764.945 1215.54 764.822 1215.48 764.639 C 1215.41 764.455 1215.44 764.245 1215.55 764.007 L 1218.57 757.817 C 1218.75 757.464 1219 757.213 1219.32 757.063 L 1225.49 754.054 C 1225.87 753.874 1226.16 753.893 1226.38 754.108 C 1226.59 754.323 1226.6 754.615 1226.42 754.981 L 1223.42 761.161 C 1223.24 761.498 1222.99 761.747 1222.67 761.904 L 1216.48 764.936 Z M 1221 760.827 C 1221.36 760.827 1221.67 760.698 1221.93 760.438 C 1222.19 760.179 1222.32 759.867 1222.32 759.5 C 1222.32 759.134 1222.19 758.822 1221.93 758.567 C 1221.67 758.312 1221.36 758.184 1221 758.184 C 1220.63 758.184 1220.32 758.312 1220.06 758.567 C 1219.8 758.822 1219.67 759.134 1219.67 759.5 C 1219.67 759.867 1219.8 760.179 1220.06 760.438 C 1220.32 760.698 1220.63 760.827 1221 760.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
-        <path d="M 1221 818.5 C 1219.48 818.5 1218.06 818.214 1216.73 817.643 C 1215.4 817.07 1214.23 816.282 1213.22 815.274 C 1212.22 814.269 1211.43 813.1 1210.86 811.77 C 1210.29 810.44 1210 809.017 1210 807.5 C 1210 805.983 1210.29 804.56 1210.86 803.23 C 1211.43 801.9 1212.22 800.729 1213.22 799.72 C 1214.23 798.709 1215.4 797.919 1216.73 797.352 C 1218.06 796.784 1219.48 796.5 1221 796.5 C 1222.52 796.5 1223.94 796.784 1225.27 797.352 C 1226.6 797.919 1227.77 798.709 1228.78 799.72 C 1229.78 800.729 1230.57 801.9 1231.14 803.23 C 1231.71 804.56 1232 805.983 1232 807.5 C 1232 809.017 1231.71 810.44 1231.14 811.77 C 1230.57 813.1 1229.78 814.269 1228.78 815.274 C 1227.77 816.282 1226.6 817.07 1225.27 817.643 C 1223.94 818.214 1222.52 818.5 1221 818.5 Z M 1221 816.667 C 1222.27 816.667 1223.45 816.429 1224.56 815.956 C 1225.67 815.48 1226.64 814.823 1227.48 813.982 C 1228.32 813.14 1228.98 812.165 1229.46 811.059 C 1229.93 809.952 1230.17 808.765 1230.17 807.5 C 1230.17 806.235 1229.93 805.047 1229.46 803.935 C 1228.98 802.824 1228.32 801.851 1227.48 801.012 C 1226.64 800.176 1225.67 799.52 1224.56 799.044 C 1223.45 798.571 1222.27 798.333 1221 798.333 C 1219.73 798.333 1218.55 798.571 1217.44 799.044 C 1216.33 799.52 1215.36 800.176 1214.52 801.012 C 1213.68 801.851 1213.02 802.824 1212.55 803.935 C 1212.07 805.047 1211.83 806.235 1211.83 807.5 C 1211.83 808.765 1212.07 809.952 1212.55 811.059 C 1213.02 812.165 1213.68 813.14 1214.52 813.982 C 1215.36 814.823 1216.33 815.48 1217.44 815.956 C 1218.55 816.429 1219.73 816.667 1221 816.667 Z M 1216.48 812.936 C 1216.24 813.049 1216.03 813.074 1215.85 813.01 C 1215.66 812.945 1215.54 812.822 1215.48 812.639 C 1215.41 812.455 1215.44 812.245 1215.55 812.007 L 1218.57 805.817 C 1218.75 805.464 1219 805.213 1219.32 805.063 L 1225.49 802.054 C 1225.87 801.874 1226.16 801.893 1226.38 802.108 C 1226.59 802.323 1226.6 802.615 1226.42 802.981 L 1223.42 809.161 C 1223.24 809.498 1222.99 809.747 1222.67 809.904 L 1216.48 812.936 Z M 1221 808.827 C 1221.36 808.827 1221.67 808.698 1221.93 808.438 C 1222.19 808.179 1222.32 807.867 1222.32 807.5 C 1222.32 807.134 1222.19 806.822 1221.93 806.567 C 1221.67 806.312 1221.36 806.184 1221 806.184 C 1220.63 806.184 1220.32 806.312 1220.06 806.567 C 1219.8 806.822 1219.67 807.134 1219.67 807.5 C 1219.67 807.867 1219.8 808.179 1220.06 808.438 C 1220.32 808.698 1220.63 808.827 1221 808.827 Z" style="text-wrap-mode: nowrap; fill: rgb(160, 160, 160);"/>
+        <text style="fill: rgb(236, 236, 236); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="670.787">JavaScript on the Domain + Subdomains</text>
+        <g>
+          <rect style="fill: rgb(37, 37, 36); stroke-width: 4px; stroke: rgb(198, 110, 255);" x="110" y="700.72" width="780" height="211.28" rx="22" ry="22"/>
+          <g>
+            <text style="fill: rgb(198, 110, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="753">*.sub3.sub2.sub1.example.com</text>
+            <path d="M 693.647 729.591 L 715.243 729.591 C 716.158 729.656 717.273 730.088 717.861 730.675 C 718.448 731.263 718.88 732.378 718.945 733.293 L 718.945 754.889 C 718.88 755.804 718.448 756.919 717.861 757.507 C 717.273 758.094 716.158 758.526 715.243 758.591 L 693.647 758.591 C 692.732 758.526 691.617 758.094 691.029 757.507 C 690.442 756.919 690.01 755.804 689.945 754.889 L 689.945 733.293 C 690.01 732.378 690.442 731.263 691.029 730.675 C 691.617 730.088 692.732 729.656 693.647 729.591 Z M 693.151 732.797 C 692.941 733.006 692.88 732.991 692.945 733.293 L 692.945 754.889 C 692.88 755.191 692.941 755.176 693.151 755.385 C 693.36 755.595 693.345 755.656 693.647 755.591 L 715.243 755.591 C 715.545 755.656 715.53 755.595 715.739 755.385 C 715.949 755.176 716.01 755.191 715.945 754.889 L 715.945 733.293 C 716.01 732.991 715.949 733.006 715.739 732.797 C 715.53 732.587 715.545 732.526 715.243 732.591 L 693.647 732.591 C 693.345 732.526 693.36 732.587 693.151 732.797 Z M 695.445 735.091 L 713.445 735.091 L 713.445 753.091 L 695.445 753.091 L 695.445 735.091 Z" style="fill: rgb(198, 110, 255);"/>
+          </g>
+          <g>
+            <text style="fill: rgb(198, 110, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="795.407">*.sub2.sub1.example.com</text>
+            <path d="M 693.647 771.932 L 715.243 771.932 C 716.158 771.997 717.273 772.429 717.861 773.016 C 718.448 773.604 718.88 774.719 718.945 775.634 L 718.945 797.23 C 718.88 798.145 718.448 799.26 717.861 799.848 C 717.273 800.435 716.158 800.867 715.243 800.932 L 693.647 800.932 C 692.732 800.867 691.617 800.435 691.029 799.848 C 690.442 799.26 690.01 798.145 689.945 797.23 L 689.945 775.634 C 690.01 774.719 690.442 773.604 691.029 773.016 C 691.617 772.429 692.732 771.997 693.647 771.932 Z M 693.151 775.138 C 692.941 775.347 692.88 775.332 692.945 775.634 L 692.945 797.23 C 692.88 797.532 692.941 797.517 693.151 797.726 C 693.36 797.936 693.345 797.997 693.647 797.932 L 715.243 797.932 C 715.545 797.997 715.53 797.936 715.739 797.726 C 715.949 797.517 716.01 797.532 715.945 797.23 L 715.945 775.634 C 716.01 775.332 715.949 775.347 715.739 775.138 C 715.53 774.928 715.545 774.867 715.243 774.932 L 693.647 774.932 C 693.345 774.867 693.36 774.928 693.151 775.138 Z M 695.445 777.432 L 713.445 777.432 L 713.445 795.432 L 695.445 795.432 L 695.445 777.432 Z" style="fill: rgb(198, 110, 255);"/>
+          </g>
+          <g style="opacity: 0.5;">
+            <text style="fill: rgb(198, 110, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="837.814">*.sub1.example.com</text>
+            <path d="M 693.647 814.407 L 715.243 814.407 C 716.158 814.472 717.273 814.904 717.861 815.491 C 718.448 816.079 718.88 817.194 718.945 818.109 L 718.945 839.703 C 718.88 840.623 718.448 841.733 717.861 842.323 C 717.273 842.913 716.158 843.343 715.243 843.403 L 693.647 843.403 C 692.732 843.343 691.617 842.913 691.029 842.323 C 690.442 841.733 690.01 840.623 689.945 839.703 L 689.945 818.109 C 690.01 817.194 690.442 816.079 691.029 815.491 C 691.617 814.904 692.732 814.472 693.647 814.407 Z M 693.151 817.613 C 692.941 817.822 692.88 817.807 692.945 818.109 L 692.945 839.703 C 692.88 840.003 692.941 839.993 693.151 840.203 C 693.36 840.413 693.345 840.473 693.647 840.403 L 715.243 840.403 C 715.545 840.473 715.53 840.413 715.739 840.203 C 715.949 839.993 716.01 840.003 715.945 839.703 L 715.945 818.109 C 716.01 817.807 715.949 817.822 715.739 817.613 C 715.53 817.403 715.545 817.342 715.243 817.407 L 693.647 817.407 C 693.345 817.342 693.36 817.403 693.151 817.613 Z" style="fill: rgb(198, 110, 255);"/>
+          </g>
+          <g style="opacity: 0.5;">
+            <text style="fill: rgb(198, 110, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: end;" x="665" y="880.22">*.example.com</text>
+            <path d="M 693.647 856.814 L 715.243 856.814 C 716.158 856.879 717.273 857.311 717.861 857.898 C 718.448 858.486 718.88 859.601 718.945 860.516 L 718.945 882.108 C 718.88 883.028 718.448 884.138 717.861 884.728 C 717.273 885.318 716.158 885.748 715.243 885.808 L 693.647 885.808 C 692.732 885.748 691.617 885.318 691.029 884.728 C 690.442 884.138 690.01 883.028 689.945 882.108 L 689.945 860.516 C 690.01 859.601 690.442 858.486 691.029 857.898 C 691.617 857.311 692.732 856.879 693.647 856.814 Z M 693.151 860.02 C 692.941 860.229 692.88 860.214 692.945 860.516 L 692.945 882.108 C 692.88 882.408 692.941 882.398 693.151 882.608 C 693.36 882.818 693.345 882.878 693.647 882.808 L 715.243 882.808 C 715.545 882.878 715.53 882.818 715.739 882.608 C 715.949 882.398 716.01 882.408 715.945 882.108 L 715.945 860.516 C 716.01 860.214 715.949 860.229 715.739 860.02 C 715.53 859.81 715.545 859.749 715.243 859.814 L 693.647 859.814 C 693.345 859.749 693.36 859.81 693.151 860.02 Z" style="fill: rgb(198, 110, 255);"/>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect x="295" y="940.5" width="410" height="20.054" style="stroke-width: 4; fill: rgb(36, 35, 37); stroke: rgb(198, 109, 255);" rx="10.027" ry="10.027"/>
+            <rect x="299" y="944.5" width="79.61" height="12" style="stroke-width: 1; fill: rgb(198, 109, 255);" rx="6" ry="6"/>
+          </g>
+          <text style="fill: rgb(236, 236, 236); font-family: &quot;SF Pro&quot;; font-size: 22px; letter-spacing: 0.2px; text-anchor: middle; white-space: pre;" x="500" y="1001.79">lifetime: 5 minutes</text>
+          <path d="M 624 994.5 C 624 997.74 622.602 1000.87 620.485 1002.98 C 618.368 1005.1 615.242 1006.5 612 1006.5 C 608.758 1006.5 605.631 1005.1 603.515 1002.98 C 601.398 1000.87 600 997.74 600 994.5 C 600 991.26 601.398 988.13 603.515 986.01 C 605.632 983.9 608.758 982.5 612 982.5 C 615.242 982.5 618.369 983.9 620.485 986.01 C 622.602 988.13 624 991.26 624 994.5 Z M 619.071 987.43 C 617.206 985.56 614.833 984.5 612 984.5 C 609.167 984.5 606.794 985.56 604.929 987.43 C 603.064 989.29 602 991.67 602 994.5 C 602 997.33 603.064 999.71 604.929 1001.57 C 606.794 1003.44 609.167 1004.5 612 1004.5 C 614.833 1004.5 617.206 1003.44 619.071 1001.57 C 620.936 999.71 622 997.33 622 994.5 C 622 991.67 620.936 989.29 619.071 987.43 Z M 611.06 996.72 L 611.06 995.98 C 611.06 995.63 611.12 995.31 611.23 995.02 C 611.35 994.73 611.52 994.47 611.76 994.23 C 612 993.98 612.3 993.75 612.67 993.53 C 612.98 993.34 613.23 993.15 613.42 992.96 C 613.61 992.78 613.75 992.58 613.84 992.36 C 613.92 992.14 613.96 991.88 613.96 991.6 L 613.96 991.59 C 613.96 991.25 613.88 990.95 613.72 990.69 C 613.56 990.43 613.33 990.23 613.03 990.08 C 612.74 989.93 612.39 989.86 611.99 989.86 C 611.59 989.86 611.24 989.93 610.94 990.08 C 610.64 990.24 610.41 990.44 610.23 990.71 C 610.06 990.97 609.96 991.29 609.92 991.65 L 609.91 991.73 L 608.54 991.73 L 608.54 991.62 C 608.59 991.08 608.74 990.57 609.01 990.11 C 609.27 989.65 609.66 989.29 610.16 989.01 C 610.67 988.74 611.3 988.6 612.05 988.6 C 612.72 988.6 613.32 988.73 613.83 988.98 C 614.35 989.24 614.75 989.59 615.03 990.02 C 615.32 990.46 615.46 990.96 615.46 991.52 L 615.46 991.53 C 615.46 991.95 615.4 992.33 615.26 992.67 C 615.12 993.01 614.93 993.31 614.67 993.58 C 614.42 993.85 614.12 994.09 613.78 994.3 C 613.44 994.5 613.18 994.69 612.99 994.87 C 612.8 995.05 612.66 995.25 612.58 995.46 C 612.51 995.67 612.47 995.91 612.47 996.2 L 612.47 996.72 L 611.06 996.72 Z M 611.77 1000.4 C 611.51 1000.4 611.29 1000.31 611.11 1000.13 C 610.94 999.95 610.85 999.74 610.85 999.48 C 610.85 999.22 610.94 999 611.11 998.82 C 611.29 998.65 611.51 998.56 611.77 998.56 C 612.03 998.56 612.25 998.65 612.42 998.82 C 612.6 999 612.68 999.22 612.68 999.48 C 612.68 999.74 612.6 999.95 612.42 1000.13 C 612.25 1000.31 612.03 1000.4 611.77 1000.4 Z" style="stroke-width: 1; fill: rgb(198, 109, 255);"/>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 0, 772.5)" style="opacity: 0.5;">
+          <rect width="360" height="75" x="320" y="285" style="fill: url(&quot;#gradient-10&quot;);" rx="37.5" ry="37.5"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
+        </g>
       </g>
-    </g>
-    <text style="fill: rgb(142, 142, 146); font-family: Arial, sans-serif; font-size: 23px; letter-spacing: 0.2px; white-space: pre;" x="346.516" y="872.535">note: New Domains are added in Safari via the "JS Blocker" pop-up.</text>
-    <g style="opacity: 0.5;">
-      <rect style="filter: url(&quot;#filter-1&quot;); stroke-width: 1; fill: rgba(255, 255, 255, 0.25);" x="566" y="914" width="268" height="51" rx="10" ry="10"/>
-      <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre;" x="662.633" y="947.893">delete</text>
+      <g>
+        <path style="fill: rgb(47, 53, 57); stroke-width: 1;" d="M 51 1195.5 H 949 A 0 0 0 0 1 949 1195.5 V 1375.5 A 18.5 18.5 0 0 1 930.5 1394 H 69.5 A 18.5 18.5 0 0 1 51 1375.5 V 1195.5 A 0 0 0 0 1 51 1195.5 Z" bx:shape="rect 51 1195.5 898 198.5 0 0 0 0 0 0 0 18.5 18.5 0 18.5 18.5 2@580d7d9e"/>
+        <g>
+          <rect width="449" height="74.945" x="275.5" y="1257.02" rx="37.472" ry="37.472" style="stroke-width: 1; fill: url(&quot;#gradient-14&quot;);"/>
+          <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle; stroke-width: 1;" x="500" y="1303.55">cancel rule</text>
+        </g>
+      </g>
     </g>
   </g>
 </svg>

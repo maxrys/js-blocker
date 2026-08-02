@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 1050 1370" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+<svg viewBox="0 0 1050 1500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
   <defs>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-8" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 484.910095)">
-      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
-      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
-    </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-12" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1137.020813)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-12" gradientTransform="matrix(2.245, 0, 0, 1.498901, 275.500732, 1257.020874)">
       <stop offset="0" style="stop-color: rgb(1, 199, 227);"/>
       <stop offset="1" style="stop-color: rgb(0, 136, 175);"/>
-    </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-2" gradientTransform="matrix(1.499983, -0.006948, 0.006957, 1.499999, 350.002808, 938.694214)">
-      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
-      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
     </linearGradient>
     <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)">
       <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
@@ -57,8 +49,16 @@
     <mask id="mask-3">
       <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="479" y="4.5" width="29" height="77"/>
     </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-9" gradientTransform="matrix(1.799979, -0.006948, 0.008349, 1.499999, 320.003357, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-8" gradientTransform="matrix(1.799979, -0.006948, 0.008349, 1.499999, 320.003357, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
   </defs>
-  <g transform="matrix(0.820313, 0, 0, 0.853943, -0.000023, 3.690742)">
+  <g transform="matrix(0.820313, 0, 0, 0.934974, -0.000023, 4.04096)">
     <rect width="1280" height="1604.32" style="fill: url(&quot;#gradient-0&quot;); filter: none;" y="-4.322"/>
     <path style="fill: url(&quot;#gradient-1&quot;);" d="M 525.835 -4.322 L 0 -4.322 L 0 1600 L 1280 1600 L 1280 430.773 C 856.945 404.418 809.533 -4.322 525.835 -4.322 Z"/>
     <path style="fill: url(&quot;#gradient-6&quot;);" d="M 0 60.128 L 0 1600 L 1280 1600 L 1280 743.578 C 1023.564 629.296 940.006 446.74 765.475 335.186 C 671.408 275.062 535.952 281.221 451.677 236.13 C 362.035 188.168 366.594 173.741 266.857 122.742 C 184.13 80.441 87.749 126.129 0 60.128 Z"/>
@@ -68,7 +68,7 @@
   </g>
   <g style="filter: url('#drop-shadow-filter-1');" transform="matrix(1, 0, 0, 1, 25, 24.5)">
     <g>
-      <rect style="filter: none; fill: rgb(63, 69, 73); stroke: rgb(102, 106, 109); stroke-width: 2px;" x="50" width="900" height="1225" rx="19.5" ry="19.5" y="50"/>
+      <rect style="filter: none; fill: rgb(63, 69, 73); stroke: rgb(102, 106, 109); stroke-width: 2px;" x="50" width="900" height="1345" rx="19.5" ry="19.5" y="50"/>
       <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; stroke-width: 2; mask: url(&quot;#mask-3&quot;); fill: url(&quot;#gradient-7&quot;); stroke: rgb(102, 106, 109); transform-origin: 500px 43px;" transform="matrix(0, 1, -1, 0, 0.000004, -0.000002)"/>
     </g>
     <g>
@@ -93,9 +93,9 @@
         <rect style="fill: rgb(37, 37, 36); stroke-width: 4px; stroke: rgb(30, 30, 30);" x="110" y="371.216" width="780" height="86" rx="22" ry="22"/>
         <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; opacity: 0.5; text-anchor: middle;" x="500" y="423.301">sub3.sub2.sub1.example.com</text>
       </g>
-      <g style="opacity: 0.5;">
-        <rect width="300" height="75" x="350" y="484.216" style="fill: url(&quot;#gradient-8&quot;);" rx="37.5" ry="37.5"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="531.04">allow</text>
+      <g transform="matrix(1, 0, 0, 1, 0, 199.216003)" style="opacity: 0.5;">
+        <rect width="360" height="75" x="320" y="285" style="fill: url(&quot;#gradient-9&quot;);" rx="37.5" ry="37.5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
       </g>
     </g>
     <g>
@@ -119,16 +119,24 @@
           <path d="M 693.647 856.814 L 715.243 856.814 C 716.158 856.879 717.273 857.311 717.861 857.898 C 718.448 858.486 718.88 859.601 718.945 860.516 L 718.945 882.108 C 718.88 883.028 718.448 884.138 717.861 884.728 C 717.273 885.318 716.158 885.748 715.243 885.808 L 693.647 885.808 C 692.732 885.748 691.617 885.318 691.029 884.728 C 690.442 884.138 690.01 883.028 689.945 882.108 L 689.945 860.516 C 690.01 859.601 690.442 858.486 691.029 857.898 C 691.617 857.311 692.732 856.879 693.647 856.814 Z M 693.151 860.02 C 692.941 860.229 692.88 860.214 692.945 860.516 L 692.945 882.108 C 692.88 882.408 692.941 882.398 693.151 882.608 C 693.36 882.818 693.345 882.878 693.647 882.808 L 715.243 882.808 C 715.545 882.878 715.53 882.818 715.739 882.608 C 715.949 882.398 716.01 882.408 715.945 882.108 L 715.945 860.516 C 716.01 860.214 715.949 860.229 715.739 860.02 C 715.53 859.81 715.545 859.749 715.243 859.814 L 693.647 859.814 C 693.345 859.749 693.36 859.81 693.151 860.02 Z" style="fill: rgb(198, 110, 255);"/>
         </g>
       </g>
-      <g style="opacity: 0.5;">
-        <rect width="300" height="75" x="350" y="938" style="fill: url(&quot;#gradient-2&quot;);" rx="37.5" ry="37.5"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="984.824">allow</text>
+      <g>
+        <g>
+          <rect x="295" y="940.5" width="410" height="20.054" style="stroke-width: 4; fill: rgb(36, 35, 37); stroke: rgb(198, 109, 255);" rx="10.027" ry="10.027"/>
+          <rect x="299" y="944.5" width="79.61" height="12" style="stroke-width: 1; fill: rgb(198, 109, 255);" rx="6" ry="6"/>
+        </g>
+        <text style="fill: rgb(236, 236, 236); font-family: &quot;SF Pro&quot;; font-size: 22px; letter-spacing: 0.2px; text-anchor: middle; white-space: pre;" x="500" y="1001.79">lifetime: 5 minutes</text>
+        <path d="M 624 994.5 C 624 997.74 622.602 1000.87 620.485 1002.98 C 618.368 1005.1 615.242 1006.5 612 1006.5 C 608.758 1006.5 605.631 1005.1 603.515 1002.98 C 601.398 1000.87 600 997.74 600 994.5 C 600 991.26 601.398 988.13 603.515 986.01 C 605.632 983.9 608.758 982.5 612 982.5 C 615.242 982.5 618.369 983.9 620.485 986.01 C 622.602 988.13 624 991.26 624 994.5 Z M 619.071 987.43 C 617.206 985.56 614.833 984.5 612 984.5 C 609.167 984.5 606.794 985.56 604.929 987.43 C 603.064 989.29 602 991.67 602 994.5 C 602 997.33 603.064 999.71 604.929 1001.57 C 606.794 1003.44 609.167 1004.5 612 1004.5 C 614.833 1004.5 617.206 1003.44 619.071 1001.57 C 620.936 999.71 622 997.33 622 994.5 C 622 991.67 620.936 989.29 619.071 987.43 Z M 611.06 996.72 L 611.06 995.98 C 611.06 995.63 611.12 995.31 611.23 995.02 C 611.35 994.73 611.52 994.47 611.76 994.23 C 612 993.98 612.3 993.75 612.67 993.53 C 612.98 993.34 613.23 993.15 613.42 992.96 C 613.61 992.78 613.75 992.58 613.84 992.36 C 613.92 992.14 613.96 991.88 613.96 991.6 L 613.96 991.59 C 613.96 991.25 613.88 990.95 613.72 990.69 C 613.56 990.43 613.33 990.23 613.03 990.08 C 612.74 989.93 612.39 989.86 611.99 989.86 C 611.59 989.86 611.24 989.93 610.94 990.08 C 610.64 990.24 610.41 990.44 610.23 990.71 C 610.06 990.97 609.96 991.29 609.92 991.65 L 609.91 991.73 L 608.54 991.73 L 608.54 991.62 C 608.59 991.08 608.74 990.57 609.01 990.11 C 609.27 989.65 609.66 989.29 610.16 989.01 C 610.67 988.74 611.3 988.6 612.05 988.6 C 612.72 988.6 613.32 988.73 613.83 988.98 C 614.35 989.24 614.75 989.59 615.03 990.02 C 615.32 990.46 615.46 990.96 615.46 991.52 L 615.46 991.53 C 615.46 991.95 615.4 992.33 615.26 992.67 C 615.12 993.01 614.93 993.31 614.67 993.58 C 614.42 993.85 614.12 994.09 613.78 994.3 C 613.44 994.5 613.18 994.69 612.99 994.87 C 612.8 995.05 612.66 995.25 612.58 995.46 C 612.51 995.67 612.47 995.91 612.47 996.2 L 612.47 996.72 L 611.06 996.72 Z M 611.77 1000.4 C 611.51 1000.4 611.29 1000.31 611.11 1000.13 C 610.94 999.95 610.85 999.74 610.85 999.48 C 610.85 999.22 610.94 999 611.11 998.82 C 611.29 998.65 611.51 998.56 611.77 998.56 C 612.03 998.56 612.25 998.65 612.42 998.82 C 612.6 999 612.68 999.22 612.68 999.48 C 612.68 999.74 612.6 999.95 612.42 1000.13 C 612.25 1000.31 612.03 1000.4 611.77 1000.4 Z" style="stroke-width: 1; fill: rgb(198, 109, 255);"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 772.5)" style="opacity: 0.5;">
+        <rect width="360" height="75" x="320" y="285" style="fill: url(&quot;#gradient-8&quot;);" rx="37.5" ry="37.5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
       </g>
     </g>
     <g>
-      <path style="fill: rgb(47, 53, 57);" d="M 51 1075.5 H 949 A 0 0 0 0 1 949 1075.5 V 1255.5 A 18.5 18.5 0 0 1 930.5 1274 H 69.5 A 18.5 18.5 0 0 1 51 1255.5 V 1075.5 A 0 0 0 0 1 51 1075.5 Z" bx:shape="rect 51 1075.5 898 198.5 0 0 0 0 0 0 0 18.5 18.5 0 18.5 18.5 2@a062b9ba"/>
+      <path style="fill: rgb(47, 53, 57); stroke-width: 1;" d="M 51 1195.5 H 949 A 0 0 0 0 1 949 1195.5 V 1375.5 A 18.5 18.5 0 0 1 930.5 1394 H 69.5 A 18.5 18.5 0 0 1 51 1375.5 V 1195.5 A 0 0 0 0 1 51 1195.5 Z" bx:shape="rect 51 1195.5 898 198.5 0 0 0 0 0 0 0 18.5 18.5 0 18.5 18.5 2@580d7d9e"/>
       <g>
-        <rect width="449" height="74.945" x="275.5" y="1137.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-12&quot;);"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="1183.55">cancel rule</text>
+        <rect width="449" height="74.945" x="275.5" y="1257.02" rx="37.472" ry="37.472" style="fill: url(&quot;#gradient-12&quot;); stroke-width: 1;"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle; stroke-width: 1;" x="500" y="1303.55">cancel rule</text>
       </g>
     </g>
   </g>
