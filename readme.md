@@ -1,47 +1,46 @@
 
 
-This open-source extension blocks JavaScript on all domains. Using an "allowed list", the user determines which domains are allowed to run JavaScript.
+This open-source extension blocks JavaScript on all websites. Using an "Allowed list", the user determines which websites are allowed to run JavaScript.
 
 
 ## Exterior
 
 ![main popup image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-1.png "main popup")
 ![main popup image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-2.png "main popup")
-![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-3.png "main application")
+![main popup image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-3.png "main popup")
 ![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-4.png "main application")
 ![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-5.png "main application")
+![main application image](https://raw.githubusercontent.com/maxrys/js-blocker/refs/heads/main/screens/screen-6.png "main application")
 
 
 ## Description
 
-If this Safari extension is enabled for any domains, then by default it blocks JavaScript code on any domains (the recommended mode of operation).
+If this Safari extension is enabled for any websites (extension operating mode "For other websites = Allow"), then by default it blocks JavaScript on any websites. This is the recommended operating mode.
 
-If this Safari extension is enabled for selected domains only, then by default it blocks JavaScript code only on the selected domains.
+If this Safari extension is enabled for selected websites only, then by default it blocks JavaScript only on the selected websites.
 
-Using the extension settings, the user can add a domain to the "allowed list". A domain from the "allowed list" can use JavaScript.
+Using the extension settings, the user can add a website to the "Allowed list".
+A websites from the "Allowed list" can use JavaScript.
 
-When you open an unknown domain, you can be sure that no JavaScript code will be executed on it until you approve it (if you previously selected the recommended operating mode). This ensures that potential miners, keyloggers or any other malicious programs written in JavaScript cannot run unless you approve it. Please note that this extension is not able to determine whether a JavaScript program is malicious.
+You can also add a website to the "Allowed list" temporarily, for the following periods:
+- 1 minute;
+- 5 minutes;
+- 1 hour;
+- 1 day;
+- 1 week.
 
-By default, the following types of JavaScript will be blocked for the current domain:
-1) any external JavaScript from the current domain;
-2) any external JavaScript from a third party;
+When you open an unknown website, you can be sure that no JavaScript will be executed on it until you approve it (if you selected the extension's operating mode "For other websites = Allow").
+This ensures that potential miners, keyloggers or any other malicious programs written in JavaScript cannot run unless you approve it.
+Please note that this extension is not able to determine whether a JavaScript is malicious.
+
+By default, the following types of JavaScript will be blocked for the current website:
+1) any external JavaScript from the current website;
+2) any external JavaScript from other websites;
 3) any embedded JavaScript (can be located directly in the HTML document, in the `script` tags);
 4) any inline (events) JavaScript (can be located directly in the HTML document, in attributes with names starting with `on…=…`);
-5) JavaScript in a frame/iframe, of any of the above types, from any domain.
+5) JavaScript in a frame/iframe, of any of the above types, from any website.
 
-Once a domain is added to the "allowed list", the following types of JavaScript will be enabled within the current domain:
-1) any external JavaScript from the current domain;
-2) any external JavaScript from a third party;
-3) any embedded JavaScript (can be located directly in the HTML document, in the `script` tags);
-4) any inline (events) JavaScript (can be located directly in the HTML document, in attributes with names starting with `on…=…`);
-5) JavaScript in a frame/iframe, of any of the above types, from any domain.
-
-When Safari uses Private Window mode, storing app settings in Safari's local storage becomes unavailable. In this case:
-1) any external JavaScript from the current domain will not be blocked;
-2) any external JavaScript from a third party will not be blocked;
-3) any embedded JavaScript will be blocked (can be located directly in the HTML document, in the `script` tags);
-4) any inline (event) JavaScript will be blocked (can be located directly in the HTML document, in attributes with names starting with `on…=…`);
-5) JavaScript in frame/iframe will be blocked in the same way.
+Once a site is added to the "Allowed List", all the above JavaScript blocking will not be applied.
 
 This extension supports the following types of addresses (domain names) in Safari:
 - short local (for example, `http://localhost`);

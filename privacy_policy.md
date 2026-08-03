@@ -12,17 +12,18 @@ The application is a bundle of two parts:
 - Safari extension `JS Blocker Extension`.
 
 The main application consists of:
-- the main `JS Blocker` window (in which the user manages the list of domains
+- the main `JS Blocker` window (in which the user manages the list of websites
   on which JavaScript is allowed to run: deletion, import, and export).
 
 The Safari extension consists of:
-- A pop-up window (in which the user can add or remove a rule for the current domain).
+- A pop-up window (in which the user can add or remove a rule for the current website).
   This window appears when clicking the `JS` button in the Safari toolbar.
-- A local `script.js` file. Its primary purpose is to disable JavaScript on the
-  selected domain (by default) or enable it at the user's request.
-  It is transparent to analysis and is necessary for the application to function.
+- A local `jsBlocker.js` and `jsBlocker-process.js` files.
+  Its primary purpose is to disable JavaScript on the selected website (by default)
+  or enable it at the user's request. It is transparent to analysis
+  and is necessary for the application to function.
 
-The `JS Blocker Extension` extension can only be launched on domains
+The `JS Blocker Extension` extension can only be launched on websites
 approved by the user (via Safari settings).
 
 
@@ -35,7 +36,7 @@ or read any data.
 ## Data storage
 
 The application uses the standard `Core Data` mechanism to store
-the "list of allowed domains" in the local database.
+the "list of allowed websites" in the local database.
 
 This list is generated at the user's request for the application
 to function.

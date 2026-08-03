@@ -1,4 +1,12 @@
 
+## Version 2.0
+
+Expiration Time for Rules has been added.
+Architecture has been rewritten.
+Experimental iCloud support has been removed.
+UI has been improved.
+Codebase has been improved.
+
 ## Version 1.14
 
 UI has been improved.
