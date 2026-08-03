@@ -8,9 +8,11 @@ import AppKit
 
 struct ExportImportItems: Codable {
 
+    var version: Double = 2.0
+
     public struct Item: Codable {
-        let name    : String
-        let isGlobal: Bool /* isWildcard */
+        let name: DomainName
+        let isWildcard: Bool
     }
 
     public private(set) var items: [Item] = []
@@ -72,8 +74,8 @@ final class Features {
                 items.reduce(into: [ExportImportItems.Item]()) { result, item in
                     result.append(
                         ExportImportItems.Item(
-                            name    : item.name,
-                            isGlobal: item.isWildcard,
+                            name      : item.name,
+                            isWildcard: item.isWildcard,
                         )
                     )
                 }
@@ -151,16 +153,19 @@ final class Features {
 
             /* MARK: Import to database */
 
-            var invalidDomains: [String] = []
+            var invalidDomains: [DomainName] = []
             var updateCount: Int = 0
             var insertCount: Int = 0
 
             for item in importStruct.items {
-                if (item.name.domainNameIsValid()) {
-                    if case .success(let affected) = ADModel.delete([item.name]), affected > 0
-                         { if (ADModel.insert(name: item.name, isWildcard: item.isGlobal)) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)") } }
-                    else { if (ADModel.insert(name: item.name, isWildcard: item.isGlobal)) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)") } }
-                } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isGlobal) | name = \(item.name)") }
+                if (item.name.domainNameIsValid() == false) {
+                    invalidDomains.append(item.name)
+                    Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
+                    continue
+                }
+                if case .success(let affected) = ADModel.delete([item.name]), affected > 0
+                     { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard)) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
+                else { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard)) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
             }
 
             /* MARK: Message */

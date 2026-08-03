@@ -19,11 +19,10 @@ extension ADFetchCollection {
     }
 
     mutating func appendUnique(_ item: ADModel) {
-        let newItem = ADFetchItem(
-            name       : item.name,
-            nameDecoded: item.nameDecoded,
-            isWildcard : item.isWildcard )
-        if (!self.contains(newItem)) { self.append(newItem) }
+        let newItem = ADFetchItem(item: item)
+        if !self.contains(newItem) {
+            self.append  (newItem)
+        }
     }
 
 }

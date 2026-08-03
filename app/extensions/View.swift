@@ -38,13 +38,9 @@ extension View {
 
     @ViewBuilder func pointerStyleLinkPolyfill(_ isEnabled: Bool = true) -> some View {
         if (isEnabled) {
-            if #available(macOS 15.0, *) {
-                self.pointerStyle(.link)
-            } else {
-                self.onHover { isInView in
-                    if (isInView) { NSCursor.pointingHand.push() }
-                    else          { NSCursor.pop() }
-                }
+            self.onHover { isInView in
+                if (isInView) { NSCursor.pointingHand.push() }
+                else          { NSCursor.pop() }
             }
         } else {
             self
@@ -67,6 +63,12 @@ extension View {
             self
             content()
         }
+    }
+
+    @ViewBuilder func ignoresSafeArea(isIgnore: Bool = true, _ regions: SafeAreaRegions = .all, edges: Edge.Set = .all) -> some View {
+        if (isIgnore)
+             { self.ignoresSafeArea(regions, edges: edges) }
+        else { self }
     }
 
     @ViewBuilder func onAppBecomeBackground(_ action: @escaping () -> Void) -> some View {
@@ -107,6 +109,43 @@ extension View {
                 }
             }
         )
+    }
+
+}
+
+extension View {
+
+    @ViewBuilder func windowChamelionBackground(windowID: String, colorScheme: ColorScheme, isIgnoreSafeArea: Bool = true) -> some View {
+        self.ignoresSafeArea(
+                isIgnore: isIgnoreSafeArea
+            )
+            .background(
+                ChamelionBackground(
+                    colorScheme: colorScheme
+                )
+            )
+            .onAppear {
+                if let window = NSWindow.get(windowID) {
+                    window.backgroundColor = .clear
+                    window.alphaValue = 1.0
+                }
+            }
+    }
+
+}
+
+struct ChamelionBackground: View {
+
+    let colorScheme: ColorScheme
+
+    public var body: some View {
+        if #available(macOS 12.0, *) {
+            if (colorScheme == .dark)
+                 { Rectangle().fill(.ultraThickMaterial) }
+            else { Rectangle().fill(.ultraThickMaterial).overlayPolyfill { Color.NS[\.windowBackgroundColor].opacity(0.7) } }
+        } else {
+            Color.NS[\.windowBackgroundColor]
+        }
     }
 
 }

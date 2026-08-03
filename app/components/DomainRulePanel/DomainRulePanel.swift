@@ -7,19 +7,24 @@ import SwiftUI
 
 struct DomainRulePanel: View {
 
+    enum PanelType {
+        case exact
+        case wildcard
+    }
+
     static let ICON_CHECK         = Image("checkbox")
     static let ICON_CHECK_CHECKED = Image("checkbox-checked")
 
-    @ObservedObject private var selectedCurrent: ValueState<Set<Int>>
+    @StateObject private var popupState = PopupState.shared
 
     private var colorDomainName: Color {
-        if (self.ruleIsActive && !self.rules.isEmpty)
+        if (self.isActiveRule && !self.rules.isEmpty)
              { return Color.domainRulePanel.nameActive }
         else { return Color.domainRulePanel.name }
     }
 
     private var colorBorder: Color {
-        if (self.ruleIsActive && !self.rules.isEmpty)
+        if (self.isActiveRule && !self.rules.isEmpty)
              { return Color.domainRulePanel.borderActive }
         else { return Color.domainRulePanel.border }
     }
@@ -28,33 +33,46 @@ struct DomainRulePanel: View {
         Color.domainRulePanel.background
     }
 
-    private let title: String
-    private let rules: [String]
-    private let ruleIsActive: Bool
-    private let buttonIsEnabled: Bool
-    private let buttonTitle: String
-    private let selectedDefault: [Int]
-    private let buttonOnClick: ([Int]) -> Void
+    private var titleLocalized: String {
+        switch self.panelType {
+            case .exact   : NSLocalizedString("JavaScript on the Domain"             , comment: "")
+            case .wildcard: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: "")
+        }
+    }
 
-    init(
-        title: String = "",
-        rules: [String] = [],
-        ruleIsActive: Bool,
-        buttonIsEnabled: Bool,
-        buttonTitle: String = NSLocalizedString("allow", comment: ""),
-        selectedDefault: [Int] = [],
-        buttonOnClick: @escaping ([Int]) -> Void = { _ in }
-    ) {
-        self.title = title
-        self.rules = rules
-        self.ruleIsActive = ruleIsActive
-        self.buttonIsEnabled = buttonIsEnabled
-        self.buttonTitle = buttonTitle
-        self.selectedDefault = selectedDefault
-        self.buttonOnClick = buttonOnClick
-        self.selectedCurrent = ValueState<Set<Int>>(
-            Set(selectedDefault)
-        )
+    private var rules: [String] {
+        switch self.panelType {
+            case .exact   : self.popupState.ruleExact.isEmpty ? [] : [self.popupState.ruleExact]
+            case .wildcard: self.popupState.rulesWildcard
+        }
+    }
+
+    private var isActiveRule: Bool {
+        switch self.panelType {
+            case .exact   : self.popupState.match.ifNil(defaultValue: false) { match in match.isExact    }
+            case .wildcard: self.popupState.match.ifNil(defaultValue: false) { match in match.isWildcard }
+        }
+    }
+
+    private var isEnabledButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne
+        }
+    }
+
+    private var selected: Binding<Set<Int>> {
+        switch self.panelType {
+            case .exact   : Binding.constant([])
+            case .wildcard: self.$popupState.rulesWildcardSelected
+        }
+    }
+
+    private let panelType: PanelType
+    private let onClickAllow: (Set<Int>) -> Void
+
+    init(panelType: PanelType, onClickAllow: @escaping (Set<Int>) -> Void = { _ in }) {
+        self.panelType = panelType
+        self.onClickAllow = onClickAllow
     }
 
     public var body: some View {
@@ -62,26 +80,27 @@ struct DomainRulePanel: View {
 
             /* MARK: Title */
 
-            Text(self.title)
+            Text(self.titleLocalized)
                 .font(.system(size: 14, weight: .bold))
 
             /* MARK: Domain selector */
 
-            VStack (alignment: .trailing, spacing: 5) {
+            VStack(alignment: .trailing, spacing: 5) {
                 if (self.rules.isEmpty) {
 
-                    self.DomainName(
+                    self.DomainNameView(
                         text: NSLocalizedString("...loading...", comment: ""),
                         opacity: 0.5
                     )
 
                 } else if (self.rules.count == 1) {
 
-                    self.DomainName(
+                    self.DomainNameView(
                         text: self.rules.first!,
                         opacity:
-                            self.ruleIsActive ||
-                            self.buttonIsEnabled ? 1.0 : 0.5
+                            self.isActiveRule || self.isEnabledButton ?
+                                1.0 :
+                                0.5
                     )
 
                 } else {
@@ -89,14 +108,14 @@ struct DomainRulePanel: View {
                     ForEach(self.rules.indices, id: \.self) { index in
                         HStack(spacing: 10) {
 
-                            let isChecked = self.selectedCurrent.value.contains(index)
+                            let isChecked = self.selected.wrappedValue.contains(index)
 
-                            self.DomainName(
+                            self.DomainNameView(
                                 text: self.rules[index],
-                                opacity: isChecked || self.buttonIsEnabled ? 1.0 : 0.5
+                                opacity: isChecked || self.isEnabledButton ? 1.0 : 0.5
                             )
 
-                            self.DomainCheckbox(
+                            self.DomainCheckboxView(
                                 index: index,
                                 isChecked: isChecked
                             )
@@ -115,26 +134,30 @@ struct DomainRulePanel: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             )
 
-            self.ButtonAllow()
+
+            /* MARK: Button "Allow" */
+
+            self.ButtonAllowView()
                 .disabled(
-                    !self.buttonIsEnabled || self.rules.isEmpty
+                    !self.isEnabledButton
                 )
 
         }
-        .padding(20)
+        .padding(.horizontal, 20)
+        .padding(.vertical  , 30)
         .frame(maxWidth: .infinity)
     }
 
-    @ViewBuilder private func DomainName(text: String, opacity: Double) -> some View {
+    @ViewBuilder private func DomainNameView(text: String, opacity: Double) -> some View {
         Text(text)
             .font(.system(size: 12, weight: .bold))
             .foregroundPolyfill(self.colorDomainName)
             .opacity(opacity)
     }
 
-    @ViewBuilder private func DomainCheckbox(index: Int, isChecked: Bool) -> some View {
+    @ViewBuilder private func DomainCheckboxView(index: Int, isChecked: Bool) -> some View {
         Button {
-            self.selectedCurrent.value.toggle(index)
+            self.selected.wrappedValue.toggle(index)
         } label: {
             let icon = isChecked ?
                 Self.ICON_CHECK_CHECKED :
@@ -143,18 +166,18 @@ struct DomainRulePanel: View {
                 .font(.system(size: 16))
         }
         .buttonStyle(.plain)
-        .disabled(!self.buttonIsEnabled)
+        .disabled(!self.isEnabledButton)
         .pointerStyleLinkPolyfill(
-            self.buttonIsEnabled
+            self.isEnabledButton
         )
     }
 
-    @ViewBuilder private func ButtonAllow() -> some View {
+    @ViewBuilder private func ButtonAllowView() -> some View {
         ButtonCapsule(
-            title: self.buttonTitle,
+            title: NSLocalizedString("allow", comment: ""),
             onClick: {
-                self.buttonOnClick(
-                    self.rules.count == 1 ? [0] : Array(self.selectedCurrent.value)
+                self.onClickAllow(
+                    self.rules.count == 1 ? [0] : self.selected.wrappedValue
                 )
             }
         )
@@ -168,112 +191,62 @@ struct DomainRulePanel: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct DomainRulePanel_None_Previews: PreviewProvider {
-    static let title = NSLocalizedString("JavaScript on the Domain", comment: "")
-    static let rules: [String] = []
+struct DomainRulePanel_MatchNone_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer (spacing: 0) {
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: false,
-                buttonIsEnabled: false,
-                buttonOnClick: { index in }
-            ).background(Color.popup.footBackground)
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: false,
-                buttonIsEnabled: true,
-                buttonOnClick: { index in }
-            ).background(Color.popup.bodyBackground)
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: true,
-                buttonIsEnabled: false,
-                buttonOnClick: { index in }
-            ).background(Color.popup.footBackground)
-
-        }.frame(width: Popup.FRAME_WIDTH)
+        Previewer(spacing: 0) {
+            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
+            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
+        }
+        .frame(width: Popup.FRAME_WIDTH)
+        .onAppear {
+            PopupState.shared.match = nil
+            PopupState.shared.ruleExact = ""
+            PopupState.shared.rulesWildcard = []
+        }
     }
 }
 
-struct DomainRulePanel_Single_Previews: PreviewProvider {
-    static let title = NSLocalizedString("JavaScript on the Domain", comment: "")
-    static let rules = ["example.com"]
+struct DomainRulePanel_MatchNoOne_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer (spacing: 0) {
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: false,
-                buttonIsEnabled: false,
-                buttonOnClick: { index in }
-            ).background(Color.popup.footBackground)
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: false,
-                buttonIsEnabled: true,
-                buttonOnClick: { index in }
-            ).background(Color.popup.bodyBackground)
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: true,
-                buttonIsEnabled: false,
-                buttonOnClick: { index in }
-            ).background(Color.popup.footBackground)
-
-        }.frame(width: Popup.FRAME_WIDTH)
+        Previewer(spacing: 0) {
+            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
+            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
+        }
+        .frame(width: Popup.FRAME_WIDTH)
+        .onAppear {
+            PopupState.shared.match = .noOne
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+        }
     }
 }
 
-struct DomainRulePanel_Multi_Previews: PreviewProvider {
-    static let title = NSLocalizedString("JavaScript on the Domain + Subdomains", comment: "")
-    static let rules = [
-        "*.sub3.sub2.sub1.example.com",
-             "*.sub2.sub1.example.com",
-                  "*.sub1.example.com",
-                       "*.example.com"
-    ]
+struct DomainRulePanel_MatchExact_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer (spacing: 0) {
+        Previewer(spacing: 0) {
+            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
+            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
+        }
+        .frame(width: Popup.FRAME_WIDTH)
+        .onAppear {
+            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT)
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+        }
+    }
+}
 
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: false,
-                buttonIsEnabled: false,
-                selectedDefault: [ ],
-                buttonOnClick: { index in }
-            ).background(Color.popup.footBackground)
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: false,
-                buttonIsEnabled: true,
-                selectedDefault: [],
-                buttonOnClick: { index in }
-            ).background(Color.popup.bodyBackground)
-
-            DomainRulePanel(
-                title: Self.title,
-                rules: Self.rules,
-                ruleIsActive: true,
-                buttonIsEnabled: false,
-                selectedDefault: [0, 2],
-                buttonOnClick: { index in }
-            ).background(Color.popup.footBackground)
-
-        }.frame(width: Popup.FRAME_WIDTH)
+struct DomainRulePanel_MatchWildcard_Previews: PreviewProvider {
+    static var previews: some View {
+        Previewer(spacing: 0) {
+            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
+            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
+        }
+        .frame(width: Popup.FRAME_WIDTH)
+        .onAppear {
+            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD)
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+        }
     }
 }

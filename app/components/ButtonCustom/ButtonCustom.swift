@@ -70,7 +70,7 @@ struct ButtonCustom: View {
                 color: self.colorScheme == .dark ?
                     .black.opacity(1.0) :
                     .black.opacity(0.4),
-                radius: self.isEnabled ? 0.7 : 0.0,
+                radius: 0.7,
                 y: 0.3
             )
         }
@@ -119,7 +119,7 @@ struct ButtonCustom_Previews: PreviewProvider {
                 ButtonCustom("text", Image(systemName: "globe"))
             }
 
-            Previewer (isHorizontal: true, spacing: 10, padding: 20) {
+            Previewer(axis: .horizontal, spacing: 10, padding: 20) {
                 ButtonCustom(colorStyle: .accent)
                 ButtonCustom(colorStyle: .danger)
                 ButtonCustom(colorStyle: .common)

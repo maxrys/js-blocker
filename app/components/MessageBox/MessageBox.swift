@@ -14,7 +14,7 @@ struct MessageBox: View {
 
     public var body: some View {
         GeometryReaderPolyfill(isIgnoreHeight: true) { size in
-            VStack (spacing: 0) {
+            VStack(spacing: 0) {
                 ForEach(self.state.messages, id: \.key) { ID, message in
                     VStack(alignment: .leading, spacing: 0) {
 
@@ -125,19 +125,21 @@ struct MessageBox: View {
 
 struct MessageBox_Previews: PreviewProvider {
     static var previews: some View {
-        let PREVIEW_LONG_TITLE       = NSLocalizedString("Long long long long long long long long long long long long long long Title", comment: "")
-        let PREVIEW_LONG_DESCRIPTION = NSLocalizedString("Long long long long long long long long long long long long long long long long long long long long long Description", comment: "")
-        MessageBox()
-            .frame(width: 300, height: 700)
-            .onAppear {
-                MessageBox.insert(type: .info   , title: NSLocalizedString("Info"   , comment: ""), lifeTime: .time(10))
-                MessageBox.insert(type: .ok     , title: NSLocalizedString("Ok"     , comment: ""), lifeTime: .time(20))
-                MessageBox.insert(type: .warning, title: NSLocalizedString("Warning", comment: ""), lifeTime: .time(30))
-                MessageBox.insert(type: .error  , title: NSLocalizedString("Error"  , comment: ""), lifeTime: .time(40))
-                MessageBox.insert(type: .info   , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
-                MessageBox.insert(type: .ok     , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
-                MessageBox.insert(type: .warning, title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
-                MessageBox.insert(type: .error  , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
-            }
+        Previewer(axis: .horizontal, spacing: 0, padding: 0) {
+            let PREVIEW_LONG_TITLE       = NSLocalizedString("Long long long long long long long long long long long long long long Title", comment: "")
+            let PREVIEW_LONG_DESCRIPTION = NSLocalizedString("Long long long long long long long long long long long long long long long long long long long long long Description", comment: "")
+            MessageBox()
+                .frame(width: 200)
+                .onAppear {
+                    MessageBox.insert(type: .info   , title: NSLocalizedString("Info"   , comment: ""), lifeTime: .time(10))
+                    MessageBox.insert(type: .ok     , title: NSLocalizedString("Ok"     , comment: ""), lifeTime: .time(20))
+                    MessageBox.insert(type: .warning, title: NSLocalizedString("Warning", comment: ""), lifeTime: .time(30))
+                    MessageBox.insert(type: .error  , title: NSLocalizedString("Error"  , comment: ""), lifeTime: .time(40))
+                    MessageBox.insert(type: .info   , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                    MessageBox.insert(type: .ok     , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                    MessageBox.insert(type: .warning, title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                    MessageBox.insert(type: .error  , title: PREVIEW_LONG_TITLE, description: PREVIEW_LONG_DESCRIPTION, isClosable: true, lifeTime: .infinity)
+                }
+        }
     }
 }

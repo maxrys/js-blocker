@@ -35,95 +35,64 @@ struct Popup: View {
 
             self.messageBox
 
-            /* ############## */
-            /* ### MARK: Body */
-            /* ############## */
+            /* #################### */
+            /* ### MARK: Allow Rule */
+            /* #################### */
 
             VStack(spacing: 0) {
 
-                if (self.popupState.match.isNoDomain) {
-                    DomainRulePanel(
-                        title: NSLocalizedString("JavaScript on the Domain", comment: ""),
-                        rules:           [],
-                        ruleIsActive:    false,
-                        buttonIsEnabled: false,
-                        selectedDefault: [],
-                        buttonOnClick: { _ in }
-                    )
-                    DomainRulePanel(
-                        title: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: ""),
-                        rules:           [],
-                        ruleIsActive:    false,
-                        buttonIsEnabled: false,
-                        selectedDefault: [],
-                        buttonOnClick: { _ in }
-                    )
-                } else {
-                    DomainRulePanel(
-                        title: NSLocalizedString("JavaScript on the Domain", comment: ""),
-                        rules:          [self.popupState.exactRule],
-                        ruleIsActive:    self.popupState.match.isExact,
-                        buttonIsEnabled: self.popupState.match.isNone,
-                        selectedDefault: self.popupState.match.indices,
-                        buttonOnClick: { _ in
-                            ViewController.shared.onClick_ruleExactInsert()
-                        }
-                    )
-                    DomainRulePanel(
-                        title: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: ""),
-                        rules:           self.popupState.wildcardRules,
-                        ruleIsActive:    self.popupState.match.isWildcard,
-                        buttonIsEnabled: self.popupState.match.isNone,
-                        selectedDefault: self.popupState.match.indices,
-                        buttonOnClick: { indices in
-                            ViewController.shared.onClick_ruleWildcardInsert(
-                                indices: indices
-                            )
-                        }
-                    )
-                }
+                DomainRulePanel(
+                    panelType: .exact,
+                    onClickAllow: { _ in
+                        ViewController.shared.onClick_ruleExactInsert()
+                    }
+                ).background(Color.popup.ruleExactBackground)
 
-            }
-            .padding(.vertical, 11)
-            .frame(maxWidth: .infinity)
-            .background(Color.popup.bodyBackground)
+                DomainRulePanel(
+                    panelType: .wildcard,
+                    onClickAllow: { selected in
+                        ViewController.shared.onClick_ruleWildcardInsert(selected: selected)
+                    }
+                ).background(Color.popup.rulesWildcardBackground)
+
+            }.frame(maxWidth: .infinity)
 
             /* MARK: Indicator "Cloud" */
 
             .overlayPolyfill(alignment: .topLeading) {
                 if (self.userDefaultsState.icloudStatus) {
-                    self.CloudIndicator()
+                    self.CloudIndicatorView()
                 }
             }
 
             /* MARK: Button "Settings" */
 
             .overlayPolyfill(alignment: .topTrailing) {
-                self.ButtonSettings()
+                self.ButtonSettingsView()
             }
 
-            /* ############## */
-            /* ### MARK: Foot */
-            /* ############## */
+            /* ##################### */
+            /* ### MARK: Cancel Rule */
+            /* ##################### */
 
-            self.ButtonCancelRule()
+            self.ButtonCancelRuleView()
                 .padding(31)
                 .frame(maxWidth: .infinity)
-                .background(Color.popup.footBackground)
+                .background(Color.popup.ruleCancelBackground)
 
         }
         .frame(width: self.frameWidth)
         .environment(\.layoutDirection, .leftToRight)
     }
 
-    @ViewBuilder private func CloudIndicator() -> some View {
+    @ViewBuilder private func CloudIndicatorView() -> some View {
         Self.ICON_CLOUD
             .font(.system(size: 20))
             .foregroundPolyfill(Color.popup.buttonCloud)
             .padding(10)
     }
 
-    @ViewBuilder private func ButtonSettings() -> some View {
+    @ViewBuilder private func ButtonSettingsView() -> some View {
         Button {
             openURL(
                 URL(string: "jsBlocker://")!
@@ -139,7 +108,7 @@ struct Popup: View {
         .padding(10)
     }
 
-    @ViewBuilder private func ButtonCancelRule() -> some View {
+    @ViewBuilder private func ButtonCancelRuleView() -> some View {
         ButtonCapsule(
             title: NSLocalizedString("cancel rule", comment: ""),
             style: .blue,
@@ -148,8 +117,9 @@ struct Popup: View {
                 ViewController.shared.onClick_ruleDelete()
             }
         ).disabled(
-            self.popupState.match.isNone ||
-            self.popupState.match.isNoDomain
+            self.popupState.match.ifNil(defaultValue: true) { match in
+                !match.isSome
+            }
         )
     }
 
@@ -161,40 +131,29 @@ struct Popup: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-fileprivate let single_exactRule = "example.com"
-fileprivate let single_wildcardRules = [
-    "*.example.com"
-]
-
-fileprivate let multi_exactRule = "sub3.sub2.sub1.example.com"
-fileprivate let multi_wildcardRules = [
-    "*.sub3.sub2.sub1.example.com",
-         "*.sub2.sub1.example.com",
-              "*.sub1.example.com",
-                   "*.example.com"
-]
-
-struct Popup_noDomain_Previews: PreviewProvider {
+struct Popup_MatchNone_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .noDomain
-            PopupState.shared.exactRule = ""
-            PopupState.shared.wildcardRules = []
+            PopupState.shared.match = nil
+            PopupState.shared.ruleExact = ""
+            PopupState.shared.rulesWildcard = []
             MessageBox.insert(
                 type: .warning,
-                title: "\".noDomain\" example",
+                title: "\".none\" example",
                 lifeTime: .infinity
             )
         }
     }
 }
 
-struct Popup_Single_none_Previews: PreviewProvider {
+/* ### TopDomain ############################################### */
+
+struct Popup_TopDomain_MatchNoOne_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .none
-            PopupState.shared.exactRule = single_exactRule
-            PopupState.shared.wildcardRules = single_wildcardRules
+            PopupState.shared.match = .noOne
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
@@ -205,12 +164,12 @@ struct Popup_Single_none_Previews: PreviewProvider {
     }
 }
 
-struct Popup_Single_exact_Previews: PreviewProvider {
+struct Popup_TopDomain_MatchExact_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .exact
-            PopupState.shared.exactRule = single_exactRule
-            PopupState.shared.wildcardRules = single_wildcardRules
+            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT)
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
@@ -221,12 +180,12 @@ struct Popup_Single_exact_Previews: PreviewProvider {
     }
 }
 
-struct Popup_Single_wildcard_Previews: PreviewProvider {
+struct Popup_TopDomain_MatchWildcard_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .wildcard(indices: [0])
-            PopupState.shared.exactRule = single_exactRule
-            PopupState.shared.wildcardRules = single_wildcardRules
+            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD)
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
@@ -237,12 +196,15 @@ struct Popup_Single_wildcard_Previews: PreviewProvider {
     }
 }
 
-struct Popup_Multi_none_Previews: PreviewProvider {
+/* ### Subdomain ############################################### */
+
+struct Popup_Subdomain_MatchNoOne_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .none
-            PopupState.shared.exactRule = multi_exactRule
-            PopupState.shared.wildcardRules = multi_wildcardRules
+            PopupState.shared.match = .noOne
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
+            PopupState.shared.rulesWildcardSelected = []
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Wildcard rules for the following domains were removed:", comment: ""),
@@ -253,12 +215,13 @@ struct Popup_Multi_none_Previews: PreviewProvider {
     }
 }
 
-struct Popup_Multi_exact_Previews: PreviewProvider {
+struct Popup_Subdomain_MatchExact_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .exact
-            PopupState.shared.exactRule = multi_exactRule
-            PopupState.shared.wildcardRules = multi_wildcardRules
+            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT)
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
+            PopupState.shared.rulesWildcardSelected = []
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
@@ -269,12 +232,13 @@ struct Popup_Multi_exact_Previews: PreviewProvider {
     }
 }
 
-struct Popup_Multi_wildcard_Previews: PreviewProvider {
+struct Popup_Subdomain_MatchWildcard_Previews: PreviewProvider {
     static var previews: some View {
         Popup().onAppear {
-            PopupState.shared.match = .wildcard(indices: [0, 2])
-            PopupState.shared.exactRule = multi_exactRule
-            PopupState.shared.wildcardRules = multi_wildcardRules
+            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD)
+            PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
+            PopupState.shared.rulesWildcardSelected = [0, 2]
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),

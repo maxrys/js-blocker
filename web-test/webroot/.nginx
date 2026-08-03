@@ -1,0 +1,10 @@
+
+location / {
+    index index.php;
+}
+
+location ~ \.php$ {
+    fastcgi_index index.php;
+    fastcgi_pass 127.0.0.1:9000;
+    include /usr/local/etc/nginx/fastcgi.conf;
+}

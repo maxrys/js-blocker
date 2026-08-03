@@ -9,9 +9,6 @@ import SwiftUI
 
 class ViewController: SFSafariExtensionViewController {
 
-    static var page: SFSafariPage?
-    static var domainName: String?
-    static var matchType: MatchType = .none
     static let shared = ViewController()
 
     /* ###################################################################### */
@@ -34,78 +31,14 @@ class ViewController: SFSafariExtensionViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.popupStateUpdate()
-    }
-
-    /* ###################################################################### */
-
-    func popupStateUpdate() {
-        if let domainName = Self.domainName {
-
-            Self.matchType = ADModel.matchType(
-                name: domainName
-            )
-
-            let domainsFromStorage: [String] = ADModel.selectWildcardDomains(domainName).map {
-                domainInfo in domainInfo.name
-            }
-
-            var wildcardRules: [String] = []
-            var wildcardIndices: [Int] = []
-
-            var domains: [String] = [domainName] + domainName.topDomains()
-            domains.removeLast() /* delete TLD (top-level domain), eg ".com", ".net" … */
-
-            for (index, domain) in domains.enumerated() {
-                if (domainsFromStorage.contains(domain)) {
-                    wildcardIndices.append(
-                        index
-                    )
-                }
-                wildcardRules.append(
-                    "*." + domain.decodePunycode()
-                )
-            }
-
-            if (domains.count == 1) {
-                wildcardIndices = [0]
-            }
-
-            PopupState.shared.exactRule = domainName.decodePunycode()
-            PopupState.shared.wildcardRules = wildcardRules
-            switch Self.matchType {
-                case .exact   : PopupState.shared.match = .exact
-                case .wildcard: PopupState.shared.match = .wildcard(indices: wildcardIndices)
-                case .none    : PopupState.shared.match = .none
-            }
-
-        } else {
-            PopupState.shared.match = .noDomain
-            PopupState.shared.exactRule = ""
-            PopupState.shared.wildcardRules = []
-        }
-    }
-
-    func pageUpdate() {
-        if let page       = Self.page,
-           let domainName = Self.domainName {
-               page.dispatchMessageToScript(
-                   withName: "reloadPageMsg",
-                   userInfo: [
-                       "timestamp": Date().timeIntervalSince1970,
-                       "domain"   : domainName,
-                       "result"   : Self.matchType.isAllowedJS
-                   ]
-               )
-        } else {
-            Logger.customLog("pageUpdate(): Page not found")
-        }
+        PopupState.shared.refresh()
     }
 
     /* ###################################################################### */
 
     func onClick_ruleExactInsert() {
-        if let domainName = Self.domainName {
+        if let domainName = PopupState.shared.domainName {
+
             var success: [String] = []
             var failure: [String] = []
 
@@ -131,8 +64,10 @@ class ViewController: SFSafariExtensionViewController {
 
             /* ui update */
             if (success.count > 0) {
-                self.popupStateUpdate()
-                self.pageUpdate()
+                Task { @MainActor in
+                    PopupState.shared.refresh()
+                    PopupState.shared.pageReload()
+                }
             }
 
             Logger.customLog("onClick_ruleExactInsert()")
@@ -140,9 +75,9 @@ class ViewController: SFSafariExtensionViewController {
         }
     }
 
-    func onClick_ruleWildcardInsert(indices: [Int]) {
-        if let domainName = Self.domainName {
-            if (indices.isEmpty) {
+    func onClick_ruleWildcardInsert(selected: Set<Int>) {
+        if let domainName = PopupState.shared.domainName {
+            if (selected.isEmpty) {
 
                 MessageBox.insert(
                     type: .error,
@@ -151,14 +86,16 @@ class ViewController: SFSafariExtensionViewController {
 
             } else {
 
-                let domains = [domainName] + domainName.topDomains()
+                let domains = [domainName] + domainName.topDomains(isDeleteTLD: true)
                 var success: [String] = []
                 var failure: [String] = []
 
-                for index in indices where index < domains.count {
-                    if (ADModel.insert(name: domains[index], isWildcard: true))
-                         { success.append(domains[index].decodePunycode()) }
-                    else { failure.append(domains[index].decodePunycode()) }
+                for (index, name) in domains.enumerated() {
+                    if (selected.contains(index)) {
+                        if (ADModel.insert(name: name, isWildcard: true))
+                             { success.append(name.decodePunycode()) }
+                        else { failure.append(name.decodePunycode()) }
+                    }
                 }
 
                 /* message */
@@ -179,8 +116,10 @@ class ViewController: SFSafariExtensionViewController {
 
                 /* ui update */
                 if (success.count > 0) {
-                    self.popupStateUpdate()
-                    self.pageUpdate()
+                    Task { @MainActor in
+                        PopupState.shared.refresh()
+                        PopupState.shared.pageReload()
+                    }
                 }
             }
 
@@ -190,11 +129,12 @@ class ViewController: SFSafariExtensionViewController {
     }
 
     func onClick_ruleDelete() {
-        if let domainName = Self.domainName {
+        if let domainName = PopupState.shared.domainName, let match = PopupState.shared.match {
+
             var success: [String] = []
             var failure: [String] = []
 
-            if (Self.matchType == .exact) {
+            if (match.isExact) {
 
                 if let domain = ADModel.select(domainName) {
                     let name = domain.name
@@ -221,7 +161,7 @@ class ViewController: SFSafariExtensionViewController {
                 }
             }
 
-            if (Self.matchType == .wildcard) {
+            if (match.isWildcard) {
 
                 ADModel.selectWildcardDomains(domainName).forEach { domain in
                     let name = domain.name
@@ -250,8 +190,10 @@ class ViewController: SFSafariExtensionViewController {
 
             /* ui update */
             if (success.count > 0) {
-                self.popupStateUpdate()
-                self.pageUpdate()
+                Task { @MainActor in
+                    PopupState.shared.refresh()
+                    PopupState.shared.pageReload()
+                }
             }
 
             Logger.customLog("onClick_ruleDelete()")

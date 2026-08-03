@@ -58,8 +58,8 @@ struct ShadowLine: View {
 /* ############################################################# */
 
 #Preview {
-    Previewer(isHorizontal: false, spacing: 0) {
-        HStack (spacing: 0) {
+    Previewer(spacing: 0) {
+        HStack(spacing: 0) {
             ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.1, opacityDark: 1.0)
             ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.2, opacityDark: 0.9)
             ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.3, opacityDark: 0.8)
@@ -71,19 +71,7 @@ struct ShadowLine: View {
             ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.9, opacityDark: 0.2)
             ShadowLine(length: 30, angle: .`0_degrees`, opacity: 1.0, opacityDark: 0.1)
         }
-        HStack (spacing: 0) {
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.1, opacityDark: 1.0)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.2, opacityDark: 0.9)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.3, opacityDark: 0.8)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.4, opacityDark: 0.7)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.5, opacityDark: 0.6)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.6, opacityDark: 0.5)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.7, opacityDark: 0.4)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.8, opacityDark: 0.3)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.9, opacityDark: 0.2)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 1.0, opacityDark: 0.1)
-        }
-        HStack (spacing: 0) {
+        HStack(spacing: 0) {
             ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.1, opacityDark: 1.0)
             ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.2, opacityDark: 0.9)
             ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.3, opacityDark: 0.8)
@@ -95,7 +83,19 @@ struct ShadowLine: View {
             ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.9, opacityDark: 0.2)
             ShadowLine(length: 30, angle: .`180_degrees`, opacity: 1.0, opacityDark: 0.1)
         }
-        HStack (spacing: 0) {
+        HStack(spacing: 0) {
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.1, opacityDark: 1.0)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.2, opacityDark: 0.9)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.3, opacityDark: 0.8)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.4, opacityDark: 0.7)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.5, opacityDark: 0.6)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.6, opacityDark: 0.5)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.7, opacityDark: 0.4)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.8, opacityDark: 0.3)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.9, opacityDark: 0.2)
+            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 1.0, opacityDark: 0.1)
+        }.frame(height: 30)
+        HStack(spacing: 0) {
             ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.1, opacityDark: 1.0)
             ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.2, opacityDark: 0.9)
             ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.3, opacityDark: 0.8)
@@ -106,6 +106,7 @@ struct ShadowLine: View {
             ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.8, opacityDark: 0.3)
             ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.9, opacityDark: 0.2)
             ShadowLine(length: 30, angle: .`270_degrees`, opacity: 1.0, opacityDark: 0.1)
-        }
+        }.frame(height: 30)
     }.frame(width: 300)
 }
+

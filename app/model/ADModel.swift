@@ -22,8 +22,8 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
 
     typealias SELF = WhiteDomains
 
-    @NSManaged var name: String
-    @NSManaged var nameDecoded: String
+    @NSManaged var name: DomainName
+    @NSManaged var nameDecoded: DomainName
     @NSManaged var isGlobal: Bool
     @NSManaged var expiredAt: Int64
     @NSManaged var createdAt: Int64
@@ -94,11 +94,11 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
         })
     }
 
-    static func hasDomain(name: String) -> Bool {
+    static func hasDomain(name: DomainName) -> Bool {
         return Self.select(name) != nil
     }
 
-    static func select(_ name: String) -> SELF? {
+    static func select(_ name: DomainName) -> SELF? {
         do {
             let orderByUpdated = NSSortDescriptor(key: #keyPath(SELF.updatedAt), ascending: false)
             let fetchRequest = Self.fetchRequest()
@@ -128,9 +128,9 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
         }
     }
 
-    static func selectWildcardDomains(_ name: String) -> ADFetchCollection {
+    static func selectWildcardDomains(_ name: DomainName) -> ADFetchCollection {
         do {
-            let orderByUpdated = NSSortDescriptor(key: #keyPath(SELF.updatedAt), ascending: false)
+            let orderByUpdated = NSSortDescriptor(key: #keyPath(SELF.name), ascending: false)
             let names = [name] + name.topDomains()
             let fetchRequest = Self.fetchRequest()
             fetchRequest.sortDescriptors = [orderByUpdated]
@@ -144,15 +144,15 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
         }
     }
 
-    static func insert(name: String, isWildcard: Bool = false, expiredAt: Int64 = 0) -> Bool {
+    static func insert(name: DomainName, isWildcard: Bool = false, expiredAt: Int64 = 0) -> Bool {
         do {
             let newObject = SELF()
                 newObject.name        = name
                 newObject.nameDecoded = name.decodePunycode()
                 newObject.isWildcard  = isWildcard
                 newObject.expiredAt   = expiredAt
-                newObject.createdAt   = Int64(Date().timeIntervalSince1970)
-                newObject.updatedAt   = Int64(Date().timeIntervalSince1970)
+                newObject.createdAt   = Int64(Date.now)
+                newObject.updatedAt   = Int64(Date.now)
             try Self.context.save()
             return true
         } catch {
@@ -161,7 +161,7 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
         }
     }
 
-    static func delete(_ names: [String]) -> ExecuteResult {
+    static func delete(_ names: [DomainName]) -> ExecuteResult {
         do {
             let fetchRequest = Self.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "name IN %@", names)
@@ -177,15 +177,16 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
         }
     }
 
-    static func matchType(name: String) -> MatchType {
-        if let domainInfo = Self.select(name) {
-            if (domainInfo.isWildcard != true) { return .exact }
-            if (domainInfo.isWildcard == true) { return .wildcard }
+    static func matchType(name: DomainName) -> MatchType {
+        if let domainItem = Self.select(name) {
+            if (domainItem.isWildcard != true) { return .exact   (item: ADFetchItem(item: domainItem)) }
+            if (domainItem.isWildcard == true) { return .wildcard(item: ADFetchItem(item: domainItem)) }
         }
-        if Self.selectWildcardDomains(name).count > 0 {
-            return .wildcard
+        let wildcardDomains = Self.selectWildcardDomains(name)
+        if (wildcardDomains.count > 0) {
+            return .wildcard(item: wildcardDomains[0])
         }
-        return .none
+        return .noOne
     }
 
     static func dump() {
@@ -194,9 +195,12 @@ typealias ADModel = WhiteDomains; public class WhiteDomains: NSManagedObject {
             if (!items.isEmpty) {
 
                 let rows: [String] = items.reduce(into: []) { result, item in
-                    let formattedName = item.name.padding(toLength: 60, withPad: " ", startingAt: 0)
+                    let formattedName       = item.name
                     let formattedIsWildcard = item.isWildcard ? "yes" : "no"
-                    result.append(">> - \(formattedName) | \(formattedIsWildcard)")
+                    result.append(">> " +
+                        "\(formattedName      .toWidth(62)) | " +
+                        "\(formattedIsWildcard.toWidth(11))"
+                    )
                 }
 
                 Logger.customLog("""

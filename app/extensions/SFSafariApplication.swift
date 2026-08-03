@@ -46,7 +46,7 @@ extension SFSafariApplication {
         })
     }
 
-    static func domainNameCurrentGet() async -> String? {
+    static func domainNameCurrentGet() async -> DomainName? {
         let windows = await SFSafariApplication.activeWindow()
         let tab = await windows?.activeTab()
         let page = await tab?.activePage()

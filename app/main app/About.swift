@@ -29,7 +29,7 @@ struct About: View {
                 .frame(width: size.height, height: size.height)
                 .zIndex(1)
 
-                VStack (alignment: .leading, spacing: 5) {
+                VStack(alignment: .leading, spacing: 5) {
 
                     Text(NSApplication.appNameLocalized)
                         .font(.system(size: 24, weight: .bold))
@@ -47,7 +47,7 @@ struct About: View {
                     }
 
                     if let pageMarketing = NSApplication.pageMarketing {
-                        HStack (spacing: 5) { self.ButtonOpenURL(pageMarketing) }
+                        HStack(spacing: 5) { self.ButtonOpenURLView(pageMarketing) }
                             .font(.system(size: 12))
                             .fixedSize(horizontal: true, vertical: true)
                             .lineLimit(1)
@@ -90,29 +90,13 @@ struct About: View {
 
             }
         }
-        .background(
-            self.WindowChamelionBackground()
-                .ignoresSafeArea()
+        .windowChamelionBackground(
+            windowID: ThisApp.WINDOW_ABOUT_ID,
+            colorScheme: self.colorScheme
         )
-        .onAppear {
-            if let window = NSWindow.get(ThisApp.WINDOW_ABOUT_ID) {
-                window.backgroundColor = .clear
-                window.alphaValue = 1.0
-            }
-        }
     }
 
-    @ViewBuilder func WindowChamelionBackground() -> some View {
-        if #available(macOS 12.0, *) {
-            if (self.colorScheme == .dark)
-                 { Rectangle().fill(.ultraThinMaterial) }
-            else { Rectangle().fill(.ultraThinMaterial).overlayPolyfill { Color.NS[\.windowBackgroundColor].opacity(0.7) } }
-        } else {
-            Color.NS[\.windowBackgroundColor]
-        }
-    }
-
-    @ViewBuilder private func ButtonOpenURL(_ value: String) -> some View {
+    @ViewBuilder private func ButtonOpenURLView(_ value: String) -> some View {
         Group {
             if let url = URL(string: value) {
                 Button { openURL(url) } label: {

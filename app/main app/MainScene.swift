@@ -11,7 +11,7 @@ struct MainScene: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) var openURL
 
-    @StateObject private var adState = ADState.shared
+    @StateObject private var mainAppState = MainAppState.shared
     @State private var isShowPopover = false
 
     private let messageBox: MessageBox
@@ -35,11 +35,11 @@ struct MainScene: View {
                 /* MARK: Panel */
 
                 HStack(spacing: 10) {
-                    FieldSearchCustom(text: self.adState.getBinding(\.filterByName))
+                    FieldSearchCustom(text: self.mainAppState.getBinding(\.filterByName))
                     Color.clear.frame(width: 1, height: 10)
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: "")) { self.onClickExport() }.disabled(self.adState.selectedRows.isEmpty)
-                    self.PanelButton(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")) { self.onClickImport() }
-                    self.PanelButton(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")) { self.isShowPopover = true }
+                    self.PanelButtonView(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: "")) { self.onClickExport() }.disabled(self.mainAppState.selectedRows.isEmpty)
+                    self.PanelButtonView(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")) { self.onClickImport() }
+                    self.PanelButtonView(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")) { self.isShowPopover = true }
                         .popover(
                             isPresented: self.$isShowPopover,
                             arrowEdge: .bottom
@@ -59,7 +59,7 @@ struct MainScene: View {
                 VStack(spacing: 7) {
 
                     TableCustom(
-                        selected: self.adState.getBinding(\.selectedRows),
+                        selected: self.mainAppState.getBinding(\.selectedRows),
                         isVisibleHeader: true,
                         isFocusable: true,
                         selectionType: .multiple,
@@ -79,10 +79,10 @@ struct MainScene: View {
                                 spacing: 1
                             ) { EmptyView() }
                         },
-                        bodyAsArray: self.adState.items.flatMap { domain in [
+                        bodyAsArray: self.mainAppState.items.flatMap { domain in [
                             AnyView(Text(domain.nameDecoded)),
                             AnyView(Text(domain.isWildcard ? NSLocalizedString("yes", comment: "") : NSLocalizedString("no" , comment: ""))),
-                            AnyView(self.ButtonOpenURLOrDummy(domain.name))
+                            AnyView(self.ButtonOpenURLOrDummyView(domain.name))
                         ]}
                     )
 
@@ -97,7 +97,7 @@ struct MainScene: View {
 
                 }
 
-                self.ButtonDelete()
+                self.ButtonDeleteView()
 
             }
             .padding(20)
@@ -108,32 +108,14 @@ struct MainScene: View {
         }
         .frame(minWidth: 400, minHeight: 400)
         .environment(\.layoutDirection, .leftToRight)
-        .onAppBecomeForeground {
-            self.adState.reload()
-        }
-        .background(
-            self.WindowChamelionBackground()
-                .ignoresSafeArea()
+        .windowChamelionBackground(
+            windowID: ThisApp.WINDOW_MAIN_ID,
+            colorScheme: self.colorScheme,
+            isIgnoreSafeArea: false
         )
-        .onAppear {
-            if let window = NSWindow.get(ThisApp.WINDOW_MAIN_ID) {
-                window.backgroundColor = .clear
-                window.alphaValue = 1.0
-            }
-        }
     }
 
-    @ViewBuilder func WindowChamelionBackground() -> some View {
-        if #available(macOS 12.0, *) {
-            if (self.colorScheme == .dark)
-                 { Rectangle().fill(.ultraThickMaterial) }
-            else { Rectangle().fill(.ultraThickMaterial).overlayPolyfill { Color.NS[\.windowBackgroundColor].opacity(0.7) } }
-        } else {
-            Color.NS[\.windowBackgroundColor]
-        }
-    }
-
-    @ViewBuilder private func ButtonOpenURLOrDummy(_ domainName: String) -> some View {
+    @ViewBuilder private func ButtonOpenURLOrDummyView(_ domainName: DomainName) -> some View {
         if let url = URL(string: "https://\(domainName)") {
             Button {
                 openURL(url)
@@ -153,7 +135,7 @@ struct MainScene: View {
         }
     }
 
-    @ViewBuilder private func PanelButton(icon: Image, text: String? = nil, onClick: @escaping () -> Void = {}) -> some View {
+    @ViewBuilder private func PanelButtonView(icon: Image, text: String? = nil, onClick: @escaping () -> Void = {}) -> some View {
         VStack(spacing: 3) {
 
             ButtonCustom(
@@ -161,8 +143,9 @@ struct MainScene: View {
                 colorStyle: .common,
                 padding: .init(top: 2, leading: 2, bottom: 3, trailing: 2),
                 flexibility: .infinity,
-                isFlat: true
-            ) { onClick() }
+                isFlat: true,
+                onClick: onClick
+            )
 
             Text(text ?? ZERO_WIDTH_SPACE)
                 .font(.system(size: 9))
@@ -174,33 +157,32 @@ struct MainScene: View {
         .frame(width: 40)
     }
 
-    @ViewBuilder private func ButtonDelete() -> some View {
+    @ViewBuilder private func ButtonDeleteView() -> some View {
         ButtonCustom(
             NSLocalizedString("delete", comment: ""),
             colorStyle: .common,
             flexibility: .size(120),
             isFlat: true,
-        ) { self.onClickDelete() }.disabled(
-            self.adState.selectedRows.isEmpty
-        )
+            onClick: self.onClickDelete
+        ).disabled(self.mainAppState.selectedRows.isEmpty)
     }
 
     func onClickExport() {
-        if (self.adState.selectedRows.count > 0) {
+        if (self.mainAppState.selectedRows.count > 0) {
             Features.export(
-                items: self.adState.selectedRowsToData
+                items: self.mainAppState.selectedItems
             )
         }
     }
 
     func onClickImport() {
         Features.import()
-        self.adState.reload()
+        self.mainAppState.reloadIfRequired()
     }
 
     func onClickDelete() {
-        if (self.adState.selectedRows.count > 0) {
-            if case .success(let count) = self.adState.delete(self.adState.selectedRowsToNames) {
+        if (self.mainAppState.selectedRows.count > 0) {
+            if case .success(let count) = self.mainAppState.delete(self.mainAppState.selectedNames) {
                 Task {
                     MessageBox.insert(
                         type: .ok,

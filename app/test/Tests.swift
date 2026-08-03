@@ -4,10 +4,22 @@
 /* ################################################################## */
 
 import Testing
+import Foundation
 
 struct Tests {
 
-    @Test func domainNameIsValid() async throws {
+    @Test func DomainName_topDomains() async throws {
+        #expect( "a.b.c.com".topDomains(                 ) == ["b.c.com", "c.com", "com"] )
+        #expect(   "b.c.com".topDomains(                 ) == [           "c.com", "com"] )
+        #expect(     "c.com".topDomains(                 ) == [                    "com"] )
+        #expect(       "com".topDomains(                 ) == [                         ] )
+        #expect( "a.b.c.com".topDomains(isDeleteTLD: true) == ["b.c.com", "c.com"] )
+        #expect(   "b.c.com".topDomains(isDeleteTLD: true) == [           "c.com"] )
+        #expect(     "c.com".topDomains(isDeleteTLD: true) == [                  ] )
+        #expect(       "com".topDomains(isDeleteTLD: true) == [                  ] )
+    }
+
+    @Test func DomainName_domainNameIsValid() async throws {
         let domainNames = [
             "0"                                 : true, /* local DNS */
             "x"                                 : true, /* local DNS */
@@ -42,7 +54,7 @@ struct Tests {
         }
     }
 
-    @Test func decodePunycode() async throws {
+    @Test func DomainName_decodePunycode() async throws {
         let words = [
             "xn--90a"                    : "б"            ,
             "xn----9sb"                  : "б-"           ,
