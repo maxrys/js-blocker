@@ -120,6 +120,22 @@ struct MainScene: View {
             colorScheme: self.colorScheme,
             isIgnoreSafeArea: false
         )
+        .onReceive(
+            DistributedNotificationCenter.default.publisher(
+                for: Notification.Name(EntityVersions.EVENT_NAME_FOR_ENTITY_CHANGE)
+            )
+        ) { publisher in
+            if let messageString = publisher.object as? String {
+                if let message = EntityVersions.DistributedMessasge(decode: messageString) {
+                    Logger.customLog("Message \"\(EntityVersions.EVENT_NAME_FOR_ENTITY_CHANGE)\" receive: \(messageString)")
+                    if (message.name == ADModel.stringName) {
+                        self.mainAppState.itemsReload(
+                            message.version
+                        )
+                    }
+                }
+            }
+        }
     }
 
     @ViewBuilder private func ButtonOpenURLOrDummyView(_ domainName: DomainName) -> some View {

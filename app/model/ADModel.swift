@@ -14,9 +14,6 @@ public class WhiteDomains: NSManagedObject {
     typealias SELF = WhiteDomains
 
     static let stringName = "WhiteDomains"
-    static let fetchRequest: NSFetchRequest<SELF> = {
-        NSFetchRequest<SELF>(entityName: SELF.stringName)
-    }()
 
     @NSManaged var name: DomainName
     @NSManaged var nameDecoded: DomainName
@@ -51,7 +48,7 @@ public class WhiteDomains: NSManagedObject {
     static func select(_ name: DomainName) -> SELF? {
         do {
             let orderBy = NSSortDescriptor(key: #keyPath(SELF.createdAt), ascending: false)
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = 1
             request.sortDescriptors = [orderBy]
             request.predicate = NSPredicate(format: "name ==[c] %@", name)
@@ -71,7 +68,7 @@ public class WhiteDomains: NSManagedObject {
         ascending: Bool = true
     ) -> ADFetchCollection {
         do {
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
             var predicates: [NSPredicate] = []
             if let filterByName = filterByName { predicates.append(NSPredicate(format: "nameDecoded CONTAINS[cd] %@", filterByName)) }
@@ -90,11 +87,11 @@ public class WhiteDomains: NSManagedObject {
         }
     }
 
-    static func selectWildcardDomains(_ name: DomainName) -> ADFetchCollection {
+    static func selectWildcardDomains(_ name: DomainName, ascending: Bool = false) -> ADFetchCollection {
         do {
-            let orderBy = NSSortDescriptor(key: #keyPath(SELF.name), ascending: false)
+            let orderBy = NSSortDescriptor(key: #keyPath(SELF.name), ascending: ascending)
             let names = [name] + name.topDomains(isDeleteTLD: true)
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
             request.sortDescriptors = [orderBy]
             request.predicate = NSPredicate(format: "(name IN %@) AND (isGlobal == true)", names)
@@ -127,7 +124,7 @@ public class WhiteDomains: NSManagedObject {
 
     static func delete(_ names: [DomainName]) -> ExecuteResult {
         do {
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
             request.predicate = NSPredicate(format: "name IN %@", names)
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: request as! NSFetchRequest<NSFetchRequestResult>)
@@ -150,7 +147,7 @@ public class WhiteDomains: NSManagedObject {
 
     static func sanitize() -> ExecuteResult {
         do {
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
             request.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.now.int64))
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: request as! NSFetchRequest<NSFetchRequestResult>)

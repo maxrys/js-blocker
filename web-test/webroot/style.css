@@ -11,9 +11,15 @@ body {
     font-size: 1rem;
 }
 
+body[data-is-top] {
+    /* margin-left: 480px; */
+}
+
 iframe {
     display: inline-block;
     border: 2px solid black;
+    transform: scale(0.9);
+    margin: -0.85rem;
 }
 
 h1 {
@@ -31,7 +37,7 @@ x-title {
 
 x-links {display: block; margin: 20px 0}
 x-links x-block {display: inline-block; vertical-align: top; margin-right: 20px}
-x-links a {display: block; margin-left: 20px; font-size: 0.8rem}
+x-links a {display: block; font-size: 0.8rem}
 
 x-states {display: block; margin: 20px 0}
 body[data-is-frame] x-states {margin: 0}

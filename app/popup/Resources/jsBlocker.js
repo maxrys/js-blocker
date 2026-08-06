@@ -13,15 +13,15 @@ const JSBlocker = {
         return Math.floor(Date.now() / 1000);
     },
 
-    isMainFrame: (() => {
+    isTopFrame: (() => {
         try {
-            return window.parent === window;
+            return window.top === window;
         } catch (e) {
             return false;
         }
     })(),
 
-    isLocalStorageAvailable: (() => {
+    isStorageAvailable: (() => {
         try {
             const value = Math.random().toString(36).slice(2);
             const key = `test_${value}`;
@@ -50,12 +50,12 @@ const JSBlocker = {
         return result;
     })(),
 
-    getLocalStorageValue: function(isRaw = true) {
+    getStorageValue: function(isRaw = true) {
         try {
             const JSONData = window.localStorage.getItem(this.LOCAL_STORAGE_KEY);
             console.log(
                 `JS Blocker on "${this.domainName}"\n` +
-                `Get LocalStorage value "${this.LOCAL_STORAGE_KEY}": ${JSONData}`
+                `Get Storage value "${this.LOCAL_STORAGE_KEY}": ${JSONData}`
             );
             if (isRaw) {
                 return JSONData;
@@ -72,12 +72,12 @@ const JSBlocker = {
         }
     },
 
-    setLocalStorageValue: function(JSONData) {
+    setStorageValue: function(JSONData) {
         try {
             window.localStorage.setItem(this.LOCAL_STORAGE_KEY, JSONData);
             console.log(
                 `JS Blocker on "${this.domainName}"\n` +
-                `Set LocalStorage value "${this.LOCAL_STORAGE_KEY}": ${JSONData}`
+                `Set Storage value "${this.LOCAL_STORAGE_KEY}": ${JSONData}`
             );
             return true;
         } catch (e) {
@@ -85,20 +85,48 @@ const JSBlocker = {
         }
     },
 
+    prepareFrames: function(jsIsEnabled) {
+        console.log(`JS Blocker on "${this.domainName}": prepare starts…`);
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                [...mutation.addedNodes].forEach(node => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        switch (node.tagName) {
+                            case 'IFRAME':
+                            case  'FRAME':
+                                if (node.src) {
+                                    const url = new URL(node.src);
+                                    url.searchParams.set('jsIsEnabled', jsIsEnabled);
+                                    node.src = url.toString()
+                                    console.log(`JS Blocker on "${this.domainName}": prepare <${node.tagName} src="${node.src}">`)
+                                }
+                                break;
+                        }
+                    }
+                });
+            });
+        });
+        observer.observe(document.documentElement, {
+            subtree  : true,
+            childList: true
+        });
+    },
+
     sanitize: function() {
-        const sanitizer = new MutationObserver(mutations => {
+        console.log(`JS Blocker on "${this.domainName}": sanitize starts…`);
+        const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         switch (node.tagName) {
                             case 'SCRIPT': /* removing <script> */
-                                console.log(`JS Blocker on "${this.domainName}": remove <SCRIPT src="${node.src}">`);
+                                console.log(`JS Blocker on "${this.domainName}": sanitize <SCRIPT src="${node.src}">`)
                                 node.remove();
                                 break;
                             default: /* removing <… on…="…" …> */
                                 [...node.attributes].forEach(attribute => {
                                     if (attribute.name.startsWith('on')) {
-                                        console.log(`JS Blocker on "${this.domainName}": remove attribute "${attribute.name}" in <${node.tagName}>`);
+                                        console.log(`JS Blocker on "${this.domainName}": sanitize <${node.tagName}> attribute "${attribute.name}"`)
                                         node.removeAttribute(
                                             attribute.name
                                         );
@@ -109,8 +137,7 @@ const JSBlocker = {
                 });
             });
         });
-        console.log(`JS Blocker on "${this.domainName}": the DOM Tree cleaning process starts…`);
-        sanitizer.observe(document.documentElement, {
+        observer.observe(document.documentElement, {
             subtree  : true,
             childList: true
         });
@@ -126,6 +153,15 @@ const JSBlocker = {
         setTimeout(() => {
             window.location.reload();
         }, delay);
+    },
+
+    pageReloadWhenExpired: function(domainName, expiresAt) {
+        if (expiresAt > this.dateNow) {
+            const lifeTime = (expiresAt - this.dateNow) * 1000
+            setTimeout(() => { this.pageRequestMatch(domainName); },
+                lifeTime + this.DELAY_BEFORE_RECHECK_STATE
+            );
+        }
     }
 
 }

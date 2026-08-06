@@ -9,6 +9,8 @@ import SafariServices
 
 final class PopupState: ObservableObject {
 
+    static let TIMER_DELAY: Double = 1.0
+
     static public private(set) var shared = PopupState()
 
     @Published var page: SFSafariPage? = nil
@@ -78,13 +80,15 @@ final class PopupState: ObservableObject {
         if let page       = self.page,
            let domainName = self.domainName,
            let match      = self.match {
-               page.dispatchMessageToScript(
-                   withName: "onChangeMatch",
-                   userInfo: [
-                       "domain": domainName,
-                       "match" : match.toStrictJS
-                   ]
-               )
+                let matchJSONValue = match.toStrictJS
+                Logger.customLog("onChangeMatch OUT for \(domainName): \(matchJSONValue)")
+                page.dispatchMessageToScript(
+                    withName: "onChangeMatch",
+                    userInfo: [
+                        "domain": domainName,
+                        "match" : matchJSONValue
+                    ]
+                )
         } else {
             Logger.customLog("pageReload(): Page not found")
         }
@@ -93,7 +97,7 @@ final class PopupState: ObservableObject {
     private /* singleton */ init() {
         self.timer = Timer.Custom(
             repeats: .infinity,
-            delay: 1,
+            delay: Self.TIMER_DELAY,
             onTick: self.onTimerTick
         )
     }

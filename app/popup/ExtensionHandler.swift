@@ -24,14 +24,13 @@ class ExtensionHandler: SFSafariExtensionHandler {
         page.getPropertiesWithCompletionHandler({ properties in
             if (message == "onChangeMatch") {
                 if let userInfo, let forDomain = userInfo["forDomain"] as? DomainName, let _ = properties?.url?.host {
-                    Logger.customLog("messageReceived(): Message = \(message)")
+                    let matchJSONValue = ADModel.matchType(name: forDomain).toStrictJS
+                    Logger.customLog("onChangeMatch IN for \(forDomain): \(matchJSONValue)")
                     page.dispatchMessageToScript(
                         withName: message,
                         userInfo: [
                             "domain": forDomain,
-                            "match" : ADModel.matchType(
-                                name: forDomain
-                            ).toStrictJS
+                            "match" : matchJSONValue
                         ]
                     )
                 }

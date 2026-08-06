@@ -8,6 +8,8 @@ import SwiftUI
 
 final class MainAppState: ObservableObject {
 
+    static let TIMER_DELAY: Double = 5.0
+
     static public private(set) var shared = MainAppState()
 
     public func getBinding<T>(_ propertyName: WritableKeyPath<MainAppState, T>) -> Binding<T> {
@@ -42,7 +44,7 @@ final class MainAppState: ObservableObject {
         self.itemsInit()
         self.timer = Timer.Custom(
             repeats: .infinity,
-            delay: 2,
+            delay: Self.TIMER_DELAY,
             onTick: self.onTimerTick
         )
     }

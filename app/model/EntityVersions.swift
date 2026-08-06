@@ -7,14 +7,51 @@ import os
 import AppKit
 import CoreData
 
+extension EntityVersions {
+
+    static let EVENT_NAME_FOR_ENTITY_CHANGE = "JSBlocker-onChangeEntity"
+
+    struct DistributedMessasge {
+
+        let name: String
+        let version: Int64
+
+        init(name: String, version: Int64) {
+            self.name = name
+            self.version = version
+        }
+
+        init?(decode data: String) {
+            let parts = data.split(separator: "|", omittingEmptySubsequences: false)
+            guard parts.count == 2 else { return nil }
+            let name = String(parts[0])
+            guard let version = Int64(parts[1]) else { return nil }
+            self.name = name
+            self.version = version
+        }
+
+        public func encode() -> String {
+            return "\(name)|\(version)"
+        }
+
+        public static func post(name: String, version: Int64) {
+            DistributedNotificationCenter.default().postNotificationName(
+                Notification.Name(EVENT_NAME_FOR_ENTITY_CHANGE),
+                object: Self(name: name, version: version).encode(),
+                deliverImmediately: true
+            )
+        }
+
+    }
+
+}
+
+
 public class EntityVersions: NSManagedObject {
 
     typealias SELF = EntityVersions
 
     static let stringName = "EntityVersions"
-    static let fetchRequest: NSFetchRequest<SELF> = {
-        NSFetchRequest<SELF>(entityName: SELF.stringName)
-    }()
 
     @NSManaged var name: String
     @NSManaged var version: Int64
@@ -28,7 +65,7 @@ public class EntityVersions: NSManagedObject {
         ascending: Bool = true
     ) -> [SELF] {
         do {
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
             let orderBy = NSSortDescriptor(key: orderBy, ascending: ascending)
             request.sortDescriptors = [orderBy]
@@ -41,7 +78,7 @@ public class EntityVersions: NSManagedObject {
 
     static func versionGet(_ name: String) -> Int64? {
         do {
-            let request = Self.fetchRequest
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = 1
             request.predicate = NSPredicate(format: "name ==[c] %@", name)
             let result = try Storage.context.fetch(request)
@@ -54,21 +91,26 @@ public class EntityVersions: NSManagedObject {
 
     static func versionIncrement(_ name: String) ->Int64? {
         do {
-            let request = Self.fetchRequest
+            var version: Int64 = 0
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = 1
             request.predicate = NSPredicate(format: "name ==[c] %@", name)
-            let result = try Storage.context.fetch(request)
-            if let entity = result.first {
+            if let entity = (try Storage.context.fetch(request)).first {
                 entity.version += 1
                 try Storage.context.save()
-                return entity.version
+                version = entity.version
             } else {
                 let newObject = SELF()
                     newObject.name = name
                     newObject.version = 0
                 try Storage.context.save()
-                return 0
+                version = 0
             }
+            DistributedMessasge.post(
+                name: name,
+                version: version
+            )
+            return version
         } catch {
             Logger.customLog("Model EntityVersions.versionIncrement() error: \(error).")
             return nil
