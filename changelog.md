@@ -1,4 +1,8 @@
 
+## Version 2.1
+
+Bug fixes.
+
 ## Version 2.0
 
 Expiration Time for Rules has been added.
