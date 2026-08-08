@@ -1,4 +1,8 @@
 
+## Version 2.2
+
+Improved DOM tree scanning.
+
 ## Version 2.1
 
 Bug fixes.
