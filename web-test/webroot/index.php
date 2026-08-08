@@ -16,6 +16,7 @@
     <script           src="https://js-blocker.com/script.js.php" defer></script>
     <script src="https://subdomain.js-blocker.com/script.js.php" defer></script>
     <script           src="https://js-blocker/script.js.php"     defer></script>
+    <script           src="https://js-блоккер/script.js.php"     defer></script>
 
 </head>
 <body onload="document.getElementById('inline_attr_script').setAttribute('data-js-active', '');"
@@ -32,6 +33,7 @@
         <x-indicator x-type="external_script"           x-domain="js-blocker.com">External JS from           js-blocker.com</x-indicator>
         <x-indicator x-type="external_script" x-domain="subdomain.js-blocker.com">External JS from subdomain.js-blocker.com</x-indicator>
         <x-indicator x-type="external_script"           x-domain="js-blocker"    >External JS from           js-blocker    </x-indicator>
+        <x-indicator x-type="external_script" x-domain="xn--js--dddu3aag1ax"     >External JS from           js-блоккер    </x-indicator>
         <x-indicator id="inline_attr_script">Inline JS Attribute Script</x-indicator>
         <x-indicator id="inline_head_script">Inline JS Head Script</x-indicator>
         <x-indicator id="inline_body_script">Inline JS Body Script</x-indicator>
@@ -46,9 +48,10 @@
     <x-frames>
         <?php if (!$isInFrame) { ?>
             <x-title>Frames</x-title>
-            <iframe height="190" width="280"           src="https://js-blocker.com?isFrame"></iframe>
-            <iframe height="190" width="280" src="https://subdomain.js-blocker.com?isFrame"></iframe>
-            <iframe height="190" width="280"               src="https://js-blocker?isFrame"></iframe>
+            <iframe height="205" width="280"           src="https://js-blocker.com?isFrame"></iframe>
+            <iframe height="205" width="280" src="https://subdomain.js-blocker.com?isFrame"></iframe>
+            <iframe height="205" width="280"               src="https://js-blocker?isFrame"></iframe>
+            <iframe height="205" width="280"               src="https://js-блоккер?isFrame"></iframe>
         <?php } ?>
     </x-frames>
 
@@ -60,8 +63,34 @@
                 <a target="js_blocker_com"                     href="https://js-blocker.com">           js-blocker.com </a>
                 <a target="subdomain_js_blocker_com" href="https://subdomain.js-blocker.com"> subdomain.js-blocker.com </a>
                 <a target="js_blocker"                         href="https://js-blocker"    >           js-blocker     </a>
+                <a target="js_блоккер"                         href="https://js-блоккер"     >          js-блоккер     </a>
             </x-block>
         </x-links>
+    <?php } ?>
+
+    <!-- DYNAMIC IFRAME -->
+    <?php if (!$isInFrame) { ?>
+        <x-dynamic>
+            <x-title>Dynamic Frames</x-title>
+            <script>
+                document.write('<div>' +
+                    '<iframe height="205" width="280" src="https://js-blocker.com?isFrame"></iframe>' +
+                '</div>');
+            </script>
+            <div id="dynamicFrameContainer"></div> 
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const container = document.getElementById('dynamicFrameContainer')
+                    const div = document.createElement('div');
+                    const iframe = document.createElement('iframe');
+                    iframe.src = 'https://js-blocker.com?isFrame';
+                    iframe.style.width = '280';
+                    iframe.style.height = '205';
+                    div.appendChild(iframe);
+                    container.appendChild(div);
+                });
+            </script>
+        </x-dynamic>
     <?php } ?>
 
 </body>

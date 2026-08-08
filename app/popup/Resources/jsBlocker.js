@@ -85,22 +85,48 @@ const JSBlocker = {
         }
     },
 
+    jsIsEnabledGet: function(frameNode = null) {
+        const src = (frameNode && frameNode.src) ? frameNode.src : window.location.href;
+        const url = new URL(src, document.baseURI);
+        return url.searchParams.get('jsIsEnabled');
+    },
+
+    jsIsEnabledSet: function(frameNode, jsIsEnabled) {
+        if (frameNode && frameNode.src) {
+            const url = new URL(frameNode.src, document.baseURI);
+            url.searchParams.set('jsIsEnabled', jsIsEnabled);
+            frameNode.src = url.toString();
+            this.jsIsProcessedSet(frameNode);
+        }
+    },
+
+    jsIsProcessedGet: function(frameNode) {
+        return frameNode.getAttribute('jsIsEnabled-process') == safari.extension.baseURI;
+    },
+
+
+    jsIsProcessedSet: function(frameNode) {
+        frameNode.setAttribute('jsIsEnabled-process', safari.extension.baseURI);
+    },
+
     prepareFrames: function(jsIsEnabled) {
         console.log(`JS Blocker on "${this.domainName}": prepare starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        switch (node.tagName) {
-                            case 'IFRAME':
-                            case  'FRAME':
-                                if (node.src) {
-                                    const url = new URL(node.src);
-                                    url.searchParams.set('jsIsEnabled', jsIsEnabled);
-                                    node.src = url.toString()
-                                    console.log(`JS Blocker on "${this.domainName}": prepare <${node.tagName} src="${node.src}">`)
+                        if (node.tagName === 'IFRAME' || node.tagName === 'FRAME') {
+                            if (node.src && !this.jsIsProcessedGet(node)) {
+                                this.jsIsEnabledSet(node, jsIsEnabled)
+                                console.log(`JS Blocker on "${this.domainName}": prepare <${node.tagName} src="${node.src}">`)
+                            }
+                        } else { /* containers */
+                            for (const localNode of node.querySelectorAll?.('iframe, frame')) {
+                                if (localNode.src && !this.jsIsProcessedGet(localNode)) {
+                                    this.jsIsEnabledSet(localNode, jsIsEnabled)
+                                    console.log(`JS Blocker on "${this.domainName}": prepare <${localNode.tagName} src="${localNode.src}">`)
                                 }
-                                break;
+                            }
                         }
                     }
                 });

@@ -22,7 +22,7 @@
 
         console.log(
             `JS Blocker on "${domainName}" has been started\n` +
-            `Base URL: "${safari.extension.baseURI}"\n` +
+            `Extension URL: "${safari.extension.baseURI}"\n` +
             `Is Top Frame: yes\n` +
             `Is Storage available: ${isStorageAvailable ? "yes" : "no"}`
         );
@@ -111,14 +111,17 @@
 
     if (isTopFrame != true) {
 
+        const jsIsEnabled = JSBlocker.jsIsEnabledGet()
+
         console.log(
             `JS Blocker on "${domainName}" has been started\n` +
-            `Base URL: "${safari.extension.baseURI}"\n` +
-            `Is Top Frame: no`
+            `Extension URL: "${safari.extension.baseURI}"\n` +
+            `URL: "${window.location.href}"\n` +
+            `Is Top Frame: no\n` +
+            `Param "jsIsEnabled": ${jsIsEnabled}`
         );
 
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('jsIsEnabled') != 'true') {
+        if (jsIsEnabled != 'true') {
             JSBlocker.sanitize();
         }
 
