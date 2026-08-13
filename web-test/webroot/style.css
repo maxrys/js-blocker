@@ -29,6 +29,10 @@ h1 {
     background-color: lightgray;
 }
 
+body[data-is-frame] h1 {
+    font-size: 0.8rem;
+}
+
 x-title {
     display: block;
     margin-bottom: 10px;

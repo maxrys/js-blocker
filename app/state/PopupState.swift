@@ -110,7 +110,9 @@ final class PopupState: ObservableObject {
         if case .expired = self.expireStatus {
             if case .success(let affected) = ADModel.sanitize(), affected > 0 {
                 self.refresh()
-                self.pageReload()
+                if (WITH_RULES_EXTENSION) {
+                    SFSafariApplication.reloadRules()
+                }
             }
         }
     }

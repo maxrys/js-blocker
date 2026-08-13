@@ -5,10 +5,12 @@
 
 import Foundation
 
-let NOT_APPLICABLE   = "—"
-let GROUP_NAME       = "97CZR6J379.maxrys.js-blocker"
-let EXTENSION_NAME   = "maxrys.js-blocker.extension"
-let ZERO_WIDTH_SPACE = "\u{200B}"
+let NOT_APPLICABLE       = "—"
+let GROUP_NAME           = "97CZR6J379.maxrys.js-blocker"
+let EXTENSION_POPUP_NAME = "maxrys.js-blocker.popup"
+let EXTENSION_RULES_NAME = "maxrys.js-blocker.rules"
+let ZERO_WIDTH_SPACE     = "\u{200B}"
+let WITH_RULES_EXTENSION = false
 
 let DEMO_RULE__EXACT_TOPDOMAIN = "example.com"
 let DEMO_RULES__WILDCARD_TOPDOMAIN = [

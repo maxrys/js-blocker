@@ -5,6 +5,7 @@
 
 import os
 import AppKit
+import SafariServices
 
 struct ExportImportItems: Codable {
 
@@ -207,6 +208,14 @@ final class Features {
                     isClosable: true,
                     lifeTime: .time(10)
                 )
+            }
+
+            /* MARK: Reload Rules */
+
+            if (WITH_RULES_EXTENSION) {
+                if (updateCount > 0 || insertCount > 0) {
+                    SFSafariApplication.reloadRules()
+                }
             }
 
         } catch {

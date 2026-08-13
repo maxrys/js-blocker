@@ -13,15 +13,20 @@ const JSBlocker = {
         return Math.floor(Date.now() / 1000);
     },
 
-    isTopFrame: (() => {
+    get isJSEnabled() {
+        const url = new URL(window.location.href, document.baseURI);
+        return url.searchParams.get('isJSEnabled') != 'false';
+    },
+
+    get isTopFrame() {
         try {
             return window.top === window;
         } catch (e) {
             return false;
         }
-    })(),
+    },
 
-    isStorageAvailable: (() => {
+    get isStorageAvailable() {
         try {
             const value = Math.random().toString(36).slice(2);
             const key = `test_${value}`;
@@ -32,23 +37,11 @@ const JSBlocker = {
         } catch (e) {
             return false;
         }
-    })(),
+    },
 
-    domainName: (() => {
-        var result;
-
-        try {
-            result = window.location && window.location.hostname;
-        } catch (e) {
-            return null;
-        }
-
-        if (typeof result !== 'string' || result.length === 0) {
-            return null;
-        }
-
-        return result;
-    })(),
+    get domainName() {
+        return (typeof window !== 'undefined' && window.location.hostname) || null;
+    },
 
     getStorageValue: function(isRaw = true) {
         try {
@@ -85,47 +78,18 @@ const JSBlocker = {
         }
     },
 
-    jsIsEnabledGet: function(frameNode = null) {
-        const src = (frameNode && frameNode.src) ? frameNode.src : window.location.href;
-        const url = new URL(src, document.baseURI);
-        return url.searchParams.get('jsIsEnabled');
-    },
-
-    jsIsEnabledSet: function(frameNode, jsIsEnabled) {
-        if (frameNode && frameNode.src) {
-            const url = new URL(frameNode.src, document.baseURI);
-            url.searchParams.set('jsIsEnabled', jsIsEnabled);
-            frameNode.src = url.toString();
-            this.jsIsProcessedSet(frameNode);
-        }
-    },
-
-    jsIsProcessedGet: function(frameNode) {
-        return frameNode.getAttribute('jsIsEnabled-process') == safari.extension.baseURI;
-    },
-
-
-    jsIsProcessedSet: function(frameNode) {
-        frameNode.setAttribute('jsIsEnabled-process', safari.extension.baseURI);
-    },
-
-    prepareFrames: function(jsIsEnabled) {
+    prepareFramesForBlockJS: function() {
         console.log(`JS Blocker on "${this.domainName}": prepare starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         if (node.tagName === 'IFRAME' || node.tagName === 'FRAME') {
-                            if (node.src && !this.jsIsProcessedGet(node)) {
-                                this.jsIsEnabledSet(node, jsIsEnabled)
+                            if (node.src) {
+                                const url = new URL(node.src, document.baseURI);
+                                url.searchParams.set('isJSEnabled', 'false');
+                                node.src = url.toString();
                                 console.log(`JS Blocker on "${this.domainName}": prepare <${node.tagName} src="${node.src}">`)
-                            }
-                        } else { /* containers */
-                            for (const localNode of node.querySelectorAll?.('iframe, frame')) {
-                                if (localNode.src && !this.jsIsProcessedGet(localNode)) {
-                                    this.jsIsEnabledSet(localNode, jsIsEnabled)
-                                    console.log(`JS Blocker on "${this.domainName}": prepare <${localNode.tagName} src="${localNode.src}">`)
-                                }
                             }
                         }
                     }
@@ -134,7 +98,7 @@ const JSBlocker = {
         });
         observer.observe(document.documentElement, {
             subtree  : true,
-            childList: true
+            childList: true,
         });
     },
 

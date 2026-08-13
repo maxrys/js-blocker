@@ -10,5 +10,6 @@
 
 127.0.0.1 js-blocker.com
 127.0.0.1 subdomain.js-blocker.com
+127.0.0.1 subdomain.subdomain.js-blocker.com
 127.0.0.1 js-blocker
 127.0.0.1 xn--js--dddu3aag1ax

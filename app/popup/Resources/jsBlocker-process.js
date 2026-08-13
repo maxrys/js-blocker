@@ -78,19 +78,18 @@
 
         if (value === null) { /* after cache clear… */
             JSBlocker.sanitize();
-            JSBlocker.prepareFrames('false')
+            JSBlocker.prepareFramesForBlockJS()
             JSBlocker.pageRequestMatch(domainName);
             return;
         }
 
         if (value.match === "noOne") {
             JSBlocker.sanitize();
-            JSBlocker.prepareFrames('false')
+            JSBlocker.prepareFramesForBlockJS()
             return;
         }
 
         if (value.match === "exact") {
-            JSBlocker.prepareFrames('true')
             if (value.item.expiresAt !== 0) {
                 JSBlocker.pageReloadWhenExpired(domainName, value.item.expiresAt)
             }
@@ -98,7 +97,6 @@
         }
 
         if (value.match === "wildcard") {
-            JSBlocker.prepareFrames('true')
             if (value.item.expiresAt !== 0) {
                 JSBlocker.pageReloadWhenExpired(domainName, value.item.expiresAt)
             }
@@ -111,17 +109,17 @@
 
     if (isTopFrame != true) {
 
-        const jsIsEnabled = JSBlocker.jsIsEnabledGet()
+        const isJSEnabled = JSBlocker.isJSEnabled
 
         console.log(
             `JS Blocker on "${domainName}" has been started\n` +
             `Extension URL: "${safari.extension.baseURI}"\n` +
             `URL: "${window.location.href}"\n` +
             `Is Top Frame: no\n` +
-            `Param "jsIsEnabled": ${jsIsEnabled}`
+            `Param "isJSEnabled": ${isJSEnabled ? "yes" : "no"}`
         );
 
-        if (jsIsEnabled != 'true') {
+        if (!isJSEnabled) {
             JSBlocker.sanitize();
         }
 

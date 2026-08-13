@@ -66,6 +66,7 @@ class ViewController: SFSafariExtensionViewController {
             if (success.count > 0) {
                 Task { @MainActor in
                     PopupState.shared.refresh()
+                    if (WITH_RULES_EXTENSION) { SFSafariApplication.reloadRules() }
                     PopupState.shared.pageReload()
                 }
             }
@@ -118,6 +119,7 @@ class ViewController: SFSafariExtensionViewController {
                 if (success.count > 0) {
                     Task { @MainActor in
                         PopupState.shared.refresh()
+                        if (WITH_RULES_EXTENSION) { SFSafariApplication.reloadRules() }
                         PopupState.shared.pageReload()
                     }
                 }
@@ -192,6 +194,7 @@ class ViewController: SFSafariExtensionViewController {
             if (success.count > 0) {
                 Task { @MainActor in
                     PopupState.shared.refresh()
+                    if (WITH_RULES_EXTENSION) { SFSafariApplication.reloadRules() }
                     PopupState.shared.pageReload()
                 }
             }

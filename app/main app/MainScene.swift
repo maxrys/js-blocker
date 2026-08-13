@@ -44,7 +44,7 @@ struct MainScene: View {
                             isPresented: self.$isShowPopover,
                             arrowEdge: .bottom
                         ) {
-                            InstallPopup()
+                            InstallGuide()
                         }
                 }
                 .padding(15)

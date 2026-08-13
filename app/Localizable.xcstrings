@@ -1231,38 +1231,6 @@
         }
       }
     },
-    "JS \"Blocker Extension\" is disabled" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пашырэнне \"JS Блакавальнік\" выключана"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Расширение \"JS Блокировщик\" выключено"
-          }
-        }
-      }
-    },
-    "JS \"Blocker Extension\" is enabled" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пашырэнне \"JS Блакавальнік\" уключана"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Расширение \"JS Блокировщик\" включено"
-          }
-        }
-      }
-    },
     "JS Blocker" : {
       "localizations" : {
         "be-BY" : {
@@ -1356,6 +1324,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Открыть настройки расширений Safari…"
+          }
+        }
+      }
+    },
+    "Popup is disabled" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усплывальнае акно выключана"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всплывающее окно выключено"
+          }
+        }
+      }
+    },
+    "Popup is enabled" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усплывальнае акно уключана"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всплывающее окно включено"
           }
         }
       }

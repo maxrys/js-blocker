@@ -8,19 +8,19 @@
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Блакавальнік: Усплывальнае акно"
+            "value" : "JS Блакавальнік Правілы"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "JS Blocker Popup"
+            "value" : "JS Blocker Rules"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Блокировщик Всплывающее окно"
+            "value" : "JS Блокировщик Правила"
           }
         }
       }
@@ -32,19 +32,19 @@
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Блакавальнік: Усплывальнае акно"
+            "value" : "JS Блакавальнік Правілы"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "JS Blocker Popup"
+            "value" : "JS Blocker Rules"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "JS Блокировщик Всплывающее окно"
+            "value" : "JS Блокировщик Правила"
           }
         }
       }
@@ -80,19 +80,19 @@
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пашырэнне Safari для блакавання JavaScript. Паказвае ўсплывальнае акно для ўстаноўкі правіл блакіроўкі."
+            "value" : "Пашырэнне Safari для блакіроўкі JavaScript. Актывуе правілы блакіроўкі."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Safari extension for blocking JavaScript. Shows a Popup to set blocking rules."
+            "value" : "Safari extension for blocking JavaScript. Activates blocking rules."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Расширение Safari для блокировки JavaScript. Показывает всплывающее окно для установки правил блокировки."
+            "value" : "Расширение Safari для блокировки JavaScript. Активирует правила блокировки."
           }
         }
       }

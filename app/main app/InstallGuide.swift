@@ -7,27 +7,33 @@ import os
 import SafariServices
 import SwiftUI
 
-struct InstallPopup: View {
+struct InstallGuide: View {
 
-    @State private var isEnabledExtension = false
+    static let IMAGE_INSTALL_GUIDE_PAGE_1 = Image("Install Guide Page 1")
+    static let IMAGE_INSTALL_GUIDE_PAGE_2 = Image("Install Guide Page 2")
 
-    private var colorTitleBackground: Color {
-        self.isEnabledExtension ?
-            Color.installPopup.statusSuccessTitleBackground :
-            Color.installPopup.statusFailureTitleBackground
+    @State private var isEnabledExtensionPopup = false
+
+    private var colorTitle: Color {
+        Color.installGuide.statusTitle
     }
 
+    private var colorTitleBackground: Color {
+        self.isEnabledExtensionPopup ?
+            Color.installGuide.statusSuccessTitleBackground :
+            Color.installGuide.statusFailureTitleBackground
+    }
 
     private var colorDescriptionBackground: Color {
-        self.isEnabledExtension ?
-            Color.installPopup.statusSuccessDescriptionBackground :
-            Color.installPopup.statusFailureDescriptionBackground
+        self.isEnabledExtensionPopup ?
+            Color.installGuide.statusSuccessDescriptionBackground :
+            Color.installGuide.statusFailureDescriptionBackground
     }
 
     private var colorButtonBackground: Color {
-        self.isEnabledExtension ?
-            Color.installPopup.statusSuccessButtonBackground :
-            Color.installPopup.statusFailureButtonBackground
+        self.isEnabledExtensionPopup ?
+            Color.installGuide.statusSuccessButtonBackground :
+            Color.installGuide.statusFailureButtonBackground
     }
 
     public var body: some View {
@@ -38,14 +44,14 @@ struct InstallPopup: View {
                 /* MARK: Title */
 
                 Text(
-                    self.isEnabledExtension ?
-                        NSLocalizedString("JS \"Blocker Extension\" is enabled" , comment: "") :
-                        NSLocalizedString("JS \"Blocker Extension\" is disabled", comment: "")
+                    self.isEnabledExtensionPopup ?
+                        NSLocalizedString("Popup is enabled" , comment: "") :
+                        NSLocalizedString("Popup is disabled", comment: "")
                 )
                 .font(.system(size: 15, weight: .bold))
-                .foregroundPolyfill(Color.white)
                 .frame(maxWidth: .infinity)
                 .padding(15)
+                .foregroundPolyfill(self.colorTitle)
                 .background(self.colorTitleBackground)
 
                 /* MARK: Description */
@@ -55,7 +61,7 @@ struct InstallPopup: View {
                         NSLocalizedString("Open Safari Extensions Preferences…", comment: ""),
                         colorStyle: .custom(text: .white, background: self.colorButtonBackground),
                         flexibility: .size(300),
-                        onClick: self.onClick_OpenSafariPreferences
+                        onClick: self.onClick_OpenSafariPreferencesForExtension
                     )
                 }
                 .frame(maxWidth: .infinity)
@@ -71,7 +77,7 @@ struct InstallPopup: View {
 
                 let width = 700.0
 
-                Image("Installation Guide Page 1")
+                Self.IMAGE_INSTALL_GUIDE_PAGE_1
                     .resizable()
                     .frame(width: width, height: width * (417.0 / 1672.0))
                     .shadow(
@@ -80,7 +86,7 @@ struct InstallPopup: View {
                         y: 0
                     )
 
-                Image("Installation Guide Page 2")
+                Self.IMAGE_INSTALL_GUIDE_PAGE_2
                     .resizable()
                     .frame(width: width, height: width * (579.0 / 1672.0))
                     .shadow(
@@ -97,20 +103,20 @@ struct InstallPopup: View {
     }
 
     private func onAppearView() {
-        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: EXTENSION_NAME, completionHandler: { (state, error) in
+        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: EXTENSION_POPUP_NAME, completionHandler: { (state, error) in
             guard let state = state, error == nil else {
-                Logger.customLog("viewWillAppear(): Extension state error = \(error!)")
+                Logger.customLog("viewWillAppear(): Popup state error = \(error!)")
                 return
             }
             Task {
-                self.isEnabledExtension = state.isEnabled
+                self.isEnabledExtensionPopup = state.isEnabled
             }
         })
     }
 
-    private func onClick_OpenSafariPreferences() {
+    private func onClick_OpenSafariPreferencesForExtension() {
         SFSafariApplication.showPreferencesForExtension(
-            withIdentifier: EXTENSION_NAME
+            withIdentifier: EXTENSION_POPUP_NAME
         )
     }
 
@@ -122,8 +128,8 @@ struct InstallPopup: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct InstallPopup_Previews: PreviewProvider {
+struct InstallGuide_Previews: PreviewProvider {
     static var previews: some View {
-        InstallPopup()
+        InstallGuide()
     }
 }

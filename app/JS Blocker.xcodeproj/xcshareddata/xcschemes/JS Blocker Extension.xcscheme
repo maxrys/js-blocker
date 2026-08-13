@@ -17,8 +17,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "50B0251D2C47E404002F1AD7"
-               BuildableName = "JS Blocker Extension.appex"
-               BlueprintName = "JS Blocker Extension"
+               BuildableName = "JS Blocker Popup.appex"
+               BlueprintName = "JS Blocker Popup"
                ReferencedContainer = "container:JS Blocker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
