@@ -1,4 +1,9 @@
 
+## Version 2.3
+
+UI has been improved.
+Codebase has been improved.
+
 ## Version 2.2
 
 Improved DOM tree scanning.
