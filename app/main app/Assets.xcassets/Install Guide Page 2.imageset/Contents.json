@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "installation_guide-page_2.pdf",
+      "filename" : "install_guide-page_2.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "installation_guide-page_2-dark.pdf",
+      "filename" : "install_guide-page_2-dark.pdf",
       "idiom" : "universal"
     }
   ],
