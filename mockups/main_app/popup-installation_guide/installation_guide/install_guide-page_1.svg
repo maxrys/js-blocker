@@ -203,7 +203,7 @@
               </g>
             </g>
           </g>
-          <text style="fill: rgb(41, 41, 41); font-family: Arial, sans-serif; font-size: 26.7px; white-space: pre;" x="172" y="258.19">JS Blocker: Extensi...</text>
+          <text style="fill: rgb(41, 41, 41); font-family: Arial, sans-serif; font-size: 26.7px; white-space: pre;" x="180" y="258.19">JS Blocker Popup</text>
         </g>
       </g>
       <g>
@@ -243,13 +243,11 @@
           </g>
         </g>
         <g>
-          <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 26.4px; font-weight: 700; white-space: pre;" x="628" y="245.927">JS Blocker: Extension</text>
-          <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 27.3px; white-space: pre;" x="628" y="286.674">Safari extension for block JavaScript. This part of the extension implements a</text>
-          <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 27.3px; letter-spacing: 0.1px; white-space: pre;" x="628" y="317.674">permission settings form that is displayed when the user clicks a button on the</text>
-          <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 27.3px; letter-spacing: 0.1px; white-space: pre;" x="628" y="350.674">toolbar.</text>
+          <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 26.4px; font-weight: 700; white-space: pre;" x="628" y="245.927">JS Blocker Popup</text>
+          <text style="fill: rgb(39, 39, 39); font-family: Arial, sans-serif; font-size: 27.3px; white-space: pre;" x="628" y="286.674">Safari extension for blocking JavaScript. Shows a Popup to set blocking rules.</text>
         </g>
       </g>
     </g>
-    <path d="M 0 0 L 1672 0 L 1672 417 L 0 417 L 0 0 Z M 1066 23.055 L 1066 94.226 C 1066 103.638 1073.61 111.267 1083 111.267 L 1135 111.267 L 1135 132.317 L 132 132.317 C 129.858 132.317 127.806 133.178 126.302 134.707 C 124.799 136.237 123.97 138.306 124.001 140.453 L 124.839 209.502 L 115 209.502 C 106.044 209.502 98.464 215.403 95.916 223.536 L 65 223.536 C 58.925 223.536 54 228.473 54 234.563 L 54 260.625 C 54 266.715 58.925 271.651 65 271.651 L 95.916 271.651 C 98.464 279.785 106.044 285.685 115 285.685 L 151 285.685 C 162.046 285.685 171 276.71 171 265.637 L 171 229.55 C 171 218.478 162.046 209.502 151 209.502 L 140.843 209.502 L 140.117 148.356 L 1143 148.356 C 1147.42 148.356 1151 144.765 1151 140.337 L 1151 111.267 L 1203 111.267 C 1212.39 111.267 1220 103.638 1220 94.226 L 1220 23.055 C 1220 13.644 1212.39 6.014 1203 6.014 L 1083 6.014 C 1073.61 6.014 1066 13.644 1066 23.055 Z" style="fill-opacity: 0.3; stroke: rgb(0, 0, 0); stroke-width: 2px;"/>
+    <path d="M -0.002 0 L 1672 0 L 1672 417 L -0.002 417 L -0.002 0 Z M 1066.01 23.055 L 1066.01 94.226 C 1066.01 103.638 1073.61 111.267 1083.01 111.267 L 1135.01 111.267 L 1135.01 132.317 L 131.998 132.317 C 129.856 132.317 127.804 133.178 126.3 134.707 C 124.797 136.237 123.968 138.306 123.999 140.453 L 124.837 209.502 L 114.998 209.502 C 106.042 209.502 98.462 215.403 95.914 223.536 L 64.998 223.536 C 58.923 223.536 53.998 228.473 53.998 234.563 L 53.998 260.625 C 53.998 266.715 58.923 271.651 64.998 271.651 L 95.914 271.651 C 98.462 279.785 106.042 285.685 114.998 285.685 L 150.998 285.685 C 162.044 285.685 170.998 276.71 170.998 265.637 L 170.998 229.55 C 170.998 218.478 162.044 209.502 150.998 209.502 L 140.841 209.502 L 140.115 148.356 L 1143.01 148.356 C 1147.42 148.356 1151.01 144.765 1151.01 140.337 L 1151.01 111.267 L 1203.01 111.267 C 1212.39 111.267 1220.01 103.638 1220.01 94.226 L 1220.01 23.055 C 1220.01 13.644 1212.39 6.014 1203.01 6.014 L 1083.01 6.014 C 1073.61 6.014 1066.01 13.644 1066.01 23.055 Z" style="fill-opacity: 0.3; stroke: rgb(0, 0, 0); stroke-width: 2px;"/>
   </g>
 </svg>
