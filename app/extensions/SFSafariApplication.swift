@@ -9,14 +9,16 @@ import SafariServices
 extension SFSafariApplication {
 
     static func reloadRules() {
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: EXTENSION_RULES_NAME, completionHandler: { error in
-            if let error = error {
-                Logger.customLog("Error reload blocking rules: \(error)")
-            } else {
-                let JSON = String(data: RulesHandler.JSON, encoding: .utf8) ?? NOT_APPLICABLE
-                Logger.customLog("Reload blocking rules: \(JSON)")
-            }
-        })
+        if (WITH_RULES_EXTENSION) {
+            SFContentBlockerManager.reloadContentBlocker(withIdentifier: EXTENSION_RULES_NAME, completionHandler: { error in
+                if let error = error {
+                    Logger.customLog("Error reload blocking rules: \(error)")
+                } else {
+                    let JSON = String(data: RulesHandler.JSON, encoding: .utf8) ?? NOT_APPLICABLE
+                    Logger.customLog("Reload blocking rules: \(JSON)")
+                }
+            })
+        }
     }
 
     /*

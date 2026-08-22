@@ -8,7 +8,6 @@ import SwiftUI
 
 struct MainScene: View {
 
-    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) var openURL
 
     @StateObject private var mainAppState = MainAppState.shared
@@ -117,7 +116,6 @@ struct MainScene: View {
         .environment(\.layoutDirection, .leftToRight)
         .windowChamelionBackground(
             windowID: ThisApp.WINDOW_MAIN_ID,
-            colorScheme: self.colorScheme,
             isIgnoreSafeArea: false
         )
         .onReceive(

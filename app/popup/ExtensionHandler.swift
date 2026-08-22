@@ -22,17 +22,27 @@ class ExtensionHandler: SFSafariExtensionHandler {
 
     override func messageReceived(withName message: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         page.getPropertiesWithCompletionHandler({ properties in
-            if (message == "onChangeMatch") {
-                if let userInfo, let forDomain = userInfo["forDomain"] as? DomainName, let _ = properties?.url?.host {
-                    let matchJSONValue = ADModel.matchType(name: forDomain).toStrictJS
-                    Logger.customLog("onChangeMatch IN for \(forDomain): \(matchJSONValue)")
-                    page.dispatchMessageToScript(
-                        withName: message,
-                        userInfo: [
-                            "domain": forDomain,
-                            "match" : matchJSONValue
-                        ]
-                    )
+            if let realDomainName = properties?.url?.host {
+                if let frameDomainName = userInfo?["domainName"] as? DomainName {
+                    if let userInfo {
+                        if let logData = try? JSONSerialization.data(withJSONObject: userInfo) {
+                            if let logString = String(data: logData, encoding: .utf8) {
+                                Logger.customLog("\(message) from \(realDomainName)|\(frameDomainName): \(logString)")
+                            }
+                        }
+                    }
+                    switch message {
+                        case "js:getMatch.request":
+                            page.dispatchMessageToScript(
+                                withName: "js:getMatch.response",
+                                userInfo: [
+                                    "match": ADModel.matchType(
+                                        name: realDomainName
+                                    ).toStrictJS
+                                ]
+                            )
+                        default: break
+                    }
                 }
             }
         })
@@ -53,7 +63,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
                         if let page       = page,
                            let domainName = domainName {
                             Task { @MainActor in
-                                PopupState.shared.setPageAndDomain(page, domainName)
+                                PopupState.shared.onSetPageAndDomain(page, domainName)
                                 switch PopupState.shared.match {
                                     case .none    : toolbarItem?.setImage(Self.ICON_NONE)
                                     case .noOne   : toolbarItem?.setImage(Self.ICON_NO_ONE)

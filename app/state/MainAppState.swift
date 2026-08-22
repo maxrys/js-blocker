@@ -81,9 +81,7 @@ final class MainAppState: ObservableObject {
         if case .success = result {
             self.selectedRows = []
             self.itemsReload()
-            if (WITH_RULES_EXTENSION) {
-                SFSafariApplication.reloadRules()
-            }
+            SFSafariApplication.reloadRules()
         }
         return result
     }

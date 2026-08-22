@@ -24,18 +24,30 @@ final class PopupState: ObservableObject {
 
     private var timer: Timer.Custom!
 
-    public func reset() {
-        self.page = nil
-        self.domainName = nil
-        self.match = nil
-        self.ruleExact = ""
-        self.rulesWildcard = []
-        self.rulesWildcardSelected = []
-        self.lifetime = LifetimePicker.PERIOD_UNLIMIT
-        self.expireStatus = .notSetted
+    private /* singleton */ init() {
+        self.timer = Timer.Custom(
+            repeats: .infinity,
+            delay: Self.TIMER_DELAY,
+            onTick: self.onTimerTick
+        )
     }
 
-    public func setPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
+    private func onTimerTick(timer: Timer.Custom) {
+        let newExpireStatus = self.match?.expireStatus ?? .notSetted
+        if (self.expireStatus != newExpireStatus) {
+            self.expireStatus  = newExpireStatus
+        }
+        if case .expired = self.expireStatus {
+            if case .success(let affected) = ADModel.sanitize() {
+                if (affected > 0) {
+                    SFSafariApplication.reloadRules()
+                    self.refresh()
+                }
+            }
+        }
+    }
+
+    public func onSetPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
         self.page = page
         self.domainName = domainName
         self.match = ADModel.matchType(name: domainName)
@@ -45,6 +57,17 @@ final class PopupState: ObservableObject {
         self.lifetime = LifetimePicker.PERIOD_UNLIMIT
         self.expireStatus = self.match?.expireStatus ?? .notSetted
         self.refresh()
+    }
+
+    public func reset() {
+        self.page = nil
+        self.domainName = nil
+        self.match = nil
+        self.ruleExact = ""
+        self.rulesWildcard = []
+        self.rulesWildcardSelected = []
+        self.lifetime = LifetimePicker.PERIOD_UNLIMIT
+        self.expireStatus = .notSetted
     }
 
     public func refresh() {
@@ -76,44 +99,21 @@ final class PopupState: ObservableObject {
         }
     }
 
-    func pageReload() {
+    func jsSetMatch() {
         if let page       = self.page,
            let domainName = self.domainName,
            let match      = self.match {
                 let matchJSONValue = match.toStrictJS
-                Logger.customLog("onChangeMatch OUT for \(domainName): \(matchJSONValue)")
+                Logger.customLog("js:setMatch for \(domainName): \(matchJSONValue)")
                 page.dispatchMessageToScript(
-                    withName: "onChangeMatch",
+                    withName: "js:setMatch",
                     userInfo: [
                         "domain": domainName,
                         "match" : matchJSONValue
                     ]
                 )
         } else {
-            Logger.customLog("pageReload(): Page not found")
-        }
-    }
-
-    private /* singleton */ init() {
-        self.timer = Timer.Custom(
-            repeats: .infinity,
-            delay: Self.TIMER_DELAY,
-            onTick: self.onTimerTick
-        )
-    }
-
-    private func onTimerTick(timer: Timer.Custom) {
-        let newExpireStatus = self.match?.expireStatus ?? .notSetted
-        if (self.expireStatus != newExpireStatus) {
-            self.expireStatus  = newExpireStatus
-        }
-        if case .expired = self.expireStatus {
-            if case .success(let affected) = ADModel.sanitize(), affected > 0 {
-                self.refresh()
-                if (WITH_RULES_EXTENSION) {
-                    SFSafariApplication.reloadRules()
-                }
-            }
+            Logger.customLog("jsSetMatch(): Page not found")
         }
     }
 

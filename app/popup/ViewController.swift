@@ -65,9 +65,9 @@ class ViewController: SFSafariExtensionViewController {
             /* ui update */
             if (success.count > 0) {
                 Task { @MainActor in
+                    SFSafariApplication.reloadRules()
                     PopupState.shared.refresh()
-                    if (WITH_RULES_EXTENSION) { SFSafariApplication.reloadRules() }
-                    PopupState.shared.pageReload()
+                    PopupState.shared.jsSetMatch()
                 }
             }
 
@@ -118,9 +118,9 @@ class ViewController: SFSafariExtensionViewController {
                 /* ui update */
                 if (success.count > 0) {
                     Task { @MainActor in
+                        SFSafariApplication.reloadRules()
                         PopupState.shared.refresh()
-                        if (WITH_RULES_EXTENSION) { SFSafariApplication.reloadRules() }
-                        PopupState.shared.pageReload()
+                        PopupState.shared.jsSetMatch()
                     }
                 }
             }
@@ -193,9 +193,9 @@ class ViewController: SFSafariExtensionViewController {
             /* ui update */
             if (success.count > 0) {
                 Task { @MainActor in
+                    SFSafariApplication.reloadRules()
                     PopupState.shared.refresh()
-                    if (WITH_RULES_EXTENSION) { SFSafariApplication.reloadRules() }
-                    PopupState.shared.pageReload()
+                    PopupState.shared.jsSetMatch()
                 }
             }
 

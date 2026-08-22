@@ -67,6 +67,16 @@
             </x-block>
         </x-links>
     <?php } ?>
+    
+    <!-- TEST ELEMENTS WITH JS -->
+    <?php if (!$isInFrame) { ?>
+        <x-links>
+            <x-block>
+                <x-title>Elements with JS</x-title>
+                <a href="javascript:alert('JS is enabled')">click to test</a>
+            </x-block>
+        </x-links>
+    <?php } ?>
 
     <!-- DYNAMIC IFRAME -->
     <?php if (!$isInFrame) { ?>

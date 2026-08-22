@@ -162,7 +162,7 @@ final class Features {
             var insertCount: Int = 0
 
             for item in importStruct.items {
-                if (item.name.domainNameIsValid() == false) {
+                if (item.name.isCanonical == false) {
                     invalidDomains.append(item.name)
                     Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
                     continue
@@ -212,10 +212,8 @@ final class Features {
 
             /* MARK: Reload Rules */
 
-            if (WITH_RULES_EXTENSION) {
-                if (updateCount > 0 || insertCount > 0) {
-                    SFSafariApplication.reloadRules()
-                }
+            if (updateCount > 0 || insertCount > 0) {
+                SFSafariApplication.reloadRules()
             }
 
         } catch {

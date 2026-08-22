@@ -40,7 +40,7 @@ struct Tests {
         #expect(       "com".topDomains(isDeleteTLD: true) == [                  ] )
     }
 
-    @Test func DomainName_domainNameIsValid() async throws {
+    @Test func DomainName_isCanonical() async throws {
         let domainNames = [
             "0"                                 : true, /* local DNS */
             "x"                                 : true, /* local DNS */
@@ -68,7 +68,7 @@ struct Tests {
         ]
 
         for name in domainNames {
-            let received = name.key.domainNameIsValid()
+            let received = name.key.isCanonical
             let expected = name.value
             print("item '\(name.key)'")
             #expect(expected == received)

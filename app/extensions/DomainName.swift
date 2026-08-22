@@ -4,26 +4,16 @@
 /* ################################################################## */
 
 import Foundation
+import Network
 
 typealias DomainName = String
 extension DomainName {
 
-    func topDomains(isDeleteTLD: Bool = false) -> [Self] {
-        var result: [Self] = []
-        let nameParts = self.split(separator: ".")
-        for index in 1 ..< nameParts.count {
-            result.append(
-                nameParts[index...].joined(separator: ".")
-            )
-        }
-        /* delete TLD (top-level domain), eg ".com", ".net" … */
-        if (isDeleteTLD && !result.isEmpty) {
-            result.removeLast()
-        }
-        return result
+    var isIPAddress: Bool {
+        IPv4Address(self) != nil || IPv6Address(self) != nil
     }
 
-    func domainNameIsValid() -> Bool {
+    var isCanonical: Bool {
         if (self.count < 1 || self.count > 63 || self.contains("..") || self.contains("---")) {
             return false
         }
@@ -54,6 +44,24 @@ extension DomainName {
         }
 
         return true
+    }
+
+    func topDomains(isDeleteTLD: Bool = false) -> [Self] {
+        guard !self.isIPAddress else {
+            return []
+        }
+        var result: [Self] = []
+        let nameParts = self.split(separator: ".")
+        for index in 1 ..< nameParts.count {
+            result.append(
+                nameParts[index...].joined(separator: ".")
+            )
+        }
+        /* delete TLD (top-level domain), eg ".com", ".net" … */
+        if (isDeleteTLD && !result.isEmpty) {
+            result.removeLast()
+        }
+        return result
     }
 
     func decodePunycode() -> Self {

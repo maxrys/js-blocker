@@ -8,7 +8,7 @@
     const domainName = JSBlocker.domainName;
 
     if (!domainName) {
-        console.log(`JS Blocker error: unknown domain`);
+        console.log(`JS Blocker: unknown domain (probably IFRAME with empty SRC)`);
         return;
     }
 
@@ -50,25 +50,26 @@
             if (isFocused !== true) {
                 isFocused = true;
                 console.log(`JS Blocker on "${domainName}": capture focus`);
-                JSBlocker.pageRequestMatch(domainName);
+                JSBlocker.pageRequestMatch();
             }
         });
 
         safari.self.addEventListener('message', event => {
-            if (event.name === 'onChangeMatch') {
-                const oldValue = JSBlocker.getStorageValue(true)
-                const newValue = event.message.match
-                const isRequiredUpdation = oldValue === null ||
-                                          (oldValue !== null && newValue !== oldValue)
+            if (event.name === 'js:setMatch' ||
+                event.name === 'js:getMatch.response') {
+                const oldValue = JSBlocker.getStorageValue(true);
+                const newValue = event.message.match;
+                const isRequiredUpdate = oldValue === null ||
+                                        (oldValue !== null && newValue !== oldValue);
                 console.log(
                     `JS Blocker on "${domainName}"\n` +
-                    `Event: "onChangeMatch"\n` +
+                    `Receive Event: "${event.name}"\n` +
                     `Old Match: ${oldValue}\n` +
                     `New Match: ${newValue}\n` +
-                    `Updation is required: ${isRequiredUpdation}`
+                    `Update is required: ${isRequiredUpdate ? "yes" : "no"}`
                 );
-                if (isRequiredUpdation) {
-                    JSBlocker.setStorageValue(event.message.match);
+                if (isRequiredUpdate) {
+                    JSBlocker.setStorageValue(newValue);
                     JSBlocker.pageReload();
                 }
             }
@@ -78,27 +79,27 @@
 
         if (value === null) { /* after cache clear… */
             JSBlocker.sanitize();
-            JSBlocker.prepareFramesForBlockJS()
-            JSBlocker.pageRequestMatch(domainName);
+            JSBlocker.prepareFramesForBlockJS();
+            JSBlocker.pageRequestMatch();
             return;
         }
 
         if (value.match === "noOne") {
             JSBlocker.sanitize();
-            JSBlocker.prepareFramesForBlockJS()
+            JSBlocker.prepareFramesForBlockJS();
             return;
         }
 
         if (value.match === "exact") {
             if (value.item.expiresAt !== 0) {
-                JSBlocker.pageReloadWhenExpired(domainName, value.item.expiresAt)
+                JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
             }
             return;
         }
 
         if (value.match === "wildcard") {
             if (value.item.expiresAt !== 0) {
-                JSBlocker.pageReloadWhenExpired(domainName, value.item.expiresAt)
+                JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
             }
             return;
         }
@@ -109,7 +110,7 @@
 
     if (isTopFrame != true) {
 
-        const isJSEnabled = JSBlocker.isJSEnabled
+        const isJSEnabled = JSBlocker.isJSEnabled;
 
         console.log(
             `JS Blocker on "${domainName}" has been started\n` +
@@ -121,6 +122,7 @@
 
         if (!isJSEnabled) {
             JSBlocker.sanitize();
+            return;
         }
 
     }

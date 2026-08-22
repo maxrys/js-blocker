@@ -45,14 +45,20 @@ struct Popup: View {
                     onClickAllow: { _ in
                         ViewController.shared.onClick_ruleExactInsert(lifetime: self.popupState.lifetime)
                     }
-                ).background(Color.popup.ruleExactBackground)
+                ).background(
+                    Color.popup.ruleExactBackground
+                        .opacity(0.9)
+                )
 
                 DomainRulePanel(
                     panelType: .wildcard,
                     onClickAllow: { selected in
                         ViewController.shared.onClick_ruleWildcardInsert(selected: selected, lifetime: self.popupState.lifetime)
                     }
-                ).background(Color.popup.rulesWildcardBackground)
+                ).background(
+                    Color.popup.rulesWildcardBackground
+                        .opacity(0.9)
+                )
 
             }.frame(maxWidth: .infinity)
 
@@ -69,7 +75,10 @@ struct Popup: View {
             self.ButtonCancelRuleView()
                 .padding(31)
                 .frame(maxWidth: .infinity)
-                .background(Color.popup.ruleCancelBackground)
+                .background(
+                    Color.popup.ruleCancelBackground
+                        .opacity(0.9)
+                )
 
         }
         .frame(width: self.frameWidth)

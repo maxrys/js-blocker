@@ -90,10 +90,7 @@ struct About: View {
 
             }
         }
-        .windowChamelionBackground(
-            windowID: ThisApp.WINDOW_ABOUT_ID,
-            colorScheme: self.colorScheme
-        )
+        .windowChamelionBackground(windowID: ThisApp.WINDOW_ABOUT_ID)
     }
 
     @ViewBuilder private func ButtonOpenURLView(_ value: String) -> some View {

@@ -44,17 +44,20 @@ struct LifetimePicker: View {
 
     @ViewBuilder private func OpenerView() -> some View {
         let isActive = self.lifetime != Self.PERIOD_UNLIMIT
-        Self.ICON
-            .font(.system(size: 24))
-            .padding(6)
-            .foregroundPolyfill(
-                isActive ?
-                    Color.lifetime.openerActiveBackground :
-                    Color.lifetime.openerBackground
-            )
-            .background(Color.white.opacity(0.1))
-            .contentShape(Circle())
-            .focusEffect (Circle())
+        Group {
+            Self.ICON
+                .font(.system(size: 24))
+                .foregroundPolyfill(
+                    isActive ?
+                        Color.lifetime.openerActiveBackground :
+                        Color.lifetime.openerBackground
+                )
+                .offset(y: -0.5)
+        }
+        .padding(6)
+        .background(Color.white.opacity(0.1))
+        .contentShape(Circle())
+        .focusEffect (Circle())
     }
 
     @ViewBuilder private func PopupView() -> some View {

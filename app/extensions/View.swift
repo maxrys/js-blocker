@@ -36,6 +36,13 @@ extension View {
         } else { self }
     }
 
+    @ViewBuilder func textSelectionPolyfill(isEnabled: Bool = true) -> some View {
+        if #available(macOS 12.0, *) {
+            if (isEnabled == true) { self.textSelection(.enabled ) }
+            if (isEnabled != true) { self.textSelection(.disabled) }
+        } else { self }
+    }
+
     @ViewBuilder func pointerStyleLinkPolyfill(_ isEnabled: Bool = true) -> some View {
         if (isEnabled) {
             self.onHover { isInView in
@@ -115,17 +122,27 @@ extension View {
 
 extension View {
 
-    @ViewBuilder func windowChamelionBackground(windowID: String, colorScheme: ColorScheme, isIgnoreSafeArea: Bool = true) -> some View {
+    @ViewBuilder func windowChamelionBackground(
+        windowID                   : String? = nil,
+        backgroundTint             : Color = .NS[\.windowBackgroundColor].opacity(0.7),
+        backgroundTintDark         : Color = .NS[\.windowBackgroundColor].opacity(0.7),
+        backgroundColorFallback    : Color = .NS[\.windowBackgroundColor],
+        backgroundColorDarkFallback: Color = .NS[\.windowBackgroundColor],
+        isIgnoreSafeArea: Bool = true
+    ) -> some View {
         self.ignoresSafeArea(
                 isIgnore: isIgnoreSafeArea
             )
             .background(
                 ChamelionBackground(
-                    colorScheme: colorScheme
+                    backgroundTint             : backgroundTint,
+                    backgroundTintDark         : backgroundTintDark,
+                    backgroundColorFallback    : backgroundColorFallback,
+                    backgroundColorDarkFallback: backgroundColorDarkFallback
                 )
             )
             .onAppear {
-                if let window = NSWindow.get(windowID) {
+                if let windowID, let window = NSWindow.get(windowID) {
                     window.backgroundColor = .clear
                     window.alphaValue = 1.0
                 }
@@ -136,15 +153,22 @@ extension View {
 
 struct ChamelionBackground: View {
 
-    let colorScheme: ColorScheme
+    @Environment(\.colorScheme) private var colorScheme
+
+    let backgroundTint: Color
+    let backgroundTintDark: Color
+    let backgroundColorFallback: Color
+    let backgroundColorDarkFallback: Color
 
     public var body: some View {
         if #available(macOS 12.0, *) {
-            if (colorScheme == .dark)
-                 { Rectangle().fill(.ultraThickMaterial) }
-            else { Rectangle().fill(.ultraThickMaterial).overlayPolyfill { Color.NS[\.windowBackgroundColor].opacity(0.7) } }
+            if (self.colorScheme == .dark)
+                 { Rectangle().fill(.ultraThinMaterial).overlayPolyfill { self.backgroundTintDark } }
+            else { Rectangle().fill(.ultraThinMaterial).overlayPolyfill { self.backgroundTint     } }
         } else {
-            Color.NS[\.windowBackgroundColor]
+            if (self.colorScheme == .dark)
+                 { self.backgroundColorDarkFallback }
+            else { self.backgroundColorFallback     }
         }
     }
 

@@ -40,7 +40,7 @@ const JSBlocker = {
     },
 
     get domainName() {
-        return (typeof window !== 'undefined' && window.location.hostname) || null;
+        return (typeof window !== 'undefined' && window.location?.hostname) || null;
     },
 
     getStorageValue: function(isRaw = true) {
@@ -79,7 +79,7 @@ const JSBlocker = {
     },
 
     prepareFramesForBlockJS: function() {
-        console.log(`JS Blocker on "${this.domainName}": prepare starts…`);
+        console.log(`JS Blocker on "${this.domainName}": preparation frames starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
@@ -89,7 +89,7 @@ const JSBlocker = {
                                 const url = new URL(node.src, document.baseURI);
                                 url.searchParams.set('isJSEnabled', 'false');
                                 node.src = url.toString();
-                                console.log(`JS Blocker on "${this.domainName}": prepare <${node.tagName} src="${node.src}">`)
+                                console.log(`JS Blocker on "${this.domainName}": prepared ${node.tagName} "${node.src}"`);
                             }
                         }
                     }
@@ -103,25 +103,22 @@ const JSBlocker = {
     },
 
     sanitize: function() {
-        console.log(`JS Blocker on "${this.domainName}": sanitize starts…`);
+        console.log(`JS Blocker on "${this.domainName}": sanitization scripts starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        switch (node.tagName) {
-                            case 'SCRIPT': /* removing <script> */
-                                console.log(`JS Blocker on "${this.domainName}": sanitize <SCRIPT src="${node.src}">`)
-                                node.remove();
-                                break;
-                            default: /* removing <… on…="…" …> */
-                                [...node.attributes].forEach(attribute => {
-                                    if (attribute.name.startsWith('on')) {
-                                        console.log(`JS Blocker on "${this.domainName}": sanitize <${node.tagName}> attribute "${attribute.name}"`)
-                                        node.removeAttribute(
-                                            attribute.name
-                                        );
-                                    }
-                                });
+                        if (node.tagName === 'SCRIPT') { /* removing <script> */
+                            node.remove();
+                            if (node.src) { console.log(`JS Blocker on "${this.domainName}": sanitized external script "${node.src}"`); }
+                            else          { console.log(`JS Blocker on "${this.domainName}": sanitized internal script`); }
+                        } else { /* removing <… on…="…" …> */
+                            [...node.attributes].forEach(attribute => {
+                                if (attribute.name.startsWith('on')) {
+                                    node.removeAttribute(attribute.name);
+                                    console.log(`JS Blocker on "${this.domainName}": sanitized attribute "${attribute.name}" on ${node.tagName}`);
+                                }
+                            });
                         }
                     }
                 });
@@ -133,9 +130,9 @@ const JSBlocker = {
         });
     },
 
-    pageRequestMatch: function(domainName) {
-        safari.extension.dispatchMessage('onChangeMatch', {
-            'forDomain': domainName
+    pageRequestMatch: function() {
+        safari.extension.dispatchMessage('js:getMatch.request', {
+            'domainName': this.domainName
         });
     },
 
@@ -145,10 +142,10 @@ const JSBlocker = {
         }, delay);
     },
 
-    pageReloadWhenExpired: function(domainName, expiresAt) {
+    pageReloadWhenExpired: function(expiresAt) {
         if (expiresAt > this.dateNow) {
-            const lifeTime = (expiresAt - this.dateNow) * 1000
-            setTimeout(() => { this.pageRequestMatch(domainName); },
+            const lifeTime = (expiresAt - this.dateNow) * 1000;
+            setTimeout(() => { this.pageRequestMatch(); },
                 lifeTime + this.DELAY_BEFORE_RECHECK_STATE
             );
         }
