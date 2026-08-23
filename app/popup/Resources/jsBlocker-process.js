@@ -14,6 +14,38 @@
 
     const isTopFrame = JSBlocker.isTopFrame;
 
+    /* TOP FRAME + FRAMES */
+
+    let isDOMLoad = false;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        isDOMLoad = true
+    });
+
+    safari.self.addEventListener('message', event => {
+        if (event.name === 'js:getScripts.request') {
+            console.log(
+                `JS Blocker on "${domainName}"\n` +
+                `Receive Event: "${event.name}"`
+            );
+            JSBlocker.doAfterCondition(
+                () => isDOMLoad,
+                () => {
+                    const scriptsString = scripts.join('\n');
+                    console.log(
+                        `JS Blocker on "${domainName}"\n` +
+                        `Send Event: "js:getScripts.response"\n` +
+                        `Scripts: ${scriptsString}`
+                    );
+                    safari.extension.dispatchMessage('js:getScripts.response', {
+                        'domainName': domainName,
+                        'scripts': scriptsString
+                    });
+                }
+            );
+        }
+    });
+
     /* TOP FRAME */
 
     if (isTopFrame == true) {
@@ -75,6 +107,14 @@
             }
         });
 
+        document.addEventListener('DOMContentLoaded', () => {
+            if (scripts.length) {
+                JSBlocker.pageScriptsNotify();
+            }
+        });
+
+        JSBlocker.detectScripts();
+
         /* ====================================================================== */
 
         if (value === null) { /* after cache clear… */
@@ -119,6 +159,14 @@
             `Is Top Frame: no\n` +
             `Param "isJSEnabled": ${isJSEnabled ? "yes" : "no"}`
         );
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (scripts.length) {
+                JSBlocker.pageScriptsNotify();
+            }
+        });
+
+        JSBlocker.detectScripts();
 
         if (!isJSEnabled) {
             JSBlocker.sanitize();

@@ -21,6 +21,7 @@ final class PopupState: ObservableObject {
     @Published var rulesWildcardSelected: Set<Int> = []
     @Published var lifetime: TimeInterval = LifetimePicker.PERIOD_UNLIMIT
     @Published var expireStatus: ExpireStatus = .notSetted
+    @Published var scripts: [DomainName: [DomainName: [String]]] = [:]
 
     private var timer: Timer.Custom!
 
@@ -57,6 +58,7 @@ final class PopupState: ObservableObject {
         self.lifetime = LifetimePicker.PERIOD_UNLIMIT
         self.expireStatus = self.match?.expireStatus ?? .notSetted
         self.refresh()
+        self.jsGetScripts()
     }
 
     public func reset() {
@@ -96,6 +98,21 @@ final class PopupState: ObservableObject {
 
         } else {
             self.reset()
+        }
+    }
+
+    func jsGetScripts() {
+        if let page       = self.page,
+           let domainName = self.domainName {
+                Logger.customLog("js:getScripts.request for \(domainName)")
+                page.dispatchMessageToScript(
+                    withName: "js:getScripts.request",
+                    userInfo: [
+                        "domain": domainName
+                    ]
+                )
+        } else {
+            Logger.customLog("jsGetScripts(): Page not found")
         }
     }
 

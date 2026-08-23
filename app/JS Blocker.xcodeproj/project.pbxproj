@@ -129,6 +129,10 @@
 		509528D62F701EA800DB391A /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509528D42F701E8000DB391A /* NSWindow.swift */; };
 		509528D72F701EA800DB391A /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509528D42F701E8000DB391A /* NSWindow.swift */; };
 		50992D372F56E9570090699F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50992D362F56E9570090699F /* ViewController.xib */; };
+		509B24DD303B06E30046BB03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509B24DC303B06E30046BB03 /* Assets.xcassets */; };
+		509B24DE303B06E30046BB03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509B24DC303B06E30046BB03 /* Assets.xcassets */; };
+		509B24E0303B07230046BB03 /* ScriptsPanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */; };
+		509B24E1303B07230046BB03 /* ScriptsPanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */; };
 		50AD451A2DAD17C600425467 /* toolbarIcon-wildcard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50AD45192DAD17C600425467 /* toolbarIcon-wildcard.pdf */; };
 		50AD45212DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD45222DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
@@ -174,6 +178,8 @@
 		50C787023014CFE600F078EC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C787013014CFE600F078EC /* Storage.swift */; };
 		50C787033014CFE600F078EC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C787013014CFE600F078EC /* Storage.swift */; };
 		50C787043014CFE600F078EC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C787013014CFE600F078EC /* Storage.swift */; };
+		50CC17DD3036569B00B9152C /* ScriptsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC17DC3036569B00B9152C /* ScriptsPanel.swift */; };
+		50CC17DE3036569B00B9152C /* ScriptsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC17DC3036569B00B9152C /* ScriptsPanel.swift */; };
 		50CE9F9A2F45BF06001006CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CE9F992F45BF06001006CF /* Assets.xcassets */; };
 		50CE9F9B2F45BF06001006CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CE9F992F45BF06001006CF /* Assets.xcassets */; };
 		50CE9F9D2F45BF89001006CF /* DomainRulePanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */; };
@@ -341,6 +347,8 @@
 		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		509528D42F701E8000DB391A /* NSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindow.swift; sourceTree = "<group>"; };
 		50992D362F56E9570090699F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		509B24DC303B06E30046BB03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsPanelColors.swift; sourceTree = "<group>"; };
 		50AD45192DAD17C600425467 /* toolbarIcon-wildcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "toolbarIcon-wildcard.pdf"; sourceTree = "<group>"; };
 		50AD45202DAE59C300425467 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		50AD7BDC301B652600F1C6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -363,6 +371,7 @@
 		50C43A083019E19400A8FD39 /* DomainName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainName.swift; sourceTree = "<group>"; };
 		50C786FD3014CE6900F078EC /* EntityVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityVersions.swift; sourceTree = "<group>"; };
 		50C787013014CFE600F078EC /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		50CC17DC3036569B00B9152C /* ScriptsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsPanel.swift; sourceTree = "<group>"; };
 		50CE9F992F45BF06001006CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRulePanelColors.swift; sourceTree = "<group>"; };
 		50CE9F9F2F45C39D001006CF /* InstallGuideColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallGuideColors.swift; sourceTree = "<group>"; };
@@ -523,6 +532,7 @@
 				50AD7BDB301B651600F1C6D6 /* Lifetime */,
 				50439E042F44C9AD00270BE5 /* MessageBox */,
 				50BB98892FFA82C400C39670 /* ProgressSimple */,
+				50CC17DB3036568700B9152C /* ScriptsPanel */,
 				505507552FC6E59E007DB93D /* ShadowLine */,
 				506421562F5E22760020F6C8 /* TableCustom */,
 			);
@@ -658,6 +668,16 @@
 				50ECC0253006362400A99E64 /* Assets.xcassets */,
 			);
 			path = ProgressSimple;
+			sourceTree = "<group>";
+		};
+		50CC17DB3036568700B9152C /* ScriptsPanel */ = {
+			isa = PBXGroup;
+			children = (
+				50CC17DC3036569B00B9152C /* ScriptsPanel.swift */,
+				509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */,
+				509B24DC303B06E30046BB03 /* Assets.xcassets */,
+			);
+			path = ScriptsPanel;
 			sourceTree = "<group>";
 		};
 		50CE9F982F45BE8D001006CF /* DomainRulePanel */ = {
@@ -865,6 +885,7 @@
 				50439DC02F44C74800270BE5 /* info.plist in Resources */,
 				50CE9F9A2F45BF06001006CF /* Assets.xcassets in Resources */,
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
+				509B24DE303B06E30046BB03 /* Assets.xcassets in Resources */,
 				50AD7BDE301B652600F1C6D6 /* Assets.xcassets in Resources */,
 				50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */,
 				5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */,
@@ -886,6 +907,7 @@
 				50ECC033300A331B00A99E64 /* jsBlocker.js in Resources */,
 				503CE1442C6E32C400835509 /* toolbarIcon-exact.pdf in Resources */,
 				506421572F5E22760020F6C8 /* Assets.xcassets in Resources */,
+				509B24DD303B06E30046BB03 /* Assets.xcassets in Resources */,
 				50992D372F56E9570090699F /* ViewController.xib in Resources */,
 				500727652F8A3EB40058A547 /* Assets.xcassets in Resources */,
 				50ECC01830025DD600A99E64 /* toolbarIcon-no-one.pdf in Resources */,
@@ -1034,6 +1056,7 @@
 				50E4B1382FF99BBC008D625B /* LifetimePicker.swift in Sources */,
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
 				50C787023014CFE600F078EC /* Storage.swift in Sources */,
+				50CC17DE3036569B00B9152C /* ScriptsPanel.swift in Sources */,
 				5064215D2F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				50BB98872FFA82BE00C39670 /* ProgressSimple.swift in Sources */,
 				506421602F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
@@ -1044,6 +1067,7 @@
 				505507532FC6E57C007DB93D /* About.swift in Sources */,
 				50E4E8412F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50E4B1032FF29088008D625B /* HVStack.swift in Sources */,
+				509B24E0303B07230046BB03 /* ScriptsPanelColors.swift in Sources */,
 				50E4B1042FF29088008D625B /* Previewer.swift in Sources */,
 				50EB55172CF9AAB400FC060C /* Popup.swift in Sources */,
 				50EB55182CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
@@ -1111,6 +1135,7 @@
 				50BB986B2FFA5C1F00C39670 /* App.swift in Sources */,
 				50BB986C2FFA5C1F00C39670 /* MainScene.swift in Sources */,
 				50C787033014CFE600F078EC /* Storage.swift in Sources */,
+				50CC17DD3036569B00B9152C /* ScriptsPanel.swift in Sources */,
 				50BB98882FFA82BE00C39670 /* ProgressSimple.swift in Sources */,
 				50BB986D2FFA5C1F00C39670 /* InstallGuide.swift in Sources */,
 				50BB986E2FFA5C1F00C39670 /* Features.swift in Sources */,
@@ -1121,6 +1146,7 @@
 				506421612F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
 				500895352DD73EDF00414588 /* Date.swift in Sources */,
 				509528D62F701EA800DB391A /* NSWindow.swift in Sources */,
+				509B24E1303B07230046BB03 /* ScriptsPanelColors.swift in Sources */,
 				50CE9FA62F45DD55001006CF /* ButtonRoundColors.swift in Sources */,
 				50CEA0792F4902A5001006CF /* MainAppState.swift in Sources */,
 				50E150C02DAA789D005768C1 /* PopupState.swift in Sources */,

@@ -41,6 +41,18 @@ class ExtensionHandler: SFSafariExtensionHandler {
                                     ).toStrictJS
                                 ]
                             )
+                        case "js:setScripts.request",
+                             "js:getScripts.response":
+                            if let scripts = userInfo?["scripts"] as? String {
+                                Task { @MainActor in
+                                    PopupState.shared.scripts[
+                                        realDomainName, default: [:]
+                                    ][frameDomainName] = scripts.split(
+                                        separator: "\n",
+                                        omittingEmptySubsequences: true
+                                    ).map(String.init)
+                                }
+                            }
                         default: break
                     }
                 }

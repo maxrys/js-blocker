@@ -954,6 +954,22 @@
         }
       }
     },
+    "Domain: %@" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дамен: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домен: %@"
+          }
+        }
+      }
+    },
     "Domains where JavaScript is allowed" : {
       "localizations" : {
         "be-BY" : {
@@ -1095,6 +1111,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Экспорт"
+          }
+        }
+      }
+    },
+    "External Scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знешнія скрыпты"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внешние скрипты"
           }
         }
       }
@@ -1292,6 +1324,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "нет"
+          }
+        }
+      }
+    },
+    "No External Strips" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "няма знешніх скрыптоў"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "нет внешних скриптов"
           }
         }
       }

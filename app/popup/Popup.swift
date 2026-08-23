@@ -8,6 +8,7 @@ import SwiftUI
 
 struct Popup: View {
 
+    static let ICON_SCRIPTS  = Image(systemName: "applescript")
     static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
 
     static let FRAME_WIDTH: CGFloat = 450
@@ -16,6 +17,8 @@ struct Popup: View {
 
     @StateObject private var userDefaultsState = UserDefaultsState.shared
     @StateObject private var popupState        = PopupState.shared
+
+    @State private var isShowScripts: Bool = false
 
     private let frameWidth: CGFloat
     private let messageBox: MessageBox
@@ -62,10 +65,21 @@ struct Popup: View {
 
             }.frame(maxWidth: .infinity)
 
-            /* MARK: Button "Settings" */
+            /* MARK: Extra Buttons */
 
             .overlayPolyfill(alignment: .topTrailing) {
-                self.ButtonSettingsView()
+                HStack(spacing: 5) {
+                    if let realDomainName = self.popupState.domainName {
+                        self.ButtonScriptsView()
+                            .popover(isPresented: self.$isShowScripts, arrowEdge: .bottom) {
+                                ScriptsPanel(
+                                    realDomainName: realDomainName,
+                                    scriptsByDomains: self.popupState.scripts[realDomainName] ?? [:]
+                                )
+                            }
+                    }
+                    self.ButtonSettingsView()
+                }.padding(10)
             }
 
             /* ##################### */
@@ -85,6 +99,19 @@ struct Popup: View {
         .environment(\.layoutDirection, .leftToRight)
     }
 
+    @ViewBuilder private func ButtonScriptsView() -> some View {
+        Button {
+            self.isShowScripts.toggle()
+        } label: {
+            Self.ICON_SCRIPTS
+                .font(.system(size: 20))
+                .foregroundPolyfill(Color.popup.buttonSettings)
+        }
+        .buttonStyle(.plain)
+        .pointerStyleLinkPolyfill()
+        .focusable(false)
+    }
+
     @ViewBuilder private func ButtonSettingsView() -> some View {
         Button {
             openURL(
@@ -98,7 +125,6 @@ struct Popup: View {
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill()
         .focusable(false)
-        .padding(10)
     }
 
     @ViewBuilder private func ButtonCancelRuleView() -> some View {

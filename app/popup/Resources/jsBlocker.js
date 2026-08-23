@@ -3,6 +3,8 @@
 /* ### Copyright © 2024—2026 Maxim Rysevets. All rights reserved. ### */
 /* ################################################################## */
 
+var scripts = [];
+
 const JSBlocker = {
 
     LOCAL_STORAGE_KEY: 'JSBlockerData',
@@ -78,6 +80,28 @@ const JSBlocker = {
         }
     },
 
+    detectScripts: function() {
+        console.log(`JS Blocker on "${this.domainName}": detection scripts starts…`);
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                [...mutation.addedNodes].forEach(node => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        if (node.tagName === 'SCRIPT') {
+                            if (node.src) {
+                                scripts.push(node.src);
+                                console.log(`JS Blocker on "${this.domainName}": detected external script "${node.src}"`);
+                            }
+                        }
+                    }
+                });
+            });
+        });
+        observer.observe(document.documentElement, {
+            subtree  : true,
+            childList: true
+        });
+    },
+
     prepareFramesForBlockJS: function() {
         console.log(`JS Blocker on "${this.domainName}": preparation frames starts…`);
         const observer = new MutationObserver(mutations => {
@@ -130,6 +154,13 @@ const JSBlocker = {
         });
     },
 
+    pageScriptsNotify: function() {
+        safari.extension.dispatchMessage('js:setScripts.request', {
+            'domainName': this.domainName,
+            'scripts': scripts.join('\n')
+        });
+    },
+
     pageRequestMatch: function() {
         safari.extension.dispatchMessage('js:getMatch.request', {
             'domainName': this.domainName
@@ -149,6 +180,17 @@ const JSBlocker = {
                 lifeTime + this.DELAY_BEFORE_RECHECK_STATE
             );
         }
+    },
+
+    doAfterCondition(condition, action, interval = 500) {
+        const check = () => {
+            if (condition()) {
+                action();
+            } else {
+                setTimeout(check, interval);
+            }
+        };
+        check();
     }
 
 }
