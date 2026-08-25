@@ -1,4 +1,9 @@
 
+## Version 2.5
+
+Import/Export features have been improved.
+Codebase has been improved.
+
 ## Version 2.4
 
 Added "External Script Detector" interface.
