@@ -9,8 +9,8 @@ import SwiftUI
 
 struct InstallGuide: View {
 
-    static let IMAGE_INSTALL_GUIDE_PAGE_1 = Image("Install Guide Page 1")
-    static let IMAGE_INSTALL_GUIDE_PAGE_2 = Image("Install Guide Page 2")
+    static let IMAGE_INSTALL_GUIDE_PAGE_1 = Image("image Install Guide Page 1")
+    static let IMAGE_INSTALL_GUIDE_PAGE_2 = Image("image Install Guide Page 2")
 
     @State private var isEnabledExtensionPopup = false
 
