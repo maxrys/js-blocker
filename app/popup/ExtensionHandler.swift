@@ -8,10 +8,10 @@ import SafariServices
 
 class ExtensionHandler: SFSafariExtensionHandler {
 
-    static let ICON_NONE     = NSImage(contentsOfFile: Bundle.main.path(forResource: "toolbarIcon-none"    , ofType: "pdf")!)
-    static let ICON_NO_ONE   = NSImage(contentsOfFile: Bundle.main.path(forResource: "toolbarIcon-no-one"  , ofType: "pdf")!)
-    static let ICON_EXACT    = NSImage(contentsOfFile: Bundle.main.path(forResource: "toolbarIcon-exact"   , ofType: "pdf")!)
-    static let ICON_WILDCARD = NSImage(contentsOfFile: Bundle.main.path(forResource: "toolbarIcon-wildcard", ofType: "pdf")!)
+    static let ICON_NONE     = NSImage(contentsOfFile: Bundle.main.path(forResource: "iconToolbar-none"    , ofType: "pdf")!)
+    static let ICON_NO_ONE   = NSImage(contentsOfFile: Bundle.main.path(forResource: "iconToolbar-no-one"  , ofType: "pdf")!)
+    static let ICON_EXACT    = NSImage(contentsOfFile: Bundle.main.path(forResource: "iconToolbar-exact"   , ofType: "pdf")!)
+    static let ICON_WILDCARD = NSImage(contentsOfFile: Bundle.main.path(forResource: "iconToolbar-wildcard", ofType: "pdf")!)
 
     override func beginRequest(with context: NSExtensionContext) {
     }

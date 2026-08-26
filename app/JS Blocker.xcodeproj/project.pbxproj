@@ -28,7 +28,7 @@
 		501FA4E22F4F99B1004663D2 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FA4E02F4F99AE004663D2 /* NSEvent.swift */; };
 		501FA4E32F4F99B1004663D2 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FA4E02F4F99AE004663D2 /* NSEvent.swift */; };
 		503B16682DCB91B900C90BDA /* ExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* ExtensionHandler.swift */; };
-		503CE1442C6E32C400835509 /* toolbarIcon-exact.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* toolbarIcon-exact.pdf */; };
+		503CE1442C6E32C400835509 /* iconToolbar-exact.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* iconToolbar-exact.pdf */; };
 		503DBDD1302B5B8A00BD39F3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503DBDD0302B5B8A00BD39F3 /* Cocoa.framework */; };
 		503DBDD6302B5B8A00BD39F3 /* RulesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DBDD5302B5B8A00BD39F3 /* RulesHandler.swift */; };
 		503DBDE1302B5C6800BD39F3 /* EntityVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C786FD3014CE6900F078EC /* EntityVersions.swift */; };
@@ -133,7 +133,7 @@
 		509B24DE303B06E30046BB03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509B24DC303B06E30046BB03 /* Assets.xcassets */; };
 		509B24E0303B07230046BB03 /* ScriptsPanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */; };
 		509B24E1303B07230046BB03 /* ScriptsPanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */; };
-		50AD451A2DAD17C600425467 /* toolbarIcon-wildcard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50AD45192DAD17C600425467 /* toolbarIcon-wildcard.pdf */; };
+		50AD451A2DAD17C600425467 /* iconToolbar-wildcard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50AD45192DAD17C600425467 /* iconToolbar-wildcard.pdf */; };
 		50AD45212DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD45222DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD45242DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
@@ -147,7 +147,7 @@
 		50B025242C47E404002F1AD7 /* ExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025232C47E404002F1AD7 /* ExtensionHandler.swift */; };
 		50B025262C47E404002F1AD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* ViewController.swift */; };
 		50B025292C47E404002F1AD7 /* jsBlocker-process.js in Resources */ = {isa = PBXBuildFile; fileRef = 50B025282C47E404002F1AD7 /* jsBlocker-process.js */; };
-		50B0252B2C47E404002F1AD7 /* toolbarIcon-none.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252A2C47E404002F1AD7 /* toolbarIcon-none.pdf */; };
+		50B0252B2C47E404002F1AD7 /* iconToolbar-none.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50B0252A2C47E404002F1AD7 /* iconToolbar-none.pdf */; };
 		50BB98662FFA5BCF00C39670 /* HVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4B1012FF29088008D625B /* HVStack.swift */; };
 		50BB98672FFA5BD900C39670 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E4B1022FF29088008D625B /* Previewer.swift */; };
 		50BB98682FFA5C1F00C39670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B025162C47E403002F1AD7 /* Assets.xcassets */; };
@@ -245,7 +245,7 @@
 		50ECC0142FFEC2B200A99E64 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0132FFEC2B200A99E64 /* Optional.swift */; };
 		50ECC0152FFEC2B200A99E64 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0132FFEC2B200A99E64 /* Optional.swift */; };
 		50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0132FFEC2B200A99E64 /* Optional.swift */; };
-		50ECC01830025DD600A99E64 /* toolbarIcon-no-one.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50ECC01730025DD600A99E64 /* toolbarIcon-no-one.pdf */; };
+		50ECC01830025DD600A99E64 /* iconToolbar-no-one.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 50ECC01730025DD600A99E64 /* iconToolbar-no-one.pdf */; };
 		50ECC01A3003A5AB00A99E64 /* ExpireStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0193003A5A900A99E64 /* ExpireStatus.swift */; };
 		50ECC01B3003A5AB00A99E64 /* ExpireStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0193003A5A900A99E64 /* ExpireStatus.swift */; };
 		50ECC01C3003A5AB00A99E64 /* ExpireStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0193003A5A900A99E64 /* ExpireStatus.swift */; };
@@ -309,7 +309,7 @@
 		500D2D292D05969F00551390 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		501FA4E02F4F99AE004663D2 /* NSEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEvent.swift; sourceTree = "<group>"; };
-		503CE1432C6E32C400835509 /* toolbarIcon-exact.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "toolbarIcon-exact.pdf"; sourceTree = "<group>"; };
+		503CE1432C6E32C400835509 /* iconToolbar-exact.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iconToolbar-exact.pdf"; sourceTree = "<group>"; };
 		503DBDCE302B5B8A00BD39F3 /* JS Blocker Rules.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "JS Blocker Rules.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503DBDD0302B5B8A00BD39F3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		503DBDD5302B5B8A00BD39F3 /* RulesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesHandler.swift; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 		50992D362F56E9570090699F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		509B24DC303B06E30046BB03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsPanelColors.swift; sourceTree = "<group>"; };
-		50AD45192DAD17C600425467 /* toolbarIcon-wildcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "toolbarIcon-wildcard.pdf"; sourceTree = "<group>"; };
+		50AD45192DAD17C600425467 /* iconToolbar-wildcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iconToolbar-wildcard.pdf"; sourceTree = "<group>"; };
 		50AD45202DAE59C300425467 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		50AD7BDC301B652600F1C6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50AD7BDF301B654C00F1C6D6 /* LifetimeColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeColorSet.swift; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 		50B025232C47E404002F1AD7 /* ExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHandler.swift; sourceTree = "<group>"; };
 		50B025252C47E404002F1AD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50B025282C47E404002F1AD7 /* jsBlocker-process.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "jsBlocker-process.js"; sourceTree = "<group>"; };
-		50B0252A2C47E404002F1AD7 /* toolbarIcon-none.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "toolbarIcon-none.pdf"; sourceTree = "<group>"; };
+		50B0252A2C47E404002F1AD7 /* iconToolbar-none.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iconToolbar-none.pdf"; sourceTree = "<group>"; };
 		50B0252F2C47E404002F1AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B025302C47E404002F1AD7 /* popup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = popup.entitlements; sourceTree = "<group>"; };
 		50BB987A2FFA5D8700C39670 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		50EB55132CF9AAB400FC060C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50EB55142CF9AAB400FC060C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		50ECC0132FFEC2B200A99E64 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
-		50ECC01730025DD600A99E64 /* toolbarIcon-no-one.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "toolbarIcon-no-one.pdf"; sourceTree = "<group>"; };
+		50ECC01730025DD600A99E64 /* iconToolbar-no-one.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iconToolbar-no-one.pdf"; sourceTree = "<group>"; };
 		50ECC0193003A5A900A99E64 /* ExpireStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpireStatus.swift; sourceTree = "<group>"; };
 		50ECC0253006362400A99E64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50ECC028300636C300A99E64 /* ProgressSimpleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSimpleColors.swift; sourceTree = "<group>"; };
@@ -652,10 +652,10 @@
 			children = (
 				50ECC032300A331B00A99E64 /* jsBlocker.js */,
 				50B025282C47E404002F1AD7 /* jsBlocker-process.js */,
-				50B0252A2C47E404002F1AD7 /* toolbarIcon-none.pdf */,
-				50ECC01730025DD600A99E64 /* toolbarIcon-no-one.pdf */,
-				503CE1432C6E32C400835509 /* toolbarIcon-exact.pdf */,
-				50AD45192DAD17C600425467 /* toolbarIcon-wildcard.pdf */,
+				50B0252A2C47E404002F1AD7 /* iconToolbar-none.pdf */,
+				50ECC01730025DD600A99E64 /* iconToolbar-no-one.pdf */,
+				503CE1432C6E32C400835509 /* iconToolbar-exact.pdf */,
+				50AD45192DAD17C600425467 /* iconToolbar-wildcard.pdf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -903,16 +903,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B0252B2C47E404002F1AD7 /* toolbarIcon-none.pdf in Resources */,
+				50B0252B2C47E404002F1AD7 /* iconToolbar-none.pdf in Resources */,
 				50ECC033300A331B00A99E64 /* jsBlocker.js in Resources */,
-				503CE1442C6E32C400835509 /* toolbarIcon-exact.pdf in Resources */,
+				503CE1442C6E32C400835509 /* iconToolbar-exact.pdf in Resources */,
 				506421572F5E22760020F6C8 /* Assets.xcassets in Resources */,
 				509B24DD303B06E30046BB03 /* Assets.xcassets in Resources */,
 				50992D372F56E9570090699F /* ViewController.xib in Resources */,
 				500727652F8A3EB40058A547 /* Assets.xcassets in Resources */,
-				50ECC01830025DD600A99E64 /* toolbarIcon-no-one.pdf in Resources */,
+				50ECC01830025DD600A99E64 /* iconToolbar-no-one.pdf in Resources */,
 				50CE9FA32F45DD19001006CF /* Assets.xcassets in Resources */,
-				50AD451A2DAD17C600425467 /* toolbarIcon-wildcard.pdf in Resources */,
+				50AD451A2DAD17C600425467 /* iconToolbar-wildcard.pdf in Resources */,
 				50439E052F44C9AD00270BE5 /* Assets.xcassets in Resources */,
 				50CE9F9B2F45BF06001006CF /* Assets.xcassets in Resources */,
 				50B025292C47E404002F1AD7 /* jsBlocker-process.js in Resources */,
