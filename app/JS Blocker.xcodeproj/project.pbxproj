@@ -139,8 +139,8 @@
 		50AD45242DAE59C300425467 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD45202DAE59C300425467 /* View.swift */; };
 		50AD7BDD301B652600F1C6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50AD7BDC301B652600F1C6D6 /* Assets.xcassets */; };
 		50AD7BDE301B652600F1C6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50AD7BDC301B652600F1C6D6 /* Assets.xcassets */; };
-		50AD7BE0301B654C00F1C6D6 /* LifetimeColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD7BDF301B654C00F1C6D6 /* LifetimeColorSet.swift */; };
-		50AD7BE1301B654C00F1C6D6 /* LifetimeColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD7BDF301B654C00F1C6D6 /* LifetimeColorSet.swift */; };
+		50AD7BE0301B654C00F1C6D6 /* LifetimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD7BDF301B654C00F1C6D6 /* LifetimeColors.swift */; };
+		50AD7BE1301B654C00F1C6D6 /* LifetimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD7BDF301B654C00F1C6D6 /* LifetimeColors.swift */; };
 		50B025062C47E401002F1AD7 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025052C47E401002F1AD7 /* App.swift */; };
 		50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B025162C47E403002F1AD7 /* Assets.xcassets */; };
 		50B0251F2C47E404002F1AD7 /* JS Blocker Popup.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 50B0251E2C47E404002F1AD7 /* JS Blocker Popup.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -352,7 +352,7 @@
 		50AD45192DAD17C600425467 /* iconToolbar-wildcard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iconToolbar-wildcard.pdf"; sourceTree = "<group>"; };
 		50AD45202DAE59C300425467 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		50AD7BDC301B652600F1C6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		50AD7BDF301B654C00F1C6D6 /* LifetimeColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeColorSet.swift; sourceTree = "<group>"; };
+		50AD7BDF301B654C00F1C6D6 /* LifetimeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeColors.swift; sourceTree = "<group>"; };
 		50B025022C47E401002F1AD7 /* JS Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B025052C47E401002F1AD7 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		50B025162C47E403002F1AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -576,7 +576,7 @@
 			children = (
 				50E4B1362FF99BBA008D625B /* LifetimePicker.swift */,
 				50ECC02F3007A10100A99E64 /* LifetimeInfo.swift */,
-				50AD7BDF301B654C00F1C6D6 /* LifetimeColorSet.swift */,
+				50AD7BDF301B654C00F1C6D6 /* LifetimeColors.swift */,
 				50AD7BDC301B652600F1C6D6 /* Assets.xcassets */,
 			);
 			path = Lifetime;
@@ -1084,7 +1084,7 @@
 				50BB987F2FFA7FFC00C39670 /* TimeInterval.swift in Sources */,
 				50439DCA2F44C8C300270BE5 /* Logger.swift in Sources */,
 				50CE9FA72F45DD55001006CF /* ButtonRoundColors.swift in Sources */,
-				50AD7BE1301B654C00F1C6D6 /* LifetimeColorSet.swift in Sources */,
+				50AD7BE1301B654C00F1C6D6 /* LifetimeColors.swift in Sources */,
 				50AD45212DAE59C300425467 /* View.swift in Sources */,
 				50875E122C71EE0D00756D64 /* String.swift in Sources */,
 				50439DD02F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
@@ -1163,7 +1163,7 @@
 				50684B6A2DB9679000FC6175 /* Data.swift in Sources */,
 				50CEA0552F47A6B7001006CF /* _const.swift in Sources */,
 				50439DCE2F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
-				50AD7BE0301B654C00F1C6D6 /* LifetimeColorSet.swift in Sources */,
+				50AD7BE0301B654C00F1C6D6 /* LifetimeColors.swift in Sources */,
 				50875E132C71EE0D00756D64 /* String.swift in Sources */,
 				50E4B1052FF2909D008D625B /* Previewer.swift in Sources */,
 				50E4B1062FF2909D008D625B /* HVStack.swift in Sources */,
