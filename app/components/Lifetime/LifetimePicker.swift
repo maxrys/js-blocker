@@ -17,7 +17,7 @@ struct LifetimePicker: View {
         .PERIOD_1_WEEK   : NSLocalizedString("1 week"   , comment: ""),
     ]
 
-    static let ICON = Image("timer.symbol")
+    static let ICON = Image("symbol Icon Timer")
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.isEnabled) private var isEnabled
