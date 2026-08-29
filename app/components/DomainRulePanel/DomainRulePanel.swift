@@ -12,8 +12,8 @@ struct DomainRulePanel: View {
         case wildcard
     }
 
-    static let ICON_CHECK         = Image("checkbox")
-    static let ICON_CHECK_CHECKED = Image("checkbox-checked")
+    static let ICON_CHECK         = Image("symbol Checkbox")
+    static let ICON_CHECK_CHECKED = Image("symbol Checkbox Checked")
 
     @StateObject private var popupState = PopupState.shared
 
