@@ -39,20 +39,23 @@ struct Popup: View {
 
             VStack(spacing: 0) {
 
-                DomainRulePanel(
-                    panelType: .exact,
-                    onClickAllow: { _ in
-                        ViewController.shared.onClick_ruleExactInsert(lifetime: self.popupState.lifetime)
+                DomainRuleExactPanel(
+                    onClickAllow: {
+                        ViewController.shared.onClick_ruleExactInsert(
+                            lifetime: self.popupState.lifetime
+                        )
                     }
                 ).background(
                     Color.popup.ruleExactBackground
                         .opacity(0.9)
                 )
 
-                DomainRulePanel(
-                    panelType: .wildcard,
+                DomainRuleWildcardPanel(
                     onClickAllow: { selected in
-                        ViewController.shared.onClick_ruleWildcardInsert(selected: selected, lifetime: self.popupState.lifetime)
+                        ViewController.shared.onClick_ruleWildcardInsert(
+                            selected: selected,
+                            lifetime: self.popupState.lifetime
+                        )
                     }
                 ).background(
                     Color.popup.rulesWildcardBackground

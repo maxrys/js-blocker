@@ -118,36 +118,33 @@ struct LifetimeInfo: View {
 
 struct LifetimeInfo_ExpireNoLimit_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 10) { DomainRulePanel(panelType: .exact).background(Color.popup.ruleExactBackground) }
+        Previewer(spacing: 10) { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
                 PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
     }
 }
 
 struct LifetimeInfo_ExpireValid_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 10) { DomainRulePanel(panelType: .exact).background(Color.popup.ruleExactBackground) }
+        Previewer(spacing: 10) { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
                 PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_VALID)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
     }
 }
 
 struct LifetimeInfo_ExpireExpired_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 10) { DomainRulePanel(panelType: .exact).background(Color.popup.ruleExactBackground) }
+        Previewer(spacing: 10) { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
                 PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_EXPIRED)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
     }
 }

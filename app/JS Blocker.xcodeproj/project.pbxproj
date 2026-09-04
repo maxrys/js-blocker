@@ -236,11 +236,9 @@
 		50EB55162CF9AAB400FC060C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EB55132CF9AAB400FC060C /* Assets.xcassets */; };
 		50EB55172CF9AAB400FC060C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55142CF9AAB400FC060C /* Popup.swift */; };
 		50EB55182CF9AAB400FC060C /* ButtonCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55112CF9AAB400FC060C /* ButtonCapsule.swift */; };
-		50EB55192CF9AAB400FC060C /* DomainRulePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB550F2CF9AAB400FC060C /* DomainRulePanel.swift */; };
 		50EB551B2CF9AAB400FC060C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EB55132CF9AAB400FC060C /* Assets.xcassets */; };
 		50EB551C2CF9AAB400FC060C /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55142CF9AAB400FC060C /* Popup.swift */; };
 		50EB551D2CF9AAB400FC060C /* ButtonCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB55112CF9AAB400FC060C /* ButtonCapsule.swift */; };
-		50EB551E2CF9AAB400FC060C /* DomainRulePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB550F2CF9AAB400FC060C /* DomainRulePanel.swift */; };
 		50EB55352CF9F4BA00FC060C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B025252C47E404002F1AD7 /* ViewController.swift */; };
 		50ECC0142FFEC2B200A99E64 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0132FFEC2B200A99E64 /* Optional.swift */; };
 		50ECC0152FFEC2B200A99E64 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0132FFEC2B200A99E64 /* Optional.swift */; };
@@ -267,6 +265,10 @@
 		50FC4DE8304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
 		50FC4DE9304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
 		50FC4DEA304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
+		50FC4DED304993030001701E /* DomainRuleExactPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DEB304993030001701E /* DomainRuleExactPanel.swift */; };
+		50FC4DEE304993030001701E /* DomainRuleWildcardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DEC304993030001701E /* DomainRuleWildcardPanel.swift */; };
+		50FC4DEF304993030001701E /* DomainRuleExactPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DEB304993030001701E /* DomainRuleExactPanel.swift */; };
+		50FC4DF0304993030001701E /* DomainRuleWildcardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DEC304993030001701E /* DomainRuleWildcardPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,7 +408,6 @@
 		50E4B1022FF29088008D625B /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		50E4B1362FF99BBA008D625B /* LifetimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimePicker.swift; sourceTree = "<group>"; };
 		50E4E83F2F55C76B0054E5DE /* ADFetchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADFetchItem.swift; sourceTree = "<group>"; };
-		50EB550F2CF9AAB400FC060C /* DomainRulePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRulePanel.swift; sourceTree = "<group>"; };
 		50EB55112CF9AAB400FC060C /* ButtonCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCapsule.swift; sourceTree = "<group>"; };
 		50EB55132CF9AAB400FC060C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50EB55142CF9AAB400FC060C /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
@@ -419,6 +420,8 @@
 		50ECC032300A331B00A99E64 /* jsBlocker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jsBlocker.js; sourceTree = "<group>"; };
 		50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix2D.swift; sourceTree = "<group>"; };
 		50FC4DE6304991EC0001701E /* URLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLString.swift; sourceTree = "<group>"; };
+		50FC4DEB304993030001701E /* DomainRuleExactPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRuleExactPanel.swift; sourceTree = "<group>"; };
+		50FC4DEC304993030001701E /* DomainRuleWildcardPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRuleWildcardPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -695,7 +698,8 @@
 		50CE9F982F45BE8D001006CF /* DomainRulePanel */ = {
 			isa = PBXGroup;
 			children = (
-				50EB550F2CF9AAB400FC060C /* DomainRulePanel.swift */,
+				50FC4DEB304993030001701E /* DomainRuleExactPanel.swift */,
+				50FC4DEC304993030001701E /* DomainRuleWildcardPanel.swift */,
 				50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */,
 				50CE9F992F45BF06001006CF /* Assets.xcassets */,
 			);
@@ -1091,13 +1095,14 @@
 				50E150B92DA96616005768C1 /* MatchType.swift in Sources */,
 				5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */,
 				50CE9FA02F45C3A0001006CF /* InstallGuideColors.swift in Sources */,
-				50EB55192CF9AAB400FC060C /* DomainRulePanel.swift in Sources */,
 				5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 				50875E1A2C71EE1700756D64 /* SFSafariApplication.swift in Sources */,
 				50CEA0A62F4C502A001006CF /* Array.swift in Sources */,
 				50FC4DC130438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				50439DC72F44C8BA00270BE5 /* Numeric.swift in Sources */,
 				50CE9FAA2F45DEE4001006CF /* PopupColors.swift in Sources */,
+				50FC4DED304993030001701E /* DomainRuleExactPanel.swift in Sources */,
+				50FC4DEE304993030001701E /* DomainRuleWildcardPanel.swift in Sources */,
 				50C786FE3014CE6900F078EC /* EntityVersions.swift in Sources */,
 				50BB987F2FFA7FFC00C39670 /* TimeInterval.swift in Sources */,
 				50439DCA2F44C8C300270BE5 /* Logger.swift in Sources */,
@@ -1141,7 +1146,6 @@
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,
 				50CE9FE42F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE52F472E06001006CF /* ButtonCustomColor.swift in Sources */,
-				50EB551E2CF9AAB400FC060C /* DomainRulePanel.swift in Sources */,
 				500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */,
 				50ECC0152FFEC2B200A99E64 /* Optional.swift in Sources */,
 				503DBE0A302B77FF00BD39F3 /* RulesHandler.swift in Sources */,
@@ -1179,6 +1183,8 @@
 				50FC4DBE30438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				501FA4E32F4F99B1004663D2 /* NSEvent.swift in Sources */,
 				50BB98802FFA7FFC00C39670 /* TimeInterval.swift in Sources */,
+				50FC4DEF304993030001701E /* DomainRuleExactPanel.swift in Sources */,
+				50FC4DF0304993030001701E /* DomainRuleWildcardPanel.swift in Sources */,
 				50C786FF3014CE6900F078EC /* EntityVersions.swift in Sources */,
 				50684B6A2DB9679000FC6175 /* Data.swift in Sources */,
 				50CEA0552F47A6B7001006CF /* _const.swift in Sources */,
