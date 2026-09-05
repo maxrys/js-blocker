@@ -7,15 +7,39 @@ import os
 import AppKit
 import SafariServices
 
-struct ExportImportItems: Codable {
+protocol ExportImportItemProtocol {
+    var name: DomainName { get }
+    var type: String     { get }
+    var expiresAt: Int64 { get }
+}
 
-    var version: Double = 2.0
+public struct ExportImportItemV3: ExportImportItemProtocol, Codable {
+    let name: DomainName
+    let type: String
+    let expiresAt: Int64
+}
 
-    public struct Item: Codable {
-        let name: DomainName
-        let isWildcard: Bool
-        let expiresAt: Int64
+public struct ExportImportItemV2: ExportImportItemProtocol, Codable {
+    let name: DomainName
+    let isWildcard: Bool
+    let expiresAt: Int64
+    var type: String {
+        self.isWildcard ? MATCH_TYPE_STRING_WILDCARD : MATCH_TYPE_STRING_EXACT
     }
+}
+
+public struct ExportImportItemV1: ExportImportItemProtocol, Codable {
+    let name: DomainName
+    let isGlobal: Bool
+    let expiresAt: Int64
+    var type: String {
+        self.isGlobal ? MATCH_TYPE_STRING_WILDCARD : MATCH_TYPE_STRING_EXACT
+    }
+}
+
+struct ExportImportItems<Item>: Codable where Item: ExportImportItemProtocol & Codable {
+
+    var version: Double?
 
     public private(set) var items: [Item] = []
 
@@ -72,10 +96,10 @@ final class Features {
 
             /* MARK: Generate export JSON */
 
-            let exportStruct = ExportImportItems(
-                items.reduce(into: [ExportImportItems.Item]()) { result, item in
+            let exportStruct = ExportImportItems<ExportImportItemV2>(
+                items.reduce(into: [ExportImportItemV2]()) { result, item in
                     result.append(
-                        ExportImportItems.Item(
+                        ExportImportItemV2(
                             name      : item.name,
                             isWildcard: item.isWildcard,
                             expiresAt : item.expiresAt
@@ -138,43 +162,44 @@ final class Features {
                 return
             }
 
-            /* MARK: Read and Parse JSON data */
+            let JSONString = try String(
+                contentsOf: fileURL,
+                encoding: .utf8
+            )
 
-            guard let importStruct = ExportImportItems(
-                decode: try String(
-                    contentsOf: fileURL,
-                    encoding: .utf8
-                )
-            ) else {
-                MessageBox.insert(
-                    type: .error,
-                    title: NSLocalizedString("Invalid JSON format!", comment: ""),
-                    lifeTime: .time(3)
-                )
-                return
-            }
-
-            /* MARK: Import to database */
+            /* MARK: Read and Parse JSON data | Import to database */
 
             var invalidDomains: [DomainName] = []
             var expiredDomains: [DomainName] = []
             var updateCount: Int = 0
             var insertCount: Int = 0
 
-            for item in importStruct.items {
+            let itemImporter: (ExportImportItemProtocol) -> Void = { item in
                 if (item.name.isCanonical == false) {
                     invalidDomains.append(item.name)
-                    Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
-                    continue
+                    Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)")
+                    return
                 }
                 if (item.expiresAt != 0 && item.expiresAt < Date.now.int64) {
                     expiredDomains.append(item.name)
-                    Logger.customLog("EXPIRED ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
-                    continue
+                    Logger.customLog("EXPIRED ITEM: type = \(item.type) | name = \(item.name)")
+                    return
                 }
                 if case .success(let affected) = AllowedDomains.delete([item.name]), affected > 0
-                     { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
-                else { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
+                     { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.type == "wildcard" || item.type == "wildcardScript", expiresAt: item.expiresAt) { updateCount += 1; Logger.customLog("UPDATE ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
+                else { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.type == "wildcard" || item.type == "wildcardScript", expiresAt: item.expiresAt) { insertCount += 1; Logger.customLog("INSERT ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
+            }
+
+            if      let importStruct = ExportImportItems<ExportImportItemV3>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
+            else if let importStruct = ExportImportItems<ExportImportItemV2>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
+            else if let importStruct = ExportImportItems<ExportImportItemV1>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
+            else {
+                MessageBox.insert(
+                    type: .error,
+                    title: NSLocalizedString("Invalid JSON format!", comment: ""),
+                    lifeTime: .time(3)
+                )
+                return
             }
 
             /* MARK: Message */
