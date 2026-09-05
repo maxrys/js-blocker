@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 48" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="3" x2="12" y2="21" id="gradient-0" gradientTransform="matrix(2, 0, 0, 2, 0, -0.101999)">
+      <stop offset="0" style="stop-color: rgb(208, 208, 208);"/>
+      <stop offset="1" style="stop-color: rgb(175, 175, 175);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="3" x2="12" y2="21" id="gradient-1" gradientTransform="matrix(2, 0, 0, 2, 48.00045, 0.102407)">
+      <stop offset="0" style="stop-color: rgb(208, 207, 0);"/>
+      <stop offset="1" style="stop-color: rgb(175, 121, 0);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-2" gradientTransform="matrix(2, 0, 0, 2, 0, -0.101999)">
+      <stop offset="0" style="stop-color: rgb(199, 199, 199);"/>
+      <stop offset="1" style="stop-color: rgb(183, 183, 183);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-3" gradientTransform="matrix(2, 0, 0, 2, 47.999928, 0.101219)">
+      <stop offset="0" style="stop-color: rgb(201, 188, 1);"/>
+      <stop offset="1" style="stop-color: rgb(183, 142, 3);"/>
+    </linearGradient>
+    <bx:export>
+      <bx:file format="pdf" path="iconCell-matchType-wildcard.pdf">
+        <bx:page background="#fff0" converttextstopaths="true"/>
+      </bx:file>
+    </bx:export>
+  </defs>
+  <g style="opacity: 0.5;">
+    <rect x="6" y="5.898" width="36" height="36" style="stroke-width: 4; stroke: url(&quot;#gradient-0&quot;); fill: none;" rx="3" ry="3"/>
+    <rect x="14" y="13.898" width="20" height="20" style="fill: url(&quot;#gradient-2&quot;); opacity: 0.5; stroke-width: 2;" rx="1" ry="1"/>
+  </g>
+  <g>
+    <rect x="54" y="6.102" width="36" height="36" style="stroke-width: 4; stroke: url(&quot;#gradient-1&quot;); fill: none;" rx="3" ry="3"/>
+    <rect x="62" y="14.102" width="20" height="20" style="fill: url(&quot;#gradient-3&quot;); stroke-width: 2;" rx="1" ry="1"/>
+  </g>
+</svg>

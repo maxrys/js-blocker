@@ -36,13 +36,13 @@ class ViewController: SFSafariExtensionViewController {
 
     /* ###################################################################### */
 
-    func onClick_ruleExactInsert(lifetime: TimeInterval) {
+    func onClick_ruleExactInsert(lifetime: TimeInterval? = nil) {
         if let domainName = PopupState.shared.domainName {
 
             var success: [String] = []
             var failure: [String] = []
 
-            if (ADModel.insert(name: domainName, isWildcard: false, expiresAt: lifetime == LifetimePicker.PERIOD_UNLIMIT ? 0 : Int64(Date.now + lifetime)))
+            if (ADModel.insert(name: domainName, isWildcard: false, expiresAt: lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ))
                  { success.append(domainName.decodePunycode()) }
             else { failure.append(domainName.decodePunycode()) }
 
@@ -76,7 +76,7 @@ class ViewController: SFSafariExtensionViewController {
         }
     }
 
-    func onClick_ruleWildcardInsert(selected: Set<Int>, lifetime: TimeInterval) {
+    func onClick_ruleWildcardInsert(selected: Set<Int>, lifetime: TimeInterval? = nil) {
         if let domainName = PopupState.shared.domainName {
             if (selected.isEmpty) {
 
@@ -93,7 +93,7 @@ class ViewController: SFSafariExtensionViewController {
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if (ADModel.insert(name: name, isWildcard: true, expiresAt: lifetime == LifetimePicker.PERIOD_UNLIMIT ? 0 : Int64(Date.now + lifetime)))
+                        if (ADModel.insert(name: name, isWildcard: true, expiresAt: lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ))
                              { success.append(name.decodePunycode()) }
                         else { failure.append(name.decodePunycode()) }
                     }

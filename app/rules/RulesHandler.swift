@@ -11,8 +11,8 @@ class RulesHandler: NSObject, NSExtensionRequestHandling {
         var unlessDomains: [String] = []
 
         for domain in ADModel.selectAll() {
-            if (domain.isWildcard) { unlessDomains.append("*\(domain.name)") }
-            else                   { unlessDomains.append( "\(domain.name)") }
+            if (domain.isWildcard != true) { unlessDomains.append( "\(domain.name)") }
+            if (domain.isWildcard == true) { unlessDomains.append("*\(domain.name)") }
         }
 
         var JSONObject: Any = []

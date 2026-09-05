@@ -16,7 +16,7 @@
     <script                     src="https://js-blocker.com/script.js.php" defer></script>
     <script           src="https://subdomain.js-blocker.com/script.js.php" defer></script>
     <script src="https://subdomain.subdomain.js-blocker.com/script.js.php" defer></script>
-    <script                     src="https://js-блоккер/script.js.php"     defer></script>
+    <script                         src="https://js-блоккер/script.js.php?anyRandomValue=<?php print(random_int(0, 1000)); ?>" defer></script>
 
 </head>
 <body onload="document.getElementById('inline_attr_script').setAttribute('data-js-active', '');"

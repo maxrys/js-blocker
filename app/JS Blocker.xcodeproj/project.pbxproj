@@ -259,6 +259,14 @@
 		50ECC0303007A10100A99E64 /* LifetimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC02F3007A10100A99E64 /* LifetimeInfo.swift */; };
 		50ECC0313007A10100A99E64 /* LifetimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC02F3007A10100A99E64 /* LifetimeInfo.swift */; };
 		50ECC033300A331B00A99E64 /* jsBlocker.js in Resources */ = {isa = PBXBuildFile; fileRef = 50ECC032300A331B00A99E64 /* jsBlocker.js */; };
+		50FC4DBE30438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
+		50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
+		50FC4DC030438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
+		50FC4DC130438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
+		50FC4DE7304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
+		50FC4DE8304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
+		50FC4DE9304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
+		50FC4DEA304991EC0001701E /* URLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DE6304991EC0001701E /* URLString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +417,8 @@
 		50ECC028300636C300A99E64 /* ProgressSimpleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSimpleColors.swift; sourceTree = "<group>"; };
 		50ECC02F3007A10100A99E64 /* LifetimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeInfo.swift; sourceTree = "<group>"; };
 		50ECC032300A331B00A99E64 /* jsBlocker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jsBlocker.js; sourceTree = "<group>"; };
+		50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix2D.swift; sourceTree = "<group>"; };
+		50FC4DE6304991EC0001701E /* URLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,6 +512,7 @@
 				50684B682DB9678E00FC6175 /* Data.swift */,
 				500895332DD73EDF00414588 /* Date.swift */,
 				50BB987A2FFA5D8700C39670 /* Dictionary.swift */,
+				50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */,
 				50C43A083019E19400A8FD39 /* DomainName.swift */,
 				50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */,
 				50439DC92F44C8C300270BE5 /* Logger.swift */,
@@ -517,6 +528,7 @@
 				50875E112C71EE0D00756D64 /* String.swift */,
 				50BB987E2FFA7FFC00C39670 /* TimeInterval.swift */,
 				50439DC12F44C87E00270BE5 /* Timer.swift */,
+				50FC4DE6304991EC0001701E /* URLString.swift */,
 				50AD45202DAE59C300425467 /* View.swift */,
 			);
 			path = extensions;
@@ -937,6 +949,7 @@
 				50CEA0962F4B6D46001006CF /* Set.swift in Sources */,
 				50C43A093019E19400A8FD39 /* DomainName.swift in Sources */,
 				50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */,
+				50FC4DEA304991EC0001701E /* URLString.swift in Sources */,
 				501FA4E12F4F99B1004663D2 /* NSEvent.swift in Sources */,
 				500D2D282D05952700551390 /* String.swift in Sources */,
 				50BB98672FFA5BD900C39670 /* Previewer.swift in Sources */,
@@ -957,6 +970,7 @@
 				50ECC01A3003A5AB00A99E64 /* ExpireStatus.swift in Sources */,
 				50ECC02C30078EAE00A99E64 /* ADFetchItem.swift in Sources */,
 				500D2D2A2D05969F00551390 /* Tests.swift in Sources */,
+				50FC4DC030438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				50AD45242DAE59C300425467 /* View.swift in Sources */,
 				50CEA0542F47A6B7001006CF /* _const.swift in Sources */,
 				50C4EDB3302CD649004F3F9E /* Model.xcdatamodeld in Sources */,
@@ -980,6 +994,7 @@
 				503DBDE1302B5C6800BD39F3 /* EntityVersions.swift in Sources */,
 				503DBDE6302B5CAC00BD39F3 /* Previewer.swift in Sources */,
 				503DBDE7302B5CAC00BD39F3 /* _const.swift in Sources */,
+				50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				503DBDE8302B5CAC00BD39F3 /* ExpireStatus.swift in Sources */,
 				503DBDE9302B5CAC00BD39F3 /* MatchType.swift in Sources */,
 				503DBDEC302B5CC200BD39F3 /* Date.swift in Sources */,
@@ -987,6 +1002,7 @@
 				503DBDEE302B5CC200BD39F3 /* SFSafariApplication.swift in Sources */,
 				503DBDEF302B5CC200BD39F3 /* Optional.swift in Sources */,
 				503DBDF0302B5CC200BD39F3 /* Data.swift in Sources */,
+				50FC4DE7304991EC0001701E /* URLString.swift in Sources */,
 				503DBDF1302B5CC200BD39F3 /* Numeric.swift in Sources */,
 				503DBDF2302B5CC200BD39F3 /* Shape.swift in Sources */,
 				503DBDF3302B5CC200BD39F3 /* Array.swift in Sources */,
@@ -1057,6 +1073,7 @@
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
 				50C787023014CFE600F078EC /* Storage.swift in Sources */,
 				50CC17DE3036569B00B9152C /* ScriptsPanel.swift in Sources */,
+				50FC4DE8304991EC0001701E /* URLString.swift in Sources */,
 				5064215D2F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				50BB98872FFA82BE00C39670 /* ProgressSimple.swift in Sources */,
 				506421602F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
@@ -1078,6 +1095,7 @@
 				5019AA152C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
 				50875E1A2C71EE1700756D64 /* SFSafariApplication.swift in Sources */,
 				50CEA0A62F4C502A001006CF /* Array.swift in Sources */,
+				50FC4DC130438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				50439DC72F44C8BA00270BE5 /* Numeric.swift in Sources */,
 				50CE9FAA2F45DEE4001006CF /* PopupColors.swift in Sources */,
 				50C786FE3014CE6900F078EC /* EntityVersions.swift in Sources */,
@@ -1136,6 +1154,7 @@
 				50BB986C2FFA5C1F00C39670 /* MainScene.swift in Sources */,
 				50C787033014CFE600F078EC /* Storage.swift in Sources */,
 				50CC17DD3036569B00B9152C /* ScriptsPanel.swift in Sources */,
+				50FC4DE9304991EC0001701E /* URLString.swift in Sources */,
 				50BB98882FFA82BE00C39670 /* ProgressSimple.swift in Sources */,
 				50BB986D2FFA5C1F00C39670 /* InstallGuide.swift in Sources */,
 				50BB986E2FFA5C1F00C39670 /* Features.swift in Sources */,
@@ -1157,6 +1176,7 @@
 				50CE9FA92F45DEE4001006CF /* PopupColors.swift in Sources */,
 				50B025242C47E404002F1AD7 /* ExtensionHandler.swift in Sources */,
 				5019AA162C6E4FBE003F9AF5 /* Model.xcdatamodeld in Sources */,
+				50FC4DBE30438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				501FA4E32F4F99B1004663D2 /* NSEvent.swift in Sources */,
 				50BB98802FFA7FFC00C39670 /* TimeInterval.swift in Sources */,
 				50C786FF3014CE6900F078EC /* EntityVersions.swift in Sources */,

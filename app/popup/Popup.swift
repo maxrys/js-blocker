@@ -8,17 +8,13 @@ import SwiftUI
 
 struct Popup: View {
 
-    static let ICON_SCRIPTS  = Image(systemName: "applescript")
     static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
-
     static let FRAME_WIDTH: CGFloat = 450
 
     @Environment(\.openURL) private var openURL
 
     @StateObject private var userDefaultsState = UserDefaultsState.shared
     @StateObject private var popupState        = PopupState.shared
-
-    @State private var isShowScripts: Bool = false
 
     private let frameWidth: CGFloat
     private let messageBox: MessageBox
@@ -69,14 +65,11 @@ struct Popup: View {
 
             .overlayPolyfill(alignment: .topTrailing) {
                 HStack(spacing: 5) {
-                    if let realDomainName = self.popupState.domainName {
-                        self.ButtonScriptsView()
-                            .popover(isPresented: self.$isShowScripts, arrowEdge: .bottom) {
-                                ScriptsPanel(
-                                    realDomainName: realDomainName,
-                                    scriptsByDomains: self.popupState.scripts[realDomainName] ?? [:]
-                                )
-                            }
+                    if let domainName = self.popupState.domainName {
+                        ScriptsPanel(
+                            domainName: domainName,
+                            scripts: self.$popupState.scripts
+                        )
                     }
                     self.ButtonSettingsView()
                 }.padding(10)
@@ -97,19 +90,6 @@ struct Popup: View {
         }
         .frame(width: self.frameWidth)
         .environment(\.layoutDirection, .leftToRight)
-    }
-
-    @ViewBuilder private func ButtonScriptsView() -> some View {
-        Button {
-            self.isShowScripts.toggle()
-        } label: {
-            Self.ICON_SCRIPTS
-                .font(.system(size: 20))
-                .foregroundPolyfill(Color.popup.buttonSettings)
-        }
-        .buttonStyle(.plain)
-        .pointerStyleLinkPolyfill()
-        .focusable(false)
     }
 
     @ViewBuilder private func ButtonSettingsView() -> some View {

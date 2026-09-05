@@ -48,7 +48,7 @@
 
     /* TOP FRAME */
 
-    if (isTopFrame == true) {
+    if (isTopFrame === true) {
 
         const isStorageAvailable = JSBlocker.isStorageAvailable;
 
@@ -68,7 +68,9 @@
             return;
         }
 
-        const value = JSBlocker.getStorageValue(false);
+        const value = JSBlocker.parseJSON(
+            JSBlocker.getSettings()
+        );
 
         /* ====================================================================== */
 
@@ -89,19 +91,19 @@
         safari.self.addEventListener('message', event => {
             if (event.name === 'js:setMatch' ||
                 event.name === 'js:getMatch.response') {
-                const oldValue = JSBlocker.getStorageValue(true);
-                const newValue = event.message.match;
-                const isRequiredUpdate = oldValue === null ||
-                                        (oldValue !== null && newValue !== oldValue);
+                const oldSettings = JSBlocker.getSettings();
+                const newSettings = event.message.match;
+                const isRequiredUpdate = oldSettings === null ||
+                                        (oldSettings !== null && newSettings !== oldSettings);
                 console.log(
                     `JS Blocker on "${domainName}"\n` +
                     `Receive Event: "${event.name}"\n` +
-                    `Old Match: ${oldValue}\n` +
-                    `New Match: ${newValue}\n` +
+                    `Old ${JSBlocker.SETTINGS_STORAGE_KEY}: ${oldSettings}\n` +
+                    `New ${JSBlocker.SETTINGS_STORAGE_KEY}: ${newSettings}\n` +
                     `Update is required: ${isRequiredUpdate ? "yes" : "no"}`
                 );
                 if (isRequiredUpdate) {
-                    JSBlocker.setStorageValue(newValue);
+                    JSBlocker.setSettings(newSettings);
                     JSBlocker.pageReload();
                 }
             }
@@ -124,20 +126,14 @@
             return;
         }
 
-        if (value.match === "noOne") {
+        if (value.match === JSBlocker.MATCH_TYPE_STRING_NO_ONE) {
             JSBlocker.sanitize();
             JSBlocker.prepareFramesForBlockJS();
             return;
         }
 
-        if (value.match === "exact") {
-            if (value.item.expiresAt !== 0) {
-                JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
-            }
-            return;
-        }
-
-        if (value.match === "wildcard") {
+        if (value.match === JSBlocker.MATCH_TYPE_STRING_EXACT ||
+            value.match === JSBlocker.MATCH_TYPE_STRING_WILDCARD) {
             if (value.item.expiresAt !== 0) {
                 JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
             }
@@ -148,7 +144,7 @@
 
     /* FRAME */
 
-    if (isTopFrame != true) {
+    if (isTopFrame !== true) {
 
         const isJSEnabled = JSBlocker.isJSEnabled;
 

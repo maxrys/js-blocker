@@ -7,7 +7,10 @@ var scripts = [];
 
 const JSBlocker = {
 
-    LOCAL_STORAGE_KEY: 'JSBlockerData',
+    MATCH_TYPE_STRING_NO_ONE: 'noOne',
+    MATCH_TYPE_STRING_EXACT: 'exact',
+    MATCH_TYPE_STRING_WILDCARD: 'wildcard',
+    SETTINGS_STORAGE_KEY: 'JSBlockerSettings',
     DELAY_FOR_PAGE_RELOAD: 500,
     DELAY_BEFORE_RECHECK_STATE: 2000,
 
@@ -17,7 +20,7 @@ const JSBlocker = {
 
     get isJSEnabled() {
         const url = new URL(window.location.href, document.baseURI);
-        return url.searchParams.get('isJSEnabled') != 'false';
+        return url.searchParams.get('isJSEnabled') !== 'false';
     },
 
     get isTopFrame() {
@@ -45,34 +48,44 @@ const JSBlocker = {
         return (typeof window !== 'undefined' && window.location?.hostname) || null;
     },
 
-    getStorageValue: function(isRaw = true) {
+    clearURL(URLString) { /* extract only "protocol://domain/path" */
+        const url = new URL(URLString);
+        return url.origin + url.pathname;
+    },
+
+    parseJSON(JSONstring) {
         try {
-            const JSONData = window.localStorage.getItem(this.LOCAL_STORAGE_KEY);
-            console.log(
-                `JS Blocker on "${this.domainName}"\n` +
-                `Get Storage value "${this.LOCAL_STORAGE_KEY}": ${JSONData}`
-            );
-            if (isRaw) {
-                return JSONData;
-            }
-            if (JSONData !== null) {
-                const parsed = JSON.parse(JSONData);
+            if (JSONstring !== null) {
+                const parsed = JSON.parse(JSONstring);
                 if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
                     return parsed;
                 }
             }
             return null;
+        } catch {
+            return null;
+        }
+    },
+
+    getSettings() {
+        try {
+            const JSONstring = window.localStorage.getItem(this.SETTINGS_STORAGE_KEY);
+            console.log(
+                `JS Blocker on "${this.domainName}"\n` +
+                `Get ${this.SETTINGS_STORAGE_KEY}: ${JSONstring}`
+            );
+            return JSONstring;
         } catch (e) {
             return null;
         }
     },
 
-    setStorageValue: function(JSONData) {
+    setSettings(JSONstring) {
         try {
-            window.localStorage.setItem(this.LOCAL_STORAGE_KEY, JSONData);
+            window.localStorage.setItem(this.SETTINGS_STORAGE_KEY, JSONstring);
             console.log(
                 `JS Blocker on "${this.domainName}"\n` +
-                `Set Storage value "${this.LOCAL_STORAGE_KEY}": ${JSONData}`
+                `Set ${this.SETTINGS_STORAGE_KEY}: ${JSONstring}`
             );
             return true;
         } catch (e) {
@@ -80,7 +93,7 @@ const JSBlocker = {
         }
     },
 
-    detectScripts: function() {
+    detectScripts() {
         console.log(`JS Blocker on "${this.domainName}": detection scripts starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
@@ -88,8 +101,9 @@ const JSBlocker = {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         if (node.tagName === 'SCRIPT') {
                             if (node.src) {
-                                scripts.push(node.src);
-                                console.log(`JS Blocker on "${this.domainName}": detected external script "${node.src}"`);
+                                const clearURL = this.clearURL(node.src)
+                                scripts.push(clearURL);
+                                console.log(`JS Blocker on "${this.domainName}": detected external script "${clearURL}"`);
                             }
                         }
                     }
@@ -102,7 +116,7 @@ const JSBlocker = {
         });
     },
 
-    prepareFramesForBlockJS: function() {
+    prepareFramesForBlockJS() {
         console.log(`JS Blocker on "${this.domainName}": preparation frames starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
@@ -126,16 +140,17 @@ const JSBlocker = {
         });
     },
 
-    sanitize: function() {
+    sanitize() {
         console.log(`JS Blocker on "${this.domainName}": sanitization scripts starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         if (node.tagName === 'SCRIPT') { /* removing <script> */
+                            const src = node.src;
                             node.remove();
-                            if (node.src) { console.log(`JS Blocker on "${this.domainName}": sanitized external script "${node.src}"`); }
-                            else          { console.log(`JS Blocker on "${this.domainName}": sanitized internal script`); }
+                            if (src) { console.log(`JS Blocker on "${this.domainName}": sanitized external script "${src}"`); }
+                            else     { console.log(`JS Blocker on "${this.domainName}": sanitized internal script`); }
                         } else { /* removing <… on…="…" …> */
                             [...node.attributes].forEach(attribute => {
                                 if (attribute.name.startsWith('on')) {
@@ -154,26 +169,26 @@ const JSBlocker = {
         });
     },
 
-    pageScriptsNotify: function() {
+    pageScriptsNotify() {
         safari.extension.dispatchMessage('js:setScripts.request', {
             'domainName': this.domainName,
             'scripts': scripts.join('\n')
         });
     },
 
-    pageRequestMatch: function() {
+    pageRequestMatch() {
         safari.extension.dispatchMessage('js:getMatch.request', {
             'domainName': this.domainName
         });
     },
 
-    pageReload: function(delay = this.DELAY_FOR_PAGE_RELOAD) {
+    pageReload(delay = this.DELAY_FOR_PAGE_RELOAD) {
         setTimeout(() => {
             window.location.reload();
         }, delay);
     },
 
-    pageReloadWhenExpired: function(expiresAt) {
+    pageReloadWhenExpired(expiresAt) {
         if (expiresAt > this.dateNow) {
             const lifeTime = (expiresAt - this.dateNow) * 1000;
             setTimeout(() => { this.pageRequestMatch(); },
@@ -193,4 +208,4 @@ const JSBlocker = {
         check();
     }
 
-}
+};

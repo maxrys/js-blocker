@@ -39,12 +39,12 @@ struct ADFetchItem: Equatable {
         self.expiresAt   = item.expiresAt
     }
 
-    func toStrictJS() -> String {
-        return "{" +
-           "\"name\":\"\(name.JSONEscaped())\"," +
-           "\"isWildcard\":\(isWildcard)," +
-           "\"createdAt\":\(createdAt)," +
-           "\"expiresAt\":\(expiresAt)" +
+    public var strictJSON: String {
+        "{" +
+            "\"name\":\"\(self.name.JSONEscaped())\"," +
+            "\"isWildcard\":\(self.isWildcard)," +
+            "\"createdAt\":\(self.createdAt)," +
+            "\"expiresAt\":\(self.expiresAt)" +
         "}"
     }
 

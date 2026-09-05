@@ -8,6 +8,9 @@ import SwiftUI
 
 struct MainScene: View {
 
+    static let ICON_CELL_MATCH_TYPE_EXACT    = Image("icon Cell Match type Exact")
+    static let ICON_CELL_MATCH_TYPE_WILDCARD = Image("icon Cell Match type Wildcard")
+
     @Environment(\.openURL) var openURL
 
     @StateObject private var mainAppState = MainAppState.shared
@@ -77,17 +80,17 @@ struct MainScene: View {
                                 size: .fixed(90),
                                 spacing: 1,
                                 alignment: .center
-                            ) { Text(NSLocalizedString("wildcard", comment: "")).font(.system(size: 11)) }
+                            ) { Text(NSLocalizedString("type", comment: "")).font(.system(size: 11)) }
                             TableCustom_HeadCell(
                                 size: .fixed(40),
                                 spacing: 1
                             ) { EmptyView() }
                         },
                         bodyAsArray: self.mainAppState.items.flatMap { domain in [
-                            AnyView(Text(domain.nameDecoded)),
-                            AnyView(Text(domain.expiresAt != 0 ? Date(timeIntervalSince1970: TimeInterval(domain.expiresAt)).formatConvenient : NOT_APPLICABLE)),
-                            AnyView(Text(domain.isWildcard ? NSLocalizedString("yes", comment: "") : NSLocalizedString("no" , comment: ""))),
-                            AnyView(self.ButtonOpenURLOrDummyView(domain.name))
+                            AnyView(self.CellNameView(domain)),
+                            AnyView(self.CellExpiresAtView(domain)),
+                            AnyView(self.CellMatchTypeView(domain)),
+                            AnyView(self.CellOpenURLView(domain))
                         ]}
                     )
 
@@ -136,8 +139,28 @@ struct MainScene: View {
         }
     }
 
-    @ViewBuilder private func ButtonOpenURLOrDummyView(_ domainName: DomainName) -> some View {
-        if let url = URL(string: "https://\(domainName)") {
+    @ViewBuilder private func EmptyCellView() -> some View {
+        Color.clear
+            .frame(width: 10, height: 10)
+    }
+
+    @ViewBuilder private func CellNameView(_ domain: ADFetchItem) -> some View {
+        Text(domain.nameDecoded)
+    }
+
+    @ViewBuilder private func CellExpiresAtView(_ domain: ADFetchItem) -> some View {
+        Text(domain.expiresAt != 0 ? Date(
+            timeIntervalSince1970: TimeInterval(domain.expiresAt)
+        ).formatConvenient : NOT_APPLICABLE)
+    }
+
+    @ViewBuilder private func CellMatchTypeView(_ domain: ADFetchItem) -> some View {
+        if (domain.isWildcard != true) { Self.ICON_CELL_MATCH_TYPE_EXACT   .resizable().aspectRatio(contentMode: .fit).frame(height: 15) }
+        if (domain.isWildcard == true) { Self.ICON_CELL_MATCH_TYPE_WILDCARD.resizable().aspectRatio(contentMode: .fit).frame(height: 15) }
+    }
+
+    @ViewBuilder private func CellOpenURLView(_ domain: ADFetchItem) -> some View {
+        if let url = URL(string: "https://\(domain.name)") {
             Button {
                 openURL(url)
                 Logger.customLog("open URL: \(url)")
@@ -151,8 +174,7 @@ struct MainScene: View {
             .buttonStyle(.plain)
             .pointerStyleLinkPolyfill()
         } else {
-            Color.clear
-                .frame(width: 10, height: 10)
+            self.EmptyCellView()
         }
     }
 

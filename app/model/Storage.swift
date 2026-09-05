@@ -16,7 +16,7 @@ public class Storage {
 
     typealias SELF = Storage
 
-    static let FILE_NAME = "JSBlocker.sqlite"
+    static let FILE_NAME = "\(APP_ID).sqlite"
 
     static let directoryURL: URL = {
         FileManager.default.containerURL(

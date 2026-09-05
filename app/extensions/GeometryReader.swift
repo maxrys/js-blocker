@@ -16,17 +16,20 @@ struct GeometryReaderPolyfill<Content: View>: View {
 
     @State private var size = CGSize(width: 0, height: 0)
 
-    private let content: (CGSize) -> Content
     private let isIgnoreHeight: Bool
     private let isIgnoreWidth: Bool
+    private let onChange: (CGSize) -> Void
+    private let content: (CGSize) -> Content
 
     init(
         isIgnoreHeight: Bool = false,
         isIgnoreWidth: Bool = false,
-        @ViewBuilder content: @escaping (CGSize) -> Content
+        onChange: @escaping (CGSize) -> Void = { _ in },
+        @ViewBuilder content: @escaping (CGSize) -> Content,
     ) {
         self.isIgnoreHeight = isIgnoreHeight
         self.isIgnoreWidth = isIgnoreWidth
+        self.onChange = onChange
         self.content = content
     }
 
@@ -42,8 +45,9 @@ struct GeometryReaderPolyfill<Content: View>: View {
                         .preference(key: SizeKey.self, value: geometry.size)
                 }
             )
-            .onPreferenceChange(SizeKey.self) { value in
-                self.size = value
+            .onPreferenceChange(SizeKey.self) { size in
+                self.size = size
+                self.onChange(size)
             }
             self.content(self.size)
         }

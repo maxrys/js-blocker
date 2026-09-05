@@ -22,12 +22,12 @@ class ExtensionHandler: SFSafariExtensionHandler {
 
     override func messageReceived(withName message: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         page.getPropertiesWithCompletionHandler({ properties in
-            if let realDomainName = properties?.url?.host {
+            if let currentDomainName = properties?.url?.host {
                 if let frameDomainName = userInfo?["domainName"] as? DomainName {
                     if let userInfo {
                         if let logData = try? JSONSerialization.data(withJSONObject: userInfo) {
                             if let logString = String(data: logData, encoding: .utf8) {
-                                Logger.customLog("\(message) from \(realDomainName)|\(frameDomainName): \(logString)")
+                                Logger.customLog("\(message) from \(currentDomainName)|\(frameDomainName): \(logString)")
                             }
                         }
                     }
@@ -37,20 +37,22 @@ class ExtensionHandler: SFSafariExtensionHandler {
                                 withName: "js:getMatch.response",
                                 userInfo: [
                                     "match": ADModel.matchType(
-                                        name: realDomainName
-                                    ).toStrictJS
+                                        name: currentDomainName
+                                    ).strictJSON
                                 ]
                             )
                         case "js:setScripts.request",
                              "js:getScripts.response":
                             if let scripts = userInfo?["scripts"] as? String {
                                 Task { @MainActor in
-                                    PopupState.shared.scripts[
-                                        realDomainName, default: [:]
-                                    ][frameDomainName] = scripts.split(
-                                        separator: "\n",
-                                        omittingEmptySubsequences: true
-                                    ).map(String.init)
+                                    PopupState.shared.onSetScripts(
+                                        domainName: currentDomainName,
+                                        frameDomainName: frameDomainName,
+                                        scripts: scripts.split(
+                                            separator: "\n",
+                                            omittingEmptySubsequences: true
+                                        ).map(String.init)
+                                    )
                                 }
                             }
                         default: break

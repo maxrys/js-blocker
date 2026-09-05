@@ -8,8 +8,9 @@ import SwiftUI
 extension Color {
 
     struct ScriptsPanelColorSet {
-        public let titleBackground = Color("color Popup Scripts Title Background")
-        public let background      = Color("color Popup Scripts Background")
+        public var popupTitle           = Color("color ScriptsPanel Popup Title")
+        public let popupTitleBackground = Color("color ScriptsPanel Popup Title Background")
+        public var popupTitleBorder     = Color("color ScriptsPanel Popup Title Border")
     }
 
     static let scriptsPanel = ScriptsPanelColorSet()
