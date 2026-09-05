@@ -21,7 +21,7 @@ const JSBlocker = {
         return Math.floor(Date.now() / 1000);
     },
 
-    get isJSEnabled() {
+    get isJSEnabledFromURL() {
         const url = new URL(window.location.href, document.baseURI);
         return url.searchParams.get(this.URL_KEY_IS_JS_ENABLED) !== 'false';
     },
