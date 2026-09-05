@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24512" systemVersion="24G830" minimumToolsVersion="Xcode 13.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AllowedDomains" representedClassName=".AllowedDomains" syncable="YES">
+        <attribute name="createdAt" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expiresAt" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="nameDecoded" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="AllowedScripts" representedClassName=".AllowedScripts" syncable="YES">
+        <attribute name="createdAt" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="domain" attributeType="String"/>
+        <attribute name="frameDomain" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="domain"/>
+                <constraint value="frameDomain"/>
+                <constraint value="url"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="EntityVersions" representedClassName=".EntityVersions" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <attribute name="version" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Migration_001" representedClassName=".Migration_001" syncable="YES">
+        <attribute name="isCompleted" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="isCompleted"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="WhiteDomains" representedClassName=".WhiteDomains" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expiresAt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isGlobal" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="isWildcard"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="nameDecoded" attributeType="String" defaultValueString=""/>
+    </entity>
+</model>
