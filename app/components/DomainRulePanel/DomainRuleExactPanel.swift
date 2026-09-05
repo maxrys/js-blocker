@@ -123,10 +123,13 @@ struct DomainRuleExactPanel: View {
     }
 
     @ViewBuilder private func ButtonAllowView() -> some View {
+        let isNoOneScriptMode = self.popupState.isNoOneScriptMode
         Group {
             ButtonCapsule(
-                title: NSLocalizedString("allow", comment: ""),
-                minWidth: 180,
+                title: isNoOneScriptMode ?
+                    NSLocalizedString("allow by scripts", comment: "") :
+                    NSLocalizedString("allow"           , comment: ""),
+                minWidth: isNoOneScriptMode ? 250 : 200,
                 onClick: {
                     self.onClickAllow()
                 }
@@ -140,6 +143,7 @@ struct DomainRuleExactPanel: View {
                     ScriptsPanel(
                         domainName: domainName,
                         scripts: self.$popupState.scripts,
+                        scriptsIsOn: self.$popupState.scriptsIsOn,
                         openerIconOffset: CGPoint(x: 2, y: 0)
                     )
                 }

@@ -890,6 +890,22 @@
         }
       }
     },
+    "allow by scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дазволіць па скрыптах"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "разрешить по скриптам"
+          }
+        }
+      }
+    },
     "At least 1 subdomain must be selected!" : {
       "localizations" : {
         "be-BY" : {
@@ -902,6 +918,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Как минимум 1 поддомен должен быть выбран!"
+          }
+        }
+      }
+    },
+    "By Scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Па скрыптах"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По скриптам"
           }
         }
       }

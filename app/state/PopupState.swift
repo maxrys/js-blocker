@@ -24,7 +24,14 @@ final class PopupState: ObservableObject {
     @Published var lifetime: TimeInterval? = nil
     @Published var expireStatus: ExpireStatus = .notSetted
 
+    @Published var isNoOneScriptMode: Bool = false
     @Published var scripts = Matrix2dArrOfStr() /* [CurrentDomainName: [FrameDomainName: [URLString]]] */
+    @Published var scriptsIsOn = Matrix3dBool() /* [CurrentDomainName: [FrameDomainName: [URLString: Bool]]] */
+        { didSet {
+            if scriptsIsOn != oldValue {
+                self.jsSetMatch()
+            }
+        }}
 
     private var timer: Timer.Custom!
 
@@ -52,7 +59,15 @@ final class PopupState: ObservableObject {
     }
 
     public func onSetScripts(domainName: DomainName, frameDomainName: DomainName, scripts: [URLString]) {
-        Self.shared.scripts[domainName, frameDomainName] = scripts
+        Self.shared.scripts    [domainName, frameDomainName] = scripts
+        Self.shared.scriptsIsOn[domainName, frameDomainName] = [:]
+        for script in AllowedScripts.selectByDomain(domain: domainName, frameDomain: frameDomainName) {
+            Self.shared.scriptsIsOn[
+                script.domain,
+                script.frameDomain,
+                script.url
+            ] = true
+        }
     }
 
     public func onSetPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
@@ -64,6 +79,7 @@ final class PopupState: ObservableObject {
         self.rulesWildcardSelected = []
         self.lifetime = nil
         self.expireStatus = self.match?.expireStatus ?? .notSetted
+        self.isNoOneScriptMode = false
         self.refresh()
         self.jsGetScripts()
     }
@@ -77,6 +93,7 @@ final class PopupState: ObservableObject {
         self.rulesWildcardSelected = []
         self.lifetime = nil
         self.expireStatus = .notSetted
+        self.isNoOneScriptMode = false
     }
 
     public func refresh() {

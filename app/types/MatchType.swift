@@ -14,9 +14,9 @@ let MATCH_TYPE_STRING_WILDCARD_SCRIPT = "wildcardScript"
 enum MatchType {
 
     case exact         (item: ADFetchItem)
-    case exactScript   (item: ADFetchItem)
+    case exactScript   (item: ADFetchItem, scripts: ASFetchCollection)
     case wildcard      (item: ADFetchItem)
-    case wildcardScript(item: ADFetchItem)
+    case wildcardScript(item: ADFetchItem, scripts: ASFetchCollection)
     case noOne
 
     public var isExact         : Bool { if case .exact          = self { true } else { false } }
@@ -34,11 +34,11 @@ enum MatchType {
 
     public var item: ADFetchItem? {
         switch self {
-            case .exact         (let item): return item
-            case .exactScript   (let item): return item
-            case .wildcard      (let item): return item
-            case .wildcardScript(let item): return item
-            case .noOne                   : return nil
+            case .exact         (let item   ): return item
+            case .exactScript   (let item, _): return item
+            case .wildcard      (let item   ): return item
+            case .wildcardScript(let item, _): return item
+            case .noOne                      : return nil
         }
     }
 
@@ -62,11 +62,11 @@ enum MatchType {
 
     public var strictJSON: String {
         switch self {
-            case .exact         (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT)\","           + "\"item\":\(item.strictJSON)}"
-            case .exactScript   (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT_SCRIPT)\","    + "\"item\":\(item.strictJSON)}"
-            case .wildcard      (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD)\","        + "\"item\":\(item.strictJSON)}"
-            case .wildcardScript(let item): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD_SCRIPT)\"," + "\"item\":\(item.strictJSON)}"
-            case .noOne                   : return "{\"match\":\"\(MATCH_TYPE_STRING_NO_ONE)\"}"
+            case .exact         (let item             ): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT)\","           + "\"item\":\(item.strictJSON)}"
+            case .exactScript   (let item, let scripts): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT_SCRIPT)\","    + "\"item\":\(item.strictJSON)," + "\"scripts\":\(scripts.strictJSON)}"
+            case .wildcard      (let item             ): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD)\","        + "\"item\":\(item.strictJSON)}"
+            case .wildcardScript(let item, let scripts): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD_SCRIPT)\"," + "\"item\":\(item.strictJSON)," + "\"scripts\":\(scripts.strictJSON)}"
+            case .noOne                                : return "{\"match\":\"\(MATCH_TYPE_STRING_NO_ONE)\"}"
         }
     }
 
