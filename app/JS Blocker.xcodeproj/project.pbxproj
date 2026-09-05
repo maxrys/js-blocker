@@ -293,6 +293,10 @@
 		50FC4E33304C0C520001701E /* ASFetchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E2C304C0C520001701E /* ASFetchCollection.swift */; };
 		50FC4E34304C0C520001701E /* ASFetchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E2D304C0C520001701E /* ASFetchItem.swift */; };
 		50FC4E35304C0C520001701E /* ASFetchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E2C304C0C520001701E /* ASFetchCollection.swift */; };
+		50FC4E37304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E38304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E3A304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,6 +457,7 @@
 		50FC4E1430499B2D0001701E /* AllowedScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowedScripts.swift; sourceTree = "<group>"; };
 		50FC4E2C304C0C520001701E /* ASFetchCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASFetchCollection.swift; sourceTree = "<group>"; };
 		50FC4E2D304C0C520001701E /* ASFetchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASFetchItem.swift; sourceTree = "<group>"; };
+		50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix3D.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -547,6 +552,7 @@
 				500895332DD73EDF00414588 /* Date.swift */,
 				50BB987A2FFA5D8700C39670 /* Dictionary.swift */,
 				50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */,
+				50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */,
 				50C43A083019E19400A8FD39 /* DomainName.swift */,
 				50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */,
 				50439DC92F44C8C300270BE5 /* Logger.swift */,
@@ -996,6 +1002,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50CEA0962F4B6D46001006CF /* Set.swift in Sources */,
+				50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				50C43A093019E19400A8FD39 /* DomainName.swift in Sources */,
 				50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50FC4DEA304991EC0001701E /* URLString.swift in Sources */,
@@ -1082,6 +1089,7 @@
 				503DBDFF302B5CC200BD39F3 /* Logger.swift in Sources */,
 				503DBE00302B5CC200BD39F3 /* String.swift in Sources */,
 				503DBDEA302B5CAC00BD39F3 /* HVStack.swift in Sources */,
+				50FC4E37304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				503DBDEB302B5CAC00BD39F3 /* ResultBuilder.swift in Sources */,
 				503DBDE2302B5C6800BD39F3 /* ADFetchItem.swift in Sources */,
 				50ACD40E303C65E900E7D4ED /* AllowedDomains.swift in Sources */,
@@ -1095,6 +1103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				509528D52F701E8000DB391A /* NSWindow.swift in Sources */,
+				50FC4E38304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				50CEA04E2F47A434001006CF /* MainSceneColor.swift in Sources */,
 				500895342DD73EDF00414588 /* Date.swift in Sources */,
 				50EB55352CF9F4BA00FC060C /* ViewController.swift in Sources */,
@@ -1183,6 +1192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50EB551C2CF9AAB400FC060C /* Popup.swift in Sources */,
+				50FC4E3A304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				50439DCC2F44C8C300270BE5 /* Logger.swift in Sources */,
 				50EB551D2CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
 				505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */,
