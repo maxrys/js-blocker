@@ -42,7 +42,7 @@ final class PopupState: ObservableObject {
             self.expireStatus  = newExpireStatus
         }
         if case .expired = self.expireStatus {
-            if case .success(let affected) = ADModel.sanitize() {
+            if case .success(let affected) = AllowedDomains.sanitize() {
                 if (affected > 0) {
                     SFSafariApplication.reloadRules()
                     self.refresh()
@@ -58,7 +58,7 @@ final class PopupState: ObservableObject {
     public func onSetPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
         self.page = page
         self.domainName = domainName
-        self.match = ADModel.matchType(name: domainName)
+        self.match = AllowedDomains.matchType(name: domainName)
         self.ruleExact = domainName.decodePunycode()
         self.rulesWildcard = ([domainName] + domainName.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in result.append("*." + domain.decodePunycode()) }
         self.rulesWildcardSelected = []
@@ -84,7 +84,7 @@ final class PopupState: ObservableObject {
 
             var wildcardRulesSelected: Set<Int> = []
             let wildcardDomains: [DomainName] = [domainName] + domainName.topDomains(isDeleteTLD: true)
-            let wildcardDomainsInStorage: [String] = ADModel.selectWildcardDomains(domainName).map {
+            let wildcardDomainsInStorage: [String] = AllowedDomains.selectWildcardDomains(domainName).map {
                 domainInfo in domainInfo.name
             }
 
@@ -98,7 +98,7 @@ final class PopupState: ObservableObject {
                 }
             }
 
-            self.match = ADModel.matchType(name: domainName)
+            self.match = AllowedDomains.matchType(name: domainName)
             self.rulesWildcardSelected = wildcardRulesSelected
             self.expireStatus = self.match?.expireStatus ?? .notSetted
             self.lifetime = nil

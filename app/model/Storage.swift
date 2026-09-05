@@ -17,6 +17,8 @@ public class Storage {
     typealias SELF = Storage
 
     static let FILE_NAME = "\(APP_ID).sqlite"
+    static let MODEL_NAME = "Model"
+    static let CONFIGURATION_NAME = "Default"
 
     static let directoryURL: URL = {
         FileManager.default.containerURL(
@@ -31,13 +33,13 @@ public class Storage {
     static let container: NSPersistentContainer = {
         let description = NSPersistentStoreDescription()
         description.url = SELF.URL
-        description.configuration = "Default"
+        description.configuration = SELF.CONFIGURATION_NAME
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         description.shouldInferMappingModelAutomatically = true
         description.shouldMigrateStoreAutomatically = true
 
-        var result = NSPersistentContainer(name: "Model")
+        var result = NSPersistentContainer(name: SELF.MODEL_NAME)
         result.persistentStoreDescriptions = [description]
         result.viewContext.automaticallyMergesChangesFromParent = true
         result.loadPersistentStores(completionHandler: { (description, error) in

@@ -6,7 +6,7 @@
 typealias ADFetchCollection = Array<ADFetchItem>
 extension ADFetchCollection {
 
-    mutating func appendUnique(_ item: ADModel) {
+    mutating func appendUnique(_ item: AllowedDomains) {
         let newItem = ADFetchItem(item: item)
         if !self.contains(newItem) {
             self.append  (newItem)

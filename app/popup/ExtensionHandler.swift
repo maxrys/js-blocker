@@ -36,7 +36,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
                             page.dispatchMessageToScript(
                                 withName: "js:getMatch.response",
                                 userInfo: [
-                                    "match": ADModel.matchType(
+                                    "match": AllowedDomains.matchType(
                                         name: currentDomainName
                                     ).strictJSON
                                 ]

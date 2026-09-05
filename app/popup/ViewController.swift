@@ -26,7 +26,7 @@ class ViewController: SFSafariExtensionViewController {
             popupView.topAnchor     .constraint(equalTo: self.view.topAnchor),
             popupView.bottomAnchor  .constraint(equalTo: self.view.bottomAnchor),
         ])
-        ADModel.dump()
+        AllowedDomains.dump()
     }
 
     override func viewWillAppear() {
@@ -42,7 +42,7 @@ class ViewController: SFSafariExtensionViewController {
             var success: [String] = []
             var failure: [String] = []
 
-            if (ADModel.insert(name: domainName, isWildcard: false, expiresAt: lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ))
+            if case .success = AllowedDomains.insert(name: domainName, isWildcard: false, expiresAt: lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
                  { success.append(domainName.decodePunycode()) }
             else { failure.append(domainName.decodePunycode()) }
 
@@ -72,7 +72,7 @@ class ViewController: SFSafariExtensionViewController {
             }
 
             Logger.customLog("onClick_ruleExactInsert()")
-            ADModel.dump()
+            AllowedDomains.dump()
         }
     }
 
@@ -93,7 +93,7 @@ class ViewController: SFSafariExtensionViewController {
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if (ADModel.insert(name: name, isWildcard: true, expiresAt: lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ))
+                        if case .success = AllowedDomains.insert(name: name, isWildcard: true, expiresAt: lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
                              { success.append(name.decodePunycode()) }
                         else { failure.append(name.decodePunycode()) }
                     }
@@ -126,7 +126,7 @@ class ViewController: SFSafariExtensionViewController {
             }
 
             Logger.customLog("onClick_ruleWildcardInsert()")
-            ADModel.dump()
+            AllowedDomains.dump()
         }
     }
 
@@ -138,9 +138,9 @@ class ViewController: SFSafariExtensionViewController {
 
             if (match.isExact) {
 
-                if let domain = ADModel.select(domainName) {
+                if let domain = AllowedDomains.select(domainName) {
                     let name = domain.name
-                    switch ADModel.delete([name]) {
+                    switch AllowedDomains.delete([name]) {
                         case .success: success.append(name.decodePunycode())
                         case .failure: failure.append(name.decodePunycode())
                     }
@@ -165,9 +165,9 @@ class ViewController: SFSafariExtensionViewController {
 
             if (match.isWildcard) {
 
-                ADModel.selectWildcardDomains(domainName).forEach { domain in
+                AllowedDomains.selectWildcardDomains(domainName).forEach { domain in
                     let name = domain.name
-                    switch ADModel.delete([name]) {
+                    switch AllowedDomains.delete([name]) {
                         case .success: success.append(name.decodePunycode())
                         case .failure: failure.append(name.decodePunycode())
                     }
@@ -200,7 +200,7 @@ class ViewController: SFSafariExtensionViewController {
             }
 
             Logger.customLog("onClick_ruleDelete()")
-            ADModel.dump()
+            AllowedDomains.dump()
         }
     }
 
