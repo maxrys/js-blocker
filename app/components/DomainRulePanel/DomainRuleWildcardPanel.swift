@@ -37,6 +37,12 @@ struct DomainRuleWildcardPanel: View {
         }
     }
 
+    private var isEnabledButton_byScript: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isWildcardScript
+        }
+    }
+
     private var rules: [String] {
         self.popupState.rulesWildcard
     }
@@ -157,6 +163,17 @@ struct DomainRuleWildcardPanel: View {
                 !self.isEnabledButton
             )
         }
+        .overlayPolyfill(alignment: .leading) {
+            if (self.isEnabledButton_byScript) {
+                if let domainName = self.popupState.domainName {
+                    ScriptsPanel(
+                        domainName: domainName,
+                        scripts: self.$popupState.scripts,
+                        openerIconOffset: CGPoint(x: 2, y: 0)
+                    )
+                }
+            }
+        }
         .overlayPolyfill(alignment: .trailing) {
             if (self.isEnabledButton) {
                 LifetimePicker(
@@ -219,6 +236,7 @@ struct DomainRuleWildcardPanel_MatchNone_Previews: PreviewProvider {
         Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = nil
                 PopupState.shared.rulesWildcard = []
             }
@@ -230,6 +248,7 @@ struct DomainRuleWildcardPanel_MatchNoOne_Previews: PreviewProvider {
         Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = .noOne
                 PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
@@ -241,6 +260,7 @@ struct DomainRuleWildcardPanel_MatchExact_Previews: PreviewProvider {
         Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                 PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
@@ -252,6 +272,7 @@ struct DomainRuleWildcardPanel_MatchWildcard_Previews: PreviewProvider {
         Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                 PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }

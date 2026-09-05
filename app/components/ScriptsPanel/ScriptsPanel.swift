@@ -56,7 +56,7 @@ struct ScriptsPanel: View {
 
     public var body: some View {
         self.OpenerView()
-            .popover(isPresented: self.$isOpened, arrowEdge: .bottom) {
+            .popover(isPresented: self.$isOpened, arrowEdge: .trailing) {
                 self.PopupView()
             }
     }
@@ -69,12 +69,16 @@ struct ScriptsPanel: View {
                 Self.ICON_OPENER
                     .font(.system(size: 24))
                     .foregroundPolyfill(
-                        Color.popup.buttonSettings
+                        Color.scriptsPanel.openerBackground
                     ).offset(
                         x: self.openerIconOffset.x,
                         y: self.openerIconOffset.y
                     )
             }
+            .padding(7)
+            .background(Color.white.opacity(0.1))
+            .contentShape(Circle())
+            .focusEffect (Circle())
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill()

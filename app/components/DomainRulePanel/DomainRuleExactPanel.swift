@@ -37,6 +37,12 @@ struct DomainRuleExactPanel: View {
         }
     }
 
+    private var isEnabledButton_byScript: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isExactScript
+        }
+    }
+
     private var rule: String {
         self.popupState.ruleExact
     }
@@ -128,6 +134,17 @@ struct DomainRuleExactPanel: View {
                 !self.isEnabledButton
             )
         }
+        .overlayPolyfill(alignment: .leading) {
+            if (self.isEnabledButton_byScript) {
+                if let domainName = self.popupState.domainName {
+                    ScriptsPanel(
+                        domainName: domainName,
+                        scripts: self.$popupState.scripts,
+                        openerIconOffset: CGPoint(x: 2, y: 0)
+                    )
+                }
+            }
+        }
         .overlayPolyfill(alignment: .trailing) {
             if (self.isEnabledButton) {
                 LifetimePicker(
@@ -154,6 +171,7 @@ struct DomainRuleExactPanel_MatchNone_Previews: PreviewProvider {
         Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = nil
                 PopupState.shared.ruleExact = ""
             }
@@ -165,6 +183,7 @@ struct DomainRuleExactPanel_MatchNoOne_Previews: PreviewProvider {
         Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = .noOne
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             }
@@ -176,6 +195,7 @@ struct DomainRuleExactPanel_MatchExact_Previews: PreviewProvider {
         Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             }
@@ -187,6 +207,7 @@ struct DomainRuleExactPanel_MatchWildcard_Previews: PreviewProvider {
         Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
             .frame(width: Popup.FRAME_WIDTH)
             .onAppear {
+                PopupState.shared.domainName = "example.com"
                 PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
             }
