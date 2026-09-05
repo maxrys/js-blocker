@@ -27,7 +27,7 @@ struct DomainRuleWildcardPanel: View {
 
     private var isActiveRule: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isWildcard
+            match.isWildcard || match.isWildcardScript
         }
     }
 

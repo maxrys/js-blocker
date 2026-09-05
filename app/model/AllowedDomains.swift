@@ -29,12 +29,15 @@ public class AllowedDomains: NSManagedObject {
 
     static func matchType(name: DomainName) -> MatchType {
         if let domainItem = SELF.select(name) {
-            if (domainItem.type == MATCH_TYPE_STRING_EXACT   ) { return .exact   (item: domainItem) }
-            if (domainItem.type == MATCH_TYPE_STRING_WILDCARD) { return .wildcard(item: domainItem) }
+            if (domainItem.type == MATCH_TYPE_STRING_EXACT          ) { return .exact         (item: domainItem) }
+            if (domainItem.type == MATCH_TYPE_STRING_EXACT_SCRIPT   ) { return .exactScript   (item: domainItem) }
+            if (domainItem.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: domainItem) }
+            if (domainItem.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: domainItem) }
         }
         let wildcardDomains = SELF.selectWildcardDomains(name)
         if let first = wildcardDomains.first {
-            return .wildcard(item: first)
+            if (first.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: first) }
+            if (first.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: first) }
         }
         return .noOne
     }
@@ -45,7 +48,7 @@ public class AllowedDomains: NSManagedObject {
             let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
             request.sortDescriptors = [ NSSortDescriptor(key: #keyPath(SELF.name), ascending: ascending) ]
-            request.predicate = NSPredicate(format: "(name IN %@) AND (type == \"\(MATCH_TYPE_STRING_WILDCARD)\")", names)
+            request.predicate = NSPredicate(format: "(name IN %@) AND (type == \"\(MATCH_TYPE_STRING_WILDCARD)\" OR type == \"\(MATCH_TYPE_STRING_WILDCARD_SCRIPT)\")", names)
             return try Storage.context.fetch(request).reduce(into: ADFetchCollection()) { result, modelItem in
                 result.appendUnique(modelItem)
             }

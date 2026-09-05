@@ -7,28 +7,38 @@ import Foundation
 
 let MATCH_TYPE_STRING_NO_ONE = "noOne"
 let MATCH_TYPE_STRING_EXACT = "exact"
+let MATCH_TYPE_STRING_EXACT_SCRIPT = "exactScript"
 let MATCH_TYPE_STRING_WILDCARD = "wildcard"
+let MATCH_TYPE_STRING_WILDCARD_SCRIPT = "wildcardScript"
 
 enum MatchType {
 
-    case exact   (item: ADFetchItem)
-    case wildcard(item: ADFetchItem)
+    case exact         (item: ADFetchItem)
+    case exactScript   (item: ADFetchItem)
+    case wildcard      (item: ADFetchItem)
+    case wildcardScript(item: ADFetchItem)
     case noOne
 
-    public var isExact    : Bool { if case .exact    = self { true } else { false } }
-    public var isWildcard : Bool { if case .wildcard = self { true } else { false } }
-    public var isNoOne    : Bool { if case .noOne    = self { true } else { false } }
+    public var isExact         : Bool { if case .exact          = self { true } else { false } }
+    public var isExactScript   : Bool { if case .exactScript    = self { true } else { false } }
+    public var isWildcard      : Bool { if case .wildcard       = self { true } else { false } }
+    public var isWildcardScript: Bool { if case .wildcardScript = self { true } else { false } }
+    public var isNoOne         : Bool { if case .noOne          = self { true } else { false } }
 
     public var isSome: Bool {
-        self.isExact ||
-        self.isWildcard
+        self.isExact       ||
+        self.isExactScript ||
+        self.isWildcard    ||
+        self.isWildcardScript
     }
 
     public var item: ADFetchItem? {
         switch self {
-            case .exact   (let item): return item
-            case .wildcard(let item): return item
-            case .noOne             : return nil
+            case .exact         (let item): return item
+            case .exactScript   (let item): return item
+            case .wildcard      (let item): return item
+            case .wildcardScript(let item): return item
+            case .noOne                   : return nil
         }
     }
 
@@ -52,9 +62,11 @@ enum MatchType {
 
     public var strictJSON: String {
         switch self {
-            case .exact   (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT)\","    + "\"item\":\(item.strictJSON)}"
-            case .wildcard(let item): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD)\"," + "\"item\":\(item.strictJSON)}"
-            case .noOne             : return "{\"match\":\"\(MATCH_TYPE_STRING_NO_ONE)\"}"
+            case .exact         (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT)\","           + "\"item\":\(item.strictJSON)}"
+            case .exactScript   (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_EXACT_SCRIPT)\","    + "\"item\":\(item.strictJSON)}"
+            case .wildcard      (let item): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD)\","        + "\"item\":\(item.strictJSON)}"
+            case .wildcardScript(let item): return "{\"match\":\"\(MATCH_TYPE_STRING_WILDCARD_SCRIPT)\"," + "\"item\":\(item.strictJSON)}"
+            case .noOne                   : return "{\"match\":\"\(MATCH_TYPE_STRING_NO_ONE)\"}"
         }
     }
 

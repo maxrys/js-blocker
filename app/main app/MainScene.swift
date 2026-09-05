@@ -8,8 +8,10 @@ import SwiftUI
 
 struct MainScene: View {
 
-    static let ICON_CELL_MATCH_TYPE_EXACT    = Image("icon Cell Match type Exact")
-    static let ICON_CELL_MATCH_TYPE_WILDCARD = Image("icon Cell Match type Wildcard")
+    static let ICON_CELL_MATCH_TYPE_EXACT           = Image("icon Cell Match type Exact")
+    static let ICON_CELL_MATCH_TYPE_EXACT_SCRIPT    = Image("icon Cell Match type Exact Script")
+    static let ICON_CELL_MATCH_TYPE_WILDCARD        = Image("icon Cell Match type Wildcard")
+    static let ICON_CELL_MATCH_TYPE_WILDCARD_SCRIPT = Image("icon Cell Match type Wildcard Script")
 
     @Environment(\.openURL) var openURL
 
@@ -156,8 +158,10 @@ struct MainScene: View {
 
     @ViewBuilder private func CellMatchTypeView(_ domain: ADFetchItem) -> some View {
         switch domain.type {
-            case MATCH_TYPE_STRING_EXACT   : Self.ICON_CELL_MATCH_TYPE_EXACT   .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
-            case MATCH_TYPE_STRING_WILDCARD: Self.ICON_CELL_MATCH_TYPE_WILDCARD.resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+            case MATCH_TYPE_STRING_EXACT          : Self.ICON_CELL_MATCH_TYPE_EXACT          .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+            case MATCH_TYPE_STRING_EXACT_SCRIPT   : Self.ICON_CELL_MATCH_TYPE_EXACT_SCRIPT   .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+            case MATCH_TYPE_STRING_WILDCARD       : Self.ICON_CELL_MATCH_TYPE_WILDCARD       .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+            case MATCH_TYPE_STRING_WILDCARD_SCRIPT: Self.ICON_CELL_MATCH_TYPE_WILDCARD_SCRIPT.resizable().aspectRatio(contentMode: .fit).frame(height: 15)
             default: self.EmptyCellView()
         }
     }

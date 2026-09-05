@@ -136,7 +136,7 @@ class ViewController: SFSafariExtensionViewController {
             var success: [String] = []
             var failure: [String] = []
 
-            if (match.isExact) {
+            if (match.isExact || match.isExactScript) {
 
                 if let domain = AllowedDomains.select(domainName) {
                     let name = domain.name
@@ -163,7 +163,7 @@ class ViewController: SFSafariExtensionViewController {
                 }
             }
 
-            if (match.isWildcard) {
+            if (match.isWildcard || match.isWildcardScript) {
 
                 AllowedDomains.selectWildcardDomains(domainName).forEach { domain in
                     let name = domain.name
