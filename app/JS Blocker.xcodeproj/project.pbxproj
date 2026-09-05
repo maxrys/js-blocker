@@ -297,6 +297,8 @@
 		50FC4E38304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
 		50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
 		50FC4E3A304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E45304C0F9C0001701E /* ToggleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E43304C0F9C0001701E /* ToggleCustom.swift */; };
+		50FC4E46304C0F9C0001701E /* ToggleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E43304C0F9C0001701E /* ToggleCustom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -458,6 +460,7 @@
 		50FC4E2C304C0C520001701E /* ASFetchCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASFetchCollection.swift; sourceTree = "<group>"; };
 		50FC4E2D304C0C520001701E /* ASFetchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASFetchItem.swift; sourceTree = "<group>"; };
 		50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix3D.swift; sourceTree = "<group>"; };
+		50FC4E43304C0F9C0001701E /* ToggleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCustom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,6 +590,7 @@
 				50CC17DB3036568700B9152C /* ScriptsPanel */,
 				505507552FC6E59E007DB93D /* ShadowLine */,
 				506421562F5E22760020F6C8 /* TableCustom */,
+				50FC4E44304C0F9C0001701E /* ToggleCustom */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -798,6 +802,14 @@
 				50FC4DF4304996D80001701E /* WhiteDomains.swift */,
 			);
 			path = migrations;
+			sourceTree = "<group>";
+		};
+		50FC4E44304C0F9C0001701E /* ToggleCustom */ = {
+			isa = PBXGroup;
+			children = (
+				50FC4E43304C0F9C0001701E /* ToggleCustom.swift */,
+			);
+			path = ToggleCustom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1123,6 +1135,7 @@
 				50CE9FE72F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE82F472E06001006CF /* ButtonCustomColor.swift in Sources */,
 				505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */,
+				50FC4E45304C0F9C0001701E /* ToggleCustom.swift in Sources */,
 				50E150C12DAA789D005768C1 /* PopupState.swift in Sources */,
 				50ECC01B3003A5AB00A99E64 /* ExpireStatus.swift in Sources */,
 				50CEA06B2F486265001006CF /* InstallGuide.swift in Sources */,
@@ -1212,6 +1225,7 @@
 				50CEA0A72F4C502A001006CF /* Array.swift in Sources */,
 				50CEA07C2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
 				50439E082F44C9AD00270BE5 /* Message.swift in Sources */,
+				50FC4E46304C0F9C0001701E /* ToggleCustom.swift in Sources */,
 				50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */,
 				50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */,
 				50ECC01C3003A5AB00A99E64 /* ExpireStatus.swift in Sources */,
