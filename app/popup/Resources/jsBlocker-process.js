@@ -164,6 +164,7 @@
     if (isTopFrame !== true) {
 
         const isJSEnabled = JSBlocker.isJSEnabledFromURL;
+        const scripts     = JSBlocker.scriptsFromURL;
 
         console.log(
             `JS Blocker on "${domainName}" has been started\n` +

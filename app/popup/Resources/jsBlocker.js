@@ -14,6 +14,7 @@ const JSBlocker = {
     MATCH_TYPE_STRING_WILDCARD_SCRIPT: 'wildcardScript',
     SETTINGS_STORAGE_KEY: 'JSBlockerSettings',
     URL_KEY_IS_JS_ENABLED: 'jsBlocker-isJSEnabled',
+    URL_KEY_SCRIPTS: 'jsBlocker-scripts',
     DELAY_FOR_PAGE_RELOAD: 500,
     DELAY_BEFORE_RECHECK_STATE: 2000,
 
@@ -24,6 +25,18 @@ const JSBlocker = {
     get isJSEnabledFromURL() {
         const url = new URL(window.location.href, document.baseURI);
         return url.searchParams.get(this.URL_KEY_IS_JS_ENABLED) !== 'false';
+    },
+
+    get scriptsFromURL() {
+        const url = new URL(window.location.href, document.baseURI);
+        const params = url.searchParams;
+        if (!params.has(this.URL_KEY_SCRIPTS)) {
+            return null;
+        }
+        const scripts = params.get(this.URL_KEY_SCRIPTS);
+        if (scripts)
+             { return scripts.split(',') }
+        else { return [] }
     },
 
     get isTopFrame() {
@@ -132,7 +145,7 @@ const JSBlocker = {
                                 const scripts = scriptsCrcByFrames[frameDomain] ?? []
                                 url.searchParams.set(this.URL_KEY_IS_JS_ENABLED, 'false');
                                 if (scripts.length) {
-                                    url.searchParams.set('jsBlocker-scripts',
+                                    url.searchParams.set(this.URL_KEY_SCRIPTS,
                                         scripts.join(',')
                                     );
                                 }
