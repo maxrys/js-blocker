@@ -118,7 +118,7 @@ const JSBlocker = {
         });
     },
 
-    prepareFramesForBlockJS() {
+    prepareFramesForBlockJS(scriptsCrcByFrames = []) {
         console.log(`JS Blocker on "${this.domainName}": preparation frames starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
@@ -127,7 +127,14 @@ const JSBlocker = {
                         if (node.tagName === 'IFRAME' || node.tagName === 'FRAME') {
                             if (node.src) {
                                 const url = new URL(node.src, document.baseURI);
+                                const frameDomain = url.hostname
+                                const scripts = scriptsCrcByFrames[frameDomain] ?? []
                                 url.searchParams.set('isJSEnabled', 'false');
+                                if (scripts.length) {
+                                    url.searchParams.set('jsBlocker-scripts',
+                                        scripts.join(',')
+                                    );
+                                }
                                 node.src = url.toString();
                                 console.log(`JS Blocker on "${this.domainName}": prepared ${node.tagName} "${node.src}"`);
                             }
@@ -208,6 +215,20 @@ const JSBlocker = {
             }
         };
         check();
+    },
+
+    crc32(str) {
+        const bytes = new TextEncoder().encode(str);
+        let crc = 0xffffffff;
+        for (const byte of bytes) {
+            crc ^= byte;
+            for (let i = 0; i < 8; i++) {
+                crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
+            }
+        }
+        return ((crc ^ 0xffffffff) >>> 0)
+            .toString(16)
+            .padStart(8, "0");
     }
 
 };

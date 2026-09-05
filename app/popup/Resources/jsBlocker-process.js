@@ -25,24 +25,24 @@
     safari.self.addEventListener('message', event => {
         if (event.name === 'js:getScripts.request') {
             console.log(
-                `JS Blocker on "${domainName}"\n` +
-                `Receive Event: "${event.name}"`
-            );
-            JSBlocker.doAfterCondition(
-                () => isDOMLoad,
-                () => {
-                    const scriptsString = scripts.join('\n');
-                    console.log(
                         `JS Blocker on "${domainName}"\n` +
-                        `Send Event: "js:getScripts.response"\n` +
-                        `Scripts: ${scriptsString}`
-                    );
-                    safari.extension.dispatchMessage('js:getScripts.response', {
-                        'domainName': domainName,
-                        'scripts': scriptsString
-                    });
-                }
-            );
+                        `Receive Event: "${event.name}"`
+                        );
+            JSBlocker.doAfterCondition(
+                                       () => isDOMLoad,
+                                       () => {
+                                           const scriptsString = scripts.join('\n');
+                                           console.log(
+                                                       `JS Blocker on "${domainName}"\n` +
+                                                       `Send Event: "js:getScripts.response"\n` +
+                                                       `Scripts: ${scriptsString}`
+                                                       );
+                                           safari.extension.dispatchMessage('js:getScripts.response', {
+                                               'domainName': domainName,
+                                               'scripts': scriptsString
+                                           });
+                                       }
+                                       );
         }
     });
 
@@ -53,24 +53,24 @@
         const isStorageAvailable = JSBlocker.isStorageAvailable;
 
         console.log(
-            `JS Blocker on "${domainName}" has been started\n` +
-            `Extension URL: "${safari.extension.baseURI}"\n` +
-            `Is Top Frame: yes\n` +
-            `Is Storage available: ${isStorageAvailable ? "yes" : "no"}`
-        );
+                    `JS Blocker on "${domainName}" has been started\n` +
+                    `Extension URL: "${safari.extension.baseURI}"\n` +
+                    `Is Top Frame: yes\n` +
+                    `Is Storage available: ${isStorageAvailable ? "yes" : "no"}`
+                    );
 
         if (isStorageAvailable === false) {
             console.log(
-                `JS Blocker on "${domainName}"\n` +
-                `Storage is unavailable - block all scripts`
-            );
+                        `JS Blocker on "${domainName}"\n` +
+                        `Storage is unavailable - block all scripts`
+                        );
             JSBlocker.sanitize();
             return;
         }
 
         const value = JSBlocker.parseJSON(
-            JSBlocker.getSettings()
-        );
+                                          JSBlocker.getSettings()
+                                          );
 
         /* ====================================================================== */
 
@@ -94,14 +94,14 @@
                 const oldSettings = JSBlocker.getSettings();
                 const newSettings = event.message.match;
                 const isRequiredUpdate = oldSettings === null ||
-                                        (oldSettings !== null && newSettings !== oldSettings);
+                (oldSettings !== null && newSettings !== oldSettings);
                 console.log(
-                    `JS Blocker on "${domainName}"\n` +
-                    `Receive Event: "${event.name}"\n` +
-                    `Old ${JSBlocker.SETTINGS_STORAGE_KEY}: ${oldSettings}\n` +
-                    `New ${JSBlocker.SETTINGS_STORAGE_KEY}: ${newSettings}\n` +
-                    `Update is required: ${isRequiredUpdate ? "yes" : "no"}`
-                );
+                            `JS Blocker on "${domainName}"\n` +
+                            `Receive Event: "${event.name}"\n` +
+                            `Old ${JSBlocker.SETTINGS_STORAGE_KEY}: ${oldSettings}\n` +
+                            `New ${JSBlocker.SETTINGS_STORAGE_KEY}: ${newSettings}\n` +
+                            `Update is required: ${isRequiredUpdate ? "yes" : "no"}`
+                            );
                 if (isRequiredUpdate) {
                     JSBlocker.setSettings(newSettings);
                     JSBlocker.pageReload();
@@ -142,7 +142,18 @@
 
         if (value.match === JSBlocker.MATCH_TYPE_STRING_EXACT_SCRIPT ||
             value.match === JSBlocker.MATCH_TYPE_STRING_WILDCARD_SCRIPT) {
-            // #todo: UNDER CONSTRUCTION
+            JSBlocker.prepareFramesForBlockJS(
+                (value.scripts ?? []).reduce((result, script) => {
+                    result[script.frameDomain] ??= []
+                    result[script.frameDomain].push(
+                        JSBlocker.crc32(script.url)
+                    )
+                    return result
+                }, {})
+            );
+            if (value.item.expiresAt !== 0) {
+                JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
+            }
             return;
         }
 
