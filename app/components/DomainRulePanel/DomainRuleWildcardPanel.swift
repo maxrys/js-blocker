@@ -5,12 +5,7 @@
 
 import SwiftUI
 
-struct DomainRulePanel: View {
-
-    enum PanelType {
-        case exact
-        case wildcard
-    }
+struct DomainRuleWildcardPanel: View {
 
     @StateObject private var popupState = PopupState.shared
 
@@ -30,24 +25,9 @@ struct DomainRulePanel: View {
         Color.domainRulePanel.background
     }
 
-    private var titleLocalized: String {
-        switch self.panelType {
-            case .exact   : NSLocalizedString("JavaScript on the Domain"             , comment: "")
-            case .wildcard: NSLocalizedString("JavaScript on the Domain + Subdomains", comment: "")
-        }
-    }
-
-    private var rules: [String] {
-        switch self.panelType {
-            case .exact   : self.popupState.ruleExact.isEmpty ? [] : [self.popupState.ruleExact]
-            case .wildcard: self.popupState.rulesWildcard
-        }
-    }
-
     private var isActiveRule: Bool {
-        switch self.panelType {
-            case .exact   : self.popupState.match.ifNil(defaultValue: false) { match in match.isExact    }
-            case .wildcard: self.popupState.match.ifNil(defaultValue: false) { match in match.isWildcard }
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isWildcard
         }
     }
 
@@ -57,22 +37,21 @@ struct DomainRulePanel: View {
         }
     }
 
+    private var rules: [String] {
+        self.popupState.rulesWildcard
+    }
+
     private var selected: Binding<Set<Int>> {
-        switch self.panelType {
-            case .exact   : Binding.constant([])
-            case .wildcard: self.$popupState.rulesWildcardSelected
-        }
+        self.$popupState.rulesWildcardSelected
     }
 
     private var lifetime: Binding<TimeInterval?> {
         self.$popupState.lifetime
     }
 
-    private let panelType: PanelType
     private let onClickAllow: (Set<Int>) -> Void
 
-    init(panelType: PanelType, onClickAllow: @escaping (Set<Int>) -> Void = { _ in }) {
-        self.panelType = panelType
+    init(onClickAllow: @escaping (Set<Int>) -> Void = { _ in }) {
         self.onClickAllow = onClickAllow
     }
 
@@ -81,8 +60,9 @@ struct DomainRulePanel: View {
 
             /* MARK: Title */
 
-            Text(self.titleLocalized)
-                .font(.system(size: 14, weight: .bold))
+            self.TitleView(
+                NSLocalizedString("JavaScript on the Domain + Subdomains", comment: "")
+            )
 
             /* MARK: Domain selector */
 
@@ -97,11 +77,8 @@ struct DomainRulePanel: View {
                 } else if (self.rules.count == 1) {
 
                     self.DomainNameView(
-                        text: self.rules.first!,
-                        opacity:
-                            self.isActiveRule || self.isEnabledButton ?
-                                1.0 :
-                                0.5
+                        text: self.rules.first ?? NOT_APPLICABLE,
+                        opacity: self.isActiveRule || self.isEnabledButton ? 1.0 : 0.5
                     )
 
                 } else {
@@ -116,11 +93,13 @@ struct DomainRulePanel: View {
                                 opacity: isChecked || self.isEnabledButton ? 1.0 : 0.5
                             )
 
-                            DomainRulePanel_Checkbox(
+                            DomainRuleWildcardPanel_Checkbox(
                                 selected: self.selected,
                                 index: index,
                                 color: self.colorDomainName
-                            ).disabled(!self.isEnabledButton)
+                            ).disabled(
+                                !self.isEnabledButton
+                            )
 
                         }
                     }
@@ -145,14 +124,16 @@ struct DomainRulePanel: View {
             /* MARK: Button "Allow" */
 
             self.ButtonAllowView()
-                .disabled(
-                    !self.isEnabledButton
-                )
 
         }
         .padding(.horizontal, 20)
         .padding(.vertical  , 30)
         .frame(maxWidth: .infinity)
+    }
+
+    @ViewBuilder private func TitleView(_ textLocalized: String) -> some View {
+        Text(textLocalized)
+            .font(.system(size: 14, weight: .bold))
     }
 
     @ViewBuilder private func DomainNameView(text: String, opacity: Double) -> some View {
@@ -163,20 +144,25 @@ struct DomainRulePanel: View {
     }
 
     @ViewBuilder private func ButtonAllowView() -> some View {
-        ButtonCapsule(
-            title: NSLocalizedString("allow", comment: ""),
-            minWidth: 180,
-            onClick: {
-                self.onClickAllow(
-                    self.rules.count == 1 ? [0] : self.selected.wrappedValue
-                )
-            }
-        ).overlayPolyfill(alignment: .trailing) {
+        Group {
+            ButtonCapsule(
+                title: NSLocalizedString("allow", comment: ""),
+                minWidth: 180,
+                onClick: {
+                    self.onClickAllow(
+                        self.selected.wrappedValue
+                    )
+                }
+            ).disabled(
+                !self.isEnabledButton
+            )
+        }
+        .overlayPolyfill(alignment: .trailing) {
             if (self.isEnabledButton) {
                 LifetimePicker(
                     lifetime: self.lifetime,
                     openerIconOffset: CGPoint(x: -1.0, y: -0.5)
-                ).disabled(!self.isEnabledButton)
+                )
             }
         }
         .clipShape   (Capsule())
@@ -186,7 +172,7 @@ struct DomainRulePanel: View {
 
 }
 
-struct DomainRulePanel_Checkbox: View {
+struct DomainRuleWildcardPanel_Checkbox: View {
 
     static let ICON_CHECK         = Image("symbol Checkbox")
     static let ICON_CHECK_CHECKED = Image("symbol Checkbox Checked")
@@ -228,62 +214,46 @@ struct DomainRulePanel_Checkbox: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct DomainRulePanel_MatchNone_Previews: PreviewProvider {
+struct DomainRuleWildcardPanel_MatchNone_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 0) {
-            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
-            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
-        }
-        .frame(width: Popup.FRAME_WIDTH)
-        .onAppear {
-            PopupState.shared.match = nil
-            PopupState.shared.ruleExact = ""
-            PopupState.shared.rulesWildcard = []
-        }
+        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
+            .frame(width: Popup.FRAME_WIDTH)
+            .onAppear {
+                PopupState.shared.match = nil
+                PopupState.shared.rulesWildcard = []
+            }
     }
 }
 
-struct DomainRulePanel_MatchNoOne_Previews: PreviewProvider {
+struct DomainRuleWildcardPanel_MatchNoOne_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 0) {
-            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
-            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
-        }
-        .frame(width: Popup.FRAME_WIDTH)
-        .onAppear {
-            PopupState.shared.match = .noOne
-            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-        }
+        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
+            .frame(width: Popup.FRAME_WIDTH)
+            .onAppear {
+                PopupState.shared.match = .noOne
+                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+            }
     }
 }
 
-struct DomainRulePanel_MatchExact_Previews: PreviewProvider {
+struct DomainRuleWildcardPanel_MatchExact_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 0) {
-            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
-            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
-        }
-        .frame(width: Popup.FRAME_WIDTH)
-        .onAppear {
-            PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-        }
+        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
+            .frame(width: Popup.FRAME_WIDTH)
+            .onAppear {
+                PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
+                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+            }
     }
 }
 
-struct DomainRulePanel_MatchWildcard_Previews: PreviewProvider {
+struct DomainRuleWildcardPanel_MatchWildcard_Previews: PreviewProvider {
     static var previews: some View {
-        Previewer(spacing: 0) {
-            DomainRulePanel(panelType: .exact   ).background(Color.popup.ruleExactBackground)
-            DomainRulePanel(panelType: .wildcard).background(Color.popup.rulesWildcardBackground)
-        }
-        .frame(width: Popup.FRAME_WIDTH)
-        .onAppear {
-            PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-            PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-            PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-        }
+        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
+            .frame(width: Popup.FRAME_WIDTH)
+            .onAppear {
+                PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
+                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+            }
     }
 }
