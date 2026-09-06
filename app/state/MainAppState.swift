@@ -51,14 +51,14 @@ final class MainAppState: ObservableObject {
     }
 
     private func itemsInit() {
-        self.items = ADModel.selectAll()
-        self.itemsVersion = EntityVersions.versionGet(ADModel.stringName)
+        self.items = AllowedDomains.selectAll()
+        self.itemsVersion = EntityVersions.versionGet(AllowedDomains.stringName)
     }
 
     public func itemsReload(_ newItemsVersion: Int64? = nil) {
         let oldSelectedNames = self.selectedNames
-        self.items = ADModel.selectAll(self.filterByName.isEmpty ? nil : self.filterByName)
-        self.itemsVersion = newItemsVersion ?? EntityVersions.versionGet(ADModel.stringName)
+        self.items = AllowedDomains.selectAll(self.filterByName.isEmpty ? nil : self.filterByName)
+        self.itemsVersion = newItemsVersion ?? EntityVersions.versionGet(AllowedDomains.stringName)
         if (!oldSelectedNames.isEmpty) {
             self.selectedRows = self.items.enumerated().reduce(into: Set<Int>(), { result, newPair in
                 if (oldSelectedNames.contains(newPair.element.name)) {
@@ -69,15 +69,15 @@ final class MainAppState: ObservableObject {
     }
 
     private func onTimerTick(timer: Timer.Custom) {
-        _ = ADModel.sanitize()
-        let newItemsVersion = EntityVersions.versionGet(ADModel.stringName)
+        _ = AllowedDomains.sanitize()
+        let newItemsVersion = EntityVersions.versionGet(AllowedDomains.stringName)
         if (self.itemsVersion != newItemsVersion) {
             self.itemsReload(newItemsVersion)
         }
     }
 
     func delete(_ names: [DomainName]) -> ExecuteResult {
-        let result = ADModel.delete(names)
+        let result = AllowedDomains.delete(names)
         if case .success = result {
             self.selectedRows = []
             self.itemsReload()

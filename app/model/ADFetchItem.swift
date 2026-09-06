@@ -31,7 +31,7 @@ struct ADFetchItem: Equatable {
         self.expiresAt   = expiresAt
     }
 
-    init(item: ADModel) {
+    init(item: AllowedDomains) {
         self.name        = item.name
         self.nameDecoded = item.nameDecoded
         self.isWildcard  = item.isWildcard

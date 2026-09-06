@@ -111,7 +111,7 @@ struct MainScene: View {
             .padding(20)
             .padding(.bottom, 3)
             .onAppear {
-                ADModel.dump()
+                AllowedDomains.dump()
                 EntityVersions.dump()
             }
         }
@@ -129,7 +129,7 @@ struct MainScene: View {
             if let messageString = publisher.object as? String {
                 if let message = EntityVersions.DistributedMessasge(decode: messageString) {
                     Logger.customLog("Message \"\(EntityVersions.EVENT_NAME_FOR_ENTITY_CHANGE)\" receive: \(messageString)")
-                    if (message.name == ADModel.stringName) {
+                    if (message.name == AllowedDomains.stringName) {
                         self.mainAppState.itemsReload(
                             message.version
                         )

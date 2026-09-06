@@ -172,9 +172,9 @@ final class Features {
                     Logger.customLog("EXPIRED ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)")
                     continue
                 }
-                if case .success(let affected) = ADModel.delete([item.name]), affected > 0
-                     { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt)) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
-                else { if (ADModel.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt)) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
+                if case .success(let affected) = AllowedDomains.delete([item.name]), affected > 0
+                     { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt) { updateCount += 1; Logger.customLog("UPDATE ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
+                else { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.isWildcard, expiresAt: item.expiresAt) { insertCount += 1; Logger.customLog("INSERT ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: isWildcard = \(item.isWildcard) | name = \(item.name)") } }
             }
 
             /* MARK: Message */

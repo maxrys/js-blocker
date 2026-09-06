@@ -10,7 +10,7 @@ class RulesHandler: NSObject, NSExtensionRequestHandling {
     static var JSON: Data {
         var unlessDomains: [String] = []
 
-        for domain in ADModel.selectAll() {
+        for domain in AllowedDomains.selectAll() {
             if (domain.isWildcard != true) { unlessDomains.append( "\(domain.name)") }
             if (domain.isWildcard == true) { unlessDomains.append("*\(domain.name)") }
         }

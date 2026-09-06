@@ -46,7 +46,6 @@ extension EntityVersions {
 
 }
 
-
 public class EntityVersions: NSManagedObject {
 
     typealias SELF = EntityVersions
@@ -71,7 +70,7 @@ public class EntityVersions: NSManagedObject {
             request.sortDescriptors = [orderBy]
             return try Storage.context.fetch(request)
         } catch {
-            Logger.customLog("Model EntityVersions.selectAll() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).selectAll() error: \(error).")
             return []
         }
     }
@@ -84,7 +83,7 @@ public class EntityVersions: NSManagedObject {
             let result = try Storage.context.fetch(request)
             return result.first?.version ?? nil
         } catch {
-            Logger.customLog("Model EntityVersions.versionGet() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).versionGet() error: \(error).")
             return nil
         }
     }
@@ -112,14 +111,14 @@ public class EntityVersions: NSManagedObject {
             )
             return version
         } catch {
-            Logger.customLog("Model EntityVersions.versionIncrement() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).versionIncrement() error: \(error).")
             return nil
         }
     }
 
     static func dump() {
         #if DEBUG
-            let items = Self.selectAll()
+            let items = SELF.selectAll()
             if (!items.isEmpty) {
 
                 let rows: [String] = items.reduce(into: []) { result, item in
@@ -133,7 +132,7 @@ public class EntityVersions: NSManagedObject {
 
                 Logger.customLog("""
 
-                Storage Dump for \"Entity Versions\":
+                Storage Dump for \"\(SELF.stringName)\":
                 >> --------------------------------------------------------------------
                 >> name                                             |     version      
                 >> ====================================================================
@@ -144,7 +143,7 @@ public class EntityVersions: NSManagedObject {
             } else {
                 Logger.customLog("""
 
-                Storage Dump for \"Entity Versions\":
+                Storage Dump for \"\(SELF.stringName)\":
                 >> --------------------------------------------------------------------
                 >>                           ... no data ...
                 >> --------------------------------------------------------------------

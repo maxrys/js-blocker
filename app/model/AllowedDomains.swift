@@ -7,45 +7,44 @@ import os
 import AppKit
 import CoreData
 
-typealias ADModel = WhiteDomains
+typealias AllowedDomains = WhiteDomains
 
-public class WhiteDomains: NSManagedObject {
-
-    typealias SELF = WhiteDomains
-
-    static let stringName = "WhiteDomains"
-
-    @NSManaged var name: DomainName
-    @NSManaged var nameDecoded: DomainName
-    @NSManaged var isGlobal: Bool
-    @NSManaged var expiresAt: Int64
-    @NSManaged var createdAt: Int64
-    var isWildcard: Bool {
-        get { self.isGlobal }
-        set { self.isGlobal = newValue }
-    }
-
-    convenience init() {
-        self.init(context: Storage.context)
-    }
+extension AllowedDomains {
 
     static func hasDomain(name: DomainName) -> Bool {
-        Self.select(name) != nil
+        SELF.select(name) != nil
     }
 
     static func matchType(name: DomainName) -> MatchType {
-        if let domainItem = Self.select(name) {
-            if (domainItem.isWildcard != true) { return .exact   (item: ADFetchItem(item: domainItem)) }
-            if (domainItem.isWildcard == true) { return .wildcard(item: ADFetchItem(item: domainItem)) }
+        if let domainItem = SELF.select(name) {
+            if (domainItem.isWildcard != true) { return .exact   (item: domainItem) }
+            if (domainItem.isWildcard == true) { return .wildcard(item: domainItem) }
         }
-        let wildcardDomains = Self.selectWildcardDomains(name)
+        let wildcardDomains = SELF.selectWildcardDomains(name)
         if let first = wildcardDomains.first {
             return .wildcard(item: first)
         }
         return .noOne
     }
 
-    static func select(_ name: DomainName) -> SELF? {
+    static func selectWildcardDomains(_ name: DomainName, ascending: Bool = false) -> ADFetchCollection {
+        do {
+            let orderBy = NSSortDescriptor(key: #keyPath(SELF.name), ascending: ascending)
+            let names = [name] + name.topDomains(isDeleteTLD: true)
+            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
+            request.fetchLimit = Int.max
+            request.sortDescriptors = [orderBy]
+            request.predicate = NSPredicate(format: "(name IN %@) AND (isGlobal == true)", names)
+            return try Storage.context.fetch(request).reduce(into: ADFetchCollection()) { result, modelItem in
+                result.appendUnique(modelItem)
+            }
+        } catch {
+            Logger.customLog("Model \(SELF.stringName).selectWildcardDomains() error: \(error).")
+            return []
+        }
+    }
+
+    static func select(_ name: DomainName) -> ADFetchItem? {
         do {
             let orderBy = NSSortDescriptor(key: #keyPath(SELF.createdAt), ascending: false)
             let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
@@ -53,9 +52,11 @@ public class WhiteDomains: NSManagedObject {
             request.sortDescriptors = [orderBy]
             request.predicate = NSPredicate(format: "name ==[c] %@", name)
             let result = try Storage.context.fetch(request)
-            return result.isEmpty ? nil : result.first
+            return result.first.ifNil(defaultValue: nil) { first in
+                ADFetchItem(item: first)
+            }
         } catch {
-            Logger.customLog("Model ADModel.select() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).select() error: \(error).")
             return nil
         }
     }
@@ -82,29 +83,12 @@ public class WhiteDomains: NSManagedObject {
                 result.appendUnique(modelItem)
             }
         } catch {
-            Logger.customLog("Model ADModel.selectAll() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).selectAll() error: \(error).")
             return []
         }
     }
 
-    static func selectWildcardDomains(_ name: DomainName, ascending: Bool = false) -> ADFetchCollection {
-        do {
-            let orderBy = NSSortDescriptor(key: #keyPath(SELF.name), ascending: ascending)
-            let names = [name] + name.topDomains(isDeleteTLD: true)
-            let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
-            request.fetchLimit = Int.max
-            request.sortDescriptors = [orderBy]
-            request.predicate = NSPredicate(format: "(name IN %@) AND (isGlobal == true)", names)
-            return try Storage.context.fetch(request).reduce(into: ADFetchCollection()) { result, modelItem in
-                result.appendUnique(modelItem)
-            }
-        } catch {
-            Logger.customLog("Model ADModel.selectWildcardDomains() error: \(error).")
-            return []
-        }
-    }
-
-    static func insert(name: DomainName, isWildcard: Bool = false, expiresAt: Int64 = 0) -> Bool {
+    static func insert(name: DomainName, isWildcard: Bool = false, expiresAt: Int64 = 0) -> ExecuteResult {
         do {
             let newObject = SELF()
                 newObject.name        = name
@@ -115,10 +99,10 @@ public class WhiteDomains: NSManagedObject {
             try Storage.context.save()
             _ = EntityVersions.versionIncrement(SELF.stringName)
                 EntityVersions.dump()
-            return true
+            return .success(affected: 1)
         } catch {
-            Logger.customLog("Model ADModel.insert() error: \(error).")
-            return false
+            Logger.customLog("Model \(SELF.stringName).insert() error: \(error).")
+            return .failure
         }
     }
 
@@ -140,7 +124,7 @@ public class WhiteDomains: NSManagedObject {
                 affected: affected
             )
         } catch {
-            Logger.customLog("Model ADModel.delete() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).delete() error: \(error).")
             return .failure
         }
     }
@@ -163,14 +147,14 @@ public class WhiteDomains: NSManagedObject {
                 affected: affected
             )
         } catch {
-            Logger.customLog("Model ADModel.sanitize() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).sanitize() error: \(error).")
             return .failure
         }
     }
 
     static func dump() {
         #if DEBUG
-            let items = Self.selectAll(
+            let items = SELF.selectAll(
                 skipWithExpiration: false,
                 skipExpired: false
             )
@@ -189,7 +173,7 @@ public class WhiteDomains: NSManagedObject {
 
                 Logger.customLog("""
 
-                Storage Dump for \"Allowed Domains\":
+                Storage Dump for \"\(SELF.stringName)\":
                 >> ------------------------------------------------------------------------------------
                 >> name                                             |     expires at      | is wildcard
                 >> ====================================================================================
@@ -200,7 +184,7 @@ public class WhiteDomains: NSManagedObject {
             } else {
                 Logger.customLog("""
 
-                Storage Dump for \"Allowed Domains\":
+                Storage Dump for \"\(SELF.stringName)\":
                 >> ------------------------------------------------------------------------------------
                 >>                                    ... no data ...
                 >> ------------------------------------------------------------------------------------
