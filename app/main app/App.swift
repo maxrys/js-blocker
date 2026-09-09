@@ -9,6 +9,7 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaultsState.isAppLaunchedOnce_direct = true
+        Migrations.migration_001()
     }
 
     func applicationShouldHandleReopen(_ app: NSApplication, hasVisibleWindows flag: Bool) -> Bool {

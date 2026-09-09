@@ -66,8 +66,7 @@ public class EntityVersions: NSManagedObject {
         do {
             let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
-            let orderBy = NSSortDescriptor(key: orderBy, ascending: ascending)
-            request.sortDescriptors = [orderBy]
+            request.sortDescriptors = [ NSSortDescriptor(key: orderBy, ascending: ascending) ]
             return try Storage.context.fetch(request)
         } catch {
             Logger.customLog("Model \(SELF.stringName).selectAll() error: \(error).")
@@ -136,7 +135,13 @@ public class EntityVersions: NSManagedObject {
                 >> --------------------------------------------------------------------
                 >> name                                             |     version      
                 >> ====================================================================
-                \(rows.joined(separator: "\n"))
+                """)
+
+                for line in rows {
+                    Logger.customLog(line)
+                }
+
+                Logger.customLog("""
                 >> --------------------------------------------------------------------
 
                 """)

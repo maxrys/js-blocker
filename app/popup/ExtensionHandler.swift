@@ -13,6 +13,11 @@ class ExtensionHandler: SFSafariExtensionHandler {
     static let ICON_EXACT    = NSImage(contentsOfFile: Bundle.main.path(forResource: "iconToolbar-exact"   , ofType: "pdf")!)
     static let ICON_WILDCARD = NSImage(contentsOfFile: Bundle.main.path(forResource: "iconToolbar-wildcard", ofType: "pdf")!)
 
+    override init() {
+        super.init()
+        Migrations.migration_001()
+    }
+
     override func beginRequest(with context: NSExtensionContext) {
     }
 

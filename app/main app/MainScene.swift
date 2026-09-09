@@ -112,6 +112,7 @@ struct MainScene: View {
             .padding(.bottom, 3)
             .onAppear {
                 AllowedDomains.dump()
+                AllowedScripts.dump()
                 EntityVersions.dump()
             }
         }
@@ -155,8 +156,11 @@ struct MainScene: View {
     }
 
     @ViewBuilder private func CellMatchTypeView(_ domain: ADFetchItem) -> some View {
-        if (domain.isWildcard != true) { Self.ICON_CELL_MATCH_TYPE_EXACT   .resizable().aspectRatio(contentMode: .fit).frame(height: 15) }
-        if (domain.isWildcard == true) { Self.ICON_CELL_MATCH_TYPE_WILDCARD.resizable().aspectRatio(contentMode: .fit).frame(height: 15) }
+        switch domain.type {
+            case MATCH_TYPE_STRING_EXACT   : Self.ICON_CELL_MATCH_TYPE_EXACT   .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+            case MATCH_TYPE_STRING_WILDCARD: Self.ICON_CELL_MATCH_TYPE_WILDCARD.resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+            default: self.EmptyCellView()
+        }
     }
 
     @ViewBuilder private func CellOpenURLView(_ domain: ADFetchItem) -> some View {
