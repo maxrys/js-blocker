@@ -1,6 +1,8 @@
-<html lang="en">
+<?php
+    $domain = idn_to_utf8($_SERVER['HTTP_HOST'], IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46);
+    $isInFrame = isset($_GET['isFrame']);
+?><html lang="en">
 <head>
-    <?php $domain = $_SERVER['HTTP_HOST']; $isInFrame = isset($_GET['isFrame']); ?>
     <meta charset="utf-8">
     <title>JS Blocker Test: <?php print($domain) ?></title>
     <link href="style.css" rel="stylesheet" media="all">
@@ -13,10 +15,10 @@
     </script>
 
     <!-- EXTERNAL SCRIPTS -->
-    <script                     src="https://js-blocker.com/script.js.php" defer></script>
-    <script           src="https://subdomain.js-blocker.com/script.js.php" defer></script>
-    <script src="https://subdomain.subdomain.js-blocker.com/script.js.php" defer></script>
-    <script                     src="https://js-блоккер/script.js.php"     defer></script>
+    <script         src="https://js-blocker.com/script.js.php" defer></script>
+    <script     src="https://sub.js-blocker.com/script.js.php" defer></script>
+    <script src="https://sub.sub.js-blocker.com/script.js.php" defer></script>
+    <script         src="https://js-блоккер/script.js.php?anyRandomValue=<?php print(random_int(0, 1000)); ?>" defer></script>
 
 </head>
 <body onload="document.getElementById('inline_attr_script').setAttribute('data-js-active', '');"
@@ -30,13 +32,13 @@
         <?php if (!$isInFrame) { ?>
             <x-title>JS States</x-title>
         <?php } ?>
-        <x-indicator x-type="external_script"                     x-domain="js-blocker.com">External JS from           js-blocker.com</x-indicator>
-        <x-indicator x-type="external_script"           x-domain="subdomain.js-blocker.com">External JS from     sub...js-blocker.com</x-indicator>
-        <x-indicator x-type="external_script" x-domain="subdomain.subdomain.js-blocker.com">External JS from sub.sub...js-blocker.com</x-indicator>
-        <x-indicator x-type="external_script"                x-domain="xn--js--dddu3aag1ax">External JS from           js-блоккер    </x-indicator>
         <x-indicator id="inline_attr_script">Inline JS Attribute Script</x-indicator>
         <x-indicator id="inline_head_script">Inline JS Head Script</x-indicator>
         <x-indicator id="inline_body_script">Inline JS Body Script</x-indicator>
+        <x-indicator x-type="external_script"         x-domain="js-blocker.com">External JS from         js-blocker.com</x-indicator>
+        <x-indicator x-type="external_script"     x-domain="sub.js-blocker.com">External JS from     sub.js-blocker.com</x-indicator>
+        <x-indicator x-type="external_script" x-domain="sub.sub.js-blocker.com">External JS from sub.sub.js-blocker.com</x-indicator>
+        <x-indicator x-type="external_script"    x-domain="xn--js--dddu3aag1ax">External JS from         js-блоккер    </x-indicator>
     </x-states>
 
     <!-- INLINE BODY SCRIPT -->
@@ -48,10 +50,10 @@
     <x-frames>
         <?php if (!$isInFrame) { ?>
             <x-title>Frames</x-title>
-            <iframe height="205" width="280"                     src="https://js-blocker.com?isFrame"></iframe>
-            <iframe height="205" width="280"           src="https://subdomain.js-blocker.com?isFrame"></iframe>
-            <iframe height="205" width="280" src="https://subdomain.subdomain.js-blocker.com?isFrame"></iframe>
-            <iframe height="205" width="280"                     src="https://js-блоккер?isFrame"    ></iframe>
+            <iframe height="205" width="280"         src="https://js-blocker.com?isFrame"></iframe>
+            <iframe height="205" width="280"     src="https://sub.js-blocker.com?isFrame"></iframe>
+            <iframe height="205" width="280" src="https://sub.sub.js-blocker.com?isFrame"></iframe>
+            <iframe height="205" width="280"         src="https://js-блоккер?isFrame"    ></iframe>
         <?php } ?>
     </x-frames>
 
@@ -60,10 +62,10 @@
         <x-links>
             <x-block>
                 <x-title>Main links</x-title>
-                <a                     target="js_blocker_com"                     href="https://js-blocker.com">                     js-blocker.com </a>
-                <a           target="subdomain_js_blocker_com"           href="https://subdomain.js-blocker.com">           subdomain.js-blocker.com </a>
-                <a target="subdomain_subdomain_js_blocker_com" href="https://subdomain.subdomain.js-blocker.com"> subdomain.subdomain.js-blocker.com </a>
-                <a                     target="js_блоккер"                         href="https://js-блоккер"    >                     js-блоккер     </a>
+                <a         target="js_blocker_com"         href="https://js-blocker.com">         js-blocker.com </a>
+                <a     target="sub_js_blocker_com"     href="https://sub.js-blocker.com">     sub.js-blocker.com </a>
+                <a target="sub_sub_js_blocker_com" href="https://sub.sub.js-blocker.com"> sub.sub.js-blocker.com </a>
+                <a        target="js_блоккер"              href="https://js-блоккер"    >         js-блоккер     </a>
             </x-block>
         </x-links>
     <?php } ?>
