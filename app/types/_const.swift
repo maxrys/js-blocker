@@ -5,7 +5,12 @@
 
 import Foundation
 
+typealias CurrentDomainName = DomainName
+typealias FrameDomainName   = DomainName
+typealias Matrix2dArrOfStr  = Dictionary<String, [String]>.Matrix2D
+
 let NOT_APPLICABLE       = "—"
+let APP_ID               = "JSBlocker"
 let GROUP_NAME           = "97CZR6J379.maxrys.js-blocker"
 let EXTENSION_POPUP_NAME = "maxrys.js-blocker.popup"
 let EXTENSION_RULES_NAME = "maxrys.js-blocker.rules"

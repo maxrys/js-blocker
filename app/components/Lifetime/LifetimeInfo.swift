@@ -66,9 +66,9 @@ struct LifetimeInfo: View {
     @ViewBuilder private func PopupView(_ timeLeft: TimeInterval) -> some View {
         VStack(spacing: 0) {
 
-            self.PopupTitle()
+            self.PopupTitleView()
                 .overlayPolyfill(alignment: .bottom) {
-                    self.PopupTitleShadow(height: 5)
+                    self.PopupTitleShadowView(height: 5)
                         .offset(y: 5 + 1)
                 }
 
@@ -85,7 +85,7 @@ struct LifetimeInfo: View {
         }
     }
 
-    @ViewBuilder private func PopupTitle(height: CGFloat = 5) -> some View {
+    @ViewBuilder private func PopupTitleView(height: CGFloat = 5) -> some View {
         Text(NSLocalizedString("lifetime", comment: ""))
             .font(.headline)
             .frame(maxWidth: .infinity)
@@ -95,7 +95,7 @@ struct LifetimeInfo: View {
             .background(Color.lifetime.popupTitleBackground)
     }
 
-    @ViewBuilder private func PopupTitleShadow(height: CGFloat = 5) -> some View {
+    @ViewBuilder private func PopupTitleShadowView(height: CGFloat = 5) -> some View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.lifetime.popupTitleBorder)

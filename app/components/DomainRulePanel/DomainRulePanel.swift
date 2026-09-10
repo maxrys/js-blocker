@@ -12,9 +12,6 @@ struct DomainRulePanel: View {
         case wildcard
     }
 
-    static let ICON_CHECK         = Image("symbol Checkbox")
-    static let ICON_CHECK_CHECKED = Image("symbol Checkbox Checked")
-
     @StateObject private var popupState = PopupState.shared
 
     private var colorDomainName: Color {
@@ -67,7 +64,7 @@ struct DomainRulePanel: View {
         }
     }
 
-    private var lifetime: Binding<TimeInterval> {
+    private var lifetime: Binding<TimeInterval?> {
         self.$popupState.lifetime
     }
 
@@ -119,10 +116,11 @@ struct DomainRulePanel: View {
                                 opacity: isChecked || self.isEnabledButton ? 1.0 : 0.5
                             )
 
-                            self.DomainCheckboxView(
+                            DomainRulePanel_Checkbox(
+                                selected: self.selected,
                                 index: index,
-                                isChecked: isChecked
-                            )
+                                color: self.colorDomainName
+                            ).disabled(!self.isEnabledButton)
 
                         }
                     }
@@ -164,23 +162,6 @@ struct DomainRulePanel: View {
             .opacity(opacity)
     }
 
-    @ViewBuilder private func DomainCheckboxView(index: Int, isChecked: Bool) -> some View {
-        Button {
-            self.selected.wrappedValue.toggle(index)
-        } label: {
-            let icon = isChecked ?
-                Self.ICON_CHECK_CHECKED :
-                Self.ICON_CHECK
-            icon.foregroundPolyfill(self.colorDomainName)
-                .font(.system(size: 16))
-        }
-        .buttonStyle(.plain)
-        .disabled(!self.isEnabledButton)
-        .pointerStyleLinkPolyfill(
-            self.isEnabledButton
-        )
-    }
-
     @ViewBuilder private func ButtonAllowView() -> some View {
         ButtonCapsule(
             title: NSLocalizedString("allow", comment: ""),
@@ -192,13 +173,51 @@ struct DomainRulePanel: View {
             }
         ).overlayPolyfill(alignment: .trailing) {
             if (self.isEnabledButton) {
-                LifetimePicker(lifetime: self.lifetime)
-                    .disabled(!self.isEnabledButton)
+                LifetimePicker(
+                    lifetime: self.lifetime,
+                    openerIconOffset: CGPoint(x: -1.0, y: -0.5)
+                ).disabled(!self.isEnabledButton)
             }
         }
         .clipShape   (Capsule())
         .contentShape(Capsule())
         .focusEffect (Capsule())
+    }
+
+}
+
+struct DomainRulePanel_Checkbox: View {
+
+    static let ICON_CHECK         = Image("symbol Checkbox")
+    static let ICON_CHECK_CHECKED = Image("symbol Checkbox Checked")
+
+    @Environment(\.isEnabled) private var isEnabled
+
+    private let selected: Binding<Set<Int>>
+    private let index: Int
+    private let color: Color
+
+    init(selected: Binding<Set<Int>>, index: Int, color: Color) {
+        self.selected = selected
+        self.index = index
+        self.color = color
+    }
+
+    public var body: some View {
+        Button {
+            self.selected.wrappedValue.toggle(index)
+        } label: {
+            let icon = self.selected.wrappedValue.contains(index) ?
+                Self.ICON_CHECK_CHECKED :
+                Self.ICON_CHECK
+            icon.foregroundPolyfill(self.color)
+                .font(.system(size: 16))
+        }
+        .buttonStyle(.plain)
+        .disabled(!self.isEnabled)
+        .pointerStyleLinkPolyfill(
+            self.isEnabled
+        )
     }
 
 }

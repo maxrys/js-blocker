@@ -1328,18 +1328,18 @@
         }
       }
     },
-    "No External Strips" : {
+    "no strips" : {
       "localizations" : {
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "няма знешніх скрыптоў"
+            "value" : "няма скрыптоў"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "нет внешних скриптов"
+            "value" : "нет скриптов"
           }
         }
       }
@@ -1440,6 +1440,22 @@
         }
       }
     },
+    "type" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "тып"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "тип"
+          }
+        }
+      }
+    },
     "unlimit" : {
       "localizations" : {
         "be-BY" : {
@@ -1474,22 +1490,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Версия %1$@ (%2$@)"
-          }
-        }
-      }
-    },
-    "wildcard" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "абагуль."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "обобщ."
           }
         }
       }

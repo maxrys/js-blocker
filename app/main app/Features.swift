@@ -92,7 +92,7 @@ final class Features {
 
             let formattedDate = Date().formatCustom("yyyyMMdd-HHmmss")
             let exportFileURL = directoryURL.appendingPathComponent(
-                "JSBlocker-\(formattedDate).json"
+                "\(APP_ID)-\(formattedDate).json"
             )
 
             /* MARK: Write to file */

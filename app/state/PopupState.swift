@@ -14,14 +14,17 @@ final class PopupState: ObservableObject {
     static public private(set) var shared = PopupState()
 
     @Published var page: SFSafariPage? = nil
-    @Published var domainName: DomainName? = nil
+    @Published var domainName: CurrentDomainName? = nil
     @Published var match: MatchType? = nil
+
     @Published var ruleExact: String = ""
     @Published var rulesWildcard: [String] = []
     @Published var rulesWildcardSelected: Set<Int> = []
-    @Published var lifetime: TimeInterval = LifetimePicker.PERIOD_UNLIMIT
+
+    @Published var lifetime: TimeInterval? = nil
     @Published var expireStatus: ExpireStatus = .notSetted
-    @Published var scripts: [DomainName: [DomainName: [String]]] = [:]
+
+    @Published var scripts = Matrix2dArrOfStr() /* [CurrentDomainName: [FrameDomainName: [URLString]]] */
 
     private var timer: Timer.Custom!
 
@@ -48,6 +51,10 @@ final class PopupState: ObservableObject {
         }
     }
 
+    public func onSetScripts(domainName: DomainName, frameDomainName: DomainName, scripts: [URLString]) {
+        Self.shared.scripts[domainName, frameDomainName] = scripts
+    }
+
     public func onSetPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
         self.page = page
         self.domainName = domainName
@@ -55,7 +62,7 @@ final class PopupState: ObservableObject {
         self.ruleExact = domainName.decodePunycode()
         self.rulesWildcard = ([domainName] + domainName.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in result.append("*." + domain.decodePunycode()) }
         self.rulesWildcardSelected = []
-        self.lifetime = LifetimePicker.PERIOD_UNLIMIT
+        self.lifetime = nil
         self.expireStatus = self.match?.expireStatus ?? .notSetted
         self.refresh()
         self.jsGetScripts()
@@ -68,7 +75,7 @@ final class PopupState: ObservableObject {
         self.ruleExact = ""
         self.rulesWildcard = []
         self.rulesWildcardSelected = []
-        self.lifetime = LifetimePicker.PERIOD_UNLIMIT
+        self.lifetime = nil
         self.expireStatus = .notSetted
     }
 
@@ -93,8 +100,8 @@ final class PopupState: ObservableObject {
 
             self.match = ADModel.matchType(name: domainName)
             self.rulesWildcardSelected = wildcardRulesSelected
-            self.lifetime = LifetimePicker.PERIOD_UNLIMIT
             self.expireStatus = self.match?.expireStatus ?? .notSetted
+            self.lifetime = nil
 
         } else {
             self.reset()
@@ -120,7 +127,7 @@ final class PopupState: ObservableObject {
         if let page       = self.page,
            let domainName = self.domainName,
            let match      = self.match {
-                let matchJSONValue = match.toStrictJS
+                let matchJSONValue = match.strictJSON
                 Logger.customLog("js:setMatch for \(domainName): \(matchJSONValue)")
                 page.dispatchMessageToScript(
                     withName: "js:setMatch",

@@ -39,8 +39,8 @@ public class WhiteDomains: NSManagedObject {
             if (domainItem.isWildcard == true) { return .wildcard(item: ADFetchItem(item: domainItem)) }
         }
         let wildcardDomains = Self.selectWildcardDomains(name)
-        if (wildcardDomains.count > 0) {
-            return .wildcard(item: wildcardDomains[0])
+        if let first = wildcardDomains.first {
+            return .wildcard(item: first)
         }
         return .noOne
     }

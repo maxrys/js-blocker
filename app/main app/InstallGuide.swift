@@ -56,19 +56,19 @@ struct InstallGuide: View {
 
                 /* MARK: Description */
 
-                ZStack {
-                    ButtonCustom(
-                        NSLocalizedString("Open Safari Extensions Preferences…", comment: ""),
-                        colorStyle: .custom(text: .white, background: self.colorButtonBackground),
-                        flexibility: .size(300),
-                        onClick: self.onClick_OpenSafariPreferencesForExtension
-                    )
-                }
+                ButtonCustom(
+                    NSLocalizedString("Open Safari Extensions Preferences…", comment: ""),
+                    colorStyle: .custom(text: .white, background: self.colorButtonBackground),
+                    flexibility: .size(300),
+                    onClick: self.onClick_OpenSafariPreferencesForExtension
+                )
                 .frame(maxWidth: .infinity)
                 .padding(10)
                 .background(self.colorDescriptionBackground)
 
-            }
+            }.clipShape(
+                RoundedRectangle(cornerRadius: 5)
+            )
 
             Text(NSLocalizedString("Installation example", comment: ""))
                 .font(.system(size: 18, weight: .bold))

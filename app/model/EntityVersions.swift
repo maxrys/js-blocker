@@ -9,7 +9,7 @@ import CoreData
 
 extension EntityVersions {
 
-    static let EVENT_NAME_FOR_ENTITY_CHANGE = "JSBlocker-onChangeEntity"
+    static let EVENT_NAME_FOR_ENTITY_CHANGE = "\(APP_ID)-onChangeEntity"
 
     struct DistributedMessasge {
 

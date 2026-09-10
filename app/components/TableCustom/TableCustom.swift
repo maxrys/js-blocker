@@ -33,7 +33,7 @@ struct TableCustom: View {
     }
 
     init(
-        selected selectedRows: Binding<Set<Int>>,
+        selected selectedRows: Binding<Set<Int>> = .constant([]),
         windowID: String? = nil,
         isVisibleHeader: Bool = true,
         isFocusable: Bool = true,
@@ -57,7 +57,7 @@ struct TableCustom: View {
     }
 
     init(
-        selected selectedRows: Binding<Set<Int>>,
+        selected selectedRows: Binding<Set<Int>> = .constant([]),
         windowID: String? = nil,
         isVisibleHeader: Bool = true,
         isFocusable: Bool = true,
@@ -189,31 +189,38 @@ struct TableCustom_Previews1: PreviewProvider {
     struct ViewWithState: View {
         @State private var selected: Set<Int> = [4]
         var body: some View {
-            Previewer(axis: .horizontal, padding: 20) {
-                TableCustom(
-                    selected: self.$selected,
-                    isVisibleHeader: true,
-                    isFocusable: true,
-                    head: {
-                        TableCustom_HeadCell(
-                            size: .flexible(),
-                            spacing: 0,
-                            alignment: .leading
-                        ) { Text(NSLocalizedString("Values", comment: "")).font(.system(size: 11)) }
-                        TableCustom_HeadCell(
-                            size: .fixed(30),
-                            spacing: 0
-                        ) { EmptyView() }
-                    },
-                    bodyAsArray: [
-                        AnyView(Text("Value 1")), AnyView(Image(systemName: "1.circle")),
-                        AnyView(Text("Value 2")), AnyView(Image(systemName: "2.circle")),
-                        AnyView(Text("Value 3")), AnyView(Image(systemName: "3.circle")),
-                        AnyView(Text("Value 4")), AnyView(Image(systemName: "4.circle")),
-                        AnyView(Text("Value 5")), AnyView(Image(systemName: "5.circle")),
-                    ]
-                )
-            }.frame(width: 400)
+            VStack(spacing: 0) {
+                Previewer(axis: .horizontal, padding: 20) {
+                    TableCustom(
+                        selected: self.$selected,
+                        isVisibleHeader: true,
+                        isFocusable: true,
+                        head: {
+                            TableCustom_HeadCell(
+                                size: .flexible(),
+                                spacing: 0,
+                                alignment: .leading
+                            ) { Text(NSLocalizedString("Values", comment: "")).font(.system(size: 11)) }
+                            TableCustom_HeadCell(
+                                size: .fixed(30),
+                                spacing: 0
+                            ) { EmptyView() }
+                        },
+                        bodyAsArray: [
+                            AnyView(Text("Value 1")), AnyView(Image(systemName: "1.circle")),
+                            AnyView(Text("Value 2")), AnyView(Image(systemName: "2.circle")),
+                            AnyView(Text("Value 3")), AnyView(Image(systemName: "3.circle")),
+                            AnyView(Text("Value 4")), AnyView(Image(systemName: "4.circle")),
+                            AnyView(Text("Value 5")), AnyView(Image(systemName: "5.circle")),
+                        ]
+                    )
+                }.frame(width: 400)
+                let selectedReport = selected.sorted().map(String.init).joined(separator: ", ")
+                Text("selected: \(!selectedReport.isEmpty ? selectedReport : "—")")
+                    .padding(10)
+                    .frame(width: 400)
+                    .background(Color.white)
+            }
         }
     }
     static var previews: some View {
@@ -225,31 +232,38 @@ struct TableCustom_Previews2: PreviewProvider {
     struct ViewWithState: View {
         @State private var selected: Set<Int> = [4]
         var body: some View {
-            Previewer(axis: .horizontal, padding: 20) {
-                TableCustom(
-                    selected: self.$selected,
-                    isVisibleHeader: true,
-                    isFocusable: true,
-                    head: {
-                        TableCustom_HeadCell(
-                            size: .flexible(),
-                            spacing: 0,
-                            alignment: .leading
-                        ) { Text(NSLocalizedString("Values", comment: "")).font(.system(size: 11)) }
-                        TableCustom_HeadCell(
-                            size: .fixed(30),
-                            spacing: 0
-                        ) { EmptyView() }
-                    },
-                    bodyAsViews: {
-                        Text("Value 1"); Image(systemName: "1.circle")
-                        Text("Value 2"); Image(systemName: "2.circle")
-                        Text("Value 3"); Image(systemName: "3.circle")
-                        Text("Value 4"); Image(systemName: "4.circle")
-                        Text("Value 5"); Image(systemName: "5.circle")
-                    }
-                )
-            }.frame(width: 400)
+            VStack(spacing: 0) {
+                Previewer(axis: .horizontal, padding: 20) {
+                    TableCustom(
+                        selected: self.$selected,
+                        isVisibleHeader: true,
+                        isFocusable: true,
+                        head: {
+                            TableCustom_HeadCell(
+                                size: .flexible(),
+                                spacing: 0,
+                                alignment: .leading
+                            ) { Text(NSLocalizedString("Values", comment: "")).font(.system(size: 11)) }
+                            TableCustom_HeadCell(
+                                size: .fixed(30),
+                                spacing: 0
+                            ) { EmptyView() }
+                        },
+                        bodyAsViews: {
+                            Text("Value 1"); Image(systemName: "1.circle")
+                            Text("Value 2"); Image(systemName: "2.circle")
+                            Text("Value 3"); Image(systemName: "3.circle")
+                            Text("Value 4"); Image(systemName: "4.circle")
+                            Text("Value 5"); Image(systemName: "5.circle")
+                        }
+                    )
+                }.frame(width: 400)
+                let selectedReport = selected.sorted().map(String.init).joined(separator: ", ")
+                Text("selected: \(!selectedReport.isEmpty ? selectedReport : "—")")
+                    .padding(10)
+                    .frame(width: 400)
+                    .background(Color.white)
+            }
         }
     }
     static var previews: some View {
