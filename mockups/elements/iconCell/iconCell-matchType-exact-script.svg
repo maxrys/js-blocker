@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 48" xmlns:bx="https://boxy-svg.com">
   <defs>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="3" x2="12" y2="21" id="gradient-1" gradientTransform="matrix(2, 0, 0, 2, 48.00045, 0.000407)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="3" x2="12" y2="21" id="gradient-1" gradientTransform="matrix(2, 0, 0, 2, 0.00045, 0.000407)">
       <stop offset="0" style="stop-color: rgb(208, 208, 208);"/>
       <stop offset="1" style="stop-color: rgb(175, 175, 175);"/>
     </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-3" gradientTransform="matrix(2, 0, 0, 2, 47.999928, -0.000781)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-3" gradientTransform="matrix(2, 0, 0, 2, -0.000072, -0.000781)">
       <stop offset="0" style="stop-color: rgb(201, 201, 201);"/>
       <stop offset="1" style="stop-color: rgb(183, 183, 183);"/>
     </linearGradient>
     <bx:export>
-      <bx:file format="pdf" path="iconCell-matchType-exact.pdf">
+      <bx:file format="pdf" path="iconCell-matchType-exact-script.pdf">
         <bx:page background="#fff0" converttextstopaths="true"/>
       </bx:file>
     </bx:export>
@@ -30,22 +30,37 @@
       <stop offset="0" style="stop-color: rgb(201, 201, 201);"/>
       <stop offset="1" style="stop-color: rgb(183, 183, 183);"/>
     </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="3" x2="12" y2="21" id="gradient-0" gradientTransform="matrix(2, 0, 0, 2, 0, 0.000001)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="3" x2="12" y2="21" id="gradient-0" gradientTransform="matrix(2, 0, 0, 2, 48, 0.000001)">
       <stop offset="0" style="stop-color: rgb(0, 208, 121);"/>
       <stop offset="1" style="stop-color: rgb(85, 175, 0);"/>
     </linearGradient>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-2" gradientTransform="matrix(2, 0, 0, 2, 0, 0.000001)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-2" gradientTransform="matrix(0.8, 0, 0, 0.8, 56.400002, 8.4)">
+      <stop offset="0" style="stop-color: rgb(20, 199, 90);"/>
+      <stop offset="1" style="stop-color: rgb(65, 183, 30);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-8" gradientTransform="matrix(0.8, 0, 0, 0.8, 68.400002, 8.4)">
+      <stop offset="0" style="stop-color: rgb(20, 199, 90);"/>
+      <stop offset="1" style="stop-color: rgb(65, 183, 30);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-9" gradientTransform="matrix(0.8, 0, 0, 0.8, 56.400002, 21.4)">
+      <stop offset="0" style="stop-color: rgb(20, 199, 90);"/>
+      <stop offset="1" style="stop-color: rgb(65, 183, 30);"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="12" y1="7" x2="12" y2="17" id="gradient-10" gradientTransform="matrix(0.8, 0, 0, 0.8, 68.400002, 21.4)">
       <stop offset="0" style="stop-color: rgb(20, 199, 90);"/>
       <stop offset="1" style="stop-color: rgb(65, 183, 30);"/>
     </linearGradient>
   </defs>
-  <g>
-    <rect x="6" y="6" width="36" height="36" style="stroke-width: 4; stroke: url(&quot;#gradient-0&quot;); fill: none;" rx="3" ry="3"/>
-    <rect x="14" y="14" width="20" height="20" style="fill: url(&quot;#gradient-2&quot;); stroke-width: 2;" rx="1" ry="1"/>
-  </g>
   <g style="opacity: 0.5;">
-    <rect x="54" y="6" width="36" height="36" style="stroke-width: 4; stroke: url(&quot;#gradient-1&quot;); fill: none;" rx="3" ry="3"/>
-    <rect x="62" y="14" width="20" height="20" style="fill: url(&quot;#gradient-3&quot;); stroke-width: 2; opacity: 0.5;" rx="1" ry="1"/>
+    <rect x="6" y="6" width="36" height="36" style="stroke-width: 4; stroke: url(&quot;#gradient-1&quot;); fill: none;" rx="3" ry="3"/>
+    <rect x="14" y="14" width="20" height="20" style="fill: url(&quot;#gradient-3&quot;); stroke-width: 2; opacity: 0.5;" rx="1" ry="1"/>
+  </g>
+  <g>
+    <rect x="54" y="6" width="36" height="36" style="stroke-width: 4; stroke: url(&quot;#gradient-0&quot;); fill: none;" rx="3" ry="3"/>
+    <rect x="62" y="14" width="8" height="8" style="fill: url(&quot;#gradient-2&quot;); stroke-width: 2;" rx="1" ry="1"/>
+    <rect x="74" y="14" width="8" height="8" style="stroke-width: 2; fill: url(&quot;#gradient-8&quot;);" rx="1" ry="1"/>
+    <rect x="62" y="27" width="8" height="8" style="stroke-width: 2; fill: url(&quot;#gradient-9&quot;);" rx="1" ry="1"/>
+    <rect x="74" y="27" width="8" height="8" style="stroke-width: 2; fill: url(&quot;#gradient-10&quot;);" rx="1" ry="1"/>
   </g>
   <g style="opacity: 0.5;">
     <rect x="102" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-4&quot;);" rx="3" ry="3"/>

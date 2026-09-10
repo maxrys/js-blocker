@@ -71,6 +71,7 @@ final class PopupState: ObservableObject {
                 }
                 return AllowedDomains.selectDomainAndTopDomains(domainName, types: [
                     MATCH_TYPE_STRING_WILDCARD,
+                    MATCH_TYPE_STRING_WILDCARD_SCRIPT
                 ]).reduce(into: Set<Int>()) { result, domain in
                     if let index = allDomains.firstIndex(of: domain.name) {
                         result.insert(index)
@@ -81,7 +82,9 @@ final class PopupState: ObservableObject {
             let rulesWildcardDisabled: Set<Int> = {
                 AllowedDomains.selectDomainAndTopDomains(domainName, types: [
                     MATCH_TYPE_STRING_EXACT,
+                    MATCH_TYPE_STRING_EXACT_SCRIPT,
                     MATCH_TYPE_STRING_WILDCARD,
+                    MATCH_TYPE_STRING_WILDCARD_SCRIPT,
                 ]).reduce(into: Set<Int>()) { result, domain in
                     if let index = allDomains.firstIndex(of: domain.name) {
                         result.insert(index)

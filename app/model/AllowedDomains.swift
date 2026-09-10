@@ -29,14 +29,18 @@ public class AllowedDomains: NSManagedObject {
 
     static func matchType(name: DomainName) -> MatchType {
         if let item = SELF.select(name) {
-            if (item.type == MATCH_TYPE_STRING_EXACT   ) { return .exact   (item: item) }
-            if (item.type == MATCH_TYPE_STRING_WILDCARD) { return .wildcard(item: item) }
+            if (item.type == MATCH_TYPE_STRING_EXACT          ) { return .exact         (item: item) }
+            if (item.type == MATCH_TYPE_STRING_EXACT_SCRIPT   ) { return .exactScript   (item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item) }
         }
         let wildcardDomains = SELF.selectDomainAndTopDomains(name, types: [
             MATCH_TYPE_STRING_WILDCARD,
+            MATCH_TYPE_STRING_WILDCARD_SCRIPT
         ])
         if let item = wildcardDomains.first {
-            return .wildcard(item: item)
+            if (item.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item) }
         }
         return .noOne
     }

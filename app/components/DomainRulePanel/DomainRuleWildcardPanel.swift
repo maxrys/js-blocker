@@ -27,13 +27,13 @@ struct DomainRuleWildcardPanel: View {
 
     private var isActiveRule: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isWildcard
+            match.isWildcard || match.isWildcardScript
         }
     }
 
     private var isEnabledButton: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOne
+            match.isNoOne || match.isNoOneScript
         }
     }
 

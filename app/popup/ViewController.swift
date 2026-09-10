@@ -32,10 +32,22 @@ class ViewController: SFSafariExtensionViewController {
     func onClick_ruleExactInsert() {
         if let domainName = PopupState.shared.domainName {
 
+            let type: String? = {
+                switch PopupState.shared.match {
+                    case .noOne      : MATCH_TYPE_STRING_EXACT
+                    case .noOneScript: MATCH_TYPE_STRING_EXACT
+                    default          : nil
+                }
+            }()
+
+            guard let type else {
+                return
+            }
+
             var success: [String] = []
             var failure: [String] = []
 
-            if case .success = AllowedDomains.insert(name: domainName, type: MATCH_TYPE_STRING_EXACT, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
+            if case .success = AllowedDomains.insert(name: domainName, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
                  { success.append(domainName.decodePunycode()) }
             else { failure.append(domainName.decodePunycode()) }
 
@@ -78,13 +90,25 @@ class ViewController: SFSafariExtensionViewController {
 
             } else {
 
+                let type: String? = {
+                    switch PopupState.shared.match {
+                        case .noOne      : MATCH_TYPE_STRING_WILDCARD
+                        case .noOneScript: MATCH_TYPE_STRING_WILDCARD
+                        default          : nil
+                    }
+                }()
+
+                guard let type else {
+                    return
+                }
+
                 let domains = [domainName] + domainName.topDomains(isDeleteTLD: true)
                 var success: [String] = []
                 var failure: [String] = []
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if case .success = AllowedDomains.insert(name: name, type: MATCH_TYPE_STRING_WILDCARD, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
+                        if case .success = AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
                              { success.append(name.decodePunycode()) }
                         else { failure.append(name.decodePunycode()) }
                     }
@@ -123,7 +147,7 @@ class ViewController: SFSafariExtensionViewController {
         if let domainName = PopupState.shared.domainName {
             if let match = PopupState.shared.match {
 
-                if (match.isExact) {
+                if (match.isExact || match.isExactScript) {
 
                     let name = domainName
 
@@ -147,10 +171,11 @@ class ViewController: SFSafariExtensionViewController {
 
                 }
 
-                if (match.isWildcard) {
+                if (match.isWildcard || match.isWildcardScript) {
 
                     let name = AllowedDomains.selectDomainAndTopDomains(domainName, types: [
-                        MATCH_TYPE_STRING_WILDCARD
+                        MATCH_TYPE_STRING_WILDCARD,
+                        MATCH_TYPE_STRING_WILDCARD_SCRIPT
                     ]).first?.name ?? domainName
 
                     switch AllowedDomains.delete([name]) {
