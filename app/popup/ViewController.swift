@@ -27,11 +27,6 @@ class ViewController: SFSafariExtensionViewController {
         AllowedDomains.dump()
     }
 
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        PopupState.shared.refresh()
-    }
-
     /* ###################################################################### */
 
     func onClick_ruleExactInsert() {
@@ -63,9 +58,7 @@ class ViewController: SFSafariExtensionViewController {
             /* ui update */
             if (success.count > 0) {
                 Task { @MainActor in
-                    SFSafariApplication.reloadRules()
-                    PopupState.shared.refresh()
-                    PopupState.shared.jsSetMatch()
+                    PopupState.shared.onChangeMatch()
                 }
             }
 
@@ -116,9 +109,7 @@ class ViewController: SFSafariExtensionViewController {
                 /* ui update */
                 if (success.count > 0) {
                     Task { @MainActor in
-                        SFSafariApplication.reloadRules()
-                        PopupState.shared.refresh()
-                        PopupState.shared.jsSetMatch()
+                        PopupState.shared.onChangeMatch()
                     }
                 }
             }
@@ -129,71 +120,57 @@ class ViewController: SFSafariExtensionViewController {
     }
 
     func onClick_ruleDelete() {
-        if let domainName = PopupState.shared.domainName, let match = PopupState.shared.match {
+        if let domainName = PopupState.shared.domainName {
+            if let match = PopupState.shared.match {
 
-            var success: [String] = []
-            var failure: [String] = []
+                if (match.isExact) {
 
-            if (match.isExact) {
+                    let name = domainName
 
-                if let domain = AllowedDomains.select(domainName) {
-                    let name = domain.name
                     switch AllowedDomains.delete([name]) {
-                        case .success: success.append(name.decodePunycode())
-                        case .failure: failure.append(name.decodePunycode())
+                        case .success:
+                            MessageBox.insert(
+                                type: .ok,
+                                title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
+                                description: name.decodePunycode()
+                            )
+                            Task { @MainActor in
+                                PopupState.shared.onChangeMatch()
+                            }
+                        case .failure:
+                            MessageBox.insert(
+                                type: .error,
+                                title: NSLocalizedString("Exact rule for the following domain was not removed:", comment: ""),
+                                description: name.decodePunycode()
+                            )
                     }
+
                 }
 
-                /* message */
-                if (success.count > 0) {
-                    MessageBox.insert(
-                        type: .ok,
-                        title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
-                        description: success.joined(separator: "\n")
-                    )
-                }
-                if (failure.count > 0) {
-                    MessageBox.insert(
-                        type: .error,
-                        title: NSLocalizedString("Exact rule for the following domain was not removed:", comment: ""),
-                        description: failure.joined(separator: "\n")
-                    )
-                }
-            }
+                if (match.isWildcard) {
 
-            if (match.isWildcard) {
+                    let name = AllowedDomains.selectDomainAndTopDomains(domainName, types: [
+                        MATCH_TYPE_STRING_WILDCARD
+                    ]).first?.name ?? domainName
 
-                AllowedDomains.selectWildcardDomains(domainName).forEach { domain in
-                    let name = domain.name
                     switch AllowedDomains.delete([name]) {
-                        case .success: success.append(name.decodePunycode())
-                        case .failure: failure.append(name.decodePunycode())
+                        case .success:
+                            MessageBox.insert(
+                                type: .ok,
+                                title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
+                                description: name.decodePunycode()
+                            )
+                            Task { @MainActor in
+                                PopupState.shared.onChangeMatch()
+                            }
+                        case .failure:
+                            MessageBox.insert(
+                                type: .error,
+                                title: NSLocalizedString("Wildcard rule for the following domain was not removed:", comment: ""),
+                                description: name.decodePunycode()
+                            )
                     }
-                }
 
-                /* message */
-                if (success.count > 0) {
-                    MessageBox.insert(
-                        type: .ok,
-                        title: NSLocalizedString("Wildcard rules for the following domains were removed:", comment: ""),
-                        description: success.joined(separator: "\n")
-                    )
-                }
-                if (failure.count > 0) {
-                    MessageBox.insert(
-                        type: .error,
-                        title: NSLocalizedString("Wildcard rules for the following domains were not removed:", comment: ""),
-                        description: failure.joined(separator: "\n")
-                    )
-                }
-            }
-
-            /* ui update */
-            if (success.count > 0) {
-                Task { @MainActor in
-                    SFSafariApplication.reloadRules()
-                    PopupState.shared.refresh()
-                    PopupState.shared.jsSetMatch()
                 }
             }
 

@@ -202,6 +202,7 @@ struct Popup_Subdomain_MatchNoOne_Previews: PreviewProvider {
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
             PopupState.shared.rulesWildcardSelected = []
+            PopupState.shared.rulesWildcardDisabled = [2, 3]
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Wildcard rules for the following domains were removed:", comment: ""),
@@ -219,6 +220,7 @@ struct Popup_Subdomain_MatchExact_Previews: PreviewProvider {
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
             PopupState.shared.rulesWildcardSelected = []
+            PopupState.shared.rulesWildcardDisabled = []
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
@@ -236,6 +238,7 @@ struct Popup_Subdomain_MatchWildcard_Previews: PreviewProvider {
             PopupState.shared.ruleExact = DEMO_RULE__EXACT_SUBDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_SUBDOMAIN
             PopupState.shared.rulesWildcardSelected = [0, 2]
+            PopupState.shared.rulesWildcardDisabled = []
             MessageBox.insert(
                 type: .ok,
                 title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),

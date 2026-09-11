@@ -77,7 +77,8 @@ class ExtensionHandler: SFSafariExtensionHandler {
                         if let page       = page,
                            let domainName = domainName {
                             Task { @MainActor in
-                                PopupState.shared.onSetPageAndDomain(page, domainName)
+                                PopupState.shared.onChangePageAndDomain(page, domainName)
+                                PopupState.shared.onChangeMatch()
                                 switch PopupState.shared.match {
                                     case .none    : toolbarItem?.setImage(Self.ICON_NONE)
                                     case .noOne   : toolbarItem?.setImage(Self.ICON_NO_ONE)
@@ -87,7 +88,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
                             }
                         } else {
                             Task { @MainActor in
-                                PopupState.shared.reset()
+                                PopupState.shared.initEmpty()
                             }
                         }
 

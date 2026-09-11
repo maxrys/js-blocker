@@ -156,6 +156,7 @@ struct DomainRuleExactPanel_MatchNone_Previews: PreviewProvider {
             .onAppear {
                 PopupState.shared.match = nil
                 PopupState.shared.ruleExact = ""
+                PopupState.shared.rulesWildcard = []
             }
     }
 }
@@ -167,6 +168,7 @@ struct DomainRuleExactPanel_MatchNoOne_Previews: PreviewProvider {
             .onAppear {
                 PopupState.shared.match = .noOne
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
     }
 }
@@ -178,6 +180,7 @@ struct DomainRuleExactPanel_MatchExact_Previews: PreviewProvider {
             .onAppear {
                 PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
     }
 }
@@ -189,6 +192,7 @@ struct DomainRuleExactPanel_MatchWildcard_Previews: PreviewProvider {
             .onAppear {
                 PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                 PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
             }
     }
 }

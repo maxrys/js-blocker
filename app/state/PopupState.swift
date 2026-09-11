@@ -20,6 +20,7 @@ final class PopupState: ObservableObject {
     @Published var ruleExact: String = ""
     @Published var rulesWildcard: [String] = []
     @Published var rulesWildcardSelected: Set<Int> = []
+    @Published var rulesWildcardDisabled: Set<Int> = []
 
     @Published var lifetime: TimeInterval? = nil
     @Published var expireStatus: ExpireStatus = .notSetted
@@ -36,6 +37,72 @@ final class PopupState: ObservableObject {
         )
     }
 
+    public func initEmpty() {
+        self.page = nil
+        self.domainName = nil
+        self.match = nil
+        self.ruleExact = ""
+        self.rulesWildcard = []
+        self.rulesWildcardSelected = []
+        self.rulesWildcardDisabled = []
+        self.expireStatus = .notSetted
+        self.lifetime = nil
+    }
+
+    public func onChangePageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
+        self.page = page
+        self.domainName = domainName
+        self.ruleExact = domainName.decodePunycode()
+        self.rulesWildcard = ([domainName] + domainName.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in
+            result.append("*." + domain.decodePunycode())
+        }
+        self.jsGetScripts()
+    }
+
+    public func onChangeMatch() {
+        if let _          = self.page,
+           let domainName = self.domainName {
+
+            let allDomains: [DomainName] = [domainName] + domainName.topDomains(isDeleteTLD: true)
+
+            let rulesWildcardSelected: Set<Int> = {
+                if (allDomains.count == 1) {
+                    return [0]
+                }
+                return AllowedDomains.selectDomainAndTopDomains(domainName, types: [
+                    MATCH_TYPE_STRING_WILDCARD,
+                ]).reduce(into: Set<Int>()) { result, domain in
+                    if let index = allDomains.firstIndex(of: domain.name) {
+                        result.insert(index)
+                    }
+                }
+            }()
+
+            let rulesWildcardDisabled: Set<Int> = {
+                AllowedDomains.selectDomainAndTopDomains(domainName, types: [
+                    MATCH_TYPE_STRING_EXACT,
+                    MATCH_TYPE_STRING_WILDCARD,
+                ]).reduce(into: Set<Int>()) { result, domain in
+                    if let index = allDomains.firstIndex(of: domain.name) {
+                        result.insert(index)
+                    }
+                }
+            }()
+
+            self.match = AllowedDomains.matchType(name: domainName)
+            self.rulesWildcardSelected = rulesWildcardSelected
+            self.rulesWildcardDisabled = rulesWildcardDisabled
+            self.expireStatus = self.match?.expireStatus ?? .notSetted
+            self.lifetime = nil
+
+            SFSafariApplication.reloadRules()
+            self.jsSetMatch()
+
+        } else {
+            self.initEmpty()
+        }
+    }
+
     private func onTimerTick(timer: Timer.Custom) {
         let newExpireStatus = self.match?.expireStatus ?? .notSetted
         if (self.expireStatus != newExpireStatus) {
@@ -44,8 +111,7 @@ final class PopupState: ObservableObject {
         if case .expired = self.expireStatus {
             if case .success(let affected) = AllowedDomains.sanitize() {
                 if (affected > 0) {
-                    SFSafariApplication.reloadRules()
-                    self.refresh()
+                    self.onChangeMatch()
                 }
             }
         }
@@ -53,59 +119,6 @@ final class PopupState: ObservableObject {
 
     public func onSetScripts(domainName: DomainName, frameDomainName: DomainName, scripts: [URLString]) {
         Self.shared.scripts[domainName, frameDomainName] = scripts
-    }
-
-    public func onSetPageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
-        self.page = page
-        self.domainName = domainName
-        self.match = AllowedDomains.matchType(name: domainName)
-        self.ruleExact = domainName.decodePunycode()
-        self.rulesWildcard = ([domainName] + domainName.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in result.append("*." + domain.decodePunycode()) }
-        self.rulesWildcardSelected = []
-        self.lifetime = nil
-        self.expireStatus = self.match?.expireStatus ?? .notSetted
-        self.refresh()
-        self.jsGetScripts()
-    }
-
-    public func reset() {
-        self.page = nil
-        self.domainName = nil
-        self.match = nil
-        self.ruleExact = ""
-        self.rulesWildcard = []
-        self.rulesWildcardSelected = []
-        self.lifetime = nil
-        self.expireStatus = .notSetted
-    }
-
-    public func refresh() {
-        if let domainName = self.domainName {
-
-            var wildcardRulesSelected: Set<Int> = []
-            let wildcardDomains: [DomainName] = [domainName] + domainName.topDomains(isDeleteTLD: true)
-            let wildcardDomainsInStorage: [String] = AllowedDomains.selectWildcardDomains(domainName).map {
-                domainInfo in domainInfo.name
-            }
-
-            if (wildcardDomains.count == 1) {
-                wildcardRulesSelected = [0]
-            } else {
-                for (index, domain) in wildcardDomains.enumerated() {
-                    if (wildcardDomainsInStorage.contains(domain)) {
-                        wildcardRulesSelected.insert(index)
-                    }
-                }
-            }
-
-            self.match = AllowedDomains.matchType(name: domainName)
-            self.rulesWildcardSelected = wildcardRulesSelected
-            self.expireStatus = self.match?.expireStatus ?? .notSetted
-            self.lifetime = nil
-
-        } else {
-            self.reset()
-        }
     }
 
     func jsGetScripts() {
