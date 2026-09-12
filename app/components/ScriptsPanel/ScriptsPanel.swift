@@ -347,17 +347,31 @@ struct ScriptsPanel_Previews: PreviewProvider {
             return result
         }
 
+        static func generateScripts0Plus() -> Matrix2dArrOfStr {
+            var result = Matrix2dArrOfStr()
+                result["js-blocker.com", "js-blocker.com"] = []
+            return result
+        }
+
+        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+            PopupState.shared.match = .noOne
+            PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+            PopupState.shared.scriptsIsOn = Self.scriptsIsOn
+            if      (value == 0) { PopupState.shared.scripts = Self.generateScripts(count: 0) }
+            else if (value == 1) { PopupState.shared.scripts = Self.generateScripts0Plus() }
+            else                 { PopupState.shared.scripts = Self.generateScripts(count: Int(value) - 1) }
+        }
+
         var body: some View {
             VStack(spacing: 0) {
-                ScriptsPanel(domainName : "js-blocker.com")
+                ScriptsPanel(domainName: "js-blocker.com")
                     .background(Color.colorButtonCapsuleVioletBottom)
-                    .onAppear {
-                        PopupState.shared.match = .noOne
-                        PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                        PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-                        PopupState.shared.scriptsIsOn = Self.scriptsIsOn
-                        PopupState.shared.scripts = Self.generateScripts(count: 6)
-                    }
+                PreviewModeSelector(
+                    title: "count",
+                    state: Self.match,
+                    modes: ["0", "0+", "1", "2", "3", "4", "5", "6", "7", "8"]
+                )
             }.frame(
                 width: Popup.FRAME_WIDTH
             )

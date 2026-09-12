@@ -91,4 +91,8 @@ final class MessageState: ObservableObject {
         self.items[ID] = nil
     }
 
+    public func deleteAll() {
+        self.items = [:]
+    }
+
 }

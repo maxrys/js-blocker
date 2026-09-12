@@ -6,10 +6,14 @@
 import Foundation
 import Combine
 
-final class ValueState<T>: ObservableObject {
+final class ValueState<T: Equatable>: ObservableObject {
 
     @Published public var value: T {
-        willSet { self.onChange(newValue) }
+        willSet {
+            if (value != newValue) {
+                self.onChange(newValue)
+            }
+        }
     }
 
     private let onChange: (T) -> Void

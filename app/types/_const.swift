@@ -20,13 +20,13 @@ let URL_INTERNAL_SCRIPT           = "internal://script"
 let URL_INTERNAL_ATTRIBUTE_SCRIPT = "internal://script-attribute"
 let WITH_RULES_EXTENSION = false
 
-let DEMO_RULE__EXACT_TOPDOMAIN = "example.com"
-let DEMO_RULES__WILDCARD_TOPDOMAIN = [
+let DEMO_RULE__TOPDOMAIN = "example.com"
+let DEMO_RULES__TOPDOMAIN = [
     "*.example.com"
 ]
 
-let DEMO_RULE__EXACT_SUBDOMAIN = "sub3.sub2.sub1.example.com"
-let DEMO_RULES__WILDCARD_SUBDOMAIN = [
+let DEMO_RULE__SUBDOMAIN = "sub3.sub2.sub1.example.com"
+let DEMO_RULES__SUBDOMAIN = [
     "*.sub3.sub2.sub1.example.com",
          "*.sub2.sub1.example.com",
               "*.sub1.example.com",

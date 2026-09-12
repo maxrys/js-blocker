@@ -173,50 +173,50 @@ struct DomainRuleExactPanel: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct DomainRuleExactPanel_MatchNone_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = nil
-                PopupState.shared.ruleExact = ""
-                PopupState.shared.rulesWildcard = []
-            }
-    }
-}
+struct DomainRuleExactPanel_Previews: PreviewProvider {
 
-struct DomainRuleExactPanel_MatchNoOne_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .noOne
-                PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-            }
-    }
-}
+    struct ViewWithState: View {
 
-struct DomainRuleExactPanel_MatchExact_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+            switch value {
+                case 0:
+                    PopupState.shared.match = nil
+                    PopupState.shared.ruleExact = ""
+                    PopupState.shared.rulesWildcard = []
+                case 1:
+                    PopupState.shared.match = .noOne
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 2:
+                    PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 3:
+                    PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                default: break
             }
-    }
-}
+        }
 
-struct DomainRuleExactPanel_MatchWildcard_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-                PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-            }
+        var body: some View {
+            VStack(spacing: 0) {
+                DomainRuleExactPanel()
+                    .background(Color.popup.ruleExactBackground)
+                PreviewModeSelector(
+                    title: "match",
+                    state: Self.match,
+                    modes: ["nil", "noOne", "exact", "wildcard"]
+                )
+            }.frame(
+                width: Popup.FRAME_WIDTH
+            )
+        }
+
     }
+
+    static var previews: some View {
+        ViewWithState()
+    }
+
 }
