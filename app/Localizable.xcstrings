@@ -873,6 +873,38 @@
         }
       }
     },
+    "all internal attribute scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "усе ўнутраныя атрыбутныя скрыпты"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "все внутренние атрибутные скрипты"
+          }
+        }
+      }
+    },
+    "all internal scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "усе ўнутраныя скрыпты"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "все внутренние скрипты"
+          }
+        }
+      }
+    },
     "allow" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -886,6 +918,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "разрешить"
+          }
+        }
+      }
+    },
+    "allow by scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дазволіць па скрыптах"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "разрешить по скриптам"
+          }
+        }
+      }
+    },
+    "Allow JS separately by script" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дазваляць JS паасобна па скрыптах"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешать JS раздельно по скриптам"
           }
         }
       }
@@ -950,22 +1014,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "доменное имя"
-          }
-        }
-      }
-    },
-    "Domain: %@" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Дамен: %@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Домен: %@"
           }
         }
       }
@@ -1115,18 +1163,18 @@
         }
       }
     },
-    "External Scripts" : {
+    "Frame with domain:" : {
       "localizations" : {
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Знешнія скрыпты"
+            "value" : "Акно з даменам:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Внешние скрипты"
+            "value" : "Окно с доменом:"
           }
         }
       }
@@ -1404,6 +1452,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Всплывающее окно включено"
+          }
+        }
+      }
+    },
+    "Scripts" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыпты"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрипты"
           }
         }
       }

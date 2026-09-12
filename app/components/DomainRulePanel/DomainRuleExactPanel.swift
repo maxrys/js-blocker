@@ -37,6 +37,18 @@ struct DomainRuleExactPanel: View {
         }
     }
 
+    private var isEnabledByScriptButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isNoOneScript || match.isExactScript
+        }
+    }
+
+    private var isByScriptMode: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOneScript || match.isExactScript
+        }
+    }
+
     private var rule: String {
         self.popupState.ruleExact
     }
@@ -119,14 +131,26 @@ struct DomainRuleExactPanel: View {
     @ViewBuilder private func ButtonAllowView() -> some View {
         Group {
             ButtonCapsule(
-                title: NSLocalizedString("allow", comment: ""),
-                minWidth: 180,
+                title: isByScriptMode ?
+                    NSLocalizedString("allow by scripts", comment: "") :
+                    NSLocalizedString("allow"           , comment: ""),
+                minWidth: isByScriptMode ? 250 : 200,
                 onClick: {
                     self.onClickAllow()
                 }
             ).disabled(
                 !self.isEnabledButton
             )
+        }
+        .overlayPolyfill(alignment: .leading) {
+            if (self.isEnabledByScriptButton) {
+                if let domainName = self.popupState.domainName {
+                    ScriptsPanel(
+                        domainName: domainName,
+                        openerIconOffset: CGPoint(x: 2, y: 0)
+                    )
+                }
+            }
         }
         .overlayPolyfill(alignment: .trailing) {
             if (self.isEnabledButton) {

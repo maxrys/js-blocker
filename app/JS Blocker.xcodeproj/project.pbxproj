@@ -96,6 +96,22 @@
 		505507532FC6E57C007DB93D /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507522FC6E57C007DB93D /* About.swift */; };
 		505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507542FC6E59E007DB93D /* ShadowLine.swift */; };
 		505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505507542FC6E59E007DB93D /* ShadowLine.swift */; };
+		50623E7C30516B7D001E2F01 /* ScriptsCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E7B30516B7D001E2F01 /* ScriptsCart.swift */; };
+		50623E7D30516B7D001E2F01 /* ScriptsCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E7B30516B7D001E2F01 /* ScriptsCart.swift */; };
+		50623E8130517398001E2F01 /* ScriptsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E8030517398001E2F01 /* ScriptsManager.swift */; };
+		50623E8230517398001E2F01 /* ScriptsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E8030517398001E2F01 /* ScriptsManager.swift */; };
+		50623E843051F63E001E2F01 /* TimelineCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E833051F63E001E2F01 /* TimelineCustom.swift */; };
+		50623E853051F63E001E2F01 /* TimelineCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E833051F63E001E2F01 /* TimelineCustom.swift */; };
+		50623E863051F63E001E2F01 /* TimelineCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E833051F63E001E2F01 /* TimelineCustom.swift */; };
+		50623E873051F63E001E2F01 /* TimelineCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E833051F63E001E2F01 /* TimelineCustom.swift */; };
+		50623E8A3051F664001E2F01 /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E883051F664001E2F01 /* ValueState.swift */; };
+		50623E8C3051F664001E2F01 /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E883051F664001E2F01 /* ValueState.swift */; };
+		50623E8D3051F6A8001E2F01 /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E883051F664001E2F01 /* ValueState.swift */; };
+		50623E8E3051F6A8001E2F01 /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E883051F664001E2F01 /* ValueState.swift */; };
+		50623E943051FB77001E2F01 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E933051FB72001E2F01 /* RefreshButton.swift */; };
+		50623E953051FB77001E2F01 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623E933051FB72001E2F01 /* RefreshButton.swift */; };
+		50623E973051FBB3001E2F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50623E963051FBB3001E2F01 /* Assets.xcassets */; };
+		50623E983051FBB3001E2F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50623E963051FBB3001E2F01 /* Assets.xcassets */; };
 		506421572F5E22760020F6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506421552F5E22760020F6C8 /* Assets.xcassets */; };
 		506421582F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */; };
 		506421592F5E22760020F6C8 /* TableCustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421542F5E22760020F6C8 /* TableCustomColors.swift */; };
@@ -293,6 +309,12 @@
 		50FC4E33304C0C520001701E /* ASFetchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E2C304C0C520001701E /* ASFetchCollection.swift */; };
 		50FC4E34304C0C520001701E /* ASFetchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E2D304C0C520001701E /* ASFetchItem.swift */; };
 		50FC4E35304C0C520001701E /* ASFetchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E2C304C0C520001701E /* ASFetchCollection.swift */; };
+		50FC4E37304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E38304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E3A304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */; };
+		50FC4E45304C0F9C0001701E /* ToggleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E43304C0F9C0001701E /* ToggleCustom.swift */; };
+		50FC4E46304C0F9C0001701E /* ToggleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4E43304C0F9C0001701E /* ToggleCustom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -364,6 +386,12 @@
 		5055074E2FC6E548007DB93D /* NSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSApplication.swift; sourceTree = "<group>"; };
 		505507522FC6E57C007DB93D /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		505507542FC6E59E007DB93D /* ShadowLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLine.swift; sourceTree = "<group>"; };
+		50623E7B30516B7D001E2F01 /* ScriptsCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsCart.swift; sourceTree = "<group>"; };
+		50623E8030517398001E2F01 /* ScriptsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsManager.swift; sourceTree = "<group>"; };
+		50623E833051F63E001E2F01 /* TimelineCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCustom.swift; sourceTree = "<group>"; };
+		50623E883051F664001E2F01 /* ValueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueState.swift; sourceTree = "<group>"; };
+		50623E933051FB72001E2F01 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
+		50623E963051FBB3001E2F01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		506421522F5E22760020F6C8 /* TableCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom.swift; sourceTree = "<group>"; };
 		506421532F5E22760020F6C8 /* TableCustom_HeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustom_HeadCell.swift; sourceTree = "<group>"; };
 		506421542F5E22760020F6C8 /* TableCustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCustomColors.swift; sourceTree = "<group>"; };
@@ -453,6 +481,8 @@
 		50FC4E1430499B2D0001701E /* AllowedScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowedScripts.swift; sourceTree = "<group>"; };
 		50FC4E2C304C0C520001701E /* ASFetchCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASFetchCollection.swift; sourceTree = "<group>"; };
 		50FC4E2D304C0C520001701E /* ASFetchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASFetchItem.swift; sourceTree = "<group>"; };
+		50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix3D.swift; sourceTree = "<group>"; };
+		50FC4E43304C0F9C0001701E /* ToggleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCustom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -507,6 +537,9 @@
 				50E150B52DA96615005768C1 /* MatchType.swift */,
 				50E4B1022FF29088008D625B /* Previewer.swift */,
 				5064215F2F5E22AB0020F6C8 /* ResultBuilder.swift */,
+				50623E7B30516B7D001E2F01 /* ScriptsCart.swift */,
+				50623E8030517398001E2F01 /* ScriptsManager.swift */,
+				50623E883051F664001E2F01 /* ValueState.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -547,6 +580,7 @@
 				500895332DD73EDF00414588 /* Date.swift */,
 				50BB987A2FFA5D8700C39670 /* Dictionary.swift */,
 				50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */,
+				50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */,
 				50C43A083019E19400A8FD39 /* DomainName.swift */,
 				50439DCD2F44C8CE00270BE5 /* GeometryReader.swift */,
 				50439DC92F44C8C300270BE5 /* Logger.swift */,
@@ -561,6 +595,7 @@
 				50CE9FE92F472EC4001006CF /* Shape.swift */,
 				50875E112C71EE0D00756D64 /* String.swift */,
 				50BB987E2FFA7FFC00C39670 /* TimeInterval.swift */,
+				50623E833051F63E001E2F01 /* TimelineCustom.swift */,
 				50439DC12F44C87E00270BE5 /* Timer.swift */,
 				50FC4DE6304991EC0001701E /* URLString.swift */,
 				50AD45202DAE59C300425467 /* View.swift */,
@@ -578,9 +613,11 @@
 				50AD7BDB301B651600F1C6D6 /* Lifetime */,
 				50439E042F44C9AD00270BE5 /* MessageBox */,
 				50BB98892FFA82C400C39670 /* ProgressSimple */,
+				50623E923051FB64001E2F01 /* RefreshButton */,
 				50CC17DB3036568700B9152C /* ScriptsPanel */,
 				505507552FC6E59E007DB93D /* ShadowLine */,
 				506421562F5E22760020F6C8 /* TableCustom */,
+				50FC4E44304C0F9C0001701E /* ToggleCustom */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -604,6 +641,15 @@
 				505507542FC6E59E007DB93D /* ShadowLine.swift */,
 			);
 			path = ShadowLine;
+			sourceTree = "<group>";
+		};
+		50623E923051FB64001E2F01 /* RefreshButton */ = {
+			isa = PBXGroup;
+			children = (
+				50623E933051FB72001E2F01 /* RefreshButton.swift */,
+				50623E963051FBB3001E2F01 /* Assets.xcassets */,
+			);
+			path = RefreshButton;
 			sourceTree = "<group>";
 		};
 		506421562F5E22760020F6C8 /* TableCustom */ = {
@@ -794,6 +840,14 @@
 			path = migrations;
 			sourceTree = "<group>";
 		};
+		50FC4E44304C0F9C0001701E /* ToggleCustom */ = {
+			isa = PBXGroup;
+			children = (
+				50FC4E43304C0F9C0001701E /* ToggleCustom.swift */,
+			);
+			path = ToggleCustom;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -956,6 +1010,7 @@
 				50875E222C71F21C00756D64 /* Assets.xcassets in Resources */,
 				50CE9FA42F45DD19001006CF /* Assets.xcassets in Resources */,
 				5064215B2F5E22760020F6C8 /* Assets.xcassets in Resources */,
+				50623E983051FBB3001E2F01 /* Assets.xcassets in Resources */,
 				50EB55162CF9AAB400FC060C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -966,6 +1021,7 @@
 			files = (
 				50B0252B2C47E404002F1AD7 /* iconToolbar-none.pdf in Resources */,
 				50ECC033300A331B00A99E64 /* jsBlocker.js in Resources */,
+				50623E973051FBB3001E2F01 /* Assets.xcassets in Resources */,
 				503CE1442C6E32C400835509 /* iconToolbar-exact.pdf in Resources */,
 				506421572F5E22760020F6C8 /* Assets.xcassets in Resources */,
 				509B24DD303B06E30046BB03 /* Assets.xcassets in Resources */,
@@ -996,6 +1052,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50CEA0962F4B6D46001006CF /* Set.swift in Sources */,
+				50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				50C43A093019E19400A8FD39 /* DomainName.swift in Sources */,
 				50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50FC4DEA304991EC0001701E /* URLString.swift in Sources */,
@@ -1019,6 +1076,7 @@
 				50FC4E32304C0C520001701E /* ASFetchItem.swift in Sources */,
 				50FC4E33304C0C520001701E /* ASFetchCollection.swift in Sources */,
 				50FC4DF7304996D80001701E /* Migrations.swift in Sources */,
+				50623E873051F63E001E2F01 /* TimelineCustom.swift in Sources */,
 				50FC4DF8304996D80001701E /* Migration_001.swift in Sources */,
 				500D2D262D05951D00551390 /* NSRegularExpression.swift in Sources */,
 				50C787003014CE6900F078EC /* EntityVersions.swift in Sources */,
@@ -1032,6 +1090,7 @@
 				50ACD40F303C65E900E7D4ED /* AllowedDomains.swift in Sources */,
 				50439DCF2F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
 				50C787043014CFE600F078EC /* Storage.swift in Sources */,
+				50623E8E3051F6A8001E2F01 /* ValueState.swift in Sources */,
 				50CEA08B2F4A4E96001006CF /* Color.swift in Sources */,
 				50C4EDB4302CD837004F3F9E /* RulesHandler.swift in Sources */,
 				50BB987D2FFA5D8700C39670 /* Dictionary.swift in Sources */,
@@ -1054,6 +1113,7 @@
 				503DBDE9302B5CAC00BD39F3 /* MatchType.swift in Sources */,
 				503DBDEC302B5CC200BD39F3 /* Date.swift in Sources */,
 				503DBDED302B5CC200BD39F3 /* Dictionary.swift in Sources */,
+				50623E8D3051F6A8001E2F01 /* ValueState.swift in Sources */,
 				503DBDEE302B5CC200BD39F3 /* SFSafariApplication.swift in Sources */,
 				50FC4E34304C0C520001701E /* ASFetchItem.swift in Sources */,
 				50FC4E35304C0C520001701E /* ASFetchCollection.swift in Sources */,
@@ -1071,6 +1131,7 @@
 				503DBDF8302B5CC200BD39F3 /* GeometryReader.swift in Sources */,
 				503DBDF9302B5CC200BD39F3 /* Set.swift in Sources */,
 				50FC4DFC304996D80001701E /* WhiteDomains.swift in Sources */,
+				50623E853051F63E001E2F01 /* TimelineCustom.swift in Sources */,
 				50FC4DFD304996D80001701E /* Migrations.swift in Sources */,
 				50FC4DFE304996D80001701E /* Migration_001.swift in Sources */,
 				503DBDFA302B5CC200BD39F3 /* NSWindow.swift in Sources */,
@@ -1082,6 +1143,7 @@
 				503DBDFF302B5CC200BD39F3 /* Logger.swift in Sources */,
 				503DBE00302B5CC200BD39F3 /* String.swift in Sources */,
 				503DBDEA302B5CAC00BD39F3 /* HVStack.swift in Sources */,
+				50FC4E37304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				503DBDEB302B5CAC00BD39F3 /* ResultBuilder.swift in Sources */,
 				503DBDE2302B5C6800BD39F3 /* ADFetchItem.swift in Sources */,
 				50ACD40E303C65E900E7D4ED /* AllowedDomains.swift in Sources */,
@@ -1095,6 +1157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				509528D52F701E8000DB391A /* NSWindow.swift in Sources */,
+				50FC4E38304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				50CEA04E2F47A434001006CF /* MainSceneColor.swift in Sources */,
 				500895342DD73EDF00414588 /* Date.swift in Sources */,
 				50EB55352CF9F4BA00FC060C /* ViewController.swift in Sources */,
@@ -1114,9 +1177,11 @@
 				50CE9FE72F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE82F472E06001006CF /* ButtonCustomColor.swift in Sources */,
 				505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */,
+				50FC4E45304C0F9C0001701E /* ToggleCustom.swift in Sources */,
 				50E150C12DAA789D005768C1 /* PopupState.swift in Sources */,
 				50ECC01B3003A5AB00A99E64 /* ExpireStatus.swift in Sources */,
 				50CEA06B2F486265001006CF /* InstallGuide.swift in Sources */,
+				50623E953051FB77001E2F01 /* RefreshButton.swift in Sources */,
 				50CE9FEC2F472EC4001006CF /* Shape.swift in Sources */,
 				50B025062C47E401002F1AD7 /* App.swift in Sources */,
 				50CEA0562F47A6B7001006CF /* _const.swift in Sources */,
@@ -1124,6 +1189,7 @@
 				501FA4E22F4F99B1004663D2 /* NSEvent.swift in Sources */,
 				50CE9F9E2F45BF89001006CF /* DomainRulePanelColors.swift in Sources */,
 				50439E0C2F44C9AD00270BE5 /* Message_types.swift in Sources */,
+				50623E8130517398001E2F01 /* ScriptsManager.swift in Sources */,
 				503DBE09302B77FF00BD39F3 /* RulesHandler.swift in Sources */,
 				50ECC0142FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50C43A0A3019E19400A8FD39 /* DomainName.swift in Sources */,
@@ -1151,6 +1217,7 @@
 				509B24E0303B07230046BB03 /* ScriptsPanelColors.swift in Sources */,
 				50E4B1042FF29088008D625B /* Previewer.swift in Sources */,
 				50EB55172CF9AAB400FC060C /* Popup.swift in Sources */,
+				50623E863051F63E001E2F01 /* TimelineCustom.swift in Sources */,
 				50EB55182CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
 				50E150B92DA96616005768C1 /* MatchType.swift in Sources */,
 				5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */,
@@ -1172,7 +1239,9 @@
 				50CE9FA72F45DD55001006CF /* ButtonRoundColors.swift in Sources */,
 				50AD7BE1301B654C00F1C6D6 /* LifetimeColors.swift in Sources */,
 				50AD45212DAE59C300425467 /* View.swift in Sources */,
+				50623E7C30516B7D001E2F01 /* ScriptsCart.swift in Sources */,
 				50875E122C71EE0D00756D64 /* String.swift in Sources */,
+				50623E8C3051F664001E2F01 /* ValueState.swift in Sources */,
 				50439DD02F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
 				50439DC22F44C87E00270BE5 /* Timer.swift in Sources */,
 			);
@@ -1183,6 +1252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50EB551C2CF9AAB400FC060C /* Popup.swift in Sources */,
+				50FC4E3A304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				50439DCC2F44C8C300270BE5 /* Logger.swift in Sources */,
 				50EB551D2CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
 				505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */,
@@ -1202,9 +1272,11 @@
 				50CEA0A72F4C502A001006CF /* Array.swift in Sources */,
 				50CEA07C2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
 				50439E082F44C9AD00270BE5 /* Message.swift in Sources */,
+				50FC4E46304C0F9C0001701E /* ToggleCustom.swift in Sources */,
 				50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */,
 				50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */,
 				50ECC01C3003A5AB00A99E64 /* ExpireStatus.swift in Sources */,
+				50623E943051FB77001E2F01 /* RefreshButton.swift in Sources */,
 				50CEA0952F4B6D46001006CF /* Set.swift in Sources */,
 				50E4E8402F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,
@@ -1212,6 +1284,7 @@
 				50CE9FE52F472E06001006CF /* ButtonCustomColor.swift in Sources */,
 				500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */,
 				50ECC0152FFEC2B200A99E64 /* Optional.swift in Sources */,
+				50623E8230517398001E2F01 /* ScriptsManager.swift in Sources */,
 				503DBE0A302B77FF00BD39F3 /* RulesHandler.swift in Sources */,
 				50B025262C47E404002F1AD7 /* ViewController.swift in Sources */,
 				50C43A0B3019E19400A8FD39 /* DomainName.swift in Sources */,
@@ -1239,6 +1312,7 @@
 				50CE9FA62F45DD55001006CF /* ButtonRoundColors.swift in Sources */,
 				50CEA0792F4902A5001006CF /* MainAppState.swift in Sources */,
 				50E150C02DAA789D005768C1 /* PopupState.swift in Sources */,
+				50623E843051F63E001E2F01 /* TimelineCustom.swift in Sources */,
 				506421CC2F62DC420020F6C8 /* ADFetchCollection.swift in Sources */,
 				50AD45222DAE59C300425467 /* View.swift in Sources */,
 				500727602F8A3B710058A547 /* FieldSearchCustom.swift in Sources */,
@@ -1260,7 +1334,9 @@
 				50439DCE2F44C8CE00270BE5 /* GeometryReader.swift in Sources */,
 				50AD7BE0301B654C00F1C6D6 /* LifetimeColors.swift in Sources */,
 				50875E132C71EE0D00756D64 /* String.swift in Sources */,
+				50623E7D30516B7D001E2F01 /* ScriptsCart.swift in Sources */,
 				50E4B1052FF2909D008D625B /* Previewer.swift in Sources */,
+				50623E8A3051F664001E2F01 /* ValueState.swift in Sources */,
 				50E4B1062FF2909D008D625B /* HVStack.swift in Sources */,
 				50E4B1372FF99BBC008D625B /* LifetimePicker.swift in Sources */,
 			);

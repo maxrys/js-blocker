@@ -30,12 +30,12 @@ class ViewController: SFSafariExtensionViewController {
     /* ###################################################################### */
 
     func onClick_ruleExactInsert() {
-        if let domainName = PopupState.shared.domainName {
+        if let domainName = PopupState.shared.domainName, let match = PopupState.shared.match {
 
             let type: String? = {
-                switch PopupState.shared.match {
+                switch match {
                     case .noOne      : MATCH_TYPE_STRING_EXACT
-                    case .noOneScript: MATCH_TYPE_STRING_EXACT
+                    case .noOneScript: MATCH_TYPE_STRING_EXACT_SCRIPT
                     default          : nil
                 }
             }()
@@ -47,9 +47,14 @@ class ViewController: SFSafariExtensionViewController {
             var success: [String] = []
             var failure: [String] = []
 
-            if case .success = AllowedDomains.insert(name: domainName, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
-                 { success.append(domainName.decodePunycode()) }
-            else { failure.append(domainName.decodePunycode()) }
+            switch AllowedDomains.insert(name: domainName, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ) {
+                case .failure: failure.append(domainName.decodePunycode())
+                case .success: success.append(domainName.decodePunycode())
+                    if (match.isNoOneScript) {
+                        ScriptsCart.saveIsOnToStorage(for: domainName)
+                        ScriptsCart.resetIsOn()
+                    }
+            }
 
             /* message */
             if (success.count > 0) {
@@ -80,7 +85,7 @@ class ViewController: SFSafariExtensionViewController {
     }
 
     func onClick_ruleWildcardInsert(selected: Set<Int>) {
-        if let domainName = PopupState.shared.domainName {
+        if let domainName = PopupState.shared.domainName, let match = PopupState.shared.match {
             if (selected.isEmpty) {
 
                 MessageBox.insert(
@@ -91,9 +96,9 @@ class ViewController: SFSafariExtensionViewController {
             } else {
 
                 let type: String? = {
-                    switch PopupState.shared.match {
+                    switch match {
                         case .noOne      : MATCH_TYPE_STRING_WILDCARD
-                        case .noOneScript: MATCH_TYPE_STRING_WILDCARD
+                        case .noOneScript: MATCH_TYPE_STRING_WILDCARD_SCRIPT
                         default          : nil
                     }
                 }()
@@ -108,11 +113,16 @@ class ViewController: SFSafariExtensionViewController {
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if case .success = AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
-                             { success.append(name.decodePunycode()) }
-                        else { failure.append(name.decodePunycode()) }
+                        switch AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ) {
+                            case .failure: failure.append(name.decodePunycode())
+                            case .success: success.append(name.decodePunycode())
+                                if (match.isNoOneScript) {
+                                    ScriptsCart.saveIsOnToStorage(for: name)
+                                }
+                        }
                     }
                 }
+                ScriptsCart.resetIsOn()
 
                 /* message */
                 if (success.count > 0) {
@@ -158,6 +168,12 @@ class ViewController: SFSafariExtensionViewController {
                                 title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
                                 description: name.decodePunycode()
                             )
+                            if (match.isExactScript) {
+                                if case .success = AllowedScripts.delete(domain: name) {
+                                    ScriptsManager.reset    (for: name)
+                                    ScriptsManager.resetIsOn(for: name)
+                                }
+                            }
                             Task { @MainActor in
                                 PopupState.shared.onChangeMatch()
                             }
@@ -185,6 +201,12 @@ class ViewController: SFSafariExtensionViewController {
                                 title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
                                 description: name.decodePunycode()
                             )
+                            if (match.isWildcardScript) {
+                                if case .success = AllowedScripts.delete(domain: name) {
+                                    ScriptsManager.reset    (for: name)
+                                    ScriptsManager.resetIsOn(for: name)
+                                }
+                            }
                             Task { @MainActor in
                                 PopupState.shared.onChangeMatch()
                             }

@@ -37,6 +37,18 @@ struct DomainRuleWildcardPanel: View {
         }
     }
 
+    private var isEnabledByScriptButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isNoOneScript || match.isWildcardScript
+        }
+    }
+
+    private var isByScriptMode: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOneScript || match.isWildcardScript
+        }
+    }
+
     private var rules: [String] {
         self.popupState.rulesWildcard
     }
@@ -156,8 +168,10 @@ struct DomainRuleWildcardPanel: View {
     @ViewBuilder private func ButtonAllowView() -> some View {
         Group {
             ButtonCapsule(
-                title: NSLocalizedString("allow", comment: ""),
-                minWidth: 180,
+                title: self.isByScriptMode ?
+                    NSLocalizedString("allow by scripts", comment: "") :
+                    NSLocalizedString("allow"           , comment: ""),
+                minWidth: isByScriptMode ? 250 : 200,
                 onClick: {
                     self.onClickAllow(
                         self.rulesSelected.wrappedValue
@@ -166,6 +180,16 @@ struct DomainRuleWildcardPanel: View {
             ).disabled(
                 !self.isEnabledButton
             )
+        }
+        .overlayPolyfill(alignment: .leading) {
+            if (self.isEnabledByScriptButton) {
+                if let domainName = self.popupState.domainName {
+                    ScriptsPanel(
+                        domainName: domainName,
+                        openerIconOffset: CGPoint(x: 2, y: 0)
+                    )
+                }
+            }
         }
         .overlayPolyfill(alignment: .trailing) {
             if (self.isEnabledButton) {

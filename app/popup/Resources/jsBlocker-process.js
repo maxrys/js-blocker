@@ -142,7 +142,28 @@
 
         if (value.match === JSBlocker.MATCH_TYPE_STRING_EXACT_SCRIPT ||
             value.match === JSBlocker.MATCH_TYPE_STRING_WILDCARD_SCRIPT) {
-            // #todo: UNDER CONSTRUCTION
+            JSBlocker.sanitize(
+                (value.scripts ?? []).reduce((result, script) => {
+                    if (script.frameDomain == domainName) {
+                        result.push(
+                            JSBlocker.crc32(script.url)
+                        )
+                    }
+                    return result
+                }, [])
+            );
+            JSBlocker.prepareFramesForBlockJS(
+                (value.scripts ?? []).reduce((result, script) => {
+                    result[script.frameDomain] ??= []
+                    result[script.frameDomain].push(
+                        JSBlocker.crc32(script.url)
+                    )
+                    return result
+                }, {})
+            );
+            if (value.item.expiresAt !== 0) {
+                JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
+            }
             return;
         }
 
@@ -152,14 +173,14 @@
 
     if (isTopFrame !== true) {
 
-        const isJSEnabled = JSBlocker.jsStateFromURL;
+        const jsState = JSBlocker.jsStateFromURL;
 
         console.log(
             `JS Blocker on "${domainName}" has been started\n` +
             `Extension URL: "${safari.extension.baseURI}"\n` +
             `URL: "${window.location.href}"\n` +
             `Is Top Frame: no\n` +
-            `Param "isJSEnabled": ${isJSEnabled ? "yes" : "no"}`
+            `Param "jsState": ${jsState}`
         );
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -170,8 +191,17 @@
 
         JSBlocker.detectScripts();
 
-        if (!isJSEnabled) {
+        if (jsState === null) {
+            return;
+        }
+
+        if (jsState.length === 0) {
             JSBlocker.sanitize();
+            return;
+        }
+
+        if (jsState.length > 0) {
+            JSBlocker.sanitize(jsState);
             return;
         }
 

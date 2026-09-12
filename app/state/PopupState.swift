@@ -26,6 +26,12 @@ final class PopupState: ObservableObject {
     @Published var expireStatus: ExpireStatus = .notSetted
 
     @Published var scripts = Matrix2dArrOfStr() /* [CurrentDomainName: [FrameDomainName: [URLString]]] */
+    @Published var scriptsIsOn = Matrix3dBool() /* [CurrentDomainName: [FrameDomainName: [URLString: Bool]]] */
+        { didSet {
+            if scriptsIsOn != oldValue {
+                /* self.jsSetMatch() */
+            }
+        }}
 
     private var timer: Timer.Custom!
 
@@ -57,6 +63,10 @@ final class PopupState: ObservableObject {
             result.append("*." + domain.decodePunycode())
         }
         self.jsGetScripts()
+        ScriptsCart.resetIsOn()
+        ScriptsManager.loadIsOn(
+            for: domainName
+        )
     }
 
     public func onChangeMatch() {
@@ -118,10 +128,6 @@ final class PopupState: ObservableObject {
                 }
             }
         }
-    }
-
-    public func onSetScripts(domainName: DomainName, frameDomainName: DomainName, scripts: [URLString]) {
-        Self.shared.scripts[domainName, frameDomainName] = scripts
     }
 
     func jsGetScripts() {

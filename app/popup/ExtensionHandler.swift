@@ -50,10 +50,10 @@ class ExtensionHandler: SFSafariExtensionHandler {
                              "js:getScripts.response":
                             if let scripts = userInfo?["scripts"] as? String {
                                 Task { @MainActor in
-                                    PopupState.shared.onSetScripts(
-                                        domainName: currentDomainName,
-                                        frameDomainName: frameDomainName,
-                                        scripts: scripts.split(
+                                    ScriptsManager.set(
+                                        for: currentDomainName,
+                                        frameDomainName,
+                                        scripts.split(
                                             separator: "\n",
                                             omittingEmptySubsequences: true
                                         ).map(String.init)
