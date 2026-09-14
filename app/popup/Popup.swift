@@ -63,11 +63,6 @@ struct Popup: View {
 
             .overlayPolyfill(alignment: .topTrailing) {
                 HStack(spacing: 5) {
-                    if let domainName = self.popupState.domainName {
-                        ScriptsPanel(
-                            domainName: domainName
-                        )
-                    }
                     self.ButtonSettingsView()
                 }.padding(10)
             }

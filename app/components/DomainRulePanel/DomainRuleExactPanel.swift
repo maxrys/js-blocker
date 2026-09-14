@@ -37,6 +37,24 @@ struct DomainRuleExactPanel: View {
         }
     }
 
+    private var isEnabledLifetimeButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isNoOneScript
+        }
+    }
+
+    private var isEnabledByScriptButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isNoOneScript || match.isExactScript
+        }
+    }
+
+    private var isByScriptMode: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOneScript || match.isExactScript
+        }
+    }
+
     private var rule: String {
         self.popupState.ruleExact
     }
@@ -83,9 +101,11 @@ struct DomainRuleExactPanel: View {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(self.colorBorder, lineWidth: 4)
-                    .background(self.colorBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .stroke(self.colorBorder, lineWidth: 2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(self.colorBackground)
+                    )
             )
 
             /* MARK: LifetimeInfo */
@@ -94,14 +114,35 @@ struct DomainRuleExactPanel: View {
                 LifetimeInfo()
             }
 
-            /* MARK: Button "Allow" */
+            /* MARK: Buttons */
 
-            self.ButtonAllowView()
+            HStack(spacing: 10) {
+
+                if self.isEnabledByScriptButton, let domainName = self.popupState.domainName {
+                    ScriptsPanel(domainName: domainName)
+                } else {
+                    self.EmptyCellView()
+                }
+
+                self.ButtonAllowView()
+
+                if (self.isEnabledLifetimeButton) {
+                    LifetimePicker(lifetime: self.lifetime)
+                } else {
+                    self.EmptyCellView()
+                }
+
+            }
 
         }
         .padding(.horizontal, 20)
         .padding(.vertical  , 30)
         .frame(maxWidth: .infinity)
+    }
+
+    @ViewBuilder private func EmptyCellView() -> some View {
+        Color.clear
+            .frame(width: 34, height: 34)
     }
 
     @ViewBuilder private func TitleView(_ textLocalized: String) -> some View {
@@ -119,22 +160,16 @@ struct DomainRuleExactPanel: View {
     @ViewBuilder private func ButtonAllowView() -> some View {
         Group {
             ButtonCapsule(
-                title: NSLocalizedString("allow", comment: ""),
-                minWidth: 180,
+                title: self.isByScriptMode ?
+                    NSLocalizedString("allow by scripts", comment: "") :
+                    NSLocalizedString("allow"           , comment: ""),
+                minWidth: 200,
                 onClick: {
                     self.onClickAllow()
                 }
             ).disabled(
                 !self.isEnabledButton
             )
-        }
-        .overlayPolyfill(alignment: .trailing) {
-            if (self.isEnabledButton) {
-                LifetimePicker(
-                    lifetime: self.lifetime,
-                    openerIconOffset: CGPoint(x: -1.0, y: -0.5)
-                )
-            }
         }
         .clipShape   (Capsule())
         .contentShape(Capsule())

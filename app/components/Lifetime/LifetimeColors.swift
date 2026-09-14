@@ -10,7 +10,8 @@ extension Color {
     struct LifetimeColorSet {
         public let infoOpener                    = Color("color Lifetime Info Opener")
         public let openerBackground              = Color("color Lifetime Opener Background")
-        public let openerActiveBackground        = Color("color Lifetime Opener Active Background")
+        public let openerBorder                  = Color("color Lifetime Opener Border")
+        public let openerBorderActive            = Color("color Lifetime Opener Border Active")
         public var popupTitle                    = Color("color Lifetime Popup Title")
         public let popupTitleBackground          = Color("color Lifetime Popup Title Background")
         public var popupTitleBorder              = Color("color Lifetime Popup Title Border")

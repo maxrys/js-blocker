@@ -30,9 +30,9 @@ public class AllowedDomains: NSManagedObject {
     static func matchType(name: DomainName) -> MatchType {
         if let item = SELF.select(name) {
             if (item.type == MATCH_TYPE_STRING_EXACT          ) { return .exact         (item: item) }
-            if (item.type == MATCH_TYPE_STRING_EXACT_SCRIPT   ) { return .exactScript   (item: item) }
+            if (item.type == MATCH_TYPE_STRING_EXACT_SCRIPT   ) { return .exactScript   (item: item, scripts: AllowedScripts.selectByDomain(domain: item.name)) }
             if (item.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: item) }
-            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item, scripts: AllowedScripts.selectByDomain(domain: item.name)) }
         }
         let wildcardDomains = SELF.selectDomainAndTopDomains(name, types: [
             MATCH_TYPE_STRING_WILDCARD,
@@ -40,7 +40,7 @@ public class AllowedDomains: NSManagedObject {
         ])
         if let item = wildcardDomains.first {
             if (item.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: item) }
-            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item, scripts: AllowedScripts.selectByDomain(domain: item.name)) }
         }
         return .noOne
     }

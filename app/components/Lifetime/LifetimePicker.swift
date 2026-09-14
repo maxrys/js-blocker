@@ -22,14 +22,22 @@ struct LifetimePicker: View {
     @Binding private var lifetime: TimeInterval?
     @State private var isOpened = false
 
-    private let openerIconOffset: CGPoint
+    private var colorOpenerBorder: Color {
+        if (self.isActive)
+             { return Color.lifetime.openerBorderActive }
+        else { return Color.lifetime.openerBorder }
+    }
 
-    init(
-        lifetime: Binding<TimeInterval?>,
-        openerIconOffset: CGPoint = CGPoint(x: 0, y: 0)
-    ) {
+    private var colorOpenerBackground: Color {
+        Color.lifetime.openerBackground
+    }
+
+    private var isActive: Bool {
+        self.lifetime != nil
+    }
+
+    init(lifetime: Binding<TimeInterval?>) {
         self._lifetime = lifetime
-        self.openerIconOffset = openerIconOffset
     }
 
     public var body: some View {
@@ -43,22 +51,15 @@ struct LifetimePicker: View {
         Button {
             self.isOpened.toggle()
         } label: {
-            Group {
-                let isActive = self.lifetime != nil
-                Self.ICON_OPENER
-                    .font(.system(size: 24))
-                    .foregroundPolyfill(
-                        isActive ?
-                            Color.lifetime.openerActiveBackground :
-                            Color.lifetime.openerBackground
-                    )
-                    .offset(
-                        x: self.openerIconOffset.x,
-                        y: self.openerIconOffset.y
-                    )
-            }
-            .padding(6.5)
-            .background(Color.white.opacity(0.1))
+            Circle()
+                .stroke(self.colorOpenerBorder, lineWidth: 2)
+                .background(Circle().fill(self.colorOpenerBackground))
+                .frame(width: 34, height: 34)
+                .overlayPolyfill {
+                    Self.ICON_OPENER
+                        .font(.system(size: 26))
+                        .offset(y: -1)
+                }
             .contentShape(Circle())
             .focusEffect (Circle())
         }
@@ -157,7 +158,6 @@ struct LifetimePicker_Previews: PreviewProvider {
         public var body: some View {
             VStack(spacing: 10) {
                 LifetimePicker(lifetime: self.$lifetime)
-                    .background(Color.colorButtonCapsuleVioletBottom)
                 Text("\(self.lifetime?.int64 ?? 0)")
                 Spacer()
             }
