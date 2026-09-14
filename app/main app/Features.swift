@@ -96,13 +96,13 @@ final class Features {
 
             /* MARK: Generate export JSON */
 
-            let exportStruct = ExportImportItems<ExportImportItemV2>(
-                items.reduce(into: [ExportImportItemV2]()) { result, item in
+            let exportStruct = ExportImportItems<ExportImportItemV3>(
+                items.reduce(into: [ExportImportItemV3]()) { result, item in
                     result.append(
-                        ExportImportItemV2(
-                            name      : item.name,
-                            isWildcard: item.isWildcard,
-                            expiresAt : item.expiresAt
+                        ExportImportItemV3(
+                            name     : item.name,
+                            type     : item.type,
+                            expiresAt: item.expiresAt
                         )
                     )
                 }
@@ -186,8 +186,8 @@ final class Features {
                     return
                 }
                 if case .success(let affected) = AllowedDomains.delete([item.name]), affected > 0
-                     { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.type == "wildcard" || item.type == "wildcardScript", expiresAt: item.expiresAt) { updateCount += 1; Logger.customLog("UPDATE ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
-                else { if case .success = AllowedDomains.insert(name: item.name, isWildcard: item.type == "wildcard" || item.type == "wildcardScript", expiresAt: item.expiresAt) { insertCount += 1; Logger.customLog("INSERT ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
+                     { if case .success = AllowedDomains.insert(name: item.name, type: item.type, expiresAt: item.expiresAt) { updateCount += 1; Logger.customLog("UPDATE ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
+                else { if case .success = AllowedDomains.insert(name: item.name, type: item.type, expiresAt: item.expiresAt) { insertCount += 1; Logger.customLog("INSERT ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
             }
 
             if      let importStruct = ExportImportItems<ExportImportItemV3>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
