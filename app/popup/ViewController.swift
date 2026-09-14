@@ -35,7 +35,7 @@ class ViewController: SFSafariExtensionViewController {
             var success: [String] = []
             var failure: [String] = []
 
-            if case .success = AllowedDomains.insert(name: domainName, isWildcard: false, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
+            if case .success = AllowedDomains.insert(name: domainName, type: MATCH_TYPE_STRING_EXACT, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
                  { success.append(domainName.decodePunycode()) }
             else { failure.append(domainName.decodePunycode()) }
 
@@ -84,7 +84,7 @@ class ViewController: SFSafariExtensionViewController {
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if case .success = AllowedDomains.insert(name: name, isWildcard: true, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
+                        if case .success = AllowedDomains.insert(name: name, type: MATCH_TYPE_STRING_WILDCARD, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
                              { success.append(name.decodePunycode()) }
                         else { failure.append(name.decodePunycode()) }
                     }
