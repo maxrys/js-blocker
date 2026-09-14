@@ -140,6 +140,12 @@
             return;
         }
 
+        if (value.match === JSBlocker.MATCH_TYPE_STRING_EXACT_SCRIPT ||
+            value.match === JSBlocker.MATCH_TYPE_STRING_WILDCARD_SCRIPT) {
+            // #todo: UNDER CONSTRUCTION
+            return;
+        }
+
     }
 
     /* FRAME */
