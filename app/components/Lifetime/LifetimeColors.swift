@@ -9,6 +9,8 @@ extension Color {
 
     struct LifetimeColorSet {
         public let infoOpener                    = Color("color Lifetime Info Opener")
+        public let openerIcon                    = Color("color Lifetime Opener Icon")
+        public let openerIconActive              = Color("color Lifetime Opener Icon Active")
         public let openerBackground              = Color("color Lifetime Opener Background")
         public let openerBorder                  = Color("color Lifetime Opener Border")
         public let openerBorderActive            = Color("color Lifetime Opener Border Active")

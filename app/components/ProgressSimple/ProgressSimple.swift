@@ -10,6 +10,12 @@ struct ProgressSimple: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
+    private var shape: RoundedRectangle {
+        RoundedRectangle(
+            cornerRadius: self.radius
+        )
+    }
+
     private let value: Double
     private let height: CGFloat
     private let radius: Double
@@ -30,18 +36,20 @@ struct ProgressSimple: View {
     @ViewBuilder func IndicatorView() -> some View {
         GeometryReader { geometry in
             let width = geometry.size.width * self.value.fixBounds(max: 1.0)
-            RoundedRectangle(cornerRadius: self.radius)
+            self.shape
                 .fill(Color.progressSimple.indicator)
                 .frame(width: width)
         }.padding(2)
     }
 
     @ViewBuilder func BackgroundView() -> some View {
-        RoundedRectangle(cornerRadius: self.radius)
+        self.shape
             .fill(Color.progressSimple.background)
             .overlayPolyfill {
-                RoundedRectangle(cornerRadius: self.radius)
-                    .stroke(Color.progressSimple.border, lineWidth: 2)
+                self.shape.stroke(
+                    Color.progressSimple.border,
+                    lineWidth: 2
+                )
             }
     }
 

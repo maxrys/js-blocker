@@ -8,6 +8,8 @@ import SwiftUI
 extension Color {
 
     struct ScriptsPanelColorSet {
+        public let openerIcon           = Color("color ScriptsPanel Opener Icon")
+        public let openerIconActive     = Color("color ScriptsPanel Opener Icon Active")
         public let openerBackground     = Color("color ScriptsPanel Opener Background")
         public let openerBorder         = Color("color ScriptsPanel Opener Border")
         public let openerBorderActive   = Color("color ScriptsPanel Opener Border Active")

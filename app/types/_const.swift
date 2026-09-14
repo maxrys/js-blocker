@@ -20,6 +20,8 @@ let URL_INTERNAL_SCRIPT           = "internal://script"
 let URL_INTERNAL_ATTRIBUTE_SCRIPT = "internal://script-attribute"
 let WITH_RULES_EXTENSION = false
 
+let DEMO_TOPDOMAIN = "example.com"
+
 let DEMO_RULE__TOPDOMAIN = "example.com"
 let DEMO_RULES__TOPDOMAIN = [
     "*.example.com"

@@ -41,17 +41,18 @@ struct RefreshButton: View {
                 self.onClick()
             }
         } label: {
+            let shape = Circle()
             TimelineCustom(isActive: self.$isAnimated, interval: 1.0 / 24) {
-                Circle()
+                shape
                     .fill(Color.black.opacity(0.2))
                     .frame(width: self.size, height: self.size)
                     .overlayPolyfill {
                         Self.ICON_REFRESH
                             .font(.system(size: 18))
                     }
-                    .clipShape   (Capsule())
-                    .contentShape(Capsule())
-                    .focusEffect (Capsule())
+                    .clipShape   (shape)
+                    .contentShape(shape)
+                    .focusEffect (shape)
                     .rotationEffect(
                         .degrees(Date.spin(max: UInt(360), speed: self.speed))
                     )

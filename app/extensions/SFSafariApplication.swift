@@ -21,32 +21,18 @@ extension SFSafariApplication {
         }
     }
 
-    /*
-
-    "domainNameCurrentGetWithCompletionHandler" usage:
+    /* usage:
     =====================================================================
-        SFSafariApplication.domainNameCurrentGetWithCompletionHandler(
+        SFSafariApplication.domainCurrentGetWithCompletionHandler(
             completionHandler: { host in
                 Task { // or "DispatchQueue.main.async"
                     print(host)
                 }
             }
         )
-    ---------------------------------------------------------------------
+    --------------------------------------------------------------------- */
 
-
-    "domainNameCurrentGet" usage:
-    =====================================================================
-        Task { // or "DispatchQueue.main.async"
-            if let host = await SFSafariApplication.domainNameCurrentGet() {
-                print(host)
-            }
-        }
-    ---------------------------------------------------------------------
-
-    */
-
-    static func domainNameCurrentGetWithCompletionHandler(completionHandler: @escaping (String?) -> Void) {
+    static func domainCurrentGetWithCompletionHandler(completionHandler: @escaping (String?) -> Void) {
         SFSafariApplication.getActiveWindow(completionHandler: { window in
             window?.getActiveTab(completionHandler: { tab in
                 tab?.getActivePage(completionHandler: { page in
@@ -60,7 +46,16 @@ extension SFSafariApplication {
         })
     }
 
-    static func domainNameCurrentGet() async -> DomainName? {
+    /* usage:
+    =====================================================================
+        Task { // or "DispatchQueue.main.async"
+            if let host = await SFSafariApplication.domainCurrentGet() {
+                print(host)
+            }
+        }
+    --------------------------------------------------------------------- */
+
+    static func domainCurrentGet() async -> DomainName? {
         let windows = await SFSafariApplication.activeWindow()
         let tab = await windows?.activeTab()
         let page = await tab?.activePage()

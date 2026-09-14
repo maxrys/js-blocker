@@ -9,7 +9,7 @@ struct DomainRuleExactPanel: View {
 
     @StateObject private var popupState = PopupState.shared
 
-    private var colorDomainName: Color {
+    private var colorDomain: Color {
         if (self.isActiveRule && !self.rule.isEmpty)
              { return Color.domainRulePanel.nameActive }
         else { return Color.domainRulePanel.name }
@@ -116,21 +116,17 @@ struct DomainRuleExactPanel: View {
 
             /* MARK: Buttons */
 
-            HStack(spacing: 10) {
+            HStack(spacing: 13) {
 
-                if self.isEnabledByScriptButton, let domainName = self.popupState.domainName {
-                    ScriptsPanel(domainName: domainName)
-                } else {
-                    self.EmptyCellView()
-                }
+                ScriptsPanel()
+                    .opacity  (self.isEnabledByScriptButton ? 1 : 0)
+                    .disabled(!self.isEnabledByScriptButton)
 
                 self.ButtonAllowView()
 
-                if (self.isEnabledLifetimeButton) {
-                    LifetimePicker(lifetime: self.lifetime)
-                } else {
-                    self.EmptyCellView()
-                }
+                LifetimePicker(lifetime: self.lifetime)
+                    .opacity  (self.isEnabledLifetimeButton ? 1 : 0)
+                    .disabled(!self.isEnabledLifetimeButton)
 
             }
 
@@ -138,11 +134,6 @@ struct DomainRuleExactPanel: View {
         .padding(.horizontal, 20)
         .padding(.vertical  , 30)
         .frame(maxWidth: .infinity)
-    }
-
-    @ViewBuilder private func EmptyCellView() -> some View {
-        Color.clear
-            .frame(width: 34, height: 34)
     }
 
     @ViewBuilder private func TitleView(_ textLocalized: String) -> some View {
@@ -153,7 +144,7 @@ struct DomainRuleExactPanel: View {
     @ViewBuilder private func DomainNameView(text: String, opacity: Double) -> some View {
         Text(text)
             .font(.system(size: 12, weight: .bold))
-            .foregroundPolyfill(self.colorDomainName)
+            .foregroundPolyfill(self.colorDomain)
             .opacity(opacity)
     }
 
@@ -192,22 +183,22 @@ struct DomainRuleExactPanel_Previews: PreviewProvider {
             switch value {
                 case 0:
                     PopupState.shared.match = nil
-                    PopupState.shared.domainName = nil
+                    PopupState.shared.domain = nil
                     PopupState.shared.ruleExact = ""
                     PopupState.shared.rulesWildcard = []
                 case 1:
                     PopupState.shared.match = .noOne
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 case 2:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 case 3:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 default: break

@@ -9,8 +9,10 @@ final class ScriptsManager {
         PopupState.shared.scripts[domain, frameDomain] = scripts
     }
 
-    static func reset(for domain: DomainName) {
-        PopupState.shared.scripts[domain] = nil
+    static func reset(for domain: DomainName, _ frameDomain: DomainName? = nil) {
+        if let frameDomain
+             { PopupState.shared.scripts[domain, frameDomain] = nil }
+        else { PopupState.shared.scripts[domain             ] = nil }
     }
 
     static func loadIsOn(for domain: DomainName) {

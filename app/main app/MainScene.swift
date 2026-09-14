@@ -173,10 +173,11 @@ struct MainScene: View {
                 openURL(url)
                 Logger.customLog("open URL: \(url)")
             } label: {
+                let shape = Circle()
                 Image(systemName: "safari")
-                    .clipShape   (Circle())
-                    .contentShape(Circle())
-                    .focusEffect (Circle())
+                    .clipShape   (shape)
+                    .contentShape(shape)
+                    .focusEffect (shape)
                     .opacity(0.7)
             }
             .buttonStyle(.plain)

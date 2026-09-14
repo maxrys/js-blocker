@@ -18,12 +18,12 @@ final class ScriptsCart {
     static func saveIsOnToStorage(for domain: DomainName) {
         if case .success = (AllowedScripts.delete(domain: domain)) {
             if let scriptsByFrames = PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME] {
-                for (frameDomainName, scripts) in scriptsByFrames {
+                for (frameDomain, scripts) in scriptsByFrames {
                     for (script, isOn) in scripts {
                         if (isOn) {
                             _ = AllowedScripts.insert(
                                 domain: domain,
-                                frameDomain: frameDomainName,
+                                frameDomain: frameDomain,
                                 url: script
                             )
                         }

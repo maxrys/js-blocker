@@ -22,6 +22,12 @@ struct LifetimePicker: View {
     @Binding private var lifetime: TimeInterval?
     @State private var isOpened = false
 
+    private var colorOpenerIcon: Color {
+        if (self.isActive)
+             { return Color.lifetime.openerIconActive }
+        else { return Color.lifetime.openerIcon }
+    }
+
     private var colorOpenerBorder: Color {
         if (self.isActive)
              { return Color.lifetime.openerBorderActive }
@@ -42,26 +48,39 @@ struct LifetimePicker: View {
 
     public var body: some View {
         self.OpenerView()
+            .overlayPolyfill(alignment: .bottom) {
+                if let lifetime = self.lifetime {
+                    if let text = Self.LIFETIME_PERIODS[lifetime] {
+                        Text(text)
+                            .font(.system(size: 10))
+                            .padding(.horizontal, -20)
+                            .offset(y: 20)
+                            .opacity(0.5)
+                    }
+                }
+            }
             .popover(isPresented: self.$isOpened, arrowEdge: .bottom) {
                 self.PopupView()
             }
     }
 
     @ViewBuilder private func OpenerView() -> some View {
+        let shape = RoundedRectangle(cornerRadius: 12)
         Button {
             self.isOpened.toggle()
         } label: {
-            Circle()
+            shape
                 .stroke(self.colorOpenerBorder, lineWidth: 2)
-                .background(Circle().fill(self.colorOpenerBackground))
-                .frame(width: 34, height: 34)
+                .background(shape.fill(self.colorOpenerBackground))
+                .frame(width: 36, height: 36)
                 .overlayPolyfill {
                     Self.ICON_OPENER
                         .font(.system(size: 26))
                         .offset(y: -1)
                 }
-            .contentShape(Circle())
-            .focusEffect (Circle())
+            .foregroundPolyfill(self.colorOpenerIcon)
+            .contentShape(shape)
+            .focusEffect (shape)
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill(self.isEnabled)
@@ -156,7 +175,7 @@ struct LifetimePicker_Previews: PreviewProvider {
     struct ViewWithState: View {
         @State private var lifetime: TimeInterval? = nil
         public var body: some View {
-            VStack(spacing: 10) {
+            VStack(spacing: 30) {
                 LifetimePicker(lifetime: self.$lifetime)
                 Text("\(self.lifetime?.int64 ?? 0)")
                 Spacer()
