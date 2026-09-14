@@ -41,8 +41,12 @@ struct DomainRuleWildcardPanel: View {
         self.popupState.rulesWildcard
     }
 
-    private var selected: Binding<Set<Int>> {
+    private var rulesSelected: Binding<Set<Int>> {
         self.$popupState.rulesWildcardSelected
+    }
+
+    private var rulesDisabled: Binding<Set<Int>> {
+        self.$popupState.rulesWildcardDisabled
     }
 
     private var lifetime: Binding<TimeInterval?> {
@@ -74,32 +78,36 @@ struct DomainRuleWildcardPanel: View {
                         opacity: 0.5
                     )
 
-                } else if (self.rules.count == 1) {
-
-                    self.DomainNameView(
-                        text: self.rules.first ?? NOT_APPLICABLE,
-                        opacity: self.isActiveRule || self.isEnabledButton ? 1.0 : 0.5
-                    )
-
                 } else {
 
                     ForEach(self.rules.indices, id: \.self) { index in
                         HStack(spacing: 10) {
 
-                            let isChecked = self.selected.wrappedValue.contains(index)
+                            let isFirstSelected = self.rulesSelected.wrappedValue.sorted(by: <).first == index
+                            let isDisabled      = self.rulesDisabled.wrappedValue.contains(index)
+
+                            let opacity: CGFloat = {
+                                switch self.popupState.match {
+                                    case .noOne   : isDisabled      ? 0.5 : 1.0
+                                    case .wildcard: isFirstSelected ? 1.0 : 0.5
+                                    default: 0.5
+                                }
+                            }()
 
                             self.DomainNameView(
                                 text: self.rules[index],
-                                opacity: isChecked || self.isEnabledButton ? 1.0 : 0.5
+                                opacity: opacity
                             )
 
-                            DomainRuleWildcardPanel_Checkbox(
-                                selected: self.selected,
-                                index: index,
-                                color: self.colorDomainName
-                            ).disabled(
-                                !self.isEnabledButton
-                            )
+                            if (self.rules.count > 1) {
+                                DomainRuleWildcardPanel_Checkbox(
+                                    selected: self.rulesSelected,
+                                    index: index,
+                                    color: self.colorDomainName
+                                ).disabled(
+                                    !self.isEnabledButton || isDisabled
+                                )
+                            }
 
                         }
                     }
@@ -150,7 +158,7 @@ struct DomainRuleWildcardPanel: View {
                 minWidth: 180,
                 onClick: {
                     self.onClickAllow(
-                        self.selected.wrappedValue
+                        self.rulesSelected.wrappedValue
                     )
                 }
             ).disabled(
@@ -214,46 +222,79 @@ struct DomainRuleWildcardPanel_Checkbox: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct DomainRuleWildcardPanel_MatchNone_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = nil
-                PopupState.shared.rulesWildcard = []
-            }
-    }
-}
+struct DomainRuleWildcardPanel_Previews: PreviewProvider {
 
-struct DomainRuleWildcardPanel_MatchNoOne_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .noOne
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-            }
-    }
-}
+    struct ViewWithState: View {
 
-struct DomainRuleWildcardPanel_MatchExact_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
+        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+            switch value {
+                case 0:
+                    PopupState.shared.match = nil
+                    PopupState.shared.domainName = nil
+                    PopupState.shared.ruleExact = ""
+                    PopupState.shared.rulesWildcard = []
+                case 1:
+                    PopupState.shared.match = .noOne
+                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 2:
+                    PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
+                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 3:
+                    PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
+                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 4:
+                    PopupState.shared.match = .noOne
+                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
+                    PopupState.shared.rulesWildcardSelected = []
+                    PopupState.shared.rulesWildcardDisabled = [2, 3]
+                case 5:
+                    PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
+                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
+                    PopupState.shared.rulesWildcardSelected = []
+                    PopupState.shared.rulesWildcardDisabled = []
+                case 6:
+                    PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
+                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
+                    PopupState.shared.rulesWildcardSelected = [0, 2]
+                    PopupState.shared.rulesWildcardDisabled = []
+                default: break
             }
-    }
-}
+        }
 
-struct DomainRuleWildcardPanel_MatchWildcard_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 0) { DomainRuleWildcardPanel().background(Color.popup.rulesWildcardBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-                PopupState.shared.rulesWildcard = DEMO_RULES__WILDCARD_TOPDOMAIN
-            }
+        var body: some View {
+            VStack(spacing: 0) {
+                DomainRuleWildcardPanel()
+                    .background(Color.popup.ruleExactBackground)
+                PreviewModeSelector(
+                    title: "match",
+                    state: Self.match,
+                    modes: [
+                        "nil", "noOne", "exact", "wildcard", "N+", "E+", "W+"
+                    ]
+                )
+                Spacer()
+            }.frame(
+                width: Popup.FRAME_WIDTH,
+                height: 400
+            )
+        }
+
     }
+
+    static var previews: some View {
+        ViewWithState()
+    }
+
 }

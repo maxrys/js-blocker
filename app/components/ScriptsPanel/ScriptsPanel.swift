@@ -12,11 +12,10 @@ struct ScriptsPanel: View {
 
     @StateObject private var popupState = PopupState.shared
     @Environment(\.colorScheme) private var colorScheme
-    @Binding private var scripts: Matrix2dArrOfStr
     @State private var isOpened = false
 
     private var currentScripts: [FrameDomainName: [URLString]] {
-        self.scripts[self.currentDomainName] ?? [:]
+        PopupState.shared.scripts[self.currentDomainName] ?? [:]
     }
 
     private var hasScripts: Bool {
@@ -35,13 +34,11 @@ struct ScriptsPanel: View {
 
     init(
         domainName: CurrentDomainName,
-        scripts: Binding<Matrix2dArrOfStr>,
         openerIconOffset: CGPoint = CGPoint(x: 0, y: 0)
     ) {
         self.openerIconOffset         = openerIconOffset
         self.currentDomainName        = domainName
         self.currentDomainNameDecoded = domainName.decodePunycode()
-        self._scripts                 = scripts
     }
 
     private var sortedDomainNames: [FrameDomainName] {
@@ -218,69 +215,72 @@ struct ScriptsPanel: View {
 /* ############################################################# */
 
 struct ScriptsPanel_Previews: PreviewProvider {
-    static let topFrame = "js-blocker.com"
-    static let frames = [
-        topFrame,
-        "b.com", "б.ком",
-        "r.com", "л.ком",
-        "j.com", "ж.ком",
-        "n.com", "з.ком",
-        "i.com", "ё.ком",
-        "q.com", "й.ком",
-        "d.com", "д.ком",
-        "f.com", "е.ком",
-        "s.com", "п.ком",
-        "w.com", "ф.ком",
-    ]
-    static let frameScripts = [
-        "https://b.com/script.js",
-        "https://q.com/script.js",
-        "https://x.com/script.js",
-    ]
-    static func scripts(count: Int) -> Matrix2dArrOfStr {
-        var result = Matrix2dArrOfStr()
-        for i in 0 ..< count {
-            result[topFrame, Self.frames[i]] = Self.frameScripts
-        }
-        return result
-    }
-    static public var previews: some View {
-        VStack(spacing: 10) {
-            ForEach(0 ..< 10, id: \.self) { i in
-                ScriptsPanel(
-                    domainName : "js-blocker.com",
-                    scripts    : .constant(Self.scripts(count: i))
-                ).background(Color.colorButtonCapsuleVioletBottom)
-            }
-            Spacer()
-        }
-        .padding(20)
-        .frame(width: 200, height: 550)
-        .background(Color.popup.ruleExactBackground)
-    }
-}
 
-struct ScriptsPanel_NoScripts_Previews: PreviewProvider {
-    static public var previews: some View {
-        let scriptsEmpty1 = Matrix2dArrOfStr()
-        let scriptsEmpty2: Matrix2dArrOfStr = {
+    struct ViewWithState: View {
+
+        static let topFrame = "js-blocker.com"
+
+        static let frames = [
+            topFrame,
+            "b.com", "б.ком",
+            "r.com", "л.ком",
+            "j.com", "ж.ком",
+            "n.com", "з.ком",
+            "i.com", "ё.ком",
+            "q.com", "й.ком",
+            "d.com", "д.ком",
+            "f.com", "е.ком",
+            "s.com", "п.ком",
+            "w.com", "ф.ком",
+        ]
+
+        static let frameScripts = [
+            "https://b.com/script.js",
+            "https://q.com/script.js",
+            "https://x.com/script.js",
+        ]
+
+        static func generateScripts(count: Int) -> Matrix2dArrOfStr {
             var result = Matrix2dArrOfStr()
-                result["js-blocker.com", "js-blocker.com"] = []
+            for i in 0 ..< count {
+                result[topFrame, Self.frames[i]] = Self.frameScripts
+            }
             return result
-        }()
-        VStack(spacing: 10) {
-            ScriptsPanel(
-                domainName : "js-blocker.com",
-                scripts    : .constant(scriptsEmpty1)
-            ).background(Color.colorButtonCapsuleVioletBottom)
-            ScriptsPanel(
-                domainName : "js-blocker.com",
-                scripts    : .constant(scriptsEmpty2)
-            ).background(Color.colorButtonCapsuleVioletBottom)
-            Spacer()
         }
-        .padding(20)
-        .frame(width: 200, height: 400)
-        .background(Color.popup.ruleExactBackground)
+
+        static func generateScripts0Plus() -> Matrix2dArrOfStr {
+            var result = Matrix2dArrOfStr()
+                result[self.topFrame, self.topFrame] = []
+            return result
+        }
+
+        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+            PopupState.shared.match = .noOne
+            PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+            PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+            if      (value == 0) { PopupState.shared.scripts = Self.generateScripts(count: 0) }
+            else if (value == 1) { PopupState.shared.scripts = Self.generateScripts0Plus() }
+            else                 { PopupState.shared.scripts = Self.generateScripts(count: Int(value) - 1) }
+        }
+
+        var body: some View {
+            VStack(spacing: 0) {
+                ScriptsPanel(domainName: ScriptsPanel_Previews.ViewWithState.topFrame)
+                    .padding(20)
+                PreviewModeSelector(
+                    title: "count",
+                    state: Self.match,
+                    modes: ["0", "0+", "1", "2", "3", "4", "5", "6", "7", "8"]
+                )
+            }.frame(
+                width: Popup.FRAME_WIDTH
+            )
+        }
+
     }
+
+    static var previews: some View {
+        ViewWithState()
+    }
+
 }
