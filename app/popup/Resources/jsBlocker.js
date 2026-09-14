@@ -9,7 +9,9 @@ const JSBlocker = {
 
     MATCH_TYPE_STRING_NO_ONE: 'noOne',
     MATCH_TYPE_STRING_EXACT: 'exact',
+    MATCH_TYPE_STRING_EXACT_SCRIPT: 'exactScript',
     MATCH_TYPE_STRING_WILDCARD: 'wildcard',
+    MATCH_TYPE_STRING_WILDCARD_SCRIPT: 'wildcardScript',
     STORAGE_KEY_FOR_SETTINGS: 'JSBlockerSettings',
     URL_KEY_FOR_JS_STATE: 'jsBlocker-isJSEnabled',
     DELAY_FOR_PAGE_RELOAD: 500,

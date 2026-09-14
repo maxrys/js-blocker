@@ -27,13 +27,13 @@ struct DomainRuleExactPanel: View {
 
     private var isActiveRule: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isExact
+            match.isExact || match.isExactScript
         }
     }
 
     private var isEnabledButton: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOne
+            match.isNoOne || match.isNoOneScript
         }
     }
 

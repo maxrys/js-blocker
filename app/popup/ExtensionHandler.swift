@@ -85,10 +85,13 @@ class ExtensionHandler: SFSafariExtensionHandler {
                                 PopupState.shared.onChangePageAndDomain(page, domainName)
                                 PopupState.shared.onChangeMatch()
                                 switch PopupState.shared.match {
-                                    case .none    : toolbarItem?.setImage(Self.ICON_NONE)
-                                    case .noOne   : toolbarItem?.setImage(Self.ICON_NO_ONE)
-                                    case .exact   : toolbarItem?.setImage(Self.ICON_EXACT)
-                                    case .wildcard: toolbarItem?.setImage(Self.ICON_WILDCARD)
+                                    case .none          : toolbarItem?.setImage(Self.ICON_NONE)
+                                    case .noOne         : toolbarItem?.setImage(Self.ICON_NO_ONE)
+                                    case .noOneScript   : toolbarItem?.setImage(Self.ICON_NO_ONE)
+                                    case .exact         : toolbarItem?.setImage(Self.ICON_EXACT)
+                                    case .exactScript   : toolbarItem?.setImage(Self.ICON_EXACT)
+                                    case .wildcard      : toolbarItem?.setImage(Self.ICON_WILDCARD)
+                                    case .wildcardScript: toolbarItem?.setImage(Self.ICON_WILDCARD)
                                 }
                             }
                         } else {

@@ -27,13 +27,13 @@ struct DomainRuleWildcardPanel: View {
 
     private var isActiveRule: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isWildcard
+            match.isWildcard || match.isWildcardScript
         }
     }
 
     private var isEnabledButton: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOne
+            match.isNoOne || match.isNoOneScript
         }
     }
 
@@ -88,8 +88,10 @@ struct DomainRuleWildcardPanel: View {
 
                             let opacity: CGFloat = {
                                 switch self.popupState.match {
-                                    case .noOne   : isDisabled      ? 0.5 : 1.0
-                                    case .wildcard: isFirstSelected ? 1.0 : 0.5
+                                    case .noOne         : isDisabled      ? 0.5 : 1.0
+                                    case .noOneScript   : isDisabled      ? 0.5 : 1.0
+                                    case .wildcard      : isFirstSelected ? 1.0 : 0.5
+                                    case .wildcardScript: isFirstSelected ? 1.0 : 0.5
                                     default: 0.5
                                 }
                             }()
