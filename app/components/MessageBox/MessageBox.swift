@@ -8,7 +8,8 @@ import SwiftUI
 
 struct MessageBox: View {
 
-    static let EVENT_NAME_FOR_MESSAGE_INSERT = "messageInsert"
+    static let EVENT_NAME_FOR_MESSAGE_INSERT     = "messageInsert"
+    static let EVENT_NAME_FOR_MESSAGE_DELETE_ALL = "messageDeleteAll"
 
     @ObservedObject private var state = MessageState()
 
@@ -54,6 +55,13 @@ struct MessageBox: View {
                     expiresAt: message.expiresAt
                 )
             }
+        }
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_DELETE_ALL)
+            )
+        ) { publisher in
+            self.state.deleteAll()
         }
     }
 
@@ -113,6 +121,13 @@ struct MessageBox: View {
                 case .infinity      : NotificationCenter.default.post(name: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_INSERT), object: Message(type: type, title: title, description: description, isClosable: isClosable))
             }
         }
+    }
+
+    static public func deleteAll() {
+        NotificationCenter.default.post(
+            name: Notification.Name(Self.EVENT_NAME_FOR_MESSAGE_DELETE_ALL),
+            object: nil
+        )
     }
 
 }

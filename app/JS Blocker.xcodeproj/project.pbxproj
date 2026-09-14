@@ -91,6 +91,10 @@
 		50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
 		50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
 		50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
+		5054D57F3057FA070005E46F /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054D57E3057FA070005E46F /* ValueState.swift */; };
+		5054D5803057FA070005E46F /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054D57E3057FA070005E46F /* ValueState.swift */; };
+		5054D5813057FA070005E46F /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054D57E3057FA070005E46F /* ValueState.swift */; };
+		5054D5823057FA070005E46F /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5054D57E3057FA070005E46F /* ValueState.swift */; };
 		5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
 		505507502FC6E548007DB93D /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
 		505507512FC6E548007DB93D /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
@@ -341,6 +345,7 @@
 		50439E012F44C9AD00270BE5 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		50439E022F44C9AD00270BE5 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		50439E032F44C9AD00270BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5054D57E3057FA070005E46F /* ValueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueState.swift; sourceTree = "<group>"; };
 		5055074E2FC6E548007DB93D /* NSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSApplication.swift; sourceTree = "<group>"; };
 		505507522FC6E57C007DB93D /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		505507542FC6E59E007DB93D /* ShadowLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLine.swift; sourceTree = "<group>"; };
@@ -481,6 +486,7 @@
 				50E150B52DA96615005768C1 /* MatchType.swift */,
 				50E4B1022FF29088008D625B /* Previewer.swift */,
 				5064215F2F5E22AB0020F6C8 /* ResultBuilder.swift */,
+				5054D57E3057FA070005E46F /* ValueState.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -968,6 +974,7 @@
 				50BB98662FFA5BCF00C39670 /* HVStack.swift in Sources */,
 				50CE9FEB2F472EC4001006CF /* Shape.swift in Sources */,
 				50ECC02E30078EE400A99E64 /* ADFetchCollection.swift in Sources */,
+				5054D57F3057FA070005E46F /* ValueState.swift in Sources */,
 				50439DC62F44C8BA00270BE5 /* Numeric.swift in Sources */,
 				50439DC32F44C87E00270BE5 /* Timer.swift in Sources */,
 				50E150B82DA96616005768C1 /* MatchType.swift in Sources */,
@@ -1002,6 +1009,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503DBDD6302B5B8A00BD39F3 /* RulesHandler.swift in Sources */,
+				5054D5813057FA070005E46F /* ValueState.swift in Sources */,
 				503DBDE1302B5C6800BD39F3 /* EntityVersions.swift in Sources */,
 				503DBDE6302B5CAC00BD39F3 /* Previewer.swift in Sources */,
 				503DBDE7302B5CAC00BD39F3 /* _const.swift in Sources */,
@@ -1070,6 +1078,7 @@
 				50CEA06B2F486265001006CF /* InstallGuide.swift in Sources */,
 				50CE9FEC2F472EC4001006CF /* Shape.swift in Sources */,
 				50B025062C47E401002F1AD7 /* App.swift in Sources */,
+				5054D5803057FA070005E46F /* ValueState.swift in Sources */,
 				50CEA0562F47A6B7001006CF /* _const.swift in Sources */,
 				50CEA0942F4B6D46001006CF /* Set.swift in Sources */,
 				501FA4E22F4F99B1004663D2 /* NSEvent.swift in Sources */,
@@ -1153,6 +1162,7 @@
 				50CEA0952F4B6D46001006CF /* Set.swift in Sources */,
 				50E4E8402F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,
+				5054D5823057FA070005E46F /* ValueState.swift in Sources */,
 				50CE9FE42F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE52F472E06001006CF /* ButtonCustomColor.swift in Sources */,
 				500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */,
