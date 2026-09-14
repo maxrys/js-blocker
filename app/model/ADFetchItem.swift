@@ -9,7 +9,7 @@ struct ADFetchItem: Equatable {
 
     let name: DomainName
     let nameDecoded: DomainName
-    let isWildcard: Bool
+    let type: String
     let createdAt: Int64
     let expiresAt: Int64
 
@@ -20,13 +20,13 @@ struct ADFetchItem: Equatable {
     init(
         name: DomainName,
         nameDecoded: DomainName,
-        isWildcard: Bool,
+        type: String,
         createdAt: Int64,
         expiresAt: Int64,
     ) {
         self.name        = name
         self.nameDecoded = nameDecoded
-        self.isWildcard  = isWildcard
+        self.type        = type
         self.createdAt   = createdAt
         self.expiresAt   = expiresAt
     }
@@ -34,7 +34,7 @@ struct ADFetchItem: Equatable {
     init(item: AllowedDomains) {
         self.name        = item.name
         self.nameDecoded = item.nameDecoded
-        self.isWildcard  = item.isWildcard
+        self.type        = item.type
         self.createdAt   = item.createdAt
         self.expiresAt   = item.expiresAt
     }
@@ -42,7 +42,7 @@ struct ADFetchItem: Equatable {
     public var strictJSON: String {
         "{" +
             "\"name\":\"\(self.name.JSONEscaped())\"," +
-            "\"isWildcard\":\(self.isWildcard)," +
+            "\"type\":\"\(self.type)\"," +
             "\"createdAt\":\(self.createdAt)," +
             "\"expiresAt\":\(self.expiresAt)" +
         "}"
