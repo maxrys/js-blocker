@@ -1494,6 +1494,38 @@
         }
       }
     },
+    "Wildcard rule for the following domain was not removed:" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Абагульненае правіла для дамена не было выдалена:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обобщённое правило для домена не было удалено:"
+          }
+        }
+      }
+    },
+    "Wildcard rule for the following domain was removed:" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Абагульненае правіла для дамена было выдалена:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обобщённое правило для домена было удалено:"
+          }
+        }
+      }
+    },
     "Wildcard rules for the following domains were added:" : {
       "localizations" : {
         "be-BY" : {
@@ -1522,38 +1554,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обобщённые правила для доменов не были добавлены:"
-          }
-        }
-      }
-    },
-    "Wildcard rules for the following domains were not removed:" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Абагульненыя правілы для даменаў не былі выдалены:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обобщённые правила для доменов не были удалены:"
-          }
-        }
-      }
-    },
-    "Wildcard rules for the following domains were removed:" : {
-      "localizations" : {
-        "be-BY" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Абагульненыя правілы для даменаў былі выдалены:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обобщённые правила для доменов были удалены:"
           }
         }
       }

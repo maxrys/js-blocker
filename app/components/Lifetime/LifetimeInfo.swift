@@ -116,35 +116,56 @@ struct LifetimeInfo: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-struct LifetimeInfo_ExpireNoLimit_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 10) { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-            }
-    }
-}
+struct LifetimeInfo_Previews: PreviewProvider {
 
-struct LifetimeInfo_ExpireValid_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 10) { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_VALID)
-                PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
-            }
-    }
-}
+    struct ViewWithState: View {
 
-struct LifetimeInfo_ExpireExpired_Previews: PreviewProvider {
-    static var previews: some View {
-        Previewer(spacing: 10) { DomainRuleExactPanel().background(Color.popup.ruleExactBackground) }
-            .frame(width: Popup.FRAME_WIDTH)
-            .onAppear {
-                PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_EXPIRED)
-                PopupState.shared.ruleExact = DEMO_RULE__EXACT_TOPDOMAIN
+        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+            switch value {
+                case 0:
+                    PopupState.shared.match = nil
+                    PopupState.shared.ruleExact = ""
+                    PopupState.shared.rulesWildcard = []
+                case 1:
+                    PopupState.shared.match = .noOne
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 2:
+                    PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 3:
+                    PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_VALID)
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                case 4:
+                    PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_EXPIRED)
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                default: break
             }
+        }
+
+        var body: some View {
+            VStack(spacing: 0) {
+                DomainRuleExactPanel()
+                    .background(Color.popup.ruleExactBackground)
+                PreviewModeSelector(
+                    title: "match",
+                    state: Self.match,
+                    modes: ["nil", "noOne", "exactNL", "exactV", "exactE"]
+                )
+                Spacer()
+            }.frame(
+                width: Popup.FRAME_WIDTH,
+                height: 400
+            )
+        }
+
     }
+
+    static var previews: some View {
+        ViewWithState()
+    }
+
 }

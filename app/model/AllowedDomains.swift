@@ -16,30 +16,40 @@ extension AllowedDomains {
     }
 
     static func matchType(name: DomainName) -> MatchType {
-        if let domainItem = SELF.select(name) {
-            if (domainItem.isWildcard != true) { return .exact   (item: domainItem) }
-            if (domainItem.isWildcard == true) { return .wildcard(item: domainItem) }
+        if let item = SELF.select(name) {
+            if (item.isWildcard != true) { return .exact   (item: item) }
+            if (item.isWildcard == true) { return .wildcard(item: item) }
         }
-        let wildcardDomains = SELF.selectWildcardDomains(name)
-        if let first = wildcardDomains.first {
-            return .wildcard(item: first)
+        let wildcardDomains = SELF.selectDomainAndTopDomains(name, types: [
+            MATCH_TYPE_STRING_WILDCARD,
+        ])
+        if let item = wildcardDomains.first {
+            return .wildcard(item: item)
         }
         return .noOne
     }
 
-    static func selectWildcardDomains(_ name: DomainName, ascending: Bool = false) -> ADFetchCollection {
+    static func selectDomainAndTopDomains(_ name: DomainName, ascending: Bool = false, types: [String]) -> ADFetchCollection {
         do {
-            let orderBy = NSSortDescriptor(key: #keyPath(SELF.name), ascending: ascending)
             let names = [name] + name.topDomains(isDeleteTLD: true)
             let request = NSFetchRequest<SELF>(entityName: SELF.stringName)
             request.fetchLimit = Int.max
-            request.sortDescriptors = [orderBy]
-            request.predicate = NSPredicate(format: "(name IN %@) AND (isGlobal == true)", names)
+            request.sortDescriptors = [ NSSortDescriptor(key: #keyPath(SELF.name), ascending: ascending) ]
+            request.predicate = {
+                var result:[NSPredicate] = []
+                result.append(NSPredicate(format: "name IN %@", names))
+                if (types == [MATCH_TYPE_STRING_EXACT                            ]) { result.append(NSPredicate(format: "isGlobal <> true")) }
+                if (types == [                         MATCH_TYPE_STRING_WILDCARD]) { result.append(NSPredicate(format: "isGlobal == true")) }
+                if (types == [MATCH_TYPE_STRING_EXACT, MATCH_TYPE_STRING_WILDCARD]) { result.append(NSPredicate(format: "isGlobal <> true OR isGlobal == true")) }
+                return NSCompoundPredicate(
+                    andPredicateWithSubpredicates: result
+                )
+            }()
             return try Storage.context.fetch(request).reduce(into: ADFetchCollection()) { result, modelItem in
                 result.appendUnique(modelItem)
             }
         } catch {
-            Logger.customLog("Model \(SELF.stringName).selectWildcardDomains() error: \(error).")
+            Logger.customLog("Model \(SELF.stringName).selectDomainAndTopDomains() error: \(error).")
             return []
         }
     }
