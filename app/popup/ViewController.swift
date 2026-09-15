@@ -168,10 +168,8 @@ class ViewController: SFSafariExtensionViewController {
                             description: name.decodePunycode()
                         )
                         if (match.isExactScript) {
-                            if case .success = AllowedScripts.delete(domain: name) {
-                                ScriptsManager.reset    (for: name)
-                                ScriptsManager.resetIsOn(for: name)
-                            }
+                            ScriptsManager.reset    (for: name)
+                            ScriptsManager.resetIsOn(for: name)
                         }
                         Task { @MainActor in
                             PopupState.shared.onChangeMatch()
@@ -201,10 +199,8 @@ class ViewController: SFSafariExtensionViewController {
                             description: name.decodePunycode()
                         )
                         if (match.isWildcardScript) {
-                            if case .success = AllowedScripts.delete(domain: name) {
-                                ScriptsManager.reset    (for: name)
-                                ScriptsManager.resetIsOn(for: name)
-                            }
+                            ScriptsManager.reset    (for: name)
+                            ScriptsManager.resetIsOn(for: name)
                         }
                         Task { @MainActor in
                             PopupState.shared.onChangeMatch()

@@ -158,6 +158,7 @@ public class AllowedDomains: NSManagedObject {
                     fromRemoteContextSave: [NSDeletedObjectsKey: affectedIDs],
                     into: [Storage.context]
                 )
+                names.forEach { name in _ = AllowedScripts.delete(domain: name) }
             _ = EntityVersions.versionIncrement(SELF.stringName)
                 EntityVersions.dump()
             }
@@ -172,23 +173,33 @@ public class AllowedDomains: NSManagedObject {
 
     static func sanitize() -> ExecuteResult {
         do {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: SELF.stringName)
-            request.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.now.int64))
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-            deleteRequest.resultType = .resultTypeObjectIDs
-            let result = try Storage.context.execute(deleteRequest) as? NSBatchDeleteResult
-            let affectedIDs = result?.result as? [NSManagedObjectID] ?? []
-            if (affectedIDs.count > 0) {
-                NSManagedObjectContext.mergeChanges(
-                    fromRemoteContextSave: [NSDeletedObjectsKey: affectedIDs],
-                    into: [Storage.context]
+            let selectRequest = NSFetchRequest<SELF>(entityName: SELF.stringName)
+            selectRequest.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.now.int64))
+            let names = (try Storage.context.fetch(selectRequest)).map(\.name)
+            if (names.count > 0) {
+                let deleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: SELF.stringName)
+                deleteRequest.predicate = NSPredicate(format: "name IN %@", names)
+                let deleteBatchRequest = NSBatchDeleteRequest(fetchRequest: deleteRequest)
+                deleteBatchRequest.resultType = .resultTypeObjectIDs
+                let result = try Storage.context.execute(deleteBatchRequest) as? NSBatchDeleteResult
+                let affectedIDs = result?.result as? [NSManagedObjectID] ?? []
+                if (affectedIDs.count > 0) {
+                    NSManagedObjectContext.mergeChanges(
+                        fromRemoteContextSave: [NSDeletedObjectsKey: affectedIDs],
+                        into: [Storage.context]
+                    )
+                    names.forEach { name in _ = AllowedScripts.delete(domain: name) }
+                _ = EntityVersions.versionIncrement(SELF.stringName)
+                    EntityVersions.dump()
+                }
+                return .success(
+                    affected: affectedIDs.count
                 )
-            _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
+            } else {
+                return .success(
+                    affected: 0
+                )
             }
-            return .success(
-                affected: affectedIDs.count
-            )
         } catch {
             Logger.customLog("Model \(SELF.stringName).sanitize() error: \(error).")
             return .failure
