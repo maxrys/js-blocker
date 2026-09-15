@@ -10,9 +10,9 @@ class RulesHandler: NSObject, NSExtensionRequestHandling {
     static var JSON: Data {
         var unlessDomains: [String] = []
 
-        for domain in AllowedDomains.selectAll() {
-            if (domain.type == MATCH_TYPE_STRING_EXACT   ) { unlessDomains.append( "\(domain.name)") }
-            if (domain.type == MATCH_TYPE_STRING_WILDCARD) { unlessDomains.append("*\(domain.name)") }
+        for domainItem in AllowedDomains.selectAll() {
+            if (domainItem.type == MATCH_TYPE_STRING_EXACT   ) { unlessDomains.append( "\(domainItem.name)") }
+            if (domainItem.type == MATCH_TYPE_STRING_WILDCARD) { unlessDomains.append("*\(domainItem.name)") }
         }
 
         var JSONObject: Any = []

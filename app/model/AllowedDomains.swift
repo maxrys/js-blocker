@@ -135,7 +135,6 @@ public class AllowedDomains: NSManagedObject {
             try Storage.context.save()
             if (!isVersioningDisabled) {
             _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
             }
             return .success(affected: 1)
         } catch {
@@ -160,7 +159,6 @@ public class AllowedDomains: NSManagedObject {
                 )
                 names.forEach { name in _ = AllowedScripts.delete(domain: name) }
             _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
             }
             return .success(
                 affected: affectedIDs.count
@@ -190,7 +188,6 @@ public class AllowedDomains: NSManagedObject {
                     )
                     names.forEach { name in _ = AllowedScripts.delete(domain: name) }
                 _ = EntityVersions.versionIncrement(SELF.stringName)
-                    EntityVersions.dump()
                 }
                 return .success(
                     affected: affectedIDs.count

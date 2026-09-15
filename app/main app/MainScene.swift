@@ -88,11 +88,11 @@ struct MainScene: View {
                                 spacing: 1
                             ) { EmptyView() }
                         },
-                        bodyAsArray: self.mainAppState.items.flatMap { domain in [
-                            AnyView(self.CellNameView(domain)),
-                            AnyView(self.CellExpiresAtView(domain)),
-                            AnyView(self.CellMatchTypeView(domain)),
-                            AnyView(self.CellOpenURLView(domain))
+                        bodyAsArray: self.mainAppState.items.flatMap { domainItem in [
+                            AnyView(self.CellNameView(domainItem)),
+                            AnyView(self.CellExpiresAtView(domainItem)),
+                            AnyView(self.CellMatchTypeView(domainItem)),
+                            AnyView(self.CellOpenURLView(domainItem))
                         ]}
                     )
 
@@ -147,8 +147,8 @@ struct MainScene: View {
             .frame(width: 10, height: 10)
     }
 
-    @ViewBuilder private func CellNameView(_ domain: ADFetchItem) -> some View {
-        Text(domain.nameDecoded)
+    @ViewBuilder private func CellNameView(_ domainItem: ADFetchItem) -> some View {
+        Text(domainItem.nameDecoded)
     }
 
     @ViewBuilder private func CellExpiresAtView(_ domain: ADFetchItem) -> some View {

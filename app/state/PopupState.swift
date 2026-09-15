@@ -82,8 +82,8 @@ final class PopupState: ObservableObject {
                 return AllowedDomains.selectDomainAndTopDomains(domain, types: [
                     MATCH_TYPE_STRING_WILDCARD,
                     MATCH_TYPE_STRING_WILDCARD_SCRIPT
-                ]).reduce(into: Set<Int>()) { result, domain in
-                    if let index = allDomains.firstIndex(of: domain.name) {
+                ]).reduce(into: Set<Int>()) { result, domainItem in
+                    if let index = allDomains.firstIndex(of: domainItem.name) {
                         result.insert(index)
                     }
                 }
@@ -95,8 +95,8 @@ final class PopupState: ObservableObject {
                     MATCH_TYPE_STRING_EXACT_SCRIPT,
                     MATCH_TYPE_STRING_WILDCARD,
                     MATCH_TYPE_STRING_WILDCARD_SCRIPT,
-                ]).reduce(into: Set<Int>()) { result, domain in
-                    if let index = allDomains.firstIndex(of: domain.name) {
+                ]).reduce(into: Set<Int>()) { result, domainItem in
+                    if let index = allDomains.firstIndex(of: domainItem.name) {
                         result.insert(index)
                     }
                 }
