@@ -174,29 +174,60 @@ const JSBlocker = {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        if (node.tagName === 'SCRIPT') { /* removing <script> */
-                            if (node.src) {
-                                const crc32 = this.crc32(this.clearURL(node.src));
+
+                        /* removing <SCRIPT> */
+                        if (node.tagName === 'SCRIPT') {
+                            const src = node.src;
+                            if (src) {
+                                const crc32 = this.crc32(this.clearURL(src));
                                 if (!scriptsCrc.includes(crc32)) {
                                     node.remove();
-                                    console.log(`JS Blocker on "${this.domain}": sanitized external script "${node.src}"`);
+                                    console.log(`JS Blocker on "${this.domain}": sanitized external script "${src}"`);
+                                    return;
                                 }
                             } else {
                                 if (!isAllowedInternalScripts) {
                                     node.remove();
                                     console.log(`JS Blocker on "${this.domain}": sanitized internal script`);
+                                    return;
                                 }
                             }
                         }
-                        /* attributes <… on…="…" …> */
+
+                        /* removing <IFRAME srcdoc="…">,
+                                    <IFRAME src="data:text/html…">,
+                                    <IFRAME src="data:application/xhtml+xml…">,
+                                    <IFRAME src="blob:"> */
+                        if (node.tagName === 'IFRAME') {
+                            if (!isAllowedInternalAttributeScripts) {
+                                const src = node.getAttribute('src') || '';
+                                const normalizedSrc = src.replace(/[\u0000-\u0020]/g, '').toLowerCase();
+                                if (
+                                    node.hasAttribute('srcdoc') ||
+                                    normalizedSrc.startsWith('data:text/html') ||
+                                    normalizedSrc.startsWith('data:application/xhtml+xml') ||
+                                    normalizedSrc.startsWith('blob:')
+                                ) {
+                                    node.remove();
+                                    console.log(`JS Blocker on "${this.domain}": sanitized IFRAME with "${src}"`);
+                                    return;
+                                }
+                            }
+                        }
+
+                        /* attributes <TAG_NAME on_ATTR_NAME="…">,
+                                      <TAG_NAME ATTR_NAME="javascript:…"> */
                         if (!isAllowedInternalAttributeScripts) {
                             [...node.attributes].forEach(attribute => {
-                                if (attribute.name.startsWith('on')) {
+                                const n = attribute.name.toLowerCase();
+                                const v = attribute.value.replace(/[\u0000-\u0020]/g, '').toLowerCase();
+                                if (n.startsWith('on') || v.startsWith('javascript:')) {
                                     node.removeAttribute(attribute.name);
                                     console.log(`JS Blocker on "${this.domain}": sanitized attribute "${attribute.name}" on ${node.tagName}`);
                                 }
                             });
                         }
+
                     }
                 });
             });
