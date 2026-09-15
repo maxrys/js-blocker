@@ -59,7 +59,10 @@ struct LifetimePicker: View {
                     }
                 }
             }
-            .popover(isPresented: self.$isOpened, arrowEdge: .bottom) {
+            .popover(
+                isPresented: self.isEnabled ? self.$isOpened : .constant(false),
+                arrowEdge: .bottom
+            ) {
                 self.PopupView()
             }
     }

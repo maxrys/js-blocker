@@ -71,7 +71,10 @@ struct ScriptsPanel: View {
 
     public var body: some View {
         self.OpenerView()
-            .popover(isPresented: self.$isOpened, arrowEdge: .trailing) {
+            .popover(
+                isPresented: self.isEnabled ? self.$isOpened : .constant(false),
+                arrowEdge: .trailing
+            ) {
                 self.PopupView()
             }
     }
@@ -105,23 +108,20 @@ struct ScriptsPanel: View {
 
             if (self.isVisibleFrames) {
                 self.PopupSriptsModeToggleView()
-                    .overlayPolyfill(alignment: .trailing) {
-                        if (self.isActive) {
-                            if (self.isActive) {
-                                RefreshButton(onClick: self.popupState.jsGetScripts)
-                                    .foregroundPolyfill(Color.scriptsPanel.popupTitle)
-                                    .offset(x: -30)
-                            }
-                        }
-                    }
             }
 
             if (self.isActive) {
                 Group {
                     if (self.totalCount < 20) { self.PopupBodyView() }
                     else         { ScrollView { self.PopupBodyView() }.frame(height: 600) }
-                }.overlayPolyfill(alignment: .top) {
+                }
+                .overlayPolyfill(alignment: .top) {
                     self.PopupHead_ShadowView(height: 5)
+                }
+                .overlayPolyfill(alignment: .topTrailing) {
+                    RefreshButton(onClick: self.popupState.jsGetScripts)
+                        .foregroundPolyfill(Color.scriptsPanel.popupTitle)
+                        .offset(x: -30, y: -45)
                 }
             }
 
@@ -163,7 +163,7 @@ struct ScriptsPanel: View {
             size: CGSize(width: 50, height: 20),
             font: .system(size: 18)
         )
-        .padding(20)
+        .padding(.init(top: 23, leading: 20, bottom: 20, trailing: 20))
         .frame(maxWidth: .infinity)
         .background(
             self.colorScheme == .dark ?
