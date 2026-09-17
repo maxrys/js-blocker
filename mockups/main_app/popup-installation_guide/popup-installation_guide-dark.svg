@@ -270,11 +270,11 @@
     </g>
     <g>
       <g>
-        <rect x="139" y="151" width="1320" height="88" style="stroke-width: 1; filter: none; fill: rgb(49, 135, 8);"/>
-        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 27px; font-weight: 700; letter-spacing: 0.2px; white-space: pre; stroke-width: 1; filter: none;" x="582" y="207.732">JS Blocker Extension is enabled</text>
+        <path style="stroke-width: 1; filter: none; fill: rgb(49, 135, 8);" d="M 149 151 H 1449 A 10 10 0 0 1 1459 161 V 239 A 0 0 0 0 1 1459 239 H 139 A 0 0 0 0 1 139 239 V 161 A 10 10 0 0 1 149 151 Z" bx:shape="rect 139 151 1320 88 0 10 10 0 10 10 0 0 0 0 0 0 2@41b0f7b5"/>
+        <text style="fill: rgb(255, 255, 255); font-family: Tahoma; font-size: 27px; font-weight: 700; letter-spacing: 0.2px; white-space: pre; stroke-width: 1; filter: none; text-anchor: middle;" x="800" y="207.732">Popup is enabled</text>
       </g>
       <g>
-        <rect x="139" y="239" width="1320" height="112" style="stroke-width: 1; filter: none; fill: rgb(80, 153, 45);"/>
+        <path style="stroke-width: 1; filter: none; fill: rgb(80, 153, 45);" d="M 139 239 H 1459 A 0 0 0 0 1 1459 239 V 341 A 10 10 0 0 1 1449 351 H 149 A 10 10 0 0 1 139 341 V 239 A 0 0 0 0 1 139 239 Z" bx:shape="rect 139 239 1320 112 0 0 0 0 0 0 0 10 10 0 10 10 2@d75b7a50"/>
         <g>
           <rect style="stroke-width: 7; paint-order: fill; fill-rule: nonzero; fill: url('#gradient-9'); filter: url('#filter-5');" x="515" y="273" width="570" height="45" rx="12" ry="12"/>
           <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; letter-spacing: -0.1px; white-space: pre; stroke-width: 1; filter: none;" x="573" y="303.453">Open Safari Extensions Preferences...</text>

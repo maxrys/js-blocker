@@ -39,20 +39,22 @@
       <stop offset="1" style="stop-color: rgb(183, 142, 3);"/>
     </linearGradient>
   </defs>
-  <g style="opacity: 0.5;">
-    <rect x="6" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-8&quot;);" rx="3" ry="3"/>
-    <rect x="14" y="14" width="20" height="20" style="stroke-width: 2; opacity: 0.5; fill: url(&quot;#gradient-9&quot;);" rx="1" ry="1"/>
-  </g>
-  <g style="opacity: 0.5;">
-    <rect x="54" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-4&quot;);" rx="3" ry="3"/>
-    <rect x="62" y="14" width="20" height="20" style="stroke-width: 2; opacity: 0.5; fill: url(&quot;#gradient-5&quot;);" rx="1" ry="1"/>
-  </g>
   <g>
-    <rect x="102" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-12&quot;);" rx="3" ry="3"/>
-    <rect x="110" y="14" width="20" height="20" style="stroke-width: 2; fill: url(&quot;#gradient-13&quot;);" rx="1" ry="1"/>
-  </g>
-  <g style="opacity: 0.5;">
-    <rect x="150" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-6&quot;);" rx="3" ry="3"/>
-    <rect x="158" y="14" width="20" height="20" style="stroke-width: 2; opacity: 0.5; fill: url(&quot;#gradient-7&quot;);" rx="1" ry="1"/>
+    <g style="opacity: 0.5;">
+      <rect x="6" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-8&quot;);" rx="3" ry="3"/>
+      <rect x="14" y="14" width="20" height="20" style="stroke-width: 2; opacity: 0.5; fill: url(&quot;#gradient-9&quot;);" rx="1" ry="1"/>
+    </g>
+    <g style="opacity: 0.5;">
+      <rect x="54" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-4&quot;);" rx="3" ry="3"/>
+      <rect x="62" y="14" width="20" height="20" style="stroke-width: 2; opacity: 0.5; fill: url(&quot;#gradient-5&quot;);" rx="1" ry="1"/>
+    </g>
+    <g>
+      <rect x="102" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-12&quot;);" rx="3" ry="3"/>
+      <rect x="110" y="14" width="20" height="20" style="stroke-width: 2; fill: url(&quot;#gradient-13&quot;);" rx="1" ry="1"/>
+    </g>
+    <g style="opacity: 0.5;">
+      <rect x="150" y="6" width="36" height="36" style="stroke-width: 4; fill: none; stroke: url(&quot;#gradient-6&quot;);" rx="3" ry="3"/>
+      <rect x="158" y="14" width="20" height="20" style="stroke-width: 2; opacity: 0.5; fill: url(&quot;#gradient-7&quot;);" rx="1" ry="1"/>
+    </g>
   </g>
 </svg>
