@@ -22,45 +22,68 @@ struct LifetimePicker: View {
     @Binding private var lifetime: TimeInterval?
     @State private var isOpened = false
 
-    private let openerIconOffset: CGPoint
+    private var colorOpenerIcon: Color {
+        if (self.isActive)
+             { return Color.lifetime.openerIconActive }
+        else { return Color.lifetime.openerIcon }
+    }
 
-    init(
-        lifetime: Binding<TimeInterval?>,
-        openerIconOffset: CGPoint = CGPoint(x: 0, y: 0)
-    ) {
+    private var colorOpenerBorder: Color {
+        if (self.isActive)
+             { return Color.lifetime.openerBorderActive }
+        else { return Color.lifetime.openerBorder }
+    }
+
+    private var colorOpenerBackground: Color {
+        Color.lifetime.openerBackground
+    }
+
+    private var isActive: Bool {
+        self.lifetime != nil
+    }
+
+    init(lifetime: Binding<TimeInterval?>) {
         self._lifetime = lifetime
-        self.openerIconOffset = openerIconOffset
     }
 
     public var body: some View {
         self.OpenerView()
-            .popover(isPresented: self.$isOpened, arrowEdge: .bottom) {
+            .overlayPolyfill(alignment: .bottom) {
+                if let lifetime = self.lifetime {
+                    if let text = Self.LIFETIME_PERIODS[lifetime] {
+                        Text(text)
+                            .font(.system(size: 10))
+                            .padding(.horizontal, -20)
+                            .offset(y: 20)
+                            .opacity(0.5)
+                    }
+                }
+            }
+            .popover(
+                isPresented: self.isEnabled ? self.$isOpened : .constant(false),
+                arrowEdge: .bottom
+            ) {
                 self.PopupView()
             }
     }
 
     @ViewBuilder private func OpenerView() -> some View {
+        let shape = RoundedRectangle(cornerRadius: 12)
         Button {
             self.isOpened.toggle()
         } label: {
-            Group {
-                let isActive = self.lifetime != nil
-                Self.ICON_OPENER
-                    .font(.system(size: 24))
-                    .foregroundPolyfill(
-                        isActive ?
-                            Color.lifetime.openerActiveBackground :
-                            Color.lifetime.openerBackground
-                    )
-                    .offset(
-                        x: self.openerIconOffset.x,
-                        y: self.openerIconOffset.y
-                    )
-            }
-            .padding(6.5)
-            .background(Color.white.opacity(0.1))
-            .contentShape(Circle())
-            .focusEffect (Circle())
+            shape
+                .stroke(self.colorOpenerBorder, lineWidth: 2)
+                .background(shape.fill(self.colorOpenerBackground))
+                .frame(width: 36, height: 36)
+                .overlayPolyfill {
+                    Self.ICON_OPENER
+                        .font(.system(size: 26))
+                        .offset(y: -1)
+                }
+            .foregroundPolyfill(self.colorOpenerIcon)
+            .contentShape(shape)
+            .focusEffect (shape)
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill(self.isEnabled)
@@ -93,7 +116,7 @@ struct LifetimePicker: View {
     }
 
     @ViewBuilder private func PopupTitleView() -> some View {
-        Text(NSLocalizedString("lifetime", comment: ""))
+        Text(NSLocalizedString("Lifetime", comment: ""))
             .font(.headline)
             .frame(maxWidth: .infinity)
             .padding(15)
@@ -155,9 +178,8 @@ struct LifetimePicker_Previews: PreviewProvider {
     struct ViewWithState: View {
         @State private var lifetime: TimeInterval? = nil
         public var body: some View {
-            VStack(spacing: 10) {
+            VStack(spacing: 30) {
                 LifetimePicker(lifetime: self.$lifetime)
-                    .background(Color.colorButtonCapsuleVioletBottom)
                 Text("\(self.lifetime?.int64 ?? 0)")
                 Spacer()
             }

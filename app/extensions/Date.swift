@@ -7,6 +7,10 @@ import Foundation
 
 extension Date {
 
+    static func spin(max: UInt, speed: Double) -> Double {
+        Double(UInt(Self().timeIntervalSince1970 * speed) % max)
+    }
+
     enum Format: String {
         case iso8601         = "yyyy-MM-dd HH:mm:ss"
         case iso8601Timezone = "yyyy-MM-dd HH:mm:ss Z"

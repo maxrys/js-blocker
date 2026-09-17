@@ -16,7 +16,8 @@ struct MainScene: View {
     @Environment(\.openURL) var openURL
 
     @StateObject private var mainAppState = MainAppState.shared
-    @State private var isShowPopover = false
+    @State private var isShowInstallGuide = false
+    @State private var isShowMatchTypeLegend = false
 
     private let messageBox: MessageBox
 
@@ -43,9 +44,9 @@ struct MainScene: View {
                     Color.clear.frame(width: 1, height: 10)
                     self.PanelButtonView(icon: Image(systemName: "square.and.arrow.up"  ), text: NSLocalizedString("export" , comment: "")) { self.onClickExport() }.disabled(self.mainAppState.selectedRows.isEmpty)
                     self.PanelButtonView(icon: Image(systemName: "square.and.arrow.down"), text: NSLocalizedString("import" , comment: "")) { self.onClickImport() }
-                    self.PanelButtonView(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")) { self.isShowPopover = true }
+                    self.PanelButtonView(icon: Image(systemName: "hammer"               ), text: NSLocalizedString("install", comment: "")) { self.isShowInstallGuide = true }
                         .popover(
-                            isPresented: self.$isShowPopover,
+                            isPresented: self.$isShowInstallGuide,
                             arrowEdge: .bottom
                         ) {
                             InstallGuide()
@@ -72,27 +73,27 @@ struct MainScene: View {
                                 size: .flexible(),
                                 spacing: 1,
                                 alignment: .leading
-                            ) { Text(NSLocalizedString("domain name", comment: "")).font(.system(size: 11)) }
+                            ) { self.CellTitleNameView() }
                             TableCustom_HeadCell(
                                 size: .fixed(180),
                                 spacing: 1,
                                 alignment: .center
-                            ) { Text(NSLocalizedString("expires at", comment: "")).font(.system(size: 11)) }
+                            ) { self.CellTitleExpiresAtView() }
                             TableCustom_HeadCell(
                                 size: .fixed(90),
                                 spacing: 1,
                                 alignment: .center
-                            ) { Text(NSLocalizedString("type", comment: "")).font(.system(size: 11)) }
+                            ) { self.CellTitleMatchTypeView() }
                             TableCustom_HeadCell(
                                 size: .fixed(40),
                                 spacing: 1
                             ) { EmptyView() }
                         },
-                        bodyAsArray: self.mainAppState.items.flatMap { domain in [
-                            AnyView(self.CellNameView(domain)),
-                            AnyView(self.CellExpiresAtView(domain)),
-                            AnyView(self.CellMatchTypeView(domain)),
-                            AnyView(self.CellOpenURLView(domain))
+                        bodyAsArray: self.mainAppState.items.flatMap { domainItem in [
+                            AnyView(self.CellNameView(domainItem)),
+                            AnyView(self.CellExpiresAtView(domainItem)),
+                            AnyView(self.CellMatchTypeView(domainItem.type)),
+                            AnyView(self.CellOpenURLView(domainItem))
                         ]}
                     )
 
@@ -142,13 +143,78 @@ struct MainScene: View {
         }
     }
 
+    @ViewBuilder private func CellTitleNameView() -> some View {
+        Text(NSLocalizedString("domain name", comment: ""))
+            .font(.system(size: 11))
+    }
+
+    @ViewBuilder private func CellTitleExpiresAtView() -> some View {
+        Text(NSLocalizedString("expires at", comment: ""))
+            .font(.system(size: 11))
+    }
+
+    @ViewBuilder private func CellTitleMatchTypeView() -> some View {
+        HStack(spacing: 6) {
+            Text(NSLocalizedString("type", comment: ""))
+                .font(.system(size: 11))
+                .overlayPolyfill(alignment: .trailing) {
+                    Button {
+                        self.isShowMatchTypeLegend.toggle()
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                            .font(.system(size: 10))
+                            .opacity(0.5)
+                    }
+                    .buttonStyle(.plain)
+                    .pointerStyleLinkPolyfill()
+                    .offset(x: 15, y: 1)
+                    .popover(
+                        isPresented: self.$isShowMatchTypeLegend,
+                        arrowEdge: .bottom
+                    ) {
+                        self.MatchTypeLegendView()
+                    }
+                }
+        }
+    }
+
+    @ViewBuilder private func MatchTypeLegendView() -> some View {
+        TableCustom(
+            selected: .constant([]),
+            isVisibleHeader: false,
+            isFocusable: false,
+            isScrollable: false,
+            selectionType: .none,
+            head: {
+                TableCustom_HeadCell(
+                    size: .fixed(80),
+                    spacing: 2,
+                    alignment: .center
+                ) { EmptyView() }
+                TableCustom_HeadCell(
+                    size: .fixed(250),
+                    spacing: 0,
+                    alignment: .leading
+                ) { EmptyView() }
+            },
+            bodyAsViews: {
+                self.CellMatchTypeView(MATCH_TYPE_STRING_EXACT          ); Text(NSLocalizedString("exact rule"                , comment: "")).multilineTextAlignment(.leading)
+                self.CellMatchTypeView(MATCH_TYPE_STRING_EXACT_SCRIPT   ); Text(NSLocalizedString("exact rule (by scripts)"   , comment: "")).multilineTextAlignment(.leading)
+                self.CellMatchTypeView(MATCH_TYPE_STRING_WILDCARD       ); Text(NSLocalizedString("wildcard rule"             , comment: "")).multilineTextAlignment(.leading)
+                self.CellMatchTypeView(MATCH_TYPE_STRING_WILDCARD_SCRIPT); Text(NSLocalizedString("wildcard rule (by scripts)", comment: "")).multilineTextAlignment(.leading)
+            }
+        )
+        .font(.system(size: 11))
+        .padding(10)
+    }
+
     @ViewBuilder private func EmptyCellView() -> some View {
         Color.clear
             .frame(width: 10, height: 10)
     }
 
-    @ViewBuilder private func CellNameView(_ domain: ADFetchItem) -> some View {
-        Text(domain.nameDecoded)
+    @ViewBuilder private func CellNameView(_ domainItem: ADFetchItem) -> some View {
+        Text(domainItem.nameDecoded)
     }
 
     @ViewBuilder private func CellExpiresAtView(_ domain: ADFetchItem) -> some View {
@@ -157,12 +223,12 @@ struct MainScene: View {
         ).formatConvenient : NOT_APPLICABLE)
     }
 
-    @ViewBuilder private func CellMatchTypeView(_ domain: ADFetchItem) -> some View {
-        switch domain.type {
-            case MATCH_TYPE_STRING_EXACT          : Self.ICON_CELL_MATCH_TYPE_EXACT          .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
-            case MATCH_TYPE_STRING_EXACT_SCRIPT   : Self.ICON_CELL_MATCH_TYPE_EXACT_SCRIPT   .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
-            case MATCH_TYPE_STRING_WILDCARD       : Self.ICON_CELL_MATCH_TYPE_WILDCARD       .resizable().aspectRatio(contentMode: .fit).frame(height: 15)
-            case MATCH_TYPE_STRING_WILDCARD_SCRIPT: Self.ICON_CELL_MATCH_TYPE_WILDCARD_SCRIPT.resizable().aspectRatio(contentMode: .fit).frame(height: 15)
+    @ViewBuilder private func CellMatchTypeView(_ matchType: String) -> some View {
+        switch matchType {
+            case MATCH_TYPE_STRING_EXACT          : Self.ICON_CELL_MATCH_TYPE_EXACT          .resizable().aspectRatio(contentMode: .fit).frame(width: 192 / 3, height: 48 / 3)
+            case MATCH_TYPE_STRING_EXACT_SCRIPT   : Self.ICON_CELL_MATCH_TYPE_EXACT_SCRIPT   .resizable().aspectRatio(contentMode: .fit).frame(width: 192 / 3, height: 48 / 3)
+            case MATCH_TYPE_STRING_WILDCARD       : Self.ICON_CELL_MATCH_TYPE_WILDCARD       .resizable().aspectRatio(contentMode: .fit).frame(width: 192 / 3, height: 48 / 3)
+            case MATCH_TYPE_STRING_WILDCARD_SCRIPT: Self.ICON_CELL_MATCH_TYPE_WILDCARD_SCRIPT.resizable().aspectRatio(contentMode: .fit).frame(width: 192 / 3, height: 48 / 3)
             default: self.EmptyCellView()
         }
     }
@@ -173,10 +239,11 @@ struct MainScene: View {
                 openURL(url)
                 Logger.customLog("open URL: \(url)")
             } label: {
+                let shape = Circle()
                 Image(systemName: "safari")
-                    .clipShape   (Circle())
-                    .contentShape(Circle())
-                    .focusEffect (Circle())
+                    .clipShape   (shape)
+                    .contentShape(shape)
+                    .focusEffect (shape)
                     .opacity(0.7)
             }
             .buttonStyle(.plain)

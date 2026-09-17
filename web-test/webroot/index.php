@@ -50,10 +50,10 @@
     <x-frames>
         <?php if (!$isInFrame) { ?>
             <x-title>Frames</x-title>
-            <iframe height="205" width="280"         src="https://js-blocker.com?isFrame"></iframe>
-            <iframe height="205" width="280"     src="https://sub.js-blocker.com?isFrame"></iframe>
-            <iframe height="205" width="280" src="https://sub.sub.js-blocker.com?isFrame"></iframe>
-            <iframe height="205" width="280"         src="https://js-блоккер?isFrame"    ></iframe>
+            <iframe width="280" height="205"         src="https://js-blocker.com?isFrame"></iframe>
+            <iframe width="280" height="205"     src="https://sub.js-blocker.com?isFrame"></iframe>
+            <iframe width="280" height="205" src="https://sub.sub.js-blocker.com?isFrame"></iframe>
+            <iframe width="280" height="205"         src="https://js-блоккер?isFrame"    ></iframe>
         <?php } ?>
     </x-frames>
 
@@ -74,8 +74,16 @@
     <?php if (!$isInFrame) { ?>
         <x-links>
             <x-block>
-                <x-title>Elements with JS</x-title>
-                <a href="javascript:alert('JS is enabled')">click to test</a>
+                <a href="javascript:alert('JS is enabled')">Link with JS: click to test</a>
+                <a href="JavaScript:alert('JS is enabled')">Link with JS: click to test</a>
+                <a href="     javascript:alert('JS is enabled')">Link with JS: click to test</a>
+                <a href="&#x6a;avascript:alert('JS is enabled')">Link with JS: click to test</a>
+                <x-title>Frame with srcdoc</x-title>
+                <iframe
+                    width="280" height="50"
+                    sandbox="allow-scripts allow-same-origin"
+                    srcdoc='<?php include("special/frame-srcdoc.html"); ?>'>
+                </iframe>
             </x-block>
         </x-links>
     <?php } ?>
@@ -84,32 +92,7 @@
     <?php if (!$isInFrame) { ?>
         <x-dynamic>
             <x-title>Dynamic Frames</x-title>
-            <script>
-                document.write('<div>' +
-                    '<iframe height="205" width="280" src="https://js-blocker.com?isFrame"></iframe>' +
-                '</div>');
-            </script>
-            <div id="dynamicFrameContainer"></div> 
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const container = document.getElementById('dynamicFrameContainer')
-                    const div = document.createElement('div');
-                    const iframe = document.createElement('iframe');
-                    iframe.src = 'https://js-blocker.com?isFrame';
-                    iframe.style.width = '280';
-                    iframe.style.height = '205';
-                    div.appendChild(iframe);
-                    container.appendChild(div);
-                });
-            </script>
-            <iframe width="280" height="200" id="empty_frame"></iframe>
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    setTimeout(() => {
-                        document.getElementById('empty_frame').setAttribute('src', 'https://js-blocker.com?isFrame')
-                    }, 1000);
-                });
-            </script>
+            <?php include("special/dynamic-frames.html"); ?>
         </x-dynamic>
     <?php } ?>
 

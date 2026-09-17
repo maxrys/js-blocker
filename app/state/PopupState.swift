@@ -14,7 +14,7 @@ final class PopupState: ObservableObject {
     static public private(set) var shared = PopupState()
 
     @Published var page: SFSafariPage? = nil
-    @Published var domainName: CurrentDomainName? = nil
+    @Published var domain: CurrentDomainName? = nil
     @Published var match: MatchType? = nil
 
     @Published var ruleExact: String = ""
@@ -26,6 +26,12 @@ final class PopupState: ObservableObject {
     @Published var expireStatus: ExpireStatus = .notSetted
 
     @Published var scripts = Matrix2dArrOfStr() /* [CurrentDomainName: [FrameDomainName: [URLString]]] */
+    @Published var scriptsIsOn = Matrix3dBool() /* [CurrentDomainName: [FrameDomainName: [URLString: Bool]]] */
+        { didSet {
+            if scriptsIsOn != oldValue {
+                /* self.jsSetMatch() */
+            }
+        }}
 
     private var timer: Timer.Custom!
 
@@ -39,7 +45,7 @@ final class PopupState: ObservableObject {
 
     public func initEmpty() {
         self.page = nil
-        self.domainName = nil
+        self.domain = nil
         self.match = nil
         self.ruleExact = ""
         self.rulesWildcard = []
@@ -49,50 +55,54 @@ final class PopupState: ObservableObject {
         self.lifetime = nil
     }
 
-    public func onChangePageAndDomain(_ page: SFSafariPage, _ domainName: DomainName) {
+    public func onChangePageAndDomain(_ page: SFSafariPage, _ domain: DomainName) {
         self.page = page
-        self.domainName = domainName
-        self.ruleExact = domainName.decodePunycode()
-        self.rulesWildcard = ([domainName] + domainName.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in
+        self.domain = domain
+        self.ruleExact = domain.decodePunycode()
+        self.rulesWildcard = ([domain] + domain.topDomains(isDeleteTLD: true)).reduce(into: [String]()) { result, domain in
             result.append("*." + domain.decodePunycode())
         }
         self.jsGetScripts()
+        ScriptsCart.resetIsOn()
+        ScriptsManager.loadIsOn(
+            for: domain
+        )
     }
 
     public func onChangeMatch() {
-        if let _          = self.page,
-           let domainName = self.domainName {
+        if let _      = self.page,
+           let domain = self.domain {
 
-            let allDomains: [DomainName] = [domainName] + domainName.topDomains(isDeleteTLD: true)
+            let allDomains: [DomainName] = [domain] + domain.topDomains(isDeleteTLD: true)
 
             let rulesWildcardSelected: Set<Int> = {
                 if (allDomains.count == 1) {
                     return [0]
                 }
-                return AllowedDomains.selectDomainAndTopDomains(domainName, types: [
+                return AllowedDomains.selectDomainAndTopDomains(domain, types: [
                     MATCH_TYPE_STRING_WILDCARD,
                     MATCH_TYPE_STRING_WILDCARD_SCRIPT
-                ]).reduce(into: Set<Int>()) { result, domain in
-                    if let index = allDomains.firstIndex(of: domain.name) {
+                ]).reduce(into: Set<Int>()) { result, domainItem in
+                    if let index = allDomains.firstIndex(of: domainItem.name) {
                         result.insert(index)
                     }
                 }
             }()
 
             let rulesWildcardDisabled: Set<Int> = {
-                AllowedDomains.selectDomainAndTopDomains(domainName, types: [
+                AllowedDomains.selectDomainAndTopDomains(domain, types: [
                     MATCH_TYPE_STRING_EXACT,
                     MATCH_TYPE_STRING_EXACT_SCRIPT,
                     MATCH_TYPE_STRING_WILDCARD,
                     MATCH_TYPE_STRING_WILDCARD_SCRIPT,
-                ]).reduce(into: Set<Int>()) { result, domain in
-                    if let index = allDomains.firstIndex(of: domain.name) {
+                ]).reduce(into: Set<Int>()) { result, domainItem in
+                    if let index = allDomains.firstIndex(of: domainItem.name) {
                         result.insert(index)
                     }
                 }
             }()
 
-            self.match = AllowedDomains.matchType(name: domainName)
+            self.match = AllowedDomains.matchType(name: domain)
             self.rulesWildcardSelected = rulesWildcardSelected
             self.rulesWildcardDisabled = rulesWildcardDisabled
             self.expireStatus = self.match?.expireStatus ?? .notSetted
@@ -120,18 +130,14 @@ final class PopupState: ObservableObject {
         }
     }
 
-    public func onSetScripts(domainName: DomainName, frameDomainName: DomainName, scripts: [URLString]) {
-        Self.shared.scripts[domainName, frameDomainName] = scripts
-    }
-
     func jsGetScripts() {
-        if let page       = self.page,
-           let domainName = self.domainName {
-                Logger.customLog("js:getScripts.request for \(domainName)")
+        if let page   = self.page,
+           let domain = self.domain {
+                Logger.customLog("js:getScripts.request for \(domain)")
                 page.dispatchMessageToScript(
                     withName: "js:getScripts.request",
                     userInfo: [
-                        "domain": domainName
+                        "domain": domain
                     ]
                 )
         } else {
@@ -140,15 +146,15 @@ final class PopupState: ObservableObject {
     }
 
     func jsSetMatch() {
-        if let page       = self.page,
-           let domainName = self.domainName,
-           let match      = self.match {
+        if let page   = self.page,
+           let domain = self.domain,
+           let match  = self.match {
                 let matchJSONValue = match.strictJSON
-                Logger.customLog("js:setMatch for \(domainName): \(matchJSONValue)")
+                Logger.customLog("js:setMatch for \(domain): \(matchJSONValue)")
                 page.dispatchMessageToScript(
                     withName: "js:setMatch",
                     userInfo: [
-                        "domain": domainName,
+                        "domain": domain,
                         "match" : matchJSONValue
                     ]
                 )

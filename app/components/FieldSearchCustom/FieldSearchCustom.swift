@@ -23,6 +23,7 @@ struct FieldSearchCustom: View {
     }
 
     var body: some View {
+        let shape = RoundedRectangle(cornerRadius: 5)
         TextField(
             NSLocalizedString(Self.TEXT_PLACEHOLDER_LOCALIZED, comment: ""),
             text: self.$text
@@ -30,7 +31,7 @@ struct FieldSearchCustom: View {
         .textFieldStyle(.plain)
         .padding(self.padding)
         .background(
-            RoundedRectangle(cornerRadius: 5)
+            shape
                 .fill(Color.fieldSearch.background)
                 .shadow(
                     color: .black.opacity(0.5),
@@ -38,8 +39,8 @@ struct FieldSearchCustom: View {
                     y: 0
                 )
         )
-        .contentShape(RoundedRectangle(cornerRadius: 5))
-        .focusEffect (RoundedRectangle(cornerRadius: 5))
+        .contentShape(shape)
+        .focusEffect (shape)
         .overlayPolyfill(alignment: .leading) { self.IconView() }
         .overlayPolyfill(alignment: .trailing) {
             if (!self.text.isEmpty) {
@@ -57,7 +58,12 @@ struct FieldSearchCustom: View {
     }
 
     @ViewBuilder private func ButtonResetView() -> some View {
-        Button { self.text = "" } label: {
+        Button {
+            Task { @MainActor in
+                self.text = ""
+            }
+        } label: {
+            let shape = Circle()
             Image(systemName: "xmark.circle")
                 .font(.system(size: 16))
                 .foregroundPolyfill(Color.fieldSearch.buttonReset)
@@ -66,9 +72,9 @@ struct FieldSearchCustom: View {
                         Color.fieldSearch.buttonResetBackgroundDark :
                         Color.fieldSearch.buttonResetBackground
                 )
-                .clipShape   (Circle())
-                .contentShape(Circle())
-                .focusEffect (Circle())
+                .clipShape   (shape)
+                .contentShape(shape)
+                .focusEffect (shape)
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill()

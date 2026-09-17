@@ -13,7 +13,9 @@ const JSBlocker = {
     MATCH_TYPE_STRING_WILDCARD: 'wildcard',
     MATCH_TYPE_STRING_WILDCARD_SCRIPT: 'wildcardScript',
     STORAGE_KEY_FOR_SETTINGS: 'JSBlockerSettings',
-    URL_KEY_FOR_JS_STATE: 'jsBlocker-isJSEnabled',
+    URL_KEY_FOR_JS_STATE: 'JSBlockerState',
+    URL_INTERNAL_SCRIPT: 'internal://script',
+    URL_INTERNAL_ATTRIBUTE_SCRIPT: "internal://script-attribute",
     DELAY_FOR_PAGE_RELOAD: 500,
     DELAY_BEFORE_RECHECK_STATE: 2000,
 
@@ -23,7 +25,14 @@ const JSBlocker = {
 
     get jsStateFromURL() {
         const url = new URL(window.location.href, document.baseURI);
-        return url.searchParams.get(this.URL_KEY_FOR_JS_STATE) !== 'false';
+        const params = url.searchParams;
+        if (!params.has(this.URL_KEY_FOR_JS_STATE)) {
+            return null;
+        }
+        const scripts = params.get(this.URL_KEY_FOR_JS_STATE);
+        if (scripts)
+             { return scripts.split(',') }
+        else { return [] }
     },
 
     get isTopFrame() {
@@ -47,7 +56,7 @@ const JSBlocker = {
         }
     },
 
-    get domainName() {
+    get domain() {
         return (typeof window !== 'undefined' && window.location?.hostname) || null;
     },
 
@@ -74,7 +83,7 @@ const JSBlocker = {
         try {
             const JSONstring = window.localStorage.getItem(this.STORAGE_KEY_FOR_SETTINGS);
             console.log(
-                `JS Blocker on "${this.domainName}"\n` +
+                `JS Blocker on "${this.domain}"\n` +
                 `Get ${this.STORAGE_KEY_FOR_SETTINGS}: ${JSONstring}`
             );
             return JSONstring;
@@ -87,7 +96,7 @@ const JSBlocker = {
         try {
             window.localStorage.setItem(this.STORAGE_KEY_FOR_SETTINGS, JSONstring);
             console.log(
-                `JS Blocker on "${this.domainName}"\n` +
+                `JS Blocker on "${this.domain}"\n` +
                 `Set ${this.STORAGE_KEY_FOR_SETTINGS}: ${JSONstring}`
             );
             return true;
@@ -96,8 +105,8 @@ const JSBlocker = {
         }
     },
 
-    prepareFramesForBlockJS() {
-        console.log(`JS Blocker on "${this.domainName}": preparation frames starts…`);
+    prepareFramesForBlockJS(scriptsCrcByFrames = []) {
+        console.log(`JS Blocker on "${this.domain}": preparation frames starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
@@ -105,9 +114,13 @@ const JSBlocker = {
                         if (node.tagName === 'IFRAME' || node.tagName === 'FRAME') {
                             if (node.src) {
                                 const url = new URL(node.src, document.baseURI);
-                                url.searchParams.set(this.URL_KEY_FOR_JS_STATE, 'false');
+                                const frameDomain = url.hostname
+                                const scripts = scriptsCrcByFrames[frameDomain] ?? []
+                                if (scripts.length)
+                                     { url.searchParams.set(this.URL_KEY_FOR_JS_STATE, scripts.join(',')); }
+                                else { url.searchParams.set(this.URL_KEY_FOR_JS_STATE, ''); }
                                 node.src = url.toString();
-                                console.log(`JS Blocker on "${this.domainName}": prepared ${node.tagName} "${node.src}"`);
+                                console.log(`JS Blocker on "${this.domain}": prepared ${node.tagName} "${node.src}"`);
                             }
                         }
                     }
@@ -121,7 +134,7 @@ const JSBlocker = {
     },
 
     detectScripts() {
-        console.log(`JS Blocker on "${this.domainName}": detection scripts starts…`);
+        console.log(`JS Blocker on "${this.domain}": detection scripts starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
@@ -130,9 +143,19 @@ const JSBlocker = {
                             if (node.src) {
                                 const clearURL = this.clearURL(node.src)
                                 scripts.push(clearURL);
-                                console.log(`JS Blocker on "${this.domainName}": detected external script "${clearURL}"`);
+                                console.log(`JS Blocker on "${this.domain}": detected external script "${clearURL}"`);
+                            } else {
+                                if (!scripts.includes(this.URL_INTERNAL_SCRIPT)) { scripts.push(this.URL_INTERNAL_SCRIPT); }
+                                console.log(`JS Blocker on "${this.domain}": detected internal script`);
                             }
                         }
+                        /* attributes <… on…="…" …> */
+                        [...node.attributes].forEach(attribute => {
+                            if (attribute.name.startsWith('on')) {
+                                if (!scripts.includes(this.URL_INTERNAL_ATTRIBUTE_SCRIPT)) { scripts.push(this.URL_INTERNAL_ATTRIBUTE_SCRIPT); }
+                                console.log(`JS Blocker on "${this.domain}": detected attribute "${attribute.name}" on ${node.tagName}`);
+                            }
+                        });
                     }
                 });
             });
@@ -143,25 +166,71 @@ const JSBlocker = {
         });
     },
 
-    sanitize() {
-        console.log(`JS Blocker on "${this.domainName}": sanitization scripts starts…`);
+    sanitize(scriptsCrc = []) {
+        console.log(`JS Blocker on "${this.domain}": sanitization scripts starts…`);
+        const isAllowedInternalScripts          = scriptsCrc.includes(this.crc32(this.URL_INTERNAL_SCRIPT));
+        const isAllowedInternalAttributeScripts = scriptsCrc.includes(this.crc32(this.URL_INTERNAL_ATTRIBUTE_SCRIPT));
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        if (node.tagName === 'SCRIPT') { /* removing <script> */
+
+                        /* removing:
+                            <script> */
+                        if (node.tagName === 'SCRIPT') {
                             const src = node.src;
-                            node.remove();
-                            if (src) { console.log(`JS Blocker on "${this.domainName}": sanitized external script "${src}"`); }
-                            else     { console.log(`JS Blocker on "${this.domainName}": sanitized internal script`); }
-                        } else { /* removing <… on…="…" …> */
+                            if (src) {
+                                const crc32 = this.crc32(this.clearURL(src));
+                                if (!scriptsCrc.includes(crc32)) {
+                                    node.remove();
+                                    console.log(`JS Blocker on "${this.domain}": sanitized external script "${src}"`);
+                                    return;
+                                }
+                            } else {
+                                if (!isAllowedInternalScripts) {
+                                    node.remove();
+                                    console.log(`JS Blocker on "${this.domain}": sanitized internal script`);
+                                    return;
+                                }
+                            }
+                        }
+
+                        /* removing:
+                            <iframe SRCDOC="…">,
+                            <iframe src="DATA:TEXT/HTML…">,
+                            <iframe src="DATA:APPLICATION/XHTML+XML…">,
+                            <iframe src="BLOB:…"> */
+                        if (node.tagName === 'IFRAME') {
+                            if (!isAllowedInternalAttributeScripts) {
+                                const src = node.getAttribute('src') || '';
+                                const normalizedSrc = src.replace(/[\u0000-\u0020]/g, '').toLowerCase();
+                                if (
+                                    node.hasAttribute('srcdoc') ||
+                                    normalizedSrc.startsWith('data:text/html') ||
+                                    normalizedSrc.startsWith('data:application/xhtml+xml') ||
+                                    normalizedSrc.startsWith('blob:')
+                                ) {
+                                    node.remove();
+                                    console.log(`JS Blocker on "${this.domain}": sanitized IFRAME with "${src}"`);
+                                    return;
+                                }
+                            }
+                        }
+
+                        /* removing:
+                            <tagName ON_attrname="…">,
+                            <tagName attrname="JAVASCRIPT:…"> */
+                        if (!isAllowedInternalAttributeScripts) {
                             [...node.attributes].forEach(attribute => {
-                                if (attribute.name.startsWith('on')) {
+                                const n = attribute.name.toLowerCase();
+                                const v = attribute.value.replace(/[\u0000-\u0020]/g, '').toLowerCase();
+                                if (n.startsWith('on') || v.startsWith('javascript:')) {
                                     node.removeAttribute(attribute.name);
-                                    console.log(`JS Blocker on "${this.domainName}": sanitized attribute "${attribute.name}" on ${node.tagName}`);
+                                    console.log(`JS Blocker on "${this.domain}": sanitized attribute "${attribute.name}" on ${node.tagName}`);
                                 }
                             });
                         }
+
                     }
                 });
             });
@@ -174,14 +243,14 @@ const JSBlocker = {
 
     pageScriptsNotify() {
         safari.extension.dispatchMessage('js:setScripts.request', {
-            'domainName': this.domainName,
+            'domain': this.domain,
             'scripts': scripts.join('\n')
         });
     },
 
     pageRequestMatch() {
         safari.extension.dispatchMessage('js:getMatch.request', {
-            'domainName': this.domainName
+            'domain': this.domain
         });
     },
 
@@ -209,6 +278,20 @@ const JSBlocker = {
             }
         };
         check();
+    },
+
+    crc32(str) {
+        const bytes = new TextEncoder().encode(str);
+        let crc = 0xffffffff;
+        for (const byte of bytes) {
+            crc ^= byte;
+            for (let i = 0; i < 8; i++) {
+                crc = (crc >>> 1) ^ (crc & 1 ? 0xedb88320 : 0);
+            }
+        }
+        return ((crc ^ 0xffffffff) >>> 0)
+            .toString(16)
+            .padStart(8, "0");
     }
 
 };

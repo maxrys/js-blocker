@@ -123,7 +123,7 @@ struct Tests {
         }
     }
 
-    @Test func DomainName_topDomains() async throws {
+    @Test func Domain_topDomains() async throws {
         #expect( "a.b.c.com".topDomains(                 ) == ["b.c.com", "c.com", "com"] )
         #expect(   "b.c.com".topDomains(                 ) == [           "c.com", "com"] )
         #expect(     "c.com".topDomains(                 ) == [                    "com"] )
@@ -134,8 +134,8 @@ struct Tests {
         #expect(       "com".topDomains(isDeleteTLD: true) == [                  ] )
     }
 
-    @Test func DomainName_isCanonical() async throws {
-        let domainNames = [
+    @Test func Domain_isCanonical() async throws {
+        let domains = [
             "0"                                 : true, /* local DNS */
             "x"                                 : true, /* local DNS */
             "domain"                            : true, /* local DNS */
@@ -161,7 +161,7 @@ struct Tests {
             "0123456789-0123456789-0123456789-0123456789-0123456789-0123456789": false,
         ]
 
-        for name in domainNames {
+        for name in domains {
             let received = name.key.isCanonical
             let expected = name.value
             print("item '\(name.key)'")
@@ -169,7 +169,7 @@ struct Tests {
         }
     }
 
-    @Test func DomainName_decodePunycode() async throws {
+    @Test func Domain_decodePunycode() async throws {
         let words = [
             "xn--90a"                    : "б"            ,
             "xn----9sb"                  : "б-"           ,

@@ -30,12 +30,12 @@ class ViewController: SFSafariExtensionViewController {
     /* ###################################################################### */
 
     func onClick_ruleExactInsert() {
-        if let domainName = PopupState.shared.domainName {
+        if let domain = PopupState.shared.domain, let match = PopupState.shared.match {
 
             let type: String? = {
-                switch PopupState.shared.match {
+                switch match {
                     case .noOne      : MATCH_TYPE_STRING_EXACT
-                    case .noOneScript: MATCH_TYPE_STRING_EXACT
+                    case .noOneScript: MATCH_TYPE_STRING_EXACT_SCRIPT
                     default          : nil
                 }
             }()
@@ -47,9 +47,14 @@ class ViewController: SFSafariExtensionViewController {
             var success: [String] = []
             var failure: [String] = []
 
-            if case .success = AllowedDomains.insert(name: domainName, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
-                 { success.append(domainName.decodePunycode()) }
-            else { failure.append(domainName.decodePunycode()) }
+            switch AllowedDomains.insert(name: domain, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ) {
+                case .failure: failure.append(domain.decodePunycode())
+                case .success: success.append(domain.decodePunycode())
+                    if (match.isNoOneScript) {
+                        ScriptsCart.saveIsOnToStorage(for: domain)
+                        ScriptsCart.resetIsOn()
+                    }
+            }
 
             /* message */
             if (success.count > 0) {
@@ -80,7 +85,7 @@ class ViewController: SFSafariExtensionViewController {
     }
 
     func onClick_ruleWildcardInsert(selected: Set<Int>) {
-        if let domainName = PopupState.shared.domainName {
+        if let domain = PopupState.shared.domain, let match = PopupState.shared.match {
             if (selected.isEmpty) {
 
                 MessageBox.insert(
@@ -91,9 +96,9 @@ class ViewController: SFSafariExtensionViewController {
             } else {
 
                 let type: String? = {
-                    switch PopupState.shared.match {
+                    switch match {
                         case .noOne      : MATCH_TYPE_STRING_WILDCARD
-                        case .noOneScript: MATCH_TYPE_STRING_WILDCARD
+                        case .noOneScript: MATCH_TYPE_STRING_WILDCARD_SCRIPT
                         default          : nil
                     }
                 }()
@@ -102,17 +107,22 @@ class ViewController: SFSafariExtensionViewController {
                     return
                 }
 
-                let domains = [domainName] + domainName.topDomains(isDeleteTLD: true)
+                let domains = [domain] + domain.topDomains(isDeleteTLD: true)
                 var success: [String] = []
                 var failure: [String] = []
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        if case .success = AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } )
-                             { success.append(name.decodePunycode()) }
-                        else { failure.append(name.decodePunycode()) }
+                        switch AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ) {
+                            case .failure: failure.append(name.decodePunycode())
+                            case .success: success.append(name.decodePunycode())
+                                if (match.isNoOneScript) {
+                                    ScriptsCart.saveIsOnToStorage(for: name)
+                                }
+                        }
                     }
                 }
+                ScriptsCart.resetIsOn()
 
                 /* message */
                 if (success.count > 0) {
@@ -144,59 +154,65 @@ class ViewController: SFSafariExtensionViewController {
     }
 
     func onClick_ruleDelete() {
-        if let domainName = PopupState.shared.domainName {
-            if let match = PopupState.shared.match {
+        if let domain = PopupState.shared.domain, let match = PopupState.shared.match {
 
-                if (match.isExact || match.isExactScript) {
+            if (match.isExact || match.isExactScript) {
 
-                    let name = domainName
+                let name = domain
 
-                    switch AllowedDomains.delete([name]) {
-                        case .success:
-                            MessageBox.insert(
-                                type: .ok,
-                                title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
-                                description: name.decodePunycode()
-                            )
-                            Task { @MainActor in
-                                PopupState.shared.onChangeMatch()
-                            }
-                        case .failure:
-                            MessageBox.insert(
-                                type: .error,
-                                title: NSLocalizedString("Exact rule for the following domain was not removed:", comment: ""),
-                                description: name.decodePunycode()
-                            )
-                    }
-
+                switch AllowedDomains.delete([name]) {
+                    case .success:
+                        MessageBox.insert(
+                            type: .ok,
+                            title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
+                            description: name.decodePunycode()
+                        )
+                        if (match.isExactScript) {
+                            ScriptsManager.reset    (for: name)
+                            ScriptsManager.resetIsOn(for: name)
+                        }
+                        Task { @MainActor in
+                            PopupState.shared.onChangeMatch()
+                        }
+                    case .failure:
+                        MessageBox.insert(
+                            type: .error,
+                            title: NSLocalizedString("Exact rule for the following domain was not removed:", comment: ""),
+                            description: name.decodePunycode()
+                        )
                 }
 
-                if (match.isWildcard || match.isWildcardScript) {
+            }
 
-                    let name = AllowedDomains.selectDomainAndTopDomains(domainName, types: [
-                        MATCH_TYPE_STRING_WILDCARD,
-                        MATCH_TYPE_STRING_WILDCARD_SCRIPT
-                    ]).first?.name ?? domainName
+            if (match.isWildcard || match.isWildcardScript) {
 
-                    switch AllowedDomains.delete([name]) {
-                        case .success:
-                            MessageBox.insert(
-                                type: .ok,
-                                title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
-                                description: name.decodePunycode()
-                            )
-                            Task { @MainActor in
-                                PopupState.shared.onChangeMatch()
-                            }
-                        case .failure:
-                            MessageBox.insert(
-                                type: .error,
-                                title: NSLocalizedString("Wildcard rule for the following domain was not removed:", comment: ""),
-                                description: name.decodePunycode()
-                            )
-                    }
+                let name = AllowedDomains.selectDomainAndTopDomains(domain, types: [
+                    MATCH_TYPE_STRING_WILDCARD,
+                    MATCH_TYPE_STRING_WILDCARD_SCRIPT
+                ]).first?.name ?? domain
 
+                switch AllowedDomains.delete([name]) {
+                    case .success:
+                        MessageBox.insert(
+                            type: .ok,
+                            title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
+                            description: name.decodePunycode()
+                        )
+                        if (match.isWildcardScript) {
+                            ScriptsManager.reset    (for: name)
+                            ScriptsManager.resetIsOn(for: name)
+                        }
+                        Task { @MainActor in
+                            PopupState.shared.onChangeMatch()
+                        }
+                    case .failure:
+                        MessageBox.insert(
+                            type: .error,
+                            title: NSLocalizedString("Wildcard rule for the following domain was not removed:", comment: ""),
+                            description: name.decodePunycode()
+                        )
                 }
+
             }
 
             Logger.customLog("onClick_ruleDelete()")
