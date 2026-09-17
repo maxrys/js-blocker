@@ -11,18 +11,21 @@ protocol ExportImportItemProtocol {
     var name: DomainName { get }
     var type: String     { get }
     var expiresAt: Int64 { get }
+    var scripts: [FrameDomainName: [URLString]]? { get }
 }
 
 public struct ExportImportItemV3: ExportImportItemProtocol, Codable {
     let name: DomainName
     let type: String
     let expiresAt: Int64
+    var scripts: [FrameDomainName: [URLString]]?
 }
 
 public struct ExportImportItemV2: ExportImportItemProtocol, Codable {
     let name: DomainName
     let isWildcard: Bool
     let expiresAt: Int64
+    var scripts: [FrameDomainName: [URLString]]? = nil
     var type: String {
         self.isWildcard ? MATCH_TYPE_STRING_WILDCARD : MATCH_TYPE_STRING_EXACT
     }
@@ -32,6 +35,7 @@ public struct ExportImportItemV1: ExportImportItemProtocol, Codable {
     let name: DomainName
     let isGlobal: Bool
     let expiresAt: Int64
+    var scripts: [FrameDomainName: [URLString]]? = nil
     var type: String {
         self.isGlobal ? MATCH_TYPE_STRING_WILDCARD : MATCH_TYPE_STRING_EXACT
     }
@@ -39,7 +43,7 @@ public struct ExportImportItemV1: ExportImportItemProtocol, Codable {
 
 struct ExportImportItems<Item>: Codable where Item: ExportImportItemProtocol & Codable {
 
-    var version: Double?
+    var version: Double? = 3.0
 
     public private(set) var items: [Item] = []
 
@@ -98,13 +102,31 @@ final class Features {
 
             let exportStruct = ExportImportItems<ExportImportItemV3>(
                 items.reduce(into: [ExportImportItemV3]()) { result, item in
-                    result.append(
-                        ExportImportItemV3(
-                            name     : item.name,
-                            type     : item.type,
-                            expiresAt: item.expiresAt
-                        )
-                    )
+                    switch item.type {
+                        case MATCH_TYPE_STRING_EXACT, MATCH_TYPE_STRING_WILDCARD:
+                            result.append(
+                                ExportImportItemV3(
+                                    name     : item.name,
+                                    type     : item.type,
+                                    expiresAt: item.expiresAt,
+                                )
+                            )
+                        case MATCH_TYPE_STRING_EXACT_SCRIPT, MATCH_TYPE_STRING_WILDCARD_SCRIPT:
+                            let scripts = AllowedScripts.selectByDomain(domain: item.name).reduce(
+                                into: [FrameDomainName: [URLString]](), { result, item in
+                                    result[item.frameDomain, default: []].append(item.url)
+                                }
+                            )
+                            result.append(
+                                ExportImportItemV3(
+                                    name     : item.name,
+                                    type     : item.type,
+                                    expiresAt: item.expiresAt,
+                                    scripts  : scripts
+                                )
+                            )
+                        default: break
+                    }
                 }
             )
 
@@ -177,22 +199,51 @@ final class Features {
             let itemImporter: (ExportImportItemProtocol) -> Void = { item in
                 if (item.name.isCanonical == false) {
                     invalidDomains.append(item.name)
-                    Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)")
+                    Logger.customLog("Import | INVALID DOMAIN: name = \(item.name) | type = \(item.type)")
                     return
                 }
                 if (item.expiresAt != 0 && item.expiresAt < Date.now.int64) {
                     expiredDomains.append(item.name)
-                    Logger.customLog("EXPIRED ITEM: type = \(item.type) | name = \(item.name)")
+                    Logger.customLog("Import | EXPIRED DOMAIN: name = \(item.name) | type = \(item.type)")
                     return
                 }
-                if case .success(let affected) = AllowedDomains.delete([item.name]), affected > 0
-                     { if case .success = AllowedDomains.insert(name: item.name, type: item.type, expiresAt: item.expiresAt) { updateCount += 1; Logger.customLog("UPDATE ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
-                else { if case .success = AllowedDomains.insert(name: item.name, type: item.type, expiresAt: item.expiresAt) { insertCount += 1; Logger.customLog("INSERT ITEM: type = \(item.type) | name = \(item.name)") } else { invalidDomains.append(item.name); Logger.customLog("INVALID ITEM: type = \(item.type) | name = \(item.name)") } }
+                let deleteResult = AllowedDomains.delete(
+                    [item.name]
+                )
+                let insertResult = AllowedDomains.insert(
+                    name: item.name,
+                    type: item.type,
+                    expiresAt: item.expiresAt
+                )
+
+                /* report */
+                if case .success(let affected) = deleteResult, affected > 0
+                     { if case .success = insertResult { updateCount += 1; Logger.customLog("Import | UPDATE DOMAIN | success: name = \(item.name) | type = \(item.type)") } else { invalidDomains.append(item.name); Logger.customLog("Import | UPDATE DOMAIN | FAILURE: name = \(item.name) | type = \(item.type)") } }
+                else { if case .success = insertResult { insertCount += 1; Logger.customLog("Import | INSERT DOMAIN | success: name = \(item.name) | type = \(item.type)") } else { invalidDomains.append(item.name); Logger.customLog("Import | INSERT DOMAIN | FAILURE: name = \(item.name) | type = \(item.type)") } }
+
+                /* import scripts */
+                if (item.type == MATCH_TYPE_STRING_EXACT_SCRIPT ||
+                    item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) {
+                    _ = AllowedScripts.delete(domain: item.name)
+                    item.scripts?.forEach { (frameDomain: FrameDomainName, urls: [URLString]) in
+                        urls.forEach { url in
+                            let insertScriptResult = AllowedScripts.insert(
+                                domain: item.name,
+                                frameDomain: frameDomain,
+                                url: url
+                            )
+                            /* report */
+                            if case .success = insertScriptResult
+                                 { Logger.customLog("Import | INSERT SCRIPT | success: domain = \(item.name) | frameDomain = \(frameDomain) | url = \(url)") }
+                            else { Logger.customLog("Import | INSERT SCRIPT | FAILURE: domain = \(item.name) | frameDomain = \(frameDomain) | url = \(url)") }
+                        }
+                    }
+                }
             }
 
-            if      let importStruct = ExportImportItems<ExportImportItemV3>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
-            else if let importStruct = ExportImportItems<ExportImportItemV2>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
-            else if let importStruct = ExportImportItems<ExportImportItemV1>(decode: JSONString) { for item in importStruct.items { itemImporter(item); }}
+            if      let importStruct = ExportImportItems<ExportImportItemV3>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
+            else if let importStruct = ExportImportItems<ExportImportItemV2>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
+            else if let importStruct = ExportImportItems<ExportImportItemV1>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
             else {
                 MessageBox.insert(
                     type: .error,

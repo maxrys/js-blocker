@@ -50,6 +50,7 @@ struct ButtonCustom: View {
 
     @ViewBuilder private func MainView() -> some View {
         Button { self.onClick() } label: {
+            let shape = RoundedRectangle(cornerRadius: 5)
             HStack(spacing: 5) {
                 self.IconView()
                 self.TextView()
@@ -59,13 +60,13 @@ struct ButtonCustom: View {
             .padding(self.padding)
             .background(
                 (self.isFlat ?
-                    AnyView(RoundedRectangle(cornerRadius: 5).fill                (self.colorStyle.background)) :
-                    AnyView(RoundedRectangle(cornerRadius: 5).fillGradientPolyfill(self.colorStyle.background))
+                    AnyView(shape.fill                (self.colorStyle.background)) :
+                    AnyView(shape.fillGradientPolyfill(self.colorStyle.background))
                 )
             )
-            .clipShape   (RoundedRectangle(cornerRadius: 5))
-            .contentShape(RoundedRectangle(cornerRadius: 5))
-            .focusEffect (RoundedRectangle(cornerRadius: 5))
+            .clipShape   (shape)
+            .contentShape(shape)
+            .focusEffect (shape)
             .shadow(
                 color: self.colorScheme == .dark ?
                     .black.opacity(1.0) :

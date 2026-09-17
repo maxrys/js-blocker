@@ -14,39 +14,26 @@ extension SFSafariApplication {
                 if let error = error {
                     Logger.customLog("Error reload blocking rules: \(error)")
                 } else {
-                    let JSON = String(data: RulesHandler.JSON, encoding: .utf8) ?? NOT_APPLICABLE
-                    Logger.customLog("Reload blocking rules: \(JSON)")
+                    let items = AllowedDomains.selectAll()
+                    let JSON = String(data: items.blockingRulesJSON, encoding: .utf8)
+                    Logger.customLog("Reload blocking rules: \(JSON ?? NOT_APPLICABLE)")
                 }
             })
         }
     }
 
-    /*
-
-    "domainNameCurrentGetWithCompletionHandler" usage:
+    /* usage:
     =====================================================================
-        SFSafariApplication.domainNameCurrentGetWithCompletionHandler(
+        SFSafariApplication.domainCurrentGetWithCompletionHandler(
             completionHandler: { host in
                 Task { // or "DispatchQueue.main.async"
                     print(host)
                 }
             }
         )
-    ---------------------------------------------------------------------
+    --------------------------------------------------------------------- */
 
-
-    "domainNameCurrentGet" usage:
-    =====================================================================
-        Task { // or "DispatchQueue.main.async"
-            if let host = await SFSafariApplication.domainNameCurrentGet() {
-                print(host)
-            }
-        }
-    ---------------------------------------------------------------------
-
-    */
-
-    static func domainNameCurrentGetWithCompletionHandler(completionHandler: @escaping (String?) -> Void) {
+    static func domainCurrentGetWithCompletionHandler(completionHandler: @escaping (String?) -> Void) {
         SFSafariApplication.getActiveWindow(completionHandler: { window in
             window?.getActiveTab(completionHandler: { tab in
                 tab?.getActivePage(completionHandler: { page in
@@ -60,7 +47,16 @@ extension SFSafariApplication {
         })
     }
 
-    static func domainNameCurrentGet() async -> DomainName? {
+    /* usage:
+    =====================================================================
+        Task { // or "DispatchQueue.main.async"
+            if let host = await SFSafariApplication.domainCurrentGet() {
+                print(host)
+            }
+        }
+    --------------------------------------------------------------------- */
+
+    static func domainCurrentGet() async -> DomainName? {
         let windows = await SFSafariApplication.activeWindow()
         let tab = await windows?.activeTab()
         let page = await tab?.activePage()

@@ -1,0 +1,31 @@
+<style>
+    :root {
+        --color-red: color(display-p3 0.677 0.33 0.322);
+        --color-green: color(display-p3 0.329 0.561 0.18);
+    }
+    body {margin: 0; padding: 0}
+    x-states {display: block; margin: 20px 0}
+    x-states x-indicator {
+        display: block;
+        width: 240px;
+        margin: 1px;
+        padding: 4px 10px;
+        border-radius: 15px;
+        font-size: 0.7rem;
+        color: white;
+        background: var(--color-red);
+    }
+    x-states x-indicator[data-js-active] {
+        background: var(--color-green);
+    }
+</style>
+
+<x-states>
+    <x-indicator id="frame_srcdoc">
+        Frame srcdoc Script
+    </x-indicator>
+</x-states>
+
+<script>
+    document.getElementById("frame_srcdoc").setAttribute("data-js-active", "");
+</script>

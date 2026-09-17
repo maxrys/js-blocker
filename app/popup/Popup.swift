@@ -63,11 +63,6 @@ struct Popup: View {
 
             .overlayPolyfill(alignment: .topTrailing) {
                 HStack(spacing: 5) {
-                    if let domainName = self.popupState.domainName {
-                        ScriptsPanel(
-                            domainName: domainName
-                        )
-                    }
                     self.ButtonSettingsView()
                 }.padding(10)
             }
@@ -135,12 +130,12 @@ struct Popup_Previews: PreviewProvider {
             switch value {
                 case 0:
                     PopupState.shared.match = nil
-                    PopupState.shared.domainName = nil
+                    PopupState.shared.domain = nil
                     PopupState.shared.ruleExact = ""
                     PopupState.shared.rulesWildcard = []
                 case 1:
                     PopupState.shared.match = .noOne
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                     MessageBox.deleteAll()
@@ -152,7 +147,7 @@ struct Popup_Previews: PreviewProvider {
                     )
                 case 2:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                     MessageBox.deleteAll()
@@ -164,7 +159,7 @@ struct Popup_Previews: PreviewProvider {
                     )
                 case 3:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                     MessageBox.deleteAll()
@@ -176,7 +171,7 @@ struct Popup_Previews: PreviewProvider {
                     )
                 case 4:
                     PopupState.shared.match = .noOne
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
                     PopupState.shared.rulesWildcardSelected = []
@@ -190,7 +185,7 @@ struct Popup_Previews: PreviewProvider {
                     )
                 case 5:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
                     PopupState.shared.rulesWildcardSelected = []
@@ -204,7 +199,7 @@ struct Popup_Previews: PreviewProvider {
                     )
                 case 6:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
                     PopupState.shared.rulesWildcardSelected = [0, 2]

@@ -7,51 +7,18 @@ import Foundation
 
 class RulesHandler: NSObject, NSExtensionRequestHandling {
 
-    static var JSON: Data {
-        var unlessDomains: [String] = []
-
-        for domain in AllowedDomains.selectAll() {
-            if (domain.type == MATCH_TYPE_STRING_EXACT   ) { unlessDomains.append( "\(domain.name)") }
-            if (domain.type == MATCH_TYPE_STRING_WILDCARD) { unlessDomains.append("*\(domain.name)") }
-        }
-
-        var JSONObject: Any = []
-
-        if !unlessDomains.isEmpty {
-            JSONObject = [[
-                "action": [
-                    "type": "block"
-                ],
-                "trigger": [
-                    "url-filter": ".*",
-                    "url-filter-is-case-sensitivity": true,
-                    "resource-type": ["script"],
-                    "unless-domain": unlessDomains
-                ]
-            ]]
-        } else {
-            JSONObject = [[
-                "action": [
-                    "type": "block"
-                ],
-                "trigger": [
-                    "url-filter": ".*",
-                    "url-filter-is-case-sensitivity": true,
-                    "resource-type": ["script"]
-                ]
-            ]]
-        }
-
-        return try! JSONSerialization.data(
-            withJSONObject: JSONObject
-        )
-    }
-
     func beginRequest(with context: NSExtensionContext) {
-        let attachment = NSItemProvider(item: Self.JSON as NSSecureCoding?, typeIdentifier: "public.json")
+        let items = AllowedDomains.selectAll()
+        let attachment = NSItemProvider(
+            item: items.blockingRulesJSON as NSSecureCoding?,
+            typeIdentifier: "public.json"
+        )
         let item = NSExtensionItem()
         item.attachments = [attachment]
-        context.completeRequest(returningItems: [item], completionHandler: nil)
+        context.completeRequest(
+            returningItems: [item],
+            completionHandler: nil
+        )
     }
 
 }

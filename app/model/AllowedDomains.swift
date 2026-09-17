@@ -30,9 +30,9 @@ public class AllowedDomains: NSManagedObject {
     static func matchType(name: DomainName) -> MatchType {
         if let item = SELF.select(name) {
             if (item.type == MATCH_TYPE_STRING_EXACT          ) { return .exact         (item: item) }
-            if (item.type == MATCH_TYPE_STRING_EXACT_SCRIPT   ) { return .exactScript   (item: item) }
+            if (item.type == MATCH_TYPE_STRING_EXACT_SCRIPT   ) { return .exactScript   (item: item, scripts: AllowedScripts.selectByDomain(domain: item.name)) }
             if (item.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: item) }
-            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item, scripts: AllowedScripts.selectByDomain(domain: item.name)) }
         }
         let wildcardDomains = SELF.selectDomainAndTopDomains(name, types: [
             MATCH_TYPE_STRING_WILDCARD,
@@ -40,7 +40,7 @@ public class AllowedDomains: NSManagedObject {
         ])
         if let item = wildcardDomains.first {
             if (item.type == MATCH_TYPE_STRING_WILDCARD       ) { return .wildcard      (item: item) }
-            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item) }
+            if (item.type == MATCH_TYPE_STRING_WILDCARD_SCRIPT) { return .wildcardScript(item: item, scripts: AllowedScripts.selectByDomain(domain: item.name)) }
         }
         return .noOne
     }
@@ -135,7 +135,6 @@ public class AllowedDomains: NSManagedObject {
             try Storage.context.save()
             if (!isVersioningDisabled) {
             _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
             }
             return .success(affected: 1)
         } catch {
@@ -158,8 +157,8 @@ public class AllowedDomains: NSManagedObject {
                     fromRemoteContextSave: [NSDeletedObjectsKey: affectedIDs],
                     into: [Storage.context]
                 )
+                names.forEach { name in _ = AllowedScripts.delete(domain: name) }
             _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
             }
             return .success(
                 affected: affectedIDs.count
@@ -172,23 +171,32 @@ public class AllowedDomains: NSManagedObject {
 
     static func sanitize() -> ExecuteResult {
         do {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: SELF.stringName)
-            request.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.now.int64))
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-            deleteRequest.resultType = .resultTypeObjectIDs
-            let result = try Storage.context.execute(deleteRequest) as? NSBatchDeleteResult
-            let affectedIDs = result?.result as? [NSManagedObjectID] ?? []
-            if (affectedIDs.count > 0) {
-                NSManagedObjectContext.mergeChanges(
-                    fromRemoteContextSave: [NSDeletedObjectsKey: affectedIDs],
-                    into: [Storage.context]
+            let selectRequest = NSFetchRequest<SELF>(entityName: SELF.stringName)
+            selectRequest.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.now.int64))
+            let names = (try Storage.context.fetch(selectRequest)).map(\.name)
+            if (names.count > 0) {
+                let deleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: SELF.stringName)
+                deleteRequest.predicate = NSPredicate(format: "name IN %@", names)
+                let deleteBatchRequest = NSBatchDeleteRequest(fetchRequest: deleteRequest)
+                deleteBatchRequest.resultType = .resultTypeObjectIDs
+                let result = try Storage.context.execute(deleteBatchRequest) as? NSBatchDeleteResult
+                let affectedIDs = result?.result as? [NSManagedObjectID] ?? []
+                if (affectedIDs.count > 0) {
+                    NSManagedObjectContext.mergeChanges(
+                        fromRemoteContextSave: [NSDeletedObjectsKey: affectedIDs],
+                        into: [Storage.context]
+                    )
+                    names.forEach { name in _ = AllowedScripts.delete(domain: name) }
+                _ = EntityVersions.versionIncrement(SELF.stringName)
+                }
+                return .success(
+                    affected: affectedIDs.count
                 )
-            _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
+            } else {
+                return .success(
+                    affected: 0
+                )
             }
-            return .success(
-                affected: affectedIDs.count
-            )
         } catch {
             Logger.customLog("Model \(SELF.stringName).sanitize() error: \(error).")
             return .failure

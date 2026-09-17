@@ -1,0 +1,32 @@
+<x-title>Dynamic Frames</x-title>
+
+<script>
+    document.write('<div>' +
+        '<iframe width="280" height="205" src="https://js-blocker.com?isFrame"></iframe>' +
+    '</div>');
+</script>
+
+<div id="dynamicFrameContainer"></div> 
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('dynamicFrameContainer')
+        const div = document.createElement('div');
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://js-blocker.com?isFrame';
+        iframe.style.width = '280';
+        iframe.style.height = '205';
+        div.appendChild(iframe);
+        container.appendChild(div);
+    });
+</script>
+
+<iframe width="280" height="200" id="empty_frame"></iframe>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            document.getElementById('empty_frame').setAttribute('src', 'https://js-blocker.com?isFrame')
+        }, 1000);
+    });
+</script>

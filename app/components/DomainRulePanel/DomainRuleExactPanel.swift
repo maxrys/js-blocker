@@ -9,7 +9,7 @@ struct DomainRuleExactPanel: View {
 
     @StateObject private var popupState = PopupState.shared
 
-    private var colorDomainName: Color {
+    private var colorDomain: Color {
         if (self.isActiveRule && !self.rule.isEmpty)
              { return Color.domainRulePanel.nameActive }
         else { return Color.domainRulePanel.name }
@@ -34,6 +34,24 @@ struct DomainRuleExactPanel: View {
     private var isEnabledButton: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
             match.isNoOne || match.isNoOneScript
+        }
+    }
+
+    private var isEnabledLifetimeButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isNoOneScript
+        }
+    }
+
+    private var isEnabledByScriptButton: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOne || match.isNoOneScript || match.isExactScript
+        }
+    }
+
+    private var isByScriptMode: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isNoOneScript || match.isExactScript
         }
     }
 
@@ -83,9 +101,11 @@ struct DomainRuleExactPanel: View {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(self.colorBorder, lineWidth: 4)
-                    .background(self.colorBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .stroke(self.colorBorder, lineWidth: 2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(self.colorBackground)
+                    )
             )
 
             /* MARK: LifetimeInfo */
@@ -94,9 +114,21 @@ struct DomainRuleExactPanel: View {
                 LifetimeInfo()
             }
 
-            /* MARK: Button "Allow" */
+            /* MARK: Buttons */
 
-            self.ButtonAllowView()
+            HStack(spacing: 13) {
+
+                ScriptsPanel()
+                    .opacity  (self.isEnabledByScriptButton ? 1 : 0)
+                    .disabled(!self.isEnabledByScriptButton)
+
+                self.ButtonAllowView()
+
+                LifetimePicker(lifetime: self.lifetime)
+                    .opacity  (self.isEnabledLifetimeButton ? 1 : 0)
+                    .disabled(!self.isEnabledLifetimeButton)
+
+            }
 
         }
         .padding(.horizontal, 20)
@@ -112,29 +144,23 @@ struct DomainRuleExactPanel: View {
     @ViewBuilder private func DomainNameView(text: String, opacity: Double) -> some View {
         Text(text)
             .font(.system(size: 12, weight: .bold))
-            .foregroundPolyfill(self.colorDomainName)
+            .foregroundPolyfill(self.colorDomain)
             .opacity(opacity)
     }
 
     @ViewBuilder private func ButtonAllowView() -> some View {
         Group {
             ButtonCapsule(
-                title: NSLocalizedString("allow", comment: ""),
-                minWidth: 180,
+                title: self.isByScriptMode ?
+                    NSLocalizedString("allow by scripts", comment: "") :
+                    NSLocalizedString("allow"           , comment: ""),
+                minWidth: 200,
                 onClick: {
                     self.onClickAllow()
                 }
             ).disabled(
                 !self.isEnabledButton
             )
-        }
-        .overlayPolyfill(alignment: .trailing) {
-            if (self.isEnabledButton) {
-                LifetimePicker(
-                    lifetime: self.lifetime,
-                    openerIconOffset: CGPoint(x: -1.0, y: -0.5)
-                )
-            }
         }
         .clipShape   (Capsule())
         .contentShape(Capsule())
@@ -157,22 +183,22 @@ struct DomainRuleExactPanel_Previews: PreviewProvider {
             switch value {
                 case 0:
                     PopupState.shared.match = nil
-                    PopupState.shared.domainName = nil
+                    PopupState.shared.domain = nil
                     PopupState.shared.ruleExact = ""
                     PopupState.shared.rulesWildcard = []
                 case 1:
                     PopupState.shared.match = .noOne
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 case 2:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 case 3:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
-                    PopupState.shared.domainName = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 default: break

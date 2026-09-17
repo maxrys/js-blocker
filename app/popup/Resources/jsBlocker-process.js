@@ -5,9 +5,9 @@
 
 (() => {
 
-    const domainName = JSBlocker.domainName;
+    const domain = JSBlocker.domain;
 
-    if (!domainName) {
+    if (!domain) {
         console.log(`JS Blocker: unknown domain (probably IFRAME with empty SRC)`);
         return;
     }
@@ -25,7 +25,7 @@
     safari.self.addEventListener('message', event => {
         if (event.name === 'js:getScripts.request') {
             console.log(
-                `JS Blocker on "${domainName}"\n` +
+                `JS Blocker on "${domain}"\n` +
                 `Receive Event: "${event.name}"`
             );
             JSBlocker.doAfterCondition(
@@ -33,12 +33,12 @@
                 () => {
                     const scriptsString = scripts.join('\n');
                     console.log(
-                        `JS Blocker on "${domainName}"\n` +
+                        `JS Blocker on "${domain}"\n` +
                         `Send Event: "js:getScripts.response"\n` +
                         `Scripts: ${scriptsString}`
                     );
                     safari.extension.dispatchMessage('js:getScripts.response', {
-                        'domainName': domainName,
+                        'domain': domain,
                         'scripts': scriptsString
                     });
                 }
@@ -53,7 +53,7 @@
         const isStorageAvailable = JSBlocker.isStorageAvailable;
 
         console.log(
-            `JS Blocker on "${domainName}" has been started\n` +
+            `JS Blocker on "${domain}" has been started\n` +
             `Extension URL: "${safari.extension.baseURI}"\n` +
             `Is Top Frame: yes\n` +
             `Is Storage available: ${isStorageAvailable ? "yes" : "no"}`
@@ -61,7 +61,7 @@
 
         if (isStorageAvailable === false) {
             console.log(
-                `JS Blocker on "${domainName}"\n` +
+                `JS Blocker on "${domain}"\n` +
                 `Storage is unavailable - block all scripts`
             );
             JSBlocker.sanitize();
@@ -83,7 +83,7 @@
         window.addEventListener('focus', () => {
             if (isFocused !== true) {
                 isFocused = true;
-                console.log(`JS Blocker on "${domainName}": capture focus`);
+                console.log(`JS Blocker on "${domain}": capture focus`);
                 JSBlocker.pageRequestMatch();
             }
         });
@@ -96,7 +96,7 @@
                 const isRequiredUpdate = oldSettings === null ||
                                         (oldSettings !== null && newSettings !== oldSettings);
                 console.log(
-                    `JS Blocker on "${domainName}"\n` +
+                    `JS Blocker on "${domain}"\n` +
                     `Receive Event: "${event.name}"\n` +
                     `Old ${JSBlocker.STORAGE_KEY_FOR_SETTINGS}: ${oldSettings}\n` +
                     `New ${JSBlocker.STORAGE_KEY_FOR_SETTINGS}: ${newSettings}\n` +
@@ -142,7 +142,28 @@
 
         if (value.match === JSBlocker.MATCH_TYPE_STRING_EXACT_SCRIPT ||
             value.match === JSBlocker.MATCH_TYPE_STRING_WILDCARD_SCRIPT) {
-            // #todo: UNDER CONSTRUCTION
+            JSBlocker.sanitize(
+                (value.scripts ?? []).reduce((result, script) => {
+                    if (script.frameDomain == domain) {
+                        result.push(
+                            JSBlocker.crc32(script.url)
+                        )
+                    }
+                    return result
+                }, [])
+            );
+            JSBlocker.prepareFramesForBlockJS(
+                (value.scripts ?? []).reduce((result, script) => {
+                    result[script.frameDomain] ??= []
+                    result[script.frameDomain].push(
+                        JSBlocker.crc32(script.url)
+                    )
+                    return result
+                }, {})
+            );
+            if (value.item.expiresAt !== 0) {
+                JSBlocker.pageReloadWhenExpired(value.item.expiresAt);
+            }
             return;
         }
 
@@ -152,14 +173,14 @@
 
     if (isTopFrame !== true) {
 
-        const isJSEnabled = JSBlocker.jsStateFromURL;
+        const jsState = JSBlocker.jsStateFromURL;
 
         console.log(
-            `JS Blocker on "${domainName}" has been started\n` +
+            `JS Blocker on "${domain}" has been started\n` +
             `Extension URL: "${safari.extension.baseURI}"\n` +
             `URL: "${window.location.href}"\n` +
             `Is Top Frame: no\n` +
-            `Param "isJSEnabled": ${isJSEnabled ? "yes" : "no"}`
+            `Param "jsState": ${jsState}`
         );
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -170,8 +191,17 @@
 
         JSBlocker.detectScripts();
 
-        if (!isJSEnabled) {
+        if (jsState === null) {
+            return;
+        }
+
+        if (jsState.length === 0) {
             JSBlocker.sanitize();
+            return;
+        }
+
+        if (jsState.length > 0) {
+            JSBlocker.sanitize(jsState);
             return;
         }
 

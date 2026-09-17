@@ -68,7 +68,6 @@ public class AllowedScripts: NSManagedObject {
         do {
             try Storage.context.save()
             _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
             return .success(affected: 1)
         } catch {
             Storage.context.delete(newObject)
@@ -98,7 +97,6 @@ public class AllowedScripts: NSManagedObject {
                     into: [Storage.context]
                 )
             _ = EntityVersions.versionIncrement(SELF.stringName)
-                EntityVersions.dump()
             }
             return .success(
                 affected: affectedIDs.count
