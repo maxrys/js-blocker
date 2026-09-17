@@ -70,7 +70,7 @@
     </g>
     <g>
       <path style="stroke-width: 1; fill: rgba(27, 28, 30, 0.61);" d="M 99.5 99 H 300.5 A 19.5 19.5 0 0 1 320 118.5 V 190 A 0 0 0 0 1 320 190 H 80 A 0 0 0 0 1 80 190 V 118.5 A 19.5 19.5 0 0 1 99.5 99 Z" bx:shape="rect 80 99 240 91 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@209d4f63"/>
-      <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="200" y="156.093">lifetime</text>
+      <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="200" y="156.093">Lifetime</text>
     </g>
     <g>
       <rect x="80" y="192" width="240" height="122" style="fill: rgba(62, 67, 69, 0.43); stroke-width: 2px;"/>
