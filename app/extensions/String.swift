@@ -22,18 +22,11 @@ extension String {
     }
 
     var crc32: String {
-        var crc: UInt32 = 0xffffffff
-        for byte in self.utf8 {
-            crc ^= UInt32(byte)
-            for _ in 0 ..< 8 {
-                if crc & 1 == 1 {
-                    crc = (crc >> 1) ^ 0xedb88320
-                } else {
-                    crc >>= 1
-                }
-            }
-        }
-        return String(format: "%08x", crc ^ 0xffffffff)
+        let crc32 = CheckSum.crc32(self)
+        return String(
+            format: "%08x",
+            crc32 ^ 0xffffffff
+        )
     }
 
     func toWidth(_ width: UInt) -> String {

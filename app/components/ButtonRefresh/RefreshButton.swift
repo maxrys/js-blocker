@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-struct RefreshButton: View {
+struct ButtonRefresh: View {
 
     static let ICON_REFRESH = Image("symbol Icon Refresh")
 

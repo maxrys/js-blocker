@@ -119,7 +119,7 @@ struct ScriptsPanel: View {
                     self.PopupHead_ShadowView(height: 5)
                 }
                 .overlayPolyfill(alignment: .topTrailing) {
-                    RefreshButton(onClick: self.popupState.jsGetScripts)
+                    ButtonRefresh(onClick: self.popupState.jsGetScripts)
                         .foregroundPolyfill(Color.scriptsPanel.popupTitle)
                         .offset(x: -30, y: -45)
                 }
