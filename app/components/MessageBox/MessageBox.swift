@@ -14,7 +14,7 @@ struct MessageBox: View {
     @ObservedObject private var state = MessageState()
 
     public var body: some View {
-        GeometryReaderPolyfill(isIgnoreHeight: true) { size in
+        GeometryReaderCustom(isIgnoreHeight: true) { size in
             VStack(spacing: 0) {
                 ForEach(self.state.messages, id: \.key) { ID, message in
                     VStack(alignment: .leading, spacing: 0) {

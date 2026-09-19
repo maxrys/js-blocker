@@ -105,23 +105,31 @@ struct ScriptsPanel: View {
         VStack(spacing: 0) {
 
             self.PopupHead_TitleView()
+                .overlayPolyfill(alignment: .trailing) {
+                    if (self.isActive) {
+                        ButtonRefresh(onClick: self.popupState.jsGetScripts)
+                            .foregroundPolyfill(Color.scriptsPanel.popupTitle)
+                            .padding(.trailing, 30)
+                    }
+                }
 
             if (self.isVisibleFrames) {
+                Text("This is an experimental feature!")
+                    .font(.system(.headline))
+                    .padding(5)
+                    .frame(maxWidth: .infinity)
+                    .foregroundPolyfill(Color.white)
+                    .background(Color.messageBox.warningTitleBackground)
                 self.PopupSriptsModeToggleView()
             }
 
             if (self.isActive) {
-                Group {
-                    if (self.totalCount < 20) { self.PopupBodyView() }
-                    else         { ScrollView { self.PopupBodyView() }.frame(height: 600) }
+                ScrollViewCustom(axis: .vertical, scrollAfter: .init(width: 600, height: 600)) {
+                    self.PopupBodyView()
+                        .frame(width: 600)
                 }
                 .overlayPolyfill(alignment: .top) {
                     self.PopupHead_ShadowView(height: 5)
-                }
-                .overlayPolyfill(alignment: .topTrailing) {
-                    ButtonRefresh(onClick: self.popupState.jsGetScripts)
-                        .foregroundPolyfill(Color.scriptsPanel.popupTitle)
-                        .offset(x: -30, y: -45)
                 }
             }
 
@@ -241,7 +249,7 @@ struct ScriptsPanel: View {
                         TableCustom_HeadCell(
                             size: .fixed(50),
                             spacing: 0,
-                            alignment: .center
+                            alignment: .top
                         ) { EmptyView() }
                     },
                     bodyAsArray: frameScriptsSorted.flatMap { script in [
@@ -262,7 +270,10 @@ struct ScriptsPanel: View {
         switch (value) {
             case URL_INTERNAL_SCRIPT          : Text(NSLocalizedString("all internal scripts"          , comment: ""))
             case URL_INTERNAL_ATTRIBUTE_SCRIPT: Text(NSLocalizedString("all internal attribute scripts", comment: ""))
-            default                           : Text(value.decodeURLString()).textSelectionPolyfill()
+            default:
+                let valueFormatted = value.decodeURLString()
+                Text(valueFormatted.count > 300 ? String(valueFormatted.prefix(300)) + "..." : valueFormatted)
+                    .help(valueFormatted)
         }
     }
 
@@ -271,8 +282,8 @@ struct ScriptsPanel: View {
             isOn: Binding<Bool>(
                 get: {             self.isOnGet(domain, frameDomain, script) },
                 set: { newValue in self.isOnSet(domain, frameDomain, script, newValue) } ),
-            size: CGSize(width: 30, height: 12)
-        )
+            size: CGSize(width: 30, height: 12),
+        ).padding(.top, 2)
     }
 
     private func isOnGet(_ domain: DomainName, _ frameDomain: DomainName, _ script: URLString) -> Bool {
@@ -350,6 +361,11 @@ struct ScriptsPanel_Previews: PreviewProvider {
             var result = Matrix2dArrOfStr()
             for i in 0 ..< count {
                 result[DEMO_TOPDOMAIN, Self.frames[i]] = Self.frameScripts
+                if (Self.frames[i] == DEMO_TOPDOMAIN) {
+                    result[DEMO_TOPDOMAIN, Self.frames[i]]?.append(
+                        "https://y.com/script-" + String(repeating: "long", count: 1000) + ".js"
+                    )
+                }
             }
             return result
         }

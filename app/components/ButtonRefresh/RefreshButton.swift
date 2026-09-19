@@ -18,7 +18,7 @@ struct ButtonRefresh: View {
 
     init(
         speed: Double = 500,
-        size: CGFloat = 30,
+        size: CGFloat = 25,
         onClick: @escaping () -> Void
     ) {
         self.speed = speed

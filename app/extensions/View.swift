@@ -36,13 +36,6 @@ extension View {
         } else { self }
     }
 
-    @ViewBuilder func textSelectionPolyfill(isEnabled: Bool = true) -> some View {
-        if #available(macOS 12.0, *) {
-            if (isEnabled == true) { self.textSelection(.enabled ) }
-            if (isEnabled != true) { self.textSelection(.disabled) }
-        } else { self }
-    }
-
     @ViewBuilder func pointerStyleLinkPolyfill(_ isEnabled: Bool = true) -> some View {
         if (isEnabled) {
             self.onHover { isInView in
@@ -76,6 +69,14 @@ extension View {
         if (isIgnore)
              { self.ignoresSafeArea(regions, edges: edges) }
         else { self }
+    }
+
+    @ViewBuilder func scrollDisabledPolyfill(_ disabled: Bool) -> some View {
+        if #available(macOS 13.0, *) {
+            self.scrollDisabled(disabled)
+        } else {
+            self
+        }
     }
 
     @ViewBuilder func onAppBecomeBackground(_ action: @escaping () -> Void) -> some View {

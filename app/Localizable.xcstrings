@@ -1552,6 +1552,22 @@
         }
       }
     },
+    "This is an experimental feature!" : {
+      "localizations" : {
+        "be-BY" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гэта эксперыментальная функцыя!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это экспериментальная функция!"
+          }
+        }
+      }
+    },
     "type" : {
       "localizations" : {
         "be-BY" : {

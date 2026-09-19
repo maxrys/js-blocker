@@ -12,23 +12,23 @@ private struct SizeKey: PreferenceKey {
     }
 }
 
-struct GeometryReaderPolyfill<Content: View>: View {
+struct GeometryReaderCustom<Content: View>: View {
 
     @State private var size = CGSize(width: 0, height: 0)
 
-    private let isIgnoreHeight: Bool
     private let isIgnoreWidth: Bool
+    private let isIgnoreHeight: Bool
     private let onChange: (CGSize) -> Void
     private let content: (CGSize) -> Content
 
     init(
-        isIgnoreHeight: Bool = false,
         isIgnoreWidth: Bool = false,
+        isIgnoreHeight: Bool = false,
         onChange: @escaping (CGSize) -> Void = { _ in },
         @ViewBuilder content: @escaping (CGSize) -> Content,
     ) {
-        self.isIgnoreHeight = isIgnoreHeight
         self.isIgnoreWidth = isIgnoreWidth
+        self.isIgnoreHeight = isIgnoreHeight
         self.onChange = onChange
         self.content = content
     }
@@ -39,6 +39,7 @@ struct GeometryReaderPolyfill<Content: View>: View {
                 if      (self.isIgnoreWidth == true && self.isIgnoreHeight == true) { Color.clear.frame(width: 0, height: 0) }
                 else if (self.isIgnoreWidth != true && self.isIgnoreHeight == true) { Color.clear.frame(          height: 0) }
                 else if (self.isIgnoreWidth == true && self.isIgnoreHeight != true) { Color.clear.frame(width: 0) }
+                else if (self.isIgnoreWidth != true && self.isIgnoreHeight != true) { Color.clear }
             }.background(
                 GeometryReader { geometry in
                     Color.clear
