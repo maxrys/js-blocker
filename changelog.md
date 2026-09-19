@@ -1,18 +1,35 @@
 
+
+## Version 3.0
+
+Added the ability to enable each script individually.
+
+Instead of removing the entire group of inherited rules, each subsequent rule is now removed individually.
+
+Script blocking now extends to the following cases:
+- attributes with values starting with `javascript:` will be removed from any element (e.g., links);
+- any iframe with a `srcdoc` attribute will be removed;
+- any iframe with a `src` attribute starting with `data:text/html` will be removed;
+- any iframe with a `src` attribute starting with `data:application/xhtml+xml` will be removed;
+- any iframe with a `src` attribute starting with `blob:` will be removed.
+
+UI has been improved.  
+Codebase improvements.
+
 ## Version 2.5
 
-Import/Export features have been improved.
+Import/Export features have been improved.  
 Codebase has been improved.
 
 ## Version 2.4
 
-Added "External Script Detector" interface.
-UI has been improved.
+Added "External Script Detector" interface.  
+UI has been improved.  
 Codebase has been improved.
 
 ## Version 2.3
 
-UI has been improved.
+UI has been improved.  
 Codebase has been improved.
 
 ## Version 2.2
@@ -25,26 +42,26 @@ Bug fixes.
 
 ## Version 2.0
 
-Expiration Time for Rules has been added.
-Architecture has been rewritten.
-Experimental iCloud support has been removed.
-UI has been improved.
+Expiration Time for Rules has been added.  
+Architecture has been rewritten.  
+Experimental iCloud support has been removed.  
+UI has been improved.  
 Codebase has been improved.
 
 ## Version 1.14
 
-UI has been improved.
+UI has been improved.  
 Codebase has been improved.
 
 ## Version 1.13
 
-UI has been improved.
+UI has been improved.  
 Codebase has been improved.
 
 ## Version 1.12
 
-Bugs have been fixed.
-UI has been improved.
+Bugs have been fixed.  
+UI has been improved.  
 Codebase has been improved.
 
 ## Version 1.11

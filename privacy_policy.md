@@ -9,13 +9,13 @@ for review and analysis at "https://github.com/maxrys/js-blocker".
 
 The application is a bundle of two parts:
 - main application `JS Blocker`;
-- Safari extension `JS Blocker Extension`.
+- Safari extension `JS Blocker Popup`.
 
 The main application consists of:
 - the main `JS Blocker` window (in which the user manages the list of websites
   on which JavaScript is allowed to run: deletion, import, and export).
 
-The Safari extension consists of:
+The Safari extension `JS Blocker Popup` consists of:
 - A pop-up window (in which the user can add or remove a rule for the current website).
   This window appears when clicking the `JS` button in the Safari toolbar.
 - A local `jsBlocker.js` and `jsBlocker-process.js` files.
@@ -23,7 +23,7 @@ The Safari extension consists of:
   or enable it at the user's request. It is transparent to analysis
   and is necessary for the application to function.
 
-The `JS Blocker Extension` extension can only be launched on websites
+The `JS Blocker Popup` extension can only be launched on websites
 approved by the user (via Safari settings).
 
 
