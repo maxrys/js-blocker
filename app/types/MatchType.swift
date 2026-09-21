@@ -47,13 +47,13 @@ enum MatchType {
 
     public var expireStatus: ExpireStatus {
         if let item = self.item {
-            let now = Date.now
-            if (item.expiresAt == 0                               ) { return .noLimit }
-            if (item.expiresAt != 0 && item.expiresAt <= now.int64) { return .expired }
-            if (item.expiresAt != 0 && item.expiresAt  > now.int64) {
+            let current = Date.timestamp
+            if (item.expiresAt == 0                                   ) { return .noLimit }
+            if (item.expiresAt != 0 && item.expiresAt <= current.int64) { return .expired }
+            if (item.expiresAt != 0 && item.expiresAt  > current.int64) {
                 return .valid(
-                    timeLeft: TimeInterval(item.expiresAt - now.int64),
-                    progress: now.int64.progress(
+                    timeLeft: TimeInterval(item.expiresAt - current.int64),
+                    progress: current.int64.progress(
                         min: item.createdAt,
                         max: item.expiresAt
                     )

@@ -18,7 +18,7 @@ extension Date {
         case convenientTime  = "HH:mm:ss"
     }
 
-    static var now: TimeInterval {
+    static var timestamp: TimeInterval {
         Self().timeIntervalSince1970
     }
 

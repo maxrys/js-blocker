@@ -47,7 +47,7 @@ class ViewController: SFSafariExtensionViewController {
             var success: [String] = []
             var failure: [String] = []
 
-            switch AllowedDomains.insert(name: domain, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ) {
+            switch AllowedDomains.insert(name: domain, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.timestamp + value) } ) {
                 case .failure: failure.append(domain.decodePunycode())
                 case .success: success.append(domain.decodePunycode())
                     if (match.isNoOneScript) {
@@ -113,7 +113,7 @@ class ViewController: SFSafariExtensionViewController {
 
                 for (index, name) in domains.enumerated() {
                     if (selected.contains(index)) {
-                        switch AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.now + value) } ) {
+                        switch AllowedDomains.insert(name: name, type: type, expiresAt: PopupState.shared.lifetime.ifNil(defaultValue: 0) { value in Int64(Date.timestamp + value) } ) {
                             case .failure: failure.append(name.decodePunycode())
                             case .success: success.append(name.decodePunycode())
                                 if (match.isNoOneScript) {

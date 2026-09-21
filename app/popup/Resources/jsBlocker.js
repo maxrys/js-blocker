@@ -19,7 +19,7 @@ const JSBlocker = {
     DELAY_FOR_PAGE_RELOAD: 500,
     DELAY_BEFORE_RECHECK_STATE: 2000,
 
-    get dateNow() {
+    get timestamp() {
         return Math.floor(Date.now() / 1000);
     },
 
@@ -261,8 +261,8 @@ const JSBlocker = {
     },
 
     pageReloadWhenExpired(expiresAt) {
-        if (expiresAt > this.dateNow) {
-            const lifeTime = (expiresAt - this.dateNow) * 1000;
+        if (expiresAt > this.timestamp) {
+            const lifeTime = (expiresAt - this.timestamp) * 1000;
             setTimeout(() => { this.pageRequestMatch(); },
                 lifeTime + this.DELAY_BEFORE_RECHECK_STATE
             );

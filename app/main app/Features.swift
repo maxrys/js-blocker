@@ -202,7 +202,7 @@ final class Features {
                     Logger.customLog("Import | INVALID DOMAIN: name = \(item.name) | type = \(item.type)")
                     return
                 }
-                if (item.expiresAt != 0 && item.expiresAt < Date.now.int64) {
+                if (item.expiresAt != 0 && item.expiresAt < Date.timestamp.int64) {
                     expiredDomains.append(item.name)
                     Logger.customLog("Import | EXPIRED DOMAIN: name = \(item.name) | type = \(item.type)")
                     return
