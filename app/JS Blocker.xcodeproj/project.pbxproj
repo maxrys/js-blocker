@@ -65,10 +65,10 @@
 		5040E1CC305A9DD00004A290 /* DomainRulePanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */; };
 		5040E1CD305AA2E80004A290 /* PopupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150BF2DAA789B005768C1 /* PopupState.swift */; };
 		5040E1CE305AA2F50004A290 /* UserDefaultsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEA07A2F49AF9C001006CF /* UserDefaultsState.swift */; };
-		5040E1E1305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
-		5040E1E2305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
-		5040E1E3305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
-		5040E1E4305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
+		5040E1E1305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
+		5040E1E2305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
+		5040E1E3305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
+		5040E1E4305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
 		50439DC02F44C74800270BE5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50439DBF2F44C74800270BE5 /* info.plist */; };
 		50439DC22F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		50439DC32F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
@@ -368,7 +368,7 @@
 		503DBDD7302B5B8A00BD39F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503DBE01302B5EDE00BD39F3 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		503DBE03302B606500BD39F3 /* rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rules.entitlements; sourceTree = "<group>"; };
-		5040E1E0305AB6DD0004A290 /* CheckSum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSum.swift; sourceTree = "<group>"; };
+		5040E1E0305AB6DD0004A290 /* Checksums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checksums.swift; sourceTree = "<group>"; };
 		50439DBF2F44C74800270BE5 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		50439DC12F44C87E00270BE5 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		50439DC52F44C8BA00270BE5 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				50CEA0532F47A6B3001006CF /* _const.swift */,
-				5040E1E0305AB6DD0004A290 /* CheckSum.swift */,
+				5040E1E0305AB6DD0004A290 /* Checksums.swift */,
 				50ECC0193003A5A900A99E64 /* ExpireStatus.swift */,
 				50E4B1012FF29088008D625B /* HVStack.swift */,
 				50E150B52DA96615005768C1 /* MatchType.swift */,
@@ -1052,7 +1052,7 @@
 			files = (
 				50CEA0962F4B6D46001006CF /* Set.swift in Sources */,
 				50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
-				5040E1E2305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E2305AB6DD0004A290 /* Checksums.swift in Sources */,
 				50C43A093019E19400A8FD39 /* DomainName.swift in Sources */,
 				50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50FC4DEA304991EC0001701E /* URLString.swift in Sources */,
@@ -1106,7 +1106,7 @@
 			files = (
 				503DBDD6302B5B8A00BD39F3 /* RulesHandler.swift in Sources */,
 				503DBDE1302B5C6800BD39F3 /* EntityVersions.swift in Sources */,
-				5040E1E4305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E4305AB6DD0004A290 /* Checksums.swift in Sources */,
 				503DBDE6302B5CAC00BD39F3 /* Previewer.swift in Sources */,
 				503DBDE7302B5CAC00BD39F3 /* _const.swift in Sources */,
 				50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */,
@@ -1207,7 +1207,7 @@
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
 				50C787023014CFE600F078EC /* Storage.swift in Sources */,
 				50FC4DE8304991EC0001701E /* URLString.swift in Sources */,
-				5040E1E1305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E1305AB6DD0004A290 /* Checksums.swift in Sources */,
 				5064215D2F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				50BB98872FFA82BE00C39670 /* ProgressSimple.swift in Sources */,
 				506421602F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
@@ -1331,7 +1331,7 @@
 				50875E132C71EE0D00756D64 /* String.swift in Sources */,
 				50623E7D30516B7D001E2F01 /* ScriptsCart.swift in Sources */,
 				50E4B1052FF2909D008D625B /* Previewer.swift in Sources */,
-				5040E1E3305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E3305AB6DD0004A290 /* Checksums.swift in Sources */,
 				50623E8A3051F664001E2F01 /* ValueState.swift in Sources */,
 				50E4B1062FF2909D008D625B /* HVStack.swift in Sources */,
 				50E4B1372FF99BBC008D625B /* LifetimePicker.swift in Sources */,

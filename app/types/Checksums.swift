@@ -5,21 +5,19 @@
 
 import Foundation
 
-struct CheckSum {
+enum Checksums {
 
     static func crc32(_ value: String) -> UInt32 {
-        var result: UInt32 = 0xffffffff
+        var result: UInt32 = 0xffff_ffff
         for byte in value.utf8 {
             result ^= UInt32(byte)
             for _ in 0 ..< 8 {
-                if result & 1 == 1 {
-                    result = (result >> 1) ^ 0xedb88320
-                } else {
-                    result >>= 1
-                }
+                if (result & 1 != 0)
+                     { result = (result >> 1) ^ 0xedb8_8320 }
+                else { result = (result >> 1) }
             }
         }
-        return result
+        return result ^ 0xffff_ffff
     }
 
 }
