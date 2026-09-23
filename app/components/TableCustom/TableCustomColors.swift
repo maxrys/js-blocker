@@ -7,14 +7,14 @@ import SwiftUI
 
 extension Color {
 
-    struct TableCustomColorsSet {
+    enum TableCustomColorsSet {
 
-        public let headBackground        = Color("color TableCustom Head Background")
-        public let bodyBackground        = Color("color TableCustom Body Background")
-        public let bodyRowOddBackground  = Color("color TableCustom Body Row Odd Background")
-        public let bodyRowEvenBackground = Color("color TableCustom Body Row Even Background")
+        static let headBackground        = Color("color TableCustom Head Background")
+        static let bodyBackground        = Color("color TableCustom Body Background")
+        static let bodyRowOddBackground  = Color("color TableCustom Body Row Odd Background")
+        static let bodyRowEvenBackground = Color("color TableCustom Body Row Even Background")
 
-        public func rowTextColor(_ isSelected: Bool, _ appIsFocused: Bool) -> Color {
+        static func rowTextColor(_ isSelected: Bool, _ appIsFocused: Bool) -> Color {
             if (isSelected == true && appIsFocused == true) { return .white }
             if (isSelected != true && appIsFocused == true) { return .label }
             if (isSelected == true && appIsFocused != true) { return .label }
@@ -22,7 +22,7 @@ extension Color {
             return .clear
         }
 
-        public func rowBackgroundColor(_ isSelected: Bool, _ isEven: Bool, _ appIsFocused: Bool) -> Color {
+        static func rowBackgroundColor(_ isSelected: Bool, _ isEven: Bool, _ appIsFocused: Bool) -> Color {
             if (isSelected != true && isEven != true                        ) { return .tableCustom.bodyRowOddBackground }
             if (isSelected != true && isEven == true                        ) { return .tableCustom.bodyRowEvenBackground }
             if (isSelected == true && isEven != true && appIsFocused == true) { return .selectedContentBackground.opacity(0.9) }
@@ -34,6 +34,6 @@ extension Color {
 
     }
 
-    static let tableCustom = TableCustomColorsSet()
+    static let tableCustom = TableCustomColorsSet.self
 
 }

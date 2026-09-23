@@ -7,12 +7,12 @@ import SwiftUI
 
 extension Color {
 
-    struct ProgressSimpleColorSet {
-        public let border     = Color("color ProgressSimple Border")
-        public let indicator  = Color("color ProgressSimple Indicator")
-        public let background = Color("color ProgressSimple Background")
+    enum ProgressSimpleColorSet {
+        static let border     = Color("color ProgressSimple Border")
+        static let indicator  = Color("color ProgressSimple Indicator")
+        static let background = Color("color ProgressSimple Background")
     }
 
-    static let progressSimple = ProgressSimpleColorSet()
+    static let progressSimple = ProgressSimpleColorSet.self
 
 }
