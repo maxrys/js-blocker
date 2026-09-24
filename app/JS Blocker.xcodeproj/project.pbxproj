@@ -82,18 +82,6 @@
 		50439DCE2F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
 		50439DCF2F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
 		50439DD02F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
-		50439E052F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
-		50439E062F44C9AD00270BE5 /* Message_types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* Message_types.swift */; };
-		50439E072F44C9AD00270BE5 /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageState.swift */; };
-		50439E082F44C9AD00270BE5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFF2F44C9AD00270BE5 /* Message.swift */; };
-		50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
-		50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
-		50439E0C2F44C9AD00270BE5 /* Message_types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* Message_types.swift */; };
-		50439E0D2F44C9AD00270BE5 /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageState.swift */; };
-		50439E0E2F44C9AD00270BE5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFF2F44C9AD00270BE5 /* Message.swift */; };
-		50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E012F44C9AD00270BE5 /* MessageBox.swift */; };
-		50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E022F44C9AD00270BE5 /* MessageColors.swift */; };
-		50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
 		5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
 		505507502FC6E548007DB93D /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
 		505507512FC6E548007DB93D /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
@@ -271,6 +259,16 @@
 		50EF0335305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
 		50EF0336305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
 		50EF0337305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
+		50EF035B30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
+		50EF035C30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
+		50EF035D30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
+		50EF035E30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
+		50EF036330652E5D00557AF2 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035F30652E5D00557AF2 /* MessageBox.swift */; };
+		50EF036430652E5D00557AF2 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF036030652E5D00557AF2 /* MessageColors.swift */; };
+		50EF036530652E5D00557AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EF036130652E5D00557AF2 /* Assets.xcassets */; };
+		50EF036630652E5D00557AF2 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035F30652E5D00557AF2 /* MessageBox.swift */; };
+		50EF036730652E5D00557AF2 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF036030652E5D00557AF2 /* MessageColors.swift */; };
+		50EF036830652E5D00557AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EF036130652E5D00557AF2 /* Assets.xcassets */; };
 		50FC4DBE30438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
 		50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
 		50FC4DC030438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
@@ -374,12 +372,6 @@
 		50439DC52F44C8BA00270BE5 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		50439DC92F44C8C300270BE5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderCustom.swift; sourceTree = "<group>"; };
-		50439DFD2F44C9AD00270BE5 /* Message_types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_types.swift; sourceTree = "<group>"; };
-		50439DFF2F44C9AD00270BE5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		50439E002F44C9AD00270BE5 /* MessageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageState.swift; sourceTree = "<group>"; };
-		50439E012F44C9AD00270BE5 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
-		50439E022F44C9AD00270BE5 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
-		50439E032F44C9AD00270BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5055074E2FC6E548007DB93D /* NSApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSApplication.swift; sourceTree = "<group>"; };
 		505507522FC6E57C007DB93D /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		505507542FC6E59E007DB93D /* ShadowLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLine.swift; sourceTree = "<group>"; };
@@ -468,6 +460,10 @@
 		50ECC02F3007A10100A99E64 /* LifetimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeInfo.swift; sourceTree = "<group>"; };
 		50ECC032300A331B00A99E64 /* jsBlocker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jsBlocker.js; sourceTree = "<group>"; };
 		50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewCustom.swift; sourceTree = "<group>"; };
+		50EF035A30652D0D00557AF2 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		50EF035F30652E5D00557AF2 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
+		50EF036030652E5D00557AF2 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
+		50EF036130652E5D00557AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix2D.swift; sourceTree = "<group>"; };
 		50FC4DE6304991EC0001701E /* URLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLString.swift; sourceTree = "<group>"; };
 		50FC4DEB304993030001701E /* DomainRuleExactPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRuleExactPanel.swift; sourceTree = "<group>"; };
@@ -583,6 +579,7 @@
 				50C43A083019E19400A8FD39 /* DomainName.swift */,
 				50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */,
 				50439DC92F44C8C300270BE5 /* Logger.swift */,
+				50EF035A30652D0D00557AF2 /* NotificationCenter.swift */,
 				5055074E2FC6E548007DB93D /* NSApplication.swift */,
 				501FA4E02F4F99AE004663D2 /* NSEvent.swift */,
 				500D2C552D058C8000551390 /* NSRegularExpression.swift */,
@@ -610,26 +607,13 @@
 				50CE9FE22F472E06001006CF /* ButtonCustom */,
 				50623E923051FB64001E2F01 /* ButtonRefresh */,
 				5007275D2F8A3AF10058A547 /* FieldSearchCustom */,
-				50439E042F44C9AD00270BE5 /* MessageBox */,
+				50EF036230652E5D00557AF2 /* MessageBox */,
 				50BB98892FFA82C400C39670 /* ProgressSimple */,
 				505507552FC6E59E007DB93D /* ShadowLine */,
 				506421562F5E22760020F6C8 /* TableCustom */,
 				50FC4E44304C0F9C0001701E /* ToggleCustom */,
 			);
 			path = components;
-			sourceTree = "<group>";
-		};
-		50439E042F44C9AD00270BE5 /* MessageBox */ = {
-			isa = PBXGroup;
-			children = (
-				50439DFD2F44C9AD00270BE5 /* Message_types.swift */,
-				50439E002F44C9AD00270BE5 /* MessageState.swift */,
-				50439DFF2F44C9AD00270BE5 /* Message.swift */,
-				50439E012F44C9AD00270BE5 /* MessageBox.swift */,
-				50439E022F44C9AD00270BE5 /* MessageColors.swift */,
-				50439E032F44C9AD00270BE5 /* Assets.xcassets */,
-			);
-			path = MessageBox;
 			sourceTree = "<group>";
 		};
 		505507552FC6E59E007DB93D /* ShadowLine */ = {
@@ -830,6 +814,16 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		50EF036230652E5D00557AF2 /* MessageBox */ = {
+			isa = PBXGroup;
+			children = (
+				50EF035F30652E5D00557AF2 /* MessageBox.swift */,
+				50EF036030652E5D00557AF2 /* MessageColors.swift */,
+				50EF036130652E5D00557AF2 /* Assets.xcassets */,
+			);
+			path = MessageBox;
+			sourceTree = "<group>";
+		};
 		50FC4DF5304996D80001701E /* migrations */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,7 +990,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50439E122F44C9AD00270BE5 /* Assets.xcassets in Resources */,
 				50439DC02F44C74800270BE5 /* info.plist in Resources */,
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
 				50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */,
@@ -1011,6 +1004,7 @@
 				50CE9FA42F45DD19001006CF /* Assets.xcassets in Resources */,
 				5064215B2F5E22760020F6C8 /* Assets.xcassets in Resources */,
 				50EF0332305F17E400557AF2 /* Assets.xcassets in Resources */,
+				50EF036530652E5D00557AF2 /* Assets.xcassets in Resources */,
 				50623E983051FBB3001E2F01 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1023,6 +1017,7 @@
 				50ECC033300A331B00A99E64 /* jsBlocker.js in Resources */,
 				50623E973051FBB3001E2F01 /* Assets.xcassets in Resources */,
 				503CE1442C6E32C400835509 /* iconToolbar-exact.pdf in Resources */,
+				50EF036830652E5D00557AF2 /* Assets.xcassets in Resources */,
 				506421572F5E22760020F6C8 /* Assets.xcassets in Resources */,
 				509B24DD303B06E30046BB03 /* Assets.xcassets in Resources */,
 				50992D372F56E9570090699F /* ViewController.xib in Resources */,
@@ -1030,7 +1025,6 @@
 				50ECC01830025DD600A99E64 /* iconToolbar-no-one.pdf in Resources */,
 				50CE9FA32F45DD19001006CF /* Assets.xcassets in Resources */,
 				50AD451A2DAD17C600425467 /* iconToolbar-wildcard.pdf in Resources */,
-				50439E052F44C9AD00270BE5 /* Assets.xcassets in Resources */,
 				50CE9F9B2F45BF06001006CF /* Assets.xcassets in Resources */,
 				50B025292C47E404002F1AD7 /* jsBlocker-process.js in Resources */,
 				50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */,
@@ -1093,6 +1087,7 @@
 				50C787043014CFE600F078EC /* Storage.swift in Sources */,
 				50623E8E3051F6A8001E2F01 /* ValueState.swift in Sources */,
 				50CEA08B2F4A4E96001006CF /* Color.swift in Sources */,
+				50EF035C30652D0D00557AF2 /* NotificationCenter.swift in Sources */,
 				50BB987D2FFA5D8700C39670 /* Dictionary.swift in Sources */,
 				505507502FC6E548007DB93D /* NSApplication.swift in Sources */,
 				50684B6B2DB9679000FC6175 /* Data.swift in Sources */,
@@ -1147,6 +1142,7 @@
 				503DBDEA302B5CAC00BD39F3 /* HVStack.swift in Sources */,
 				50FC4E37304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
 				503DBDEB302B5CAC00BD39F3 /* ResultBuilder.swift in Sources */,
+				50EF035B30652D0D00557AF2 /* NotificationCenter.swift in Sources */,
 				503DBDE2302B5C6800BD39F3 /* ADFetchItem.swift in Sources */,
 				50ACD40E303C65E900E7D4ED /* AllowedDomains.swift in Sources */,
 				503DBDE4302B5C6800BD39F3 /* ADFetchCollection.swift in Sources */,
@@ -1165,6 +1161,7 @@
 				500D2C572D058C8200551390 /* NSRegularExpression.swift in Sources */,
 				50EF032F305F17CE00557AF2 /* ScriptsPanel.swift in Sources */,
 				50EF0330305F17CE00557AF2 /* ScriptsPanelColors.swift in Sources */,
+				50EF035D30652D0D00557AF2 /* NotificationCenter.swift in Sources */,
 				506421CB2F62DC420020F6C8 /* ADFetchCollection.swift in Sources */,
 				50CEA0482F47A35A001006CF /* MainScene.swift in Sources */,
 				50ECC02A300636C300A99E64 /* ProgressSimpleColors.swift in Sources */,
@@ -1196,12 +1193,9 @@
 				50CEA0562F47A6B7001006CF /* _const.swift in Sources */,
 				50CEA0942F4B6D46001006CF /* Set.swift in Sources */,
 				501FA4E22F4F99B1004663D2 /* NSEvent.swift in Sources */,
-				50439E0C2F44C9AD00270BE5 /* Message_types.swift in Sources */,
 				50623E8130517398001E2F01 /* ScriptsManager.swift in Sources */,
 				50ECC0142FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50C43A0A3019E19400A8FD39 /* DomainName.swift in Sources */,
-				50439E0D2F44C9AD00270BE5 /* MessageState.swift in Sources */,
-				50439E0E2F44C9AD00270BE5 /* Message.swift in Sources */,
 				50FC4E30304C0C520001701E /* ASFetchItem.swift in Sources */,
 				50FC4E31304C0C520001701E /* ASFetchCollection.swift in Sources */,
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
@@ -1213,8 +1207,6 @@
 				506421602F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
 				500727632F8A3E3D0058A547 /* FieldSearchCustomColors.swift in Sources */,
 				5064215E2F5E22760020F6C8 /* TableCustom.swift in Sources */,
-				50439E0F2F44C9AD00270BE5 /* MessageBox.swift in Sources */,
-				50439E102F44C9AD00270BE5 /* MessageColors.swift in Sources */,
 				50EF032A305F17C800557AF2 /* LifetimeColors.swift in Sources */,
 				50EF032B305F17C800557AF2 /* LifetimeInfo.swift in Sources */,
 				50EF032C305F17C800557AF2 /* LifetimePicker.swift in Sources */,
@@ -1228,6 +1220,8 @@
 				50EB55182CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
 				50E150B92DA96616005768C1 /* MatchType.swift in Sources */,
 				5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */,
+				50EF036330652E5D00557AF2 /* MessageBox.swift in Sources */,
+				50EF036430652E5D00557AF2 /* MessageColors.swift in Sources */,
 				50FC4DF9304996D80001701E /* WhiteDomains.swift in Sources */,
 				50FC4DFA304996D80001701E /* Migrations.swift in Sources */,
 				50FC4DFB304996D80001701E /* Migration_001.swift in Sources */,
@@ -1270,15 +1264,13 @@
 				506421592F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				50BB987B2FFA5D8700C39670 /* Dictionary.swift in Sources */,
 				5064215A2F5E22760020F6C8 /* TableCustom.swift in Sources */,
-				50439E062F44C9AD00270BE5 /* Message_types.swift in Sources */,
-				50439E072F44C9AD00270BE5 /* MessageState.swift in Sources */,
 				50CEA0A72F4C502A001006CF /* Array.swift in Sources */,
-				50439E082F44C9AD00270BE5 /* Message.swift in Sources */,
 				50FC4E46304C0F9C0001701E /* ToggleCustom.swift in Sources */,
-				50439E092F44C9AD00270BE5 /* MessageBox.swift in Sources */,
-				50439E0A2F44C9AD00270BE5 /* MessageColors.swift in Sources */,
+				50EF036630652E5D00557AF2 /* MessageBox.swift in Sources */,
+				50EF036730652E5D00557AF2 /* MessageColors.swift in Sources */,
 				50ECC01C3003A5AB00A99E64 /* ExpireStatus.swift in Sources */,
 				50623E943051FB77001E2F01 /* RefreshButton.swift in Sources */,
+				50EF035E30652D0D00557AF2 /* NotificationCenter.swift in Sources */,
 				50CEA0952F4B6D46001006CF /* Set.swift in Sources */,
 				50E4E8402F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,

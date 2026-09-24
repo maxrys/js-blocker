@@ -11,6 +11,9 @@ struct Popup: View {
     static let ICON_SETTINGS = Image(systemName: "gearshape.fill")
     static let FRAME_WIDTH: CGFloat = 450
 
+    static let messageBoxAddress: MessageBoxAddress = .local(boxID: MessageBoxID(1))
+    static let messageIDForCurrentOperation: MessageID = 0
+
     @Environment(\.openURL) private var openURL
 
     @StateObject private var userDefaultsState = UserDefaultsState.shared
@@ -21,7 +24,9 @@ struct Popup: View {
 
     init(frameWidth: CGFloat = Self.FRAME_WIDTH) {
         self.frameWidth = frameWidth
-        self.messageBox = MessageBox()
+        self.messageBox = MessageBox(
+            address: Self.messageBoxAddress
+        )
     }
 
     public var body: some View {
@@ -133,42 +138,45 @@ struct Popup_Previews: PreviewProvider {
                     PopupState.shared.domain = nil
                     PopupState.shared.ruleExact = ""
                     PopupState.shared.rulesWildcard = []
+                    MessageBox.delete(address: Popup.messageBoxAddress,
+                        Popup.messageIDForCurrentOperation
+                    )
                 case 1:
                     PopupState.shared.match = .noOne
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
-                    MessageBox.deleteAll()
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
+                        lifetime: .infinity,
                         title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
-                        description: "example.com",
-                        lifeTime: .infinity
-                    )
+                        description: "example.com"
+                    ))
                 case 2:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
-                    MessageBox.deleteAll()
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
+                        lifetime: .infinity,
                         title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
-                        description: "example.com",
-                        lifeTime: .infinity
-                    )
+                        description: "example.com"
+                    ))
                 case 3:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
-                    MessageBox.deleteAll()
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
+                        lifetime: .infinity,
                         title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
-                        description: ["*.example.com"].joined(separator: "\n"),
-                        lifeTime: .infinity
-                    )
+                        description: ["*.example.com"].joined(separator: "\n")
+                    ))
                 case 4:
                     PopupState.shared.match = .noOne
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
@@ -176,13 +184,13 @@ struct Popup_Previews: PreviewProvider {
                     PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
                     PopupState.shared.rulesWildcardSelected = []
                     PopupState.shared.rulesWildcardDisabled = [2, 3]
-                    MessageBox.deleteAll()
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
-                        title: NSLocalizedString("Wildcard rules for the following domains were removed:", comment: ""),
-                        description: "example.com",
-                        lifeTime: .infinity
-                    )
+                        lifetime: .infinity,
+                        title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
+                        description: "example.com"
+                    ))
                 case 5:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
@@ -190,13 +198,13 @@ struct Popup_Previews: PreviewProvider {
                     PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
                     PopupState.shared.rulesWildcardSelected = []
                     PopupState.shared.rulesWildcardDisabled = []
-                    MessageBox.deleteAll()
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
+                        lifetime: .infinity,
                         title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
-                        description: "sub3.sub2.sub1.example.com",
-                        lifeTime: .infinity
-                    )
+                        description: "sub3.sub2.sub1.example.com"
+                    ))
                 case 6:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
@@ -204,13 +212,13 @@ struct Popup_Previews: PreviewProvider {
                     PopupState.shared.rulesWildcard = DEMO_RULES__SUBDOMAIN
                     PopupState.shared.rulesWildcardSelected = [0, 2]
                     PopupState.shared.rulesWildcardDisabled = []
-                    MessageBox.deleteAll()
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
+                        lifetime: .infinity,
                         title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
-                        description: ["*.sub3.sub2.sub1.example.com", "*.sub1.example.com"].joined(separator: "\n"),
-                        lifeTime: .infinity
-                    )
+                        description: ["*.sub3.sub2.sub1.example.com", "*.sub1.example.com"].joined(separator: "\n")
+                    ))
                 default: break
             }
         }

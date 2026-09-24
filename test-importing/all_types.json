@@ -1,0 +1,333 @@
+{
+  "version" : 3,
+  "items" : [
+    {
+      "name" : "js-blocker.com",
+      "type" : "exact",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "sub.js-blocker.com",
+      "type" : "exactScript",
+      "expiresAt" : 0,
+      "scripts" : {
+        "sub.js-blocker.com" : [
+          "https:\/\/sub.sub.js-blocker.com\/script.js.php",
+          "https:\/\/xn--js--dddu3aag1ax\/script.js.php"
+        ]
+      }
+    },
+    {
+      "name" : "xn--js--dddu3aag1ax",
+      "type" : "wildcardScript",
+      "expiresAt" : 0,
+        "scripts" : {
+      }
+    },
+    {
+      "name" : "sub.sub.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "001.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "002.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "003.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "004.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "005.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "006.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "007.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "008.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "009.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "010.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "011.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "012.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "013.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "014.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "015.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "016.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "017.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "018.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "019.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "020.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "021.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "022.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "023.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "024.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "025.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "026.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "027.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "027.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "029.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "030.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "031.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "032.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "033.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "034.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "035.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "036.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "037.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "038.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "039.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "040.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "041.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "042.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "043.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "044.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "045.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "046.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "047.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "048.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "049.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "050.js-blocker.com",
+      "type" : "wildcard",
+      "expiresAt" : 1000000000
+    },
+    {
+      "name" : "invalid~001",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~002",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~003",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~004",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~005",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~006",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~007",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~008",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~009",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    },
+    {
+      "name" : "invalid~010",
+      "type" : "wildcard",
+      "expiresAt" : 0
+    }
+  ]
+}

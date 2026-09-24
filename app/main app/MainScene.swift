@@ -22,7 +22,9 @@ struct MainScene: View {
     private let messageBox: MessageBox
 
     init() {
-        self.messageBox = MessageBox()
+        self.messageBox = MessageBox(
+            address: ThisApp.messageBoxAddress
+        )
     }
 
     public var body: some View {
@@ -302,11 +304,11 @@ struct MainScene: View {
         if (self.mainAppState.selectedRows.count > 0) {
             if case .success(let count) = self.mainAppState.delete(self.mainAppState.selectedNames) {
                 Task {
-                    MessageBox.insert(
+                    MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                        ID: ThisApp.messageIDForCurrentOperation,
                         type: .ok,
-                        title: String(format: NSLocalizedString("%d records have been deleted", comment: ""), count),
-                        lifeTime: .time(3)
-                    )
+                        title: String(format: NSLocalizedString("%d records have been deleted", comment: ""), count)
+                    ))
                 }
             }
         }
