@@ -269,6 +269,8 @@
 		50EF036630652E5D00557AF2 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035F30652E5D00557AF2 /* MessageBox.swift */; };
 		50EF036730652E5D00557AF2 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF036030652E5D00557AF2 /* MessageColors.swift */; };
 		50EF036830652E5D00557AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EF036130652E5D00557AF2 /* Assets.xcassets */; };
+		50EF036C30668D6600557AF2 /* RadioButtonSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF036B30668D6600557AF2 /* RadioButtonSimple.swift */; };
+		50EF036D30668D6600557AF2 /* RadioButtonSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF036B30668D6600557AF2 /* RadioButtonSimple.swift */; };
 		50FC4DBE30438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
 		50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
 		50FC4DC030438E870001701E /* DictionaryMatrix2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */; };
@@ -464,6 +466,7 @@
 		50EF035F30652E5D00557AF2 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		50EF036030652E5D00557AF2 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		50EF036130652E5D00557AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50EF036B30668D6600557AF2 /* RadioButtonSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonSimple.swift; sourceTree = "<group>"; };
 		50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryMatrix2D.swift; sourceTree = "<group>"; };
 		50FC4DE6304991EC0001701E /* URLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLString.swift; sourceTree = "<group>"; };
 		50FC4DEB304993030001701E /* DomainRuleExactPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRuleExactPanel.swift; sourceTree = "<group>"; };
@@ -609,6 +612,7 @@
 				5007275D2F8A3AF10058A547 /* FieldSearchCustom */,
 				50EF036230652E5D00557AF2 /* MessageBox */,
 				50BB98892FFA82C400C39670 /* ProgressSimple */,
+				50EF036E30668D6B00557AF2 /* RadioButton */,
 				505507552FC6E59E007DB93D /* ShadowLine */,
 				506421562F5E22760020F6C8 /* TableCustom */,
 				50FC4E44304C0F9C0001701E /* ToggleCustom */,
@@ -822,6 +826,14 @@
 				50EF036130652E5D00557AF2 /* Assets.xcassets */,
 			);
 			path = MessageBox;
+			sourceTree = "<group>";
+		};
+		50EF036E30668D6B00557AF2 /* RadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				50EF036B30668D6600557AF2 /* RadioButtonSimple.swift */,
+			);
+			path = RadioButton;
 			sourceTree = "<group>";
 		};
 		50FC4DF5304996D80001701E /* migrations */ = {
@@ -1209,6 +1221,7 @@
 				5064215E2F5E22760020F6C8 /* TableCustom.swift in Sources */,
 				50EF032A305F17C800557AF2 /* LifetimeColors.swift in Sources */,
 				50EF032B305F17C800557AF2 /* LifetimeInfo.swift in Sources */,
+				50EF036D30668D6600557AF2 /* RadioButtonSimple.swift in Sources */,
 				50EF032C305F17C800557AF2 /* LifetimePicker.swift in Sources */,
 				505507532FC6E57C007DB93D /* About.swift in Sources */,
 				50E4E8412F55C76C0054E5DE /* ADFetchItem.swift in Sources */,
@@ -1255,6 +1268,7 @@
 				505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */,
 				505507512FC6E548007DB93D /* NSApplication.swift in Sources */,
 				50CE9FEA2F472EC4001006CF /* Shape.swift in Sources */,
+				50EF036C30668D6600557AF2 /* RadioButtonSimple.swift in Sources */,
 				50E150B62DA96616005768C1 /* MatchType.swift in Sources */,
 				50CEA08C2F4A4E96001006CF /* Color.swift in Sources */,
 				50ECC029300636C300A99E64 /* ProgressSimpleColors.swift in Sources */,

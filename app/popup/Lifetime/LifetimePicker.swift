@@ -91,7 +91,7 @@ struct LifetimePicker: View {
     }
 
     @ViewBuilder private func PopupView() -> some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
 
             self.PopupTitleView()
                 .overlayPolyfill(alignment: .bottom) {
@@ -107,9 +107,12 @@ struct LifetimePicker: View {
             .padding(.init(top: 20, leading: 20, bottom: 15, trailing: 20))
             .background(Color.lifetime.popupValueUnlimitBackground)
 
-            VStack(spacing: 7) {
+            VStack(alignment: .leading, spacing: 7) {
                 ForEach(Array(Self.LIFETIME_PERIODS.sorted(order: .keyAscending)), id: \.key) { lifetime, title in
-                    self.PopupListItemView(lifetime: lifetime, title: title)
+                    self.PopupListItemView(
+                        lifetime: lifetime,
+                        title   : title
+                    )
                 }
             }.padding(.init(top: 15, leading: 20, bottom: 20, trailing: 20))
         }
@@ -139,30 +142,14 @@ struct LifetimePicker: View {
 
     @ViewBuilder private func PopupListItemView(lifetime: TimeInterval?, title: String) -> some View {
         let isActive = self.lifetime == lifetime
-        Button {
+        RadioButtonSimple(isSelected: isActive) {
             Task { @MainActor in
                 self.lifetime = lifetime
                 self.isOpened = false
             }
-        } label: {
+        } lebel: {
             Text(title)
-                .foregroundPolyfill(Color.white)
-                .padding(.init(top: 5, leading: 10, bottom: 5, trailing: 10))
-                .background(
-                    Capsule()
-                        .fill(
-                            isActive ?
-                                Color.lifetime.popupListItemActiveBackground :
-                                Color.lifetime.popupListItemBackground
-
-                        )
-                )
-                .clipShape   (Capsule())
-                .contentShape(Capsule())
-                .focusEffect (Capsule())
         }
-        .buttonStyle(.plain)
-        .pointerStyleLinkPolyfill(self.isEnabled)
         .disabled(!self.isEnabled)
     }
 
