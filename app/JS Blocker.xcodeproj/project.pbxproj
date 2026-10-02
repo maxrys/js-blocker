@@ -126,6 +126,10 @@
 		50875E232C71F21C00756D64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50875E212C71F21C00756D64 /* Assets.xcassets */; };
 		50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */; };
 		50875E382C71F72A00756D64 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50875E372C71F72A00756D64 /* InfoPlist.xcstrings */; };
+		50888D4930692E80004BB5CF /* PreviewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50888D4830692E80004BB5CF /* PreviewMode.swift */; };
+		50888D4A30692E80004BB5CF /* PreviewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50888D4830692E80004BB5CF /* PreviewMode.swift */; };
+		50888D4B30692E80004BB5CF /* PreviewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50888D4830692E80004BB5CF /* PreviewMode.swift */; };
+		50888D4C30692E80004BB5CF /* PreviewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50888D4830692E80004BB5CF /* PreviewMode.swift */; };
 		509528D52F701E8000DB391A /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509528D42F701E8000DB391A /* NSWindow.swift */; };
 		509528D62F701EA800DB391A /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509528D42F701E8000DB391A /* NSWindow.swift */; };
 		509528D72F701EA800DB391A /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509528D42F701E8000DB391A /* NSWindow.swift */; };
@@ -392,6 +396,7 @@
 		50875E212C71F21C00756D64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		50875E372C71F72A00756D64 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		50888D4830692E80004BB5CF /* PreviewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMode.swift; sourceTree = "<group>"; };
 		509528D42F701E8000DB391A /* NSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindow.swift; sourceTree = "<group>"; };
 		50992D362F56E9570090699F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		509B24DC303B06E30046BB03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -529,6 +534,7 @@
 				50E4B1012FF29088008D625B /* HVStack.swift */,
 				50E150B52DA96615005768C1 /* MatchType.swift */,
 				50E4B1022FF29088008D625B /* Previewer.swift */,
+				50888D4830692E80004BB5CF /* PreviewMode.swift */,
 				5064215F2F5E22AB0020F6C8 /* ResultBuilder.swift */,
 				50623E7B30516B7D001E2F01 /* ScriptsCart.swift */,
 				50623E8030517398001E2F01 /* ScriptsManager.swift */,
@@ -1057,6 +1063,7 @@
 				50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50FC4DEA304991EC0001701E /* URLString.swift in Sources */,
 				501FA4E12F4F99B1004663D2 /* NSEvent.swift in Sources */,
+				50888D4C30692E80004BB5CF /* PreviewMode.swift in Sources */,
 				500D2D282D05952700551390 /* String.swift in Sources */,
 				50BB98672FFA5BD900C39670 /* Previewer.swift in Sources */,
 				500895362DD73EDF00414588 /* Date.swift in Sources */,
@@ -1111,6 +1118,7 @@
 				503DBDE7302B5CAC00BD39F3 /* _const.swift in Sources */,
 				50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */,
 				503DBDE8302B5CAC00BD39F3 /* ExpireStatus.swift in Sources */,
+				50888D4B30692E80004BB5CF /* PreviewMode.swift in Sources */,
 				503DBDE9302B5CAC00BD39F3 /* MatchType.swift in Sources */,
 				503DBDEC302B5CC200BD39F3 /* Date.swift in Sources */,
 				503DBDED302B5CC200BD39F3 /* Dictionary.swift in Sources */,
@@ -1181,6 +1189,7 @@
 				50CE9FE82F472E06001006CF /* ButtonCustomColor.swift in Sources */,
 				505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */,
 				50EF0326305F17AF00557AF2 /* DomainRuleExactPanel.swift in Sources */,
+				50888D4930692E80004BB5CF /* PreviewMode.swift in Sources */,
 				50EF0327305F17AF00557AF2 /* DomainRulePanelColors.swift in Sources */,
 				50EF0328305F17AF00557AF2 /* DomainRuleWildcardPanel.swift in Sources */,
 				50EF0322305F17AA00557AF2 /* PopupColors.swift in Sources */,
@@ -1259,6 +1268,7 @@
 				505507572FC6E59E007DB93D /* ShadowLine.swift in Sources */,
 				505507512FC6E548007DB93D /* NSApplication.swift in Sources */,
 				50CE9FEA2F472EC4001006CF /* Shape.swift in Sources */,
+				50888D4A30692E80004BB5CF /* PreviewMode.swift in Sources */,
 				50EF036C30668D6600557AF2 /* RadioButtonSimple.swift in Sources */,
 				50E150B62DA96616005768C1 /* MatchType.swift in Sources */,
 				50CEA08C2F4A4E96001006CF /* Color.swift in Sources */,

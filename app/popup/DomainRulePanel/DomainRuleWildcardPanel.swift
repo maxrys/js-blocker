@@ -305,14 +305,14 @@ struct DomainRuleWildcardPanel_Previews: PreviewProvider {
             VStack(spacing: 0) {
                 DomainRuleWildcardPanel()
                     .background(Color.popup.ruleExactBackground)
-                PreviewModeSelector(
+                Spacer().frame(minWidth: 0)
+                PreviewMode(
                     title: "match",
                     state: Self.match,
                     modes: [
                         "nil", "noOne", "exact", "wildcard", "N+", "E+", "W+"
                     ]
                 )
-                Spacer()
             }.frame(
                 width: Popup.FRAME_WIDTH,
                 height: 400

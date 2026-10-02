@@ -7,6 +7,7 @@ import SwiftUI
 
 struct ScriptsPanel: View {
 
+    static let FRAME_WIDTH: CGFloat = 500
     static let ICON_OPENER  = Image("symbol Icon Scripts")
 
     @StateObject private var popupState = PopupState.shared
@@ -326,78 +327,87 @@ struct ScriptsPanel: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
+enum ScriptsPanel_PreviewContentGenerator {
+
+    static let frames = [
+        DEMO_TOPDOMAIN,
+        "b.com", "б.ком",
+        "r.com", "л.ком",
+        "j.com", "ж.ком",
+        "n.com", "з.ком",
+        "i.com", "ё.ком",
+        "q.com", "й.ком",
+        "d.com", "д.ком",
+        "f.com", "е.ком",
+        "s.com", "п.ком",
+        "w.com", "ф.ком",
+    ]
+
+    static let frameScripts = [
+        "https://b.com/script.js",
+        "https://q.com/script.js",
+        "https://x.com/script.js",
+    ]
+
+    static let scriptsIsOn: Matrix3dBool = {
+        var result = Matrix3dBool()
+            result["js-blocker.com", "ё.com", "https://b.com/script.js"] = true
+            result["js-blocker.com", "ё.com", "https://c.com/script.js"] = true
+        return result
+    }()
+
+    static func generateScripts(count: Int) -> Matrix2dArrOfStr {
+        var result = Matrix2dArrOfStr()
+        for i in 0 ..< count {
+            result[DEMO_TOPDOMAIN, Self.frames[i]] = Self.frameScripts
+            if (Self.frames[i] == DEMO_TOPDOMAIN) {
+                result[DEMO_TOPDOMAIN, Self.frames[i]]?.append(
+                    "https://y.com/script-" + String(repeating: "long", count: 1000) + ".js"
+                )
+            }
+        }
+        return result
+    }
+
+    static func generateScripts0Plus() -> Matrix2dArrOfStr {
+        var result = Matrix2dArrOfStr()
+            result[DEMO_TOPDOMAIN, DEMO_TOPDOMAIN] = []
+        return result
+    }
+
+}
+
 struct ScriptsPanel_Previews: PreviewProvider {
 
     struct ViewWithState: View {
 
-        static let frames = [
-            DEMO_TOPDOMAIN,
-            "b.com", "б.ком",
-            "r.com", "л.ком",
-            "j.com", "ж.ком",
-            "n.com", "з.ком",
-            "i.com", "ё.ком",
-            "q.com", "й.ком",
-            "d.com", "д.ком",
-            "f.com", "е.ком",
-            "s.com", "п.ком",
-            "w.com", "ф.ком",
-        ]
-
-        static let frameScripts = [
-            "https://b.com/script.js",
-            "https://q.com/script.js",
-            "https://x.com/script.js",
-        ]
-
-        static let scriptsIsOn: Matrix3dBool = {
-            var result = Matrix3dBool()
-                result["js-blocker.com", "ё.com", "https://b.com/script.js"] = true
-                result["js-blocker.com", "ё.com", "https://c.com/script.js"] = true
-            return result
-        }()
-
-        static func generateScripts(count: Int) -> Matrix2dArrOfStr {
-            var result = Matrix2dArrOfStr()
-            for i in 0 ..< count {
-                result[DEMO_TOPDOMAIN, Self.frames[i]] = Self.frameScripts
-                if (Self.frames[i] == DEMO_TOPDOMAIN) {
-                    result[DEMO_TOPDOMAIN, Self.frames[i]]?.append(
-                        "https://y.com/script-" + String(repeating: "long", count: 1000) + ".js"
-                    )
-                }
-            }
-            return result
-        }
-
-        static func generateScripts0Plus() -> Matrix2dArrOfStr {
-            var result = Matrix2dArrOfStr()
-                result[DEMO_TOPDOMAIN, DEMO_TOPDOMAIN] = []
-            return result
-        }
-
         @ObservedObject static private var match = ValueState<UInt>(0) { value in
-            PopupState.shared.match = .noOne
+            PopupState.shared.match = .noOneScript
             PopupState.shared.domain = DEMO_TOPDOMAIN
             PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
             PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
-            PopupState.shared.scriptsIsOn = Self.scriptsIsOn
-            if      (value == 0) { PopupState.shared.scripts = Self.generateScripts(count: 0) }
-            else if (value == 1) { PopupState.shared.scripts = Self.generateScripts0Plus() }
-            else                 { PopupState.shared.scripts = Self.generateScripts(count: Int(value) - 1) }
+            PopupState.shared.scriptsIsOn = ScriptsPanel_PreviewContentGenerator.scriptsIsOn
+            if      (value == 0) { PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts(count: 0) }
+            else if (value == 1) { PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts0Plus() }
+            else                 { PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts(count: Int(value) - 1) }
         }
 
         var body: some View {
             VStack(spacing: 0) {
                 ScriptsPanel()
-                    .padding(20)
-                PreviewModeSelector(
+                PreviewMode(
                     title: "count",
                     state: Self.match,
                     modes: ["0", "0+", "1", "2", "3", "4", "5", "6", "7", "8"]
                 )
-            }.frame(
-                width: Popup.FRAME_WIDTH
+            }
+            .frame(
+                width: ScriptsPanel.FRAME_WIDTH,
+                height: 600
+            )
+            .background(
+                Color.popup.ruleExactBackground
+                    .opacity(0.9)
             )
         }
 
