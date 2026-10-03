@@ -15,28 +15,10 @@ struct LifetimePicker: View {
         .PERIOD_1_WEEK   : NSLocalizedString("1 week"   , comment: ""),
     ]
 
-    static let ICON_OPENER = Image("symbol Icon Timer")
-
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.isEnabled) private var isEnabled
     @Binding private var lifetime: TimeInterval?
     @State private var isOpened = false
-
-    private var colorOpenerIcon: Color {
-        if (self.isActive)
-             { return Color.lifetime.openerIconActive }
-        else { return Color.lifetime.openerIcon }
-    }
-
-    private var colorOpenerBorder: Color {
-        if (self.isActive)
-             { return Color.lifetime.openerBorderActive }
-        else { return Color.lifetime.openerBorder }
-    }
-
-    private var colorOpenerBackground: Color {
-        Color.lifetime.openerBackground
-    }
 
     private var isActive: Bool {
         self.lifetime != nil
@@ -47,47 +29,36 @@ struct LifetimePicker: View {
     }
 
     public var body: some View {
-        self.OpenerView()
-            .overlayPolyfill(alignment: .bottom) {
-                if let lifetime = self.lifetime {
-                    if let text = Self.LIFETIME_PERIODS[lifetime] {
-                        Text(text)
-                            .font(.system(size: 10))
-                            .padding(.horizontal, -20)
-                            .offset(y: 20)
-                            .opacity(0.5)
-                    }
-                }
+        ButtonRectangle(
+            isActive: self.isActive,
+            icon: Image("symbol Icon Timer"),
+            iconSize: 26,
+            iconOffset: CGPoint(x: 0, y: -1),
+            onClick: {
+                self.isOpened.toggle()
             }
-            .popover(
-                isPresented: self.isEnabled ? self.$isOpened : .constant(false),
-                arrowEdge: .bottom
-            ) {
-                self.PopupView()
-            }
+        )
+        .overlayPolyfill(alignment: .bottom) {
+            self.HintView()
+                .padding(.horizontal, -20)
+                .offset(y: 20)
+        }
+        .popover(
+            isPresented: self.isEnabled ? self.$isOpened : .constant(false),
+            arrowEdge: .bottom
+        ) {
+            self.PopupView()
+        }
     }
 
-    @ViewBuilder private func OpenerView() -> some View {
-        let shape = RoundedRectangle(cornerRadius: 12)
-        Button {
-            self.isOpened.toggle()
-        } label: {
-            shape
-                .stroke(self.colorOpenerBorder, lineWidth: 2)
-                .background(shape.fill(self.colorOpenerBackground))
-                .frame(width: 36, height: 36)
-                .overlayPolyfill {
-                    Self.ICON_OPENER
-                        .font(.system(size: 26))
-                        .offset(y: -1)
-                }
-            .foregroundPolyfill(self.colorOpenerIcon)
-            .contentShape(shape)
-            .focusEffect (shape)
+    @ViewBuilder private func HintView() -> some View {
+        if let lifetime = self.lifetime {
+            if let text = Self.LIFETIME_PERIODS[lifetime] {
+                Text(text)
+                    .font(.system(size: 10))
+                    .opacity(0.5)
+            }
         }
-        .buttonStyle(.plain)
-        .pointerStyleLinkPolyfill(self.isEnabled)
-        .disabled(!self.isEnabled)
     }
 
     @ViewBuilder private func PopupView() -> some View {

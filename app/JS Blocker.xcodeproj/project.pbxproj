@@ -27,6 +27,12 @@
 		501FA4E12F4F99B1004663D2 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FA4E02F4F99AE004663D2 /* NSEvent.swift */; };
 		501FA4E22F4F99B1004663D2 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FA4E02F4F99AE004663D2 /* NSEvent.swift */; };
 		501FA4E32F4F99B1004663D2 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FA4E02F4F99AE004663D2 /* NSEvent.swift */; };
+		50346891306D221900A6683B /* ButtonRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50346890306D221800A6683B /* ButtonRectangle.swift */; };
+		50346892306D221900A6683B /* ButtonRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50346890306D221800A6683B /* ButtonRectangle.swift */; };
+		50346894306D228500A6683B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50346893306D228500A6683B /* Assets.xcassets */; };
+		50346895306D228500A6683B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50346893306D228500A6683B /* Assets.xcassets */; };
+		50346897306D22D700A6683B /* ButtonRectangleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50346896306D22D700A6683B /* ButtonRectangleColors.swift */; };
+		50346898306D22D700A6683B /* ButtonRectangleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50346896306D22D700A6683B /* ButtonRectangleColors.swift */; };
 		503CE1442C6E32C400835509 /* iconToolbar-exact.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 503CE1432C6E32C400835509 /* iconToolbar-exact.pdf */; };
 		503DBDD1302B5B8A00BD39F3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503DBDD0302B5B8A00BD39F3 /* Cocoa.framework */; };
 		503DBDD6302B5B8A00BD39F3 /* RulesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DBDD5302B5B8A00BD39F3 /* RulesHandler.swift */; };
@@ -361,6 +367,9 @@
 		500D2D292D05969F00551390 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		5019AA142C6E4FBE003F9AF5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		501FA4E02F4F99AE004663D2 /* NSEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSEvent.swift; sourceTree = "<group>"; };
+		50346890306D221800A6683B /* ButtonRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRectangle.swift; sourceTree = "<group>"; };
+		50346893306D228500A6683B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50346896306D22D700A6683B /* ButtonRectangleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRectangleColors.swift; sourceTree = "<group>"; };
 		503CE1432C6E32C400835509 /* iconToolbar-exact.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iconToolbar-exact.pdf"; sourceTree = "<group>"; };
 		503DBDCE302B5B8A00BD39F3 /* JS Blocker Rules.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "JS Blocker Rules.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503DBDD0302B5B8A00BD39F3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -551,6 +560,16 @@
 			path = test;
 			sourceTree = "<group>";
 		};
+		5034688F306D21C800A6683B /* ButtonRectangle */ = {
+			isa = PBXGroup;
+			children = (
+				50346890306D221800A6683B /* ButtonRectangle.swift */,
+				50346896306D22D700A6683B /* ButtonRectangleColors.swift */,
+				50346893306D228500A6683B /* Assets.xcassets */,
+			);
+			path = ButtonRectangle;
+			sourceTree = "<group>";
+		};
 		503DBDCF302B5B8A00BD39F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +627,7 @@
 			children = (
 				50CE9FA12F45DD05001006CF /* ButtonCapsule */,
 				50CE9FE22F472E06001006CF /* ButtonCustom */,
+				5034688F306D21C800A6683B /* ButtonRectangle */,
 				50623E923051FB64001E2F01 /* ButtonRefresh */,
 				5007275D2F8A3AF10058A547 /* FieldSearchCustom */,
 				50EF036230652E5D00557AF2 /* MessageBox */,
@@ -1008,6 +1028,7 @@
 				50EF0331305F17CE00557AF2 /* Assets.xcassets in Resources */,
 				50EF032D305F17C800557AF2 /* Assets.xcassets in Resources */,
 				5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */,
+				50346894306D228500A6683B /* Assets.xcassets in Resources */,
 				50ECC0263006362400A99E64 /* Assets.xcassets in Resources */,
 				50EF0329305F17B900557AF2 /* Assets.xcassets in Resources */,
 				500727662F8A3EB40058A547 /* Assets.xcassets in Resources */,
@@ -1027,6 +1048,7 @@
 			files = (
 				50B0252B2C47E404002F1AD7 /* iconToolbar-none.pdf in Resources */,
 				50ECC033300A331B00A99E64 /* jsBlocker.js in Resources */,
+				50346895306D228500A6683B /* Assets.xcassets in Resources */,
 				50623E973051FBB3001E2F01 /* Assets.xcassets in Resources */,
 				503CE1442C6E32C400835509 /* iconToolbar-exact.pdf in Resources */,
 				50EF036830652E5D00557AF2 /* Assets.xcassets in Resources */,
@@ -1187,6 +1209,7 @@
 				50CEA07B2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
 				50CE9FE72F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE82F472E06001006CF /* ButtonCustomColor.swift in Sources */,
+				50346898306D22D700A6683B /* ButtonRectangleColors.swift in Sources */,
 				505507562FC6E59E007DB93D /* ShadowLine.swift in Sources */,
 				50EF0326305F17AF00557AF2 /* DomainRuleExactPanel.swift in Sources */,
 				50888D4930692E80004BB5CF /* PreviewMode.swift in Sources */,
@@ -1234,6 +1257,7 @@
 				50E150B92DA96616005768C1 /* MatchType.swift in Sources */,
 				5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */,
 				50EF036330652E5D00557AF2 /* MessageBox.swift in Sources */,
+				50346891306D221900A6683B /* ButtonRectangle.swift in Sources */,
 				50EF036430652E5D00557AF2 /* MessageColors.swift in Sources */,
 				50FC4DF9304996D80001701E /* WhiteDomains.swift in Sources */,
 				50FC4DFA304996D80001701E /* Migrations.swift in Sources */,
@@ -1292,6 +1316,7 @@
 				50CE9FE42F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE52F472E06001006CF /* ButtonCustomColor.swift in Sources */,
 				50EF0335305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */,
+				50346897306D22D700A6683B /* ButtonRectangleColors.swift in Sources */,
 				500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */,
 				50ECC0152FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50623E8230517398001E2F01 /* ScriptsManager.swift in Sources */,
@@ -1318,6 +1343,7 @@
 				506421CC2F62DC420020F6C8 /* ADFetchCollection.swift in Sources */,
 				50AD45222DAE59C300425467 /* View.swift in Sources */,
 				500727602F8A3B710058A547 /* FieldSearchCustom.swift in Sources */,
+				50346892306D221900A6683B /* ButtonRectangle.swift in Sources */,
 				50FC4DFF304996D80001701E /* WhiteDomains.swift in Sources */,
 				50FC4E00304996D80001701E /* Migrations.swift in Sources */,
 				50FC4E01304996D80001701E /* Migration_001.swift in Sources */,
