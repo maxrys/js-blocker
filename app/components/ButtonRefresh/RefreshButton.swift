@@ -14,15 +14,18 @@ struct ButtonRefresh: View {
 
     private let speed: Double
     private let size: CGFloat
+    private let iconSize: CGFloat
     private let onClick: () -> Void
 
     init(
         speed: Double = 500,
-        size: CGFloat = 25,
+        size: CGFloat = 20,
+        iconSize: CGFloat = 12,
         onClick: @escaping () -> Void
     ) {
         self.speed = speed
         self.size = size
+        self.iconSize = iconSize
         self.onClick = onClick
     }
 
@@ -44,11 +47,11 @@ struct ButtonRefresh: View {
             let shape = Circle()
             TimelineCustom(isActive: self.$isAnimated, interval: 1.0 / 24) {
                 shape
-                    .fill(Color.black.opacity(0.2))
+                    .fill(Color.black.opacity(0.1))
                     .frame(width: self.size, height: self.size)
                     .overlayPolyfill {
                         Self.ICON_REFRESH
-                            .font(.system(size: 18))
+                            .font(.system(size: self.iconSize))
                     }
                     .clipShape   (shape)
                     .contentShape(shape)

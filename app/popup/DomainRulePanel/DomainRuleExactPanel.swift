@@ -37,18 +37,6 @@ struct DomainRuleExactPanel: View {
         }
     }
 
-    private var isEnabledLifetimeButton: Bool {
-        self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOne || match.isNoOneScript
-        }
-    }
-
-    private var isEnabledByScriptButton: Bool {
-        self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOne || match.isNoOneScript || match.isExactScript
-        }
-    }
-
     private var isByScriptMode: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
             match.isNoOneScript || match.isExactScript
@@ -118,15 +106,23 @@ struct DomainRuleExactPanel: View {
 
             HStack(spacing: 13) {
 
-                ScriptsPanel()
-                    .opacity  (self.isEnabledByScriptButton ? 1 : 0)
-                    .disabled(!self.isEnabledByScriptButton)
+                LifetimePicker(lifetime: self.lifetime)
+                    .opacity  (self.isEnabledButton ? 1 : 0)
+                    .disabled(!self.isEnabledButton)
 
                 self.ButtonAllowView()
 
-                LifetimePicker(lifetime: self.lifetime)
-                    .opacity  (self.isEnabledLifetimeButton ? 1 : 0)
-                    .disabled(!self.isEnabledLifetimeButton)
+                ButtonRectangle(
+                    isActive: self.popupState.match?.isSomeScript == true,
+                    icon: Image("symbol Icon Scripts"),
+                    iconSize: 24,
+                    onClick: {
+                        if case .noOne       = self.popupState.match { Task { @MainActor in withAnimation(.linear(duration: 0.1)) { self.popupState.match = .noOneScript }} }
+                        if case .noOneScript = self.popupState.match { Task { @MainActor in withAnimation(.linear(duration: 0.1)) { self.popupState.match = .noOne }} }
+                    }
+                )
+                .opacity  (self.isEnabledButton ? 1 : 0)
+                .disabled(!self.isEnabledButton)
 
             }
 

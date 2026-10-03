@@ -261,10 +261,6 @@
 		50EF0330305F17CE00557AF2 /* ScriptsPanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509B24DF303B07230046BB03 /* ScriptsPanelColors.swift */; };
 		50EF0331305F17CE00557AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509B24DC303B06E30046BB03 /* Assets.xcassets */; };
 		50EF0332305F17E400557AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EB55132CF9AAB400FC060C /* Assets.xcassets */; };
-		50EF0334305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
-		50EF0335305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
-		50EF0336305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
-		50EF0337305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */; };
 		50EF035B30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
 		50EF035C30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
 		50EF035D30652D0D00557AF2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF035A30652D0D00557AF2 /* NotificationCenter.swift */; };
@@ -470,7 +466,6 @@
 		50ECC028300636C300A99E64 /* ProgressSimpleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSimpleColors.swift; sourceTree = "<group>"; };
 		50ECC02F3007A10100A99E64 /* LifetimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeInfo.swift; sourceTree = "<group>"; };
 		50ECC032300A331B00A99E64 /* jsBlocker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jsBlocker.js; sourceTree = "<group>"; };
-		50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewCustom.swift; sourceTree = "<group>"; };
 		50EF035A30652D0D00557AF2 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		50EF035F30652E5D00557AF2 /* MessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		50EF036030652E5D00557AF2 /* MessageColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
@@ -608,7 +603,6 @@
 				509528D42F701E8000DB391A /* NSWindow.swift */,
 				50439DC52F44C8BA00270BE5 /* Numeric.swift */,
 				50ECC0132FFEC2B200A99E64 /* Optional.swift */,
-				50EF0333305F1DAD00557AF2 /* ScrollViewCustom.swift */,
 				50CEA0932F4B6D44001006CF /* Set.swift */,
 				50875E192C71EE1700756D64 /* SFSafariApplication.swift */,
 				50CE9FE92F472EC4001006CF /* Shape.swift */,
@@ -1097,7 +1091,6 @@
 				50439DC32F44C87E00270BE5 /* Timer.swift in Sources */,
 				50E150B82DA96616005768C1 /* MatchType.swift in Sources */,
 				500D2D242D05951400551390 /* SFSafariApplication.swift in Sources */,
-				50EF0337305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */,
 				50FC4E1530499B2D0001701E /* AllowedScripts.swift in Sources */,
 				509528D72F701EA800DB391A /* NSWindow.swift in Sources */,
 				50439DCB2F44C8C300270BE5 /* Logger.swift in Sources */,
@@ -1151,7 +1144,6 @@
 				503DBDEF302B5CC200BD39F3 /* Optional.swift in Sources */,
 				50FC4DE7304991EC0001701E /* URLString.swift in Sources */,
 				503DBDF1302B5CC200BD39F3 /* Numeric.swift in Sources */,
-				50EF0336305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */,
 				503DBDF2302B5CC200BD39F3 /* Shape.swift in Sources */,
 				50FC4E1830499B2D0001701E /* AllowedScripts.swift in Sources */,
 				503DBDF3302B5CC200BD39F3 /* Array.swift in Sources */,
@@ -1252,7 +1244,6 @@
 				50E4B1032FF29088008D625B /* HVStack.swift in Sources */,
 				50E4B1042FF29088008D625B /* Previewer.swift in Sources */,
 				50623E863051F63E001E2F01 /* TimelineCustom.swift in Sources */,
-				50EF0334305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */,
 				50EB55182CF9AAB400FC060C /* ButtonCapsule.swift in Sources */,
 				50E150B92DA96616005768C1 /* MatchType.swift in Sources */,
 				5055074F2FC6E548007DB93D /* NSApplication.swift in Sources */,
@@ -1315,7 +1306,6 @@
 				50439DC82F44C8BA00270BE5 /* Numeric.swift in Sources */,
 				50CE9FE42F472E06001006CF /* ButtonCustom.swift in Sources */,
 				50CE9FE52F472E06001006CF /* ButtonCustomColor.swift in Sources */,
-				50EF0335305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */,
 				50346897306D22D700A6683B /* ButtonRectangleColors.swift in Sources */,
 				500D2C562D058C8200551390 /* NSRegularExpression.swift in Sources */,
 				50ECC0152FFEC2B200A99E64 /* Optional.swift in Sources */,
