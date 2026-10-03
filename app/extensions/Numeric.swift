@@ -13,23 +13,25 @@ extension Numeric {
         return self
     }
 
-    func progress(max: Self) -> Double where Self: BinaryInteger {
-        guard max  >  0   else { return 0.0 }
-        guard self >= 0   else { return 0.0 }
-        guard self <= max else { return 1.0 }
-        let result = Double(self) / Double(max)
-        return result.isNaN ? 0 : result.fixBounds(
+}
+
+extension BinaryInteger {
+
+    func progress(begin: Self, end: Self) -> Double {
+        guard end > begin else { return 0 }
+        return ((Double(self) - Double(begin)) / (Double(end) - Double(begin))).fixBounds(
             min: 0.0,
             max: 1.0
         )
     }
 
-    func progress(min: Self, max: Self) -> Double where Self: BinaryInteger {
-        guard max  >  min else { return 0.0 }
-        guard self >= min else { return 0.0 }
-        guard self <= max else { return 1.0 }
-        let result = Double(self - min) / Double(max - min)
-        return result.isNaN ? 0 : result.fixBounds(
+}
+
+extension BinaryFloatingPoint {
+
+    func progress(begin: Self, end: Self) -> Double {
+        guard isFinite, begin.isFinite, end.isFinite, end > begin else { return 0 }
+        return Double((self - begin) / (end - begin)).fixBounds(
             min: 0.0,
             max: 1.0
         )

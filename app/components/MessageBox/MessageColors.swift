@@ -7,18 +7,22 @@ import SwiftUI
 
 extension Color {
 
-    struct MessageBoxCustomColorSet {
-        public let text                         = Color("color MessageBox Text")
-        public let infoTitleBackground          = Color("color MessageBox Info Title Background")
-        public let infoDescriptionBackground    = Color("color MessageBox Info Description Background")
-        public let okTitleBackground            = Color("color MessageBox Ok Title Background")
-        public let okDescriptionBackground      = Color("color MessageBox Ok Description Background")
-        public let warningTitleBackground       = Color("color MessageBox Warning Title Background")
-        public let warningDescriptionBackground = Color("color MessageBox Warning Description Background")
-        public let errorTitleBackground         = Color("color MessageBox Error Title Background")
-        public let errorDescriptionBackground   = Color("color MessageBox Error Description Background")
+    enum MessageBoxCustomColorSet {
+        static let text                         = Color("color MessageBox Text")
+        static let infoTitleBackground          = Color("color MessageBox Info Title Background")
+        static let infoDescriptionBackground    = Color("color MessageBox Info Description Background")
+        static let infoProgressBackground       = Color("color MessageBox Info Progress Background")
+        static let okTitleBackground            = Color("color MessageBox Ok Title Background")
+        static let okDescriptionBackground      = Color("color MessageBox Ok Description Background")
+        static let okProgressBackground         = Color("color MessageBox Ok Progress Background")
+        static let warningTitleBackground       = Color("color MessageBox Warning Title Background")
+        static let warningDescriptionBackground = Color("color MessageBox Warning Description Background")
+        static let warningProgressBackground    = Color("color MessageBox Warning Progress Background")
+        static let errorTitleBackground         = Color("color MessageBox Error Title Background")
+        static let errorDescriptionBackground   = Color("color MessageBox Error Description Background")
+        static let errorProgressBackground      = Color("color MessageBox Error Progress Background")
     }
 
-    static let messageBox = MessageBoxCustomColorSet()
+    static let messageBox = MessageBoxCustomColorSet.self
 
 }

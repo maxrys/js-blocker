@@ -31,6 +31,10 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     static let WINDOW_ABOUT_TITLE_LOCALIZED = String(format: NSLocalizedString("About %@" , comment: ""), NSApplication.appNameLocalized)
     static let WINDOW_ABOUT_ID = "about"
 
+    static let messageBoxAddress: MessageBoxAddress = .local(boxID: MessageBoxID(0))
+    static let messageIDForCurrentOperation: MessageID = 0
+    static let messageIDForImportWarning: MessageID = 1
+
     @NSApplicationDelegateAdaptor(ThisAppDelegate.self) var appDelegate
 
     @StateObject private var userDefaultsState = UserDefaultsState.shared
