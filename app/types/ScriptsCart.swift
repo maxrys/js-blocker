@@ -3,7 +3,7 @@
 /* ### Copyright © 2026 Maxim Rysevets. All rights reserved. ### */
 /* ############################################################# */
 
-final class ScriptsCart {
+enum ScriptsCart {
 
     static let DOMAIN_NAME = "-->scripts_cart_domain<--"
 

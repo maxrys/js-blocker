@@ -3,7 +3,7 @@
 /* ### Copyright © 2026 Maxim Rysevets. All rights reserved. ### */
 /* ############################################################# */
 
-final class ScriptsManager {
+enum ScriptsManager {
 
     static func set(for domain: DomainName, _ frameDomain: DomainName, _ scripts: [URLString]) {
         PopupState.shared.scripts[domain, frameDomain] = scripts

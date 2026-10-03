@@ -7,13 +7,13 @@ import SwiftUI
 
 extension Color {
 
-    struct PopupColorSet {
-        public let buttonSettings          = Color("color Popup Button Settings")
-        public let ruleExactBackground     = Color("color Popup Rule Exact Background")
-        public let rulesWildcardBackground = Color("color Popup Rules Wildcard Background")
-        public let ruleCancelBackground    = Color("color Popup Rule Cancel Background")
+    enum PopupColorSet {
+        static let buttonSettings          = Color("color Popup Button Settings")
+        static let ruleExactBackground     = Color("color Popup Rule Exact Background")
+        static let rulesWildcardBackground = Color("color Popup Rules Wildcard Background")
+        static let ruleCancelBackground    = Color("color Popup Rule Cancel Background")
     }
 
-    static let popup = PopupColorSet()
+    static let popup = PopupColorSet.self
 
 }

@@ -87,7 +87,7 @@ struct Popup: View {
     @ViewBuilder private func ButtonSettingsView() -> some View {
         Button {
             openURL(
-                URL(string: "jsBlocker://")!
+                URL(string: "\(APP_ID)://")!
             )
         } label: {
             Self.ICON_SETTINGS

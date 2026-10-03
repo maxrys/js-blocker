@@ -16,7 +16,7 @@ struct ScrollViewCustom<Content: View>: View {
 
     @State private var size = CGSize(width: 0, height: 0)
 
-    private var isLessBoxLimits: Bool {
+    private var isUndersize: Bool {
         self.size.width  <= self.limits.width &&
         self.size.height <= self.limits.height
     }
@@ -36,9 +36,8 @@ struct ScrollViewCustom<Content: View>: View {
     }
 
     public var body: some View {
-        let finalContent = self.FinalContentView()
-        if (self.isLessBoxLimits) { finalContent } else {
-            ScrollView(self.axis) { finalContent }.frame(
+        if (self.isUndersize)     { self.FinalContentView() } else {
+            ScrollView(self.axis) { self.FinalContentView() }.frame(
                 maxWidth : self.limits.width,
                 maxHeight: self.limits.height
             )
