@@ -151,18 +151,18 @@ final class Features {
 
             /* MARK: Message */
 
-            MessageBox.insert(
+            MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                ID: ThisApp.messageIDForCurrentOperation,
                 type: .ok,
-                title: String(format: NSLocalizedString("%d records have been exported", comment: ""), exportStruct.items.count),
-                lifeTime: .time(3)
-            )
+                title: String(format: NSLocalizedString("%d records have been exported", comment: ""), exportStruct.items.count)
+            ))
 
         } catch {
-            MessageBox.insert(
+            MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                ID: ThisApp.messageIDForCurrentOperation,
                 type: .error,
-                title: String("\(error)"),
-                lifeTime: .time(3)
-            )
+                title: String("\(error)")
+            ))
         }
     }
 
@@ -245,45 +245,44 @@ final class Features {
             else if let importStruct = ExportImportItems<ExportImportItemV2>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
             else if let importStruct = ExportImportItems<ExportImportItemV1>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
             else {
-                MessageBox.insert(
+                MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                    ID: ThisApp.messageIDForCurrentOperation,
                     type: .error,
-                    title: NSLocalizedString("Invalid JSON format!", comment: ""),
-                    lifeTime: .time(3)
-                )
+                    title: NSLocalizedString("Invalid JSON format!", comment: "")
+                ))
                 return
             }
 
             /* MARK: Message */
 
-            if (updateCount > 0) {
-                MessageBox.insert(
+            if (updateCount > 0 || insertCount > 0) {
+                var descriptions: [String] = []
+                if (updateCount > 0) { descriptions.append(String(format: NSLocalizedString("%d existing records have been updated", comment: ""), updateCount)) }
+                if (insertCount > 0) { descriptions.append(String(format: NSLocalizedString("%d new records have been added"       , comment: ""), insertCount)) }
+                MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                    ID: ThisApp.messageIDForCurrentOperation,
                     type: .ok,
-                    title: String(format: NSLocalizedString("%d existing records have been updated", comment: ""), updateCount),
-                    lifeTime: .time(3)
-                )
+                    title: NSLocalizedString("Import", comment: ""),
+                    description: descriptions.joined(separator: "\n\n")
+                ))
             }
-            if (insertCount > 0) {
-                MessageBox.insert(
-                    type: .ok,
-                    title: String(format: NSLocalizedString("%d new records have been added", comment: ""), insertCount),
-                    lifeTime: .time(3)
-                )
-            }
-            if (!invalidDomains.isEmpty) {
-                MessageBox.insert(
+            if (invalidDomains.count > 0 || expiredDomains.count > 0) {
+                var descriptions: [String] = []
+                let listFormatter: ([String]) -> String = { values in
+                    if (values.count > 10)
+                         { return values.prefix(10).joined(separator: " | ") + " ..." }
+                    else { return values           .joined(separator: " | ") }
+                }
+                if (invalidDomains.count > 0) { descriptions.append(String(format: NSLocalizedString("Invalid domains were detected:\n%@", comment: ""), listFormatter(invalidDomains))) }
+                if (expiredDomains.count > 0) { descriptions.append(String(format: NSLocalizedString("Expired domains were detected:\n%@", comment: ""), listFormatter(expiredDomains))) }
+                MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                    ID: ThisApp.messageIDForImportWarning,
                     type: .warning,
-                    title: String(format: NSLocalizedString("Invalid domains were detected:\n%@", comment: ""), invalidDomains.joined(separator: " | ")),
-                    isClosable: true,
-                    lifeTime: .time(10)
-                )
-            }
-            if (!expiredDomains.isEmpty) {
-                MessageBox.insert(
-                    type: .warning,
-                    title: String(format: NSLocalizedString("Expired domains were detected:\n%@", comment: ""), expiredDomains.joined(separator: " | ")),
-                    isClosable: true,
-                    lifeTime: .time(10)
-                )
+                    lifetime: .time(duration: 10),
+                    mergePolicy: .replaceOrInsertAtTop,
+                    title: NSLocalizedString("Import", comment: ""),
+                    description: descriptions.joined(separator: "\n\n")
+                ))
             }
 
             /* MARK: Reload Rules */
@@ -293,11 +292,11 @@ final class Features {
             }
 
         } catch {
-            MessageBox.insert(
+            MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
+                ID: ThisApp.messageIDForCurrentOperation,
                 type: .error,
-                title: String("\(error)"),
-                lifeTime: .time(3)
-            )
+                title: String("\(error)")
+            ))
         }
     }
 

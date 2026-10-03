@@ -54,8 +54,7 @@ enum MatchType {
                 return .valid(
                     timeLeft: TimeInterval(item.expiresAt - current.int64),
                     progress: current.int64.progress(
-                        min: item.createdAt,
-                        max: item.expiresAt
+                        begin: item.createdAt, end: item.expiresAt
                     )
                 )
             }

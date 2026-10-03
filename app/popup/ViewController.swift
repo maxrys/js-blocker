@@ -11,6 +11,13 @@ class ViewController: SFSafariExtensionViewController {
 
     static let shared = ViewController()
 
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        MessageBox.delete(address: Popup.messageBoxAddress,
+            Popup.messageIDForCurrentOperation
+        )
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,18 +65,20 @@ class ViewController: SFSafariExtensionViewController {
 
             /* message */
             if (success.count > 0) {
-                MessageBox.insert(
+                MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                    ID: Popup.messageIDForCurrentOperation,
                     type: .ok,
                     title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
                     description: success.joined(separator: "\n")
-                )
+                ))
             }
             if (failure.count > 0) {
-                MessageBox.insert(
+                MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                    ID: Popup.messageIDForCurrentOperation,
                     type: .error,
                     title: NSLocalizedString("Exact rule for the following domain was not added:", comment: ""),
                     description: failure.joined(separator: "\n")
-                )
+                ))
             }
 
             /* ui update */
@@ -88,10 +97,11 @@ class ViewController: SFSafariExtensionViewController {
         if let domain = PopupState.shared.domain, let match = PopupState.shared.match {
             if (selected.isEmpty) {
 
-                MessageBox.insert(
+                MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                    ID: Popup.messageIDForCurrentOperation,
                     type: .error,
                     title: NSLocalizedString("At least 1 subdomain must be selected!", comment: "")
-                )
+                ))
 
             } else {
 
@@ -126,18 +136,20 @@ class ViewController: SFSafariExtensionViewController {
 
                 /* message */
                 if (success.count > 0) {
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .ok,
                         title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
                         description: success.joined(separator: "\n")
-                    )
+                    ))
                 }
                 if (failure.count > 0) {
-                    MessageBox.insert(
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
                         type: .error,
                         title: NSLocalizedString("Wildcard rules for the following domains were not added:", comment: ""),
                         description: failure.joined(separator: "\n")
-                    )
+                    ))
                 }
 
                 /* ui update */
@@ -162,11 +174,12 @@ class ViewController: SFSafariExtensionViewController {
 
                 switch AllowedDomains.delete([name]) {
                     case .success:
-                        MessageBox.insert(
+                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                            ID: Popup.messageIDForCurrentOperation,
                             type: .ok,
                             title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
                             description: name.decodePunycode()
-                        )
+                        ))
                         if (match.isExactScript) {
                             ScriptsManager.reset    (for: name)
                             ScriptsManager.resetIsOn(for: name)
@@ -175,11 +188,12 @@ class ViewController: SFSafariExtensionViewController {
                             PopupState.shared.onChangeMatch()
                         }
                     case .failure:
-                        MessageBox.insert(
+                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                            ID: Popup.messageIDForCurrentOperation,
                             type: .error,
                             title: NSLocalizedString("Exact rule for the following domain was not removed:", comment: ""),
                             description: name.decodePunycode()
-                        )
+                        ))
                 }
 
             }
@@ -193,11 +207,12 @@ class ViewController: SFSafariExtensionViewController {
 
                 switch AllowedDomains.delete([name]) {
                     case .success:
-                        MessageBox.insert(
+                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                            ID: Popup.messageIDForCurrentOperation,
                             type: .ok,
                             title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
                             description: name.decodePunycode()
-                        )
+                        ))
                         if (match.isWildcardScript) {
                             ScriptsManager.reset    (for: name)
                             ScriptsManager.resetIsOn(for: name)
@@ -206,11 +221,12 @@ class ViewController: SFSafariExtensionViewController {
                             PopupState.shared.onChangeMatch()
                         }
                     case .failure:
-                        MessageBox.insert(
+                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                            ID: Popup.messageIDForCurrentOperation,
                             type: .error,
                             title: NSLocalizedString("Wildcard rule for the following domain was not removed:", comment: ""),
                             description: name.decodePunycode()
-                        )
+                        ))
                 }
 
             }
