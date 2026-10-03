@@ -8,28 +8,11 @@ import SwiftUI
 struct ScriptsPanel: View {
 
     static let FRAME_WIDTH: CGFloat = 500
-    static let ICON_OPENER = Image("symbol Icon Scripts")
 
     @StateObject private var popupState = PopupState.shared
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.isEnabled) private var isEnabled
     @State private var isOpened = false
-
-    private var colorOpenerIcon: Color {
-        if (self.isActive)
-             { return Color.scriptsPanel.openerIconActive }
-        else { return Color.scriptsPanel.openerIcon }
-    }
-
-    private var colorOpenerBorder: Color {
-        if (self.isActive)
-             { return Color.scriptsPanel.openerBorderActive }
-        else { return Color.scriptsPanel.openerBorder }
-    }
-
-    private var colorOpenerBackground: Color {
-        Color.scriptsPanel.openerBackground
-    }
 
     private var scripts: [FrameDomainName: [URLString]] {
         if let domain = self.popupState.domain {
@@ -71,35 +54,20 @@ struct ScriptsPanel: View {
     }
 
     public var body: some View {
-        self.OpenerView()
-            .popover(
-                isPresented: self.isEnabled ? self.$isOpened : .constant(false),
-                arrowEdge: .trailing
-            ) {
-                self.PopupView()
+        ButtonRectangle(
+            isActive: self.isActive,
+            icon: Image("symbol Icon Scripts"),
+            iconSize: 24,
+            onClick: {
+                self.isOpened.toggle()
             }
-    }
-
-    @ViewBuilder private func OpenerView() -> some View {
-        let shape = RoundedRectangle(cornerRadius: 12)
-        Button {
-            self.isOpened.toggle()
-        } label: {
-            shape
-                .stroke(self.colorOpenerBorder, lineWidth: 2)
-                .background(shape.fill(self.colorOpenerBackground))
-                .frame(width: 36, height: 36)
-                .overlayPolyfill {
-                    Self.ICON_OPENER
-                        .font(.system(size: 24))
-                }
-            .foregroundPolyfill(self.colorOpenerIcon)
-            .contentShape(shape)
-            .focusEffect (shape)
+        )
+        .popover(
+            isPresented: self.isEnabled ? self.$isOpened : .constant(false),
+            arrowEdge: .trailing
+        ) {
+            self.PopupView()
         }
-        .buttonStyle(.plain)
-        .pointerStyleLinkPolyfill(self.isEnabled)
-        .disabled(!self.isEnabled)
     }
 
     @ViewBuilder private func PopupView() -> some View {
