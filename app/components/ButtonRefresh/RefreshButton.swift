@@ -64,3 +64,20 @@ struct ButtonRefresh: View {
     }
 
 }
+
+
+
+/* ############################################################# */
+/* ########################## PREVIEW ########################## */
+/* ############################################################# */
+
+struct ButtonRefresh_Previews: PreviewProvider {
+    static public var previews: some View {
+        Previewer(padding: 20) {
+            ButtonRefresh(
+                onClick: {
+                }
+            )
+        }
+    }
+}

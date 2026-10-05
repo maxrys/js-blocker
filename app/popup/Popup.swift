@@ -154,6 +154,20 @@ struct Popup_Previews: PreviewProvider {
                         description: "example.com"
                     ))
                 case 2:
+                    PopupState.shared.match = .noOneScript
+                    PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
+                    PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
+                    PopupState.shared.scriptsIsOn = ScriptsPanel_PreviewContentGenerator.scriptsIsOn
+                    PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts(count: 10)
+                    MessageBox.insert(address: Popup.messageBoxAddress, .init(
+                        ID: Popup.messageIDForCurrentOperation,
+                        type: .ok,
+                        lifetime: .infinity,
+                        title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
+                        description: "example.com"
+                    ))
+                case 3:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
@@ -165,7 +179,7 @@ struct Popup_Previews: PreviewProvider {
                         title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
                         description: "example.com"
                     ))
-                case 3:
+                case 4:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
@@ -177,7 +191,7 @@ struct Popup_Previews: PreviewProvider {
                         title: NSLocalizedString("Wildcard rules for the following domains were added:", comment: ""),
                         description: ["*.example.com"].joined(separator: "\n")
                     ))
-                case 4:
+                case 5:
                     PopupState.shared.match = .noOne
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
@@ -191,7 +205,7 @@ struct Popup_Previews: PreviewProvider {
                         title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
                         description: "example.com"
                     ))
-                case 5:
+                case 6:
                     PopupState.shared.match = .exact(item: DEMO_ITEM__EXACT__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
@@ -205,7 +219,7 @@ struct Popup_Previews: PreviewProvider {
                         title: NSLocalizedString("Exact rule for the following domain was added:", comment: ""),
                         description: "sub3.sub2.sub1.example.com"
                     ))
-                case 6:
+                case 7:
                     PopupState.shared.match = .wildcard(item: DEMO_ITEM__WILDCARD__EXPIRE_NO_LIMIT)
                     PopupState.shared.domain = DEMO_RULE__TOPDOMAIN
                     PopupState.shared.ruleExact = DEMO_RULE__SUBDOMAIN
@@ -226,16 +240,15 @@ struct Popup_Previews: PreviewProvider {
         var body: some View {
             VStack(spacing: 0) {
                 Popup()
-                PreviewModeSelector(
+                Spacer().frame(minHeight: 0)
+                PreviewMode(
                     title: "match",
                     state: Self.match,
                     modes: [
-                        "nil", "noOne", "exact", "wildcard", "N+", "E+", "W+"
+                        "nil", "noOne", "noOneScript", "exact", "wildcard", "N*", "E*", "W*"
                     ]
                 )
-                Spacer()
             }.frame(
-                width: Popup.FRAME_WIDTH,
                 height: 720
             )
         }

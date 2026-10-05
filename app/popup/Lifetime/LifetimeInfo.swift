@@ -150,12 +150,12 @@ struct LifetimeInfo_Previews: PreviewProvider {
             VStack(spacing: 0) {
                 DomainRuleExactPanel()
                     .background(Color.popup.ruleExactBackground)
-                PreviewModeSelector(
+                Spacer().frame(minWidth: 0)
+                PreviewMode(
                     title: "match",
                     state: Self.match,
                     modes: ["nil", "noOne", "exactNL", "exactV", "exactE"]
                 )
-                Spacer()
             }.frame(
                 width: Popup.FRAME_WIDTH,
                 height: 400

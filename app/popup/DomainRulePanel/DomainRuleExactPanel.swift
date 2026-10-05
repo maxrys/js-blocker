@@ -216,7 +216,7 @@ struct DomainRuleExactPanel_Previews: PreviewProvider {
             VStack(spacing: 0) {
                 DomainRuleExactPanel()
                     .background(Color.popup.ruleExactBackground)
-                PreviewModeSelector(
+                PreviewMode(
                     title: "match",
                     state: Self.match,
                     modes: ["nil", "noOne", "exact", "wildcard"]
