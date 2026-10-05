@@ -22,11 +22,7 @@ extension String {
     }
 
     var crc32: String {
-        let crc32 = CheckSum.crc32(self)
-        return String(
-            format: "%08x",
-            crc32 ^ 0xffffffff
-        )
+        Self(format: "%08x", Checksums.crc32(self))
     }
 
     func toWidth(_ width: UInt) -> String {

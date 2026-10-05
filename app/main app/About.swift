@@ -11,7 +11,7 @@ struct About: View {
     @Environment(\.openURL) var openURL
 
     public var body: some View {
-        GeometryReaderCustom(isIgnoreWidth: true) { size in
+        GeometryReaderPolyfill(type: .inside) { size in
             HStack(spacing: 0) {
 
                 ZStack(alignment: .trailing) {

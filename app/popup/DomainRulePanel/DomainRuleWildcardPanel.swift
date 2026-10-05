@@ -31,6 +31,12 @@ struct DomainRuleWildcardPanel: View {
         }
     }
 
+    private var isActiveOtherRule: Bool {
+        self.popupState.match.ifNil(defaultValue: false) { match in
+            match.isExact || match.isExactScript
+        }
+    }
+
     private var isEnabledButton: Bool {
         self.popupState.match.ifNil(defaultValue: false) { match in
             match.isNoOne || match.isNoOneScript
@@ -171,6 +177,7 @@ struct DomainRuleWildcardPanel: View {
         .padding(.horizontal, 20)
         .padding(.vertical  , 30)
         .frame(maxWidth: .infinity)
+        .opacity(self.isActiveOtherRule ? 0.5 : 1.0)
     }
 
     @ViewBuilder private func TitleView(_ textLocalized: String) -> some View {

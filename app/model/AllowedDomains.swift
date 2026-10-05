@@ -106,7 +106,7 @@ public class AllowedDomains: NSManagedObject {
             request.predicate = {
                 var result:[NSPredicate] = []
                 if let filterByName { result.append(NSPredicate(format: "nameDecoded CONTAINS[cd] %@", filterByName)) }
-                if (skipExpired)    { result.append(NSPredicate(format: "(expiresAt == 0) OR (expiresAt > %@)", NSNumber(value: Date.now.int64))) }
+                if (skipExpired)    { result.append(NSPredicate(format: "(expiresAt == 0) OR (expiresAt > %@)", NSNumber(value: Date.timestamp.int64))) }
                 return NSCompoundPredicate(
                     andPredicateWithSubpredicates: result
                 )
@@ -130,7 +130,7 @@ public class AllowedDomains: NSManagedObject {
             newObject.nameDecoded = name.decodePunycode()
             newObject.type        = type
             newObject.expiresAt   = expiresAt
-            newObject.createdAt   = createdAt ?? Int64(Date.now)
+            newObject.createdAt   = createdAt ?? Int64(Date.timestamp)
         do {
             try Storage.context.save()
             if (!isVersioningDisabled) {
@@ -172,7 +172,7 @@ public class AllowedDomains: NSManagedObject {
     static func sanitize() -> ExecuteResult {
         do {
             let selectRequest = NSFetchRequest<SELF>(entityName: SELF.stringName)
-            selectRequest.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.now.int64))
+            selectRequest.predicate = NSPredicate(format: "(expiresAt <> 0) AND (expiresAt < %@)", NSNumber(value: Date.timestamp.int64))
             let names = (try Storage.context.fetch(selectRequest)).map(\.name)
             if (names.count > 0) {
                 let deleteRequest = NSFetchRequest<NSFetchRequestResult>(entityName: SELF.stringName)

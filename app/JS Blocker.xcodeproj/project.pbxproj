@@ -44,7 +44,6 @@
 		503DBDED302B5CC200BD39F3 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB987A2FFA5D8700C39670 /* Dictionary.swift */; };
 		503DBDEE302B5CC200BD39F3 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
 		503DBDEF302B5CC200BD39F3 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ECC0132FFEC2B200A99E64 /* Optional.swift */; };
-		503DBDF0302B5CC200BD39F3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
 		503DBDF1302B5CC200BD39F3 /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC52F44C8BA00270BE5 /* Numeric.swift */; };
 		503DBDF2302B5CC200BD39F3 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE9FE92F472EC4001006CF /* Shape.swift */; };
 		503DBDF3302B5CC200BD39F3 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEA0A42F4C502A001006CF /* Array.swift */; };
@@ -52,7 +51,7 @@
 		503DBDF5302B5CC200BD39F3 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		503DBDF6302B5CC200BD39F3 /* NSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501FA4E02F4F99AE004663D2 /* NSEvent.swift */; };
 		503DBDF7302B5CC200BD39F3 /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055074E2FC6E548007DB93D /* NSApplication.swift */; };
-		503DBDF8302B5CC200BD39F3 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
+		503DBDF8302B5CC200BD39F3 /* GeometryReaderPolyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift */; };
 		503DBDF9302B5CC200BD39F3 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEA0932F4B6D44001006CF /* Set.swift */; };
 		503DBDFA302B5CC200BD39F3 /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509528D42F701E8000DB391A /* NSWindow.swift */; };
 		503DBDFB302B5CC200BD39F3 /* DomainName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C43A083019E19400A8FD39 /* DomainName.swift */; };
@@ -65,10 +64,10 @@
 		5040E1CC305A9DD00004A290 /* DomainRulePanelColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE9F9C2F45BF89001006CF /* DomainRulePanelColors.swift */; };
 		5040E1CD305AA2E80004A290 /* PopupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E150BF2DAA789B005768C1 /* PopupState.swift */; };
 		5040E1CE305AA2F50004A290 /* UserDefaultsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEA07A2F49AF9C001006CF /* UserDefaultsState.swift */; };
-		5040E1E1305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
-		5040E1E2305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
-		5040E1E3305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
-		5040E1E4305AB6DD0004A290 /* CheckSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* CheckSum.swift */; };
+		5040E1E1305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
+		5040E1E2305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
+		5040E1E3305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
+		5040E1E4305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
 		50439DC02F44C74800270BE5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50439DBF2F44C74800270BE5 /* info.plist */; };
 		50439DC22F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		50439DC32F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
@@ -79,9 +78,9 @@
 		50439DCA2F44C8C300270BE5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC92F44C8C300270BE5 /* Logger.swift */; };
 		50439DCB2F44C8C300270BE5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC92F44C8C300270BE5 /* Logger.swift */; };
 		50439DCC2F44C8C300270BE5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC92F44C8C300270BE5 /* Logger.swift */; };
-		50439DCE2F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
-		50439DCF2F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
-		50439DD02F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */; };
+		50439DCE2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift */; };
+		50439DCF2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift */; };
+		50439DD02F44C8CE00270BE5 /* GeometryReaderPolyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DCD2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift */; };
 		50439E052F44C9AD00270BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50439E032F44C9AD00270BE5 /* Assets.xcassets */; };
 		50439E062F44C9AD00270BE5 /* Message_types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DFD2F44C9AD00270BE5 /* Message_types.swift */; };
 		50439E072F44C9AD00270BE5 /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439E002F44C9AD00270BE5 /* MessageState.swift */; };
@@ -131,9 +130,6 @@
 		506421CC2F62DC420020F6C8 /* ADFetchCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506421CA2F62DC420020F6C8 /* ADFetchCollection.swift */; };
 		5064F9152D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
 		5064F9162D0D9AF500F26724 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5064F9142D0D9AF500F26724 /* Localizable.xcstrings */; };
-		50684B692DB9679000FC6175 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
-		50684B6A2DB9679000FC6175 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
-		50684B6B2DB9679000FC6175 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50684B682DB9678E00FC6175 /* Data.swift */; };
 		50875E122C71EE0D00756D64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
 		50875E132C71EE0D00756D64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E112C71EE0D00756D64 /* String.swift */; };
 		50875E1A2C71EE1700756D64 /* SFSafariApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50875E192C71EE1700756D64 /* SFSafariApplication.swift */; };
@@ -368,12 +364,12 @@
 		503DBDD7302B5B8A00BD39F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503DBE01302B5EDE00BD39F3 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		503DBE03302B606500BD39F3 /* rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rules.entitlements; sourceTree = "<group>"; };
-		5040E1E0305AB6DD0004A290 /* CheckSum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSum.swift; sourceTree = "<group>"; };
+		5040E1E0305AB6DD0004A290 /* Checksums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checksums.swift; sourceTree = "<group>"; };
 		50439DBF2F44C74800270BE5 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		50439DC12F44C87E00270BE5 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		50439DC52F44C8BA00270BE5 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		50439DC92F44C8C300270BE5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderCustom.swift; sourceTree = "<group>"; };
+		50439DCD2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderPolyfill.swift; sourceTree = "<group>"; };
 		50439DFD2F44C9AD00270BE5 /* Message_types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message_types.swift; sourceTree = "<group>"; };
 		50439DFF2F44C9AD00270BE5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		50439E002F44C9AD00270BE5 /* MessageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageState.swift; sourceTree = "<group>"; };
@@ -396,7 +392,6 @@
 		5064215F2F5E22AB0020F6C8 /* ResultBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultBuilder.swift; sourceTree = "<group>"; };
 		506421CA2F62DC420020F6C8 /* ADFetchCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADFetchCollection.swift; sourceTree = "<group>"; };
 		5064F9142D0D9AF500F26724 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		50684B682DB9678E00FC6175 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		5085C5E82DB578880009F4AD /* Model-v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model-v2.xcdatamodel"; sourceTree = "<group>"; };
 		50875E112C71EE0D00756D64 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		50875E192C71EE1700756D64 /* SFSafariApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariApplication.swift; sourceTree = "<group>"; };
@@ -530,7 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				50CEA0532F47A6B3001006CF /* _const.swift */,
-				5040E1E0305AB6DD0004A290 /* CheckSum.swift */,
+				5040E1E0305AB6DD0004A290 /* Checksums.swift */,
 				50ECC0193003A5A900A99E64 /* ExpireStatus.swift */,
 				50E4B1012FF29088008D625B /* HVStack.swift */,
 				50E150B52DA96615005768C1 /* MatchType.swift */,
@@ -575,13 +570,12 @@
 			children = (
 				50CEA0A42F4C502A001006CF /* Array.swift */,
 				50CEA0892F4A4E96001006CF /* Color.swift */,
-				50684B682DB9678E00FC6175 /* Data.swift */,
 				500895332DD73EDF00414588 /* Date.swift */,
 				50BB987A2FFA5D8700C39670 /* Dictionary.swift */,
 				50FC4DBD30438E870001701E /* DictionaryMatrix2D.swift */,
 				50FC4E36304C0ED70001701E /* DictionaryMatrix3D.swift */,
 				50C43A083019E19400A8FD39 /* DomainName.swift */,
-				50439DCD2F44C8CE00270BE5 /* GeometryReaderCustom.swift */,
+				50439DCD2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift */,
 				50439DC92F44C8C300270BE5 /* Logger.swift */,
 				5055074E2FC6E548007DB93D /* NSApplication.swift */,
 				501FA4E02F4F99AE004663D2 /* NSEvent.swift */,
@@ -1052,7 +1046,7 @@
 			files = (
 				50CEA0962F4B6D46001006CF /* Set.swift in Sources */,
 				50FC4E39304C0ED70001701E /* DictionaryMatrix3D.swift in Sources */,
-				5040E1E2305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E2305AB6DD0004A290 /* Checksums.swift in Sources */,
 				50C43A093019E19400A8FD39 /* DomainName.swift in Sources */,
 				50ECC0162FFEC2B200A99E64 /* Optional.swift in Sources */,
 				50FC4DEA304991EC0001701E /* URLString.swift in Sources */,
@@ -1089,13 +1083,12 @@
 				50CEA0542F47A6B7001006CF /* _const.swift in Sources */,
 				50C4EDB3302CD649004F3F9E /* Model.xcdatamodeld in Sources */,
 				50ACD40F303C65E900E7D4ED /* AllowedDomains.swift in Sources */,
-				50439DCF2F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */,
+				50439DCF2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift in Sources */,
 				50C787043014CFE600F078EC /* Storage.swift in Sources */,
 				50623E8E3051F6A8001E2F01 /* ValueState.swift in Sources */,
 				50CEA08B2F4A4E96001006CF /* Color.swift in Sources */,
 				50BB987D2FFA5D8700C39670 /* Dictionary.swift in Sources */,
 				505507502FC6E548007DB93D /* NSApplication.swift in Sources */,
-				50684B6B2DB9679000FC6175 /* Data.swift in Sources */,
 				506421622F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1106,7 +1099,7 @@
 			files = (
 				503DBDD6302B5B8A00BD39F3 /* RulesHandler.swift in Sources */,
 				503DBDE1302B5C6800BD39F3 /* EntityVersions.swift in Sources */,
-				5040E1E4305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E4305AB6DD0004A290 /* Checksums.swift in Sources */,
 				503DBDE6302B5CAC00BD39F3 /* Previewer.swift in Sources */,
 				503DBDE7302B5CAC00BD39F3 /* _const.swift in Sources */,
 				50FC4DBF30438E870001701E /* DictionaryMatrix2D.swift in Sources */,
@@ -1119,7 +1112,6 @@
 				50FC4E34304C0C520001701E /* ASFetchItem.swift in Sources */,
 				50FC4E35304C0C520001701E /* ASFetchCollection.swift in Sources */,
 				503DBDEF302B5CC200BD39F3 /* Optional.swift in Sources */,
-				503DBDF0302B5CC200BD39F3 /* Data.swift in Sources */,
 				50FC4DE7304991EC0001701E /* URLString.swift in Sources */,
 				503DBDF1302B5CC200BD39F3 /* Numeric.swift in Sources */,
 				50EF0336305F1DAD00557AF2 /* ScrollViewCustom.swift in Sources */,
@@ -1130,7 +1122,7 @@
 				503DBDF5302B5CC200BD39F3 /* Timer.swift in Sources */,
 				503DBDF6302B5CC200BD39F3 /* NSEvent.swift in Sources */,
 				503DBDF7302B5CC200BD39F3 /* NSApplication.swift in Sources */,
-				503DBDF8302B5CC200BD39F3 /* GeometryReaderCustom.swift in Sources */,
+				503DBDF8302B5CC200BD39F3 /* GeometryReaderPolyfill.swift in Sources */,
 				503DBDF9302B5CC200BD39F3 /* Set.swift in Sources */,
 				50FC4DFC304996D80001701E /* WhiteDomains.swift in Sources */,
 				50623E853051F63E001E2F01 /* TimelineCustom.swift in Sources */,
@@ -1174,7 +1166,6 @@
 				5007275F2F8A3B710058A547 /* FieldSearchCustom.swift in Sources */,
 				5040E1CD305AA2E80004A290 /* PopupState.swift in Sources */,
 				50BB987C2FFA5D8700C39670 /* Dictionary.swift in Sources */,
-				50684B692DB9679000FC6175 /* Data.swift in Sources */,
 				50CEA08A2F4A4E96001006CF /* Color.swift in Sources */,
 				50CEA07B2F49AF9C001006CF /* UserDefaultsState.swift in Sources */,
 				50CE9FE72F472E06001006CF /* ButtonCustom.swift in Sources */,
@@ -1207,7 +1198,7 @@
 				5064215C2F5E22760020F6C8 /* TableCustom_HeadCell.swift in Sources */,
 				50C787023014CFE600F078EC /* Storage.swift in Sources */,
 				50FC4DE8304991EC0001701E /* URLString.swift in Sources */,
-				5040E1E1305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E1305AB6DD0004A290 /* Checksums.swift in Sources */,
 				5064215D2F5E22760020F6C8 /* TableCustomColors.swift in Sources */,
 				50BB98872FFA82BE00C39670 /* ProgressSimple.swift in Sources */,
 				506421602F5E22AB0020F6C8 /* ResultBuilder.swift in Sources */,
@@ -1245,7 +1236,7 @@
 				50623E7C30516B7D001E2F01 /* ScriptsCart.swift in Sources */,
 				50875E122C71EE0D00756D64 /* String.swift in Sources */,
 				50623E8C3051F664001E2F01 /* ValueState.swift in Sources */,
-				50439DD02F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */,
+				50439DD02F44C8CE00270BE5 /* GeometryReaderPolyfill.swift in Sources */,
 				50439DC22F44C87E00270BE5 /* Timer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1324,14 +1315,13 @@
 				50FC4DEF304993030001701E /* DomainRuleExactPanel.swift in Sources */,
 				50FC4DF0304993030001701E /* DomainRuleWildcardPanel.swift in Sources */,
 				50C786FF3014CE6900F078EC /* EntityVersions.swift in Sources */,
-				50684B6A2DB9679000FC6175 /* Data.swift in Sources */,
 				50CEA0552F47A6B7001006CF /* _const.swift in Sources */,
-				50439DCE2F44C8CE00270BE5 /* GeometryReaderCustom.swift in Sources */,
+				50439DCE2F44C8CE00270BE5 /* GeometryReaderPolyfill.swift in Sources */,
 				50AD7BE0301B654C00F1C6D6 /* LifetimeColors.swift in Sources */,
 				50875E132C71EE0D00756D64 /* String.swift in Sources */,
 				50623E7D30516B7D001E2F01 /* ScriptsCart.swift in Sources */,
 				50E4B1052FF2909D008D625B /* Previewer.swift in Sources */,
-				5040E1E3305AB6DD0004A290 /* CheckSum.swift in Sources */,
+				5040E1E3305AB6DD0004A290 /* Checksums.swift in Sources */,
 				50623E8A3051F664001E2F01 /* ValueState.swift in Sources */,
 				50E4B1062FF2909D008D625B /* HVStack.swift in Sources */,
 				50E4B1372FF99BBC008D625B /* LifetimePicker.swift in Sources */,
@@ -1669,6 +1659,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "main app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024—2026 Maxim Rysevets";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1708,6 +1699,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "main app/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "JS Blocker";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2024—2026 Maxim Rysevets";
 				LD_RUNPATH_SEARCH_PATHS = (

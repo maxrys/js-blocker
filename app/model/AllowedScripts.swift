@@ -64,7 +64,7 @@ public class AllowedScripts: NSManagedObject {
             newObject.domain      = domain
             newObject.frameDomain = frameDomain
             newObject.url         = url
-            newObject.createdAt   = createdAt ?? Int64(Date.now)
+            newObject.createdAt   = createdAt ?? Int64(Date.timestamp)
         do {
             try Storage.context.save()
             _ = EntityVersions.versionIncrement(SELF.stringName)

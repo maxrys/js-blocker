@@ -7,10 +7,10 @@ import SwiftUI
 
 extension Color {
 
-    struct MainSceneColorSet {
-        public let panelBackground = Color("color Panel Background")
+    enum MainSceneColorSet {
+        static let panelBackground = Color("color Panel Background")
     }
 
-    static let mainScene = MainSceneColorSet()
+    static let mainScene = MainSceneColorSet.self
 
 }

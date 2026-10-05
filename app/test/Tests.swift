@@ -8,6 +8,11 @@ import Foundation
 
 struct Tests {
 
+    @Test func Checksums_crc32() async throws {
+        assert(Checksums.crc32("") == 0x0000_0000)
+        assert(Checksums.crc32("123456789") == 0xcbf4_3926)
+    }
+
     @Test func TimeInterval_wholeParts() async throws {
         #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_SECOND  - 1 ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  0, seconds:  0) )
         #expect( TimeInterval.wholeParts( interval: TimeInterval.PERIOD_1_SECOND      ) == TimeInterval.PeriodsCountResult(weeks: 0, days: 0, hours:  0, minutes:  0, seconds:  1) )

@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ScriptsPanel: View {
 
-    static let ICON_OPENER  = Image("symbol Icon Scripts")
+    static let ICON_OPENER = Image("symbol Icon Scripts")
 
     @StateObject private var popupState = PopupState.shared
     @Environment(\.colorScheme) private var colorScheme

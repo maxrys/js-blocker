@@ -71,14 +71,6 @@ extension View {
         else { self }
     }
 
-    @ViewBuilder func scrollDisabledPolyfill(_ disabled: Bool) -> some View {
-        if #available(macOS 13.0, *) {
-            self.scrollDisabled(disabled)
-        } else {
-            self
-        }
-    }
-
     @ViewBuilder func onAppBecomeBackground(_ action: @escaping () -> Void) -> some View {
         self.onReceive(
             NotificationCenter.default.publisher(for: NSApplication.didResignActiveNotification),
