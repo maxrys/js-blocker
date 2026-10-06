@@ -3,7 +3,7 @@
 /* ### Copyright © 2024—2026 Maxim Rysevets. All rights reserved. ### */
 /* ################################################################## */
 
-var scripts = [];
+var scripts = new Set();
 
 const JSBlocker = {
 
@@ -23,15 +23,19 @@ const JSBlocker = {
         return Math.floor(Date.now() / 1000);
     },
 
-    get jsStateFromURL() {
+    get scriptsToString() {
+        return [...scripts].join('\n')
+    },
+
+    get scriptsCRC32sFromURL() {
         const url = new URL(window.location.href, document.baseURI);
         const params = url.searchParams;
         if (!params.has(this.URL_KEY_FOR_JS_STATE)) {
             return null;
         }
-        const scripts = params.get(this.URL_KEY_FOR_JS_STATE);
-        if (scripts)
-             { return scripts.split(',') }
+        const result = params.get(this.URL_KEY_FOR_JS_STATE);
+        if (result)
+             { return result.split(',') }
         else { return [] }
     },
 
@@ -105,7 +109,7 @@ const JSBlocker = {
         }
     },
 
-    prepareFramesForBlockJS(scriptsCrcByFrames = []) {
+    prepareFramesForBlockJS(scriptsCRC32sByFrames = []) {
         console.log(`JS Blocker on "${this.domain}": preparation frames starts…`);
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
@@ -115,9 +119,9 @@ const JSBlocker = {
                             if (node.src) {
                                 const url = new URL(node.src, document.baseURI);
                                 const frameDomain = url.hostname
-                                const scripts = scriptsCrcByFrames[frameDomain] ?? []
-                                if (scripts.length)
-                                     { url.searchParams.set(this.URL_KEY_FOR_JS_STATE, scripts.join(',')); }
+                                const scriptsCRC32s = scriptsCRC32sByFrames[frameDomain] ?? []
+                                if (scriptsCRC32s.length)
+                                     { url.searchParams.set(this.URL_KEY_FOR_JS_STATE, scriptsCRC32s.join(',')); }
                                 else { url.searchParams.set(this.URL_KEY_FOR_JS_STATE, ''); }
                                 node.src = url.toString();
                                 console.log(`JS Blocker on "${this.domain}": prepared ${node.tagName} "${node.src}"`);
@@ -142,17 +146,17 @@ const JSBlocker = {
                         if (node.tagName === 'SCRIPT') {
                             if (node.src) {
                                 const clearURL = this.clearURL(node.src)
-                                scripts.push(clearURL);
+                                scripts.add(clearURL);
                                 console.log(`JS Blocker on "${this.domain}": detected external script "${clearURL}"`);
                             } else {
-                                if (!scripts.includes(this.URL_INTERNAL_SCRIPT)) { scripts.push(this.URL_INTERNAL_SCRIPT); }
+                                scripts.add(this.URL_INTERNAL_SCRIPT);
                                 console.log(`JS Blocker on "${this.domain}": detected internal script`);
                             }
                         }
                         /* attributes <… on…="…" …> */
                         [...node.attributes].forEach(attribute => {
                             if (attribute.name.startsWith('on')) {
-                                if (!scripts.includes(this.URL_INTERNAL_ATTRIBUTE_SCRIPT)) { scripts.push(this.URL_INTERNAL_ATTRIBUTE_SCRIPT); }
+                                scripts.add(this.URL_INTERNAL_ATTRIBUTE_SCRIPT);
                                 console.log(`JS Blocker on "${this.domain}": detected attribute "${attribute.name}" on ${node.tagName}`);
                             }
                         });
@@ -166,10 +170,10 @@ const JSBlocker = {
         });
     },
 
-    sanitize(scriptsCrc = []) {
+    sanitize(scriptsCRC32s = []) {
         console.log(`JS Blocker on "${this.domain}": sanitization scripts starts…`);
-        const isAllowedInternalScripts          = scriptsCrc.includes(this.crc32(this.URL_INTERNAL_SCRIPT));
-        const isAllowedInternalAttributeScripts = scriptsCrc.includes(this.crc32(this.URL_INTERNAL_ATTRIBUTE_SCRIPT));
+        const isAllowedInternalScripts          = scriptsCRC32s.includes(this.CRC32(this.URL_INTERNAL_SCRIPT));
+        const isAllowedInternalAttributeScripts = scriptsCRC32s.includes(this.CRC32(this.URL_INTERNAL_ATTRIBUTE_SCRIPT));
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 [...mutation.addedNodes].forEach(node => {
@@ -180,8 +184,8 @@ const JSBlocker = {
                         if (node.tagName === 'SCRIPT') {
                             const src = node.src;
                             if (src) {
-                                const crc32 = this.crc32(this.clearURL(src));
-                                if (!scriptsCrc.includes(crc32)) {
+                                const CRC32 = this.CRC32(this.clearURL(src));
+                                if (!scriptsCRC32s.includes(CRC32)) {
                                     node.remove();
                                     console.log(`JS Blocker on "${this.domain}": sanitized external script "${src}"`);
                                     return;
@@ -241,14 +245,21 @@ const JSBlocker = {
         });
     },
 
-    pageScriptsNotify() {
+    msg_setScriptsRequest() {
         safari.extension.dispatchMessage('js:setScripts.request', {
-            'domain': this.domain,
-            'scripts': scripts.join('\n')
+            'domain' : this.domain,
+            'scripts': this.scriptsToString
         });
     },
 
-    pageRequestMatch() {
+    msg_getScriptsResponse() {
+        safari.extension.dispatchMessage('js:getScripts.response', {
+            'domain' : this.domain,
+            'scripts': this.scriptsToString
+        });
+    },
+
+    msg_getMatchRequest() {
         safari.extension.dispatchMessage('js:getMatch.request', {
             'domain': this.domain
         });
@@ -263,7 +274,7 @@ const JSBlocker = {
     pageReloadWhenExpired(expiresAt) {
         if (expiresAt > this.timestamp) {
             const lifeTime = (expiresAt - this.timestamp) * 1000;
-            setTimeout(() => { this.pageRequestMatch(); },
+            setTimeout(() => { this.msg_getMatchRequest(); },
                 lifeTime + this.DELAY_BEFORE_RECHECK_STATE
             );
         }
@@ -280,7 +291,7 @@ const JSBlocker = {
         check();
     },
 
-    crc32(str) {
+    CRC32(str) {
         const bytes = new TextEncoder().encode(str);
         let crc = 0xffffffff;
         for (const byte of bytes) {

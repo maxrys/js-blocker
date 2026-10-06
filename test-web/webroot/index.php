@@ -16,6 +16,8 @@
 
     <!-- EXTERNAL SCRIPTS -->
     <script         src="https://js-blocker.com/script.js.php" defer></script>
+    <script         src="https://js-blocker.com/script.js.php" defer></script>
+    <script         src="https://js-blocker.com/script.js.php" defer></script>
     <script     src="https://sub.js-blocker.com/script.js.php" defer></script>
     <script src="https://sub.sub.js-blocker.com/script.js.php" defer></script>
     <script         src="https://js-блоккер/script.js.php?anyRandomValue=<?php print(random_int(0, 1000)); ?>" defer></script>

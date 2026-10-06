@@ -11,8 +11,6 @@ struct ScriptsPanel: View {
 
     @StateObject private var popupState = PopupState.shared
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.isEnabled) private var isEnabled
-    @State private var isOpened = false
 
     private var scripts: [FrameDomainName: [URLString]] {
         if let domain = self.popupState.domain {
@@ -30,18 +28,6 @@ struct ScriptsPanel: View {
         }
     }
 
-    private var isActive: Bool {
-        self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOneScript || match.isExactScript || match.isWildcardScript
-        }
-    }
-
-    private var isVisibleFrames: Bool {
-        self.popupState.match.ifNil(defaultValue: false) { match in
-            match.isNoOne || match.isNoOneScript
-        }
-    }
-
     private var sortedDomains: [FrameDomainName] {
         let domainDecoded = self.popupState.domain?.decodePunycode()
         return self.scripts.keys.sorted(by: { (lhs, rhs) in
@@ -54,123 +40,49 @@ struct ScriptsPanel: View {
     }
 
     public var body: some View {
-        ButtonRectangle(
-            isActive: self.isActive,
-            icon: Image("symbol Icon Scripts"),
-            iconSize: 24,
-            onClick: {
-                self.isOpened.toggle()
-            }
+        self.MainView().frame(
+            maxWidth : .infinity,
+            maxHeight: .infinity,
+            alignment: .top
         )
-        .popover(
-            isPresented: self.isEnabled ? self.$isOpened : .constant(false),
-            arrowEdge: .trailing
-        ) {
-            self.PopupView()
-        }
     }
 
-    @ViewBuilder private func PopupView() -> some View {
-        VStack(spacing: 0) {
-
-            self.PopupHead_TitleView()
-                .overlayPolyfill(alignment: .trailing) {
-                    if (self.isActive) {
-                        ButtonRefresh(onClick: self.popupState.jsGetScripts)
-                            .foregroundPolyfill(Color.scriptsPanel.popupTitle)
-                            .padding(.trailing, 30)
+    @ViewBuilder private func MainView() -> some View {
+        if (self.hasScripts) {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 10) {
+                    Text(NSLocalizedString("Scripts", comment: ""))
+                        .font(.system(size: 20, weight: .light))
+                    ForEach(self.sortedDomains, id: \.self) { frameDomain in
+                        self.FrameScriptsView(
+                            frameDomain: frameDomain,
+                            frameScripts: self.scripts[
+                                frameDomain
+                            ] ?? []
+                        )
                     }
                 }
-
-            if (self.isVisibleFrames) {
-                Text("This is an experimental feature!")
-                    .font(.system(.headline))
-                    .padding(5)
-                    .frame(maxWidth: .infinity)
-                    .foregroundPolyfill(Color.white)
-                    .background(Color.messageBox.warningTitleBackground)
-                self.PopupSriptsModeToggleView()
-            }
-
-            if (self.isActive) {
-                ScrollViewCustom(axis: .vertical, scrollAfter: .init(width: 600, height: 600)) {
-                    self.PopupBodyView()
-                        .frame(width: 600)
+                .frame(maxWidth: .infinity)
+                .padding(20)
+                .overlayPolyfill(alignment: .topTrailing) {
+                    ButtonRefresh(
+                        onClick: self.popupState.jsGetScripts
+                    ).padding(10)
                 }
-                .overlayPolyfill(alignment: .top) {
-                    self.PopupHead_ShadowView(height: 5)
-                }
-            }
-
-        }.frame(width: 600)
-    }
-
-    @ViewBuilder private func PopupHead_TitleView() -> some View {
-        Text(NSLocalizedString("Scripts", comment: ""))
-            .font(.headline)
-            .frame(maxWidth: .infinity)
-            .padding(15)
-            .foregroundPolyfill(Color.scriptsPanel.popupTitle)
-            .background(Color.scriptsPanel.popupTitleBackground)
-    }
-
-    @ViewBuilder private func PopupHead_ShadowView(height: CGFloat = 5) -> some View {
-        VStack(spacing: 0) {
-            Rectangle()
-                .fill(Color.scriptsPanel.popupTitleBorder)
-                .frame(height: 1)
-            ShadowLine(
-                length: height,
-                opacity: 0.3,
-                opacityDark: 0.5
-            )
-        }
-    }
-
-    @ViewBuilder private func PopupSriptsModeToggleView(height: CGFloat = 5) -> some View {
-        ToggleCustom(
-            text: NSLocalizedString("Allow JS separately by script", comment: ""),
-            isOn: Binding(
-                get: { self.popupState.match?.isNoOneScript ?? false },
-                set: { _ in
-                    if case .noOne       = self.popupState.match { Task { @MainActor in self.popupState.match = .noOneScript } }
-                    if case .noOneScript = self.popupState.match { Task { @MainActor in self.popupState.match = .noOne } }
-                }
-            ),
-            size: CGSize(width: 50, height: 20),
-            font: .system(size: 18)
-        )
-        .padding(.init(top: 23, leading: 20, bottom: 20, trailing: 20))
-        .frame(maxWidth: .infinity)
-        .background(
-            self.colorScheme == .dark ?
-                Color.white.opacity(0.1) :
-                Color.white.opacity(0.3)
-        )
-    }
-
-    @ViewBuilder private func PopupBodyView() -> some View {
-        if (self.hasScripts) {
-            VStack(spacing: 10) {
-                ForEach(self.sortedDomains, id: \.self) { frameDomain in
-                    self.PopupBody_FrameScriptsView(
-                        frameDomain: frameDomain,
-                        frameScripts: self.scripts[
-                            frameDomain
-                        ] ?? []
-                    )
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(20)
+            }.frame(maxWidth: .infinity)
         } else {
             Text(NSLocalizedString("no strips", comment: ""))
-                .multilineTextAlignment(.center)
-                .padding(30)
+                .font(.system(size: 16, weight: .light))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .overlayPolyfill(alignment: .topTrailing) {
+                    ButtonRefresh(
+                        onClick: self.popupState.jsGetScripts
+                    ).padding(10)
+                }
         }
     }
 
-    @ViewBuilder private func PopupBody_FrameScriptsView(
+    @ViewBuilder private func FrameScriptsView(
         frameDomain: FrameDomainName,
         frameScripts: [URLString]
     ) -> some View {
@@ -178,7 +90,6 @@ struct ScriptsPanel: View {
             if let domain = self.popupState.domain {
 
                 if (domain != frameDomain) {
-
                     HStack(spacing: 10) {
                         Text(NSLocalizedString("Frame with domain:", comment: ""))
                             .font(.headline)
@@ -186,14 +97,14 @@ struct ScriptsPanel: View {
                         Text(frameDomain.decodePunycode())
                             .font(.headline)
                     }.padding(.bottom, 10)
-
-                    Rectangle()
-                        .fill(
-                            self.colorScheme == .dark ?
-                                .white.opacity(0.5) :
-                                .black.opacity(0.5)
-                        ).frame(height: 1)
                 }
+
+                Rectangle()
+                    .fill(
+                        self.colorScheme == .dark ?
+                            .white.opacity(0.5) :
+                            .black.opacity(0.5)
+                    ).frame(height: 1)
 
                 let frameScriptsSorted = frameScripts.sorted(by: { (lhs, rhs) in
                     if (lhs == URL_INTERNAL_SCRIPT          ) { return true  } /* internal scripts always at top */
@@ -222,8 +133,8 @@ struct ScriptsPanel: View {
                         ) { EmptyView() }
                     },
                     bodyAsArray: frameScriptsSorted.flatMap { script in [
-                        AnyView(self.PopupBody_FrameScripts_CellURLView(value: script)),
-                        AnyView(self.PopupBody_FrameScripts_CellToggleView(
+                        AnyView(self.FrameScripts_CellURLView(value: script)),
+                        AnyView(self.FrameScripts_CellToggleView(
                             domain,
                             frameDomain,
                             script
@@ -235,7 +146,7 @@ struct ScriptsPanel: View {
         }.frame(maxWidth: .infinity)
     }
 
-    @ViewBuilder private func PopupBody_FrameScripts_CellURLView(value: URLString) -> some View {
+    @ViewBuilder private func FrameScripts_CellURLView(value: URLString) -> some View {
         switch (value) {
             case URL_INTERNAL_SCRIPT          : Text(NSLocalizedString("all internal scripts"          , comment: ""))
             case URL_INTERNAL_ATTRIBUTE_SCRIPT: Text(NSLocalizedString("all internal attribute scripts", comment: ""))
@@ -246,7 +157,7 @@ struct ScriptsPanel: View {
         }
     }
 
-    @ViewBuilder private func PopupBody_FrameScripts_CellToggleView(_ domain: DomainName, _ frameDomain: DomainName, _ script: URLString) -> some View {
+    @ViewBuilder private func FrameScripts_CellToggleView(_ domain: DomainName, _ frameDomain: DomainName, _ script: URLString) -> some View {
         ToggleCustom(
             isOn: Binding<Bool>(
                 get: {             self.isOnGet(domain, frameDomain, script) },

@@ -31,16 +31,12 @@
             JSBlocker.doAfterCondition(
                 () => isDOMLoad,
                 () => {
-                    const scriptsString = scripts.join('\n');
+                    JSBlocker.msg_getScriptsResponse();
                     console.log(
                         `JS Blocker on "${domain}"\n` +
                         `Send Event: "js:getScripts.response"\n` +
-                        `Scripts: ${scriptsString}`
+                        `Scripts: ${JSBlocker.scriptsToString}`
                     );
-                    safari.extension.dispatchMessage('js:getScripts.response', {
-                        'domain': domain,
-                        'scripts': scriptsString
-                    });
                 }
             );
         }
@@ -84,7 +80,7 @@
             if (isFocused !== true) {
                 isFocused = true;
                 console.log(`JS Blocker on "${domain}": capture focus`);
-                JSBlocker.pageRequestMatch();
+                JSBlocker.msg_getMatchRequest();
             }
         });
 
@@ -110,8 +106,8 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (scripts.length) {
-                JSBlocker.pageScriptsNotify();
+            if (scripts.size) {
+                JSBlocker.msg_setScriptsRequest();
             }
         });
 
@@ -122,7 +118,7 @@
         if (value === null) { /* after cache clear… */
             JSBlocker.sanitize();
             JSBlocker.prepareFramesForBlockJS();
-            JSBlocker.pageRequestMatch();
+            JSBlocker.msg_getMatchRequest();
             return;
         }
 
@@ -146,7 +142,7 @@
                 (value.scripts ?? []).reduce((result, script) => {
                     if (script.frameDomain == domain) {
                         result.push(
-                            JSBlocker.crc32(script.url)
+                            JSBlocker.CRC32(script.url)
                         )
                     }
                     return result
@@ -156,7 +152,7 @@
                 (value.scripts ?? []).reduce((result, script) => {
                     result[script.frameDomain] ??= []
                     result[script.frameDomain].push(
-                        JSBlocker.crc32(script.url)
+                        JSBlocker.CRC32(script.url)
                     )
                     return result
                 }, {})
@@ -173,35 +169,35 @@
 
     if (isTopFrame !== true) {
 
-        const jsState = JSBlocker.jsStateFromURL;
+        const scriptsCRC32s = JSBlocker.scriptsCRC32sFromURL;
 
         console.log(
             `JS Blocker on "${domain}" has been started\n` +
             `Extension URL: "${safari.extension.baseURI}"\n` +
             `URL: "${window.location.href}"\n` +
             `Is Top Frame: no\n` +
-            `Param "jsState": ${jsState}`
+            `Scripts CRC32 from URL: ${scriptsCRC32s}`
         );
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (scripts.length) {
-                JSBlocker.pageScriptsNotify();
+            if (scripts.size) {
+                JSBlocker.msg_setScriptsRequest();
             }
         });
 
         JSBlocker.detectScripts();
 
-        if (jsState === null) {
+        if (scriptsCRC32s === null) {
             return;
         }
 
-        if (jsState.length === 0) {
+        if (scriptsCRC32s.length === 0) {
             JSBlocker.sanitize();
             return;
         }
 
-        if (jsState.length > 0) {
-            JSBlocker.sanitize(jsState);
+        if (scriptsCRC32s.length > 0) {
+            JSBlocker.sanitize(scriptsCRC32s);
             return;
         }
 

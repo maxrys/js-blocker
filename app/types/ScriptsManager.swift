@@ -6,7 +6,7 @@
 enum ScriptsManager {
 
     static func set(for domain: DomainName, _ frameDomain: DomainName, _ scripts: [URLString]) {
-        PopupState.shared.scripts[domain, frameDomain] = scripts
+        PopupState.shared.scripts[domain, frameDomain] = Array(Set(scripts))
     }
 
     static func reset(for domain: DomainName, _ frameDomain: DomainName? = nil) {

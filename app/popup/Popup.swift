@@ -19,6 +19,31 @@ struct Popup: View {
     @StateObject private var userDefaultsState = UserDefaultsState.shared
     @StateObject private var popupState        = PopupState.shared
 
+    @State private var mainViewSize: CGSize = .zero
+
+    private var colorRuleExactBackground: Color {
+        Color.popup.ruleExactBackground
+            .opacity(0.9)
+    }
+
+    private var colorRuleWildcarBackground: Color {
+        Color.popup.rulesWildcardBackground
+            .opacity(0.9)
+    }
+
+    private var colorRuleCancelBackground: Color {
+        Color.popup.ruleCancelBackground
+            .opacity(0.9)
+    }
+
+    private var colorScriptsBackground: Color {
+        switch self.popupState.match {
+            case .exactScript   : Color.popup.ruleExactBackground.opacity(0.9)
+            case .wildcardScript: Color.popup.rulesWildcardBackground.opacity(0.9)
+            default             : Color.scriptsPanel.defaultBackground.opacity(0.9)
+        }
+    }
+
     private let frameWidth: CGFloat
     private let messageBox: MessageBox
 
@@ -30,63 +55,67 @@ struct Popup: View {
     }
 
     public var body: some View {
-        VStack(spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
+            self.MainView()
+                .onGeometryChangePolyfill(
+                    type: .inside,
+                    size: self.$mainViewSize
+                )
+            if (self.popupState.match?.isSomeScript == true) {
+                ScriptsPanel()
+                    .background(
+                        self.colorScriptsBackground
+                    )
+                    .frame(
+                        width: ScriptsPanel.FRAME_WIDTH,
+                        height: self.mainViewSize.height
+                    ).overlayPolyfill(alignment: .leading) {
+                        ShadowLine(
+                            length: 15,
+                            angle: .`270_degrees`,
+                            opacity: 0.15,
+                            opacityDark: 0.2
+                        ).frame(height: self.mainViewSize.height)
+                    }
+            }
+        }.environment(\.layoutDirection, .leftToRight)
+    }
 
-            /* ################# */
-            /* ### MARK: Message */
-            /* ################# */
+    @ViewBuilder private func MainView() -> some View {
+        VStack(spacing: 0) {
 
             self.messageBox
 
-            /* #################### */
-            /* ### MARK: Allow Rule */
-            /* #################### */
+            DomainRuleExactPanel(
+                onClickAllow: {
+                    ViewController.shared.onClick_ruleExactInsert()
+                }
+            ).background(
+                self.colorRuleExactBackground
+            )
 
-            VStack(spacing: 0) {
-
-                DomainRuleExactPanel(
-                    onClickAllow: {
-                        ViewController.shared.onClick_ruleExactInsert()
-                    }
-                ).background(
-                    Color.popup.ruleExactBackground
-                        .opacity(0.9)
-                )
-
-                DomainRuleWildcardPanel(
-                    onClickAllow: { selected in
-                        ViewController.shared.onClick_ruleWildcardInsert(selected: selected)
-                    }
-                ).background(
-                    Color.popup.rulesWildcardBackground
-                        .opacity(0.9)
-                )
-
-            }.frame(maxWidth: .infinity)
-
-            /* MARK: Extra Buttons */
-
-            .overlayPolyfill(alignment: .topTrailing) {
-                HStack(spacing: 5) {
+            .overlayPolyfill(alignment: .topLeading) {
+                HStack(spacing: 5) { /* MARK: Extra Buttons */
                     self.ButtonSettingsView()
                 }.padding(10)
             }
 
-            /* ##################### */
-            /* ### MARK: Cancel Rule */
-            /* ##################### */
+            DomainRuleWildcardPanel(
+                onClickAllow: { selected in
+                    ViewController.shared.onClick_ruleWildcardInsert(selected: selected)
+                }
+            ).background(
+                self.colorRuleWildcarBackground
+            )
 
             self.ButtonCancelRuleView()
                 .padding(31)
                 .frame(maxWidth: .infinity)
                 .background(
-                    Color.popup.ruleCancelBackground
-                        .opacity(0.9)
+                    self.colorRuleCancelBackground
                 )
 
-        }
-        .frame(width: self.frameWidth)
-        .environment(\.layoutDirection, .leftToRight)
+        }.frame(width: self.frameWidth)
     }
 
     @ViewBuilder private func ButtonSettingsView() -> some View {
