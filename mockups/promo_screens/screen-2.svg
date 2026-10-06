@@ -115,20 +115,20 @@
       <stop offset="0" style="stop-color: rgb(0, 208, 123);"/>
       <stop offset="1" style="stop-color: rgb(85, 175, 0);"/>
     </linearGradient>
-    <mask id="mask-2">
-      <rect width="1050" height="1050" style="stroke-width: 1; fill: url(&quot;#gradient-9&quot;);" x="-25" y="-27"/>
+    <mask id="mask-3">
+      <rect width="1050" height="1050" style="fill: url(&quot;#gradient-11&quot;); stroke-width: 1;" x="-25" y="-27"/>
     </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="525" y1="0" x2="525" y2="1050" id="gradient-9" gradientTransform="matrix(1, 0, 0, 1, -25, -26.995239)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="525" y1="0" x2="525" y2="1050" id="gradient-11" gradientTransform="matrix(1, 0, 0, 1, -25, -26.995239)">
       <stop offset="0" style="stop-color: rgb(255, 255, 255);"/>
       <stop offset="0.359" style="stop-color: rgb(255, 255, 255);"/>
       <stop offset="0.443" style=""/>
       <stop offset="1" style=""/>
     </linearGradient>
-    <filter id="filter-6" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter id="filter-1" bx:preset="drop-shadow 1 0 0 10 0.4 rgba(0,0,0,0.3)" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
       <feOffset dx="0" dy="0"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-3" type="linear" slope="0.8"/>
+        <feFuncA id="feFuncA-6" type="linear" slope="0.8"/>
       </feComponentTransfer>
       <feFlood flood-color="rgba(0,0,0,0.3)"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -137,26 +137,91 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <mask id="mask-11">
+    <mask id="mask-8">
       <rect x="-25" y="-27" width="1050" height="1050" style="fill: white; stroke-width: 1;"/>
       <rect style="fill: black; stroke-width: 1;" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
     </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-22" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 442.535667, 98.685818)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-10" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 442.535667, 98.685818)">
       <stop offset="0" style="stop-color: rgb(230, 234, 243);"/>
       <stop offset="1" style="stop-color: rgb(210, 215, 223);"/>
     </linearGradient>
+    <mask id="mask-9">
+      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="479" y="4.5" width="29" height="77"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-13" gradientTransform="matrix(1.999977, -0.006948, 0.009277, 1.499999, 300.003754, 285.693909)">
+      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
+      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
+    </linearGradient>
+    <filter id="drop-shadow-filter-1" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.3 #0006">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="feFuncA-1" type="linear" slope="0.6"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#0006"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <mask id="mask-10">
+      <rect width="433.333" height="702.667" style="fill: white; stroke-width: 1;" y="12.045" x="-6.667"/>
+      <rect x="80" width="260" height="527" rx="19.5" ry="19.5" y="99" style="fill: black; stroke-width: 1;"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-24" gradientTransform="matrix(0, 0.341332, 0.319997, 0, 156.128067, 36.313966)">
+      <stop offset="0" style="stop-color: rgb(230, 234, 243);"/>
+      <stop offset="1" style="stop-color: rgb(210, 215, 223);"/>
+    </linearGradient>
+    <mask id="mask-16">
+      <rect x="150" y="69" width="120" height="30" style="fill: rgb(255, 255, 255); stroke-width: 1;" transform="matrix(0, -1, 1, 0, 117, 303)"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="464" y1="194" x2="464" y2="204" id="gradient-27" gradientTransform="matrix(5.652175, 0, 0, 1, -2412.60515, -2)">
+      <stop offset="0" style="stop-opacity: 0.2;"/>
+      <stop offset="1" style="stop-opacity: 0;"/>
+    </linearGradient>
+    <mask id="mask-11">
+      <rect width="1050" height="1050" style="stroke-width: 1; fill: url(&quot;#gradient-5&quot;);" x="-25" y="-27"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="525" y1="0" x2="525" y2="1050" id="gradient-5" gradientTransform="matrix(1, 0, 0, 1, -25.000488, -26.995483)">
+      <stop offset="0" style="stop-color: rgb(255, 255, 255);"/>
+      <stop offset="0.359" style="stop-color: rgb(255, 255, 255);"/>
+      <stop offset="0.443" style=""/>
+      <stop offset="1" style=""/>
+    </linearGradient>
+    <filter id="filter-2" bx:preset="drop-shadow 1 0 0 10 0.8 rgba(0,0,0,0.3)" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="0"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="feFuncA-3" type="linear" slope="1.6"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <mask id="mask-12">
+      <rect x="-25" y="-27" width="1050" height="1050" style="fill: white; stroke-width: 1;"/>
+      <rect style="fill: black; stroke-width: 1;" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
+    </mask>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="146.926" y1="124.054" x2="146.926" y2="191.054" id="gradient-22" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 442.535977, 98.686724)">
+      <stop offset="0" style="stop-color: rgb(56, 51, 63);"/>
+      <stop offset="1" style="stop-color: rgb(36, 33, 42);"/>
+    </linearGradient>
+    <mask id="mask-13">
       <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="479" y="4.5" width="29" height="77"/>
     </mask>
     <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-23" gradientTransform="matrix(1.999977, -0.006948, 0.009277, 1.499999, 300.003754, 285.693909)">
       <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
       <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
     </linearGradient>
-    <filter id="filter-2" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.3 #0006">
+    <filter id="filter-5" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.8 #0006">
       <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
       <feOffset dx="0" dy="0"/>
       <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-7" type="linear" slope="0.6"/>
+        <feFuncA id="feFuncA-7" type="linear" slope="1.6"/>
       </feComponentTransfer>
       <feFlood flood-color="#0006"/>
       <feComposite in2="offsetblur" operator="in"/>
@@ -165,83 +230,18 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <mask id="mask-13">
-      <rect width="400" height="800" style="fill: white; stroke-width: 1;"/>
-      <rect x="80" width="240" height="600" rx="19.5" ry="19.5" y="99" style="fill: black; stroke-width: 1;"/>
+    <mask id="mask-2">
+      <rect width="433.333" height="702.667" style="fill: white; stroke-width: 1;" y="12.045" x="-6.667"/>
+      <rect x="80" width="260" height="527" rx="19.5" ry="19.5" y="99" style="fill: black; stroke-width: 1;"/>
     </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-5" gradientTransform="matrix(0, -0.341332, 0.319997, 0, 19.127798, 204.185593)">
-      <stop offset="0" style="stop-color: rgb(230, 234, 243);"/>
-      <stop offset="1" style="stop-color: rgb(210, 215, 223);"/>
-    </linearGradient>
-    <mask id="mask-14">
-      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="53.312" y="110" width="27.188" height="77"/>
-    </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="464" y1="194" x2="464" y2="204" id="gradient-28" gradientTransform="matrix(5.217392, 0, 0, 1, -2220.866211, -2)">
-      <stop offset="0" style="stop-opacity: 0.2;"/>
-      <stop offset="1" style="stop-opacity: 0;"/>
-    </linearGradient>
-    <mask id="mask-6">
-      <rect width="1050" height="1050" style="stroke-width: 1; fill: url(&quot;#gradient-2&quot;);" x="-25" y="-27"/>
-    </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="525" y1="0" x2="525" y2="1050" id="gradient-2" gradientTransform="matrix(1, 0, 0, 1, -25.000488, -26.995483)">
-      <stop offset="0" style="stop-color: rgb(255, 255, 255);"/>
-      <stop offset="0.359" style="stop-color: rgb(255, 255, 255);"/>
-      <stop offset="0.443" style=""/>
-      <stop offset="1" style=""/>
-    </linearGradient>
-    <filter id="filter-4" bx:preset="drop-shadow 1 0 0 10 0.8 rgba(0,0,0,0.3)" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-4" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="rgba(0,0,0,0.3)"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <mask id="mask-7">
-      <rect x="-25" y="-27" width="1050" height="1050" style="fill: white; stroke-width: 1;"/>
-      <rect style="fill: black; stroke-width: 1;" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
-    </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="146.926" y1="124.054" x2="146.926" y2="191.054" id="gradient-8" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 442.535977, 98.686724)">
-      <stop offset="0" style="stop-color: rgb(56, 51, 63);"/>
-      <stop offset="1" style="stop-color: rgb(36, 33, 42);"/>
-    </linearGradient>
-    <mask id="mask-15">
-      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="479" y="4.5" width="29" height="77"/>
-    </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="100" y2="50" id="gradient-12" gradientTransform="matrix(1.999977, -0.006948, 0.009277, 1.499999, 300.003754, 285.693909)">
-      <stop offset="0" style="stop-color: rgb(161, 142, 248);"/>
-      <stop offset="1" style="stop-color: rgb(141, 88, 197);"/>
-    </linearGradient>
-    <filter id="filter-7" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%" bx:preset="drop-shadow 1 0 0 10 0.8 #0006">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
-      <feOffset dx="0" dy="0"/>
-      <feComponentTransfer result="offsetblur">
-        <feFuncA id="feFuncA-5" type="linear" slope="1.6"/>
-      </feComponentTransfer>
-      <feFlood flood-color="#0006"/>
-      <feComposite in2="offsetblur" operator="in"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <mask id="mask-4">
-      <rect width="400" height="800" style="fill: white; stroke-width: 1;"/>
-      <rect x="80" width="240" height="600" rx="19.5" ry="19.5" y="99" style="fill: black; stroke-width: 1;"/>
-    </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-25" gradientTransform="matrix(0, -0.341331, 0.341331, 0, 16.536301, 204.185242)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="147.645" y1="122.296" x2="147.645" y2="189.296" id="gradient-28" gradientTransform="matrix(0, 0.341331, 0.341331, 0, 152.536593, 37.314561)">
       <stop offset="0" style="stop-color: rgb(50, 51, 54);"/>
       <stop offset="1" style="stop-color: rgb(40, 42, 44);"/>
     </linearGradient>
-    <mask id="mask-5">
-      <rect style="fill: rgb(255, 255, 255); stroke-width: 1;" x="53" y="110" width="29" height="77"/>
+    <mask id="mask-14">
+      <rect x="150" y="69" width="120" height="30" style="fill: rgb(255, 255, 255); stroke-width: 1;" transform="matrix(0, -1, 1, 0, 117, 303)"/>
     </mask>
-    <linearGradient gradientUnits="userSpaceOnUse" x1="464" y1="194" x2="464" y2="204" id="gradient-26" gradientTransform="matrix(5.217392, 0, 0, 1, -2220.866211, -2)">
+    <linearGradient gradientUnits="userSpaceOnUse" x1="464" y1="194" x2="464" y2="204" id="gradient-9" gradientTransform="matrix(5.217392, 0, 0, 1, -2220.866211, -2)">
       <stop offset="0" style="stop-opacity: 0.2;"/>
       <stop offset="1" style="stop-opacity: 0;"/>
     </linearGradient>
@@ -299,11 +299,11 @@
       </g>
     </g>
     <g transform="matrix(1, 0, 0, 1, 63, 325.499969)">
-      <g transform="matrix(1, 0, 0, 1, 25, 27)" style="filter: none; mask: url(&quot;#mask-2&quot;);">
+      <g transform="matrix(1, 0, 0, 1, 25, 27)" style="filter: none; mask: url(&quot;#mask-3&quot;);">
         <g>
-          <rect style="fill: red; stroke-width: 1; filter: url(&quot;#filter-6&quot;); mask: url(&quot;#mask-11&quot;);" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
+          <rect style="fill: red; stroke-width: 1; filter: url(&quot;#filter-1&quot;); mask: url(&quot;#mask-8&quot;);" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
           <rect style="filter: none; stroke-width: 2; fill: color(srgb-linear 0.716 0.753 0.807 / 0.9);" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
-          <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; transform-origin: 500px 43px; stroke: rgb(189, 189, 190); stroke-width: 2px; fill: url(&quot;#gradient-22&quot;); mask: url(&quot;#mask-12&quot;);" transform="matrix(0, 1, -1, 0, -0.000001, 0.000008)"/>
+          <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; transform-origin: 500px 43px; stroke: rgb(189, 189, 190); stroke-width: 2px; fill: url(&quot;#gradient-10&quot;); mask: url(&quot;#mask-9&quot;);" transform="matrix(0, 1, -1, 0, -0.000001, 0.000008)"/>
         </g>
         <g>
           <path d="M 900.566 120 L 904.432 120 C 905.553 120 906.338 119.344 906.617 118.278 L 907.738 113.493 C 908.635 113.192 909.475 112.864 910.26 112.482 L 914.463 115.052 C 915.304 115.599 916.368 115.516 917.097 114.777 L 919.842 112.071 C 920.572 111.333 920.683 110.212 920.066 109.311 L 917.546 105.156 C 917.938 104.389 918.274 103.542 918.498 102.749 L 923.377 101.6 C 924.379 101.354 925 100.562 925 99.441 L 925 95.667 C 925 94.601 924.379 93.809 923.377 93.562 L 918.554 92.387 C 918.274 91.458 917.881 90.638 917.601 89.954 L 920.123 85.716 C 920.683 84.788 920.627 83.776 919.899 83.009 L 917.097 80.303 C 916.368 79.62 915.416 79.429 914.519 79.976 L 910.26 82.601 C 909.532 82.217 908.691 81.889 907.738 81.589 L 906.617 76.722 C 906.338 75.656 905.553 75 904.432 75 L 900.566 75 C 899.502 75 898.717 75.656 898.437 76.722 L 897.315 81.533 C 896.419 81.834 895.522 82.163 894.794 82.572 L 890.535 79.976 C 889.639 79.429 888.686 79.566 887.901 80.303 L 885.155 83.009 C 884.371 83.776 884.371 84.788 884.932 85.716 L 887.454 89.954 C 887.173 90.638 886.781 91.458 886.5 92.387 L 881.737 93.562 C 880.673 93.809 880 94.601 880 95.667 L 880 99.441 C 880 100.562 880.673 101.354 881.737 101.6 L 886.556 102.749 C 886.781 103.542 887.117 104.389 887.509 105.156 L 884.988 109.311 C 884.371 110.212 884.483 111.333 885.211 112.071 L 887.901 114.777 C 888.686 115.516 889.75 115.599 890.647 115.052 L 894.794 112.482 C 895.579 112.864 896.419 113.192 897.315 113.493 L 898.437 118.278 C 898.717 119.344 899.502 120 900.566 120 Z M 902.527 105.017 C 898.38 105.017 895.018 101.628 895.018 97.5 C 895.018 93.371 898.38 89.982 902.527 89.982 C 906.675 89.982 910.036 93.371 910.036 97.5 C 910.036 101.628 906.675 105.017 902.527 105.017 Z" style="fill: color(srgb-linear 0 0 0 / 0.07);"/>
@@ -315,44 +315,61 @@
             <text style="font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="225.237">example.com</text>
           </g>
           <g>
-            <rect width="400" height="75" x="300" y="285" style="fill: url(&quot;#gradient-23&quot;);" rx="37.5" ry="37.5"/>
+            <rect width="400" height="75" x="300" y="285" style="fill: url(&quot;#gradient-13&quot;);" rx="37.5" ry="37.5"/>
             <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
             <g>
-              <rect x="203.5" y="286.5" width="72" height="72" style="stroke-width: 4; stroke: rgb(255, 255, 255); fill: rgb(255, 255, 255);" rx="25.124" ry="25.124"/>
-              <path d="M 228.029 303 L 250.971 303 C 253.106 303.05 255.258 303.961 256.649 305.351 C 258.039 306.742 258.95 308.894 259 311.029 L 259 333.971 C 258.95 336.106 258.039 338.258 256.649 339.649 C 255.258 341.039 253.106 341.95 250.971 342 L 228.029 342 C 225.894 341.95 223.742 341.039 222.351 339.649 C 220.961 338.258 220.05 336.106 220 333.971 L 220 311.029 C 220.05 308.894 220.961 306.742 222.351 305.351 C 223.742 303.961 225.894 303.05 228.029 303 Z M 223.973 306.973 C 222.872 308.075 222.244 309.362 222.294 311.029 L 222.294 333.971 C 222.244 335.636 222.872 336.925 223.973 338.027 C 225.075 339.128 226.362 339.756 228.029 339.706 L 250.971 339.706 C 252.636 339.756 253.925 339.128 255.027 338.027 C 256.128 336.925 256.756 335.638 256.706 333.971 L 256.706 311.029 C 256.756 309.364 256.128 308.075 255.027 306.973 C 253.925 305.872 252.638 305.244 250.971 305.294 L 228.029 305.294 C 226.364 305.244 225.075 305.872 223.973 306.973 Z M 231.599 312.305 L 235.169 312.305 C 236.435 312.305 237.463 313.333 237.463 314.599 L 237.463 318.169 C 237.463 319.435 236.435 320.463 235.169 320.463 L 231.599 320.463 C 230.333 320.463 229.305 319.435 229.305 318.169 L 229.305 314.599 C 229.305 313.333 230.333 312.305 231.599 312.305 Z M 243.834 312.305 L 247.403 312.305 C 248.67 312.305 249.697 313.333 249.697 314.599 L 249.697 318.169 C 249.697 319.435 248.67 320.463 247.403 320.463 L 243.834 320.463 C 242.567 320.463 241.539 319.435 241.539 318.169 L 241.539 314.599 C 241.539 313.333 242.567 312.305 243.834 312.305 Z M 231.599 325.558 L 235.169 325.558 C 236.435 325.558 237.463 326.586 237.463 327.852 L 237.463 331.422 C 237.463 332.688 236.435 333.716 235.169 333.716 L 231.599 333.716 C 230.333 333.716 229.305 332.688 229.305 331.422 L 229.305 327.852 C 229.305 326.586 230.333 325.558 231.599 325.558 Z M 243.834 325.558 L 247.403 325.558 C 248.67 325.558 249.697 326.586 249.697 327.852 L 249.697 331.422 C 249.697 332.688 248.67 333.716 247.403 333.716 L 243.834 333.716 C 242.567 333.716 241.539 332.688 241.539 331.422 L 241.539 327.852 C 241.539 326.586 242.567 325.558 243.834 325.558 Z" style=""/>
+              <rect x="203.5" y="286.5" width="72" height="72" style="stroke-width: 4px; fill: rgb(255, 255, 256); stroke: rgb(148, 84, 202);" rx="25.124" ry="25.124"/>
+              <path d="M 230.714 334.074 L 229.763 335.02 C 229.275 335.511 228.482 335.511 227.995 335.02 C 227.508 334.533 227.508 333.745 227.995 333.254 L 228.945 332.307 C 229.433 331.818 230.225 331.818 230.714 332.307 C 231.201 332.795 231.201 333.586 230.714 334.074 Z M 240.759 337.226 L 240.759 338.567 C 240.759 339.257 240.199 339.817 239.509 339.817 C 238.819 339.817 238.259 339.257 238.259 338.567 L 238.259 337.226 C 238.259 336.535 238.817 335.978 239.509 335.978 C 240.199 335.978 240.759 336.537 240.759 337.226 Z M 250.142 332.31 L 251.092 333.258 C 251.58 333.747 251.58 334.539 251.092 335.026 C 250.601 335.513 249.812 335.513 249.321 335.026 L 248.374 334.076 C 247.887 333.589 247.887 332.798 248.374 332.31 C 248.862 331.822 249.654 331.822 250.142 332.31 Z M 253.249 322.25 L 254.592 322.25 C 255.282 322.25 255.842 322.81 255.842 323.5 C 255.842 324.189 255.282 324.749 254.592 324.749 L 253.249 324.749 C 252.559 324.749 251.999 324.187 251.999 323.5 C 251.999 322.81 252.559 322.25 253.249 322.25 Z M 251.041 313.757 L 250.094 314.706 C 249.607 315.193 248.814 315.193 248.327 314.706 C 247.837 314.218 247.837 313.427 248.327 312.939 L 249.275 311.99 C 249.761 311.502 250.555 311.502 251.041 311.99 C 251.532 312.477 251.532 313.269 251.041 313.757 Z M 240.756 308.493 L 240.759 309.836 C 240.756 310.525 240.199 311.085 239.509 311.085 C 238.819 311.087 238.259 310.525 238.259 309.836 L 238.259 308.493 C 238.259 307.804 238.819 307.244 239.509 307.244 C 240.199 307.244 240.759 307.804 240.756 308.493 Z M 229.81 311.992 L 230.761 312.941 C 231.248 313.429 231.248 314.221 230.761 314.708 C 230.273 315.195 229.481 315.195 228.993 314.708 L 228.042 313.759 C 227.556 313.271 227.556 312.48 228.042 311.992 C 228.529 311.504 229.322 311.504 229.81 311.992 Z M 224.498 322.25 L 225.841 322.25 C 226.53 322.25 227.09 322.81 227.09 323.5 C 227.093 324.189 226.53 324.749 225.841 324.749 L 224.498 324.749 C 223.807 324.749 223.248 324.189 223.248 323.5 C 223.248 322.81 223.807 322.25 224.498 322.25 Z M 238.584 312.861 C 238.781 311.766 240.121 311.78 240.333 312.865 L 241.836 320.009 L 240.191 319.702 C 239.169 319.552 237.956 319.872 237.081 320.509 L 238.584 312.861 Z M 237.443 325.501 C 236.331 324.36 236.354 322.562 237.496 321.449 C 238.173 320.786 239.108 320.506 240.006 320.683 L 250.137 322.57 C 251.232 322.767 251.216 324.107 250.134 324.32 L 240.271 326.266 C 239.231 326.465 238.183 326.255 237.443 325.501 Z M 238.293 301.638 L 240.725 301.638 L 240.725 302.887 L 238.293 302.887 L 238.293 301.638 Z M 234.498 299.75 C 234.498 299.06 235.058 298.5 235.749 298.5 L 243.249 298.5 C 243.939 298.5 244.499 299.06 244.499 299.75 C 244.499 300.438 243.939 300.998 243.249 300.998 L 235.749 300.998 C 235.058 300.998 234.498 300.438 234.498 299.75 Z M 259.5 323.484 C 259.5 328.915 257.192 334.071 253.644 337.618 C 250.092 341.167 244.931 343.473 239.498 343.473 C 234.066 343.473 228.906 341.167 225.354 337.618 C 221.805 334.071 219.498 328.915 219.5 323.484 C 219.498 318.056 221.805 312.899 225.356 309.349 C 228.906 305.803 234.066 303.497 239.498 303.5 C 244.931 303.497 250.092 305.803 253.641 309.349 C 257.192 312.899 259.5 318.056 259.5 323.484 Z M 251.874 311.118 C 248.64 307.884 244.421 305.996 239.498 305.996 C 234.575 305.996 230.359 307.884 227.122 311.118 C 223.888 314.351 221.997 318.566 221.997 323.484 C 221.997 328.404 223.888 332.619 227.122 335.852 C 230.359 339.085 234.575 340.975 239.498 340.975 C 244.421 340.975 248.64 339.085 251.874 335.852 C 255.11 332.619 256.999 328.404 256.999 323.484 C 256.999 318.566 255.11 314.351 251.874 311.118 Z" style="stroke-width: 1; fill: rgb(148, 84, 202);"/>
+              <text style="fill-opacity: 0.3; font-family: &quot;SF Pro&quot;; font-size: 20px; text-anchor: middle; white-space: pre; opacity: 0;" x="239.5" y="392.361">5 minutes</text>
             </g>
             <g>
-              <rect x="724.5" y="286.5" width="72" height="72" style="fill: rgb(255, 255, 255); stroke-width: 4px; stroke: rgb(148, 84, 202);" rx="25.124" ry="25.124"/>
-              <path d="M 751.714 334.074 L 750.763 335.02 C 750.275 335.511 749.482 335.511 748.995 335.02 C 748.508 334.533 748.508 333.745 748.995 333.254 L 749.945 332.307 C 750.433 331.818 751.225 331.818 751.714 332.307 C 752.201 332.795 752.201 333.586 751.714 334.074 Z M 761.759 337.226 L 761.759 338.567 C 761.759 339.257 761.199 339.817 760.509 339.817 C 759.819 339.817 759.259 339.257 759.259 338.567 L 759.259 337.226 C 759.259 336.535 759.817 335.978 760.509 335.978 C 761.199 335.978 761.759 336.537 761.759 337.226 Z M 771.142 332.31 L 772.092 333.258 C 772.58 333.747 772.58 334.539 772.092 335.026 C 771.601 335.513 770.812 335.513 770.321 335.026 L 769.374 334.076 C 768.887 333.589 768.887 332.798 769.374 332.31 C 769.862 331.822 770.654 331.822 771.142 332.31 Z M 774.249 322.25 L 775.592 322.25 C 776.282 322.25 776.842 322.81 776.842 323.5 C 776.842 324.189 776.282 324.749 775.592 324.749 L 774.249 324.749 C 773.559 324.749 772.999 324.187 772.999 323.5 C 772.999 322.81 773.559 322.25 774.249 322.25 Z M 772.041 313.757 L 771.094 314.706 C 770.607 315.193 769.814 315.193 769.327 314.706 C 768.837 314.218 768.837 313.427 769.327 312.939 L 770.275 311.99 C 770.761 311.502 771.555 311.502 772.041 311.99 C 772.532 312.477 772.532 313.269 772.041 313.757 Z M 761.756 308.493 L 761.759 309.836 C 761.756 310.525 761.199 311.085 760.509 311.085 C 759.819 311.087 759.259 310.525 759.259 309.836 L 759.259 308.493 C 759.259 307.804 759.819 307.244 760.509 307.244 C 761.199 307.244 761.759 307.804 761.756 308.493 Z M 750.81 311.992 L 751.761 312.941 C 752.248 313.429 752.248 314.221 751.761 314.708 C 751.273 315.195 750.481 315.195 749.993 314.708 L 749.042 313.759 C 748.556 313.271 748.556 312.48 749.042 311.992 C 749.529 311.504 750.322 311.504 750.81 311.992 Z M 745.498 322.25 L 746.841 322.25 C 747.53 322.25 748.09 322.81 748.09 323.5 C 748.093 324.189 747.53 324.749 746.841 324.749 L 745.498 324.749 C 744.807 324.749 744.248 324.189 744.248 323.5 C 744.248 322.81 744.807 322.25 745.498 322.25 Z M 759.584 312.861 C 759.781 311.766 761.121 311.78 761.333 312.865 L 762.836 320.009 L 761.191 319.702 C 760.169 319.552 758.956 319.872 758.081 320.509 L 759.584 312.861 Z M 758.443 325.501 C 757.331 324.36 757.354 322.562 758.496 321.449 C 759.173 320.786 760.108 320.506 761.006 320.683 L 771.137 322.57 C 772.232 322.767 772.216 324.107 771.134 324.32 L 761.271 326.266 C 760.231 326.465 759.183 326.255 758.443 325.501 Z M 759.293 301.638 L 761.725 301.638 L 761.725 302.887 L 759.293 302.887 L 759.293 301.638 Z M 755.498 299.75 C 755.498 299.06 756.058 298.5 756.749 298.5 L 764.249 298.5 C 764.939 298.5 765.499 299.06 765.499 299.75 C 765.499 300.438 764.939 300.998 764.249 300.998 L 756.749 300.998 C 756.058 300.998 755.498 300.438 755.498 299.75 Z M 780.5 323.484 C 780.5 328.915 778.192 334.071 774.644 337.618 C 771.092 341.167 765.931 343.473 760.498 343.473 C 755.066 343.473 749.906 341.167 746.354 337.618 C 742.805 334.071 740.498 328.915 740.5 323.484 C 740.498 318.056 742.805 312.899 746.356 309.349 C 749.906 305.803 755.066 303.497 760.498 303.5 C 765.931 303.497 771.092 305.803 774.641 309.349 C 778.192 312.899 780.5 318.056 780.5 323.484 Z M 772.874 311.118 C 769.64 307.884 765.421 305.996 760.498 305.996 C 755.575 305.996 751.359 307.884 748.122 311.118 C 744.888 314.351 742.997 318.566 742.997 323.484 C 742.997 328.404 744.888 332.619 748.122 335.852 C 751.359 339.085 755.575 340.975 760.498 340.975 C 765.421 340.975 769.64 339.085 772.874 335.852 C 776.11 332.619 777.999 328.404 777.999 323.484 C 777.999 318.566 776.11 314.351 772.874 311.118 Z" style="stroke-width: 1; fill: rgb(148, 84, 202);"/>
-              <text style="fill-opacity: 0.3; font-family: &quot;SF Pro&quot;; font-size: 20px; text-anchor: middle; white-space: pre;" x="760.5" y="392.361">5 minutes</text>
+              <rect x="724.5" y="286.5" width="72" height="72" style="fill: rgb(255, 255, 255); stroke-width: 4px; stroke: rgb(255, 255, 255);" rx="25.124" ry="25.124"/>
+              <path d="M 749.029 303 L 771.971 303 C 774.106 303.05 776.258 303.961 777.649 305.351 C 779.039 306.742 779.95 308.894 780 311.029 L 780 333.971 C 779.95 336.106 779.039 338.258 777.649 339.649 C 776.258 341.039 774.106 341.95 771.971 342 L 749.029 342 C 746.894 341.95 744.742 341.039 743.351 339.649 C 741.961 338.258 741.05 336.106 741 333.971 L 741 311.029 C 741.05 308.894 741.961 306.742 743.351 305.351 C 744.742 303.961 746.894 303.05 749.029 303 Z M 744.973 306.973 C 743.872 308.075 743.244 309.362 743.294 311.029 L 743.294 333.971 C 743.244 335.636 743.872 336.925 744.973 338.027 C 746.075 339.128 747.362 339.756 749.029 339.706 L 771.971 339.706 C 773.636 339.756 774.925 339.128 776.027 338.027 C 777.128 336.925 777.756 335.638 777.706 333.971 L 777.706 311.029 C 777.756 309.364 777.128 308.075 776.027 306.973 C 774.925 305.872 773.638 305.244 771.971 305.294 L 749.029 305.294 C 747.364 305.244 746.075 305.872 744.973 306.973 Z M 752.599 312.305 L 756.169 312.305 C 757.435 312.305 758.463 313.333 758.463 314.599 L 758.463 318.169 C 758.463 319.435 757.435 320.463 756.169 320.463 L 752.599 320.463 C 751.333 320.463 750.305 319.435 750.305 318.169 L 750.305 314.599 C 750.305 313.333 751.333 312.305 752.599 312.305 Z M 764.834 312.305 L 768.403 312.305 C 769.67 312.305 770.697 313.333 770.697 314.599 L 770.697 318.169 C 770.697 319.435 769.67 320.463 768.403 320.463 L 764.834 320.463 C 763.567 320.463 762.539 319.435 762.539 318.169 L 762.539 314.599 C 762.539 313.333 763.567 312.305 764.834 312.305 Z M 752.599 325.558 L 756.169 325.558 C 757.435 325.558 758.463 326.586 758.463 327.852 L 758.463 331.422 C 758.463 332.688 757.435 333.716 756.169 333.716 L 752.599 333.716 C 751.333 333.716 750.305 332.688 750.305 331.422 L 750.305 327.852 C 750.305 326.586 751.333 325.558 752.599 325.558 Z M 764.834 325.558 L 768.403 325.558 C 769.67 325.558 770.697 326.586 770.697 327.852 L 770.697 331.422 C 770.697 332.688 769.67 333.716 768.403 333.716 L 764.834 333.716 C 763.567 333.716 762.539 332.688 762.539 331.422 L 762.539 327.852 C 762.539 326.586 763.567 325.558 764.834 325.558 Z" style="stroke-width: 1;"/>
             </g>
           </g>
         </g>
       </g>
-      <g transform="matrix(1, 0, 0, 1, 766, 202.5)">
+      <g transform="matrix(1, 0, 0, 1, 54, 310)">
         <g>
-          <rect style="fill: red; stroke-width: 1; filter: url(&quot;#filter-2&quot;); mask: url(&quot;#mask-13&quot;);" x="80" width="240" height="600" y="99" rx="19.5" ry="19.5"/>
-          <path d="M 79.563 115 L 88 115 L 88 182 L 79.563 182 C 79.563 165.25 58 156.408 58 148.5 C 58 140.555 79.563 131.75 79.563 115 Z" style="filter: none; stroke: rgb(189, 189, 190); opacity: 0.6; stroke-width: 0.5px; transform-origin: 73px 148.5px; fill: url(&quot;#gradient-5&quot;); mask: url(&quot;#mask-14&quot;);"/>
-          <rect style="stroke: rgb(189, 189, 190); stroke-width: 1; fill: rgba(228, 232, 238, 0.95);" x="80" width="240" height="600" y="99" rx="19.5" ry="19.5"/>
+          <rect style="filter: url(&quot;#drop-shadow-filter-1&quot;); fill: red; stroke-width: 1; mask: url(&quot;#mask-10&quot;);" x="80" width="260" height="527" y="99" rx="19.5" ry="19.5"/>
+          <path d="M 216.563 125.5 L 225 125.5 L 225 58.5 L 216.563 58.5 C 216.563 75.25 195 84.092 195 92 C 195 99.945 216.563 108.75 216.563 125.5 Z" style="filter: none; stroke: rgb(189, 189, 190); opacity: 0.6; stroke-width: 0.5px; transform-origin: 210px 92px; fill: url(&quot;#gradient-24&quot;); mask: url(&quot;#mask-16&quot;);" transform="matrix(0, 1, -1, 0, 0.000001, 0)"/>
+          <rect style="stroke: rgb(189, 189, 190); stroke-width: 1; fill: rgba(228, 232, 238, 0.95);" x="80" width="260" height="527" y="99" rx="19.5" ry="19.5"/>
         </g>
         <g>
-          <path style="stroke-width: 1; fill: rgba(49, 68, 82, 0.82);" d="M 99.5 99 H 300.5 A 19.5 19.5 0 0 1 320 118.5 V 190 A 0 0 0 0 1 320 190 H 80 A 0 0 0 0 1 80 190 V 118.5 A 19.5 19.5 0 0 1 99.5 99 Z" bx:shape="rect 80 99 240 91 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@209d4f63"/>
-          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="200" y="156.093">Lifetime</text>
+          <path style="stroke-width: 1; fill: rgba(49, 68, 82, 0.82);" d="M 99.5 99 H 320.5 A 19.5 19.5 0 0 1 340 118.5 V 190 A 0 0 0 0 1 340 190 H 80 A 0 0 0 0 1 80 190 V 118.5 A 19.5 19.5 0 0 1 99.5 99 Z" bx:shape="rect 80 99 260 91 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@ecf92c6f"/>
+          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="210" y="156.093">Lifetime</text>
         </g>
         <g>
-          <rect x="80" y="192" width="240" height="122" style="fill: rgba(176, 179, 183, 0.35);"/>
-          <line style="fill: none; stroke-width: 2; stroke: rgb(216, 224, 236);" x1="80" y1="191" x2="320" y2="191"/>
-          <rect x="80" y="192" width="240" height="10" style="fill: url(&quot;#gradient-28&quot;);"/>
-          <rect x="139.5" y="232" width="121" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
-          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; text-anchor: middle; white-space: pre;" x="200" y="267.925">unlimit</text>
+          <rect x="80" y="192" width="260" height="108" style="fill: rgba(176, 179, 183, 0.35);"/>
+          <line style="fill: none; stroke-width: 2; stroke: rgb(216, 224, 236);" x1="80" y1="191" x2="340" y2="191"/>
+          <rect x="80" y="192" width="260" height="10" style="fill: url(&quot;#gradient-27&quot;);"/>
+          <g>
+            <rect x="120.5" y="228" width="40" height="40" style="fill: rgb(255, 255, 255); stroke: rgb(178, 178, 178); stroke-width: 2;" rx="26" ry="26"/>
+            <text style="fill: rgba(0, 0, 0, 0.65); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre; stroke-width: 1;" x="183" y="257.945">unlimit</text>
+          </g>
         </g>
         <g>
-          <rect x="129.5" y="344" width="141" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
-          <rect x="120.5" y="410" width="159" height="52" style="fill: rgb(126, 70, 172);" rx="26" ry="26"/>
-          <rect x="143" y="476" width="114" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
-          <rect x="148" y="542" width="104" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
-          <rect x="139" y="608" width="122" height="52" style="fill: rgba(64, 74, 79, 0.65);" rx="26" ry="26"/>
-          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; text-anchor: middle; white-space: pre;" transform="matrix(1, 0, 0, 1, -361.770996, -0.128127)"><tspan x="561.771" y="379.897">1 minute</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>5 minutes</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 hour</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 day</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 week</tspan></text>
+          <g>
+            <rect x="120.5" y="329" width="40" height="40" style="fill: rgb(255, 255, 255); stroke: rgb(178, 178, 178); stroke-width: 2;" rx="26" ry="26"/>
+            <text style="fill: rgba(0, 0, 0, 0.65); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre; stroke-width: 1;" x="183" y="358.945">1 minute</text>
+          </g>
+          <g>
+            <rect x="120.5" y="383" width="40" height="40" style="fill: rgb(255, 255, 255); stroke: rgb(178, 178, 178); stroke-width: 2;" rx="26" ry="26"/>
+            <rect x="125.5" y="388" width="30" height="30" style="stroke-width: 2; fill: rgb(2, 111, 246);" rx="26" ry="26"/>
+            <text style="fill: rgba(0, 0, 0, 0.65); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre; stroke-width: 1;" x="183" y="412.945">5 minutes</text>
+          </g>
+          <g>
+            <rect x="120.5" y="437" width="40" height="40" style="fill: rgb(255, 255, 255); stroke: rgb(178, 178, 178); stroke-width: 2;" rx="26" ry="26"/>
+            <text style="fill: rgba(0, 0, 0, 0.65); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre; stroke-width: 1;" x="183" y="466.945">1 hour</text>
+          </g>
+          <g>
+            <rect x="120.5" y="491" width="40" height="40" style="fill: rgb(255, 255, 255); stroke: rgb(178, 178, 178); stroke-width: 2;" rx="26" ry="26"/>
+            <text style="fill: rgba(0, 0, 0, 0.65); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre; stroke-width: 1;" x="183" y="520.945">1 day</text>
+          </g>
+          <g>
+            <rect x="120.5" y="545" width="40" height="40" style="fill: rgb(255, 255, 255); stroke: rgb(178, 178, 178); stroke-width: 2;" rx="26" ry="26"/>
+            <text style="fill: rgba(0, 0, 0, 0.65); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre; stroke-width: 1;" x="183" y="574.945">1 week</text>
+          </g>
         </g>
       </g>
     </g>
@@ -392,60 +409,77 @@
       </g>
     </g>
     <g transform="matrix(1, 0, 0, 1, 1343, 325.499969)">
-      <g style="filter: none; mask: url(&quot;#mask-6&quot;);" transform="matrix(1, 0, 0, 1, 25, 27)">
+      <g style="filter: none; mask: url(&quot;#mask-11&quot;);" transform="matrix(1, 0, 0, 1, 25, 27)">
         <g>
-          <rect style="fill: red; stroke-width: 1; filter: url(&quot;#filter-4&quot;); mask: url(&quot;#mask-7&quot;);" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
+          <rect style="fill: red; stroke-width: 1; filter: url(&quot;#filter-2&quot;); mask: url(&quot;#mask-12&quot;);" x="50" width="900" height="900" y="50" rx="19.5" ry="19.5"/>
           <rect style="stroke-width: 2; filter: none; stroke: rgb(102, 106, 109); fill: color(srgb-linear 0.042 0.05 0.055 / 0.9);" x="50" width="900" height="900" rx="19.5" ry="19.5" y="50"/>
-          <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; stroke-width: 2; fill: url(&quot;#gradient-8&quot;); transform-origin: 500px 43px; stroke: rgb(102, 106, 109); mask: url(&quot;#mask-15&quot;);" transform="matrix(0, 1, -1, 0, -0.00001, 0.000003)"/>
+          <path d="M 507 9.5 L 516 9.5 L 516 76.5 L 507 76.5 C 507 59.75 484 50.908 484 43 C 484 35.056 507 26.25 507 9.5 Z" style="filter: none; stroke-width: 2; transform-origin: 500px 43px; stroke: rgb(102, 106, 109); fill: url(&quot;#gradient-22&quot;); mask: url(&quot;#mask-13&quot;);" transform="matrix(0, 1, -1, 0, -0.00001, 0.000003)"/>
         </g>
         <g>
           <path d="M 900.566 120 L 904.432 120 C 905.553 120 906.338 119.344 906.618 118.277 L 907.739 113.493 C 908.635 113.192 909.475 112.865 910.261 112.482 L 914.463 115.052 C 915.304 115.599 916.368 115.517 917.098 114.777 L 919.842 112.071 C 920.571 111.334 920.683 110.213 920.067 109.311 L 917.546 105.156 C 917.938 104.389 918.273 103.542 918.498 102.749 L 923.376 101.6 C 924.379 101.354 925 100.562 925 99.441 L 925 95.668 C 925 94.601 924.379 93.809 923.376 93.563 L 918.554 92.388 C 918.273 91.458 917.881 90.638 917.6 89.954 L 920.122 85.717 C 920.683 84.788 920.627 83.776 919.899 83.009 L 917.098 80.303 C 916.368 79.619 915.416 79.43 914.519 79.975 L 910.261 82.6 C 909.533 82.217 908.691 81.889 907.739 81.589 L 906.618 76.723 C 906.338 75.656 905.553 75 904.432 75 L 900.566 75 C 899.502 75 898.716 75.656 898.436 76.723 L 897.314 81.534 C 896.419 81.834 895.522 82.163 894.793 82.573 L 890.535 79.975 C 889.639 79.43 888.686 79.566 887.9 80.303 L 885.155 83.009 C 884.371 83.776 884.371 84.788 884.931 85.717 L 887.453 89.954 C 887.173 90.638 886.78 91.458 886.5 92.388 L 881.736 93.563 C 880.673 93.809 880 94.601 880 95.668 L 880 99.441 C 880 100.562 880.673 101.354 881.736 101.6 L 886.556 102.749 C 886.78 103.542 887.117 104.389 887.509 105.156 L 884.988 109.311 C 884.371 110.213 884.483 111.334 885.211 112.071 L 887.9 114.777 C 888.686 115.517 889.75 115.599 890.647 115.052 L 894.793 112.482 C 895.579 112.865 896.419 113.192 897.314 113.493 L 898.436 118.277 C 898.716 119.344 899.502 120 900.566 120 Z M 902.527 105.017 C 898.38 105.017 895.018 101.628 895.018 97.5 C 895.018 93.371 898.38 89.982 902.527 89.982 C 906.674 89.982 910.036 93.371 910.036 97.5 C 910.036 101.628 906.674 105.017 902.527 105.017 Z" style="fill: color(srgb-linear 1 1 1 / 0.07);"/>
         </g>
         <g>
           <text style="fill: rgb(236, 236, 236); font-family: Arial, sans-serif; font-size: 29px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="138.29">JavaScript on the Domain</text>
-          <g transform="matrix(1, 0, 0, 1, 0, -0.223007)">
+          <g>
             <rect style="fill: rgb(37, 37, 36); stroke-width: 4px; stroke: rgb(30, 30, 30)" x="110" y="168.223" width="780" height="86" rx="22" ry="22"/>
             <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; white-space: pre; text-anchor: middle;" x="500" y="220.308">example.com</text>
           </g>
           <g>
-            <rect width="400" height="75" x="300" y="285" style="fill: url(&quot;#gradient-12&quot;);" rx="37.5" ry="37.5"/>
+            <rect width="400" height="75" x="300" y="285" style="fill: url(&quot;#gradient-23&quot;);" rx="37.5" ry="37.5"/>
             <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 27px; white-space: pre; text-anchor: middle;" x="500" y="331.822">allow</text>
             <g>
-              <rect x="203.5" y="286.5" width="72" height="72" style="stroke-width: 4; fill: rgb(37, 37, 36); stroke: rgb(37, 37, 36);" rx="25.124" ry="25.124"/>
-              <path d="M 228.029 303 L 250.971 303 C 253.106 303.05 255.258 303.961 256.649 305.351 C 258.039 306.742 258.95 308.894 259 311.029 L 259 333.971 C 258.95 336.106 258.039 338.258 256.649 339.649 C 255.258 341.039 253.106 341.95 250.971 342 L 228.029 342 C 225.894 341.95 223.742 341.039 222.351 339.649 C 220.961 338.258 220.05 336.106 220 333.971 L 220 311.029 C 220.05 308.894 220.961 306.742 222.351 305.351 C 223.742 303.961 225.894 303.05 228.029 303 Z M 223.973 306.973 C 222.872 308.075 222.244 309.362 222.294 311.029 L 222.294 333.971 C 222.244 335.636 222.872 336.925 223.973 338.027 C 225.075 339.128 226.362 339.756 228.029 339.706 L 250.971 339.706 C 252.636 339.756 253.925 339.128 255.027 338.027 C 256.128 336.925 256.756 335.638 256.706 333.971 L 256.706 311.029 C 256.756 309.364 256.128 308.075 255.027 306.973 C 253.925 305.872 252.638 305.244 250.971 305.294 L 228.029 305.294 C 226.364 305.244 225.075 305.872 223.973 306.973 Z M 231.599 312.305 L 235.169 312.305 C 236.435 312.305 237.463 313.333 237.463 314.599 L 237.463 318.169 C 237.463 319.435 236.435 320.463 235.169 320.463 L 231.599 320.463 C 230.333 320.463 229.305 319.435 229.305 318.169 L 229.305 314.599 C 229.305 313.333 230.333 312.305 231.599 312.305 Z M 243.834 312.305 L 247.403 312.305 C 248.67 312.305 249.697 313.333 249.697 314.599 L 249.697 318.169 C 249.697 319.435 248.67 320.463 247.403 320.463 L 243.834 320.463 C 242.567 320.463 241.539 319.435 241.539 318.169 L 241.539 314.599 C 241.539 313.333 242.567 312.305 243.834 312.305 Z M 231.599 325.558 L 235.169 325.558 C 236.435 325.558 237.463 326.586 237.463 327.852 L 237.463 331.422 C 237.463 332.688 236.435 333.716 235.169 333.716 L 231.599 333.716 C 230.333 333.716 229.305 332.688 229.305 331.422 L 229.305 327.852 C 229.305 326.586 230.333 325.558 231.599 325.558 Z M 243.834 325.558 L 247.403 325.558 C 248.67 325.558 249.697 326.586 249.697 327.852 L 249.697 331.422 C 249.697 332.688 248.67 333.716 247.403 333.716 L 243.834 333.716 C 242.567 333.716 241.539 332.688 241.539 331.422 L 241.539 327.852 C 241.539 326.586 242.567 325.558 243.834 325.558 Z" style="fill: rgb(255, 255, 255);"/>
+              <rect x="203.5" y="286.5" width="72" height="72" style="stroke-width: 4; fill: rgb(37, 37, 36); stroke: rgb(198, 109, 255);" rx="25.124" ry="25.124"/>
+              <path d="M 230.714 334.074 L 229.763 335.02 C 229.275 335.511 228.482 335.511 227.995 335.02 C 227.508 334.533 227.508 333.745 227.995 333.254 L 228.945 332.307 C 229.433 331.818 230.225 331.818 230.714 332.307 C 231.201 332.795 231.201 333.586 230.714 334.074 Z M 240.759 337.226 L 240.759 338.567 C 240.759 339.257 240.199 339.817 239.509 339.817 C 238.819 339.817 238.259 339.257 238.259 338.567 L 238.259 337.226 C 238.259 336.535 238.817 335.978 239.509 335.978 C 240.199 335.978 240.759 336.537 240.759 337.226 Z M 250.142 332.31 L 251.092 333.258 C 251.58 333.747 251.58 334.539 251.092 335.026 C 250.601 335.513 249.812 335.513 249.321 335.026 L 248.374 334.076 C 247.887 333.589 247.887 332.798 248.374 332.31 C 248.862 331.822 249.654 331.822 250.142 332.31 Z M 253.249 322.25 L 254.592 322.25 C 255.282 322.25 255.842 322.81 255.842 323.5 C 255.842 324.189 255.282 324.749 254.592 324.749 L 253.249 324.749 C 252.559 324.749 251.999 324.187 251.999 323.5 C 251.999 322.81 252.559 322.25 253.249 322.25 Z M 251.041 313.757 L 250.094 314.706 C 249.607 315.193 248.814 315.193 248.327 314.706 C 247.837 314.218 247.837 313.427 248.327 312.939 L 249.275 311.99 C 249.761 311.502 250.555 311.502 251.041 311.99 C 251.532 312.477 251.532 313.269 251.041 313.757 Z M 240.756 308.493 L 240.759 309.836 C 240.756 310.525 240.199 311.085 239.509 311.085 C 238.819 311.087 238.259 310.525 238.259 309.836 L 238.259 308.493 C 238.259 307.804 238.819 307.244 239.509 307.244 C 240.199 307.244 240.759 307.804 240.756 308.493 Z M 229.81 311.992 L 230.761 312.941 C 231.248 313.429 231.248 314.221 230.761 314.708 C 230.273 315.195 229.481 315.195 228.993 314.708 L 228.042 313.759 C 227.556 313.271 227.556 312.48 228.042 311.992 C 228.529 311.504 229.322 311.504 229.81 311.992 Z M 224.498 322.25 L 225.841 322.25 C 226.53 322.25 227.09 322.81 227.09 323.5 C 227.093 324.189 226.53 324.749 225.841 324.749 L 224.498 324.749 C 223.807 324.749 223.248 324.189 223.248 323.5 C 223.248 322.81 223.807 322.25 224.498 322.25 Z M 238.584 312.861 C 238.781 311.766 240.121 311.78 240.333 312.865 L 241.836 320.009 L 240.191 319.702 C 239.169 319.552 237.956 319.872 237.081 320.509 L 238.584 312.861 Z M 237.443 325.501 C 236.331 324.36 236.354 322.562 237.496 321.449 C 238.173 320.786 239.108 320.506 240.006 320.683 L 250.137 322.57 C 251.232 322.767 251.216 324.107 250.134 324.32 L 240.271 326.266 C 239.231 326.465 238.183 326.255 237.443 325.501 Z M 238.293 301.638 L 240.725 301.638 L 240.725 302.887 L 238.293 302.887 L 238.293 301.638 Z M 234.498 299.75 C 234.498 299.06 235.058 298.5 235.749 298.5 L 243.249 298.5 C 243.939 298.5 244.499 299.06 244.499 299.75 C 244.499 300.438 243.939 300.998 243.249 300.998 L 235.749 300.998 C 235.058 300.998 234.498 300.438 234.498 299.75 Z M 259.5 323.484 C 259.5 328.915 257.192 334.071 253.644 337.618 C 250.092 341.167 244.931 343.473 239.498 343.473 C 234.066 343.473 228.906 341.167 225.354 337.618 C 221.805 334.071 219.498 328.915 219.5 323.484 C 219.498 318.056 221.805 312.899 225.356 309.349 C 228.906 305.803 234.066 303.497 239.498 303.5 C 244.931 303.497 250.092 305.803 253.641 309.349 C 257.192 312.899 259.5 318.056 259.5 323.484 Z M 251.874 311.118 C 248.64 307.884 244.421 305.996 239.498 305.996 C 234.575 305.996 230.359 307.884 227.122 311.118 C 223.888 314.351 221.997 318.566 221.997 323.484 C 221.997 328.404 223.888 332.619 227.122 335.852 C 230.359 339.085 234.575 340.975 239.498 340.975 C 244.421 340.975 248.64 339.085 251.874 335.852 C 255.11 332.619 256.999 328.404 256.999 323.484 C 256.999 318.566 255.11 314.351 251.874 311.118 Z" style="stroke-width: 1; fill: rgb(198, 109, 255);"/>
+              <text style="fill: rgb(255, 255, 255); fill-opacity: 0.3; font-family: &quot;SF Pro&quot;; font-size: 20px; text-anchor: middle; white-space: pre; opacity: 0;" x="239.5" y="392.361">5 minutes</text>
             </g>
             <g>
-              <rect x="724.5" y="286.5" width="72" height="72" style="stroke-width: 4px; fill: rgb(36, 35, 37); stroke: rgb(198, 109, 255);" rx="25.124" ry="25.124"/>
-              <path d="M 751.714 334.074 L 750.763 335.02 C 750.275 335.511 749.482 335.511 748.995 335.02 C 748.508 334.533 748.508 333.745 748.995 333.254 L 749.945 332.307 C 750.433 331.818 751.225 331.818 751.714 332.307 C 752.201 332.795 752.201 333.586 751.714 334.074 Z M 761.759 337.226 L 761.759 338.567 C 761.759 339.257 761.199 339.817 760.509 339.817 C 759.819 339.817 759.259 339.257 759.259 338.567 L 759.259 337.226 C 759.259 336.535 759.817 335.978 760.509 335.978 C 761.199 335.978 761.759 336.537 761.759 337.226 Z M 771.142 332.31 L 772.092 333.258 C 772.58 333.747 772.58 334.539 772.092 335.026 C 771.601 335.513 770.812 335.513 770.321 335.026 L 769.374 334.076 C 768.887 333.589 768.887 332.798 769.374 332.31 C 769.862 331.822 770.654 331.822 771.142 332.31 Z M 774.249 322.25 L 775.592 322.25 C 776.282 322.25 776.842 322.81 776.842 323.5 C 776.842 324.189 776.282 324.749 775.592 324.749 L 774.249 324.749 C 773.559 324.749 772.999 324.187 772.999 323.5 C 772.999 322.81 773.559 322.25 774.249 322.25 Z M 772.041 313.757 L 771.094 314.706 C 770.607 315.193 769.814 315.193 769.327 314.706 C 768.837 314.218 768.837 313.427 769.327 312.939 L 770.275 311.99 C 770.761 311.502 771.555 311.502 772.041 311.99 C 772.532 312.477 772.532 313.269 772.041 313.757 Z M 761.756 308.493 L 761.759 309.836 C 761.756 310.525 761.199 311.085 760.509 311.085 C 759.819 311.087 759.259 310.525 759.259 309.836 L 759.259 308.493 C 759.259 307.804 759.819 307.244 760.509 307.244 C 761.199 307.244 761.759 307.804 761.756 308.493 Z M 750.81 311.992 L 751.761 312.941 C 752.248 313.429 752.248 314.221 751.761 314.708 C 751.273 315.195 750.481 315.195 749.993 314.708 L 749.042 313.759 C 748.556 313.271 748.556 312.48 749.042 311.992 C 749.529 311.504 750.322 311.504 750.81 311.992 Z M 745.498 322.25 L 746.841 322.25 C 747.53 322.25 748.09 322.81 748.09 323.5 C 748.093 324.189 747.53 324.749 746.841 324.749 L 745.498 324.749 C 744.807 324.749 744.248 324.189 744.248 323.5 C 744.248 322.81 744.807 322.25 745.498 322.25 Z M 759.584 312.861 C 759.781 311.766 761.121 311.78 761.333 312.865 L 762.836 320.009 L 761.191 319.702 C 760.169 319.552 758.956 319.872 758.081 320.509 L 759.584 312.861 Z M 758.443 325.501 C 757.331 324.36 757.354 322.562 758.496 321.449 C 759.173 320.786 760.108 320.506 761.006 320.683 L 771.137 322.57 C 772.232 322.767 772.216 324.107 771.134 324.32 L 761.271 326.266 C 760.231 326.465 759.183 326.255 758.443 325.501 Z M 759.293 301.638 L 761.725 301.638 L 761.725 302.887 L 759.293 302.887 L 759.293 301.638 Z M 755.498 299.75 C 755.498 299.06 756.058 298.5 756.749 298.5 L 764.249 298.5 C 764.939 298.5 765.499 299.06 765.499 299.75 C 765.499 300.438 764.939 300.998 764.249 300.998 L 756.749 300.998 C 756.058 300.998 755.498 300.438 755.498 299.75 Z M 780.5 323.484 C 780.5 328.915 778.192 334.071 774.644 337.618 C 771.092 341.167 765.931 343.473 760.498 343.473 C 755.066 343.473 749.906 341.167 746.354 337.618 C 742.805 334.071 740.498 328.915 740.5 323.484 C 740.498 318.056 742.805 312.899 746.356 309.349 C 749.906 305.803 755.066 303.497 760.498 303.5 C 765.931 303.497 771.092 305.803 774.641 309.349 C 778.192 312.899 780.5 318.056 780.5 323.484 Z M 772.874 311.118 C 769.64 307.884 765.421 305.996 760.498 305.996 C 755.575 305.996 751.359 307.884 748.122 311.118 C 744.888 314.351 742.997 318.566 742.997 323.484 C 742.997 328.404 744.888 332.619 748.122 335.852 C 751.359 339.085 755.575 340.975 760.498 340.975 C 765.421 340.975 769.64 339.085 772.874 335.852 C 776.11 332.619 777.999 328.404 777.999 323.484 C 777.999 318.566 776.11 314.351 772.874 311.118 Z" style="stroke-width: 1; fill: rgb(198, 109, 255);"/>
-              <text style="fill: rgb(255, 255, 255); fill-opacity: 0.3; font-family: &quot;SF Pro&quot;; font-size: 20px; text-anchor: middle; white-space: pre;" x="760.5" y="392.361">5 minutes</text>
+              <rect x="724.5" y="286.5" width="72" height="72" style="stroke-width: 4px; fill: rgb(37, 37, 36); stroke: rgb(37, 37, 36);" rx="25.124" ry="25.124"/>
+              <path d="M 749.029 303 L 771.971 303 C 774.106 303.05 776.258 303.961 777.649 305.351 C 779.039 306.742 779.95 308.894 780 311.029 L 780 333.971 C 779.95 336.106 779.039 338.258 777.649 339.649 C 776.258 341.039 774.106 341.95 771.971 342 L 749.029 342 C 746.894 341.95 744.742 341.039 743.351 339.649 C 741.961 338.258 741.05 336.106 741 333.971 L 741 311.029 C 741.05 308.894 741.961 306.742 743.351 305.351 C 744.742 303.961 746.894 303.05 749.029 303 Z M 744.973 306.973 C 743.872 308.075 743.244 309.362 743.294 311.029 L 743.294 333.971 C 743.244 335.636 743.872 336.925 744.973 338.027 C 746.075 339.128 747.362 339.756 749.029 339.706 L 771.971 339.706 C 773.636 339.756 774.925 339.128 776.027 338.027 C 777.128 336.925 777.756 335.638 777.706 333.971 L 777.706 311.029 C 777.756 309.364 777.128 308.075 776.027 306.973 C 774.925 305.872 773.638 305.244 771.971 305.294 L 749.029 305.294 C 747.364 305.244 746.075 305.872 744.973 306.973 Z M 752.599 312.305 L 756.169 312.305 C 757.435 312.305 758.463 313.333 758.463 314.599 L 758.463 318.169 C 758.463 319.435 757.435 320.463 756.169 320.463 L 752.599 320.463 C 751.333 320.463 750.305 319.435 750.305 318.169 L 750.305 314.599 C 750.305 313.333 751.333 312.305 752.599 312.305 Z M 764.834 312.305 L 768.403 312.305 C 769.67 312.305 770.697 313.333 770.697 314.599 L 770.697 318.169 C 770.697 319.435 769.67 320.463 768.403 320.463 L 764.834 320.463 C 763.567 320.463 762.539 319.435 762.539 318.169 L 762.539 314.599 C 762.539 313.333 763.567 312.305 764.834 312.305 Z M 752.599 325.558 L 756.169 325.558 C 757.435 325.558 758.463 326.586 758.463 327.852 L 758.463 331.422 C 758.463 332.688 757.435 333.716 756.169 333.716 L 752.599 333.716 C 751.333 333.716 750.305 332.688 750.305 331.422 L 750.305 327.852 C 750.305 326.586 751.333 325.558 752.599 325.558 Z M 764.834 325.558 L 768.403 325.558 C 769.67 325.558 770.697 326.586 770.697 327.852 L 770.697 331.422 C 770.697 332.688 769.67 333.716 768.403 333.716 L 764.834 333.716 C 763.567 333.716 762.539 332.688 762.539 331.422 L 762.539 327.852 C 762.539 326.586 763.567 325.558 764.834 325.558 Z" style="fill: rgb(255, 255, 255);"/>
             </g>
           </g>
         </g>
       </g>
-      <g transform="matrix(1, 0, 0, 1, 766, 202.5)">
+      <g transform="matrix(1, 0, 0, 1, 54, 310)">
         <g>
-          <rect style="fill: red; stroke-width: 1; mask: url(&quot;#mask-4&quot;); filter: url(&quot;#filter-7&quot;);" x="80" width="240" height="600" y="99" rx="19.5" ry="19.5"/>
-          <path d="M 81 115 L 90 115 L 90 182 L 81 182 C 81 165.25 58 156.408 58 148.5 C 58 140.556 81 131.75 81 115 Z" style="filter: none; opacity: 0.6; stroke: rgba(105, 106, 110, 0.75); stroke-width: 0.5px; transform-origin: 74px 148.5px; mask: url(&quot;#mask-5&quot;); fill: url(&quot;#gradient-25&quot;);"/>
-          <rect style="stroke-width: 1; stroke: rgba(105, 106, 110, 0.75); fill: rgba(25, 40, 46, 0.95);" x="80" width="240" height="600" y="99" rx="19.5" ry="19.5"/>
+          <rect style="fill: red; stroke-width: 1; mask: url(&quot;#mask-2&quot;); filter: url(&quot;#filter-5&quot;);" x="80" width="260" height="527" y="99" rx="19.5" ry="19.5"/>
+          <path d="M 215.563 126.5 L 224 126.5 L 224 59.5 L 215.563 59.5 C 215.563 76.25 194 85.092 194 93 C 194 100.945 215.563 109.75 215.563 126.5 Z" style="filter: none; opacity: 0.6; stroke: rgba(105, 106, 110, 0.75); stroke-width: 0.5px; transform-origin: 210px 93px; fill: url(&quot;#gradient-28&quot;); mask: url(&quot;#mask-14&quot;);" transform="matrix(0, 1, -1, 0, 0.000003, -0.000002)"/>
+          <rect style="stroke-width: 1; stroke: rgba(105, 106, 110, 0.75); fill: rgba(25, 40, 46, 0.95);" x="80" width="260" height="527" y="99" rx="19.5" ry="19.5"/>
         </g>
         <g>
-          <path style="stroke-width: 1; fill: rgba(27, 28, 30, 0.61);" d="M 99.5 99 H 300.5 A 19.5 19.5 0 0 1 320 118.5 V 190 A 0 0 0 0 1 320 190 H 80 A 0 0 0 0 1 80 190 V 118.5 A 19.5 19.5 0 0 1 99.5 99 Z" bx:shape="rect 80 99 240 91 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@209d4f63"/>
-          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="200" y="156.093">Lifetime</text>
+          <path style="stroke-width: 1; fill: rgba(27, 28, 30, 0.61);" d="M 99.5 99 H 320.5 A 19.5 19.5 0 0 1 340 118.5 V 190 A 0 0 0 0 1 340 190 H 80 A 0 0 0 0 1 80 190 V 118.5 A 19.5 19.5 0 0 1 99.5 99 Z" bx:shape="rect 80 99 260 91 0 19.5 19.5 0 19.5 19.5 0 0 0 0 0 0 2@ecf92c6f"/>
+          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 31px; font-weight: 500; letter-spacing: -0.3px; text-anchor: middle; white-space: pre;" x="210" y="156.093">Lifetime</text>
         </g>
         <g>
-          <rect x="80" y="192" width="240" height="122" style="fill: rgba(62, 67, 69, 0.43); stroke-width: 2px;"/>
-          <line style="fill: none; stroke-width: 2px; stroke: rgb(87, 91, 94);" x1="80" y1="191" x2="320" y2="191"/>
-          <rect x="80" y="192" width="240" height="10" style="fill: url(&quot;#gradient-26&quot;);"/>
-          <rect x="139.5" y="232" width="121" height="52" style="fill: rgba(124, 127, 129, 0.45);" rx="26" ry="26"/>
-          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; text-anchor: middle; white-space: pre;" x="200" y="267.925">unlimit</text>
+          <rect x="80" y="192" width="260" height="108" style="fill: rgba(62, 67, 69, 0.43); stroke-width: 2px;"/>
+          <line style="fill: none; stroke-width: 2px; stroke: rgb(87, 91, 94);" x1="80" y1="191" x2="340" y2="191"/>
+          <rect x="80" y="192" width="260" height="10" style="fill: url(&quot;#gradient-9&quot;);"/>
+          <g>
+            <rect x="120.5" y="228" width="40" height="40" style="stroke-width: 2; stroke: rgb(75, 75, 75);" rx="26" ry="26"/>
+            <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre;" x="183" y="257.945">unlimit</text>
+          </g>
         </g>
         <g>
-          <rect x="129.5" y="344" width="141" height="52" style="fill: rgba(124, 127, 129, 0.447);" rx="26" ry="26"/>
-          <rect x="120.5" y="410" width="159" height="52" style="fill: rgb(126, 70, 172);" rx="26" ry="26"/>
-          <rect x="143" y="476" width="114" height="52" style="fill: rgba(124, 127, 129, 0.45);" rx="26" ry="26"/>
-          <rect x="148" y="542" width="104" height="52" style="fill: rgba(124, 127, 129, 0.45);" rx="26" ry="26"/>
-          <rect x="139" y="608" width="122" height="52" style="fill: rgba(124, 127, 129, 0.45);" rx="26" ry="26"/>
-          <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; text-anchor: middle; white-space: pre;" transform="matrix(1, 0, 0, 1, -361.770996, -0.128127)"><tspan x="561.771" y="379.897">1 minute</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>5 minutes</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 hour</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 day</tspan><tspan x="561.771" dy="2.36em">​</tspan><tspan>1 week</tspan></text>
+          <g>
+            <rect x="120.5" y="329" width="40" height="40" style="stroke-width: 2; stroke: rgb(75, 75, 75);" rx="26" ry="26"/>
+            <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre;" x="183" y="358.945">1 minute</text>
+          </g>
+          <g>
+            <rect x="120.5" y="383" width="40" height="40" style="stroke-width: 2; stroke: rgb(75, 75, 75);" rx="26" ry="26"/>
+            <rect x="125.5" y="388" width="30" height="30" style="stroke-width: 2; fill: rgb(2, 111, 246);" rx="26" ry="26"/>
+            <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre;" x="183" y="412.945">5 minutes</text>
+          </g>
+          <g>
+            <rect x="120.5" y="437" width="40" height="40" style="stroke-width: 2; stroke: rgb(75, 75, 75);" rx="26" ry="26"/>
+            <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre;" x="183" y="466.945">1 hour</text>
+          </g>
+          <g>
+            <rect x="120.5" y="491" width="40" height="40" style="stroke-width: 2; stroke: rgb(75, 75, 75);" rx="26" ry="26"/>
+            <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre;" x="183" y="520.945">1 day</text>
+          </g>
+          <g>
+            <rect x="120.5" y="545" width="40" height="40" style="stroke-width: 2; stroke: rgb(75, 75, 75);" rx="26" ry="26"/>
+            <text style="fill: rgb(255, 255, 255); font-family: &quot;SF Pro&quot;; font-size: 28px; white-space: pre;" x="183" y="574.945">1 week</text>
+          </g>
         </g>
       </g>
     </g>
