@@ -1,4 +1,9 @@
 
+## Version 3.2
+
+Codebase has been improved.  
+Bug fixes.
+
 ## Version 3.1
 
 UI has been improved.  
