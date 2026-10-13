@@ -157,8 +157,8 @@ struct DomainRuleWildcardPanel: View {
 
                 ButtonRectangle(
                     isActive: self.popupState.match?.isSomeScript == true,
-                    icon: Image("symbol Icon Scripts"),
-                    iconSize: 24,
+                    icon: ScriptsPanel.ICON,
+                    iconSize: 30,
                     onClick: {
                         if case .noOne       = self.popupState.match { Task { @MainActor in withAnimation(.linear(duration: 0.1)) { self.popupState.match = .noOneScript }} }
                         if case .noOneScript = self.popupState.match { Task { @MainActor in withAnimation(.linear(duration: 0.1)) { self.popupState.match = .noOne }} }
@@ -213,11 +213,12 @@ struct DomainRuleWildcardPanel: View {
 
 struct DomainRuleWildcardPanel_Checkbox: View {
 
-    static let ICON_CHECK         = Image("symbol Checkbox")
-    static let ICON_CHECK_CHECKED = Image("symbol Checkbox Checked")
+    static let ICON_CHECK         = Image("image Checkbox")
+    static let ICON_CHECK_CHECKED = Image("image Checkbox Checked")
 
     @Environment(\.isEnabled) private var isEnabled
 
+    private let size: CGFloat = 15
     private let selected: Binding<Set<Int>>
     private let index: Int
     private let color: Color
@@ -235,8 +236,10 @@ struct DomainRuleWildcardPanel_Checkbox: View {
             let icon = self.selected.wrappedValue.contains(index) ?
                 Self.ICON_CHECK_CHECKED :
                 Self.ICON_CHECK
-            icon.foregroundPolyfill(self.color)
-                .font(.system(size: 16))
+            icon.resizable()
+                .foregroundPolyfill(self.color)
+                .frame(width: self.size, height: self.size)
+                .padding(1)
         }
         .buttonStyle(.plain)
         .disabled(!self.isEnabled)

@@ -8,10 +8,10 @@ import SwiftUI
 
 struct MainScene: View {
 
-    static let ICON_CELL_MATCH_TYPE_EXACT           = Image("icon Cell Match type Exact")
-    static let ICON_CELL_MATCH_TYPE_EXACT_SCRIPT    = Image("icon Cell Match type Exact Script")
-    static let ICON_CELL_MATCH_TYPE_WILDCARD        = Image("icon Cell Match type Wildcard")
-    static let ICON_CELL_MATCH_TYPE_WILDCARD_SCRIPT = Image("icon Cell Match type Wildcard Script")
+    static let ICON_CELL_MATCH_TYPE_EXACT           = Image("image Icon Cell Match type Exact")
+    static let ICON_CELL_MATCH_TYPE_EXACT_SCRIPT    = Image("image Icon Cell Match type Exact Script")
+    static let ICON_CELL_MATCH_TYPE_WILDCARD        = Image("image Icon Cell Match type Wildcard")
+    static let ICON_CELL_MATCH_TYPE_WILDCARD_SCRIPT = Image("image Icon Cell Match type Wildcard Script")
 
     @Environment(\.openURL) var openURL
 

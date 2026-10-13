@@ -7,6 +7,7 @@ import SwiftUI
 
 struct ScriptsPanel: View {
 
+    static let ICON = Image("image Icon Scripts")
     static let FRAME_WIDTH: CGFloat = 500
 
     @StateObject private var popupState = PopupState.shared
@@ -71,9 +72,10 @@ struct ScriptsPanel: View {
                 }
             }.frame(maxWidth: .infinity)
         } else {
-            Text(NSLocalizedString("no strips", comment: ""))
+            Text(NSLocalizedString("no scripts", comment: ""))
                 .font(.system(size: 16, weight: .light))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .opacity(0.3)
                 .overlayPolyfill(alignment: .topTrailing) {
                     ButtonRefresh(
                         onClick: self.popupState.jsGetScripts

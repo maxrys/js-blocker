@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ButtonRefresh: View {
 
-    static let ICON = Image("symbol Icon Refresh")
+    static let ICON = Image("image Icon Refresh")
 
     @Environment(\.colorScheme) private var colorScheme
     @State private var isAnimated = false
@@ -19,7 +19,7 @@ struct ButtonRefresh: View {
 
     init(
         speed: Double = 500,
-        size: CGFloat = 20,
+        size: CGFloat = 34,
         onClick: @escaping () -> Void
     ) {
         self.speed = speed
@@ -49,8 +49,8 @@ struct ButtonRefresh: View {
                     .frame(width: self.size, height: self.size)
                     .foregroundPolyfill(
                         self.colorScheme == .dark ?
-                            Color.white.opacity(0.2) :
-                            Color.black.opacity(0.1)
+                            Color.white.opacity(0.05) :
+                            Color.black.opacity(0.05)
                     )
                     .clipShape   (shape)
                     .contentShape(shape)

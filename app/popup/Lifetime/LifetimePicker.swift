@@ -7,6 +7,8 @@ import SwiftUI
 
 struct LifetimePicker: View {
 
+    static let ICON_OPENER = Image("image Icon Timer")
+
     static let LIFETIME_PERIODS: [TimeInterval: String] = [
         .PERIOD_1_MINUTE : NSLocalizedString("1 minute" , comment: ""),
         .PERIOD_5_MINUTES: NSLocalizedString("5 minutes", comment: ""),
@@ -29,26 +31,30 @@ struct LifetimePicker: View {
     }
 
     public var body: some View {
+        self.OpenerView()
+            .overlayPolyfill(alignment: .bottom) {
+                self.HintView()
+                    .padding(.horizontal, -20)
+                    .offset(y: 20)
+            }
+            .popover(
+                isPresented: self.isEnabled ? self.$isOpened : .constant(false),
+                arrowEdge: .bottom
+            ) {
+                self.PopupView()
+            }
+    }
+
+    @ViewBuilder private func OpenerView() -> some View {
         ButtonRectangle(
             isActive: self.isActive,
-            icon: Image("symbol Icon Timer"),
-            iconSize: 26,
-            iconOffset: CGPoint(x: 0, y: -1),
+            icon: Self.ICON_OPENER,
+            iconSize: 30,
+            iconOffset: CGPoint(x: 0, y: 0.5),
             onClick: {
                 self.isOpened.toggle()
             }
         )
-        .overlayPolyfill(alignment: .bottom) {
-            self.HintView()
-                .padding(.horizontal, -20)
-                .offset(y: 20)
-        }
-        .popover(
-            isPresented: self.isEnabled ? self.$isOpened : .constant(false),
-            arrowEdge: .bottom
-        ) {
-            self.PopupView()
-        }
     }
 
     @ViewBuilder private func HintView() -> some View {

@@ -120,8 +120,8 @@ struct DomainRuleExactPanel: View {
 
                 ButtonRectangle(
                     isActive: self.popupState.match?.isSomeScript == true,
-                    icon: Image("symbol Icon Scripts"),
-                    iconSize: 24,
+                    icon: ScriptsPanel.ICON,
+                    iconSize: 30,
                     onClick: {
                         if case .noOne       = self.popupState.match { Task { @MainActor in withAnimation(.linear(duration: 0.1)) { self.popupState.match = .noOneScript }} }
                         if case .noOneScript = self.popupState.match { Task { @MainActor in withAnimation(.linear(duration: 0.1)) { self.popupState.match = .noOne }} }

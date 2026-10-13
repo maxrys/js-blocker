@@ -56,7 +56,8 @@ struct ButtonRectangle: View {
                 .frame(width: 36, height: 36)
                 .overlayPolyfill {
                     self.icon
-                        .font(.system(size: self.iconSize))
+                        .resizable()
+                        .frame(width: self.iconSize, height: self.iconSize)
                         .offset(
                             x: self.iconOffset.x,
                             y: self.iconOffset.y
