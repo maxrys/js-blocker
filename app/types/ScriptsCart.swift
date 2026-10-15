@@ -8,25 +8,24 @@ enum ScriptsCart {
     static let DOMAIN_NAME = "-->scripts_cart_domain<--"
 
     static func getIsOn(_ frameDomain: DomainName, _ script: URLString) -> Bool {
-        PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME, frameDomain, script, default: false]
+        PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME, frameDomain]?.contains(script) ?? false
     }
 
     static func setIsOn(_ frameDomain: DomainName, _ script: URLString, _ value: Bool) {
-        PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME, frameDomain, script] = value
+        if (value == true) { PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME, frameDomain, default: []].insert(script) }
+        if (value != true) { PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME, frameDomain, default: []].remove(script) }
     }
 
     static func saveIsOnToStorage(for domain: DomainName) {
         if case .success = (AllowedScripts.delete(domain: domain)) {
             if let scriptsByFrames = PopupState.shared.scriptsIsOn[Self.DOMAIN_NAME] {
                 for (frameDomain, scripts) in scriptsByFrames {
-                    for (script, isOn) in scripts {
-                        if (isOn) {
-                            _ = AllowedScripts.insert(
-                                domain: domain,
-                                frameDomain: frameDomain,
-                                url: script
-                            )
-                        }
+                    for script in scripts {
+                        _ = AllowedScripts.insert(
+                            domain: domain,
+                            frameDomain: frameDomain,
+                            url: script
+                        )
                     }
                 }
             }

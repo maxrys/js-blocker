@@ -14,10 +14,11 @@ struct ButtonCustom: View {
     private let icon: Image?
     private let colorStyle: Color.ButtonCustomStyle
     private let fixedColorScheme: ColorScheme?
-    private let isFlat: Bool
     private let font: Font
     private let padding: EdgeInsets
     private let flexibility: Flexibility
+    private let isTextTrimming: Bool
+    private let isFlat: Bool
     private let onClick: () -> Void
 
     init(
@@ -28,6 +29,7 @@ struct ButtonCustom: View {
         font: Font = .system(size: 12.5, weight: .regular),
         padding: EdgeInsets = .init(top: 6, leading: 12, bottom: 6, trailing: 12),
         flexibility: Flexibility = .none,
+        isTextTrimming: Bool = true,
         isFlat: Bool = false,
         onClick: @escaping () -> Void = { }
     ) {
@@ -35,10 +37,11 @@ struct ButtonCustom: View {
         self.icon = icon
         self.colorStyle = colorStyle
         self.fixedColorScheme = fixedColorScheme
-        self.isFlat = isFlat
         self.font = font
         self.padding = padding
         self.flexibility = flexibility
+        self.isTextTrimming = isTextTrimming
+        self.isFlat = isFlat
         self.onClick = onClick
     }
 
@@ -83,6 +86,7 @@ struct ButtonCustom: View {
         if let text = self.text {
             Text(text)
                 .lineLimit(1)
+                .fixedSize(horizontal: !self.isTextTrimming, vertical: false)
                 .font(self.font)
         }
     }
@@ -102,6 +106,7 @@ struct ButtonCustom: View {
 /* ############################################################# */
 
 struct ButtonCustom_Previews: PreviewProvider {
+    static let LONG_TEXT = "long long long long long long long long long long long long long long text"
     static public var previews: some View {
         VStack(spacing: 20) {
 
@@ -111,6 +116,8 @@ struct ButtonCustom_Previews: PreviewProvider {
                 ButtonCustom(flexibility: .none)
                 ButtonCustom(flexibility: .size(100))
                 ButtonCustom(flexibility: .infinity)
+                ButtonCustom(Self.LONG_TEXT)
+                ButtonCustom(Self.LONG_TEXT, isTextTrimming: false)
             }
 
             VStack {

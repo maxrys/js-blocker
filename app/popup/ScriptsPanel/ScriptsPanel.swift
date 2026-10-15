@@ -87,7 +87,7 @@ struct ScriptsPanel: View {
         frameScripts: [URLString]
     ) -> some View {
         VStack(spacing: 0) {
-            if let domain = self.popupState.domain {
+            if let domain = self.popupState.domain, let match = self.popupState.match {
 
                 if (domain != frameDomain) {
                     HStack(spacing: 10) {
@@ -135,7 +135,7 @@ struct ScriptsPanel: View {
                     bodyAsArray: frameScriptsSorted.flatMap { script in [
                         AnyView(self.FrameScripts_CellURLView(value: script)),
                         AnyView(self.FrameScripts_CellToggleView(
-                            domain,
+                            match,
                             frameDomain,
                             script
                         ))
@@ -157,44 +157,30 @@ struct ScriptsPanel: View {
         }
     }
 
-    @ViewBuilder private func FrameScripts_CellToggleView(_ domain: DomainName, _ frameDomain: DomainName, _ script: URLString) -> some View {
+    @ViewBuilder private func FrameScripts_CellToggleView(_ match: MatchType, _ frameDomain: DomainName, _ script: URLString) -> some View {
         ToggleCustom(
             isOn: Binding<Bool>(
-                get: {             self.isOnGet(domain, frameDomain, script) },
-                set: { newValue in self.isOnSet(domain, frameDomain, script, newValue) } ),
+                get: {             self.isOnGet(match, frameDomain, script) },
+                set: { newValue in self.isOnSet(match, frameDomain, script, newValue) } ),
             size: CGSize(width: 30, height: 12),
         ).padding(.top, 2)
     }
 
-    private func isOnGet(_ domain: DomainName, _ frameDomain: DomainName, _ script: URLString) -> Bool {
-        if let match = popupState.match {
-            switch match {
-                case .noOneScript                : return ScriptsCart   .getIsOn(                frameDomain, script)
-                case .exactScript                : return ScriptsManager.getIsOn(for: domain   , frameDomain, script)
-                case .wildcardScript(let item, _): return ScriptsManager.getIsOn(for: item.name, frameDomain, script)
-                default: break
-            }
+    private func isOnGet(_ match: MatchType, _ frameDomain: DomainName, _ script: URLString) -> Bool {
+        switch match {
+            case .noOneScript                : return ScriptsCart   .getIsOn(                frameDomain, script)
+            case .exactScript   (let item, _): return ScriptsManager.getIsOn(for: item.name, frameDomain, script)
+            case .wildcardScript(let item, _): return ScriptsManager.getIsOn(for: item.name, frameDomain, script)
+            default                          : return false
         }
-        return false
     }
 
-    private func isOnSet(_ domain: DomainName, _ frameDomain: DomainName, _ script: URLString, _ newValue: Bool) {
-        if let match = popupState.match {
-            switch match {
-                case .noOneScript: ScriptsCart   .setIsOn(             frameDomain, script, newValue)
-                case .exactScript: ScriptsManager.setIsOn(for: domain, frameDomain, script, newValue)
-                case .wildcardScript:
-                    let name = AllowedDomains.selectDomainAndTopDomains(domain, types: [
-                        MATCH_TYPE_STRING_WILDCARD_SCRIPT
-                    ]).first?.name ?? domain
-                    ScriptsManager.setIsOn(
-                        for: name,
-                        frameDomain,
-                        script,
-                        newValue
-                    )
-                default: break
-            }
+    private func isOnSet(_ match: MatchType, _ frameDomain: DomainName, _ script: URLString, _ newValue: Bool) {
+        switch match {
+            case .noOneScript                : ScriptsCart   .setIsOn(                frameDomain, script, newValue)
+            case .exactScript   (let item, _): ScriptsManager.setIsOn(for: item.name, frameDomain, script, newValue)
+            case .wildcardScript(let item, _): ScriptsManager.setIsOn(for: item.name, frameDomain, script, newValue)
+            default: break
         }
     }
 
@@ -228,10 +214,10 @@ enum ScriptsPanel_PreviewContentGenerator {
         "https://x.com/script.js",
     ]
 
-    static let scriptsIsOn: Matrix3dBool = {
-        var result = Matrix3dBool()
-            result["js-blocker.com", "ё.com", "https://b.com/script.js"] = true
-            result["js-blocker.com", "ё.com", "https://c.com/script.js"] = true
+    static let scriptsIsOn: Matrix2dSetOfStr = {
+        var result = Matrix2dSetOfStr()
+        result["js-blocker.com", "ё.com", default: []].insert("https://b.com/script.js")
+        result["js-blocker.com", "ё.com", default: []].insert("https://c.com/script.js")
         return result
     }()
 
@@ -260,7 +246,7 @@ struct ScriptsPanel_Previews: PreviewProvider {
 
     struct ViewWithState: View {
 
-        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+        @ObservedObject static private var match = ValueState<UInt>(0, onChangeBefore: { value in
             PopupState.shared.match = .noOneScript
             PopupState.shared.domain = DEMO_TOPDOMAIN
             PopupState.shared.ruleExact = DEMO_RULE__TOPDOMAIN
@@ -269,7 +255,7 @@ struct ScriptsPanel_Previews: PreviewProvider {
             if      (value == 0) { PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts(count: 0) }
             else if (value == 1) { PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts0Plus() }
             else                 { PopupState.shared.scripts = ScriptsPanel_PreviewContentGenerator.generateScripts(count: Int(value) - 1) }
-        }
+        })
 
         var body: some View {
             VStack(spacing: 0) {

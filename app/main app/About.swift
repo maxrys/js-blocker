@@ -27,7 +27,8 @@ struct About: View {
                 )
         }
         .windowChamelionBackground(
-            windowID: ThisApp.WINDOW_ABOUT_ID
+            windowID: ThisApp.WINDOW_ABOUT_ID,
+            isIgnoreSafeArea: false
         )
     }
 
@@ -81,6 +82,7 @@ struct About: View {
                     font: .system(size: 14, weight: .regular),
                     padding: .init(top: 3, leading: 20, bottom: 5, trailing: 20),
                     flexibility: .none,
+                    isTextTrimming: false,
                     isFlat: false,
                     onClick: {
                         if let url = URL(string: pageSupport) {
@@ -112,7 +114,7 @@ struct About: View {
     @ViewBuilder private func ButtonOpenURLView(_ value: String) -> some View {
         Group {
             if let url = URL(string: value) {
-                Button { openURL(url) } label: {
+                Button { self.openURL(url) } label: {
                     Text(value)
                         .underline()
                         .foregroundPolyfill(Color.NS[\.linkColor])

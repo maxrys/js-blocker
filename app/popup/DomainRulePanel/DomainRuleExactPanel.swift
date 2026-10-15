@@ -182,7 +182,7 @@ struct DomainRuleExactPanel_Previews: PreviewProvider {
 
     struct ViewWithState: View {
 
-        @ObservedObject static private var match = ValueState<UInt>(0) { value in
+        @ObservedObject static private var match = ValueState<UInt>(0, onChangeBefore: { value in
             switch value {
                 case 0:
                     PopupState.shared.match = nil
@@ -206,7 +206,7 @@ struct DomainRuleExactPanel_Previews: PreviewProvider {
                     PopupState.shared.rulesWildcard = DEMO_RULES__TOPDOMAIN
                 default: break
             }
-        }
+        })
 
         var body: some View {
             VStack(spacing: 0) {

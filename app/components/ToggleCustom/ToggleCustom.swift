@@ -102,7 +102,7 @@ fileprivate struct ToggleCustom_Switcher: View {
                             color: .black.opacity(0.5),
                             radius: 2.0
                         )
-                }.focusEffect(Capsule())
+                }
         }
         .buttonStyle(.plain)
         .pointerStyleLinkPolyfill()

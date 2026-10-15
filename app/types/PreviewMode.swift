@@ -111,32 +111,32 @@ struct PreviewMode_Previews: PreviewProvider {
             }
         }
 
-        @ObservedObject static private var previewModeX = ValueState<UInt>(0) { value in
+        @ObservedObject static private var previewModeX = ValueState<UInt>(0, onChangeBefore: { value in
             switch value {
                 case 0: DemoState.shared.x = DEMO_VALUE_X_0
                 case 1: DemoState.shared.x = DEMO_VALUE_X_1
                 case 2: DemoState.shared.x = DEMO_VALUE_X_2
                 default: break
             }
-        }
+        })
 
-        @ObservedObject static private var previewModeY = ValueState<UInt>(0) { value in
+        @ObservedObject static private var previewModeY = ValueState<UInt>(0, onChangeBefore: { value in
             switch value {
                 case 0: DemoState.shared.y = DEMO_VALUE_Y_0
                 case 1: DemoState.shared.y = DEMO_VALUE_Y_1
                 case 2: DemoState.shared.y = DEMO_VALUE_Y_2
                 default: break
             }
-        }
+        })
 
-        @ObservedObject static private var previewModeZ = ValueState<UInt>(0) { value in
+        @ObservedObject static private var previewModeZ = ValueState<UInt>(0, onChangeBefore: { value in
             switch value {
                 case 0: DemoState.shared.z = DEMO_VALUE_Z_0
                 case 1: DemoState.shared.z = DEMO_VALUE_Z_1
                 case 2: DemoState.shared.z = DEMO_VALUE_Z_2
                 default: break
             }
-        }
+        })
 
         var body: some View {
             VStack(spacing: 0) {

@@ -7,8 +7,8 @@ import Foundation
 
 typealias CurrentDomainName = DomainName
 typealias FrameDomainName   = DomainName
-typealias Matrix2dArrOfStr  = Dictionary<String, [String]>.Matrix2D
-typealias Matrix3dBool      = Dictionary<String, Bool>.Matrix3D
+typealias Matrix2dArrOfStr  = Dictionary<String,    [String]>.Matrix2D
+typealias Matrix2dSetOfStr  = Dictionary<String, Set<String>>.Matrix2D
 
 let NOT_APPLICABLE       = "—"
 let APP_ID               = "JSBlocker"

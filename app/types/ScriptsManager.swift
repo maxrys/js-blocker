@@ -21,8 +21,8 @@ enum ScriptsManager {
             PopupState.shared.scriptsIsOn[
                 script.domain,
                 script.frameDomain,
-                script.url
-            ] = true
+                default: []
+            ].insert(script.url)
         }
     }
 
@@ -31,16 +31,12 @@ enum ScriptsManager {
     }
 
     static func getIsOn(for domain: DomainName, _ frameDomain: DomainName, _ script: URLString) -> Bool {
-        PopupState.shared.scriptsIsOn[domain, frameDomain, script, default: false]
+        PopupState.shared.scriptsIsOn[domain, frameDomain]?.contains(script) ?? false
     }
 
     static func setIsOn(for domain: DomainName, _ frameDomain: DomainName, _ script: URLString, _ value: Bool) {
-        var result: ExecuteResult = .failure
-        if (value == true) { result = AllowedScripts.insert(domain: domain, frameDomain: frameDomain, url: script) }
-        if (value != true) { result = AllowedScripts.delete(domain: domain, frameDomain: frameDomain, url: script) }
-        if case .success = result {
-            PopupState.shared.scriptsIsOn[domain, frameDomain, script] = value
-        }
+        if (value == true) { if case .success = AllowedScripts.insert(domain: domain, frameDomain: frameDomain, url: script) { PopupState.shared.scriptsIsOn[domain, frameDomain, default: []].insert(script) }}
+        if (value != true) { if case .success = AllowedScripts.delete(domain: domain, frameDomain: frameDomain, url: script) { PopupState.shared.scriptsIsOn[domain, frameDomain, default: []].remove(script) }}
     }
 
 }

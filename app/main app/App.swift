@@ -9,7 +9,9 @@ final class ThisAppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         UserDefaultsState.isAppLaunchedOnce_direct = true
-        Migrations.migration_001()
+        if (Migrations.migration_001()) {
+            MainAppState.shared.itemsReload()
+        }
     }
 
     func applicationShouldHandleReopen(_ app: NSApplication, hasVisibleWindows flag: Bool) -> Bool {

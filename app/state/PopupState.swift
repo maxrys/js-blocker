@@ -25,13 +25,8 @@ final class PopupState: ObservableObject {
     @Published var lifetime: TimeInterval? = nil
     @Published var expireStatus: ExpireStatus = .notSetted
 
-    @Published var scripts = Matrix2dArrOfStr() /* [CurrentDomainName: [FrameDomainName: [URLString]]] */
-    @Published var scriptsIsOn = Matrix3dBool() /* [CurrentDomainName: [FrameDomainName: [URLString: Bool]]] */
-        { didSet {
-            if scriptsIsOn != oldValue {
-                /* self.jsSetMatch() */
-            }
-        }}
+    @Published var scripts     = Matrix2dArrOfStr() /* [CurrentDomainName: [FrameDomainName:    [URLString]]] */
+    @Published var scriptsIsOn = Matrix2dSetOfStr() /* [CurrentDomainName: [FrameDomainName: Set<URLString>]] */
 
     private var timer: Timer.Custom!
 
@@ -63,10 +58,14 @@ final class PopupState: ObservableObject {
             result.append("*." + domain.decodePunycode())
         }
         self.jsGetScripts()
-        ScriptsCart.resetIsOn()
-        ScriptsManager.loadIsOn(
-            for: domain
-        )
+        if let match = self.match {
+            switch match {
+                case .noOneScript                : ScriptsCart   .resetIsOn()
+                case .exactScript   (let item, _): ScriptsManager.resetIsOn(for: item.name); ScriptsManager.loadIsOn(for: item.name)
+                case .wildcardScript(let item, _): ScriptsManager.resetIsOn(for: item.name); ScriptsManager.loadIsOn(for: item.name)
+                default: break
+            }
+        }
     }
 
     public func onChangeMatch() {

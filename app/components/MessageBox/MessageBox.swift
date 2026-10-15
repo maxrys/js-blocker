@@ -134,7 +134,6 @@ struct MessageInfo: Equatable, Codable {
 
 fileprivate struct Message: View {
 
-    @State private var progress: Double = 0.0
     @State private var isHoverOnTitle = false
     @State private var timer: Timer.Custom?
 
@@ -156,15 +155,6 @@ fileprivate struct Message: View {
         }
     }
 
-    private var colorProgressBackground: Color {
-        switch self.info.type {
-            case .info   : Color.messageBox.infoProgressBackground
-            case .ok     : Color.messageBox.okProgressBackground
-            case .warning: Color.messageBox.warningProgressBackground
-            case .error  : Color.messageBox.errorProgressBackground
-        }
-    }
-
     public let address: MessageBoxAddress
     public let info: MessageInfo
 
@@ -173,17 +163,16 @@ fileprivate struct Message: View {
             self.TitleView()
             self.DescriptionView()
         }.overlayPolyfill(alignment: .bottomLeading) {
-            if !self.info.isPersistent {
-                self.ProgressView()
+            if case .time(let duration) = self.info.lifetime {
+                MessageProgress(
+                    type: self.info.type,
+                    duration: duration
+                )
             }
         }
         .onAppear {
             if case .time(let duration) = self.info.lifetime {
-                self.progress = 0.0
                 self.timer = Timer.Custom(repeats: .count(1), delay: duration, onExpire: self.onTimerExpire)
-                withAnimation(.linear(duration: duration)) {
-                    self.progress = 1.0
-                }
             }
         }
         .onDisappear {
@@ -193,7 +182,6 @@ fileprivate struct Message: View {
     }
 
     private func onTimerExpire(timer: Timer.Custom) {
-        self.progress = 1.0
         self.timer?.stopAndReset()
         self.timer = nil
         MessageBox.delete(
@@ -235,15 +223,6 @@ fileprivate struct Message: View {
         }
     }
 
-    @ViewBuilder private func ProgressView() -> some View {
-        GeometryReaderPolyfill(type: .outside(axes: .horizontal, alignment: .bottomLeading)) { size in
-            Rectangle()
-                .fill(self.colorProgressBackground)
-                .frame(maxWidth: size.width * self.progress)
-                .frame(height: 3)
-        }
-    }
-
     @ViewBuilder private func ButtonCloseView() -> some View {
         Button {
             MessageBox.delete(
@@ -272,6 +251,41 @@ fileprivate struct Message: View {
             radius: 3,
             y: 0
         )
+    }
+
+}
+
+fileprivate struct MessageProgress: View {
+
+    @State private var progress: Double = 0.0
+    @State private var didStart = false
+
+    public let type: MessageType
+    public let duration: Double
+
+    private var colorProgressBackground: Color {
+        switch self.type {
+            case .info   : Color.messageBox.infoProgressBackground
+            case .ok     : Color.messageBox.okProgressBackground
+            case .warning: Color.messageBox.warningProgressBackground
+            case .error  : Color.messageBox.errorProgressBackground
+        }
+    }
+
+    public var body: some View {
+        GeometryReaderPolyfill(type: .outside(axes: .horizontal, alignment: .bottomLeading)) { size in
+            Rectangle()
+                .fill(self.colorProgressBackground)
+                .frame(maxWidth: size.width * self.progress)
+                .frame(height: 3)
+                .onChange(of: size.width) { width in
+                    guard width > 0, !self.didStart else { return }
+                    self.didStart = true
+                    withAnimation(.linear(duration: duration)) {
+                        self.progress = 1
+                    }
+                }
+        }
     }
 
 }

@@ -15,7 +15,11 @@ class ExtensionHandler: SFSafariExtensionHandler {
 
     override init() {
         super.init()
-        Migrations.migration_001()
+        if (Migrations.migration_001()) {
+            Task { @MainActor in
+                PopupState.shared.onChangeMatch()
+            }
+        }
     }
 
     override func beginRequest(with context: NSExtensionContext) {

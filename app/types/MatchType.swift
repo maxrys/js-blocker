@@ -40,6 +40,11 @@ enum MatchType {
         self.isWildcardScript
     }
 
+    public var isSomeStoredScript: Bool {
+        self.isExactScript ||
+        self.isWildcardScript
+    }
+
     public var item: ADFetchItem? {
         switch self {
             case .exact         (let item   ): return item

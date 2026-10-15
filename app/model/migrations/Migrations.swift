@@ -9,7 +9,7 @@ import CoreData
 
 public class Migrations {
 
-    static func migration_001() {
+    static func migration_001() -> Bool {
         if case .failure = Migration_001.selectIsCompleted() {
             if (AllowedDomains.selectCount() == 0 && WhiteDomains.selectCount() > 0) {
                 for source in WhiteDomains.selectAll() {
@@ -25,7 +25,9 @@ public class Migrations {
                 }
             }
             _ = Migration_001.insertIsCompleted()
+            return true
         }
+        return false
     }
 
 }

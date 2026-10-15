@@ -132,7 +132,9 @@ class ViewController: SFSafariExtensionViewController {
                         }
                     }
                 }
-                ScriptsCart.resetIsOn()
+                if (match.isNoOneScript) {
+                    ScriptsCart.resetIsOn()
+                }
 
                 /* message */
                 if (success.count > 0) {
@@ -166,69 +168,22 @@ class ViewController: SFSafariExtensionViewController {
     }
 
     func onClick_ruleDelete() {
-        if let domain = PopupState.shared.domain, let match = PopupState.shared.match {
+        if let match = PopupState.shared.match, let item = match.item {
 
-            if (match.isExact || match.isExactScript) {
-
-                let name = domain
-
-                switch AllowedDomains.delete([name]) {
-                    case .success:
-                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
-                            ID: Popup.messageIDForCurrentOperation,
-                            type: .ok,
-                            title: NSLocalizedString("Exact rule for the following domain was removed:", comment: ""),
-                            description: name.decodePunycode()
-                        ))
-                        if (match.isExactScript) {
-                            ScriptsManager.reset    (for: name)
-                            ScriptsManager.resetIsOn(for: name)
-                        }
-                        Task { @MainActor in
-                            PopupState.shared.onChangeMatch()
-                        }
-                    case .failure:
-                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
-                            ID: Popup.messageIDForCurrentOperation,
-                            type: .error,
-                            title: NSLocalizedString("Exact rule for the following domain was not removed:", comment: ""),
-                            description: name.decodePunycode()
-                        ))
-                }
-
-            }
-
-            if (match.isWildcard || match.isWildcardScript) {
-
-                let name = AllowedDomains.selectDomainAndTopDomains(domain, types: [
-                    MATCH_TYPE_STRING_WILDCARD,
-                    MATCH_TYPE_STRING_WILDCARD_SCRIPT
-                ]).first?.name ?? domain
-
-                switch AllowedDomains.delete([name]) {
-                    case .success:
-                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
-                            ID: Popup.messageIDForCurrentOperation,
-                            type: .ok,
-                            title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""),
-                            description: name.decodePunycode()
-                        ))
-                        if (match.isWildcardScript) {
-                            ScriptsManager.reset    (for: name)
-                            ScriptsManager.resetIsOn(for: name)
-                        }
-                        Task { @MainActor in
-                            PopupState.shared.onChangeMatch()
-                        }
-                    case .failure:
-                        MessageBox.insert(address: Popup.messageBoxAddress, .init(
-                            ID: Popup.messageIDForCurrentOperation,
-                            type: .error,
-                            title: NSLocalizedString("Wildcard rule for the following domain was not removed:", comment: ""),
-                            description: name.decodePunycode()
-                        ))
-                }
-
+            switch AllowedDomains.delete([item.name]) {
+                case .success:
+                    if (match.isExact    || match.isExactScript   ) { MessageBox.insert(address: Popup.messageBoxAddress, .init(ID: Popup.messageIDForCurrentOperation, type: .ok, title: NSLocalizedString(   "Exact rule for the following domain was removed:", comment: ""), description: item.nameDecoded)) }
+                    if (match.isWildcard || match.isWildcardScript) { MessageBox.insert(address: Popup.messageBoxAddress, .init(ID: Popup.messageIDForCurrentOperation, type: .ok, title: NSLocalizedString("Wildcard rule for the following domain was removed:", comment: ""), description: item.nameDecoded)) }
+                    if (match.isSomeStoredScript) {
+                        ScriptsManager.reset    (for: item.name)
+                        ScriptsManager.resetIsOn(for: item.name)
+                    }
+                    Task { @MainActor in
+                        PopupState.shared.onChangeMatch()
+                    }
+                case .failure:
+                    if (match.isExact    || match.isExactScript   ) { MessageBox.insert(address: Popup.messageBoxAddress, .init(ID: Popup.messageIDForCurrentOperation, type: .error, title: NSLocalizedString(   "Exact rule for the following domain was not removed:", comment: ""), description: item.nameDecoded)) }
+                    if (match.isWildcard || match.isWildcardScript) { MessageBox.insert(address: Popup.messageBoxAddress, .init(ID: Popup.messageIDForCurrentOperation, type: .error, title: NSLocalizedString("Wildcard rule for the following domain was not removed:", comment: ""), description: item.nameDecoded)) }
             }
 
             Logger.customLog("onClick_ruleDelete()")
