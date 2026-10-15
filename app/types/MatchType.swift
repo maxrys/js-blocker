@@ -20,12 +20,12 @@ enum MatchType {
     case noOne
     case noOneScript
 
-    public var isExact         : Bool { if case .exact          = self { true } else { false } }
-    public var isExactScript   : Bool { if case .exactScript    = self { true } else { false } }
-    public var isWildcard      : Bool { if case .wildcard       = self { true } else { false } }
-    public var isWildcardScript: Bool { if case .wildcardScript = self { true } else { false } }
-    public var isNoOne         : Bool { if case .noOne          = self { true } else { false } }
-    public var isNoOneScript   : Bool { if case .noOneScript    = self { true } else { false } }
+    public var isExact         : Bool { if case .exact          = self { return true } else { return false } }
+    public var isExactScript   : Bool { if case .exactScript    = self { return true } else { return false } }
+    public var isWildcard      : Bool { if case .wildcard       = self { return true } else { return false } }
+    public var isWildcardScript: Bool { if case .wildcardScript = self { return true } else { return false } }
+    public var isNoOne         : Bool { if case .noOne          = self { return true } else { return false } }
+    public var isNoOneScript   : Bool { if case .noOneScript    = self { return true } else { return false } }
 
     public var isSome: Bool {
         self.isExact       ||

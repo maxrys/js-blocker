@@ -108,7 +108,7 @@ final class Features {
                                 ExportImportItemV3(
                                     name     : item.name,
                                     type     : item.type,
-                                    expiresAt: item.expiresAt,
+                                    expiresAt: item.expiresAt
                                 )
                             )
                         case MATCH_TYPE_STRING_EXACT_SCRIPT, MATCH_TYPE_STRING_WILDCARD_SCRIPT:
@@ -241,9 +241,9 @@ final class Features {
                 }
             }
 
-            if      let importStruct = ExportImportItems<ExportImportItemV3>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
-            else if let importStruct = ExportImportItems<ExportImportItemV2>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
-            else if let importStruct = ExportImportItems<ExportImportItemV1>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version, default: NOT_APPLICABLE)"); for item in importStruct.items { itemImporter(item) }}
+            if      let importStruct = ExportImportItems<ExportImportItemV3>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version.ifNil(defaultValue: NOT_APPLICABLE, { value in String(value) }))"); for item in importStruct.items { itemImporter(item) }}
+            else if let importStruct = ExportImportItems<ExportImportItemV2>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version.ifNil(defaultValue: NOT_APPLICABLE, { value in String(value) }))"); for item in importStruct.items { itemImporter(item) }}
+            else if let importStruct = ExportImportItems<ExportImportItemV1>(decode: JSONString) { Logger.customLog("Import start: version = \(importStruct.version.ifNil(defaultValue: NOT_APPLICABLE, { value in String(value) }))"); for item in importStruct.items { itemImporter(item) }}
             else {
                 MessageBox.insert(address: ThisApp.messageBoxAddress, .init(
                     ID: ThisApp.messageIDForCurrentOperation,

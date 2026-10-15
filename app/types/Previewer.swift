@@ -28,11 +28,11 @@ struct Previewer<Content: View>: View {
         HVStack(axis: self.axis, spacing: 0) {
             VStack(spacing: self.spacing) { self.content() }
                 .padding(self.padding)
-                .background(Color.NS[\.windowBackgroundColor])
+                .background(Color.NS[.windowBackgroundColor])
                 .environment(\.colorScheme, .light)
             VStack(spacing: self.spacing) { self.content() }
                 .padding(self.padding)
-                .background(Color.NS[\.windowBackgroundColor])
+                .background(Color.NS[.windowBackgroundColor])
                 .environment(\.colorScheme, .dark)
         }
     }
@@ -45,10 +45,14 @@ struct Previewer<Content: View>: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-#Preview {
-    Previewer(axis: .vertical, spacing: 5, padding: 20) {
-        Text("Previewer element 1")
-        Text("Previewer element 2")
-        Text("Previewer element 3")
+struct Previewer_Previews: PreviewProvider {
+
+    static var previews: some View {
+        Previewer(axis: .vertical, spacing: 5, padding: 20) {
+            Text("Previewer element 1")
+            Text("Previewer element 2")
+            Text("Previewer element 3")
+        }
     }
+
 }

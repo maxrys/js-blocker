@@ -135,7 +135,7 @@ struct ButtonCustom_Previews: PreviewProvider {
                 ButtonCustom(colorStyle: .custom(text: .white, background: .orange))
             }.background(
                 Rectangle()
-                    .fill(Color.NS[\.windowBackgroundColor])
+                    .fill(Color.NS[.windowBackgroundColor])
                     .shadow(radius: 5)
             )
 

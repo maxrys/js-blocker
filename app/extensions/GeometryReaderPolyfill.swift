@@ -37,7 +37,7 @@ struct GeometryReaderPolyfill<Content: View>: View {
     init(
         type: GeometryReaderType,
         size binding: Binding<CGSize> = .constant(.zero),
-        @ViewBuilder content: @escaping (CGSize) -> Content,
+        @ViewBuilder content: @escaping (CGSize) -> Content
     ) {
         self.type = type
         self._sizeBinding = binding

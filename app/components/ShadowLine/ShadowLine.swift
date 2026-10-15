@@ -8,10 +8,10 @@ import SwiftUI
 struct ShadowLine: View {
 
     enum Angle {
-        case   `0_degrees`
-        case  `90_degrees`
-        case `180_degrees`
-        case `270_degrees`
+        case degrees_0
+        case degrees_90
+        case degrees_180
+        case degrees_270
     }
 
     @Environment(\.colorScheme) internal var colorScheme
@@ -23,7 +23,7 @@ struct ShadowLine: View {
 
     init(
         length: CGFloat = 5,
-        angle: Angle = .`0_degrees`,
+        angle: Angle = .degrees_0,
         opacity: Double = 0.2,
         opacityDark: Double = 0.9
     ) {
@@ -35,18 +35,20 @@ struct ShadowLine: View {
 
     public var body: some View {
         Rectangle()
-            .fill({
-                switch self.angle {
-                    case   .`0_degrees`: LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .top     , endPoint: .bottom)
-                    case .`180_degrees`: LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .bottom  , endPoint: .top)
-                    case  .`90_degrees`: LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .trailing, endPoint: .leading)
-                    case .`270_degrees`: LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .leading , endPoint: .trailing)
-                }
-            }())
+            .fill(self.Gradient())
             .frame(
-                maxWidth : self.angle ==  .`0_degrees` || self.angle == .`180_degrees` ? .infinity : self.length,
-                maxHeight: self.angle == .`90_degrees` || self.angle == .`270_degrees` ? .infinity : self.length
+                maxWidth : self.angle == .degrees_0  || self.angle == .degrees_180 ? .infinity : self.length,
+                maxHeight: self.angle == .degrees_90 || self.angle == .degrees_270 ? .infinity : self.length
             )
+    }
+    
+    private func Gradient() -> LinearGradient {
+        switch self.angle {
+            case .degrees_0  : return LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .top     , endPoint: .bottom)
+            case .degrees_180: return LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .bottom  , endPoint: .top)
+            case .degrees_90 : return LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .trailing, endPoint: .leading)
+            case .degrees_270: return LinearGradient(colors: [self.colorScheme == .dark ? .black.opacity(self.opacityDark) : .black.opacity(self.opacity), Color.clear], startPoint: .leading , endPoint: .trailing)
+        }
     }
 
 }
@@ -57,56 +59,59 @@ struct ShadowLine: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-#Preview {
-    Previewer(spacing: 0) {
-        HStack(spacing: 0) {
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.1, opacityDark: 1.0)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.2, opacityDark: 0.9)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.3, opacityDark: 0.8)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.4, opacityDark: 0.7)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.5, opacityDark: 0.6)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.6, opacityDark: 0.5)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.7, opacityDark: 0.4)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.8, opacityDark: 0.3)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 0.9, opacityDark: 0.2)
-            ShadowLine(length: 30, angle: .`0_degrees`, opacity: 1.0, opacityDark: 0.1)
-        }
-        HStack(spacing: 0) {
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.1, opacityDark: 1.0)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.2, opacityDark: 0.9)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.3, opacityDark: 0.8)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.4, opacityDark: 0.7)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.5, opacityDark: 0.6)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.6, opacityDark: 0.5)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.7, opacityDark: 0.4)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.8, opacityDark: 0.3)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 0.9, opacityDark: 0.2)
-            ShadowLine(length: 30, angle: .`180_degrees`, opacity: 1.0, opacityDark: 0.1)
-        }
-        HStack(spacing: 0) {
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.1, opacityDark: 1.0)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.2, opacityDark: 0.9)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.3, opacityDark: 0.8)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.4, opacityDark: 0.7)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.5, opacityDark: 0.6)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.6, opacityDark: 0.5)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.7, opacityDark: 0.4)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.8, opacityDark: 0.3)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 0.9, opacityDark: 0.2)
-            ShadowLine(length: 30, angle: .`90_degrees`, opacity: 1.0, opacityDark: 0.1)
-        }.frame(height: 30)
-        HStack(spacing: 0) {
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.1, opacityDark: 1.0)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.2, opacityDark: 0.9)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.3, opacityDark: 0.8)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.4, opacityDark: 0.7)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.5, opacityDark: 0.6)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.6, opacityDark: 0.5)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.7, opacityDark: 0.4)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.8, opacityDark: 0.3)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 0.9, opacityDark: 0.2)
-            ShadowLine(length: 30, angle: .`270_degrees`, opacity: 1.0, opacityDark: 0.1)
-        }.frame(height: 30)
-    }.frame(width: 300)
-}
+struct ShadowLine_Previews: PreviewProvider {
 
+    static var previews: some View {
+        Previewer(spacing: 0) {
+            HStack(spacing: 0) {
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.1, opacityDark: 1.0)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.2, opacityDark: 0.9)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.3, opacityDark: 0.8)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.4, opacityDark: 0.7)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.5, opacityDark: 0.6)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.6, opacityDark: 0.5)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.7, opacityDark: 0.4)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.8, opacityDark: 0.3)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 0.9, opacityDark: 0.2)
+                ShadowLine(length: 30, angle: .degrees_0, opacity: 1.0, opacityDark: 0.1)
+            }
+            HStack(spacing: 0) {
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.1, opacityDark: 1.0)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.2, opacityDark: 0.9)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.3, opacityDark: 0.8)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.4, opacityDark: 0.7)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.5, opacityDark: 0.6)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.6, opacityDark: 0.5)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.7, opacityDark: 0.4)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.8, opacityDark: 0.3)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 0.9, opacityDark: 0.2)
+                ShadowLine(length: 30, angle: .degrees_180, opacity: 1.0, opacityDark: 0.1)
+            }
+            HStack(spacing: 0) {
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.1, opacityDark: 1.0)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.2, opacityDark: 0.9)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.3, opacityDark: 0.8)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.4, opacityDark: 0.7)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.5, opacityDark: 0.6)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.6, opacityDark: 0.5)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.7, opacityDark: 0.4)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.8, opacityDark: 0.3)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 0.9, opacityDark: 0.2)
+                ShadowLine(length: 30, angle: .degrees_90, opacity: 1.0, opacityDark: 0.1)
+            }.frame(height: 30)
+            HStack(spacing: 0) {
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.1, opacityDark: 1.0)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.2, opacityDark: 0.9)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.3, opacityDark: 0.8)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.4, opacityDark: 0.7)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.5, opacityDark: 0.6)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.6, opacityDark: 0.5)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.7, opacityDark: 0.4)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.8, opacityDark: 0.3)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 0.9, opacityDark: 0.2)
+                ShadowLine(length: 30, angle: .degrees_270, opacity: 1.0, opacityDark: 0.1)
+            }.frame(height: 30)
+        }.frame(width: 300)
+    }
+
+}

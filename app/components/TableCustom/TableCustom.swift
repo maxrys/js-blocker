@@ -26,7 +26,7 @@ struct TableCustom: View {
     private let headCellPadding: EdgeInsets
     private let bodyCellPadding: EdgeInsets
     private let headCells: [TableCustom_HeadCell]
-    private let bodyCells: [any View]
+    private let bodyCells: [AnyView]
 
     private var rowsCount: Int {
         self.bodyCells.count / self.headCells.count
@@ -53,7 +53,9 @@ struct TableCustom: View {
         self.headCellPadding = headCellPadding
         self.bodyCellPadding = bodyCellPadding
         self.headCells = headCells()
-        self.bodyCells = bodyCells
+        self.bodyCells = bodyCells.map({ item in
+            AnyView(item)
+        })
     }
 
     init(
@@ -77,7 +79,9 @@ struct TableCustom: View {
         self.headCellPadding = headCellPadding
         self.bodyCellPadding = bodyCellPadding
         self.headCells = headCells()
-        self.bodyCells = bodyCells()
+        self.bodyCells = bodyCells().map { item in
+            AnyView(item)
+        }
     }
 
     private var gridColumns: [GridItem] {
@@ -119,7 +123,7 @@ struct TableCustom: View {
                         let colIndex = index % self.headCells.count
                         let isSelected = self.selectedRows.contains(rowIndex)
                         let isEven = rowIndex % 2 == 0
-                        AnyView(cell).id(index)
+                        cell.id(index)
                             .padding(self.bodyCellPadding)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: self.headCells[safe: colIndex]?.alignment ?? .center)
                             .foregroundPolyfill(Color.tableCustom.rowTextColor(isSelected, self.appIsFocused))
@@ -135,7 +139,7 @@ struct TableCustom: View {
 
         }
         .focusable(self.isFocusable)
-        .onKeyPressForSelectAll() {
+        .onKeyPressForSelectAll {
             Task {
                 self.selectedRows = Set(0 ..< self.rowsCount)
             }

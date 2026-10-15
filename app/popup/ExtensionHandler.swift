@@ -33,7 +33,7 @@ class ExtensionHandler: SFSafariExtensionHandler {
         page.getPropertiesWithCompletionHandler({ properties in
             if let currentDomain = properties?.url?.host {
                 if let frameDomain = userInfo?["domain"] as? DomainName {
-                    if let userInfo {
+                    if let userInfo = userInfo {
                         if let logData = try? JSONSerialization.data(withJSONObject: userInfo) {
                             if let logString = String(data: logData, encoding: .utf8) {
                                 Logger.customLog("\(message) from \(currentDomain)|\(frameDomain): \(logString)")

@@ -38,9 +38,9 @@ struct Popup: View {
 
     private var colorScriptsBackground: Color {
         switch self.popupState.match {
-            case .exactScript   : Color.popup.ruleExactBackground.opacity(0.9)
-            case .wildcardScript: Color.popup.rulesWildcardBackground.opacity(0.9)
-            default             : Color.scriptsPanel.defaultBackground.opacity(0.9)
+            case .exactScript   : return Color.popup.ruleExactBackground.opacity(0.9)
+            case .wildcardScript: return Color.popup.rulesWildcardBackground.opacity(0.9)
+            default             : return Color.scriptsPanel.defaultBackground.opacity(0.9)
         }
     }
 
@@ -72,7 +72,7 @@ struct Popup: View {
                     ).overlayPolyfill(alignment: .leading) {
                         ShadowLine(
                             length: 15,
-                            angle: .`270_degrees`,
+                            angle: .degrees_270,
                             opacity: 0.15,
                             opacityDark: 0.2
                         ).frame(height: self.mainViewSize.height)

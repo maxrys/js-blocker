@@ -23,7 +23,7 @@ struct ASFetchItem: Equatable {
         domain: DomainName,
         frameDomain: DomainName,
         url: String,
-        createdAt: Int64,
+        createdAt: Int64
     ) {
         self.domain      = domain
         self.frameDomain = frameDomain

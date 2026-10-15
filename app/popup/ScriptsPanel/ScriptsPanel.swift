@@ -164,7 +164,7 @@ struct ScriptsPanel: View {
             isOn: Binding<Bool>(
                 get: {             self.isOnGet(match, frameDomain, script) },
                 set: { newValue in self.isOnSet(match, frameDomain, script, newValue) } ),
-            size: CGSize(width: 30, height: 12),
+            size: CGSize(width: 30, height: 12)
         ).padding(.top, 2)
     }
 

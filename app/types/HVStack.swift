@@ -36,20 +36,24 @@ struct HVStack<Content: View>: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-#Preview {
-    VStack(spacing: 10) {
+struct HVStack_Previews: PreviewProvider {
 
-        HVStack(axis: .vertical) {
-            Text("1").background(Color.yellow)
-            Text("2").background(Color.yellow)
-            Text("3").background(Color.yellow)
-        }.frame(width: 100, height: 100).background(Color.white)
+    static var previews: some View {
+        VStack(spacing: 10) {
 
-        HVStack(axis: .horizontal) {
-            Text("1").background(Color.yellow)
-            Text("2").background(Color.yellow)
-            Text("3").background(Color.yellow)
-        }.frame(width: 100, height: 100).background(Color.white)
+            HVStack(axis: .vertical) {
+                Text("1").background(Color.yellow)
+                Text("2").background(Color.yellow)
+                Text("3").background(Color.yellow)
+            }.frame(width: 100, height: 100).background(Color.white)
 
-    }.padding(10).background(Color.black)
+            HVStack(axis: .horizontal) {
+                Text("1").background(Color.yellow)
+                Text("2").background(Color.yellow)
+                Text("3").background(Color.yellow)
+            }.frame(width: 100, height: 100).background(Color.white)
+
+        }.padding(10).background(Color.black)
+    }
+
 }

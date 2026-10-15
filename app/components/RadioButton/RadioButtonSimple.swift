@@ -5,7 +5,7 @@
 
 import SwiftUI
 
-struct RadioButtonSimple: View {
+struct RadioButtonSimple<Label: View>: View {
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.isEnabled) private var isEnabled
@@ -15,7 +15,7 @@ struct RadioButtonSimple: View {
     private let radioSize: CGFloat
     private let radioAlignment: VerticalAlignment
     private let indicatoorSize: CGFloat
-    private let lebel: any View
+    private let lebel: Label
     private let onSelect: () -> Void
 
     init(
@@ -24,7 +24,7 @@ struct RadioButtonSimple: View {
         radioAlignment: VerticalAlignment = .center,
         indicatoorSize: CGFloat = 14,
         onSelect: @escaping () -> Void,
-        @ViewBuilder lebel: () -> any View
+        @ViewBuilder lebel: () -> Label
     ) {
         self.isSelected = isSelected
         self.radioSize = radioSize

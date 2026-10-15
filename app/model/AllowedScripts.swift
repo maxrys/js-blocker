@@ -45,7 +45,7 @@ public class AllowedScripts: NSManagedObject {
             request.fetchLimit = Int.max
             request.predicate = {
                 var result = [ NSPredicate(format: "domain == %@", domain) ]
-                if let frameDomain { result.append(NSPredicate(format: "frameDomain == %@", frameDomain)) }
+                if let frameDomain = frameDomain { result.append(NSPredicate(format: "frameDomain == %@", frameDomain)) }
                 return NSCompoundPredicate(
                     andPredicateWithSubpredicates: result
                 )
@@ -81,8 +81,8 @@ public class AllowedScripts: NSManagedObject {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: SELF.stringName)
             request.predicate = {
                 var result = [ NSPredicate(format: "domain == %@", domain) ]
-                if let frameDomain { result.append(NSPredicate(format: "frameDomain == %@", frameDomain)) }
-                if let url         { result.append(NSPredicate(format: "url == %@", url)) }
+                if let frameDomain = frameDomain { result.append(NSPredicate(format: "frameDomain == %@", frameDomain)) }
+                if let url         = url         { result.append(NSPredicate(format: "url == %@", url)) }
                 return NSCompoundPredicate(
                     andPredicateWithSubpredicates: result
                 )

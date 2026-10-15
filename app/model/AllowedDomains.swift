@@ -105,8 +105,8 @@ public class AllowedDomains: NSManagedObject {
             request.fetchLimit = Int.max
             request.predicate = {
                 var result:[NSPredicate] = []
-                if let filterByName { result.append(NSPredicate(format: "nameDecoded CONTAINS[cd] %@", filterByName)) }
-                if (skipExpired)    { result.append(NSPredicate(format: "(expiresAt == 0) OR (expiresAt > %@)", NSNumber(value: Date.timestamp.int64))) }
+                if let filterByName = filterByName { result.append(NSPredicate(format: "nameDecoded CONTAINS[cd] %@", filterByName)) }
+                if (skipExpired)                   { result.append(NSPredicate(format: "(expiresAt == 0) OR (expiresAt > %@)", NSNumber(value: Date.timestamp.int64))) }
                 return NSCompoundPredicate(
                     andPredicateWithSubpredicates: result
                 )

@@ -14,10 +14,10 @@ enum ExpireStatus: Equatable {
 
     public var isSome: Bool {
         switch self {
-            case .notSetted: false
-            case .noLimit  : true
-            case .valid    : true
-            case .expired  : true
+            case .notSetted: return false
+            case .noLimit  : return true
+            case .valid    : return true
+            case .expired  : return true
         }
     }
 

@@ -10,7 +10,7 @@ enum ScriptsManager {
     }
 
     static func reset(for domain: DomainName, _ frameDomain: DomainName? = nil) {
-        if let frameDomain
+        if let frameDomain = frameDomain
              { PopupState.shared.scripts[domain, frameDomain] = nil }
         else { PopupState.shared.scripts[domain             ] = nil }
     }

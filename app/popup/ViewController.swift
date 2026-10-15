@@ -41,13 +41,13 @@ class ViewController: SFSafariExtensionViewController {
 
             let type: String? = {
                 switch match {
-                    case .noOne      : MATCH_TYPE_STRING_EXACT
-                    case .noOneScript: MATCH_TYPE_STRING_EXACT_SCRIPT
-                    default          : nil
+                    case .noOne      : return MATCH_TYPE_STRING_EXACT
+                    case .noOneScript: return MATCH_TYPE_STRING_EXACT_SCRIPT
+                    default          : return nil
                 }
             }()
 
-            guard let type else {
+            guard let type = type else {
                 return
             }
 
@@ -107,13 +107,13 @@ class ViewController: SFSafariExtensionViewController {
 
                 let type: String? = {
                     switch match {
-                        case .noOne      : MATCH_TYPE_STRING_WILDCARD
-                        case .noOneScript: MATCH_TYPE_STRING_WILDCARD_SCRIPT
-                        default          : nil
+                        case .noOne      : return MATCH_TYPE_STRING_WILDCARD
+                        case .noOneScript: return MATCH_TYPE_STRING_WILDCARD_SCRIPT
+                        default          : return nil
                     }
                 }()
 
-                guard let type else {
+                guard let type = type else {
                     return
                 }
 

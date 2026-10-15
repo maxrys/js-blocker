@@ -17,10 +17,10 @@ extension Dictionary {
     ) -> [Element] where Key: Comparable, Value: Comparable {
         self.sorted(by: { (lhs, rhs) in
             switch order {
-                case .keyAscending   : lhs.key   < rhs.key
-                case .keyDescending  : lhs.key   > rhs.key
-                case .valueAscending : lhs.value < rhs.value
-                case .valueDescending: lhs.value > rhs.value
+                case .keyAscending   : return lhs.key   < rhs.key
+                case .keyDescending  : return lhs.key   > rhs.key
+                case .valueAscending : return lhs.value < rhs.value
+                case .valueDescending: return lhs.value > rhs.value
             }
         })
     }

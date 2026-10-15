@@ -100,11 +100,11 @@ struct DomainRuleWildcardPanel: View {
 
                             let opacity: CGFloat = {
                                 switch self.popupState.match {
-                                    case .noOne         : isDisabled      ? 0.5 : 1.0
-                                    case .noOneScript   : isDisabled      ? 0.5 : 1.0
-                                    case .wildcard      : isFirstSelected ? 1.0 : 0.5
-                                    case .wildcardScript: isFirstSelected ? 1.0 : 0.5
-                                    default: 0.5
+                                    case .noOne         : return isDisabled      ? 0.5 : 1.0
+                                    case .noOneScript   : return isDisabled      ? 0.5 : 1.0
+                                    case .wildcard      : return isFirstSelected ? 1.0 : 0.5
+                                    case .wildcardScript: return isFirstSelected ? 1.0 : 0.5
+                                    default: return 0.5
                                 }
                             }()
 

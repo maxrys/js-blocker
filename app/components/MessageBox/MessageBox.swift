@@ -53,7 +53,7 @@ struct MessageInfo: Equatable, Codable {
     }
 
     public var isPersistent: Bool {
-        if case .infinity = self.lifetime { true } else { false }
+        if case .infinity = self.lifetime { return true } else { return false }
     }
 
     public var isExpired: Bool? {
@@ -139,19 +139,19 @@ fileprivate struct Message: View {
 
     private var colorTitleBackground: Color {
         switch self.info.type {
-            case .info   : Color.messageBox.infoTitleBackground
-            case .ok     : Color.messageBox.okTitleBackground
-            case .warning: Color.messageBox.warningTitleBackground
-            case .error  : Color.messageBox.errorTitleBackground
+            case .info   : return Color.messageBox.infoTitleBackground
+            case .ok     : return Color.messageBox.okTitleBackground
+            case .warning: return Color.messageBox.warningTitleBackground
+            case .error  : return Color.messageBox.errorTitleBackground
         }
     }
 
     private var colorDescriptionBackground: Color {
         switch self.info.type {
-            case .info   : Color.messageBox.infoDescriptionBackground
-            case .ok     : Color.messageBox.okDescriptionBackground
-            case .warning: Color.messageBox.warningDescriptionBackground
-            case .error  : Color.messageBox.errorDescriptionBackground
+            case .info   : return Color.messageBox.infoDescriptionBackground
+            case .ok     : return Color.messageBox.okDescriptionBackground
+            case .warning: return Color.messageBox.warningDescriptionBackground
+            case .error  : return Color.messageBox.errorDescriptionBackground
         }
     }
 
@@ -265,10 +265,10 @@ fileprivate struct MessageProgress: View {
 
     private var colorProgressBackground: Color {
         switch self.type {
-            case .info   : Color.messageBox.infoProgressBackground
-            case .ok     : Color.messageBox.okProgressBackground
-            case .warning: Color.messageBox.warningProgressBackground
-            case .error  : Color.messageBox.errorProgressBackground
+            case .info   : return Color.messageBox.infoProgressBackground
+            case .ok     : return Color.messageBox.okProgressBackground
+            case .warning: return Color.messageBox.warningProgressBackground
+            case .error  : return Color.messageBox.errorProgressBackground
         }
     }
 
@@ -299,8 +299,8 @@ struct MessageBox: View {
 
     static private func notificationNameForInsertDistributed(_ messageBoxID: MessageBoxID, _ appName: String) -> NSNotification.Name { NSNotification.Name("\(Self.MESSAGE_NAME_FOR_INSERT_DISTRIBUTED)-\(appName)-\(messageBoxID)") }
     static private func notificationNameForDeleteDistributed(_ messageBoxID: MessageBoxID, _ appName: String) -> NSNotification.Name { NSNotification.Name("\(Self.MESSAGE_NAME_FOR_DELETE_DISTRIBUTED)-\(appName)-\(messageBoxID)") }
-    static private func notificationNameForInsertLocal      (_ messageBoxID: MessageBoxID,                  ) -> NSNotification.Name { NSNotification.Name("\(Self.MESSAGE_NAME_FOR_INSERT_LOCAL)-\(messageBoxID)") }
-    static private func notificationNameForDeleteLocal      (_ messageBoxID: MessageBoxID,                  ) -> NSNotification.Name { NSNotification.Name("\(Self.MESSAGE_NAME_FOR_DELETE_LOCAL)-\(messageBoxID)") }
+    static private func notificationNameForInsertLocal      (_ messageBoxID: MessageBoxID                   ) -> NSNotification.Name { NSNotification.Name("\(Self.MESSAGE_NAME_FOR_INSERT_LOCAL)-\(messageBoxID)") }
+    static private func notificationNameForDeleteLocal      (_ messageBoxID: MessageBoxID                   ) -> NSNotification.Name { NSNotification.Name("\(Self.MESSAGE_NAME_FOR_DELETE_LOCAL)-\(messageBoxID)") }
 
     static public func insert(address: MessageBoxAddress, _ message: MessageInfo) {
         switch address {
@@ -318,15 +318,15 @@ struct MessageBox: View {
 
     private var publisherForInsert: NotificationCenter.Publisher {
         switch self.address {
-            case .distributed(let boxID, let appName): DistributedNotificationCenter.default.publisher(for: Self.notificationNameForInsertDistributed(boxID, appName))
-            case .local      (let boxID)             :            NotificationCenter.default.publisher(for: Self.notificationNameForInsertLocal      (boxID         ))
+            case .distributed(let boxID, let appName): return DistributedNotificationCenter.default.publisher(for: Self.notificationNameForInsertDistributed(boxID, appName))
+            case .local      (let boxID)             : return            NotificationCenter.default.publisher(for: Self.notificationNameForInsertLocal      (boxID         ))
         }
     }
 
     private var publisherForDelete: NotificationCenter.Publisher {
         switch self.address {
-            case .distributed(let boxID, let appName): DistributedNotificationCenter.default.publisher(for: Self.notificationNameForDeleteDistributed(boxID, appName))
-            case .local      (let boxID)             :            NotificationCenter.default.publisher(for: Self.notificationNameForDeleteLocal      (boxID         ))
+            case .distributed(let boxID, let appName): return DistributedNotificationCenter.default.publisher(for: Self.notificationNameForDeleteDistributed(boxID, appName))
+            case .local      (let boxID)             : return            NotificationCenter.default.publisher(for: Self.notificationNameForDeleteLocal      (boxID         ))
         }
     }
 

@@ -325,7 +325,7 @@ struct MainScene: View {
 struct MainScene_Previews: PreviewProvider {
     static var previews: some View {
         VStack { MainScene() }
-            .background(Color.NS[\.windowBackgroundColor])
+            .background(Color.NS[.windowBackgroundColor])
             .environment(\.colorScheme, .light)
     }
 }
@@ -333,7 +333,7 @@ struct MainScene_Previews: PreviewProvider {
 struct MainScene_Previews_Dark: PreviewProvider {
     static var previews: some View {
         VStack { MainScene() }
-            .background(Color.NS[\.windowBackgroundColor])
+            .background(Color.NS[.windowBackgroundColor])
             .environment(\.colorScheme, .dark)
     }
 }

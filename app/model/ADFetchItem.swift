@@ -22,7 +22,7 @@ struct ADFetchItem: Equatable {
         nameDecoded: DomainName,
         type: String,
         createdAt: Int64,
-        expiresAt: Int64,
+        expiresAt: Int64
     ) {
         self.name        = name
         self.nameDecoded = nameDecoded

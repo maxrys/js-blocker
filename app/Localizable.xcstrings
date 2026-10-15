@@ -1520,6 +1520,9 @@
         }
       }
     },
+    "Select All" : {
+      "shouldTranslate" : false
+    },
     "support" : {
       "localizations" : {
         "be-BY" : {

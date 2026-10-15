@@ -43,7 +43,7 @@ struct About: View {
     @ViewBuilder private func ShadowLineView(_ height: CGFloat) -> some View {
         ShadowLine(
             length: 10,
-            angle: .`270_degrees`,
+            angle: .degrees_270,
             opacity: 0.6,
             opacityDark: 0.5
         ).frame(height: height)
@@ -78,7 +78,7 @@ struct About: View {
             if let pageSupport = NSApplication.pageSupport {
                 ButtonCustom(
                     NSLocalizedString("support", comment: ""),
-                    colorStyle: self.colorScheme == .dark ? .custom(text: nil, background: Color.NS[\.windowBackgroundColor]) : .common,
+                    colorStyle: self.colorScheme == .dark ? .custom(text: nil, background: Color.NS[.windowBackgroundColor]) : .common,
                     font: .system(size: 14, weight: .regular),
                     padding: .init(top: 3, leading: 20, bottom: 5, trailing: 20),
                     flexibility: .none,
@@ -117,7 +117,7 @@ struct About: View {
                 Button { self.openURL(url) } label: {
                     Text(value)
                         .underline()
-                        .foregroundPolyfill(Color.NS[\.linkColor])
+                        .foregroundPolyfill(Color.NS[.linkColor])
                         .focusEffect(RoundedRectangle(cornerRadius: 5))
                 }
                 .buttonStyle(.plain)
@@ -140,11 +140,15 @@ struct About: View {
 /* ########################## PREVIEW ########################## */
 /* ############################################################# */
 
-#Preview {
-    Previewer(spacing: 0) {
-        About()
-            .padding(1)
-            .background(Color.blue)
-            .frame(width: 600)
+struct About_Previews: PreviewProvider {
+
+    static var previews: some View {
+        Previewer(spacing: 0) {
+            About()
+                .padding(1)
+                .background(Color.blue)
+                .frame(width: 600)
+        }
     }
+
 }
