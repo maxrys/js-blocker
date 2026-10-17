@@ -23,7 +23,7 @@ extension NSWindow {
         return nil
     }
 
-    static func makeNewOrShowExisting<T: View>(
+    static func makeNewOrShowExisting<Content: View>(
         ID: String,
         title: String,
         styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable],
@@ -32,7 +32,7 @@ extension NSWindow {
         size: CGSize = CGSize(width: 1000, height: 1000),
         isReleasedWhenClosed: Bool = false,
         delegate: any NSWindowDelegate,
-        view: T
+        view: Content
     ) -> Bool {
         if let window = Self.customWindows[ID] {
             window.show()

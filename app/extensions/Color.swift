@@ -16,15 +16,15 @@ extension Color {
     static let NS = NSColorSet()
 
     static let label: Color = {
-        Color(NSColor.labelColor)
+        Self.NS[.labelColor]
     }()
 
     static let selectedContentBackground: Color = {
-        Color(NSColor.selectedContentBackgroundColor)
+        Self.NS[.selectedContentBackgroundColor]
     }()
 
     static let selectedContentUnactiveBackground: Color = {
-        Color(NSColor.unemphasizedSelectedContentBackgroundColor)
+        Self.NS[.unemphasizedSelectedContentBackgroundColor]
     }()
 
 }

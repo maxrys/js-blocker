@@ -74,7 +74,7 @@ struct ButtonCustom: View {
                 color: self.colorScheme == .dark ?
                     .black.opacity(1.0) :
                     .black.opacity(0.4),
-                radius: 0.7,
+                radius: self.isEnabled ? 0.7 : 0.0,
                 y: 0.3
             )
         }
