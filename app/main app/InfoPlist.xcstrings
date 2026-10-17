@@ -22,6 +22,12 @@
             "state" : "translated",
             "value" : "JS Блокировщик"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник"
+          }
         }
       }
     },
@@ -46,6 +52,12 @@
             "state" : "translated",
             "value" : "JS Блокировщик"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник"
+          }
         }
       }
     },
@@ -69,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "© 2024—2026 Рысевец Максим Владимирович"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2024—2026 Рисівець Максим Володимирович"
           }
         }
       }
