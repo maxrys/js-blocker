@@ -1,4 +1,9 @@
 
+## Version 3.3
+
+Codebase has been improved.  
+Translations has been improved.
+
 ## Version 3.2
 
 Codebase has been improved.  
