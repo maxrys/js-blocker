@@ -14,6 +14,12 @@
             "state" : "translated",
             "value" : "...загрузка..."
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...завантаження..."
+          }
         }
       }
     },
@@ -35,6 +41,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ 'в' %2$@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ 'у' %2$@"
           }
         }
       }
@@ -102,6 +114,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%d дней"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d день"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d день"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d дні"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d днів"
                 }
               },
               "one" : {
@@ -200,6 +242,36 @@
               }
             }
           }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було оновлено %d існуючі записи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було оновлено %d існуючих записів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було оновлено %d існуючий запис"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було оновлено %d існуючий запис"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -278,6 +350,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%d час"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d години"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d годин"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d година"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d година"
                 }
               }
             }
@@ -364,6 +466,36 @@
               }
             }
           }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d хвилини"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d хвилин"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d хвилина"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d хвилина"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -442,6 +574,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Было добавлено %d новых записей"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було додано %d нові записи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було додано %d нових записів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було додано %d новий запис"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було додано %d новий запис"
                 }
               }
             }
@@ -528,6 +690,36 @@
               }
             }
           }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було видалено %d записи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було видалено %d записів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було видалено %d запис"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було видалено %d запис"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -610,6 +802,36 @@
               }
             }
           }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було експортовано %d записи"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було експортовано %d записів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було експортовано %d запис"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Було експортовано %d запис"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -670,6 +892,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%d секунды"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d секунд"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d секунда"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d секунда"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d секунди"
                 }
               },
               "many" : {
@@ -774,6 +1026,36 @@
               }
             }
           }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d тижні"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d тижнів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d тиждень"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%d тиждень"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -786,6 +1068,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 день"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "1 день"
@@ -806,6 +1094,12 @@
             "state" : "translated",
             "value" : "1 час"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 година"
+          }
         }
       }
     },
@@ -821,6 +1115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1 минута"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 хвилина"
           }
         }
       }
@@ -838,6 +1138,12 @@
             "state" : "translated",
             "value" : "1 неделя"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 тиждень"
+          }
         }
       }
     },
@@ -853,6 +1159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "5 минут"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 хвилин"
           }
         }
       }
@@ -870,6 +1182,12 @@
             "state" : "translated",
             "value" : "О приложении %@"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Про додаток %@"
+          }
         }
       }
     },
@@ -886,6 +1204,12 @@
             "state" : "translated",
             "value" : "все внутренние атрибутные скрипты"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "усі внутрішні атрибутні скрипти"
+          }
         }
       }
     },
@@ -901,6 +1225,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "все внутренние скрипты"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "усі внутрішні скрипти"
           }
         }
       }
@@ -919,6 +1249,12 @@
             "state" : "translated",
             "value" : "разрешить"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дозволити"
+          }
         }
       }
     },
@@ -934,6 +1270,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "разрешить по скриптам"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дозволити по скриптах"
           }
         }
       }
@@ -951,6 +1293,12 @@
             "state" : "translated",
             "value" : "Как минимум 1 поддомен должен быть выбран!"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Як мінімум 1 піддомен має бути обраний!"
+          }
         }
       }
     },
@@ -966,6 +1314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "отменить правило"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "скасувати правило"
           }
         }
       }
@@ -983,6 +1337,12 @@
             "state" : "translated",
             "value" : "удалить"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "видалити"
+          }
         }
       }
     },
@@ -998,6 +1358,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "доменное имя"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "доменне ім'я"
           }
         }
       }
@@ -1015,6 +1381,12 @@
             "state" : "translated",
             "value" : "Домены, на которых разрешён JavaScript"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Домени, на яких дозволено JavaScript"
+          }
         }
       }
     },
@@ -1030,6 +1402,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "точное правило"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "точне правило"
           }
         }
       }
@@ -1047,6 +1425,12 @@
             "state" : "translated",
             "value" : "точное правило (по скриптам)"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "точне правило (по скриптах)"
+          }
         }
       }
     },
@@ -1062,6 +1446,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Точное правило для домена было добавлено:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точне правило для домену було додано:"
           }
         }
       }
@@ -1079,6 +1469,12 @@
             "state" : "translated",
             "value" : "Точное правило для домена не было добавлено:"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точне правило для домену не було додано:"
+          }
         }
       }
     },
@@ -1094,6 +1490,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Точное правило для домена не было удалено:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точне правило для домену не було видалено:"
           }
         }
       }
@@ -1111,6 +1513,12 @@
             "state" : "translated",
             "value" : "Точное правило для домена было удалено:"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Точне правило для домену було видалено:"
+          }
         }
       }
     },
@@ -1126,6 +1534,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Были обнаружены просроченные домены:\n%@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Були виявлені прострочені домени:\n%@"
           }
         }
       }
@@ -1143,6 +1557,12 @@
             "state" : "translated",
             "value" : "истекает в"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "закінчується в"
+          }
         }
       }
     },
@@ -1158,6 +1578,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "экспорт"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "експорт"
           }
         }
       }
@@ -1176,6 +1602,12 @@
             "state" : "translated",
             "value" : "Экспорт"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Експорт"
+          }
         }
       }
     },
@@ -1192,6 +1624,12 @@
             "state" : "translated",
             "value" : "Окно с доменом:"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вікно з доменом:"
+          }
         }
       }
     },
@@ -1207,6 +1645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "импорт"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "імпорт"
           }
         }
       }
@@ -1225,6 +1669,12 @@
             "state" : "translated",
             "value" : "Импорт"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпорт"
+          }
         }
       }
     },
@@ -1233,13 +1683,19 @@
         "be-BY" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ўсталёўка"
+            "value" : "ўсталяваць"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "установка"
+            "value" : "установить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "встановити"
           }
         }
       }
@@ -1257,6 +1713,12 @@
             "state" : "translated",
             "value" : "Пример установки"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приклад встановлення"
+          }
         }
       }
     },
@@ -1272,6 +1734,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Были обнаружены неправильные домены:\n%@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Було виявлено неправильні домени:\n%@"
           }
         }
       }
@@ -1290,6 +1758,12 @@
             "state" : "translated",
             "value" : "Неверный формат JSON!"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неправильний формат JSON!"
+          }
         }
       }
     },
@@ -1306,6 +1780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JavaScript на Домене"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JavaScript на Домені"
           }
         }
       }
@@ -1324,6 +1804,12 @@
             "state" : "translated",
             "value" : "JavaScript на Домене + Поддомены"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JavaScript на Домені + Піддомени"
+          }
         }
       }
     },
@@ -1339,6 +1825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JS Блокировщик"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник"
           }
         }
       }
@@ -1356,6 +1848,12 @@
             "state" : "translated",
             "value" : "время жизни"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "час життя"
+          }
         }
       }
     },
@@ -1372,6 +1870,12 @@
             "state" : "translated",
             "value" : "Время жизни"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Час життя"
+          }
         }
       }
     },
@@ -1387,6 +1891,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "время жизни: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "час життя: %@"
           }
         }
       }
@@ -1405,6 +1915,12 @@
             "state" : "translated",
             "value" : "нет"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ні"
+          }
         }
       }
     },
@@ -1421,10 +1937,16 @@
             "state" : "translated",
             "value" : "нет скриптов"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "немає скриптів"
+          }
         }
       }
     },
-    "note: New Domains are added in Safari via the \"JS Blocker\" pop-up." : {
+    "note: New Domains are added in Safari via the \"JS Blocker\" popup." : {
       "localizations" : {
         "be-BY" : {
           "stringUnit" : {
@@ -1436,6 +1958,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "примечание: Новые домены добавляются в Safari через всплывающее окно \"JS Blocker'а\"."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примітка: Нові домени додаються до Safari через спливаюче вікно \"JS Blocker'а\"."
           }
         }
       }
@@ -1453,6 +1981,12 @@
             "state" : "translated",
             "value" : "Открыть настройки расширений Safari…"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрити налаштування розширень Safari…"
+          }
         }
       }
     },
@@ -1468,6 +2002,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Всплывающее окно выключено"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спливаюче вікно вимкнено"
           }
         }
       }
@@ -1485,6 +2025,12 @@
             "state" : "translated",
             "value" : "Всплывающее окно включено"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спливаюче вікно увімкнено"
+          }
         }
       }
     },
@@ -1501,6 +2047,12 @@
             "state" : "translated",
             "value" : "Скрипты"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрипти"
+          }
         }
       }
     },
@@ -1516,6 +2068,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поиск"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук"
           }
         }
       }
@@ -1536,6 +2094,12 @@
             "state" : "translated",
             "value" : "поддержка"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "підтримка"
+          }
         }
       }
     },
@@ -1548,6 +2112,12 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "тип"
+          }
+        },
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "тип"
@@ -1567,6 +2137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "без ограничений"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "без обмежень"
           }
         }
       }
@@ -1590,6 +2166,12 @@
             "state" : "translated",
             "value" : "Версия %1$@ (%2$@)"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версія %1$@ (%2$@)"
+          }
         }
       }
     },
@@ -1605,6 +2187,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "обобщённое правило"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "узагальнене правило"
           }
         }
       }
@@ -1622,6 +2210,12 @@
             "state" : "translated",
             "value" : "обобщённое правило (по скриптам)"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "узагальнене правило (по скриптах)"
+          }
         }
       }
     },
@@ -1637,6 +2231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обобщённое правило для домена не было удалено:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узагальнене правило для домену не було видалено:"
           }
         }
       }
@@ -1654,6 +2254,12 @@
             "state" : "translated",
             "value" : "Обобщённое правило для домена было удалено:"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узагальнене правило для домену було видалено:"
+          }
         }
       }
     },
@@ -1669,6 +2275,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обобщённые правила для доменов были добавлены:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узагальнені правила для доменів були додані:"
           }
         }
       }
@@ -1686,6 +2298,12 @@
             "state" : "translated",
             "value" : "Обобщённые правила для доменов не были добавлены:"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Узагальнені правила для доменів не були додані:"
+          }
         }
       }
     },
@@ -1702,6 +2320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "да"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "так"
           }
         }
       }

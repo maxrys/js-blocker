@@ -970,6 +970,7 @@
 				ru,
 				mul,
 				"be-BY",
+				uk,
 			);
 			mainGroup = 50B024F92C47E401002F1AD7;
 			productRefGroup = 50B025032C47E401002F1AD7 /* Products */;

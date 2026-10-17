@@ -101,7 +101,7 @@ struct MainScene: View {
 
                     Text(
                         NSLocalizedString(
-                            "note: New Domains are added in Safari via the \"JS Blocker\" pop-up.", comment: ""
+                            "note: New Domains are added in Safari via the \"JS Blocker\" popup.", comment: ""
                         )
                     )
                     .font(.system(size: 11))

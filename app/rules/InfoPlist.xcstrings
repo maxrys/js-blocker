@@ -22,6 +22,12 @@
             "state" : "translated",
             "value" : "JS Блокировщик Правила"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник Правила"
+          }
         }
       }
     },
@@ -45,6 +51,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JS Блокировщик Правила"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник Правила"
           }
         }
       }
@@ -70,6 +82,12 @@
             "state" : "translated",
             "value" : "© 2024—2026 Рысевец Максим Владимирович"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2024—2026 Рисівець Максим Володимирович"
+          }
         }
       }
     },
@@ -93,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Расширение Safari для блокировки JavaScript. Активирует правила блокировки."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розширення Safari для блокування JavaScript. Активує правила блокування."
           }
         }
       }

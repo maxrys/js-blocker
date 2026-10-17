@@ -22,6 +22,12 @@
             "state" : "translated",
             "value" : "JS Блокировщик Всплывающее окно"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник Спливаюче вікно"
+          }
         }
       }
     },
@@ -45,6 +51,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "JS Блокировщик Всплывающее окно"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JS Блокувальник Спливаюче вікно"
           }
         }
       }
@@ -70,6 +82,12 @@
             "state" : "translated",
             "value" : "© 2024—2026 Рысевец Максим Владимирович"
           }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2024—2026 Рисівець Максим Володимирович"
+          }
         }
       }
     },
@@ -93,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Расширение Safari для блокировки JavaScript. Показывает всплывающее окно для установки правил блокировки."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розширення Safari для блокування JavaScript. Показує спливаюче вікно для встановлення правил блокування."
           }
         }
       }
