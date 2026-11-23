@@ -74,7 +74,6 @@
 		5040E1E2305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
 		5040E1E3305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
 		5040E1E4305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
-		50439DC02F44C74800270BE5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50439DBF2F44C74800270BE5 /* Info.plist */; };
 		50439DC22F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		50439DC32F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		50439DC42F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
@@ -1005,7 +1004,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50439DC02F44C74800270BE5 /* Info.plist in Resources */,
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
 				50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */,
 				50EF0331305F17CE00557AF2 /* Assets.xcassets in Resources */,
