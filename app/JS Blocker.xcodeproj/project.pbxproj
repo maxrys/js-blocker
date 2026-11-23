@@ -74,7 +74,7 @@
 		5040E1E2305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
 		5040E1E3305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
 		5040E1E4305AB6DD0004A290 /* Checksums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040E1E0305AB6DD0004A290 /* Checksums.swift */; };
-		50439DC02F44C74800270BE5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50439DBF2F44C74800270BE5 /* info.plist */; };
+		50439DC02F44C74800270BE5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50439DBF2F44C74800270BE5 /* Info.plist */; };
 		50439DC22F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		50439DC32F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
 		50439DC42F44C87E00270BE5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50439DC12F44C87E00270BE5 /* Timer.swift */; };
@@ -366,7 +366,7 @@
 		503DBE01302B5EDE00BD39F3 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		503DBE03302B606500BD39F3 /* rules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rules.entitlements; sourceTree = "<group>"; };
 		5040E1E0305AB6DD0004A290 /* Checksums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checksums.swift; sourceTree = "<group>"; };
-		50439DBF2F44C74800270BE5 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		50439DBF2F44C74800270BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50439DC12F44C87E00270BE5 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		50439DC52F44C8BA00270BE5 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		50439DC92F44C8C300270BE5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -704,7 +704,7 @@
 				50B025162C47E403002F1AD7 /* Assets.xcassets */,
 				50875E332C71F6FD00756D64 /* InfoPlist.xcstrings */,
 				50B025192C47E403002F1AD7 /* app.entitlements */,
-				50439DBF2F44C74800270BE5 /* info.plist */,
+				50439DBF2F44C74800270BE5 /* Info.plist */,
 			);
 			path = "main app";
 			sourceTree = "<group>";
@@ -1005,7 +1005,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50439DC02F44C74800270BE5 /* info.plist in Resources */,
+				50439DC02F44C74800270BE5 /* Info.plist in Resources */,
 				50B025172C47E403002F1AD7 /* Assets.xcassets in Resources */,
 				50875E342C71F6FD00756D64 /* InfoPlist.xcstrings in Resources */,
 				50EF0331305F17CE00557AF2 /* Assets.xcassets in Resources */,
